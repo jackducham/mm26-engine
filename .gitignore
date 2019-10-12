@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Protocol Buffer Binary ###
+/protoc-3.10.0-win64/

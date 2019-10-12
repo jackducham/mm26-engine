@@ -26,6 +26,7 @@ public class Main {
 		// Begin game loop
 		while(!gameOver){
 			// TODO
+			//System.out.println("Game is running.");
 		}
 	}
 
