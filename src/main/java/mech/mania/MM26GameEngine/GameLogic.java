@@ -1,9 +1,8 @@
 package mech.mania.MM26GameEngine;
 
-import mech.mania.MM26GameEngine.GameState;
 import mech.mania.MM26GameEngine.playerCommunication.PlayerDecision;
 import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerBinaryWebSocketHandler;
-import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerTurn;
+import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerTurnProtos.VisualizerTurn;
 
 import java.util.List;
 
@@ -18,7 +17,10 @@ public class GameLogic {
      * @return the resulting {@link GameState}.
      */
     public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions){
-        // TODO
+        VisualizerTurn.Builder visualizerTurn = VisualizerTurn.newBuilder();
+        // TODO: do turn logic
+        // TODO: update visualizerTurn
+        VisualizerBinaryWebSocketHandler.sendTurn(visualizerTurn.build());
         return null;
     }
 }
