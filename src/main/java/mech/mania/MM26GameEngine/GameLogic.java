@@ -1,7 +1,9 @@
-package mech.mania.MM26GameEngine.gameLogic;
+package mech.mania.MM26GameEngine;
 
 import mech.mania.MM26GameEngine.GameState;
 import mech.mania.MM26GameEngine.playerCommunication.PlayerDecision;
+import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerBinaryWebSocketHandler;
+import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerTurn;
 
 import java.util.List;
 
