@@ -1,4 +1,4 @@
-package mech.mania.MM26GameEngine.game;
+package mech.mania.engine.game;
 
 public class Tile {
     private Character character;

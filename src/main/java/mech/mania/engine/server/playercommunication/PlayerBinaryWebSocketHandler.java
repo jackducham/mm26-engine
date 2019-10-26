@@ -1,4 +1,4 @@
-package mech.mania.MM26GameEngine.server.playercommunication;
+package mech.mania.engine.server.playercommunication;
 
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;

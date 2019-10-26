@@ -1,4 +1,4 @@
-package mech.mania.MM26GameEngine;
+package mech.mania.engine;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

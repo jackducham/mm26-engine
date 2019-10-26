@@ -1,4 +1,4 @@
-package mech.mania.MM26GameEngine.server.playercommunication;
+package mech.mania.engine.server.playercommunication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

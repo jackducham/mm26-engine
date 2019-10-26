@@ -1,4 +1,4 @@
-package mech.mania.MM26GameEngine.server.visualizercommunication;
+package mech.mania.engine.server.visualizercommunication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

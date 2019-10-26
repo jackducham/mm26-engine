@@ -1,6 +1,6 @@
-package mech.mania.MM26GameEngine.server.infracommunication;
+package mech.mania.engine.server.infracommunication;
 
-import mech.mania.MM26GameEngine.game.Main;
+import mech.mania.engine.game.Main;
 import org.springframework.web.bind.annotation.*;
 
 /**

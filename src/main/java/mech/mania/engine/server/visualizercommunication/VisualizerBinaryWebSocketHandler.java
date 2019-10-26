@@ -1,6 +1,6 @@
-package mech.mania.MM26GameEngine.server.visualizercommunication;
+package mech.mania.engine.server.visualizercommunication;
 
-import mech.mania.MM26GameEngine.server.visualizercommunication.VisualizerTurnProtos.VisualizerTurn;
+import mech.mania.engine.server.visualizercommunication.VisualizerTurnProtos.VisualizerTurn;
 
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;

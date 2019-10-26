@@ -1,4 +1,4 @@
-package main.java.mech.mania.MM26GameEngine;
+package mech.mania.engine.game;
 
 public abstract class Item {
 }
