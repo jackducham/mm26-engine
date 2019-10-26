@@ -1,14 +1,13 @@
-package mech.mania.MM26GameEngine;
+package mech.mania.MM26GameEngine.server.infracommunication;
 
+import mech.mania.MM26GameEngine.game.Main;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 /**
  * A class to execute the game loop and other structural procedures.
  */
 @RestController
-public class GameServer {
+public class InfraRESTHandler {
     /**
      * Method to handle GET requests to the /health endpoint to check that the server is running correctly.
      * @return "200"

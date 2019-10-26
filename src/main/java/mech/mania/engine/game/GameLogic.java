@@ -1,8 +1,9 @@
-package mech.mania.MM26GameEngine;
+package mech.mania.MM26GameEngine.game;
 
-import mech.mania.MM26GameEngine.playerCommunication.PlayerDecision;
-import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerBinaryWebSocketHandler;
-import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerTurnProtos.VisualizerTurn;
+import mech.mania.MM26GameEngine.server.PlayerDecision;
+import mech.mania.MM26GameEngine.server.playercommunication.PlayerDecision;
+import mech.mania.MM26GameEngine.server.visualizercommunication.VisualizerBinaryWebSocketHandler;
+import mech.mania.MM26GameEngine.server.visualizercommunication.VisualizerTurnProtos.VisualizerTurn;
 
 import java.util.List;
 
