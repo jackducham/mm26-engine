@@ -1,4 +1,4 @@
-package mech.mania.MM26GameEngine;
+package mech.mania.MM26GameEngine.game;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

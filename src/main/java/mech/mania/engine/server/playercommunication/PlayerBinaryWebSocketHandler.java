@@ -1,17 +1,16 @@
-package mech.mania.MM26GameEngine.visualizerCommunication;
+package mech.mania.MM26GameEngine.server.playercommunication;
 
-import mech.mania.MM26GameEngine.visualizerCommunication.VisualizerTurnProtos.VisualizerTurn;
-
-import org.springframework.web.socket.*;
+import org.springframework.web.socket.BinaryMessage;
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
-    // will there ever be more than one endpoint to visualizer?
-    private static List<VisualizerBinaryWebSocketHandler> endpoints = new ArrayList<>();
+public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
+    private static List<PlayerBinaryWebSocketHandler> endpoints = new ArrayList<>();
 
     private WebSocketSession session;
 
@@ -25,6 +24,7 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     @Override
     public void handleBinaryMessage(WebSocketSession session, BinaryMessage message){
         //TODO: Handle binary message - Visualizer shouldn't really send us any messages
+
     }
 
     @Override
@@ -34,9 +34,9 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
 
     /**
      * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
-     * @param turn the VisualizerTurn to send
+     * @param turn the PlayerTurn to send
      */
-    public static void sendTurn(VisualizerTurn turn) {
+    public static void sendTurn(PlayerTurnProtos.PlayerTurn turn) {
         BinaryMessage message = new BinaryMessage(turn.toByteArray());
         endpoints.forEach(endpoint -> {
             try {
