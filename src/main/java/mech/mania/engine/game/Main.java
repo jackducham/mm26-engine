@@ -8,6 +8,8 @@ import java.util.Collections;
 @SpringBootApplication
 public class Main {
 	public static boolean gameOver = false;
+	private static int turnCount = 0;
+	// TODO: visualizer wants us to store ALL past GameStates and VisualizerTurns. Should we do this here or through redis???
 
 	public static void main(String[] args) {
 		// Start server to communicate with infrastructure
@@ -21,12 +23,13 @@ public class Main {
 
 
 		// TODO: Initialize game
-
+		GameState gameState = new GameState();
 
 		// Begin game loop
 		while(!gameOver){
 			// TODO
 			//System.out.println("Game is running.");
+			turnCount++;
 		}
 	}
 
