@@ -1,5 +1,5 @@
 package mech.mania.engine.game;
 
-public class Cloths extends Wearable {
+public class Clothes extends Wearable {
     private int resistance = 0;
 }
