@@ -2,11 +2,17 @@ package mech.mania.engine.game.characters;
 
 import mech.mania.engine.game.items.Hat;
 import mech.mania.engine.game.items.Weapon;
+import mech.mania.engine.game.items.TempStatusModifier;
+
+import java.util.List;
 
 public class Player extends Character {
     private int experience;
     private Weapon weapon;
     private Hat hat;
+    List<TempStatusModifier> activeEffects;
+
+
 
     @Override
     public double getMaxHealth() {
