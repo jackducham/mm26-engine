@@ -1,16 +1,18 @@
 package mech.mania.engine.game.characters;
 
+import mech.mania.engine.game.items.AttackPattern;
+
 public class Enemy extends Character {
     private int goldReward;
-    private double[][] attackPattern;
+    private AttackPattern attackPattern;
 
-    public Enemy(int goldReward, double[][] attackPattern) {
+    public Enemy(int goldReward, AttackPattern attackPattern) {
         this.goldReward = goldReward;
         this.attackPattern = attackPattern;
     }
 
     @Override
-    public double[][] getAttackPattern() {
+    public AttackPattern getAttackPattern() {
         return attackPattern;
     }
 }

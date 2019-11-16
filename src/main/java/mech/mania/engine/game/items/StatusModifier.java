@@ -10,6 +10,19 @@ public class StatusModifier {
     private double physicalDefenseChange;
     private double damagePerTurn;               // Concept: poison type of damage that effects player over time
 
+    public StatusModifier(double speedChange, double healthChange, double experienceChange, double magicDamageChange,
+                          double physicalDamageChange, double magicDefenseChange, double physicalDefenseChange,
+                          double damagePerTurn) {
+        this.speedChange = speedChange;
+        this.healthChange = healthChange;
+        this.experienceChange = experienceChange;
+        this.magicDamageChange = magicDamageChange;
+        this.physicalDamageChange = physicalDamageChange;
+        this.magicDefenseChange = magicDefenseChange;
+        this.physicalDefenseChange = physicalDefenseChange;
+        this.damagePerTurn = damagePerTurn;
+    }
+
     public double getSpeedChange() {
         return speedChange;
     }

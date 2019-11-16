@@ -1,24 +1,47 @@
 package mech.mania.engine.game.characters;
 
-import mech.mania.engine.game.items.Hat;
-import mech.mania.engine.game.items.Weapon;
-import mech.mania.engine.game.items.TempStatusModifier;
+import javafx.util.Pair;
+import mech.mania.engine.game.items.*;
 
 import java.util.List;
 
 public class Player extends Character {
-    private int experience;
+    private static final int INVENTORY_SIZE = 16;
     private Weapon weapon;
     private Hat hat;
+    private Clothes clothes;
+    private Shoes shoes;
+    private Item[] inventory;
     List<TempStatusModifier> activeEffects;
 
-
+    public Player(){
+        experience = 0;
+        weapon = null;
+        hat = null;
+        clothes = null;
+        shoes = null;
+        inventory = new Item[INVENTORY_SIZE];
+    }
 
     @Override
     public double getMaxHealth() {
         double maxHealth = super.getMaxHealth();
 
-        //TODO: Apply item effects
+        // Add wearable effects
+        if(hat != null){
+            maxHealth += hat.getStats().getHealthChange();
+        }
+        if(clothes != null){
+            maxHealth += clothes.getStats().getHealthChange();
+        }
+        if(shoes != null){
+            maxHealth += shoes.getStats().getHealthChange();
+        }
+
+        // Add active effects
+        for(TempStatusModifier mod : activeEffects){
+            maxHealth += mod.getHealthChange();
+        }
 
         return maxHealth;
     }
@@ -27,7 +50,21 @@ public class Player extends Character {
     public double getSpeed() {
         double speed =  super.getSpeed();
 
-        //TODO: Apply item effects
+        // Add wearable effects
+        if(hat != null){
+            speed += hat.getStats().getSpeedChange();
+        }
+        if(clothes != null){
+            speed += clothes.getStats().getSpeedChange();
+        }
+        if(shoes != null){
+            speed += shoes.getStats().getSpeedChange();
+        }
+
+        // Add active effects
+        for(TempStatusModifier mod : activeEffects){
+            speed += mod.getSpeedChange();
+        }
 
         return speed;
     }
@@ -36,7 +73,21 @@ public class Player extends Character {
     public double getPhysicalDamage() {
         double physicalDamage = super.getPhysicalDamage();
 
-        //TODO: Apply item effects
+        // Add wearable effects
+        if(hat != null){
+            physicalDamage += hat.getStats().getPhysicalDamageChange();
+        }
+        if(clothes != null){
+            physicalDamage += clothes.getStats().getPhysicalDamageChange();
+        }
+        if(shoes != null){
+            physicalDamage += shoes.getStats().getPhysicalDamageChange();
+        }
+
+        // Add active effects
+        for(TempStatusModifier mod : activeEffects){
+            physicalDamage += mod.getPhysicalDamageChange();
+        }
 
         return physicalDamage;
     }
@@ -45,7 +96,21 @@ public class Player extends Character {
     public double getMagicalDamage() {
         double magicalDamage =  super.getMagicalDamage();
 
-        //TODO: Apply item effects
+        // Add wearable effects
+        if(hat != null){
+            magicalDamage += hat.getStats().getMagicDamageChange();
+        }
+        if(clothes != null){
+            magicalDamage += clothes.getStats().getMagicDamageChange();
+        }
+        if(shoes != null){
+            magicalDamage += shoes.getStats().getMagicDamageChange();
+        }
+
+        // Add active effects
+        for(TempStatusModifier mod : activeEffects){
+            magicalDamage += mod.getMagicDamageChange();
+        }
 
         return magicalDamage;
     }
@@ -54,30 +119,50 @@ public class Player extends Character {
     public double getMagicalDefense() {
         double magicalDefense =  super.getMagicalDefense();
 
-        //TODO: Apply item effects
+        // Add wearable effects
+        if(hat != null){
+            magicalDefense += hat.getStats().getMagicDefenseChange();
+        }
+        if(clothes != null){
+            magicalDefense += clothes.getStats().getMagicDefenseChange();
+        }
+        if(shoes != null){
+            magicalDefense += shoes.getStats().getMagicDefenseChange();
+        }
+
+        // Add active effects
+        for(TempStatusModifier mod : activeEffects){
+            magicalDefense += mod.getMagicDefenseChange();
+        }
 
         return magicalDefense;
     }
 
     @Override
     public double getPhysicalDefense() {
-        double PhysicalDefense = super.getPhysicalDefense();
+        double physicalDefense = super.getPhysicalDefense();
 
-        //TODO: Apply item effects
+        // Add wearable effects
+        if(hat != null){
+            physicalDefense += hat.getStats().getPhysicalDefenseChange();
+        }
+        if(clothes != null){
+            physicalDefense += clothes.getStats().getPhysicalDefenseChange();
+        }
+        if(shoes != null){
+            physicalDefense += shoes.getStats().getPhysicalDefenseChange();
+        }
 
-        return PhysicalDefense;
+        // Add active effects
+        for(TempStatusModifier mod : activeEffects){
+            physicalDefense += mod.getPhysicalDefenseChange();
+        }
+
+        return physicalDefense;
     }
 
     @Override
-    public double[][] getAttackPattern() {
-        double[][] attackpattern = this.weapon.getAttackPattern();
-
-        /* Note that we may have to expand the size of attackPattern if
-            hat effects apply outside of it's bounds */
-        switch(this.hat.getHatEffect()) {
-            //TODO: Apply hat effect
-        }
-
-        return attackpattern;
+    public AttackPattern getAttackPattern() {
+        return this.weapon.getAttackPattern();
     }
 }
