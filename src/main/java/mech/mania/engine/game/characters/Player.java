@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Player extends Character {
     private static final int INVENTORY_SIZE = 16;
+    private String id;
     private Weapon weapon;
     private Hat hat;
     private Clothes clothes;
