@@ -7,12 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface GameStateDao {
-    int insertGameState(UUID id, GameState gameState);
 
-    default int insertGameState(GameState gameState) {
-        UUID id = UUID.randomUUID();
-        return insertGameState(id, gameState);
-    }
 
     // Optional<GameState> getGameStateByUUID(UUID id);
 
@@ -22,9 +17,11 @@ public interface GameStateDao {
 
     List<GameState> getAllGameStates();
 
-    int storeGameState(GameState gameState);
-
     List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns();
 
     int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn);
+
+    int storeGameState(UUID id, GameState gameState);
+
+    int storePlayerTurn(UUID player, PlayerTurnProtos.PlayerTurn turn);
 }

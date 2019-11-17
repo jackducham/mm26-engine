@@ -2,16 +2,14 @@ package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
 /**
- * Uses Redis to store GameStates
+ * Use regular data structures to store data (for now).
  */
-@Repository("redis")
-public class GameStateRedisDao implements GameStateDao {
+public class GameStateFakeDao implements GameStateDao {
     @Override
     public int storeGameState(UUID id, GameState gameState) {
         return 0;

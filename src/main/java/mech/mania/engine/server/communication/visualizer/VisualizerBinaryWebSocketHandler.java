@@ -1,5 +1,6 @@
 package mech.mania.engine.server.communication.visualizer;
 
+import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 
 import org.springframework.web.socket.*;
@@ -12,13 +13,16 @@ import java.util.List;
 public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     // will there ever be more than one endpoint to visualizer?
     // private static List<VisualizerBinaryWebSocketHandler> endpoints = new ArrayList<>();
+    private static VisualizerBinaryWebSocketHandler endpoint;
+    private static GameStateController controller = new GameStateController();
 
     private WebSocketSession session;
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session){
+    public void afterConnectionEstablished(WebSocketSession session) {
         this.session = session;
         // endpoints.add(this);
+        endpoint = this;
         //TODO: Send initial game state on new connection
     }
 
@@ -38,7 +42,7 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      */
     public static void sendTurn(VisualizerTurn turn) {
         BinaryMessage message = new BinaryMessage(turn.toByteArray());
-        endpoint = getMostRecentVisualizerEndpoint();
+        // endpoint = getMostRecentVisualizerEndpoint();
         // endpoints.forEach(endpoint -> {
             try {
                 endpoint.session.sendMessage(message);

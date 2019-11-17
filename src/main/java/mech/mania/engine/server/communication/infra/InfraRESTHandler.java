@@ -1,6 +1,7 @@
 package mech.mania.engine.server.communication.infra;
 
-import mech.mania.engine.game.Main;
+import mech.mania.engine.Main;
+import mech.mania.engine.server.api.GameStateController;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -9,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/infra")
 @RestController
 public class InfraRESTHandler {
+
+    private final GameStateController controller = new GameStateController();
+
     /**
      * Method to handle GET requests to the /health endpoint to check that the server is running correctly.
      * @return "200"
@@ -24,7 +28,7 @@ public class InfraRESTHandler {
      */
     @GetMapping("/endgame")
     public @ResponseBody String endgame() {
-        Main.gameOver = true;
+        Main.setGameOver(true);
         return "Game ended.";
     }
 }

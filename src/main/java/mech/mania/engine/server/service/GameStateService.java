@@ -3,16 +3,13 @@ package mech.mania.engine.server.service;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import mech.mania.engine.server.dao.GameStateDao;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class GameStateService {
     private final GameStateDao gameStateDao;
 
-    public GameStateService(@Qualifier("fakeDao") GameStateDao gameStateDao) {
+    public GameStateService(GameStateDao gameStateDao) {
         this.gameStateDao = gameStateDao;
     }
 
@@ -70,5 +67,14 @@ public class GameStateService {
     public int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
         // TODO
         return gameStateDao.storeVisualizerTurn(visualizerTurn);
+    }
+
+    /**
+     *
+     * @param playerTurn
+     * @return
+     */
+    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
+        return gameStateDao.storePlayerTurn(playerTurn);
     }
 }
