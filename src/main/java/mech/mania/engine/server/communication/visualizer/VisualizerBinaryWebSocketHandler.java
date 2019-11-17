@@ -1,6 +1,6 @@
-package mech.mania.engine.server.visualizercommunication;
+package mech.mania.engine.server.communication.visualizer;
 
-import mech.mania.engine.server.visualizercommunication.VisualizerTurnProtos.VisualizerTurn;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
@@ -11,14 +11,14 @@ import java.util.List;
 
 public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     // will there ever be more than one endpoint to visualizer?
-    private static List<VisualizerBinaryWebSocketHandler> endpoints = new ArrayList<>();
+    // private static List<VisualizerBinaryWebSocketHandler> endpoints = new ArrayList<>();
 
     private WebSocketSession session;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session){
         this.session = session;
-        endpoints.add(this);
+        // endpoints.add(this);
         //TODO: Send initial game state on new connection
     }
 
@@ -38,13 +38,14 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      */
     public static void sendTurn(VisualizerTurn turn) {
         BinaryMessage message = new BinaryMessage(turn.toByteArray());
-        endpoints.forEach(endpoint -> {
+        endpoint = getMostRecentVisualizerEndpoint();
+        // endpoints.forEach(endpoint -> {
             try {
                 endpoint.session.sendMessage(message);
             } catch (IOException e){
                 System.err.println("An IOException occurred when sending turn to endpoint. Error message:\n" +
                         e.getMessage());
             }
-        });
+        // });
     }
 }

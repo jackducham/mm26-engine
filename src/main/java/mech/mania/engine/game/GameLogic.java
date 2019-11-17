@@ -1,8 +1,8 @@
 package mech.mania.engine.game;
 
-import mech.mania.engine.server.PlayerDecision;
-import mech.mania.engine.server.visualizercommunication.VisualizerBinaryWebSocketHandler;
-import mech.mania.engine.server.visualizercommunication.VisualizerTurnProtos.VisualizerTurn;
+import mech.mania.engine.server.communication.player.model.PlayerDecision;
+import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 
 import java.util.List;
 

@@ -1,5 +1,6 @@
-package mech.mania.engine.server.visualizercommunication;
+package mech.mania.engine.server.communication.visualizer.config;
 
+import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
@@ -10,7 +11,7 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 
 @Configuration
 @EnableWebSocket
-public class WebSocketConfig implements WebSocketConfigurer {
+public class VisualizerWebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {

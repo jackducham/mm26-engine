@@ -1,5 +1,6 @@
-package mech.mania.engine.server.playercommunication;
+package mech.mania.engine.server.communication.player.config;
 
+import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
