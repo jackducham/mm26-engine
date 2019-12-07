@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tile {
-    private Character character;
+    private List<Character> characters;
     private List<Item> items;
     public enum TileType{
         BLANK, IMPASSIBLE, INN, PORTAL;
@@ -15,7 +15,7 @@ public class Tile {
     private TileType type;
 
     public Tile() {
-        character = null;
+        characters = new ArrayList<Character>();
         items = new ArrayList<Item>();
         type = TileType.BLANK;
     }
