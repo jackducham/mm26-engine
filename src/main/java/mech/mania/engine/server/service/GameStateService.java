@@ -1,6 +1,8 @@
 package mech.mania.engine.server.service;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
+import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import mech.mania.engine.server.dao.GameStateDao;
 
@@ -71,10 +73,19 @@ public class GameStateService {
 
     /**
      *
-     * @param playerTurn
+     * @param playerDecision
      * @return
      */
-    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
-        return gameStateDao.storePlayerTurn(playerTurn);
+    public int storePlayerDecision(PlayerDecisionProtos.PlayerDecision playerDecision) {
+        return gameStateDao.storePlayerDecision(playerDecision.getPlayerUuid(), playerDecision);
+    }
+
+    /**
+     *
+     * @param playerDecision
+     * @return
+     */
+    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerDecision) {
+        return gameStateDao.storePlayerTurn(playerDecision.getPlayerUuid(), playerDecision);
     }
 }

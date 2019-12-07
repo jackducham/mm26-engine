@@ -1,13 +1,18 @@
 package mech.mania.engine;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
+import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
+import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Collections;
+import java.util.List;
 
 @SpringBootApplication
 public class Main {
@@ -26,22 +31,24 @@ public class Main {
 		// TODO: Start web socket to communicate with visualizer
 
 
-		// TODO: Initialize game
+		// Initialize game
 		GameState gameState = new GameState();
-
 		GameStateController controller = new GameStateController();
 
-		// Begin game loop
 		while(!gameOver){
-			// TODO
-			// System.out.println("Game is running.");
+			GameLogger.log(GameLogger.LogLevel.INFO, "Game is running- turn: " + turnCount);
 
+			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions();
+			gameState = controller.updateGameState(gameState, playerDecisions);
+			controller.asyncStoreGameState(gameState);
 
-			controller.storeGameState(gameState);
-
-			VisualizerTurnProtos.VisualizerTurn turn = gameState.constructVisualizerTurn();
-			controller.storeVisualizerTurn(turn);
+			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
+			controller.asyncStoreVisualizerTurn(turn);
 			VisualizerBinaryWebSocketHandler.sendTurn(turn);
+
+			PlayerTurnProtos.PlayerTurn playerTurn = controller.constructPlayerTurn(gameState);
+			controller.asyncStorePlayerTurn(playerTurn);
+			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(playerTurn);
 
 			turnCount++;
 		}

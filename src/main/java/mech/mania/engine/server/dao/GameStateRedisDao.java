@@ -1,6 +1,8 @@
 package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
+import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import org.springframework.stereotype.Repository;
 
@@ -13,12 +15,17 @@ import java.util.UUID;
 @Repository("redis")
 public class GameStateRedisDao implements GameStateDao {
     @Override
-    public int storeGameState(UUID id, GameState gameState) {
+    public int storeGameState(GameState gameState) {
         return 0;
     }
 
     @Override
-    public int storePlayerTurn(UUID player, PlayerTurnProtos.PlayerTurn turn) {
+    public int storePlayerDecision(UUID player, PlayerDecisionProtos.PlayerDecision turn) {
+        return 0;
+    }
+
+    @Override
+    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
         return 0;
     }
 
@@ -35,11 +42,6 @@ public class GameStateRedisDao implements GameStateDao {
     @Override
     public List<GameState> getAllGameStates() {
         return null;
-    }
-
-    @Override
-    public int storeGameState(GameState gameState) {
-        return 0;
     }
 
     @Override

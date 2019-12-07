@@ -1,5 +1,6 @@
 package mech.mania.engine.server.communication.player;
 
+import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
@@ -36,7 +37,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
      * @param turn the PlayerTurn to send
      */
-    public static void sendTurn(PlayerTurnProtos.PlayerTurn turn) {
+    public static void sendTurnAllPlayers(PlayerTurnProtos.PlayerTurn turn) {
         BinaryMessage message = new BinaryMessage(turn.toByteArray());
         endpoints.forEach(endpoint -> {
             try {
