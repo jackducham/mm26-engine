@@ -166,4 +166,6 @@ public class Player extends Character {
     public AttackPattern getAttackPattern() {
         return this.weapon.getAttackPattern();
     }
+
+
 }
