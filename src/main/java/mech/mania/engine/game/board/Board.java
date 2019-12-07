@@ -9,4 +9,13 @@ public class Board {
     private Tile[][] grid;
     private List<Enemy> enemies;
     private List<Player> players;
+    private List<Position> portals;
+
+    public List<Position> getPortals() {
+        return portals;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
 }
