@@ -7,7 +7,6 @@ import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnPro
 import mech.mania.engine.server.dao.GameStateDao;
 
 import java.util.List;
-import java.util.UUID;
 
 public class GameStateService {
     private final GameStateDao gameStateDao;
@@ -53,36 +52,36 @@ public class GameStateService {
 //    }
 
     /**
-     *
+     * Store a GameState
      * @param gameState GameState to store
      * @return 0 if fail, 1 if success
      */
-    public int storeGameState(GameState gameState) {
+    public int storeGameState(int turn, GameState gameState) {
         // TODO
-        return gameStateDao.storeGameState(gameState);
+        return gameStateDao.storeGameState(turn, gameState);
     }
 
     /**
-     *
+     * Store a VisualizerTurn
      * @param visualizerTurn VisualizerTurn to store
      * @return 0 if fail, 1 if success
      */
-    public int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
         // TODO
-        return gameStateDao.storeVisualizerTurn(visualizerTurn);
+        return gameStateDao.storeVisualizerTurn(turn, visualizerTurn);
     }
 
     /**
-     *
+     * Store an individual PlayerTurn
      * @param playerTurn
      * @return
      */
-    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
-        return gameStateDao.storePlayerTurn(playerTurn);
+    public int storePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerTurn) {
+        return gameStateDao.storePlayerTurn(turn, playerTurn);
     }
 
     /**
-     *
+     * Store a List of PlayerDecision objects by turn
      * @param playerDecisions
      * @return
      */

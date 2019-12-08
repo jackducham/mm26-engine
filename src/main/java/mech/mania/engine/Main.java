@@ -41,14 +41,14 @@ public class Main {
 			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions();
 			gameState = controller.updateGameState(gameState, playerDecisions);
 			controller.asyncStorePlayerDecisions(turnCount, playerDecisions);
-			controller.asyncStoreGameState(gameState);
+			controller.asyncStoreGameState(turnCount, gameState);
 
 			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
-			controller.asyncStoreVisualizerTurn(turn);
+			controller.asyncStoreVisualizerTurn(turnCount, turn);
 			VisualizerBinaryWebSocketHandler.sendTurn(turn);
 
 			PlayerTurnProtos.PlayerTurn playerTurn = controller.constructPlayerTurn(gameState);
-			controller.asyncStorePlayerTurn(playerTurn);
+			controller.asyncStorePlayerTurn(turnCount, playerTurn);
 			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(playerTurn);
 
 			turnCount++;

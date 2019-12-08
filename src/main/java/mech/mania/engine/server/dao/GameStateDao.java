@@ -18,11 +18,11 @@ public interface GameStateDao {
 //
 //    List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns();
 
-    int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn);
+    int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn);
 
-    int storeGameState(GameState gameState);
+    int storeGameState(int turn, GameState gameState);
 
-    int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerDecision);
+    int storePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerDecision);
 
     int storePlayerDecisions(int turn, List<PlayerDecisionProtos.PlayerDecision> playerDecisions);
 }

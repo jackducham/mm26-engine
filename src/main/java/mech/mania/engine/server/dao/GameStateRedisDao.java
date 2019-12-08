@@ -15,22 +15,22 @@ import java.util.UUID;
 @Repository("redis")
 public class GameStateRedisDao implements GameStateDao {
     @Override
-    public int storeGameState(GameState gameState) {
+    public int storeGameState(int turn, GameState gameState) {
         return 0;
     }
 
     @Override
-    public int storePlayerDecision(UUID player, PlayerDecisionProtos.PlayerDecision turn) {
+    public int storePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerDecision) {
         return 0;
     }
 
     @Override
-    public int storePlayerTurns(int turn, List<PlayerTurnProtos.PlayerTurn> playerTurn) {
+    public int storePlayerDecisions(int turn, List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
         return 0;
     }
 
     @Override
-    public int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
         return 0;
     }
 }

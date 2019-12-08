@@ -82,9 +82,9 @@ public class GameStateController {
      * @param gameState
      * @return
      */
-    public int asyncStoreGameState(GameState gameState) {
+    public int asyncStoreGameState(int turn, GameState gameState) {
         // TODO: insert Async stuff
-        return storeGameState(gameState);
+        return storeGameState(turn, gameState);
     }
 
     /**
@@ -92,8 +92,8 @@ public class GameStateController {
      * @param gameState GameState to store
      * @return 0 if fail, 1 if success
      */
-    public int storeGameState(GameState gameState) {
-        return gameStateService.storeGameState(gameState);
+    public int storeGameState(int turn, GameState gameState) {
+        return gameStateService.storeGameState(turn, gameState);
     }
 
     /**
@@ -101,9 +101,9 @@ public class GameStateController {
      * @param visualizerTurn
      * @return
      */
-    public int asyncStoreVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+    public int asyncStoreVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
         // TODO: insert Async stuff
-        return storeVisualizerTurn(visualizerTurn);
+        return storeVisualizerTurn(turn, visualizerTurn);
     }
 
     /**
@@ -111,8 +111,8 @@ public class GameStateController {
      * @param visualizerTurn VisualizerTurn to store
      * @return 0 if fail, 1 if success
      */
-    public int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        return gameStateService.storeVisualizerTurn(visualizerTurn);
+    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+        return gameStateService.storeVisualizerTurn(turn, visualizerTurn);
     }
 
     /**
@@ -120,16 +120,16 @@ public class GameStateController {
      * @param playerTurn
      * @return
      */
-    public int asyncStorePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
+    public int asyncStorePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerTurn) {
         // TODO: insert Async stuff
-        return storePlayerTurn(playerTurn);
+        return storePlayerTurn(turn, playerTurn);
     }
 
     /**
      *
      */
-    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
-        return gameStateService.storePlayerTurn(playerTurn);
+    public int storePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerTurn) {
+        return gameStateService.storePlayerTurn(turn, playerTurn);
     }
 
     /**
