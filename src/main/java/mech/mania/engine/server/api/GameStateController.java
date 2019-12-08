@@ -1,6 +1,7 @@
 package mech.mania.engine.server.api;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
@@ -22,36 +23,58 @@ public class GameStateController {
         this.gameStateService = new GameStateService(new GameStateFakeDao());
     }
 
+//    /**
+//     * Gets the most recent GameState
+//     * @return most recent GameState
+//     */
+//    public GameState getMostRecentGameState() {
+//        return gameStateService.getGameState();
+//    }
+//
+//    /**
+//     * Gets the most recent VisualizerTurn
+//     * @return most recent VisualizerTurn
+//     */
+//    public VisualizerTurnProtos.VisualizerTurn getMostRecentVisualizerTurn() {
+//        return gameStateService.getVisualizerTurn();
+//    }
+//
+//    /**
+//     * Gets all GameState objects in a List
+//     * @return all currently stored GameState items
+//     */
+//    public List<GameState> getAllGameStates() {
+//        return gameStateService.getAllGameStates();
+//    }
+//
+//    /**
+//     * Gets all VisualizerTurn objects in a list
+//     * @return all currently stored VisualizerTurn items
+//     */
+//    public List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns() {
+//        return gameStateService.getAllVisualizerTurns();
+//    }
+
     /**
-     * Gets the most recent GameState
-     * @return most recent GameState
+     *
+     * @param turn
+     * @param playerDecisions
+     * @return
      */
-    public GameState getMostRecentGameState() {
-        return gameStateService.getGameState();
+    public int asyncStorePlayerDecisions(final int turn,
+                                         final List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
+        return storePlayerDecisions(turn, playerDecisions);
     }
 
     /**
-     * Gets the most recent VisualizerTurn
-     * @return most recent VisualizerTurn
+     *
+     * @param turn
+     * @param playerDecisions
+     * @return
      */
-    public VisualizerTurnProtos.VisualizerTurn getMostRecentVisualizerTurn() {
-        return gameStateService.getVisualizerTurn();
-    }
-
-    /**
-     * Gets all GameState objects in a List
-     * @return all currently stored GameState items
-     */
-    public List<GameState> getAllGameStates() {
-        return gameStateService.getAllGameStates();
-    }
-
-    /**
-     * Gets all VisualizerTurn objects in a list
-     * @return all currently stored VisualizerTurn items
-     */
-    public List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns() {
-        return gameStateService.getAllVisualizerTurns();
+    public int storePlayerDecisions(final int turn,
+                                    final List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
+        return gameStateService.storePlayerDecisions(turn, playerDecisions);
     }
 
     /**
@@ -145,5 +168,4 @@ public class GameStateController {
     public PlayerTurnProtos.PlayerTurn constructPlayerTurn(GameState gameState) {
         return PlayerTurnProtos.PlayerTurn.getDefaultInstance();
     }
-
 }

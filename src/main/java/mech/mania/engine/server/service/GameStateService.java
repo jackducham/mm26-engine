@@ -7,6 +7,7 @@ import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnPro
 import mech.mania.engine.server.dao.GameStateDao;
 
 import java.util.List;
+import java.util.UUID;
 
 public class GameStateService {
     private final GameStateDao gameStateDao;
@@ -15,41 +16,41 @@ public class GameStateService {
         this.gameStateDao = gameStateDao;
     }
 
-    /**
-     *
-     * @return most recent GameState
-     */
-    public GameState getGameState() {
-        // TODO
-        return gameStateDao.getGameState();
-    }
-
-    /**
-     *
-     * @return most recent VisualizerTurn
-     */
-    public VisualizerTurnProtos.VisualizerTurn getVisualizerTurn() {
-        // TODO
-        return gameStateDao.getVisualizerTurn();
-    }
-
-    /**
-     *
-     * @return all currently stored GameState items
-     */
-    public List<GameState> getAllGameStates() {
-        // TODO
-        return gameStateDao.getAllGameStates();
-    }
-
-    /**
-     *
-     * @return all currently stored VisualizerTurn items
-     */
-    public List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns() {
-        // TODO
-        return gameStateDao.getAllVisualizerTurns();
-    }
+//    /**
+//     *
+//     * @return most recent GameState
+//     */
+//    public GameState getGameState() {
+//        // TODO
+//        return gameStateDao.getGameState();
+//    }
+//
+//    /**
+//     *
+//     * @return most recent VisualizerTurn
+//     */
+//    public VisualizerTurnProtos.VisualizerTurn getVisualizerTurn() {
+//        // TODO
+//        return gameStateDao.getVisualizerTurn();
+//    }
+//
+//    /**
+//     *
+//     * @return all currently stored GameState items
+//     */
+//    public List<GameState> getAllGameStates() {
+//        // TODO
+//        return gameStateDao.getAllGameStates();
+//    }
+//
+//    /**
+//     *
+//     * @return all currently stored VisualizerTurn items
+//     */
+//    public List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns() {
+//        // TODO
+//        return gameStateDao.getAllVisualizerTurns();
+//    }
 
     /**
      *
@@ -73,19 +74,19 @@ public class GameStateService {
 
     /**
      *
-     * @param playerDecision
+     * @param playerTurn
      * @return
      */
-    public int storePlayerDecision(PlayerDecisionProtos.PlayerDecision playerDecision) {
-        return gameStateDao.storePlayerDecision(playerDecision.getPlayerUuid(), playerDecision);
+    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
+        return gameStateDao.storePlayerTurn(playerTurn);
     }
 
     /**
      *
-     * @param playerDecision
+     * @param playerDecisions
      * @return
      */
-    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerDecision) {
-        return gameStateDao.storePlayerTurn(playerDecision.getPlayerUuid(), playerDecision);
+    public int storePlayerDecisions(int turn, List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
+        return gameStateDao.storePlayerDecisions(turn, playerDecisions);
     }
 }

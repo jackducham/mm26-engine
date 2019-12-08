@@ -19,24 +19,36 @@ public final class PlayerDecisionProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     *TODO: Insert data needed here
-     * </pre>
-     *
-     * <code>string playerId = 1;</code>
-     * @return The playerId.
+     * <code>string playerUuid = 1;</code>
+     * @return The playerUuid.
      */
-    java.lang.String getPlayerId();
+    java.lang.String getPlayerUuid();
+    /**
+     * <code>string playerUuid = 1;</code>
+     * @return The bytes for playerUuid.
+     */
+    com.google.protobuf.ByteString
+        getPlayerUuidBytes();
+
     /**
      * <pre>
      *TODO: Insert data needed here
      * </pre>
      *
-     * <code>string playerId = 1;</code>
-     * @return The bytes for playerId.
+     * <code>string playerName = 2;</code>
+     * @return The playerName.
+     */
+    java.lang.String getPlayerName();
+    /**
+     * <pre>
+     *TODO: Insert data needed here
+     * </pre>
+     *
+     * <code>string playerName = 2;</code>
+     * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
-        getPlayerIdBytes();
+        getPlayerNameBytes();
   }
   /**
    * Protobuf type {@code player_communication.PlayerDecision}
@@ -51,7 +63,8 @@ public final class PlayerDecisionProtos {
       super(builder);
     }
     private PlayerDecision() {
-      playerId_ = "";
+      playerUuid_ = "";
+      playerName_ = "";
     }
 
     @java.lang.Override
@@ -87,7 +100,13 @@ public final class PlayerDecisionProtos {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              playerId_ = s;
+              playerUuid_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerName_ = s;
               break;
             }
             default: {
@@ -122,25 +141,61 @@ public final class PlayerDecisionProtos {
               mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision.class, mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision.Builder.class);
     }
 
-    public static final int PLAYERID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object playerId_;
+    public static final int PLAYERUUID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object playerUuid_;
     /**
-     * <pre>
-     *TODO: Insert data needed here
-     * </pre>
-     *
-     * <code>string playerId = 1;</code>
-     * @return The playerId.
+     * <code>string playerUuid = 1;</code>
+     * @return The playerUuid.
      */
-    public java.lang.String getPlayerId() {
-      java.lang.Object ref = playerId_;
+    public java.lang.String getPlayerUuid() {
+      java.lang.Object ref = playerUuid_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        playerId_ = s;
+        playerUuid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string playerUuid = 1;</code>
+     * @return The bytes for playerUuid.
+     */
+    public com.google.protobuf.ByteString
+        getPlayerUuidBytes() {
+      java.lang.Object ref = playerUuid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerUuid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PLAYERNAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object playerName_;
+    /**
+     * <pre>
+     *TODO: Insert data needed here
+     * </pre>
+     *
+     * <code>string playerName = 2;</code>
+     * @return The playerName.
+     */
+    public java.lang.String getPlayerName() {
+      java.lang.Object ref = playerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerName_ = s;
         return s;
       }
     }
@@ -149,17 +204,17 @@ public final class PlayerDecisionProtos {
      *TODO: Insert data needed here
      * </pre>
      *
-     * <code>string playerId = 1;</code>
-     * @return The bytes for playerId.
+     * <code>string playerName = 2;</code>
+     * @return The bytes for playerName.
      */
     public com.google.protobuf.ByteString
-        getPlayerIdBytes() {
-      java.lang.Object ref = playerId_;
+        getPlayerNameBytes() {
+      java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        playerId_ = b;
+        playerName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -180,8 +235,11 @@ public final class PlayerDecisionProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getPlayerIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
+      if (!getPlayerUuidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerUuid_);
+      }
+      if (!getPlayerNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -192,8 +250,11 @@ public final class PlayerDecisionProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (!getPlayerIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
+      if (!getPlayerUuidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerUuid_);
+      }
+      if (!getPlayerNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -210,8 +271,10 @@ public final class PlayerDecisionProtos {
       }
       mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision other = (mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision) obj;
 
-      if (!getPlayerId()
-          .equals(other.getPlayerId())) return false;
+      if (!getPlayerUuid()
+          .equals(other.getPlayerUuid())) return false;
+      if (!getPlayerName()
+          .equals(other.getPlayerName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -223,8 +286,10 @@ public final class PlayerDecisionProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerId().hashCode();
+      hash = (37 * hash) + PLAYERUUID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerUuid().hashCode();
+      hash = (37 * hash) + PLAYERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -358,7 +423,9 @@ public final class PlayerDecisionProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        playerId_ = "";
+        playerUuid_ = "";
+
+        playerName_ = "";
 
         return this;
       }
@@ -386,7 +453,8 @@ public final class PlayerDecisionProtos {
       @java.lang.Override
       public mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision buildPartial() {
         mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision result = new mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision(this);
-        result.playerId_ = playerId_;
+        result.playerUuid_ = playerUuid_;
+        result.playerName_ = playerName_;
         onBuilt();
         return result;
       }
@@ -435,8 +503,12 @@ public final class PlayerDecisionProtos {
 
       public Builder mergeFrom(mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision other) {
         if (other == mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision.getDefaultInstance()) return this;
-        if (!other.getPlayerId().isEmpty()) {
-          playerId_ = other.playerId_;
+        if (!other.getPlayerUuid().isEmpty()) {
+          playerUuid_ = other.playerUuid_;
+          onChanged();
+        }
+        if (!other.getPlayerName().isEmpty()) {
+          playerName_ = other.playerName_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -468,22 +540,98 @@ public final class PlayerDecisionProtos {
         return this;
       }
 
-      private java.lang.Object playerId_ = "";
+      private java.lang.Object playerUuid_ = "";
+      /**
+       * <code>string playerUuid = 1;</code>
+       * @return The playerUuid.
+       */
+      public java.lang.String getPlayerUuid() {
+        java.lang.Object ref = playerUuid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerUuid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string playerUuid = 1;</code>
+       * @return The bytes for playerUuid.
+       */
+      public com.google.protobuf.ByteString
+          getPlayerUuidBytes() {
+        java.lang.Object ref = playerUuid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerUuid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string playerUuid = 1;</code>
+       * @param value The playerUuid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerUuid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerUuid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerUuid = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPlayerUuid() {
+        
+        playerUuid_ = getDefaultInstance().getPlayerUuid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string playerUuid = 1;</code>
+       * @param value The bytes for playerUuid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerUuidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerUuid_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object playerName_ = "";
       /**
        * <pre>
        *TODO: Insert data needed here
        * </pre>
        *
-       * <code>string playerId = 1;</code>
-       * @return The playerId.
+       * <code>string playerName = 2;</code>
+       * @return The playerName.
        */
-      public java.lang.String getPlayerId() {
-        java.lang.Object ref = playerId_;
+      public java.lang.String getPlayerName() {
+        java.lang.Object ref = playerName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          playerId_ = s;
+          playerName_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -494,17 +642,17 @@ public final class PlayerDecisionProtos {
        *TODO: Insert data needed here
        * </pre>
        *
-       * <code>string playerId = 1;</code>
-       * @return The bytes for playerId.
+       * <code>string playerName = 2;</code>
+       * @return The bytes for playerName.
        */
       public com.google.protobuf.ByteString
-          getPlayerIdBytes() {
-        java.lang.Object ref = playerId_;
+          getPlayerNameBytes() {
+        java.lang.Object ref = playerName_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          playerId_ = b;
+          playerName_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -515,17 +663,17 @@ public final class PlayerDecisionProtos {
        *TODO: Insert data needed here
        * </pre>
        *
-       * <code>string playerId = 1;</code>
-       * @param value The playerId to set.
+       * <code>string playerName = 2;</code>
+       * @param value The playerName to set.
        * @return This builder for chaining.
        */
-      public Builder setPlayerId(
+      public Builder setPlayerName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        playerId_ = value;
+        playerName_ = value;
         onChanged();
         return this;
       }
@@ -534,12 +682,12 @@ public final class PlayerDecisionProtos {
        *TODO: Insert data needed here
        * </pre>
        *
-       * <code>string playerId = 1;</code>
+       * <code>string playerName = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearPlayerId() {
+      public Builder clearPlayerName() {
         
-        playerId_ = getDefaultInstance().getPlayerId();
+        playerName_ = getDefaultInstance().getPlayerName();
         onChanged();
         return this;
       }
@@ -548,18 +696,18 @@ public final class PlayerDecisionProtos {
        *TODO: Insert data needed here
        * </pre>
        *
-       * <code>string playerId = 1;</code>
-       * @param value The bytes for playerId to set.
+       * <code>string playerName = 2;</code>
+       * @param value The bytes for playerName to set.
        * @return This builder for chaining.
        */
-      public Builder setPlayerIdBytes(
+      public Builder setPlayerNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        playerId_ = value;
+        playerName_ = value;
         onChanged();
         return this;
       }
@@ -631,10 +779,10 @@ public final class PlayerDecisionProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\025player_decision.proto\022\024player_communic" +
-      "ation\"\"\n\016PlayerDecision\022\020\n\010playerId\030\001 \001(" +
-      "\tBK\n3mech.mania.engine.server.communicat" +
-      "ion.player.modelB\024PlayerDecisionProtosb\006" +
-      "proto3"
+      "ation\"8\n\016PlayerDecision\022\022\n\nplayerUuid\030\001 " +
+      "\001(\t\022\022\n\nplayerName\030\002 \001(\tBK\n3mech.mania.en" +
+      "gine.server.communication.player.modelB\024" +
+      "PlayerDecisionProtosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -645,7 +793,7 @@ public final class PlayerDecisionProtos {
     internal_static_player_communication_PlayerDecision_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_PlayerDecision_descriptor,
-        new java.lang.String[] { "PlayerId", });
+        new java.lang.String[] { "PlayerUuid", "PlayerName", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

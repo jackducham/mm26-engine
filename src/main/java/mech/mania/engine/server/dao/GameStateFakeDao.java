@@ -23,28 +23,8 @@ public class GameStateFakeDao implements GameStateDao {
     }
 
     @Override
-    public int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn) {
+    public int storePlayerTurns(int turn, List<PlayerTurnProtos.PlayerTurn> playerTurn) {
         return 0;
-    }
-
-    @Override
-    public GameState getGameState() {
-        return null;
-    }
-
-    @Override
-    public VisualizerTurnProtos.VisualizerTurn getVisualizerTurn() {
-        return null;
-    }
-
-    @Override
-    public List<GameState> getAllGameStates() {
-        return null;
-    }
-
-    @Override
-    public List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns() {
-        return null;
     }
 
     @Override

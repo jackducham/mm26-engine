@@ -35,11 +35,12 @@ public class Main {
 		GameState gameState = new GameState();
 		GameStateController controller = new GameStateController();
 
-		while(!gameOver){
+		while (!gameOver) {
 			GameLogger.log(GameLogger.LogLevel.INFO, "Game is running- turn: " + turnCount);
 
 			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions();
 			gameState = controller.updateGameState(gameState, playerDecisions);
+			controller.asyncStorePlayerDecisions(turnCount, playerDecisions);
 			controller.asyncStoreGameState(gameState);
 
 			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);

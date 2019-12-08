@@ -10,19 +10,19 @@ import java.util.UUID;
 
 public interface GameStateDao {
 
-    GameState getGameState();
-
-    VisualizerTurnProtos.VisualizerTurn getVisualizerTurn();
-
-    List<GameState> getAllGameStates();
-
-    List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns();
+//    GameState getGameState();
+//
+//    VisualizerTurnProtos.VisualizerTurn getVisualizerTurn();
+//
+//    List<GameState> getAllGameStates();
+//
+//    List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns();
 
     int storeVisualizerTurn(VisualizerTurnProtos.VisualizerTurn visualizerTurn);
 
     int storeGameState(GameState gameState);
 
-    int storePlayerDecision(UUID player, PlayerDecisionProtos.PlayerDecision turn);
+    int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerDecision);
 
-    int storePlayerTurn(PlayerTurnProtos.PlayerTurn playerTurn);
+    int storePlayerDecisions(int turn, List<PlayerDecisionProtos.PlayerDecision> playerDecisions);
 }
