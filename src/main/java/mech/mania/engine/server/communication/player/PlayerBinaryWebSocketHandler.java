@@ -23,6 +23,9 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) {
         this.session = session;
         endpoints.add(this);
+        GameLogger.log(GameLogger.LogLevel.DEBUG,
+                "PLAYERWEBSOCKET",
+                "New WebSocket connection established");
         // TODO: Send initial game state on new connection
     }
 

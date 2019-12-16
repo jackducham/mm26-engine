@@ -1,7 +1,6 @@
 package mech.mania.engine;
 
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
@@ -34,7 +33,7 @@ public class Main {
 
 		// TODO: give access to Main GameStateController to WebSocketHandlers
 
-		GameLogger.setPrintLevel(GameLogger.LogLevel.INFO);
+		GameLogger.setPrintLevel(GameLogger.LogLevel.DEBUG);
 
 		// Initialize game
 		GameState gameState = new GameState();

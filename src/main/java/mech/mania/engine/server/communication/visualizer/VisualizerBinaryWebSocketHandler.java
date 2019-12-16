@@ -20,6 +20,9 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) {
         this.session = session;
         endpoint = this;
+        GameLogger.log(GameLogger.LogLevel.DEBUG,
+                "VISUALIZERWEBSOCKET",
+                "New WebSocket connection established");
         // TODO: Send initial game state on new connection
     }
 
