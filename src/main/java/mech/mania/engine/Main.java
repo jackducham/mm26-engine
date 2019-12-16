@@ -8,7 +8,6 @@ import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
-import org.apache.tomcat.jni.Time;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

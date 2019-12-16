@@ -87,11 +87,8 @@ public class GameStateController {
      * @param playerDecisions PlayerDecision objects to use to update
      * @return 1 if fail, 0 if success
      */
-    public GameState updateGameState(GameState gameState, List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
-        for (PlayerDecisionProtos.PlayerDecision playerDecision : playerDecisions) {
-            gameState.setNumber(gameState.getNumber() + playerDecision.getIncrement());
-        }
-        return gameState;
+    public int updateGameState(GameState gameState, List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
+        return gameState.update(playerDecisions);
     }
 
     /**
