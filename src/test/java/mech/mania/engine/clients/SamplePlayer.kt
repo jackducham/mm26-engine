@@ -9,6 +9,12 @@ import org.springframework.web.socket.*
 import org.springframework.web.socket.config.annotation.*
 import org.springframework.web.socket.handler.BinaryWebSocketHandler
 
+/*
+ * Class based off of https://medium.com/@codemwnci/kotlin-springboot-and-websockets-276029b22482.
+ * Goal of these classes are to create a dummy player to use for testing as a client of the messages
+ * we are sending out.
+ */
+
 class PlayerWebSocketHandler : BinaryWebSocketHandler() {
 
     private val sessionList = HashMap<WebSocketSession, Int>()
@@ -21,7 +27,7 @@ class PlayerWebSocketHandler : BinaryWebSocketHandler() {
 
     public override fun handleBinaryMessage(session: WebSocketSession?, message: BinaryMessage?) {
         val turn = PlayerTurnProtos.PlayerTurn.parseFrom(message?.payload)
-        if (turn.increment == 1) {
+        if (turn.increment == 1) { // valid turn if increment = 1 (for now)
             decision = PlayerDecisionProtos.PlayerDecision.newBuilder()
                     .setIncrement(1)
                     .build()
