@@ -32,8 +32,7 @@ public class GameStateController {
      * @return 1 if fail, 0 if success
      */
     public int logTurnDate(final int turn, final Date date) {
-        gameStateService.logTurnDate(turn, date);
-        return 0;
+        return gameStateService.logTurnDate(turn, date);
     }
 
     /**

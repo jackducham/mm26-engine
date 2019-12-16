@@ -17,37 +17,34 @@ public class GameStateService {
     /**
      * Store a GameState
      * @param gameState GameState to store
-     * @return 0 if fail, 1 if success
+     * @return 1 if fail, 0 if success
      */
     public int storeGameState(final int turn, final GameState gameState) {
-        // TODO
         return gameStateDao.storeGameState(turn, gameState);
     }
 
     /**
      * Store a VisualizerTurn
      * @param visualizerTurn VisualizerTurn to store
-     * @return 0 if fail, 1 if success
+     * @return 1 if fail, 0 if success
      */
     public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        // TODO
         return gameStateDao.storeVisualizerTurn(turn, visualizerTurn);
     }
 
     /**
-     *
-     * @param turn
-     * @param date
-     * @return
+     * Log the date of the turn, for retrieving turn by date later
+     * @param turn turn to log
+     * @param date date of turn
+     * @return 1 if fail, 0 if success
      */
     public int logTurnDate(final int turn, final Date date) {
-        gameStateDao.logTurnDate(turn, date);
-        return 0;
+        return gameStateDao.logTurnDate(turn, date);
     }
 
     /**
-     *
-     * @return
+     * Retrieve list of VisualizerTurns
+     * @return List of VisualizerTurn
      */
     public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
         return gameStateDao.getVisualizerTurns();

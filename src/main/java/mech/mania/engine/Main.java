@@ -50,7 +50,7 @@ public class Main {
 			GameLogger.log(GameLogger.LogLevel.INFO,
 					"MAIN",
 					playerDecisions.size() + " PlayerDecision objects received");
-			gameState = controller.updateGameState(gameState, playerDecisions);
+			controller.updateGameState(gameState, playerDecisions);
 			controller.asyncStoreGameState(turnCount, gameState);
 
 			// Send to Visualizer a turn
