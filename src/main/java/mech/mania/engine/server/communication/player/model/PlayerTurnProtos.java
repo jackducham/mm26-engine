@@ -31,24 +31,32 @@ public final class PlayerTurnProtos {
         getPlayerUuidBytes();
 
     /**
-     * <pre>
-     *TODO: Insert data needed here
-     * </pre>
-     *
      * <code>string playerName = 2;</code>
      * @return The playerName.
      */
     java.lang.String getPlayerName();
     /**
-     * <pre>
-     *TODO: Insert data needed here
-     * </pre>
-     *
      * <code>string playerName = 2;</code>
      * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
         getPlayerNameBytes();
+
+    /**
+     * <code>int32 turn = 3;</code>
+     * @return The turn.
+     */
+    int getTurn();
+
+    /**
+     * <pre>
+     *TODO: Insert data needed here
+     * </pre>
+     *
+     * <code>int32 increment = 4;</code>
+     * @return The increment.
+     */
+    int getIncrement();
   }
   /**
    * Protobuf type {@code player_communication.PlayerTurn}
@@ -107,6 +115,16 @@ public final class PlayerTurnProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               playerName_ = s;
+              break;
+            }
+            case 24: {
+
+              turn_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              increment_ = input.readInt32();
               break;
             }
             default: {
@@ -180,10 +198,6 @@ public final class PlayerTurnProtos {
     public static final int PLAYERNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object playerName_;
     /**
-     * <pre>
-     *TODO: Insert data needed here
-     * </pre>
-     *
      * <code>string playerName = 2;</code>
      * @return The playerName.
      */
@@ -200,10 +214,6 @@ public final class PlayerTurnProtos {
       }
     }
     /**
-     * <pre>
-     *TODO: Insert data needed here
-     * </pre>
-     *
      * <code>string playerName = 2;</code>
      * @return The bytes for playerName.
      */
@@ -219,6 +229,30 @@ public final class PlayerTurnProtos {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int TURN_FIELD_NUMBER = 3;
+    private int turn_;
+    /**
+     * <code>int32 turn = 3;</code>
+     * @return The turn.
+     */
+    public int getTurn() {
+      return turn_;
+    }
+
+    public static final int INCREMENT_FIELD_NUMBER = 4;
+    private int increment_;
+    /**
+     * <pre>
+     *TODO: Insert data needed here
+     * </pre>
+     *
+     * <code>int32 increment = 4;</code>
+     * @return The increment.
+     */
+    public int getIncrement() {
+      return increment_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -241,6 +275,12 @@ public final class PlayerTurnProtos {
       if (!getPlayerNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
       }
+      if (turn_ != 0) {
+        output.writeInt32(3, turn_);
+      }
+      if (increment_ != 0) {
+        output.writeInt32(4, increment_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -255,6 +295,14 @@ public final class PlayerTurnProtos {
       }
       if (!getPlayerNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
+      }
+      if (turn_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, turn_);
+      }
+      if (increment_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, increment_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -275,6 +323,10 @@ public final class PlayerTurnProtos {
           .equals(other.getPlayerUuid())) return false;
       if (!getPlayerName()
           .equals(other.getPlayerName())) return false;
+      if (getTurn()
+          != other.getTurn()) return false;
+      if (getIncrement()
+          != other.getIncrement()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -290,6 +342,10 @@ public final class PlayerTurnProtos {
       hash = (53 * hash) + getPlayerUuid().hashCode();
       hash = (37 * hash) + PLAYERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerName().hashCode();
+      hash = (37 * hash) + TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getTurn();
+      hash = (37 * hash) + INCREMENT_FIELD_NUMBER;
+      hash = (53 * hash) + getIncrement();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -427,6 +483,10 @@ public final class PlayerTurnProtos {
 
         playerName_ = "";
 
+        turn_ = 0;
+
+        increment_ = 0;
+
         return this;
       }
 
@@ -455,6 +515,8 @@ public final class PlayerTurnProtos {
         mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn result = new mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn(this);
         result.playerUuid_ = playerUuid_;
         result.playerName_ = playerName_;
+        result.turn_ = turn_;
+        result.increment_ = increment_;
         onBuilt();
         return result;
       }
@@ -510,6 +572,12 @@ public final class PlayerTurnProtos {
         if (!other.getPlayerName().isEmpty()) {
           playerName_ = other.playerName_;
           onChanged();
+        }
+        if (other.getTurn() != 0) {
+          setTurn(other.getTurn());
+        }
+        if (other.getIncrement() != 0) {
+          setIncrement(other.getIncrement());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -618,10 +686,6 @@ public final class PlayerTurnProtos {
 
       private java.lang.Object playerName_ = "";
       /**
-       * <pre>
-       *TODO: Insert data needed here
-       * </pre>
-       *
        * <code>string playerName = 2;</code>
        * @return The playerName.
        */
@@ -638,10 +702,6 @@ public final class PlayerTurnProtos {
         }
       }
       /**
-       * <pre>
-       *TODO: Insert data needed here
-       * </pre>
-       *
        * <code>string playerName = 2;</code>
        * @return The bytes for playerName.
        */
@@ -659,10 +719,6 @@ public final class PlayerTurnProtos {
         }
       }
       /**
-       * <pre>
-       *TODO: Insert data needed here
-       * </pre>
-       *
        * <code>string playerName = 2;</code>
        * @param value The playerName to set.
        * @return This builder for chaining.
@@ -678,10 +734,6 @@ public final class PlayerTurnProtos {
         return this;
       }
       /**
-       * <pre>
-       *TODO: Insert data needed here
-       * </pre>
-       *
        * <code>string playerName = 2;</code>
        * @return This builder for chaining.
        */
@@ -692,10 +744,6 @@ public final class PlayerTurnProtos {
         return this;
       }
       /**
-       * <pre>
-       *TODO: Insert data needed here
-       * </pre>
-       *
        * <code>string playerName = 2;</code>
        * @param value The bytes for playerName to set.
        * @return This builder for chaining.
@@ -708,6 +756,78 @@ public final class PlayerTurnProtos {
   checkByteStringIsUtf8(value);
         
         playerName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int turn_ ;
+      /**
+       * <code>int32 turn = 3;</code>
+       * @return The turn.
+       */
+      public int getTurn() {
+        return turn_;
+      }
+      /**
+       * <code>int32 turn = 3;</code>
+       * @param value The turn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurn(int value) {
+        
+        turn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turn = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurn() {
+        
+        turn_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int increment_ ;
+      /**
+       * <pre>
+       *TODO: Insert data needed here
+       * </pre>
+       *
+       * <code>int32 increment = 4;</code>
+       * @return The increment.
+       */
+      public int getIncrement() {
+        return increment_;
+      }
+      /**
+       * <pre>
+       *TODO: Insert data needed here
+       * </pre>
+       *
+       * <code>int32 increment = 4;</code>
+       * @param value The increment to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIncrement(int value) {
+        
+        increment_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *TODO: Insert data needed here
+       * </pre>
+       *
+       * <code>int32 increment = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIncrement() {
+        
+        increment_ = 0;
         onChanged();
         return this;
       }
@@ -779,10 +899,11 @@ public final class PlayerTurnProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\021player_turn.proto\022\024player_communicatio" +
-      "n\"4\n\nPlayerTurn\022\022\n\nplayerUuid\030\001 \001(\t\022\022\n\np" +
-      "layerName\030\002 \001(\tBG\n3mech.mania.engine.ser" +
-      "ver.communication.player.modelB\020PlayerTu" +
-      "rnProtosb\006proto3"
+      "n\"U\n\nPlayerTurn\022\022\n\nplayerUuid\030\001 \001(\t\022\022\n\np" +
+      "layerName\030\002 \001(\t\022\014\n\004turn\030\003 \001(\005\022\021\n\tincreme" +
+      "nt\030\004 \001(\005BG\n3mech.mania.engine.server.com" +
+      "munication.player.modelB\020PlayerTurnProto" +
+      "sb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -793,7 +914,7 @@ public final class PlayerTurnProtos {
     internal_static_player_communication_PlayerTurn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_PlayerTurn_descriptor,
-        new java.lang.String[] { "PlayerUuid", "PlayerName", });
+        new java.lang.String[] { "PlayerUuid", "PlayerName", "Turn", "Increment", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

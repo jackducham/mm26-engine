@@ -1,5 +1,6 @@
 package mech.mania.engine.server.communication.visualizer;
 
+import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 
@@ -11,29 +12,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
-    // will there ever be more than one endpoint to visualizer?
-    // private static List<VisualizerBinaryWebSocketHandler> endpoints = new ArrayList<>();
-    private static VisualizerBinaryWebSocketHandler endpoint;
-    private static GameStateController controller = new GameStateController();
 
+    private static VisualizerBinaryWebSocketHandler endpoint;
     private WebSocketSession session;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         this.session = session;
-        // endpoints.add(this);
         endpoint = this;
-        //TODO: Send initial game state on new connection
+        // TODO: Send initial game state on new connection
     }
 
     @Override
     public void handleBinaryMessage(WebSocketSession session, BinaryMessage message){
-        //TODO: Handle binary message - Visualizer shouldn't really send us any messages
+        // TODO: Handle binary message - Visualizer shouldn't really send us any messages
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status){
-        //TODO: cleanup after connection closed
+        // TODO: cleanup after connection closed
     }
 
     /**
@@ -42,14 +39,20 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      */
     public static void sendTurn(VisualizerTurn turn) {
         BinaryMessage message = new BinaryMessage(turn.toByteArray());
-        // endpoint = getMostRecentVisualizerEndpoint();
-        // endpoints.forEach(endpoint -> {
-            try {
-                endpoint.session.sendMessage(message);
-            } catch (IOException e){
-                System.err.println("An IOException occurred when sending turn to endpoint. Error message:\n" +
-                        e.getMessage());
-            }
-        // });
+        if (endpoint == null) {
+            GameLogger.log(GameLogger.LogLevel.DEBUG,
+                    "VISUALIZERWEBSOCKET",
+                    "No endpoint to send to");
+            return;
+        }
+
+        try {
+            endpoint.session.sendMessage(message);
+        } catch (IOException e) {
+            GameLogger.log(GameLogger.LogLevel.DEBUG,
+                    "VISUALIZERWEBSOCKET",
+                    "An IOException occurred when sending turn to endpoint. Error message:\n" +
+                    e.getMessage());
+        }
     }
 }

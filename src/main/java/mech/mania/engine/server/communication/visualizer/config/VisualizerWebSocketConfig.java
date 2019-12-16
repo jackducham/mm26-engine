@@ -15,12 +15,12 @@ public class VisualizerWebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(myHandler(), "/visualizer")
+        registry.addHandler(myVisualizerWebSocketHandler(), "/visualizer")
                 .addInterceptors(new HttpSessionHandshakeInterceptor()); //TODO: set correct endpoint
     }
 
     @Bean
-    public WebSocketHandler myHandler() {
+    public WebSocketHandler myVisualizerWebSocketHandler() {
         return new VisualizerBinaryWebSocketHandler();
     }
 

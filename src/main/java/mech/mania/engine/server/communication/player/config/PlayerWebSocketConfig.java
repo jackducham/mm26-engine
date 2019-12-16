@@ -15,12 +15,12 @@ public class PlayerWebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(myHandler(), "/player")
+        registry.addHandler(myPlayerWebSocketHandler(), "/player")
                 .addInterceptors(new HttpSessionHandshakeInterceptor()); //TODO: set correct endpoint
     }
 
     @Bean
-    public WebSocketHandler myHandler() {
+    public WebSocketHandler myPlayerWebSocketHandler() {
         return new PlayerBinaryWebSocketHandler();
     }
 

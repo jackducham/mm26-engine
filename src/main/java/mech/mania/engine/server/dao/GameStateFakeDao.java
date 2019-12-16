@@ -1,10 +1,11 @@
 package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
+import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,32 +13,52 @@ import java.util.List;
  */
 public class GameStateFakeDao implements GameStateDao {
 
-    private GameState[] gameStates;
-    private PlayerTurnProtos.PlayerTurn[] playerTurns;
-    private List<PlayerDecisionProtos.PlayerDecision>[] playerDecisions;
-    private VisualizerTurnProtos.VisualizerTurn[] visualizerTurns;
+    private List<GameState> gameStates = new ArrayList<>();
+    private List<VisualizerTurnProtos.VisualizerTurn> visualizerTurns = new ArrayList<>();
+    private List<Date> dates = new ArrayList<>();
 
     @Override
-    public int storeGameState(int turn, GameState gameState) {
-        gameStates[turn] = gameState;
+    public int storeGameState(final int turn, final GameState gameState) {
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", "Logging GameState for turn " + turn + ", GameState: " + gameState.toString());
+        if (gameStates.size() <= turn) {
+            gameStates.add(gameState);
+        } else {
+            gameStates.set(turn, gameState);
+        }
         return 0;
     }
 
     @Override
-    public int storePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerTurn) {
-        playerTurns[turn] = playerTurn;
+    public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", "Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerTurn.toString());
+        if (visualizerTurns.size() <= turn) {
+            visualizerTurns.add(visualizerTurn);
+        } else {
+            visualizerTurns.set(turn, visualizerTurn);
+        }
         return 0;
     }
 
     @Override
-    public int storePlayerDecisions(int turn, List<PlayerDecisionProtos.PlayerDecision> playerDecision) {
-        playerDecisions[turn] = playerDecision;
+    public int logTurnDate(int turn, Date date) {
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", "Logging date for turn " + turn + ", date: " + date.toString());
+        if (dates.size() <= turn) {
+            dates.add(date);
+        } else {
+            dates.set(turn, date);
+        }
         return 0;
     }
 
     @Override
-    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        visualizerTurns[turn] = visualizerTurn;
+    public int turnBeforeDate(final Date date) {
+
         return 0;
     }
+
+    @Override
+    public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
+        return visualizerTurns;
+    }
+
 }

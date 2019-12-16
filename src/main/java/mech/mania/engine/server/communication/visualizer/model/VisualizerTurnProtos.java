@@ -99,15 +99,15 @@ public final class VisualizerTurnProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_descriptor;
+      return mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_fieldAccessorTable
+      return mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              VisualizerTurnProtos.VisualizerTurn.class, VisualizerTurnProtos.VisualizerTurn.Builder.class);
+              mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.class, mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.Builder.class);
     }
 
     public static final int TURNNUMBER_FIELD_NUMBER = 1;
@@ -164,10 +164,10 @@ public final class VisualizerTurnProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof VisualizerTurnProtos.VisualizerTurn)) {
+      if (!(obj instanceof mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)) {
         return super.equals(obj);
       }
-      VisualizerTurnProtos.VisualizerTurn other = (VisualizerTurnProtos.VisualizerTurn) obj;
+      mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn other = (mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn) obj;
 
       if (getTurnNumber()
           != other.getTurnNumber()) return false;
@@ -190,69 +190,69 @@ public final class VisualizerTurnProtos {
       return hash;
     }
 
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(byte[] data)
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseDelimitedFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static VisualizerTurnProtos.VisualizerTurn parseFrom(
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -265,7 +265,7 @@ public final class VisualizerTurnProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(VisualizerTurnProtos.VisualizerTurn prototype) {
+    public static Builder newBuilder(mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -286,21 +286,21 @@ public final class VisualizerTurnProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:visualizer.VisualizerTurn)
-        VisualizerTurnProtos.VisualizerTurnOrBuilder {
+        mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurnOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_descriptor;
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_fieldAccessorTable
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                VisualizerTurnProtos.VisualizerTurn.class, VisualizerTurnProtos.VisualizerTurn.Builder.class);
+                mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.class, mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.Builder.class);
       }
 
-      // Construct using mech.mania.MM26GameEngine.server.visualizerCommunication.VisualizerTurnProtos.VisualizerTurn.newBuilder()
+      // Construct using mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -326,17 +326,17 @@ public final class VisualizerTurnProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_descriptor;
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.internal_static_visualizer_VisualizerTurn_descriptor;
       }
 
       @java.lang.Override
-      public VisualizerTurnProtos.VisualizerTurn getDefaultInstanceForType() {
-        return VisualizerTurnProtos.VisualizerTurn.getDefaultInstance();
+      public mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn getDefaultInstanceForType() {
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.getDefaultInstance();
       }
 
       @java.lang.Override
-      public VisualizerTurnProtos.VisualizerTurn build() {
-        VisualizerTurnProtos.VisualizerTurn result = buildPartial();
+      public mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn build() {
+        mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -344,8 +344,8 @@ public final class VisualizerTurnProtos {
       }
 
       @java.lang.Override
-      public VisualizerTurnProtos.VisualizerTurn buildPartial() {
-        VisualizerTurnProtos.VisualizerTurn result = new VisualizerTurnProtos.VisualizerTurn(this);
+      public mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn buildPartial() {
+        mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn result = new mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn(this);
         result.turnNumber_ = turnNumber_;
         onBuilt();
         return result;
@@ -385,16 +385,16 @@ public final class VisualizerTurnProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof VisualizerTurnProtos.VisualizerTurn) {
-          return mergeFrom((VisualizerTurnProtos.VisualizerTurn)other);
+        if (other instanceof mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn) {
+          return mergeFrom((mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(VisualizerTurnProtos.VisualizerTurn other) {
-        if (other == VisualizerTurnProtos.VisualizerTurn.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn other) {
+        if (other == mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.getDefaultInstance()) return this;
         if (other.getTurnNumber() != 0L) {
           setTurnNumber(other.getTurnNumber());
         }
@@ -413,11 +413,11 @@ public final class VisualizerTurnProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        VisualizerTurnProtos.VisualizerTurn parsedMessage = null;
+        mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (VisualizerTurnProtos.VisualizerTurn) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -485,12 +485,12 @@ public final class VisualizerTurnProtos {
     }
 
     // @@protoc_insertion_point(class_scope:visualizer.VisualizerTurn)
-    private static final VisualizerTurnProtos.VisualizerTurn DEFAULT_INSTANCE;
+    private static final mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new VisualizerTurnProtos.VisualizerTurn();
+      DEFAULT_INSTANCE = new mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn();
     }
 
-    public static VisualizerTurnProtos.VisualizerTurn getDefaultInstance() {
+    public static mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -515,7 +515,7 @@ public final class VisualizerTurnProtos {
     }
 
     @java.lang.Override
-    public VisualizerTurnProtos.VisualizerTurn getDefaultInstanceForType() {
+    public mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -536,9 +536,10 @@ public final class VisualizerTurnProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\025visualizer_turn.proto\022\nvisualizer\"$\n\016V" +
-      "isualizerTurn\022\022\n\nturnNumber\030\001 \001(\003BI\n1mec" +
-      "h.mania.MM26GameEngine.visualizerCommuni" +
-      "cationB\024VisualizerTurnProtosb\006proto3"
+      "isualizerTurn\022\022\n\nturnNumber\030\001 \001(\003BO\n7mec" +
+      "h.mania.engine.server.communication.visu" +
+      "alizer.modelB\024VisualizerTurnProtosb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

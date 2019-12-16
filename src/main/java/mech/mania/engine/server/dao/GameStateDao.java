@@ -5,24 +5,19 @@ import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public interface GameStateDao {
 
-//    GameState getGameState();
-//
-//    VisualizerTurnProtos.VisualizerTurn getVisualizerTurn();
-//
-//    List<GameState> getAllGameStates();
-//
-//    List<VisualizerTurnProtos.VisualizerTurn> getAllVisualizerTurns();
+    int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn);
 
-    int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn);
+    int storeGameState(final int turn, final GameState gameState);
 
-    int storeGameState(int turn, GameState gameState);
+    int logTurnDate(final int turn, final Date date);
 
-    int storePlayerTurn(int turn, PlayerTurnProtos.PlayerTurn playerDecision);
+    List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns();
 
-    int storePlayerDecisions(int turn, List<PlayerDecisionProtos.PlayerDecision> playerDecisions);
+    int turnBeforeDate(final Date date);
 }
