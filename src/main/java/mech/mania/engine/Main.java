@@ -32,6 +32,8 @@ public class Main {
 
 		// TODO: give access to Main GameStateController to WebSocketHandlers
 
+		GameLogger.setPrintLevel(GameLogger.LogLevel.INFO);
+
 		// Initialize game
 		GameState gameState = new GameState();
 		GameStateController controller = new GameStateController();
@@ -41,7 +43,7 @@ public class Main {
 			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Game is running- turn: " + turnCount);
 
 			// Log the current date for the beginning of the turn in the database
-			Date currDate = new Date();
+			Date currDate = new Date(); // TODO: change to milliseconds?
 			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Current time: " + currDate);
 			controller.logTurnDate(turnCount, currDate);
 

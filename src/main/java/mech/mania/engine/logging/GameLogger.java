@@ -2,9 +2,15 @@ package mech.mania.engine.logging;
 
 public class GameLogger {
     public enum LogLevel {
-        INFO,
-        ERROR,
-        DEBUG
+        ERROR(2),
+        INFO(1),
+        DEBUG(0);
+
+        // each enum should have a priority to compare against
+        private int priority;
+        LogLevel(int priority) {
+            this.priority = priority;
+        }
     }
 
     private static final String ANSI_RESET = "\u001B[0m";
@@ -17,7 +23,21 @@ public class GameLogger {
     private static final String ANSI_CYAN = "\u001B[36m";
     private static final String ANSI_WHITE = "\u001B[37m";
 
+    private static LogLevel printLevel = LogLevel.DEBUG;
+
+    /**
+     * Print using a specific level and a label.
+     * @param level a LogLevel that specifies which level to print at
+     * @param label a label to use, specifying where the message is coming from
+     * @param msg the actual message
+     */
     public static void log(LogLevel level, String label, String msg) {
+
+        if (level.priority > printLevel.priority) {
+            // don't print if priority is too low
+            return;
+        }
+
         switch (level) {
             case INFO:
                 System.out.print(ANSI_WHITE);
@@ -31,5 +51,14 @@ public class GameLogger {
         }
         System.out.print("[" + label + "] " + msg);
         System.out.println(ANSI_RESET);
+    }
+
+    /**
+     * Set the minimum print level. By default it is `LogLevel.DEBUG`.
+     * Priority goes: `ERROR` > `INFO` > `DEBUG`.
+     * @param level LogLevel to set the minimum to
+     */
+    public static void setPrintLevel(LogLevel level) {
+        printLevel = level;
     }
 }
