@@ -33,7 +33,7 @@ public class GameLogger {
      */
     public static void log(LogLevel level, String label, String msg) {
 
-        if (level.priority > printLevel.priority) {
+        if (level.priority < printLevel.priority) {
             // don't print if priority is too low
             return;
         }

@@ -1,6 +1,7 @@
 package mech.mania.engine;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
@@ -10,6 +11,7 @@ import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSock
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Collections;
 import java.util.Date;
@@ -26,7 +28,7 @@ public class Main {
 		String port = System.getenv("PORT");
 		app.setDefaultProperties(Collections
 				.singletonMap("server.port", port));
-		app.run(args);
+		ConfigurableApplicationContext ctx = app.run(args);
 
 		// TODO: Start web socket to communicate with visualizer
 
@@ -81,6 +83,12 @@ public class Main {
 
 			turnCount++;
 		}
+
+		// Clean up any connections
+		PlayerBinaryWebSocketHandler.destroy();
+		VisualizerBinaryWebSocketHandler.destroy();
+
+		SpringApplication.exit(ctx, () -> 0);
 	}
 
 	public static void setGameOver(boolean g) {

@@ -25,6 +25,7 @@ public class GameStateFakeDao implements GameStateDao {
         } else {
             gameStates.set(turn, gameState);
         }
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", gameStates.size() + " GameStates stored currently");
         return 0;
     }
 
@@ -36,6 +37,7 @@ public class GameStateFakeDao implements GameStateDao {
         } else {
             visualizerTurns.set(turn, visualizerTurn);
         }
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", visualizerTurns.size() + " VisualizerTurns stored currently");
         return 0;
     }
 
@@ -47,6 +49,7 @@ public class GameStateFakeDao implements GameStateDao {
         } else {
             dates.set(turn, date);
         }
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", dates.size() + " dates stored currently");
         return 0;
     }
 

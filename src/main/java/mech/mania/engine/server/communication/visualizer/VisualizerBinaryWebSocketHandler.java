@@ -55,4 +55,20 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
                     e.getMessage());
         }
     }
+
+    public static void destroy() {
+        GameLogger.log(GameLogger.LogLevel.INFO,
+                "VISUALIZERWEBSOCKET",
+                "Closing endpoint");
+        if (endpoint == null) { return; }
+
+        try {
+            endpoint.session.close();
+        } catch (IOException e) {
+            GameLogger.log(GameLogger.LogLevel.ERROR,
+                    "VISUALIZERWEBSOCKET",
+                    "An IOException occurred when closing endpoint. Error message:\n" +
+                            e.getMessage());
+        }
+    }
 }
