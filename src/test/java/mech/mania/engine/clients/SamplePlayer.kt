@@ -1,7 +1,7 @@
-package mech.mania.tester_connections
+package mech.mania.engine.clients
 
-import mech.mania.tester_connections.model.PlayerDecisionProtos
-import mech.mania.tester_connections.model.PlayerTurnProtos
+import mech.mania.engine.model.PlayerDecisionProtos
+import mech.mania.engine.model.PlayerTurnProtos
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Configuration
