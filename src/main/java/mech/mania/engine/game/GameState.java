@@ -8,4 +8,13 @@ import java.util.Map;
 public class GameState {
     private Board pvpBoard;
     private Map<String, Board> playerIdToBoardMap;
+    private int number = 0;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 }

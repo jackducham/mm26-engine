@@ -8,17 +8,18 @@ import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
+import org.apache.tomcat.jni.Time;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
 public class Main {
 	private static boolean gameOver = false;
 	private static int turnCount = 0;
-	// TODO: visualizer wants us to store ALL past GameStates and VisualizerTurns. Should we do this here or through redis???
 
 	public static void main(String[] args) {
 		// Start server to communicate with infrastructure
@@ -30,26 +31,52 @@ public class Main {
 
 		// TODO: Start web socket to communicate with visualizer
 
+		// TODO: give access to Main GameStateController to WebSocketHandlers
 
 		// Initialize game
 		GameState gameState = new GameState();
 		GameStateController controller = new GameStateController();
 
 		while (!gameOver) {
-			GameLogger.log(GameLogger.LogLevel.INFO, "Game is running- turn: " + turnCount);
+			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "---------------------------------------------");
+			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Game is running- turn: " + turnCount);
 
-			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions();
+			// Log the current date for the beginning of the turn in the database
+			Date currDate = new Date();
+			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Current time: " + currDate);
+			controller.logTurnDate(turnCount, currDate);
+
+			// Get the players' decisions
+			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions(turnCount);
+			GameLogger.log(GameLogger.LogLevel.INFO,
+					"MAIN",
+					playerDecisions.size() + " PlayerDecision objects received");
 			gameState = controller.updateGameState(gameState, playerDecisions);
-			controller.asyncStorePlayerDecisions(turnCount, playerDecisions);
 			controller.asyncStoreGameState(turnCount, gameState);
 
+			// Send to Visualizer a turn
 			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
+			GameLogger.log(GameLogger.LogLevel.INFO,
+					"MAIN",
+					"VisualizerTurn constructed");
 			controller.asyncStoreVisualizerTurn(turnCount, turn);
 			VisualizerBinaryWebSocketHandler.sendTurn(turn);
 
+			// Send to players a turn
 			PlayerTurnProtos.PlayerTurn playerTurn = controller.constructPlayerTurn(gameState);
-			controller.asyncStorePlayerTurn(turnCount, playerTurn);
+			GameLogger.log(GameLogger.LogLevel.INFO,
+					"MAIN",
+					"PlayerTurn constructed");
 			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(playerTurn);
+
+			// Simulate time passing
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				GameLogger.log(GameLogger.LogLevel.ERROR,
+						"MAIN",
+						"Thread.sleep interrupted:\n" + e.getMessage());
+			}
 
 			turnCount++;
 		}
