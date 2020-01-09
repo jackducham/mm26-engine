@@ -14,10 +14,6 @@ import org.springframework.web.socket.messaging.WebSocketStompClient
 
 import java.net.URISyntaxException
 import java.net.URL
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ExecutionException
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.TimeoutException
 
 import kotlinx.coroutines.*
 import mech.mania.engine.logging.GameLogger
@@ -28,6 +24,7 @@ import org.springframework.messaging.converter.StringMessageConverter
 import org.springframework.messaging.simp.stomp.*
 import org.springframework.util.MimeTypeUtils
 import org.springframework.web.socket.BinaryMessage
+import org.springframework.web.socket.CloseStatus
 import org.springframework.web.socket.WebSocketHttpHeaders
 import org.springframework.web.socket.WebSocketSession
 import org.springframework.web.socket.client.WebSocketClient
@@ -36,8 +33,10 @@ import org.springframework.web.socket.sockjs.client.SockJsClient
 import org.springframework.web.socket.sockjs.client.Transport
 import org.springframework.web.socket.sockjs.client.WebSocketTransport
 import java.lang.reflect.Type
+import java.net.ConnectException
 import java.net.URI
 import java.util.*
+import java.util.concurrent.*
 
 /*
  * Follow this blog post:
@@ -54,17 +53,11 @@ class ServerTests {
     /** URL to connect to, will be initialized in setup */
     private var URL: String = "ws://localhost:$port/player"
 
-    /** Promised PlayerTurn from websocket */
-    private var completableFuture: CompletableFuture<PlayerTurnProtos.PlayerTurn>? = null
-
     /**
      * Set up the testing environment by initializing variables and starting the game server.
      */
     @Before
     fun setup() {
-        // initialize local variables
-        completableFuture = CompletableFuture()
-
         // start game server
         val args: Array<String> = arrayOf("$port")
         Main.setup(args)
@@ -84,8 +77,13 @@ class ServerTests {
         // end game server - send HTTP request to server
         // https://stackoverflow.com/questions/46177133/http-request-in-kotlin
         val url = URL("http://localhost:$port/api/v1/infra/endgame")
-        println("Response upon sending endgame signal: ${url.readText()}")
-        Thread.sleep(1000)
+        try {
+            println("Response upon sending endgame signal: ${url.readText()}")
+            Thread.sleep(1000)
+        } catch (e: ConnectException) {
+            // if the server has already closed, then ignore
+            println("Server has already closed.")
+        }
     }
 
     /**
@@ -94,15 +92,76 @@ class ServerTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun canReceivePlayerTurn() {
-        val wsClient = StandardWebSocketClient()
-        wsClient.doHandshake(object : BinaryWebSocketHandler() {
+        // wait for an actual object to end the test
+        val completableFuture: CompletableFuture<PlayerTurnProtos.PlayerTurn> = CompletableFuture()
+
+        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
             override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
                 val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-                completableFuture?.complete(playerTurn)
+                completableFuture.complete(playerTurn)
             }
-        }, URL).get()
+        }, URL)
 
-        val playerTurn: PlayerTurnProtos.PlayerTurn = completableFuture!!.get(1000, TimeUnit.SECONDS)
+        val playerTurn: PlayerTurnProtos.PlayerTurn = completableFuture.get(10, TimeUnit.SECONDS)
         assertNotNull(playerTurn)
+    }
+
+    /**
+     * Test to see if the game state can be updated
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canUpdateGameState() {
+        // wait for an actual object to end the test
+        val countDownLatch = CountDownLatch(1)
+
+        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
+            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
+                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
+
+                // once the game understands that we are in the game, then the test is over
+                if (playerTurn.playerName == "Joe") {
+                    countDownLatch.countDown()
+                } else {
+                    val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
+                            .setPlayerName("Joe")
+                            .setIncrement(1)
+                            .build()
+
+                    session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
+                }
+            }
+        }, URL)
+
+        assert(countDownLatch.await(10, TimeUnit.SECONDS))
+    }
+
+    /**
+     * Test to see if the game actually ends
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canGameEnd() {
+        // wait until afterConnectionClosed to countDown to finish the test
+        val countDownLatch = CountDownLatch(1)
+
+        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
+            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
+                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
+                val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
+                        .setTurn(playerTurn.turn)
+                        .setPlayerName("Joe")
+                        .setIncrement(1)
+                        .build()
+
+                session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
+            }
+
+            override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
+                countDownLatch.countDown()
+            }
+        }, URL)
+
+        assert(countDownLatch.await(10, TimeUnit.SECONDS))
     }
 }

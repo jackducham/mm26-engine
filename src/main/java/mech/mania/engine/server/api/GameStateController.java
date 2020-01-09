@@ -5,8 +5,8 @@ import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandle
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
-import mech.mania.engine.server.dao.GameStateFakeDao;
-import mech.mania.engine.server.service.GameStateService;
+import mech.mania.engine.server.dao.DatabaseFake;
+import mech.mania.engine.server.service.DatabaseService;
 
 import java.util.Date;
 import java.util.List;
@@ -17,13 +17,14 @@ import java.util.List;
  */
 public class GameStateController {
 
-    private final GameStateService gameStateService;
+    private final DatabaseService databaseService;
+    private int currentTurnNum;
 
     /**
      * Construct a GameStateController using a Dao.
      */
     public GameStateController() {
-        this.gameStateService = new GameStateService(new GameStateFakeDao());
+        this.databaseService = new DatabaseService(new DatabaseFake());
     }
 
     /**
@@ -32,7 +33,8 @@ public class GameStateController {
      * @return 1 if fail, 0 if success
      */
     public int logTurnDate(final int turn, final Date date) {
-        return gameStateService.logTurnDate(turn, date);
+        currentTurnNum = turn;
+        return databaseService.logTurnDate(turn, date);
     }
 
     /**
@@ -42,7 +44,8 @@ public class GameStateController {
      */
     public int asyncStoreGameState(int turn, GameState gameState) {
         // TODO: insert Async stuff
-        return storeGameState(turn, gameState);
+        new Thread(() -> storeGameState(turn, gameState)).start();
+        return 0;
     }
 
     /**
@@ -51,27 +54,28 @@ public class GameStateController {
      * @return 1 if fail, 0 if success
      */
     public int storeGameState(int turn, GameState gameState) {
-        return gameStateService.storeGameState(turn, gameState);
+        return databaseService.storeGameState(turn, gameState);
     }
 
-    /**
-     * Store visualizer turn asynchronously.
-     * @param visualizerTurn VisualizerTurn to store
-     * @return 1 if fail, 0 if success
-     */
-    public int asyncStoreVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        // TODO: insert Async stuff
-        return storeVisualizerTurn(turn, visualizerTurn);
-    }
-
-    /**
-     * Stores a VisualizerTurn in the database.
-     * @param visualizerTurn VisualizerTurn to store
-     * @return 1 if fail, 0 if success
-     */
-    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        return gameStateService.storeVisualizerTurn(turn, visualizerTurn);
-    }
+//    /**
+//     * Store visualizer turn asynchronously.
+//     * @param visualizerTurn VisualizerTurn to store
+//     * @return 1 if fail, 0 if success
+//     */
+//    public int asyncStoreVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+//        // TODO: insert Async stuff
+//        new Thread(() -> storeVisualizerTurn(turn, visualizerTurn)).start();
+//        return 0;
+//    }
+//
+//    /**
+//     * Stores a VisualizerTurn in the database.
+//     * @param visualizerTurn VisualizerTurn to store
+//     * @return 1 if fail, 0 if success
+//     */
+//    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+//        return databaseService.storeVisualizerTurn(turn, visualizerTurn);
+//    }
 
     /**
      * Get Player Decisions from all endpoints.
@@ -105,12 +109,14 @@ public class GameStateController {
     /**
      * Given a gameState, use its internal state to create a PlayerTurn to send
      * to players
-     * @param gameState GameState to use to construct PlayerTurn
+     * @param playerName name of the player to get the playerTurn for
      * @return PlayerTurn from the given GameState
      */
-    public PlayerTurnProtos.PlayerTurn constructPlayerTurn(GameState gameState) {
-        // TODO: construct PlayerTurn
+    public PlayerTurnProtos.PlayerTurn constructPlayerTurn(String playerName, int turnNumber) {
+        // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurnProtos.PlayerTurn.newBuilder()
+                .setPlayerName(playerName)
+                .setTurn(turnNumber)
                 .setIncrement(1)
                 .build();
     }
@@ -120,6 +126,23 @@ public class GameStateController {
      * @return List of VisualizerTurns
      */
     public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
-        return gameStateService.getVisualizerTurns();
+        return databaseService.getVisualizerTurns();
+    }
+
+    /**
+     * Check whether the game is over (currently checks for whether the number is at 10
+     * @param gameState GameState to check
+     * @return whether the game is over
+     */
+    public boolean isGameOver(GameState gameState) {
+        return gameState.getNumber() == 5;
+    }
+
+    /**
+     * Gets the current turn number
+     * @return current turn number
+     */
+    public int getCurrentTurn() {
+        return currentTurnNum;
     }
 }

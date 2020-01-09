@@ -38,6 +38,10 @@ public class Main {
 		GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Starting server on port " + port);
 
 		GameLogger.setPrintLevel(GameLogger.LogLevel.DEBUG);
+
+		// reset state
+		gameOver = false;
+		turnCount = 0;
 	}
 
 	public static void runGame() {
@@ -49,7 +53,7 @@ public class Main {
 		GameState gameState = new GameState();
 		GameStateController controller = new GameStateController();
 
-		while (!gameOver) {
+		while (!gameOver && !controller.isGameOver(gameState)) {
 			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "---------------------------------------------");
 			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Game is running- turn: " + turnCount);
 
@@ -68,8 +72,7 @@ public class Main {
 			VisualizerBinaryWebSocketHandler.sendTurn(turn);
 
 			// Send to players a turn
-			PlayerTurnProtos.PlayerTurn playerTurn = controller.constructPlayerTurn(gameState);
-			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(playerTurn);
+			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(controller);
 
 			// Simulate time passing
 			try {

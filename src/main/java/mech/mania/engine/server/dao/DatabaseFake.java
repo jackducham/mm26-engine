@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Use regular data structures to store data (for now).
  */
-public class GameStateFakeDao implements GameStateDao {
+public class DatabaseFake implements Database {
 
     private List<GameState> gameStates = new ArrayList<>();
     private List<VisualizerTurnProtos.VisualizerTurn> visualizerTurns = new ArrayList<>();

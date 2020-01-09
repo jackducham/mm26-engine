@@ -2,44 +2,50 @@ package mech.mania.engine.server.communication.player;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.logging.GameLogger;
+import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
-import org.springframework.util.SerializationUtils;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
 
-    private static List<PlayerBinaryWebSocketHandler> endpoints = new ArrayList<>();
-    private static List<List<PlayerDecisionProtos.PlayerDecision>> playerDecisions = new ArrayList<>();
-    private WebSocketSession session;
+    /** List of endpoints to send messages to, mapped by player identification */
+    private static Map<String, WebSocketSession> endpoints = new HashMap<>();
+
+    /** Map between turn number and the list of playerDecisions that have been received */
+    private static Map<Integer, List<PlayerDecisionProtos.PlayerDecision>> playerDecisions = new HashMap<>();
+
+    /** Current turn number */
+    private static int currentTurnNum = 0;
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
-        this.session = session;
-        endpoints.add(this);
         GameLogger.log(GameLogger.LogLevel.DEBUG,
                 "PLAYERWEBSOCKET",
-                "New WebSocket connection established; " + endpoints.size() + " current endpoints.");
+                "New Websocket connection established.");
+
         // TODO: Send initial game state on new connection
-//        PlayerTurnProtos.PlayerTurn turn = PlayerTurnProtos.PlayerTurn.newBuilder()
-//                .setTurn(1)
-//                .setIncrement(1)
-//                .build();
-//        String byteMessage = Base64.getEncoder().encodeToString(turn.toByteArray());
-//
-//        try {
-//            session.sendMessage(new BinaryMessage(byteMessage));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        PlayerTurnProtos.PlayerTurn turn = PlayerTurnProtos.PlayerTurn.newBuilder()
+                .setTurn(currentTurnNum)
+                .setIncrement(1)
+                .build();
+
+        try {
+            session.sendMessage(new BinaryMessage(turn.toByteArray()));
+        } catch (IOException e) {
+            GameLogger.log(GameLogger.LogLevel.ERROR,
+                    "PLAYERWEBSOCKET",
+                    "An IOException occurred when sending turn to endpoint. Error message:\n" +
+                            e.getMessage());
+        }
     }
 
     @Override
@@ -47,19 +53,31 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
         try {
             PlayerDecisionProtos.PlayerDecision decision = PlayerDecisionProtos.PlayerDecision.parseFrom(message.getPayload());
 
+            // TODO: sanitize input? or use UUID instead of String playerName? is there a need to clean name?
+            String playerName = sanitizePlayerName(decision.getPlayerName());
+
             int turn = decision.getTurn();
+
+            if (!playerDecisions.containsKey(turn)) {
+                playerDecisions.put(turn, new ArrayList<>());
+            }
+
+            // add to database of received decisions
+            playerDecisions.get(turn).add(decision);
+
+            // if valid decision and was able to add to playerDecisions, then make sure we send back future PlayerTurns
+            if (!endpoints.containsKey(playerName)) {
+                endpoints.put(playerName, session);
+            }
+
             GameLogger.log(GameLogger.LogLevel.DEBUG,
                     "PLAYERWEBSOCKET",
-                    "Received Decision from Player for turn " + turn);
-            if (playerDecisions.size() < turn) {
-                playerDecisions.add(new ArrayList<>());
-            }
-            playerDecisions.get(turn).add(decision);
+                    "Received Decision from player " + playerName + " for turn " + turn);
 
         } catch (InvalidProtocolBufferException e) {
             GameLogger.log(GameLogger.LogLevel.ERROR,
                     "PLAYERWEBSOCKET",
-                    "Invalid Protocol received from endpoint. Error message:\n" +
+                    "Exception in receiving decision. Not accepting message. Error message:\n" +
                             e.getMessage());
         }
     }
@@ -74,22 +92,30 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
 
     /**
      * Sends PlayerTurn protobuf Binary to all endpoints in {@code endpoints} list.
-     * @param turn the PlayerTurn to send
+     * @param controller GameStateController to use to compute playerTurns
      */
-    public static void sendTurnAllPlayers(PlayerTurnProtos.PlayerTurn turn) {
+    public static void sendTurnAllPlayers(GameStateController controller) {
+
+        currentTurnNum = controller.getCurrentTurn();
 
         GameLogger.log(GameLogger.LogLevel.DEBUG,
                 "PLAYERWEBSOCKET",
                 "Sending PlayerTurn to " + endpoints.size() + " endpoints");
 
-        endpoints.forEach(endpoint -> {
-            if (endpoint.session.isOpen()) {
+        endpoints.forEach((player, endpoint) -> {
+            if (endpoint.isOpen()) {
                 try {
-                    endpoint.session.sendMessage(new BinaryMessage(turn.toByteArray()));
+                    // get specific message for each player
+                    PlayerTurnProtos.PlayerTurn turn = controller.constructPlayerTurn(player, currentTurnNum + 1);
+
+                    // send the message to that player
+                    endpoint.sendMessage(new BinaryMessage(turn.toByteArray()));
+
                 } catch (IOException e) {
                     GameLogger.log(GameLogger.LogLevel.ERROR,
                             "PLAYERWEBSOCKET",
-                            "An IOException occurred when sending turn to endpoint. Error message:\n" +
+                            "An IOException occurred when sending turn to player " + player +
+                                    ". Error message:\n" +
                                     e.getMessage());
                 }
             }
@@ -101,7 +127,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      * @return List of PlayerDecisions
      */
     public static List<PlayerDecisionProtos.PlayerDecision> getTurnAllPlayers(int turn) {
-        if (playerDecisions.size() <= turn) {
+        if (!playerDecisions.containsKey(turn) || playerDecisions.get(turn).isEmpty()) {
             GameLogger.log(GameLogger.LogLevel.DEBUG,
                     "PLAYERWEBSOCKET",
                     "No PlayerDecisions found");
@@ -121,9 +147,9 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
         GameLogger.log(GameLogger.LogLevel.INFO,
                 "PLAYERWEBSOCKET",
                 "Closing all endpoints");
-        endpoints.forEach(endpoint -> {
+        endpoints.forEach((player, endpoint) -> {
             try {
-                endpoint.session.close();
+                endpoint.close();
             } catch (IOException e) {
                 GameLogger.log(GameLogger.LogLevel.ERROR,
                         "PLAYERWEBSOCKET",
@@ -131,6 +157,18 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
                                 e.getMessage());
             }
         });
+
+        // reset state
+        endpoints.clear();
+        playerDecisions.clear();
     }
 
+    /**
+     * Sanitize the player name to make sure no malicious characters are used.
+     * @param playerName String name to sanitize
+     * @return sanitized String
+     */
+    private String sanitizePlayerName(String playerName) {
+        return playerName;
+    }
 }

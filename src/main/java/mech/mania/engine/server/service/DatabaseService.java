@@ -2,16 +2,16 @@ package mech.mania.engine.server.service;
 
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
-import mech.mania.engine.server.dao.GameStateDao;
+import mech.mania.engine.server.dao.Database;
 
 import java.util.Date;
 import java.util.List;
 
-public class GameStateService {
-    private final GameStateDao gameStateDao;
+public class DatabaseService {
+    private final Database database;
 
-    public GameStateService(GameStateDao gameStateDao) {
-        this.gameStateDao = gameStateDao;
+    public DatabaseService(Database database) {
+        this.database = database;
     }
 
     /**
@@ -20,7 +20,7 @@ public class GameStateService {
      * @return 1 if fail, 0 if success
      */
     public int storeGameState(final int turn, final GameState gameState) {
-        return gameStateDao.storeGameState(turn, gameState);
+        return database.storeGameState(turn, gameState);
     }
 
     /**
@@ -29,7 +29,7 @@ public class GameStateService {
      * @return 1 if fail, 0 if success
      */
     public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        return gameStateDao.storeVisualizerTurn(turn, visualizerTurn);
+        return database.storeVisualizerTurn(turn, visualizerTurn);
     }
 
     /**
@@ -39,7 +39,7 @@ public class GameStateService {
      * @return 1 if fail, 0 if success
      */
     public int logTurnDate(final int turn, final Date date) {
-        return gameStateDao.logTurnDate(turn, date);
+        return database.logTurnDate(turn, date);
     }
 
     /**
@@ -47,6 +47,6 @@ public class GameStateService {
      * @return List of VisualizerTurn
      */
     public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
-        return gameStateDao.getVisualizerTurns();
+        return database.getVisualizerTurns();
     }
 }

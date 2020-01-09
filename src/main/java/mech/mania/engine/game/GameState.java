@@ -39,6 +39,14 @@ public class GameState {
         return increment < 1e5 && increment > 0;
     }
 
+    /**
+     * Getter method for number
+     * @return only internal state of GameState: number
+     */
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return String.format("GameState{number=%d}", number);
