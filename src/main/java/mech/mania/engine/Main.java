@@ -8,6 +8,7 @@ import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -20,20 +21,29 @@ import java.util.List;
 public class Main {
 	private static boolean gameOver = false;
 	private static int turnCount = 0;
+	private static ConfigurableApplicationContext ctx;
 
 	public static void main(String[] args) {
+		setup(args);
+		runGame();
+	}
+
+	public static void setup(String[] args) {
 		// Start server to communicate with infrastructure
 		SpringApplication app = new SpringApplication(Main.class);
-		String port = System.getenv("PORT");
-		app.setDefaultProperties(Collections
-				.singletonMap("server.port", port));
-		ConfigurableApplicationContext ctx = app.run(args);
+		String port = args[0];  // System.getenv("PORT");
+		app.setDefaultProperties(Collections.singletonMap("server.port", port));
+		ctx = app.run();
 
+		GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Starting server on port " + port);
+
+		GameLogger.setPrintLevel(GameLogger.LogLevel.DEBUG);
+	}
+
+	public static void runGame() {
 		// TODO: Start web socket to communicate with visualizer
 
 		// TODO: give access to Main GameStateController to WebSocketHandlers
-
-		GameLogger.setPrintLevel(GameLogger.LogLevel.DEBUG);
 
 		// Initialize game
 		GameState gameState = new GameState();
@@ -50,25 +60,15 @@ public class Main {
 
 			// Get the players' decisions
 			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions(turnCount);
-			GameLogger.log(GameLogger.LogLevel.INFO,
-					"MAIN",
-					playerDecisions.size() + " PlayerDecision objects received");
 			controller.updateGameState(gameState, playerDecisions);
 			controller.asyncStoreGameState(turnCount, gameState);
 
 			// Send to Visualizer a turn
 			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
-			GameLogger.log(GameLogger.LogLevel.INFO,
-					"MAIN",
-					"VisualizerTurn constructed");
-			controller.asyncStoreVisualizerTurn(turnCount, turn);
 			VisualizerBinaryWebSocketHandler.sendTurn(turn);
 
 			// Send to players a turn
 			PlayerTurnProtos.PlayerTurn playerTurn = controller.constructPlayerTurn(gameState);
-			GameLogger.log(GameLogger.LogLevel.INFO,
-					"MAIN",
-					"PlayerTurn constructed");
 			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(playerTurn);
 
 			// Simulate time passing
