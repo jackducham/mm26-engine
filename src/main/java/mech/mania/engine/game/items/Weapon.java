@@ -1,7 +1,7 @@
 package mech.mania.engine.game.items;
 
 public class Weapon extends Wearable {
-    protected int range = 0;
+    protected int range;
     protected AttackPattern attackPattern;
     protected TempStatusModifier onHitEffect;
 

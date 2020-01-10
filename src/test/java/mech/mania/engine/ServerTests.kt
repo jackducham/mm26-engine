@@ -1,6 +1,8 @@
 package mech.mania.engine
 
 import junit.framework.TestCase.assertNotNull
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos
 import org.junit.After
@@ -9,33 +11,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
-import org.springframework.web.socket.client.standard.StandardWebSocketClient
-import org.springframework.web.socket.messaging.WebSocketStompClient
-
-import java.net.URISyntaxException
-import java.net.URL
-
-import kotlinx.coroutines.*
-import mech.mania.engine.logging.GameLogger
-import org.springframework.messaging.Message
-import org.springframework.messaging.MessageHeaders
-import org.springframework.messaging.converter.AbstractMessageConverter
-import org.springframework.messaging.converter.StringMessageConverter
-import org.springframework.messaging.simp.stomp.*
-import org.springframework.util.MimeTypeUtils
 import org.springframework.web.socket.BinaryMessage
 import org.springframework.web.socket.CloseStatus
-import org.springframework.web.socket.WebSocketHttpHeaders
 import org.springframework.web.socket.WebSocketSession
-import org.springframework.web.socket.client.WebSocketClient
+import org.springframework.web.socket.client.standard.StandardWebSocketClient
 import org.springframework.web.socket.handler.BinaryWebSocketHandler
-import org.springframework.web.socket.sockjs.client.SockJsClient
-import org.springframework.web.socket.sockjs.client.Transport
-import org.springframework.web.socket.sockjs.client.WebSocketTransport
-import java.lang.reflect.Type
 import java.net.ConnectException
-import java.net.URI
-import java.util.*
+import java.net.URISyntaxException
+import java.net.URL
 import java.util.concurrent.*
 
 /*
