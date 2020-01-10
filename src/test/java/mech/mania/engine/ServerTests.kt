@@ -1,8 +1,6 @@
 package mech.mania.engine
 
 import junit.framework.TestCase.assertNotNull
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos
 import org.junit.After
@@ -11,14 +9,16 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import org.springframework.web.socket.client.standard.StandardWebSocketClient
+
+import java.net.URISyntaxException
+import java.net.URL
+
+import kotlinx.coroutines.*
 import org.springframework.web.socket.BinaryMessage
 import org.springframework.web.socket.CloseStatus
 import org.springframework.web.socket.WebSocketSession
-import org.springframework.web.socket.client.standard.StandardWebSocketClient
 import org.springframework.web.socket.handler.BinaryWebSocketHandler
-import java.net.ConnectException
-import java.net.URISyntaxException
-import java.net.URL
 import java.util.concurrent.*
 
 /*
@@ -63,7 +63,7 @@ class ServerTests {
         try {
             println("Response upon sending endgame signal: ${url.readText()}")
             Thread.sleep(1000)
-        } catch (e: ConnectException) {
+        } catch (e: Exception) {
             // if the server has already closed, then ignore
             println("Server has already closed.")
         }
