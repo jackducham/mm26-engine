@@ -1,6 +1,5 @@
 package mech.mania.engine.game.characters;
 
-import javafx.util.Pair;
 import mech.mania.engine.game.items.*;
 
 import java.util.List;
