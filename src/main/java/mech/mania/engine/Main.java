@@ -5,10 +5,8 @@ import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -24,6 +22,10 @@ public class Main {
 	private static ConfigurableApplicationContext ctx;
 
 	public static void main(String[] args) {
+		if (args.length == 0) {
+			args = new String[1];
+			args[0] = System.getenv("PORT");
+		}
 		setup(args);
 		runGame();
 	}
