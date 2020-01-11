@@ -1,0 +1,1707 @@
+memberSearchIndex = [{
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "addRepeatedField(Descriptors.FieldDescriptor, Object)",
+    "url": "addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "addRepeatedField(Descriptors.FieldDescriptor, Object)",
+    "url": "addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "addRepeatedField(Descriptors.FieldDescriptor, Object)",
+    "url": "addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "afterConnectionClosed(WebSocketSession, CloseStatus)",
+    "url": "afterConnectionClosed(org.springframework.web.socket.WebSocketSession,org.springframework.web.socket.CloseStatus)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer",
+    "c": "VisualizerBinaryWebSocketHandler",
+    "l": "afterConnectionClosed(WebSocketSession, CloseStatus)",
+    "url": "afterConnectionClosed(org.springframework.web.socket.WebSocketSession,org.springframework.web.socket.CloseStatus)"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "afterConnectionEstablished(WebSocketSession)",
+    "url": "afterConnectionEstablished(org.springframework.web.socket.WebSocketSession)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer",
+    "c": "VisualizerBinaryWebSocketHandler",
+    "l": "afterConnectionEstablished(WebSocketSession)",
+    "url": "afterConnectionEstablished(org.springframework.web.socket.WebSocketSession)"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "asyncStoreGameState(int, GameState)",
+    "url": "asyncStoreGameState(int,mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "attackPattern"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile.TileType",
+    "l": "BLANK"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Board",
+    "l": "Board()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "build()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "build()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "build()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "buildPartial()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "buildPartial()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "buildPartial()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "buyPrice"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "Character()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine",
+    "c": "GameStateTests",
+    "l": "cleanup()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clear()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clear()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "clear()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clearField(Descriptors.FieldDescriptor)",
+    "url": "clearField(com.google.protobuf.Descriptors.FieldDescriptor)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clearField(Descriptors.FieldDescriptor)",
+    "url": "clearField(com.google.protobuf.Descriptors.FieldDescriptor)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "clearField(Descriptors.FieldDescriptor)",
+    "url": "clearField(com.google.protobuf.Descriptors.FieldDescriptor)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clearIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clearIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clearOneof(Descriptors.OneofDescriptor)",
+    "url": "clearOneof(com.google.protobuf.Descriptors.OneofDescriptor)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clearOneof(Descriptors.OneofDescriptor)",
+    "url": "clearOneof(com.google.protobuf.Descriptors.OneofDescriptor)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "clearOneof(Descriptors.OneofDescriptor)",
+    "url": "clearOneof(com.google.protobuf.Descriptors.OneofDescriptor)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clearPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clearPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clearPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clearPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clearTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clearTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "clearTurnNumber()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "clone()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "clone()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "clone()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Clothes",
+    "l": "Clothes(double, double, StatusModifier)",
+    "url": "%3Cinit%3E(double,double,mech.mania.engine.game.items.StatusModifier)"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "constructPlayerTurn(String, int)",
+    "url": "constructPlayerTurn(java.lang.String,int)"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "constructVisualizerTurn(GameState)",
+    "url": "constructVisualizerTurn(mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Consumable",
+    "l": "Consumable(double, double, int, TempStatusModifier)",
+    "url": "%3Cinit%3E(double,double,int,mech.mania.engine.game.items.TempStatusModifier)"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "currentHealth"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseFake",
+    "l": "DatabaseFake()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseRedis",
+    "l": "DatabaseRedis()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.service",
+    "c": "DatabaseService",
+    "l": "DatabaseService(Database)",
+    "url": "%3Cinit%3E(mech.mania.engine.server.dao.Database)"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger.LogLevel",
+    "l": "DEBUG"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "destroy()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer",
+    "c": "VisualizerBinaryWebSocketHandler",
+    "l": "destroy()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Consumable",
+    "l": "effect"
+}, {
+    "p": "mech.mania.engine.server.communication.infra",
+    "c": "InfraRESTHandler",
+    "l": "endgame()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Enemy",
+    "l": "Enemy(int, AttackPattern)",
+    "url": "%3Cinit%3E(int,mech.mania.engine.game.items.AttackPattern)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "equals(Object)",
+    "url": "equals(java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "equals(Object)",
+    "url": "equals(java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "equals(Object)",
+    "url": "equals(java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger.LogLevel",
+    "l": "ERROR"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "experience"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger",
+    "l": "GameLogger()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine",
+    "c": "GameStateTests",
+    "l": "gameOverCondition()"
+}, {
+    "p": "mech.mania.engine.game",
+    "c": "GameState",
+    "l": "GameState()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "GameStateController()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine",
+    "c": "GameStateTests",
+    "l": "GameStateTests()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getAttackPattern()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Enemy",
+    "l": "getAttackPattern()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getAttackPattern()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "getAttackPattern()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "getBuyPrice()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getCurrentHealth()"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "getCurrentTurn()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getDamagePerTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getDefaultInstance()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getDefaultInstance()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getDefaultInstance()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getDefaultInstanceForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getDefaultInstanceForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getDefaultInstanceForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getDefaultInstanceForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getDefaultInstanceForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "getDefaultInstanceForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "getDescriptor()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getDescriptorForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getDescriptorForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "getDescriptorForType()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Consumable",
+    "l": "getEffect()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getExperienceChange()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Hat",
+    "l": "getHatEffect()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getHealthChange()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecisionOrBuilder",
+    "l": "getIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getIncrement()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurnOrBuilder",
+    "l": "getIncrement()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getLevel()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getMagicalDamage()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getMagicalDamage()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getMagicalDefense()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getMagicalDefense()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getMagicDamageChange()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getMagicDefenseChange()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getMaxHealth()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getMaxHealth()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "getMaxStack()"
+}, {
+    "p": "mech.mania.engine.game",
+    "c": "GameState",
+    "l": "getNumber()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "getOnHitEffect()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getParserForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getParserForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getParserForType()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getPercentExpToNextLevel()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getPhysicalDamage()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getPhysicalDamage()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getPhysicalDamageChange()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getPhysicalDefense()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getPhysicalDefense()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getPhysicalDefenseChange()"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "getPlayerDecisions(int)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecisionOrBuilder",
+    "l": "getPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurnOrBuilder",
+    "l": "getPlayerName()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getPlayerNameBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getPlayerNameBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecisionOrBuilder",
+    "l": "getPlayerNameBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getPlayerNameBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getPlayerNameBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurnOrBuilder",
+    "l": "getPlayerNameBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecisionOrBuilder",
+    "l": "getPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurnOrBuilder",
+    "l": "getPlayerUuid()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getPlayerUuidBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getPlayerUuidBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecisionOrBuilder",
+    "l": "getPlayerUuidBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getPlayerUuidBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getPlayerUuidBytes()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurnOrBuilder",
+    "l": "getPlayerUuidBytes()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getPosition()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "getRange()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "getSellPrice()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getSerializedSize()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getSerializedSize()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getSerializedSize()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getSpeed()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "getSpeed()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "getSpeedChange()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Wearable",
+    "l": "getStats()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "getTotalExperience()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "getTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecisionOrBuilder",
+    "l": "getTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "getTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurnOrBuilder",
+    "l": "getTurn()"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "getTurnAllPlayers(int)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getTurnNumber()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "getTurnNumber()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurnOrBuilder",
+    "l": "getTurnNumber()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "getUnknownFields()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "getUnknownFields()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "getUnknownFields()"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "getVisualizerTurns()"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "Database",
+    "l": "getVisualizerTurns()"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseFake",
+    "l": "getVisualizerTurns()"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseRedis",
+    "l": "getVisualizerTurns()"
+}, {
+    "p": "mech.mania.engine.server.service",
+    "c": "DatabaseService",
+    "l": "getVisualizerTurns()"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "handleBinaryMessage(WebSocketSession, BinaryMessage)",
+    "url": "handleBinaryMessage(org.springframework.web.socket.WebSocketSession,org.springframework.web.socket.BinaryMessage)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer",
+    "c": "VisualizerBinaryWebSocketHandler",
+    "l": "handleBinaryMessage(WebSocketSession, BinaryMessage)",
+    "url": "handleBinaryMessage(org.springframework.web.socket.WebSocketSession,org.springframework.web.socket.BinaryMessage)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "hashCode()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "hashCode()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "hashCode()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Hat",
+    "l": "Hat(double, double, StatusModifier, HatEffect)",
+    "url": "%3Cinit%3E(double,double,mech.mania.engine.game.items.StatusModifier,mech.mania.engine.game.items.HatEffect)"
+}, {
+    "p": "mech.mania.engine.server.communication.infra",
+    "c": "InfraRESTHandler",
+    "l": "health()"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile.TileType",
+    "l": "IMPASSIBLE"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "INCREMENT_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "INCREMENT_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger.LogLevel",
+    "l": "INFO"
+}, {
+    "p": "mech.mania.engine.server.communication.infra",
+    "c": "InfraRESTHandler",
+    "l": "InfraRESTHandler()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile.TileType",
+    "l": "INN"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "internalGetFieldAccessorTable()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "internalGetFieldAccessorTable()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "internalGetFieldAccessorTable()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "internalGetFieldAccessorTable()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "internalGetFieldAccessorTable()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "internalGetFieldAccessorTable()"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "isGameOver(GameState)",
+    "url": "isGameOver(mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "isInitialized()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "isInitialized()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "isInitialized()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "isInitialized()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "isInitialized()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "isInitialized()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "Item(double, double, int)",
+    "url": "%3Cinit%3E(double,double,int)"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger",
+    "l": "log(GameLogger.LogLevel, String, String)",
+    "url": "log(mech.mania.engine.logging.GameLogger.LogLevel,java.lang.String,java.lang.String)"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "logTurnDate(int, Date)",
+    "url": "logTurnDate(int,java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "Database",
+    "l": "logTurnDate(int, Date)",
+    "url": "logTurnDate(int,java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseFake",
+    "l": "logTurnDate(int, Date)",
+    "url": "logTurnDate(int,java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseRedis",
+    "l": "logTurnDate(int, Date)",
+    "url": "logTurnDate(int,java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.service",
+    "c": "DatabaseService",
+    "l": "logTurnDate(int, Date)",
+    "url": "logTurnDate(int,java.util.Date)"
+}, {
+    "p": "mech.mania.engine",
+    "c": "Main",
+    "l": "Main()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine",
+    "c": "Main",
+    "l": "main(String[])",
+    "url": "main(java.lang.String[])"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "maxStack"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "mergeFrom(CodedInputStream, ExtensionRegistryLite)",
+    "url": "mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "mergeFrom(CodedInputStream, ExtensionRegistryLite)",
+    "url": "mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "mergeFrom(CodedInputStream, ExtensionRegistryLite)",
+    "url": "mergeFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "mergeFrom(Message)",
+    "url": "mergeFrom(com.google.protobuf.Message)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "mergeFrom(Message)",
+    "url": "mergeFrom(com.google.protobuf.Message)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "mergeFrom(Message)",
+    "url": "mergeFrom(com.google.protobuf.Message)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "mergeFrom(PlayerDecisionProtos.PlayerDecision)",
+    "url": "mergeFrom(mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "mergeFrom(PlayerTurnProtos.PlayerTurn)",
+    "url": "mergeFrom(mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "mergeFrom(VisualizerTurnProtos.VisualizerTurn)",
+    "url": "mergeFrom(mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "mergeUnknownFields(UnknownFieldSet)",
+    "url": "mergeUnknownFields(com.google.protobuf.UnknownFieldSet)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "mergeUnknownFields(UnknownFieldSet)",
+    "url": "mergeUnknownFields(com.google.protobuf.UnknownFieldSet)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "mergeUnknownFields(UnknownFieldSet)",
+    "url": "mergeUnknownFields(com.google.protobuf.UnknownFieldSet)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.config",
+    "c": "PlayerWebSocketConfig",
+    "l": "myPlayerWebSocketHandler()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.config",
+    "c": "VisualizerWebSocketConfig",
+    "l": "myVisualizerWebSocketHandler()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "newBuilder()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "newBuilder()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "newBuilder()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "newBuilder(PlayerDecisionProtos.PlayerDecision)",
+    "url": "newBuilder(mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "newBuilder(PlayerTurnProtos.PlayerTurn)",
+    "url": "newBuilder(mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "newBuilder(VisualizerTurnProtos.VisualizerTurn)",
+    "url": "newBuilder(mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "newBuilderForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "newBuilderForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "newBuilderForType()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "newBuilderForType(GeneratedMessageV3.BuilderParent)",
+    "url": "newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "newBuilderForType(GeneratedMessageV3.BuilderParent)",
+    "url": "newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "newBuilderForType(GeneratedMessageV3.BuilderParent)",
+    "url": "newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "newInstance(GeneratedMessageV3.UnusedPrivateParameter)",
+    "url": "newInstance(com.google.protobuf.GeneratedMessageV3.UnusedPrivateParameter)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "newInstance(GeneratedMessageV3.UnusedPrivateParameter)",
+    "url": "newInstance(com.google.protobuf.GeneratedMessageV3.UnusedPrivateParameter)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "newInstance(GeneratedMessageV3.UnusedPrivateParameter)",
+    "url": "newInstance(com.google.protobuf.GeneratedMessageV3.UnusedPrivateParameter)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "onHitEffect"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseDelimitedFrom(InputStream)",
+    "url": "parseDelimitedFrom(java.io.InputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseDelimitedFrom(InputStream)",
+    "url": "parseDelimitedFrom(java.io.InputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseDelimitedFrom(InputStream)",
+    "url": "parseDelimitedFrom(java.io.InputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseDelimitedFrom(InputStream, ExtensionRegistryLite)",
+    "url": "parseDelimitedFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseDelimitedFrom(InputStream, ExtensionRegistryLite)",
+    "url": "parseDelimitedFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseDelimitedFrom(InputStream, ExtensionRegistryLite)",
+    "url": "parseDelimitedFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(byte[])"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(byte[])"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(byte[])"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(byte[], ExtensionRegistryLite)",
+    "url": "parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(byte[], ExtensionRegistryLite)",
+    "url": "parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(byte[], ExtensionRegistryLite)",
+    "url": "parseFrom(byte[],com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(ByteBuffer)",
+    "url": "parseFrom(java.nio.ByteBuffer)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(ByteBuffer)",
+    "url": "parseFrom(java.nio.ByteBuffer)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(ByteBuffer)",
+    "url": "parseFrom(java.nio.ByteBuffer)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(ByteBuffer, ExtensionRegistryLite)",
+    "url": "parseFrom(java.nio.ByteBuffer,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(ByteBuffer, ExtensionRegistryLite)",
+    "url": "parseFrom(java.nio.ByteBuffer,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(ByteBuffer, ExtensionRegistryLite)",
+    "url": "parseFrom(java.nio.ByteBuffer,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(ByteString)",
+    "url": "parseFrom(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(ByteString)",
+    "url": "parseFrom(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(ByteString)",
+    "url": "parseFrom(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(ByteString, ExtensionRegistryLite)",
+    "url": "parseFrom(com.google.protobuf.ByteString,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(ByteString, ExtensionRegistryLite)",
+    "url": "parseFrom(com.google.protobuf.ByteString,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(ByteString, ExtensionRegistryLite)",
+    "url": "parseFrom(com.google.protobuf.ByteString,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(CodedInputStream)",
+    "url": "parseFrom(com.google.protobuf.CodedInputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(CodedInputStream)",
+    "url": "parseFrom(com.google.protobuf.CodedInputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(CodedInputStream)",
+    "url": "parseFrom(com.google.protobuf.CodedInputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(CodedInputStream, ExtensionRegistryLite)",
+    "url": "parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(CodedInputStream, ExtensionRegistryLite)",
+    "url": "parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(CodedInputStream, ExtensionRegistryLite)",
+    "url": "parseFrom(com.google.protobuf.CodedInputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(InputStream)",
+    "url": "parseFrom(java.io.InputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(InputStream)",
+    "url": "parseFrom(java.io.InputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(InputStream)",
+    "url": "parseFrom(java.io.InputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parseFrom(InputStream, ExtensionRegistryLite)",
+    "url": "parseFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parseFrom(InputStream, ExtensionRegistryLite)",
+    "url": "parseFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parseFrom(InputStream, ExtensionRegistryLite)",
+    "url": "parseFrom(java.io.InputStream,com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "parser()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "parser()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "parser()"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Player",
+    "l": "Player()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "PlayerBinaryWebSocketHandler()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "PLAYERNAME_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "PLAYERNAME_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "PLAYERUUID_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "PLAYERUUID_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.communication.player.config",
+    "c": "PlayerWebSocketConfig",
+    "l": "PlayerWebSocketConfig()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile.TileType",
+    "l": "PORTAL"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "position"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Position",
+    "l": "Position(int, int)",
+    "url": "%3Cinit%3E(int,int)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "range"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos",
+    "l": "registerAllExtensions(ExtensionRegistry)",
+    "url": "registerAllExtensions(com.google.protobuf.ExtensionRegistry)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos",
+    "l": "registerAllExtensions(ExtensionRegistry)",
+    "url": "registerAllExtensions(com.google.protobuf.ExtensionRegistry)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos",
+    "l": "registerAllExtensions(ExtensionRegistry)",
+    "url": "registerAllExtensions(com.google.protobuf.ExtensionRegistry)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos",
+    "l": "registerAllExtensions(ExtensionRegistryLite)",
+    "url": "registerAllExtensions(com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos",
+    "l": "registerAllExtensions(ExtensionRegistryLite)",
+    "url": "registerAllExtensions(com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos",
+    "l": "registerAllExtensions(ExtensionRegistryLite)",
+    "url": "registerAllExtensions(com.google.protobuf.ExtensionRegistryLite)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.config",
+    "c": "PlayerWebSocketConfig",
+    "l": "registerWebSocketHandlers(WebSocketHandlerRegistry)",
+    "url": "registerWebSocketHandlers(org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.config",
+    "c": "VisualizerWebSocketConfig",
+    "l": "registerWebSocketHandlers(WebSocketHandlerRegistry)",
+    "url": "registerWebSocketHandlers(org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry)"
+}, {"p": "mech.mania.engine", "c": "Main", "l": "runGame()"}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "sellPrice"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer",
+    "c": "VisualizerBinaryWebSocketHandler",
+    "l": "sendTurn(VisualizerTurnProtos.VisualizerTurn)",
+    "url": "sendTurn(mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.server.communication.player",
+    "c": "PlayerBinaryWebSocketHandler",
+    "l": "sendTurnAllPlayers(GameStateController)",
+    "url": "sendTurnAllPlayers(mech.mania.engine.server.api.GameStateController)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "setBuyPrice(double)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setDamagePerTurn(double)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setExperienceChange(double)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setField(Descriptors.FieldDescriptor, Object)",
+    "url": "setField(com.google.protobuf.Descriptors.FieldDescriptor,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setField(Descriptors.FieldDescriptor, Object)",
+    "url": "setField(com.google.protobuf.Descriptors.FieldDescriptor,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "setField(Descriptors.FieldDescriptor, Object)",
+    "url": "setField(com.google.protobuf.Descriptors.FieldDescriptor,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine",
+    "c": "Main",
+    "l": "setGameOver(boolean)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setHealthChange(double)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setIncrement(int)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setIncrement(int)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setMagicDamageChange(double)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setMagicDefenseChange(double)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "setMaxStack(int)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setPhysicalDamageChange(double)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setPhysicalDefenseChange(double)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setPlayerName(String)",
+    "url": "setPlayerName(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setPlayerName(String)",
+    "url": "setPlayerName(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setPlayerNameBytes(ByteString)",
+    "url": "setPlayerNameBytes(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setPlayerNameBytes(ByteString)",
+    "url": "setPlayerNameBytes(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setPlayerUuid(String)",
+    "url": "setPlayerUuid(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setPlayerUuid(String)",
+    "url": "setPlayerUuid(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setPlayerUuidBytes(ByteString)",
+    "url": "setPlayerUuidBytes(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setPlayerUuidBytes(ByteString)",
+    "url": "setPlayerUuidBytes(com.google.protobuf.ByteString)"
+}, {
+    "p": "mech.mania.engine.game.characters",
+    "c": "Character",
+    "l": "setPosition(Position)",
+    "url": "setPosition(mech.mania.engine.game.board.Position)"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger",
+    "l": "setPrintLevel(GameLogger.LogLevel)",
+    "url": "setPrintLevel(mech.mania.engine.logging.GameLogger.LogLevel)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setRepeatedField(Descriptors.FieldDescriptor, int, Object)",
+    "url": "setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor,int,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setRepeatedField(Descriptors.FieldDescriptor, int, Object)",
+    "url": "setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor,int,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "setRepeatedField(Descriptors.FieldDescriptor, int, Object)",
+    "url": "setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor,int,java.lang.Object)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Item",
+    "l": "setSellPrice(double)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "setSpeedChange(double)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setTurn(int)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setTurn(int)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "setTurnNumber(long)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision.Builder",
+    "l": "setUnknownFields(UnknownFieldSet)",
+    "url": "setUnknownFields(com.google.protobuf.UnknownFieldSet)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn.Builder",
+    "l": "setUnknownFields(UnknownFieldSet)",
+    "url": "setUnknownFields(com.google.protobuf.UnknownFieldSet)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn.Builder",
+    "l": "setUnknownFields(UnknownFieldSet)",
+    "url": "setUnknownFields(com.google.protobuf.UnknownFieldSet)"
+}, {"p": "mech.mania.engine", "c": "GameStateTests", "l": "setup()"}, {
+    "p": "mech.mania.engine",
+    "c": "Main",
+    "l": "setup(String[])",
+    "url": "setup(java.lang.String[])"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Shoes",
+    "l": "Shoes(double, double, StatusModifier)",
+    "url": "%3Cinit%3E(double,double,mech.mania.engine.game.items.StatusModifier)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Wearable",
+    "l": "stats"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "StatusModifier",
+    "l": "StatusModifier(double, double, double, double, double, double, double, double)",
+    "url": "%3Cinit%3E(double,double,double,double,double,double,double,double)"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "storeGameState(int, GameState)",
+    "url": "storeGameState(int,mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "Database",
+    "l": "storeGameState(int, GameState)",
+    "url": "storeGameState(int,mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseFake",
+    "l": "storeGameState(int, GameState)",
+    "url": "storeGameState(int,mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseRedis",
+    "l": "storeGameState(int, GameState)",
+    "url": "storeGameState(int,mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.server.service",
+    "c": "DatabaseService",
+    "l": "storeGameState(int, GameState)",
+    "url": "storeGameState(int,mech.mania.engine.game.GameState)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "Database",
+    "l": "storeVisualizerTurn(int, VisualizerTurnProtos.VisualizerTurn)",
+    "url": "storeVisualizerTurn(int,mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseFake",
+    "l": "storeVisualizerTurn(int, VisualizerTurnProtos.VisualizerTurn)",
+    "url": "storeVisualizerTurn(int,mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseRedis",
+    "l": "storeVisualizerTurn(int, VisualizerTurnProtos.VisualizerTurn)",
+    "url": "storeVisualizerTurn(int,mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.server.service",
+    "c": "DatabaseService",
+    "l": "storeVisualizerTurn(int, VisualizerTurnProtos.VisualizerTurn)",
+    "url": "storeVisualizerTurn(int,mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "TempStatusModifier",
+    "l": "TempStatusModifier(double, double, double, double, double, double, double, double, int)",
+    "url": "%3Cinit%3E(double,double,double,double,double,double,double,double,int)"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile",
+    "l": "Tile()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "toBuilder()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "toBuilder()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "toBuilder()"
+}, {
+    "p": "mech.mania.engine.game",
+    "c": "GameState",
+    "l": "toString()"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "TURN_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "TURN_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "Database",
+    "l": "turnBeforeDate(Date)",
+    "url": "turnBeforeDate(java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseFake",
+    "l": "turnBeforeDate(Date)",
+    "url": "turnBeforeDate(java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.dao",
+    "c": "DatabaseRedis",
+    "l": "turnBeforeDate(Date)",
+    "url": "turnBeforeDate(java.util.Date)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "TURNNUMBER_FIELD_NUMBER"
+}, {
+    "p": "mech.mania.engine.game",
+    "c": "GameState",
+    "l": "update(List<PlayerDecisionProtos.PlayerDecision>)",
+    "url": "update(java.util.List)"
+}, {
+    "p": "mech.mania.engine.server.api",
+    "c": "GameStateController",
+    "l": "updateGameState(GameState, List<PlayerDecisionProtos.PlayerDecision>)",
+    "url": "updateGameState(mech.mania.engine.game.GameState,java.util.List)"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile.TileType",
+    "l": "valueOf(String)",
+    "url": "valueOf(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "AttackPattern",
+    "l": "valueOf(String)",
+    "url": "valueOf(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "HatEffect",
+    "l": "valueOf(String)",
+    "url": "valueOf(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger.LogLevel",
+    "l": "valueOf(String)",
+    "url": "valueOf(java.lang.String)"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Tile.TileType",
+    "l": "values()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "AttackPattern",
+    "l": "values()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "HatEffect",
+    "l": "values()"
+}, {
+    "p": "mech.mania.engine.logging",
+    "c": "GameLogger.LogLevel",
+    "l": "values()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer",
+    "c": "VisualizerBinaryWebSocketHandler",
+    "l": "VisualizerBinaryWebSocketHandler()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.config",
+    "c": "VisualizerWebSocketConfig",
+    "l": "VisualizerWebSocketConfig()",
+    "url": "%3Cinit%3E()"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Weapon",
+    "l": "Weapon(double, double, StatusModifier, int, AttackPattern, TempStatusModifier)",
+    "url": "%3Cinit%3E(double,double,mech.mania.engine.game.items.StatusModifier,int,mech.mania.engine.game.items.AttackPattern,mech.mania.engine.game.items.TempStatusModifier)"
+}, {
+    "p": "mech.mania.engine.game.items",
+    "c": "Wearable",
+    "l": "Wearable(double, double, StatusModifier)",
+    "url": "%3Cinit%3E(double,double,mech.mania.engine.game.items.StatusModifier)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerDecisionProtos.PlayerDecision",
+    "l": "writeTo(CodedOutputStream)",
+    "url": "writeTo(com.google.protobuf.CodedOutputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.player.model",
+    "c": "PlayerTurnProtos.PlayerTurn",
+    "l": "writeTo(CodedOutputStream)",
+    "url": "writeTo(com.google.protobuf.CodedOutputStream)"
+}, {
+    "p": "mech.mania.engine.server.communication.visualizer.model",
+    "c": "VisualizerTurnProtos.VisualizerTurn",
+    "l": "writeTo(CodedOutputStream)",
+    "url": "writeTo(com.google.protobuf.CodedOutputStream)"
+}, {
+    "p": "mech.mania.engine.game.board",
+    "c": "Position",
+    "l": "x"
+}, {"p": "mech.mania.engine.game.board", "c": "Position", "l": "y"}];

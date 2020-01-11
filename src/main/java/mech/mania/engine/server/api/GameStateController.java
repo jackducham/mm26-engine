@@ -29,7 +29,9 @@ public class GameStateController {
 
     /**
      * Log the date of the turn, for use later to retrieve GameStates by Date
+     *
      * @param turn turn number
+     * @param date date to store
      * @return 1 if fail, 0 if success
      */
     public int logTurnDate(final int turn, final Date date) {
@@ -39,6 +41,7 @@ public class GameStateController {
 
     /**
      * Store GameState asynchronously.
+     * @param turn turn to store for
      * @param gameState GameState to store
      * @return 1 if fail, 0 if success
      */
@@ -50,6 +53,7 @@ public class GameStateController {
 
     /**
      * Stores a GameState in the database.
+     * @param turn turn to store for
      * @param gameState GameState to store
      * @return 1 if fail, 0 if success
      */
@@ -79,6 +83,8 @@ public class GameStateController {
 
     /**
      * Get Player Decisions from all endpoints.
+     * @param turn turn to get PlayerDecision for
+     * @return List of PlayerDecisions received for that turn
      */
     public List<PlayerDecisionProtos.PlayerDecision> getPlayerDecisions(int turn) {
         return PlayerBinaryWebSocketHandler.getTurnAllPlayers(turn);
@@ -110,6 +116,7 @@ public class GameStateController {
      * Given a gameState, use its internal state to create a PlayerTurn to send
      * to players
      * @param playerName name of the player to get the playerTurn for
+     * @param turnNumber turn the playerTurn is for
      * @return PlayerTurn from the given GameState
      */
     public PlayerTurnProtos.PlayerTurn constructPlayerTurn(String playerName, int turnNumber) {
@@ -135,7 +142,7 @@ public class GameStateController {
      * @return whether the game is over
      */
     public boolean isGameOver(GameState gameState) {
-        return gameState.getNumber() == 5;
+        return gameState.getNumber() > 500;
     }
 
     /**

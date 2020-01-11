@@ -5,8 +5,9 @@ import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
-import org.springframework.web.socket.*;
 import org.springframework.web.socket.BinaryMessage;
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 
 import java.io.IOException;
@@ -96,6 +97,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      */
     public static void sendTurnAllPlayers(GameStateController controller) {
 
+        // keep the variable updated as much as possible
         currentTurnNum = controller.getCurrentTurn();
 
         GameLogger.log(GameLogger.LogLevel.DEBUG,
@@ -124,6 +126,8 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
 
     /**
      * Reads message from each endpoint to get each PlayerDecision from each Player
+     *
+     * @param turn turn to get for
      * @return List of PlayerDecisions
      */
     public static List<PlayerDecisionProtos.PlayerDecision> getTurnAllPlayers(int turn) {
@@ -149,7 +153,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
                 "Closing all endpoints");
         endpoints.forEach((player, endpoint) -> {
             try {
-                endpoint.close();
+                endpoint.close(new CloseStatus(1001, "Game ended."));
             } catch (IOException e) {
                 GameLogger.log(GameLogger.LogLevel.ERROR,
                         "PLAYERWEBSOCKET",

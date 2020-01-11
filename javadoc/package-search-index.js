@@ -1,0 +1,4 @@
+packageSearchIndex = [{
+    "l": "All Packages",
+    "url": "allpackages-index.html"
+}, {"l": "mech.mania.engine"}, {"l": "mech.mania.engine.game"}, {"l": "mech.mania.engine.game.board"}, {"l": "mech.mania.engine.game.characters"}, {"l": "mech.mania.engine.game.items"}, {"l": "mech.mania.engine.logging"}, {"l": "mech.mania.engine.server.api"}, {"l": "mech.mania.engine.server.communication.infra"}, {"l": "mech.mania.engine.server.communication.player"}, {"l": "mech.mania.engine.server.communication.player.config"}, {"l": "mech.mania.engine.server.communication.player.model"}, {"l": "mech.mania.engine.server.communication.visualizer"}, {"l": "mech.mania.engine.server.communication.visualizer.config"}, {"l": "mech.mania.engine.server.communication.visualizer.model"}, {"l": "mech.mania.engine.server.dao"}, {"l": "mech.mania.engine.server.service"}];

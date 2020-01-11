@@ -1,6 +1,8 @@
 package mech.mania.engine
 
 import junit.framework.TestCase.assertNotNull
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos
 import org.junit.After
@@ -9,16 +11,13 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
-import org.springframework.web.socket.client.standard.StandardWebSocketClient
-
-import java.net.URISyntaxException
-import java.net.URL
-
-import kotlinx.coroutines.*
 import org.springframework.web.socket.BinaryMessage
 import org.springframework.web.socket.CloseStatus
 import org.springframework.web.socket.WebSocketSession
+import org.springframework.web.socket.client.standard.StandardWebSocketClient
 import org.springframework.web.socket.handler.BinaryWebSocketHandler
+import java.net.URISyntaxException
+import java.net.URL
 import java.util.concurrent.*
 
 /*
@@ -119,31 +118,64 @@ class ServerTests {
         assert(countDownLatch.await(10, TimeUnit.SECONDS))
     }
 
+//    /**
+//     * Test to see if the game actually ends
+//     */
+//    @Test
+//    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+//    fun canGameEnd() {
+//        // wait until afterConnectionClosed to countDown to finish the test
+//        val countDownLatch = CountDownLatch(1)
+//
+//        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
+//            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
+//                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
+//                val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
+//                        .setTurn(playerTurn.turn)
+//                        .setPlayerName("Joe")
+//                        .setIncrement(1)
+//                        .build()
+//
+//                session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
+//            }
+//
+//            override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
+//                countDownLatch.countDown()
+//            }
+//        }, URL)
+//
+//        assert(countDownLatch.await(10, TimeUnit.SECONDS))
+//    }
+
     /**
-     * Test to see if the game actually ends
+     * Test to see if the game actually ends with multiple players sending stuff every turn
      */
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-    fun canGameEnd() {
+    fun canGameEndMultiplePlayers() {
+        val n = 100
+
         // wait until afterConnectionClosed to countDown to finish the test
-        val countDownLatch = CountDownLatch(1)
+        val countDownLatch = CountDownLatch(n)
 
-        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
-            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-                val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
-                        .setTurn(playerTurn.turn)
-                        .setPlayerName("Joe")
-                        .setIncrement(1)
-                        .build()
+        for (i in 0 until n) {
+            StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
+                override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
+                    val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
+                    val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
+                            .setTurn(playerTurn.turn)
+                            .setPlayerName("Joe%02d".format(i))
+                            .setIncrement(1)
+                            .build()
 
-                session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
-            }
+                    session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
+                }
 
-            override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
-                countDownLatch.countDown()
-            }
-        }, URL)
+                override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
+                    countDownLatch.countDown()
+                }
+            }, URL)
+        }
 
         assert(countDownLatch.await(10, TimeUnit.SECONDS))
     }
