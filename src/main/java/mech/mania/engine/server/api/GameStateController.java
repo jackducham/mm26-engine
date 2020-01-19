@@ -61,26 +61,6 @@ public class GameStateController {
         return databaseService.storeGameState(turn, gameState);
     }
 
-//    /**
-//     * Store visualizer turn asynchronously.
-//     * @param visualizerTurn VisualizerTurn to store
-//     * @return 1 if fail, 0 if success
-//     */
-//    public int asyncStoreVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-//        // TODO: insert Async stuff
-//        new Thread(() -> storeVisualizerTurn(turn, visualizerTurn)).start();
-//        return 0;
-//    }
-//
-//    /**
-//     * Stores a VisualizerTurn in the database.
-//     * @param visualizerTurn VisualizerTurn to store
-//     * @return 1 if fail, 0 if success
-//     */
-//    public int storeVisualizerTurn(int turn, VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-//        return databaseService.storeVisualizerTurn(turn, visualizerTurn);
-//    }
-
     /**
      * Get Player Decisions from all endpoints.
      * @param turn turn to get PlayerDecision for
@@ -109,6 +89,7 @@ public class GameStateController {
     public VisualizerTurnProtos.VisualizerTurn constructVisualizerTurn(GameState gameState) {
         // TODO: construct VisualizerTurn
         return VisualizerTurnProtos.VisualizerTurn.newBuilder()
+                .setTurnNumber(currentTurnNum)
                 .build();
     }
 

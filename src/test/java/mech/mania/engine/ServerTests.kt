@@ -5,6 +5,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos
 import mech.mania.engine.server.communication.player.model.PlayerTurnProtos
+import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -32,8 +33,11 @@ class ServerTests {
     /** Port to launch the Game server on */
     private val port = 8080
 
-    /** URL to connect to, will be initialized in setup */
-    private var URL: String = "ws://localhost:$port/player"
+    /** URL that player connect to */
+    private var PLAYER_URL: String = "ws://localhost:$port/player"
+
+    /** URL that visualizer will connect to */
+    private var VISUALIZER_URL: String = "ws://localhost:$port/visualizer"
 
     /**
      * Set up the testing environment by initializing variables and starting the game server.
@@ -82,7 +86,7 @@ class ServerTests {
                 val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
                 completableFuture.complete(playerTurn)
             }
-        }, URL)
+        }, PLAYER_URL)
 
         val playerTurn: PlayerTurnProtos.PlayerTurn = completableFuture.get(10, TimeUnit.SECONDS)
         assertNotNull(playerTurn)
@@ -113,7 +117,7 @@ class ServerTests {
                     session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
                 }
             }
-        }, URL)
+        }, PLAYER_URL)
 
         assert(countDownLatch.await(10, TimeUnit.SECONDS))
     }
@@ -174,9 +178,30 @@ class ServerTests {
                 override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
                     countDownLatch.countDown()
                 }
-            }, URL)
+            }, PLAYER_URL)
         }
 
         assert(countDownLatch.await(10, TimeUnit.SECONDS))
+    }
+
+    /**
+     * Test to see if the Visualizer can connect with the proper protobuf
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun visualizerCanConnect() {
+        // wait until afterConnectionClosed to countDown to finish the test
+        val countDownLatch = CountDownLatch(1)
+
+        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
+            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
+                val turn = VisualizerTurnProtos.VisualizerTurn.parseFrom(message.payload)
+                if (turn.turnNumber == 3L) {
+                    countDownLatch.countDown()
+                }
+            }
+        }, VISUALIZER_URL)
+
+        assert(countDownLatch.await(5, TimeUnit.SECONDS))
     }
 }

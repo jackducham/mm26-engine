@@ -22,38 +22,33 @@ import java.util.concurrent.ExecutionException;
 public class Main {
 
 	// CONSTANTS
-	/**
-	 * URL to the Visualizer websocket.
-	 */
+	/** URL to the Visualizer websocket. TODO: insert URL */
 	private static final String VISUALIZER_WEBSOCKET_URL = "";
 
 	// GAMEWIDE VARIABLES
-	/**
-	 * Whether the game is currently over. Only used for Infra to shut down the server using REST.
-	 */
+	/** Whether the game is currently over. Only used for Infra to shut down the server using REST */
 	private static boolean gameOver = false;
-	/**
-	 * Current turn count, gets saved in database later.
-	 */
+
+	/** Current turn count, gets saved in database later */
 	private static int turnCount = 0;
-	/**
-	 * The Spring Server instance. Can be shut down at the end of the life of the game manually.
-	 */
+
+	/** The Spring Server instance. Can be shut down at the end of the life of the game manually */
 	private static ConfigurableApplicationContext ctx;
 
 	public static void main(String[] args) {
-		if (args.length == 0) {
-			args = new String[1];
-			args[0] = System.getenv("PORT");
-		}
 		setup(args);
 		runGame();
 	}
 
 	public static void setup(String[] args) {
+		if (args.length == 0) {
+			args = new String[1];
+			args[0] = System.getenv("PORT");
+		}
+
 		// Start server to communicate with infrastructure
 		SpringApplication app = new SpringApplication(Main.class);
-		String port = args[0];  // System.getenv("PORT");
+		String port = args[0];
 		app.setDefaultProperties(Collections.singletonMap("server.port", port));
 		ctx = app.run();
 
@@ -67,17 +62,6 @@ public class Main {
 	}
 
 	public static void runGame() {
-		WebSocketSession session;
-		try {
-			session = new StandardWebSocketClient().doHandshake(
-					new VisualizerBinaryWebSocketHandler(),
-					VISUALIZER_WEBSOCKET_URL).get();
-		} catch (InterruptedException | ExecutionException e) {
-			GameLogger.log(GameLogger.LogLevel.ERROR,
-					"MAIN",
-					"Handshake with Visualizer failed. Error: " + e.getMessage());
-		}
-
 		// Initialize game
 		GameState gameState = new GameState();
 		GameStateController controller = new GameStateController();
