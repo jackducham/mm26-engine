@@ -11,11 +11,19 @@ public class Board {
     private List<Player> players;
     private List<Position> portals;
 
-    public List<Position> getPortals() {
-        return portals;
+    public Tile[][] getGrid() {
+        return grid;
+    }
+
+    public List<Enemy> getEnemies() {
+        return enemies;
     }
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public List<Position> getPortals() {
+        return portals;
     }
 }

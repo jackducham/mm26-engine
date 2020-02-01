@@ -2,6 +2,7 @@ package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.Position;
+import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.server.playercommunication.PlayerDecision;
 import mech.mania.engine.server.visualizercommunication.VisualizerBinaryWebSocketHandler;
@@ -29,13 +30,14 @@ public class GameLogic {
         return null;
     }
 
+
     /**
      * Checks whether given player is on given board.
      * @param player The target player.
      * @param board The target board.
      * @return True if the player is on the board, false otherwise.
      */
-    public boolean IsPlayerOnBoard(Player player, Board board) {
+    public static boolean IsPlayerOnBoard(Player player, Board board) {
         return (board.getPlayers().contains(player));
     }
 
@@ -48,7 +50,7 @@ public class GameLogic {
      * @param playerIDtoBoardMap part of PlayerDecision?
      * @return True if the action can be taken, false otherwise.
      */
-    public boolean CanUsePortal(Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
+    public static boolean CanUsePortal(Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
         for (Position portalPosition : pvpBoard.getPortals()) {
             if (currentPlayerPosition == portalPosition && IsPlayerOnBoard(player, pvpBoard)) {
                 return true;
@@ -62,5 +64,20 @@ public class GameLogic {
             }
         }
         return false;
+    }
+
+    public static boolean movePlayers(Board targetBoard, Player[] playersToMove, Position[] targetPositions) {
+        if (playersToMove.length != targetPositions.length) {
+            return false;
+        }
+
+        for (int i = 0; i < playersToMove.length; i++) {
+            if (validatePosition(targetBoard, targetPositions[i]) && targetBoard.getPlayers().contains(playersToMove[i])) {
+                playersToMove[i].setPosition(targetPositions[i]);
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 }
