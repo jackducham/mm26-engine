@@ -44,7 +44,7 @@ public class GameLogic {
 
         // need to get attack coordinate from playerDecision
         Position attackPosition = decision.getAttackPosition();
-        
+
 
         // boolean inMap = false;
         int boardWidth = 1;
