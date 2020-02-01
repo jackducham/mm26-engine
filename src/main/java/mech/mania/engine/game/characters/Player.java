@@ -162,6 +162,10 @@ public class Player extends Character {
         return physicalDefense;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     @Override
     public AttackPattern getAttackPattern() {
         return this.weapon.getAttackPattern();

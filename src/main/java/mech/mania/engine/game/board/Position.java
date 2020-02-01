@@ -3,7 +3,7 @@ package mech.mania.engine.game.board;
 public class Position {
     private int x;
     private int y;
-    private Board board;
+    private String board_id;
 
     public Position(int x, int y) {
         this.x = x;
@@ -26,11 +26,11 @@ public class Position {
         this.y = y;
     }
 
-    public Board getBoard() {
-        return board;
+    public String getBoardID() {
+        return board_id;
     }
 
-    public void setBoard(Board board) {
-        this.board = board;
+    public void setBoardID(String board_id) {
+        this.board_id = board_id;
     }
 }

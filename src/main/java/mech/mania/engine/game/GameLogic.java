@@ -33,25 +33,20 @@ public class GameLogic {
     Player has weapon in inv
     coord is valid (map, within range)
      */
-    public boolean validateAttack(Player player, PlayerDecision decision){
+    public boolean validateAttack(Player player, PlayerDecision decision) {
+        Weapon decisionWeapon = decision.getWeapon(); // need to get weapon from playerDecision
+        Weapon playerWeapon = player.getWeapon();
 
-        Item weapon = null;
-        Item[] playersInventory = new Item[1];
-
-        boolean hasWeapon = false;
-
-        for(Item i : playersInventory){
-            if(weapon.equals(i)){
-                hasWeapon = true;
-                break;
-            }
+        if (playerWeapon == null || decisionWeapon != playerWeapon) {
+            // throw new InvalidWeaponException
+            return false;
         }
 
-        if(!hasWeapon){
-            //throw new InvalidWeaponException
-        }
+        // need to get attack coordinate from playerDecision
+        Position attackPosition = decision.getAttackPosition();
+        
 
-       // boolean inMap = false;
+        // boolean inMap = false;
         int boardWidth = 1;
         int boardHeight = 1;
 
@@ -76,16 +71,20 @@ public class GameLogic {
 
     /**
      * Validate whether character's weapon isn't null and if target Position is within range and on the board
-     * @param character character that's doing the attacking
+     * @param player character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
      * @return true if attackCoordinate is valid, false otherwise
      */
-    public static boolean validateAttack(Character character, Position attackCoordinate) {
-        if (character.getWeapon() == null) {
-            // throw invalid exception
+    public static boolean validateAttack(Player player, Position attackCoordinate) {
+        Weapon decisionWeapon = decision.getWeapon(); // need to get weapon from playerDecision
+        Weapon playerWeapon = player.getWeapon();
+
+        if (playerWeapon == null || decisionWeapon != playerWeapon) {
+            // throw new InvalidWeaponException
             return false;
         }
-        Weapon weapon = character.getWeapon();
+
+        if (validatePosition(board, attackCoordinate))
 
         // check if within range
         return true;
@@ -111,6 +110,6 @@ public class GameLogic {
      * @return Manhattan Distance between pos1 and pos2
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        return Math.abs(pos1.x - pos2.x) + Math.abs(pos1.y - pos2.y);
+        return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
     }
 }
