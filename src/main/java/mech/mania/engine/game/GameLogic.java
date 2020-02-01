@@ -33,7 +33,7 @@ public class GameLogic {
     Player has weapon in inv
     coord is valid (map, within range)
      */
-    public boolean validateAttack(PlayerDecision p){
+    public boolean validateAttack(Player player, PlayerDecision decision){
 
         Item weapon = null;
         Item[] playersInventory = new Item[1];
