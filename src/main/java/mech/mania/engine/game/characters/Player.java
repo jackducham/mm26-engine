@@ -1,14 +1,13 @@
 package mech.mania.engine.game.characters;
 
-import javafx.util.Pair;
 import mech.mania.engine.game.items.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Player extends Character {
     private static final int INVENTORY_SIZE = 16;
-    private String id;
-    private Weapon weapon;
+    private UUID id;
     private Hat hat;
     private Clothes clothes;
     private Shoes shoes;
@@ -17,11 +16,34 @@ public class Player extends Character {
 
     public Player(){
         experience = 0;
-        weapon = null;
         hat = null;
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Hat getHat() {
+        return hat;
+    }
+
+    public Clothes getClothes() {
+        return clothes;
+    }
+
+    public Shoes getShoes() {
+        return shoes;
+    }
+
+    public Item[] getInventory() {
+        return inventory;
+    }
+
+    public List<TempStatusModifier> getActiveEffects() {
+        return activeEffects;
     }
 
     @Override
@@ -160,10 +182,5 @@ public class Player extends Character {
         }
 
         return physicalDefense;
-    }
-
-    @Override
-    public AttackPattern getAttackPattern() {
-        return this.weapon.getAttackPattern();
     }
 }

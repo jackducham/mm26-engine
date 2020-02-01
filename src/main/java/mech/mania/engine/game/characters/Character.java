@@ -1,12 +1,13 @@
 package mech.mania.engine.game.characters;
 
 import mech.mania.engine.game.board.Position;
-import mech.mania.engine.game.items.AttackPattern;
+import mech.mania.engine.game.items.Weapon;
 
 public abstract class Character {
     protected double currentHealth;
     protected int experience;
     protected Position position;
+    protected Weapon weapon;
 
     public Position getPosition() {
         return position;
@@ -18,6 +19,10 @@ public abstract class Character {
 
     public double getCurrentHealth() {
         return currentHealth;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 
     public int getLevel() {
@@ -70,6 +75,4 @@ public abstract class Character {
     public double getMagicalDefense() {
         return baseMagicalDefense + getLevel()*magicalDefenseScaling;
     }
-
-    public abstract AttackPattern getAttackPattern();
 }
