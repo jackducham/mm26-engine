@@ -16,6 +16,8 @@ public class DatabaseService {
 
     /**
      * Store a GameState
+     *
+     * @param turn      turn to store for
      * @param gameState GameState to store
      * @return 1 if fail, 0 if success
      */
@@ -25,6 +27,7 @@ public class DatabaseService {
 
     /**
      * Store a VisualizerTurn
+     * @param turn turn to store for
      * @param visualizerTurn VisualizerTurn to store
      * @return 1 if fail, 0 if success
      */

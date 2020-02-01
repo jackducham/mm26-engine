@@ -5,22 +5,34 @@ import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @SpringBootApplication
 public class Main {
+
+	// CONSTANTS
+	/** URL to the Visualizer websocket. TODO: insert URL */
+	private static final String VISUALIZER_WEBSOCKET_URL = "";
+
+	// GAMEWIDE VARIABLES
+	/** Whether the game is currently over. Only used for Infra to shut down the server using REST */
 	private static boolean gameOver = false;
+
+	/** Current turn count, gets saved in database later */
 	private static int turnCount = 0;
+
+	/** The Spring Server instance. Can be shut down at the end of the life of the game manually */
 	private static ConfigurableApplicationContext ctx;
 
 	public static void main(String[] args) {
@@ -29,9 +41,14 @@ public class Main {
 	}
 
 	public static void setup(String[] args) {
+		if (args.length == 0) {
+			args = new String[1];
+			args[0] = System.getenv("PORT");
+		}
+
 		// Start server to communicate with infrastructure
 		SpringApplication app = new SpringApplication(Main.class);
-		String port = args[0];  // System.getenv("PORT");
+		String port = args[0];
 		app.setDefaultProperties(Collections.singletonMap("server.port", port));
 		ctx = app.run();
 
@@ -45,15 +62,11 @@ public class Main {
 	}
 
 	public static void runGame() {
-		// TODO: Start web socket to communicate with visualizer
-
-		// TODO: give access to Main GameStateController to WebSocketHandlers
-
 		// Initialize game
 		GameState gameState = new GameState();
 		GameStateController controller = new GameStateController();
 
-		while (!gameOver && !controller.isGameOver(gameState)) {
+		while (!gameOver) {
 			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "---------------------------------------------");
 			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Game is running- turn: " + turnCount);
 
@@ -66,6 +79,10 @@ public class Main {
 			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions(turnCount);
 			controller.updateGameState(gameState, playerDecisions);
 			controller.asyncStoreGameState(turnCount, gameState);
+
+			if (controller.isGameOver(gameState)) {
+				gameOver = true;
+			}
 
 			// Send to Visualizer a turn
 			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
