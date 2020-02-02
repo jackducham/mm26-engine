@@ -62,7 +62,9 @@ public class GameLogger {
         message += ANSI_RESET;
 
         messagesToPrint.add(message);
-        System.out.println(messagesToPrint.remove());
+        if (!messagesToPrint.isEmpty()) {
+            System.out.println(messagesToPrint.remove());
+        }
     }
 
     /**

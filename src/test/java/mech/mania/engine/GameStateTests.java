@@ -34,19 +34,19 @@ public class GameStateTests {
     public void cleanup() {
     }
 
-    /**
-     * Test to check if gameOver can be achieved
-     */
-    @Test
-    public void gameOverCondition() {
-        PlayerDecisionProtos.PlayerDecision decision = createDecisionsFromCommands(new String[]{
-                "move north 5",
-                "move east 3"
-        });
-
-        gameState = GameLogic.doTurn(gameState, List.of(decision));
-        assertTrue(controller.isGameOver(gameState));
-    }
+//    /**
+//     * Test to check if gameOver can be achieved
+//     */
+//    @Test
+//    public void gameOverCondition() {
+//        PlayerDecisionProtos.PlayerDecision decision = createDecisionsFromCommands(new String[]{
+//                "move north 5",
+//                "move east 3"
+//        });
+//
+//        gameState = GameLogic.doTurn(gameState, List.of(decision));
+//        assertTrue(controller.isGameOver(gameState));
+//    }
 
 
     /**
