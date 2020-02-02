@@ -183,4 +183,37 @@ public class Player extends Character {
 
         return physicalDefense;
     }
+
+    /**
+     * Exchanges weapon in Player parameters with weapon in inventory
+     * @param weaponToEquip
+     * @return true if weapon was successfully equipped
+     */
+    public boolean equipWeapon(Weapon weaponToEquip) {
+        int index = hasWeapon(weaponToEquip);
+
+        if (index == -1) {
+            return false;
+        }
+
+        Weapon temp = this.weapon;
+        this.weapon = weaponToEquip;
+        inventory[index] = temp;
+
+        return true;
+    }
+
+    /**
+     * Checks whether player has weapon in inventory
+     * @param weapon weapon to check
+     * @return inventory index, or -1 if weapon isn't in inventory
+     */
+    public int hasWeapon(Weapon weapon) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] == weapon) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

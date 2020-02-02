@@ -92,6 +92,7 @@ public class GameLogic {
      * @param gameState current gameState
      * @return true if attackCoordinate is valid, false otherwise
      */
+    // @TODO do enemies have weapons too?
     public static boolean validateAttack(Player player, Position attackCoordinate, GameState gameState) {
         // @TODO how does player indicate they want to attack --> will they just give coordinate and it'll automatically use equiped weapon or will they give weapon and attackCoordinate
         // @TODO exceptions? or just return false
