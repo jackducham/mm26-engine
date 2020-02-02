@@ -34,47 +34,19 @@ public class GameLogic {
     }
 
     /**
-     * Checks whether given player is on given board.
-     * @param player The target player.
-     * @param board The target board.
-     * @return True if the player is on the board, false otherwise.
+     *
+     * @param targetBoard
+     * @param playersToMove
+     * @param targetPositions
+     * @return
      */
-    public static boolean IsPlayerOnBoard(Player player, Board board) {
-        return (board.getPlayers().contains(player));
-    }
-
-    /**
-     * Checks whether a player can take the UsePortal action.
-     * @param pvpBoard part of PlayerDecision?
-     * @param playerID part of PlayerDecision?
-     * @param player part of PlayerDecision?
-     * @param currentPlayerPosition part of PlayerDecision?
-     * @param playerIDtoBoardMap part of PlayerDecision?
-     * @return True if the action can be taken, false otherwise.
-     */
-    public static boolean CanUsePortal(Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
-        for (Position portalPosition : pvpBoard.getPortals()) {
-            if (currentPlayerPosition == portalPosition && IsPlayerOnBoard(player, pvpBoard)) {
-                return true;
-            }
-        }
-
-        Board playerBoard = playerIDtoBoardMap.get(playerID);
-        for (Position portalPosition : playerBoard.getPortals()) {
-            if (currentPlayerPosition == portalPosition && IsPlayerOnBoard(player, playerIDtoBoardMap.get(playerID))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static boolean movePlayers(Board targetBoard, Player[] playersToMove, Position[] targetPositions) {
         if (playersToMove.length != targetPositions.length) {
             return false;
         }
 
         for (int i = 0; i < playersToMove.length; i++) {
-            // validatePosition takes in gameState now, instead of board
+            // @TODO validatePosition takes in gameState now, instead of board --> discuss next week though
             if (validatePosition(targetBoard, targetPositions[i]) && targetBoard.getPlayers().contains(playersToMove[i])) {
                 playersToMove[i].setPosition(targetPositions[i]);
             } else {
@@ -84,10 +56,40 @@ public class GameLogic {
         return true;
     }
 
+    // ============================= PORTAL FUNCTIONS ================================================================== //
+
+    /**
+     * Checks whether a player can take the UsePortal action.
+     * @param pvpBoard part of PlayerDecision?
+     * @param playerID part of PlayerDecision?
+     * @param player part of PlayerDecision?
+     * @param currentPlayerPosition part of PlayerDecision?
+     * @param playerIDtoBoardMap part of PlayerDecision?
+     * @return true if the action can be taken, false otherwise.
+     */
+    public static boolean canUsePortal(Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
+        for (Position portalPosition : pvpBoard.getPortals()) {
+            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(player, pvpBoard)) {
+                return true;
+            }
+        }
+
+        Board playerBoard = playerIDtoBoardMap.get(playerID);
+        for (Position portalPosition : playerBoard.getPortals()) {
+            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(player, playerIDtoBoardMap.get(playerID))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // ============================= ATTACKING HELPER FUNCTIONS ======================================================== //
+
     /**
      * Validate whether character's weapon isn't null and if target Position is within range and on the board
      * @param player character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
+     * @param gameState current gameState
      * @return true if attackCoordinate is valid, false otherwise
      */
     public static boolean validateAttack(Player player, Position attackCoordinate, GameState gameState) {
@@ -100,6 +102,7 @@ public class GameLogic {
             return false;
         }
 
+        // @TODO is gameState better or boardID better? to differentiate btwn personal and main board
         if (!validatePosition(gameState, attackCoordinate)) {
             //throw new AttackOutOfBoundsException
             return false;
@@ -112,28 +115,33 @@ public class GameLogic {
 
         return true;
     }
+
     /**
      *
-     * @param character character that's doing the attacking
+     * @param player character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
+     * @param gameState current gameState
      * @return list of Positions that would get attacked by the player's weapon
      */
-    public static ArrayList<Position> returnAffectedPositions(Player player, Position attackCoordinate) {
+    public static ArrayList<Position> returnAffectedPositions(Player player, Position attackCoordinate, GameState gameState) {
         validateAttack(player, attackCoordinate, gameState);
         Weapon weapon = player.getWeapon();
         ArrayList<Position> affectedPositions = new ArrayList<Position>();
 
+        // @TODO talk about attack patterns? did we say we'd just capture everything within a range around the attackCoordinate?
         return affectedPositions;
     }
 
+    // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
+
     /**
-     *
-     * @param pos1
-     * @param pos2
-     * @return Manhattan Distance between pos1 and pos2
+     * Checks whether given player is on given board.
+     * @param player The target player.
+     * @param board The target board.
+     * @return true if the player is on the board, false otherwise.
      */
-    public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
+    public static boolean isPlayerOnBoard(Player player, Board board) {
+        return (board.getPlayers().contains(player));
     }
 
     /**
@@ -156,5 +164,14 @@ public class GameLogic {
 
         // @TODO figure out if board is rectangular or circular. extra validation steps needed for circular board
         return true;
+    }
+
+    /**
+     * @param pos1 first position
+     * @param pos2 second position
+     * @return Manhattan Distance between pos1 and pos2
+     */
+    public static int calculateManhattanDistance(Position pos1, Position pos2) {
+        return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
     }
 }
