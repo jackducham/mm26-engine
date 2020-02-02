@@ -1,9 +1,10 @@
 package mech.mania.engine.server.api;
 
+import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
+import mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.service.DatabaseService;
@@ -66,7 +67,7 @@ public class GameStateController {
      * @param turn turn to get PlayerDecision for
      * @return List of PlayerDecisions received for that turn
      */
-    public List<PlayerDecisionProtos.PlayerDecision> getPlayerDecisions(int turn) {
+    public List<PlayerDecision> getPlayerDecisions(int turn) {
         return PlayerBinaryWebSocketHandler.getTurnAllPlayers(turn);
     }
 
@@ -74,10 +75,10 @@ public class GameStateController {
      * Return a new GameState given a list of PlayerDecisions.
      * @param gameState GameState to use to update
      * @param playerDecisions PlayerDecision objects to use to update
-     * @return 1 if fail, 0 if success
+     * @return new GameState
      */
-    public int updateGameState(GameState gameState, List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
-        return gameState.update(playerDecisions);
+    public GameState updateGameState(GameState gameState, List<PlayerDecision> playerDecisions) {
+        return GameLogic.doTurn(gameState, playerDecisions);
     }
 
     /**
@@ -100,9 +101,9 @@ public class GameStateController {
      * @param turnNumber turn the playerTurn is for
      * @return PlayerTurn from the given GameState
      */
-    public PlayerTurnProtos.PlayerTurn constructPlayerTurn(String playerName, int turnNumber) {
+    public PlayerTurn constructPlayerTurn(String playerName, int turnNumber) {
         // TODO: construct PlayerTurn by looking up information specific for this player
-        return PlayerTurnProtos.PlayerTurn.newBuilder()
+        return PlayerTurn.newBuilder()
                 .setPlayerName(playerName)
                 .setTurn(turnNumber)
                 .setIncrement(1)

@@ -4,19 +4,16 @@ import mech.mania.engine.game.GameState;
 import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.web.socket.WebSocketSession;
-import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 @SpringBootApplication
 public class Main {
@@ -76,8 +73,8 @@ public class Main {
 			controller.logTurnDate(turnCount, currDate);
 
 			// Get the players' decisions
-			List<PlayerDecisionProtos.PlayerDecision> playerDecisions = controller.getPlayerDecisions(turnCount);
-			controller.updateGameState(gameState, playerDecisions);
+			List<PlayerDecision> playerDecisions = controller.getPlayerDecisions(turnCount);
+			gameState = controller.updateGameState(gameState, playerDecisions);
 			controller.asyncStoreGameState(turnCount, gameState);
 
 			if (controller.isGameOver(gameState)) {
@@ -85,7 +82,7 @@ public class Main {
 			}
 
 			// Send to Visualizer a turn
-			VisualizerTurnProtos.VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
+			VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
 			VisualizerBinaryWebSocketHandler.sendTurn(turn);
 
 			// Send to players a turn

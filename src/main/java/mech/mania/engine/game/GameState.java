@@ -1,10 +1,7 @@
 package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 
-import java.util.List;
 import java.util.Map;
 
 public class GameState {
@@ -12,21 +9,12 @@ public class GameState {
     private Map<String, Board> playerIdToBoardMap;
     private int number = 0;
 
-    /**
-     * Update the GameState using PlayerDecision objects
-     * @param playerDecisions List of PlayerDecisions to use to update
-     * @return 1 if fail, 0 if success
-     */
-    public int update(List<PlayerDecisionProtos.PlayerDecision> playerDecisions) {
-        for (PlayerDecisionProtos.PlayerDecision playerDecision : playerDecisions) {
-            int increment = playerDecision.getIncrement();
-            if (isValid(increment)) {
-                number += increment;
-            } else {
-                return 1;
-            }
-        }
-        return 0;
+    public GameState() {
+        this.number = 0;
+    }
+
+    public GameState(int number) {
+        this.number = number;
     }
 
     /**

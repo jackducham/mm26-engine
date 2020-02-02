@@ -3,8 +3,8 @@ package mech.mania.engine.server.communication.player;
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
+import mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
@@ -22,7 +22,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     private static Map<String, WebSocketSession> endpoints = new HashMap<>();
 
     /** Map between turn number and the list of playerDecisions that have been received */
-    private static Map<Integer, List<PlayerDecisionProtos.PlayerDecision>> playerDecisions = new HashMap<>();
+    private static Map<Integer, List<PlayerDecision>> playerDecisions = new HashMap<>();
 
     /** Current turn number */
     private static int currentTurnNum = 0;
@@ -34,7 +34,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
                 "New Websocket connection established.");
 
         // TODO: Send initial game state on new connection
-        PlayerTurnProtos.PlayerTurn turn = PlayerTurnProtos.PlayerTurn.newBuilder()
+        PlayerTurn turn = PlayerTurn.newBuilder()
                 .setTurn(currentTurnNum)
                 .setIncrement(1)
                 .build();
@@ -52,10 +52,9 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     @Override
     public void handleBinaryMessage(WebSocketSession session, BinaryMessage message) {
         try {
-            PlayerDecisionProtos.PlayerDecision decision = PlayerDecisionProtos.PlayerDecision.parseFrom(message.getPayload());
+            PlayerDecision decision = PlayerDecision.parseFrom(message.getPayload());
 
-            // TODO: sanitize input? or use UUID instead of String playerName? is there a need to clean name?
-            String playerName = sanitizePlayerName(decision.getPlayerName());
+            String playerName = decision.getPlayerName();
 
             int turn = decision.getTurn();
 
@@ -108,7 +107,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
             if (endpoint.isOpen()) {
                 try {
                     // get specific message for each player
-                    PlayerTurnProtos.PlayerTurn turn = controller.constructPlayerTurn(player, currentTurnNum + 1);
+                    PlayerTurn turn = controller.constructPlayerTurn(player, currentTurnNum + 1);
 
                     // send the message to that player
                     endpoint.sendMessage(new BinaryMessage(turn.toByteArray()));
@@ -130,7 +129,7 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
      * @param turn turn to get for
      * @return List of PlayerDecisions
      */
-    public static List<PlayerDecisionProtos.PlayerDecision> getTurnAllPlayers(int turn) {
+    public static List<PlayerDecision> getTurnAllPlayers(int turn) {
         if (!playerDecisions.containsKey(turn) || playerDecisions.get(turn).isEmpty()) {
             GameLogger.log(GameLogger.LogLevel.DEBUG,
                     "PLAYERWEBSOCKET",
@@ -165,14 +164,5 @@ public class PlayerBinaryWebSocketHandler extends BinaryWebSocketHandler {
         // reset state
         endpoints.clear();
         playerDecisions.clear();
-    }
-
-    /**
-     * Sanitize the player name to make sure no malicious characters are used.
-     * @param playerName String name to sanitize
-     * @return sanitized String
-     */
-    private String sanitizePlayerName(String playerName) {
-        return playerName;
     }
 }

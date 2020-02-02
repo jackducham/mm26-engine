@@ -19,24 +19,24 @@ public final class PlayerDecisionProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string playerUuid = 1;</code>
+     * <code>string player_uuid = 1;</code>
      * @return The playerUuid.
      */
     java.lang.String getPlayerUuid();
     /**
-     * <code>string playerUuid = 1;</code>
+     * <code>string player_uuid = 1;</code>
      * @return The bytes for playerUuid.
      */
     com.google.protobuf.ByteString
         getPlayerUuidBytes();
 
     /**
-     * <code>string playerName = 2;</code>
+     * <code>string player_name = 2;</code>
      * @return The playerName.
      */
     java.lang.String getPlayerName();
     /**
-     * <code>string playerName = 2;</code>
+     * <code>string player_name = 2;</code>
      * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
@@ -50,7 +50,7 @@ public final class PlayerDecisionProtos {
 
     /**
      * <pre>
-     *TODO: Insert data needed here
+     * TODO: Insert data needed here
      * </pre>
      *
      * <code>int32 increment = 4;</code>
@@ -159,10 +159,10 @@ public final class PlayerDecisionProtos {
               mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision.class, mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision.Builder.class);
     }
 
-    public static final int PLAYERUUID_FIELD_NUMBER = 1;
+    public static final int PLAYER_UUID_FIELD_NUMBER = 1;
     private volatile java.lang.Object playerUuid_;
     /**
-     * <code>string playerUuid = 1;</code>
+     * <code>string player_uuid = 1;</code>
      * @return The playerUuid.
      */
     public java.lang.String getPlayerUuid() {
@@ -178,7 +178,7 @@ public final class PlayerDecisionProtos {
       }
     }
     /**
-     * <code>string playerUuid = 1;</code>
+     * <code>string player_uuid = 1;</code>
      * @return The bytes for playerUuid.
      */
     public com.google.protobuf.ByteString
@@ -195,10 +195,10 @@ public final class PlayerDecisionProtos {
       }
     }
 
-    public static final int PLAYERNAME_FIELD_NUMBER = 2;
+    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object playerName_;
     /**
-     * <code>string playerName = 2;</code>
+     * <code>string player_name = 2;</code>
      * @return The playerName.
      */
     public java.lang.String getPlayerName() {
@@ -214,7 +214,7 @@ public final class PlayerDecisionProtos {
       }
     }
     /**
-     * <code>string playerName = 2;</code>
+     * <code>string player_name = 2;</code>
      * @return The bytes for playerName.
      */
     public com.google.protobuf.ByteString
@@ -245,7 +245,7 @@ public final class PlayerDecisionProtos {
     private int increment_;
     /**
      * <pre>
-     *TODO: Insert data needed here
+     * TODO: Insert data needed here
      * </pre>
      *
      * <code>int32 increment = 4;</code>
@@ -327,8 +327,7 @@ public final class PlayerDecisionProtos {
           != other.getTurn()) return false;
       if (getIncrement()
           != other.getIncrement()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -338,9 +337,9 @@ public final class PlayerDecisionProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PLAYERUUID_FIELD_NUMBER;
+      hash = (37 * hash) + PLAYER_UUID_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerUuid().hashCode();
-      hash = (37 * hash) + PLAYERNAME_FIELD_NUMBER;
+      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerName().hashCode();
       hash = (37 * hash) + TURN_FIELD_NUMBER;
       hash = (53 * hash) + getTurn();
@@ -610,7 +609,7 @@ public final class PlayerDecisionProtos {
 
       private java.lang.Object playerUuid_ = "";
       /**
-       * <code>string playerUuid = 1;</code>
+       * <code>string player_uuid = 1;</code>
        * @return The playerUuid.
        */
       public java.lang.String getPlayerUuid() {
@@ -626,7 +625,7 @@ public final class PlayerDecisionProtos {
         }
       }
       /**
-       * <code>string playerUuid = 1;</code>
+       * <code>string player_uuid = 1;</code>
        * @return The bytes for playerUuid.
        */
       public com.google.protobuf.ByteString
@@ -643,7 +642,7 @@ public final class PlayerDecisionProtos {
         }
       }
       /**
-       * <code>string playerUuid = 1;</code>
+       * <code>string player_uuid = 1;</code>
        * @param value The playerUuid to set.
        * @return This builder for chaining.
        */
@@ -658,7 +657,7 @@ public final class PlayerDecisionProtos {
         return this;
       }
       /**
-       * <code>string playerUuid = 1;</code>
+       * <code>string player_uuid = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearPlayerUuid() {
@@ -668,7 +667,7 @@ public final class PlayerDecisionProtos {
         return this;
       }
       /**
-       * <code>string playerUuid = 1;</code>
+       * <code>string player_uuid = 1;</code>
        * @param value The bytes for playerUuid to set.
        * @return This builder for chaining.
        */
@@ -686,7 +685,7 @@ public final class PlayerDecisionProtos {
 
       private java.lang.Object playerName_ = "";
       /**
-       * <code>string playerName = 2;</code>
+       * <code>string player_name = 2;</code>
        * @return The playerName.
        */
       public java.lang.String getPlayerName() {
@@ -702,7 +701,7 @@ public final class PlayerDecisionProtos {
         }
       }
       /**
-       * <code>string playerName = 2;</code>
+       * <code>string player_name = 2;</code>
        * @return The bytes for playerName.
        */
       public com.google.protobuf.ByteString
@@ -719,7 +718,7 @@ public final class PlayerDecisionProtos {
         }
       }
       /**
-       * <code>string playerName = 2;</code>
+       * <code>string player_name = 2;</code>
        * @param value The playerName to set.
        * @return This builder for chaining.
        */
@@ -734,7 +733,7 @@ public final class PlayerDecisionProtos {
         return this;
       }
       /**
-       * <code>string playerName = 2;</code>
+       * <code>string player_name = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearPlayerName() {
@@ -744,7 +743,7 @@ public final class PlayerDecisionProtos {
         return this;
       }
       /**
-       * <code>string playerName = 2;</code>
+       * <code>string player_name = 2;</code>
        * @param value The bytes for playerName to set.
        * @return This builder for chaining.
        */
@@ -793,7 +792,7 @@ public final class PlayerDecisionProtos {
       private int increment_ ;
       /**
        * <pre>
-       *TODO: Insert data needed here
+       * TODO: Insert data needed here
        * </pre>
        *
        * <code>int32 increment = 4;</code>
@@ -804,7 +803,7 @@ public final class PlayerDecisionProtos {
       }
       /**
        * <pre>
-       *TODO: Insert data needed here
+       * TODO: Insert data needed here
        * </pre>
        *
        * <code>int32 increment = 4;</code>
@@ -819,7 +818,7 @@ public final class PlayerDecisionProtos {
       }
       /**
        * <pre>
-       *TODO: Insert data needed here
+       * TODO: Insert data needed here
        * </pre>
        *
        * <code>int32 increment = 4;</code>
@@ -899,11 +898,11 @@ public final class PlayerDecisionProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\025player_decision.proto\022\024player_communic" +
-      "ation\"Y\n\016PlayerDecision\022\022\n\nplayerUuid\030\001 " +
-      "\001(\t\022\022\n\nplayerName\030\002 \001(\t\022\014\n\004turn\030\003 \001(\005\022\021\n" +
-      "\tincrement\030\004 \001(\005BK\n3mech.mania.engine.se" +
-      "rver.communication.player.modelB\024PlayerD" +
-      "ecisionProtosb\006proto3"
+      "ation\"[\n\016PlayerDecision\022\023\n\013player_uuid\030\001" +
+      " \001(\t\022\023\n\013player_name\030\002 \001(\t\022\014\n\004turn\030\003 \001(\005\022" +
+      "\021\n\tincrement\030\004 \001(\005BK\n3mech.mania.engine." +
+      "server.communication.player.modelB\024Playe" +
+      "rDecisionProtosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

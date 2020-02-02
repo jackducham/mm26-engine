@@ -1,5 +1,6 @@
 package mech.mania.engine;
 
+import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos;
@@ -43,7 +44,7 @@ public class GameStateTests {
                 "move east 3"
         });
 
-        gameState.update(List.of(decision));
+        gameState = GameLogic.doTurn(gameState, List.of(decision));
         assertTrue(controller.isGameOver(gameState));
     }
 

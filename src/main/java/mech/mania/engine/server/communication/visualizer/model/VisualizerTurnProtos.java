@@ -20,10 +20,10 @@ public final class VisualizerTurnProtos {
 
     /**
      * <pre>
-     *TODO: Insert data needed here
+     * TODO: Insert data needed here
      * </pre>
      *
-     * <code>int64 turnNumber = 1;</code>
+     * <code>int64 turn_number = 1;</code>
      * @return The turnNumber.
      */
     long getTurnNumber();
@@ -110,14 +110,14 @@ public final class VisualizerTurnProtos {
               mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.class, mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn.Builder.class);
     }
 
-    public static final int TURNNUMBER_FIELD_NUMBER = 1;
+    public static final int TURN_NUMBER_FIELD_NUMBER = 1;
     private long turnNumber_;
     /**
      * <pre>
-     *TODO: Insert data needed here
+     * TODO: Insert data needed here
      * </pre>
      *
-     * <code>int64 turnNumber = 1;</code>
+     * <code>int64 turn_number = 1;</code>
      * @return The turnNumber.
      */
     public long getTurnNumber() {
@@ -171,8 +171,7 @@ public final class VisualizerTurnProtos {
 
       if (getTurnNumber()
           != other.getTurnNumber()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -182,7 +181,7 @@ public final class VisualizerTurnProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TURNNUMBER_FIELD_NUMBER;
+      hash = (37 * hash) + TURN_NUMBER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTurnNumber());
       hash = (29 * hash) + unknownFields.hashCode();
@@ -430,10 +429,10 @@ public final class VisualizerTurnProtos {
       private long turnNumber_ ;
       /**
        * <pre>
-       *TODO: Insert data needed here
+       * TODO: Insert data needed here
        * </pre>
        *
-       * <code>int64 turnNumber = 1;</code>
+       * <code>int64 turn_number = 1;</code>
        * @return The turnNumber.
        */
       public long getTurnNumber() {
@@ -441,10 +440,10 @@ public final class VisualizerTurnProtos {
       }
       /**
        * <pre>
-       *TODO: Insert data needed here
+       * TODO: Insert data needed here
        * </pre>
        *
-       * <code>int64 turnNumber = 1;</code>
+       * <code>int64 turn_number = 1;</code>
        * @param value The turnNumber to set.
        * @return This builder for chaining.
        */
@@ -456,10 +455,10 @@ public final class VisualizerTurnProtos {
       }
       /**
        * <pre>
-       *TODO: Insert data needed here
+       * TODO: Insert data needed here
        * </pre>
        *
-       * <code>int64 turnNumber = 1;</code>
+       * <code>int64 turn_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTurnNumber() {
@@ -535,11 +534,11 @@ public final class VisualizerTurnProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025visualizer_turn.proto\022\nvisualizer\"$\n\016V" +
-      "isualizerTurn\022\022\n\nturnNumber\030\001 \001(\003BO\n7mec" +
-      "h.mania.engine.server.communication.visu" +
-      "alizer.modelB\024VisualizerTurnProtosb\006prot" +
-      "o3"
+      "\n\025visualizer_turn.proto\022\nvisualizer\"%\n\016V" +
+      "isualizerTurn\022\023\n\013turn_number\030\001 \001(\003BY\n7me" +
+      "ch.mania.engine.server.communication.vis" +
+      "ualizer.modelB\024VisualizerTurnProtos\252\002\007MM" +
+      "26.IOb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
