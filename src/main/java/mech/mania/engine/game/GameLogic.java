@@ -74,6 +74,7 @@ public class GameLogic {
         }
 
         for (int i = 0; i < playersToMove.length; i++) {
+            // validatePosition takes in gameState now, instead of board
             if (validatePosition(targetBoard, targetPositions[i]) && targetBoard.getPlayers().contains(playersToMove[i])) {
                 playersToMove[i].setPosition(targetPositions[i]);
             } else {
@@ -83,64 +84,32 @@ public class GameLogic {
         return true;
     }
 
-    /*
-    Player has weapon in inv
-    coord is valid (map, within range)
-     */
-    public boolean validateAttack(Player player, PlayerDecision decision) {
-        Weapon decisionWeapon = decision.getWeapon(); // need to get weapon from playerDecision
-        Weapon playerWeapon = player.getWeapon();
-
-        if (playerWeapon == null || decisionWeapon != playerWeapon) {
-            // throw new InvalidWeaponException
-            return false;
-        }
-
-        // need to get attack coordinate from playerDecision
-        Position attackPosition = decision.getAttackPosition();
-
-
-        // boolean inMap = false;
-        int boardWidth = 1;
-        int boardHeight = 1;
-
-        int attackX = 1;
-        int attackY = 1;
-
-        if(attackX >= boardHeight || attackY >= boardWidth{
-            //throw new AttackOutOfBoundsException
-        }
-
-        double range = 1;
-        int currentX = 1;
-        int currentY = 1;
-
-        if(Math.sqrt(Math.pow(currentX - attackX,2) + Math.pow(currentY - attackY,2)) > range){
-            //throw new AttackOutOfRangeException
-        }
-
-        return false;
-    }
-
-
     /**
      * Validate whether character's weapon isn't null and if target Position is within range and on the board
      * @param player character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
      * @return true if attackCoordinate is valid, false otherwise
      */
-    public static boolean validateAttack(Player player, Position attackCoordinate) {
-        Weapon decisionWeapon = decision.getWeapon(); // need to get weapon from playerDecision
-        Weapon playerWeapon = player.getWeapon();
+    public static boolean validateAttack(Player player, Position attackCoordinate, GameState gameState) {
+        // @TODO how does player indicate they want to attack --> will they just give coordinate and it'll automatically use equiped weapon or will they give weapon and attackCoordinate
+        // @TODO exceptions? or just return false
 
-        if (playerWeapon == null || decisionWeapon != playerWeapon) {
+        Weapon playerWeapon = player.getWeapon();
+        if (playerWeapon == null) {
             // throw new InvalidWeaponException
             return false;
         }
 
-        if (validatePosition(board, attackCoordinate))
+        if (!validatePosition(gameState, attackCoordinate)) {
+            //throw new AttackOutOfBoundsException
+            return false;
+        }
 
-        // check if within range
+        if (calculateManhattanDistance(player.getPosition(), attackCoordinate) > playerWeapon.getRange()) {
+            //throw new AttackOutOfRangeException
+            return false;
+        }
+
         return true;
     }
     /**
@@ -149,9 +118,9 @@ public class GameLogic {
      * @param attackCoordinate central Position where the weapon is attacking
      * @return list of Positions that would get attacked by the player's weapon
      */
-    public static ArrayList<Position> returnAffectedPositions(Character character, Position attackCoordinate) {
-        validateAttack(character, attackCoordinate);
-        Weapon weapon = character.getWeapon();
+    public static ArrayList<Position> returnAffectedPositions(Player player, Position attackCoordinate) {
+        validateAttack(player, attackCoordinate, gameState);
+        Weapon weapon = player.getWeapon();
         ArrayList<Position> affectedPositions = new ArrayList<Position>();
 
         return affectedPositions;
@@ -165,5 +134,27 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
+    }
+
+    /**
+     * Checks whether position is within the bounds of the board
+     * @param gameState current game state with board to check position against
+     * @param position position to validate
+     * @return true, if position is valid
+     */
+    public static boolean validatePosition(GameState gameState, Position position) {
+        Board board = gameState.getPvpBoard();
+
+        // @TODO what's the coordinate system?
+        if (position.getX() > board.getGrid()[0].length || position.getX() < 0) {
+            return false;
+        }
+
+        if (position.getY() > board.getGrid().length || position.getY() < 0) {
+            return false;
+        }
+
+        // @TODO figure out if board is rectangular or circular. extra validation steps needed for circular board
+        return true;
     }
 }
