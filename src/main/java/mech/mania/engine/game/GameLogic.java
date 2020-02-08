@@ -146,18 +146,15 @@ public class GameLogic {
         int centerX = center.getX();
         int centerY = center.getY();
 
-        int endX = centerX;
-        int currX = centerX;
-        int currY = centerY + radius;
-        int width = 1;
+        int xMin = ((centerX - radius) < 0) ? 0 : (centerX - radius);
+        int yMin = ((centerY - radius) < 0) ? 0 : (centerY - radius);
 
-        int i = 0;
-        int j = 0;
-        for (; i < radius; i++) {
-            for (; j < width; j++) {
-                radiusPositions.add(new Position(currX, currY));
+        for (int x = xMin; x <= centerX + radius; x++) {
+            for (int y = yMin; y <= centerY + radius; y++) {
+                if (calculateManhattanDistance(x, centerX, y, centerY) <= radius) {
+                    radiusPositions.add(new Position(x, y));
+                }
             }
-            j += 2;
         }
 
         return radiusPositions;
@@ -203,5 +200,17 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
+    }
+
+    /**
+     *
+     * @param x_1
+     * @param y_1
+     * @param x_2
+     * @param y_2
+     * @return manhattan distance between the two points
+     */
+    public static int calculateManhattanDistance(int x_1, int y_1, int x_2, int y_2) {
+        return Math.abs(x_1 - x_2) + Math.abs(y_1 - y_2);
     }
 }
