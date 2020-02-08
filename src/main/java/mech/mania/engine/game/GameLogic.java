@@ -124,40 +124,23 @@ public class GameLogic {
         Weapon weapon = player.getWeapon();
         int radius = weapon.getSplashRadius();
         ArrayList<Position> affectedPositions = new ArrayList<>();
-        ArrayList<Position> radiusPositions = getPositionsWithinRadius(attackCoordinate, radius);
 
-        for (Position position: radiusPositions) {
-            if (validatePosition(gameState, position)) {
-                affectedPositions.add(position);
-            }
-        }
-
-        return affectedPositions;
-    }
-
-    /**
-     * Get an ArrayList with all the Positions within a certain radius around another Position
-     * @param center Position to find positions around
-     * @param radius distance to find coordinates in
-     * @return arraylist of positions
-     */
-    public static ArrayList<Position> getPositionsWithinRadius(Position center, int radius) {
-        ArrayList<Position> radiusPositions = new ArrayList<>();
-        int centerX = center.getX();
-        int centerY = center.getY();
+        int centerX = attackCoordinate.getX();
+        int centerY = attackCoordinate.getY();
 
         int xMin = ((centerX - radius) < 0) ? 0 : (centerX - radius);
         int yMin = ((centerY - radius) < 0) ? 0 : (centerY - radius);
 
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
-                if (calculateManhattanDistance(x, centerX, y, centerY) <= radius) {
-                    radiusPositions.add(new Position(x, y));
+                Position position = new Position(x, y);
+                if (calculateManhattanDistance(position, attackCoordinate) <= radius && validatePosition(gameState, position)) {
+                    affectedPositions.add(position);
                 }
             }
         }
 
-        return radiusPositions;
+        return affectedPositions;
     }
 
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
@@ -200,17 +183,5 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
-    }
-
-    /**
-     *
-     * @param x_1
-     * @param y_1
-     * @param x_2
-     * @param y_2
-     * @return manhattan distance between the two points
-     */
-    public static int calculateManhattanDistance(int x_1, int y_1, int x_2, int y_2) {
-        return Math.abs(x_1 - x_2) + Math.abs(y_1 - y_2);
     }
 }
