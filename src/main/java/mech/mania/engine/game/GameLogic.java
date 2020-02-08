@@ -46,7 +46,6 @@ public class GameLogic {
         }
 
         for (int i = 0; i < playersToMove.length; i++) {
-            // @TODO validatePosition takes in gameState now, instead of board --> discuss next week though
             Board board = gameState.getBoard(targetPositions[i].getBoardID());
             if (validatePosition(gameState, targetPositions[i]) && board.getPlayers().contains(playersToMove[i])) {
                 playersToMove[i].setPosition(targetPositions[i]);
@@ -95,23 +94,16 @@ public class GameLogic {
      */
     // @TODO do enemies have weapons too?
     public static boolean validateAttack(Player player, Position attackCoordinate, GameState gameState) {
-        // @TODO how does player indicate they want to attack --> will they just give coordinate and it'll automatically use equiped weapon or will they give weapon and attackCoordinate
-        // @TODO exceptions? or just return false
-
         Weapon playerWeapon = player.getWeapon();
         if (playerWeapon == null) {
-            // throw new InvalidWeaponException
             return false;
         }
 
-        // @TODO is gameState better or boardID better? to differentiate btwn personal and main board
         if (!validatePosition(gameState, attackCoordinate)) {
-            //throw new AttackOutOfBoundsException
             return false;
         }
 
         if (calculateManhattanDistance(player.getPosition(), attackCoordinate) > playerWeapon.getRange()) {
-            //throw new AttackOutOfRangeException
             return false;
         }
 
@@ -126,12 +118,49 @@ public class GameLogic {
      * @return list of Positions that would get attacked by the player's weapon
      */
     public static ArrayList<Position> returnAffectedPositions(Player player, Position attackCoordinate, GameState gameState) {
-        validateAttack(player, attackCoordinate, gameState);
+        if (!validateAttack(player, attackCoordinate, gameState)) {
+            return null;
+        }
         Weapon weapon = player.getWeapon();
-        ArrayList<Position> affectedPositions = new ArrayList<Position>();
+        int radius = weapon.getSplashRadius();
+        ArrayList<Position> affectedPositions = new ArrayList<>();
+        ArrayList<Position> radiusPositions = getPositionsWithinRadius(attackCoordinate, radius);
 
-        // @TODO talk about attack patterns? did we say we'd just capture everything within a range around the attackCoordinate?
+        for (Position position: radiusPositions) {
+            if (validatePosition(gameState, position)) {
+                affectedPositions.add(position);
+            }
+        }
+
         return affectedPositions;
+    }
+
+    /**
+     * Get an ArrayList with all the Positions within a certain radius around another Position
+     * @param center Position to find positions around
+     * @param radius distance to find coordinates in
+     * @return arraylist of positions
+     */
+    public static ArrayList<Position> getPositionsWithinRadius(Position center, int radius) {
+        ArrayList<Position> radiusPositions = new ArrayList<>();
+        int centerX = center.getX();
+        int centerY = center.getY();
+
+        int endX = centerX;
+        int currX = centerX;
+        int currY = centerY + radius;
+        int width = 1;
+
+        int i = 0;
+        int j = 0;
+        for (; i < radius; i++) {
+            for (; j < width; j++) {
+                radiusPositions.add(new Position(currX, currY));
+            }
+            j += 2;
+        }
+
+        return radiusPositions;
     }
 
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
@@ -155,6 +184,14 @@ public class GameLogic {
     public static boolean validatePosition(GameState gameState, Position position) {
         Board board = gameState.getBoard(position.getBoardID());
         if(board == null){return false;}
+
+        if (position.getX() > board.getGrid()[0].length || position.getX() < 0) {
+            return false;
+        }
+
+        if (position.getY() > board.getGrid().length || position.getY() < 0) {
+            return false;
+        }
 
         return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
