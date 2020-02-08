@@ -12,4 +12,14 @@ public class GameState {
     public Board getPvpBoard() {
         return pvpBoard;
     }
+
+    public Board getBoard(String boardID){
+        if(pvpBoard.getBoardID().equals(boardID)){return pvpBoard;}
+        for(Board b : playerIdToBoardMap.values()) {
+            if (b.getBoardID().equals(boardID)) {
+                return b;
+            }
+        }
+        return null;
+    }
 }

@@ -1,7 +1,7 @@
 package mech.mania.engine.game.items;
 
 public class TempStatusModifier extends StatusModifier {
-    int duration = 0;
+    int duration;
 
     public TempStatusModifier(double speedChange, double healthChange, double experienceChange,
                               double magicDamageChange, double physicalDamageChange, double magicDefenseChange,

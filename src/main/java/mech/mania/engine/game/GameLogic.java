@@ -5,9 +5,9 @@ import mech.mania.engine.game.board.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.items.Weapon;
-import mech.mania.engine.server.playercommunication.PlayerDecision;
-import mech.mania.engine.server.visualizercommunication.VisualizerBinaryWebSocketHandler;
-import mech.mania.engine.server.visualizercommunication.VisualizerTurnProtos.VisualizerTurn;
+import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
+import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 import mech.mania.engine.game.items.Item;
 
 import java.util.ArrayList;
@@ -35,19 +35,20 @@ public class GameLogic {
 
     /**
      *
-     * @param targetBoard
+     * @param gameState
      * @param playersToMove
      * @param targetPositions
      * @return
      */
-    public static boolean movePlayers(Board targetBoard, Player[] playersToMove, Position[] targetPositions) {
+    public static boolean movePlayers(GameState gameState, Player[] playersToMove, Position[] targetPositions) {
         if (playersToMove.length != targetPositions.length) {
             return false;
         }
 
         for (int i = 0; i < playersToMove.length; i++) {
             // @TODO validatePosition takes in gameState now, instead of board --> discuss next week though
-            if (validatePosition(targetBoard, targetPositions[i]) && targetBoard.getPlayers().contains(playersToMove[i])) {
+            Board board = gameState.getBoard(targetPositions[i].getBoardID());
+            if (validatePosition(gameState, targetPositions[i]) && board.getPlayers().contains(playersToMove[i])) {
                 playersToMove[i].setPosition(targetPositions[i]);
             } else {
                 return false;
@@ -147,24 +148,15 @@ public class GameLogic {
 
     /**
      * Checks whether position is within the bounds of the board
-     * @param gameState current game state with board to check position against
+     * @param gameState
      * @param position position to validate
      * @return true, if position is valid
      */
     public static boolean validatePosition(GameState gameState, Position position) {
-        Board board = gameState.getPvpBoard();
+        Board board = gameState.getBoard(position.getBoardID());
+        if(board == null){return false;}
 
-        // @TODO what's the coordinate system?
-        if (position.getX() > board.getGrid()[0].length || position.getX() < 0) {
-            return false;
-        }
-
-        if (position.getY() > board.getGrid().length || position.getY() < 0) {
-            return false;
-        }
-
-        // @TODO figure out if board is rectangular or circular. extra validation steps needed for circular board
-        return true;
+        return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
 
     /**

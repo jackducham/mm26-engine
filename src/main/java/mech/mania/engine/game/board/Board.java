@@ -10,6 +10,7 @@ public class Board {
     private List<Enemy> enemies;
     private List<Player> players;
     private List<Position> portals;
+    private String BoardID;
 
     public Tile[][] getGrid() {
         return grid;
@@ -25,5 +26,9 @@ public class Board {
 
     public List<Position> getPortals() {
         return portals;
+    }
+
+    public String getBoardID() {
+        return BoardID;
     }
 }
