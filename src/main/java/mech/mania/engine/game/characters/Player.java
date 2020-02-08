@@ -3,11 +3,10 @@ package mech.mania.engine.game.characters;
 import mech.mania.engine.game.items.*;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Player extends Character {
     private static final int INVENTORY_SIZE = 16;
-    private UUID id;
+    private String name;
     private Hat hat;
     private Clothes clothes;
     private Shoes shoes;
@@ -22,8 +21,8 @@ public class Player extends Character {
         inventory = new Item[INVENTORY_SIZE];
     }
 
-    public UUID getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     public Hat getHat() {
