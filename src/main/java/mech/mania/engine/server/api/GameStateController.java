@@ -124,7 +124,7 @@ public class GameStateController {
      * @return whether the game is over
      */
     public boolean isGameOver(GameState gameState) {
-        return gameState.getNumber() > 500;
+        return false; //@TODO remove this
     }
 
     /**

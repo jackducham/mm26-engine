@@ -9,4 +9,26 @@ public class Board {
     private Tile[][] grid;
     private List<Enemy> enemies;
     private List<Player> players;
+    private List<Position> portals;
+    private String BoardID;
+
+    public Tile[][] getGrid() {
+        return grid;
+    }
+
+    public List<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Position> getPortals() {
+        return portals;
+    }
+
+    public String getBoardID() {
+        return BoardID;
+    }
 }

@@ -1,18 +1,15 @@
 package mech.mania.engine.game.characters;
 
-import mech.mania.engine.game.items.AttackPattern;
+import mech.mania.engine.game.items.Item;
+
+import java.util.List;
 
 public class Enemy extends Character {
     private int goldReward;
-    private AttackPattern attackPattern;
+    private List<Item> drops;
 
-    public Enemy(int goldReward, AttackPattern attackPattern) {
+    public Enemy(int goldReward, List<Item> drops) {
         this.goldReward = goldReward;
-        this.attackPattern = attackPattern;
-    }
-
-    @Override
-    public AttackPattern getAttackPattern() {
-        return attackPattern;
+        this.drops = drops;
     }
 }
