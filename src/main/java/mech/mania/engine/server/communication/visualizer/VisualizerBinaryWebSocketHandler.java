@@ -1,6 +1,6 @@
 package mech.mania.engine.server.communication.visualizer;
 
-import mech.mania.engine.server.communication.player.PlayerRequestSender;
+import mech.mania.engine.logging.GameLogger;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
@@ -8,11 +8,8 @@ import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
-
-    private static final Logger LOGGER = Logger.getLogger( VisualizerBinaryWebSocketHandler.class.getName() );
 
     private static WebSocketSession session;
 
@@ -23,14 +20,18 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     public static void sendChange(VisualizerChange change) {
         BinaryMessage message = new BinaryMessage(change.toByteArray());
         if (session == null) {
-            LOGGER.info("No endpoint to send to");
+            GameLogger.log(GameLogger.LogLevel.DEBUG,
+                    "VISUALIZERWEBSOCKET",
+                    "No endpoint to send to");
             return;
         }
 
         try {
             session.sendMessage(message);
         } catch (IOException e) {
-            LOGGER.warning("An IOException occurred when sending turn to endpoint. Error message:\n" +
+            GameLogger.log(GameLogger.LogLevel.DEBUG,
+                    "VISUALIZERWEBSOCKET",
+                    "An IOException occurred when sending turn to endpoint. Error message:\n" +
                             e.getMessage());
         }
     }
@@ -46,7 +47,9 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     }
 
     public static void destroy() {
-        LOGGER.info("Closing endpoint with Visualizer");
+        GameLogger.log(GameLogger.LogLevel.INFO,
+                "VISUALIZERWEBSOCKET",
+                "Closing endpoint");
         if (session == null) {
             return;
         }
@@ -55,7 +58,9 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
             session.close(new CloseStatus(1001, "Game ended."));
             session = null;
         } catch (IOException e) {
-            LOGGER.warning("An IOException occurred when closing endpoint. Error message:\n" +
+            GameLogger.log(GameLogger.LogLevel.ERROR,
+                    "VISUALIZERWEBSOCKET",
+                    "An IOException occurred when closing endpoint. Error message:\n" +
                             e.getMessage());
         }
     }
@@ -63,7 +68,9 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession newSession) {
         session = newSession;
-        LOGGER.info("New WebSocket connection established");
+        GameLogger.log(GameLogger.LogLevel.DEBUG,
+                "VISUALIZERWEBSOCKET",
+                "New WebSocket connection established");
         // TODO: Send initial game state on new connection
     }
 }

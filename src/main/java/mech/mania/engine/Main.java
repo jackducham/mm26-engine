@@ -1,21 +1,22 @@
 package mech.mania.engine;
 
+import mech.mania.engine.game.GameState;
+import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
+import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 @SpringBootApplication
 public class Main {
-
-	private static final Logger LOGGER = Logger.getLogger( Main.class.getName() );
 
 	// CONSTANTS
 	/** URL to the Visualizer websocket. TODO: insert URL */
@@ -48,7 +49,9 @@ public class Main {
 		app.setDefaultProperties(Collections.singletonMap("server.port", port));
 		ctx = app.run();
 
-		LOGGER.info("Starting server on port " + port);
+		GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Starting server on port " + port);
+
+		GameLogger.setPrintLevel(GameLogger.LogLevel.DEBUG);
 
 		// reset state
 		gameOver = false;
@@ -56,37 +59,49 @@ public class Main {
 	}
 
 	public static void runGame() {
+		// Initialize game
+		GameState gameState = new GameState();
+		GameStateController controller = new GameStateController();
 
 		while (!gameOver) {
-			LOGGER.info("---------------------------------------------");
-			LOGGER.info("Game is running- turn: " + turnCount);
+			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "---------------------------------------------");
+			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Game is running- turn: " + turnCount);
 
 			// Log the current date for the beginning of the turn in the database
 			Date currDate = new Date(); // TODO: change to milliseconds?
-			LOGGER.info("Current time: " + currDate);
-			GameStateController.logTurnDate(turnCount, currDate);
+			GameLogger.log(GameLogger.LogLevel.INFO, "MAIN", "Current time: " + currDate);
+			controller.logTurnDate(turnCount, currDate);
 
 			// Get the players' decisions
-			GameStateController.asyncStoreGameState(turnCount);
+			List<PlayerDecision> playerDecisions = controller.getPlayerDecisions(turnCount);
+			gameState = controller.updateGameState(gameState, playerDecisions);
+			controller.asyncStoreGameState(turnCount, gameState);
 
-			// Send players a turn + update GameState
-			GameStateController.sendPlayerRequestsAndUpdateGameState();
+			if (controller.isGameOver(gameState)) {
+				gameOver = true;
+			}
 
-			// Send Visualizer a turn
-			VisualizerChange change = GameStateController.constructVisualizerChange();
+			// Send to Visualizer a turn
+			VisualizerChange change = controller.constructVisualizerChange(gameState);
 			VisualizerBinaryWebSocketHandler.sendChange(change);
+
+			// Send to players a turn
+			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(controller);
 
 			// Simulate time passing
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				LOGGER.info("Thread.sleep interrupted:\n" + e.getMessage());
+				GameLogger.log(GameLogger.LogLevel.ERROR,
+						"MAIN",
+						"Thread.sleep interrupted:\n" + e.getMessage());
 			}
 
 			turnCount++;
 		}
 
-		// Clean up any websocket connections (Player connections are not Websockets)
+		// Clean up any connections
+		PlayerBinaryWebSocketHandler.destroy();
 		VisualizerBinaryWebSocketHandler.destroy();
 
 		SpringApplication.exit(ctx, () -> 0);
