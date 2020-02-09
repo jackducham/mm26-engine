@@ -1,7 +1,6 @@
 package mech.mania.engine.server.communication.visualizer;
 
 import mech.mania.engine.logging.GameLogger;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;

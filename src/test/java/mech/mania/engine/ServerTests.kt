@@ -3,9 +3,9 @@ package mech.mania.engine
 import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -79,16 +79,16 @@ class ServerTests {
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun canReceivePlayerTurn() {
         // wait for an actual object to end the test
-        val completableFuture: CompletableFuture<PlayerTurnProtos.PlayerTurn> = CompletableFuture()
+        val completableFuture: CompletableFuture<PlayerTurn> = CompletableFuture()
 
         StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
             override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
+                val playerTurn = PlayerTurn.parseFrom(message.payload)
                 completableFuture.complete(playerTurn)
             }
         }, PLAYER_URL)
 
-        val playerTurn: PlayerTurnProtos.PlayerTurn = completableFuture.get(10, TimeUnit.SECONDS)
+        val playerTurn: PlayerTurn = completableFuture.get(10, TimeUnit.SECONDS)
         assertNotNull(playerTurn)
     }
 
@@ -103,13 +103,13 @@ class ServerTests {
 
         StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
             override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
+                val playerTurn = PlayerTurn.parseFrom(message.payload)
 
                 // once the game understands that we are in the game, then the test is over
                 if (playerTurn.playerName == "Joe") {
                     countDownLatch.countDown()
                 } else {
-                    val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
+                    val playerDecision = PlayerDecision.newBuilder()
                             .setPlayerName("Joe")
                             .setIncrement(1)
                             .build()
@@ -165,8 +165,8 @@ class ServerTests {
         for (i in 0 until n) {
             StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
                 override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                    val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-                    val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
+                    val playerTurn = PlayerTurn.parseFrom(message.payload)
+                    val playerDecision = PlayerDecision.newBuilder()
                             .setTurn(playerTurn.turn)
                             .setPlayerName("Joe%02d".format(i))
                             .setIncrement(1)
@@ -195,8 +195,8 @@ class ServerTests {
 
         StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
             override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val turn = VisualizerTurnProtos.VisualizerTurn.parseFrom(message.payload)
-                if (turn.turnNumber == 3L) {
+                val turn = VisualizerChange.parseFrom(message.payload)
+                if (turn.changeNumber == 3L) {
                     countDownLatch.countDown()
                 }
             }

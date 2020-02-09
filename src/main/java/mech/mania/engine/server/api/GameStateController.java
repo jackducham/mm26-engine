@@ -3,9 +3,6 @@ package mech.mania.engine.server.api;
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.service.DatabaseService;
 

@@ -1,7 +1,6 @@
 package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
 
 import java.util.Date;
 import java.util.List;

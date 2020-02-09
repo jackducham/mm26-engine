@@ -3,8 +3,6 @@ package mech.mania.engine.server.communication.player;
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.logging.GameLogger;
 import mech.mania.engine.server.api.GameStateController;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos.PlayerTurn;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;

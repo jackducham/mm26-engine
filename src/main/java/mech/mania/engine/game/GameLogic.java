@@ -5,10 +5,7 @@ import mech.mania.engine.game.board.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.items.Weapon;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
-import mech.mania.engine.game.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
