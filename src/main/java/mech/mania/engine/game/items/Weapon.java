@@ -5,9 +5,9 @@ public class Weapon extends Wearable {
     protected int splashRadius = 0;
     protected TempStatusModifier onHitEffect;
 
-    public Weapon(double buyPrice, double sellPrice, StatusModifier stats, int range, int splashRadius,
+    public Weapon(StatusModifier stats, int range, int splashRadius,
                   TempStatusModifier onHitEffect) {
-        super(buyPrice, sellPrice, stats);
+        super(stats);
         this.range = range;
         this.splashRadius = splashRadius;
         this.onHitEffect = onHitEffect;
