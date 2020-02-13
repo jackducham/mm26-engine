@@ -3,8 +3,8 @@ package mech.mania.engine.game.items;
 public class Consumable extends Item {
     protected TempStatusModifier effect;
 
-    public Consumable(double buyPrice, double sellPrice, int maxStack, TempStatusModifier effect) {
-        super(buyPrice, sellPrice, maxStack);
+    public Consumable(int maxStack, TempStatusModifier effect) {
+        super(maxStack);
         this.effect = effect;
     }
 
