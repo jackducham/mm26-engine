@@ -1,4 +1,4 @@
-package mech.mania.engine.game.board;
+package mech.mania.engine.game.characters;
 
 public class Position {
     private int x;
