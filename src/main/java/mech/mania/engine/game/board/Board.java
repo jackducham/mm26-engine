@@ -2,6 +2,7 @@ package mech.mania.engine.game.board;
 
 import mech.mania.engine.game.characters.Enemy;
 import mech.mania.engine.game.characters.Player;
+import mech.mania.engine.game.characters.Position;
 
 import java.util.List;
 

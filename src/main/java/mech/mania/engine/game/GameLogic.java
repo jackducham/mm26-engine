@@ -1,7 +1,7 @@
 package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
-import mech.mania.engine.game.board.Position;
+import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.items.Weapon;

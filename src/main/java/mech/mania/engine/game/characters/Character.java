@@ -1,6 +1,5 @@
 package mech.mania.engine.game.characters;
 
-import mech.mania.engine.game.board.Position;
 import mech.mania.engine.game.items.Weapon;
 
 public abstract class Character {
