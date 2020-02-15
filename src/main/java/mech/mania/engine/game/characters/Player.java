@@ -184,8 +184,12 @@ public class Player extends Character {
     }
 
 
-
-
+    /**
+     * Adds a new temporary status modifier to the Player's list of modifiers.
+     *
+     * @param statusToApply the status which will be added to the Player's list
+     * @return true if successful
+     */
     public boolean applyStatus(TempStatusModifier statusToApply) {
         if(statusToApply == null) {
             return false;
@@ -194,6 +198,14 @@ public class Player extends Character {
         return true;
     }
 
+
+    //Equip Item and Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /**
+     * Exchanges an item in the Player's inventory with an equipped.
+     *
+     * @param index the index of the inventory which contains the item to be equipped.
+     * @return true if successful
+     */
     public boolean equipItem(int index) {
         Item itemToEquip = null;
         if (inventory[index] != null) {
