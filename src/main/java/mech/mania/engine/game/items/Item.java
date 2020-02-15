@@ -2,6 +2,7 @@ package mech.mania.engine.game.items;
 
 public abstract class Item {
     protected int maxStack;
+    protected String name;
 
     public Item(int maxStack) {
         this.maxStack = maxStack;
