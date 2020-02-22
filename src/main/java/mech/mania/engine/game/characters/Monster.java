@@ -4,10 +4,10 @@ import mech.mania.engine.game.items.Item;
 
 import java.util.List;
 
-public class Enemy extends Character {
+public class Monster extends Character {
     private List<Item> drops;
 
-    public Enemy(List<Item> drops) {
+    public Monster(List<Item> drops) {
         this.drops = drops;
     }
 }
