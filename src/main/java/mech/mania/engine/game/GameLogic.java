@@ -187,6 +187,48 @@ public class GameLogic {
         return;
     }
 
+
+    // ============================= ITEM FUNCTIONS ==================================================================== //
+
+    /**
+     * Adds an item to the Player's inventory and removes it from the tile.
+     *
+     * @param player player to give the item to
+     * @param index index of the item in the tile's items that the player is picking up
+     * @param tile the tile the player picking an item up from
+     * @return true if successful
+     */
+    public boolean pickUpItem(Player player, int index, Tile tile) {
+        for(int i = 0; i < player.getInventory().length; i++) {
+            if(player.getInventory()[i] == null) {
+                Item temp = tile.getItems().get(index);
+                tile.getItems().remove(index);
+                player.getInventory()[i] = temp;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Removes one or more items from a Player's inventory and adds them to the items on a tile.
+     *
+     * @param player the player dropping items
+     * @param itemsToDrop the indices of the items in the player's inventory which are being dropped
+     * @param tile the tile the items will be dropped on
+     * @return true if successful
+     */
+    public boolean dropItems(Player player, int[] itemsToDrop, Tile tile) {
+        for(int i = 0; i < itemsToDrop.length; i++) {
+            if(player.getInventory()[itemsToDrop[i]] != null) {
+                Item temp = player.getInventory()[itemsToDrop[i]];
+                player.getInventory()[itemsToDrop[i]] = null;
+                tile.getItems().add(temp);
+            }
+        }
+        return true;
+    }
+
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
 
     /**

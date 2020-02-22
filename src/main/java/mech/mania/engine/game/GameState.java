@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GameState {
+    private int turnNumber;
     private Board pvpBoard;
     private Map<UUID, Board> playerIdToBoardMap;
 

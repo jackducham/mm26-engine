@@ -12,7 +12,7 @@ public class Player extends Character {
     private Shoes shoes;
     private Item[] inventory;
 
-    public Player(){
+    public Player() {
         experience = 0;
         hat = null;
         clothes = null;
@@ -45,18 +45,18 @@ public class Player extends Character {
         double maxHealth = super.getMaxHealth();
 
         // Add wearable effects
-        if(hat != null){
+        if (hat != null) {
             maxHealth += hat.getStats().getHealthChange();
         }
-        if(clothes != null){
+        if (clothes != null) {
             maxHealth += clothes.getStats().getHealthChange();
         }
-        if(shoes != null){
+        if (shoes != null) {
             maxHealth += shoes.getStats().getHealthChange();
         }
 
         // Add active effects
-        for(TempStatusModifier mod : activeEffects){
+        for (TempStatusModifier mod : activeEffects) {
             maxHealth += mod.getHealthChange();
         }
 
@@ -65,21 +65,21 @@ public class Player extends Character {
 
     @Override
     public double getSpeed() {
-        double speed =  super.getSpeed();
+        double speed = super.getSpeed();
 
         // Add wearable effects
-        if(hat != null){
+        if (hat != null) {
             speed += hat.getStats().getSpeedChange();
         }
-        if(clothes != null){
+        if (clothes != null) {
             speed += clothes.getStats().getSpeedChange();
         }
-        if(shoes != null){
+        if (shoes != null) {
             speed += shoes.getStats().getSpeedChange();
         }
 
         // Add active effects
-        for(TempStatusModifier mod : activeEffects){
+        for (TempStatusModifier mod : activeEffects) {
             speed += mod.getSpeedChange();
         }
 
@@ -91,18 +91,18 @@ public class Player extends Character {
         double physicalDamage = super.getPhysicalDamage();
 
         // Add wearable effects
-        if(hat != null){
+        if (hat != null) {
             physicalDamage += hat.getStats().getPhysicalDamageChange();
         }
-        if(clothes != null){
+        if (clothes != null) {
             physicalDamage += clothes.getStats().getPhysicalDamageChange();
         }
-        if(shoes != null){
+        if (shoes != null) {
             physicalDamage += shoes.getStats().getPhysicalDamageChange();
         }
 
         // Add active effects
-        for(TempStatusModifier mod : activeEffects){
+        for (TempStatusModifier mod : activeEffects) {
             physicalDamage += mod.getPhysicalDamageChange();
         }
 
@@ -111,21 +111,21 @@ public class Player extends Character {
 
     @Override
     public double getMagicalDamage() {
-        double magicalDamage =  super.getMagicalDamage();
+        double magicalDamage = super.getMagicalDamage();
 
         // Add wearable effects
-        if(hat != null){
+        if (hat != null) {
             magicalDamage += hat.getStats().getMagicDamageChange();
         }
-        if(clothes != null){
+        if (clothes != null) {
             magicalDamage += clothes.getStats().getMagicDamageChange();
         }
-        if(shoes != null){
+        if (shoes != null) {
             magicalDamage += shoes.getStats().getMagicDamageChange();
         }
 
         // Add active effects
-        for(TempStatusModifier mod : activeEffects){
+        for (TempStatusModifier mod : activeEffects) {
             magicalDamage += mod.getMagicDamageChange();
         }
 
@@ -134,21 +134,21 @@ public class Player extends Character {
 
     @Override
     public double getMagicalDefense() {
-        double magicalDefense =  super.getMagicalDefense();
+        double magicalDefense = super.getMagicalDefense();
 
         // Add wearable effects
-        if(hat != null){
+        if (hat != null) {
             magicalDefense += hat.getStats().getMagicDefenseChange();
         }
-        if(clothes != null){
+        if (clothes != null) {
             magicalDefense += clothes.getStats().getMagicDefenseChange();
         }
-        if(shoes != null){
+        if (shoes != null) {
             magicalDefense += shoes.getStats().getMagicDefenseChange();
         }
 
         // Add active effects
-        for(TempStatusModifier mod : activeEffects){
+        for (TempStatusModifier mod : activeEffects) {
             magicalDefense += mod.getMagicDefenseChange();
         }
 
@@ -160,54 +160,139 @@ public class Player extends Character {
         double physicalDefense = super.getPhysicalDefense();
 
         // Add wearable effects
-        if(hat != null){
+        if (hat != null) {
             physicalDefense += hat.getStats().getPhysicalDefenseChange();
         }
-        if(clothes != null){
+        if (clothes != null) {
             physicalDefense += clothes.getStats().getPhysicalDefenseChange();
         }
-        if(shoes != null){
+        if (shoes != null) {
             physicalDefense += shoes.getStats().getPhysicalDefenseChange();
         }
 
         // Add active effects
-        for(TempStatusModifier mod : activeEffects){
+        for (TempStatusModifier mod : activeEffects) {
             physicalDefense += mod.getPhysicalDefenseChange();
         }
 
         return physicalDefense;
     }
 
-    /**
-     * Exchanges weapon in Player parameters with weapon in inventory
-     * @param weaponToEquip
-     * @return true if weapon was successfully equipped
-     */
-    public boolean equipWeapon(Weapon weaponToEquip) {
-        int index = hasWeapon(weaponToEquip);
 
-        if (index == -1) {
+    /**
+     * Adds a new temporary status modifier to the Player's list of modifiers.
+     *
+     * @param statusToApply the status which will be added to the Player's list
+     * @return true if successful
+     */
+    public boolean applyStatus(TempStatusModifier statusToApply) {
+        if(statusToApply == null) {
             return false;
         }
+        activeEffects.add(statusToApply);
+        return true;
+    }
 
-        Weapon temp = this.weapon;
-        this.weapon = weaponToEquip;
+
+    //Equip Item and Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /**
+     * Exchanges an item in the Player's inventory with an equipped.
+     *
+     * @param index the index of the inventory which contains the item to be equipped.
+     * @return true if successful
+     */
+    public boolean equipItem(int index) {
+        Item itemToEquip = null;
+        if (inventory[index] != null) {
+            itemToEquip = inventory[index];
+        } else {
+            return false;
+        }
+        if (itemToEquip instanceof Hat) {
+            return equipHat((Hat)itemToEquip, index);
+        } else if (itemToEquip instanceof Clothes) {
+            return equipCloths((Clothes)itemToEquip, index);
+        } else if (itemToEquip instanceof Shoes) {
+            return equipShoes((Shoes)itemToEquip, index);
+        } else if (itemToEquip instanceof Weapon) {
+            return equipWeapon((Weapon)itemToEquip, index);
+        } else if (itemToEquip instanceof Consumable) {
+            return useConsumable((Consumable)itemToEquip, index);
+        }
+        return false;
+    }
+
+    /**
+     * Exchanges hat in Player parameters with hat in inventory
+     *
+     * @param index index of the inventory to which the currently equipped hat will be returned
+     * @param hatToEquip the hat which will replace the currently equipped hat
+     * @return true if hat was successfully equipped
+     */
+    private boolean equipHat(Hat hatToEquip, int index) {
+        Hat temp = hat;
+        hat = hatToEquip;
         inventory[index] = temp;
-
         return true;
     }
 
     /**
-     * Checks whether player has weapon in inventory
-     * @param weapon weapon to check
-     * @return inventory index, or -1 if weapon isn't in inventory
+     * Exchanges clothes in Player parameters with clothes in inventory
+     *
+     * @param index index of the inventory to which the currently equipped clothes will be returned
+     * @param clothesToEquip the clothes which will replace the currently equipped clothes
+     * @return true if clothes were successfully equipped
      */
-    public int hasWeapon(Weapon weapon) {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] == weapon) {
-                return i;
-            }
+    private boolean equipCloths(Clothes clothesToEquip, int index) {
+        Clothes temp = clothes;
+        clothes = clothesToEquip;
+        inventory[index] = temp;
+        return true;
+    }
+
+    /**
+     * Exchanges shoes in Player parameters with shoes in inventory
+     *
+     * @param index index of the inventory to which the currently equipped shoes will be returned
+     * @param shoesToEquip the shoes which will replace the currently equipped shoes
+     * @return true if shoes were successfully equipped
+     */
+    private boolean equipShoes(Shoes shoesToEquip, int index) {
+        Shoes temp = shoes;
+        shoes = shoesToEquip;
+        inventory[index] = temp;
+        return true;
+    }
+
+    /**
+     * Exchanges weapon in Player parameters with weapon in inventory
+     *
+     * @param index index of the inventory to which the currently equipped weapon will be returned
+     * @param weaponToEquip the weapon which will replace the currently equipped weapon
+     * @return true if weapon was successfully equipped
+     */
+    private boolean equipWeapon(Weapon weaponToEquip, int index) {
+        Weapon temp = weapon;
+        weapon = weaponToEquip;
+        inventory[index] = temp;
+        return true;
+    }
+
+    /**
+     * Removes one stack of the consumable and applies its statusModifier to the player.
+     * Also deletes the consumable if it has no stacks remaining.
+     *
+     * @param consumableToConsume the consumable which will be consumed
+     * @param index the index in the inventory the consumable is located at
+     */
+    private boolean useConsumable(Consumable consumableToConsume, int index) {
+        int stacks = consumableToConsume.getStacks();
+        applyStatus(consumableToConsume.getEffect());
+        if(stacks == 1) {
+            inventory[index] = null;
+        } else {
+            consumableToConsume.setStacks(stacks - 1);
         }
-        return -1;
+        return true;
     }
 }
