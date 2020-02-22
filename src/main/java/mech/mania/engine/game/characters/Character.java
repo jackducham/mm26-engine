@@ -1,12 +1,16 @@
 package mech.mania.engine.game.characters;
 
+import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
+
+import java.util.List;
 
 public abstract class Character {
     protected double currentHealth;
     protected int experience;
     protected Position position;
     protected Weapon weapon;
+    List<TempStatusModifier> activeEffects;
 
     public Position getPosition() {
         return position;
@@ -77,5 +81,9 @@ public abstract class Character {
     static final double magicalDefenseScaling = 0;
     public double getMagicalDefense() {
         return baseMagicalDefense + getLevel()*magicalDefenseScaling;
+    }
+
+    public List<TempStatusModifier> getActiveEffects() {
+        return activeEffects;
     }
 }
