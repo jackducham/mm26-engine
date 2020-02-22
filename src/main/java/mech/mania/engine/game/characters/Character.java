@@ -86,4 +86,8 @@ public abstract class Character {
     public List<TempStatusModifier> getActiveEffects() {
         return activeEffects;
     }
+
+    public void addEffect(TempStatusModifier modifier) {
+        activeEffects.add(modifier);
+    }
 }
