@@ -19,6 +19,10 @@ public abstract class Character {
     public double getCurrentHealth() {
         return currentHealth;
     }
+    
+    public void updateCurrentHealth(double delta) {
+        currentHealth += delta;
+    }
 
     public Weapon getWeapon() {
         return weapon;
