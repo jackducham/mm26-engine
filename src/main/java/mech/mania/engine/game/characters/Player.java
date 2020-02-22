@@ -11,7 +11,6 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
-    List<TempStatusModifier> activeEffects;
 
     public Player(){
         experience = 0;
@@ -39,10 +38,6 @@ public class Player extends Character {
 
     public Item[] getInventory() {
         return inventory;
-    }
-
-    public List<TempStatusModifier> getActiveEffects() {
-        return activeEffects;
     }
 
     @Override
