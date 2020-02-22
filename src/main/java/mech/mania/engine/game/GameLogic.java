@@ -1,9 +1,12 @@
 package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
+import mech.mania.engine.game.characters.Enemy;
 import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
+import mech.mania.engine.game.characters.Character;
+import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
@@ -14,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.HashMap;
 
 /**
  * A class to execute the game logic.
@@ -87,14 +91,13 @@ public class GameLogic {
 
     /**
      * Validate whether character's weapon isn't null and if target Position is within range and on the board
-     * @param player character that's doing the attacking
+     * @param character character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
      * @param gameState current gameState
      * @return true if attackCoordinate is valid, false otherwise
      */
-    // @TODO do enemies have weapons too?
-    public static boolean validateAttack(Player player, Position attackCoordinate, GameState gameState) {
-        Weapon playerWeapon = player.getWeapon();
+    public static boolean validateAttack(Character character, Position attackCoordinate, GameState gameState) {
+        Weapon playerWeapon = character.getWeapon();
         if (playerWeapon == null) {
             return false;
         }
@@ -103,7 +106,7 @@ public class GameLogic {
             return false;
         }
 
-        if (calculateManhattanDistance(player.getPosition(), attackCoordinate) > playerWeapon.getRange()) {
+        if (calculateManhattanDistance(character.getPosition(), attackCoordinate) > playerWeapon.getRange()) {
             return false;
         }
 
@@ -112,18 +115,18 @@ public class GameLogic {
 
     /**
      *
-     * @param player character that's doing the attacking
+     * @param character character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
      * @param gameState current gameState
-     * @return list of Positions that would get attacked by the player's weapon
+     * @return hashmap of Positions that would get attacked by the player's weapon
      */
-    public static ArrayList<Position> returnAffectedPositions(Player player, Position attackCoordinate, GameState gameState) {
-        if (!validateAttack(player, attackCoordinate, gameState)) {
+    public static Map<Position, Integer> returnAffectedPositions(Character character, Position attackCoordinate, GameState gameState) {
+        if (!validateAttack(character, attackCoordinate, gameState)) {
             return null;
         }
-        Weapon weapon = player.getWeapon();
+        Weapon weapon = character.getWeapon();
         int radius = weapon.getSplashRadius();
-        ArrayList<Position> affectedPositions = new ArrayList<>();
+        Map<Position, Integer> affectedPositions = new HashMap<>();
 
         int centerX = attackCoordinate.getX();
         int centerY = attackCoordinate.getY();
@@ -135,12 +138,53 @@ public class GameLogic {
             for (int y = yMin; y <= centerY + radius; y++) {
                 Position position = new Position(x, y);
                 if (calculateManhattanDistance(position, attackCoordinate) <= radius && validatePosition(gameState, position)) {
-                    affectedPositions.add(position);
+                    affectedPositions.put(position, 1);
                 }
             }
         }
 
         return affectedPositions;
+    }
+
+    /**
+     * Applies Weapon's onHitEffect to the TempStatusModifier of all characters within the range of the attackCoordinate
+     * @param attacker character doing the attacking
+     * @param attackCoordinate coordinate to attack
+     * @param gameState current gamestate
+     */
+    public static void addAttackEffectToCharacters(Character attacker, Position attackCoordinate, GameState gameState) {
+        Board board = gameState.getPvpBoard();
+        TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
+        List<Enemy> enemies = board.getEnemies();
+        List<Player> players = board.getPlayers();
+        Map<Position, Integer> affectedPositions = returnAffectedPositions(attacker, attackCoordinate, gameState);
+
+        // Character gave invalid attack position
+        if (affectedPositions == null) {
+            return;
+        }
+
+        for (Player player: players) {
+            if (player == attacker) {
+                continue;
+            }
+            Position playerPos = player.getPosition();
+            if (affectedPositions.containsKey(playerPos)) {
+                player.addEffect(onHitEffect);
+            }
+        }
+
+        for (Enemy enemy: enemies) {
+            if (enemy == attacker) {
+                continue;
+            }
+            Position playerPos = enemy.getPosition();
+            if (affectedPositions.containsKey(playerPos)) {
+                enemy.addEffect(onHitEffect);
+            }
+        }
+
+        return;
     }
 
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
