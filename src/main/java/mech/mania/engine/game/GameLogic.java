@@ -6,6 +6,8 @@ import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.items.Weapon;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ public class GameLogic {
      * @return the resulting {@link GameState}.
      */
     public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions){
-        VisualizerTurn.Builder visualizerTurn = VisualizerTurn.newBuilder();
+        VisualizerChange.Builder visualizerTurn = VisualizerChange.newBuilder();
         // TODO: do turn logic
         // TODO: update visualizerTurn
         VisualizerBinaryWebSocketHandler.sendTurn(visualizerTurn.build());

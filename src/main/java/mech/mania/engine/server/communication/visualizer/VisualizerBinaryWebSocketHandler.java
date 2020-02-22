@@ -5,6 +5,7 @@ import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.io.IOException;
 
@@ -14,10 +15,10 @@ public class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
 
     /**
      * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
-     * @param turn the VisualizerTurn to send
+     * @param change the VisualizerTurn to send
      */
-    public static void sendTurn(VisualizerTurn turn) {
-        BinaryMessage message = new BinaryMessage(turn.toByteArray());
+    public static void sendChange(VisualizerChange change) {
+        BinaryMessage message = new BinaryMessage(change.toByteArray());
         if (session == null) {
             GameLogger.log(GameLogger.LogLevel.DEBUG,
                     "VISUALIZERWEBSOCKET",

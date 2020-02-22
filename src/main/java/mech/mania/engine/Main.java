@@ -8,6 +8,8 @@ import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSock
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.Collections;
 import java.util.Date;
@@ -80,8 +82,8 @@ public class Main {
 			}
 
 			// Send to Visualizer a turn
-			VisualizerTurn turn = controller.constructVisualizerTurn(gameState);
-			VisualizerBinaryWebSocketHandler.sendTurn(turn);
+			VisualizerChange change = controller.constructVisualizerChange(gameState);
+			VisualizerBinaryWebSocketHandler.sendChange(change);
 
 			// Send to players a turn
 			PlayerBinaryWebSocketHandler.sendTurnAllPlayers(controller);

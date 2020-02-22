@@ -7,6 +7,8 @@ import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn;
 
 import java.io.IOException;
 import java.util.ArrayList;

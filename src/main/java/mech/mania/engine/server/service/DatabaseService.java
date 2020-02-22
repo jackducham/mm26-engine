@@ -2,6 +2,7 @@ package mech.mania.engine.server.service;
 
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.dao.Database;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.Date;
 import java.util.List;
@@ -27,11 +28,11 @@ public class DatabaseService {
     /**
      * Store a VisualizerTurn
      * @param turn turn to store for
-     * @param visualizerTurn VisualizerTurn to store
+     * @param visualizerChange VisualizerTurn to store
      * @return 1 if fail, 0 if success
      */
-    public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        return database.storeVisualizerTurn(turn, visualizerTurn);
+    public int storeVisualizerTurn(final int turn, final VisualizerChange visualizerChange) {
+        return database.storeVisualizerTurn(turn, visualizerChange);
     }
 
     /**
@@ -48,7 +49,7 @@ public class DatabaseService {
      * Retrieve list of VisualizerTurns
      * @return List of VisualizerTurn
      */
-    public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
-        return database.getVisualizerTurns();
+    public List<VisualizerChange> getVisualizerTurns() {
+        return database.getVisualizerChanges();
     }
 }

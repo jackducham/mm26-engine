@@ -3,6 +3,9 @@ package mech.mania.engine.server.api;
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.service.DatabaseService;
 
@@ -84,9 +87,9 @@ public class GameStateController {
      * @param gameState GameState to use to construct a VisualizerTurn
      * @return VisualizerTurn from the given GameState
      */
-    public VisualizerTurnProtos.VisualizerTurn constructVisualizerTurn(GameState gameState) {
+    public VisualizerChange constructVisualizerChange(GameState gameState) {
         // TODO: construct VisualizerTurn
-        return VisualizerTurnProtos.VisualizerTurn.newBuilder()
+        return VisualizerChange.newBuilder()
                 .setTurnNumber(currentTurnNum)
                 .build();
     }
@@ -111,7 +114,7 @@ public class GameStateController {
      * Retrieve VisualizerTurns if necessary
      * @return List of VisualizerTurns
      */
-    public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
+    public List<VisualizerChange> getVisualizerChanges() {
         return databaseService.getVisualizerTurns();
     }
 

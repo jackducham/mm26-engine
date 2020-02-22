@@ -2,6 +2,7 @@ package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.logging.GameLogger;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.List;
 public class DatabaseFake implements Database {
 
     private List<GameState> gameStates = new ArrayList<>();
-    private List<VisualizerTurnProtos.VisualizerTurn> visualizerTurns = new ArrayList<>();
+    private List<VisualizerChange> visualizerChanges = new ArrayList<>();
     private List<Date> dates = new ArrayList<>();
 
     @Override
@@ -29,14 +30,14 @@ public class DatabaseFake implements Database {
     }
 
     @Override
-    public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", "Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerTurn.toString());
-        if (visualizerTurns.size() <= turn) {
-            visualizerTurns.add(visualizerTurn);
+    public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", "Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerChange.toString());
+        if (visualizerChanges.size() <= turn) {
+            visualizerChanges.add(visualizerChange);
         } else {
-            visualizerTurns.set(turn, visualizerTurn);
+            visualizerChanges.set(turn, visualizerChange);
         }
-        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", visualizerTurns.size() + " VisualizerTurns stored currently");
+        GameLogger.log(GameLogger.LogLevel.DEBUG, "FAKEDAO", visualizerChanges.size() + " VisualizerTurns stored currently");
         return 0;
     }
 
@@ -59,8 +60,8 @@ public class DatabaseFake implements Database {
     }
 
     @Override
-    public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
-        return visualizerTurns;
+    public List<VisualizerChange> getVisualizerChanges() {
+        return visualizerChanges;
     }
 
 }
