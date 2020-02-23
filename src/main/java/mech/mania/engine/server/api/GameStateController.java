@@ -2,7 +2,8 @@ package mech.mania.engine.server.api;
 
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.server.communication.player.PlayerBinaryWebSocketHandler;
+import mech.mania.engine.server.communication.player.PlayerRequestSender;
+import mech.mania.engine.server.communication.player.model.PlayerInfo;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
@@ -10,7 +11,9 @@ import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.service.DatabaseService;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * An API for getting information from the game state. Will handle storing GameState,
@@ -18,15 +21,23 @@ import java.util.List;
  */
 public class GameStateController {
 
-    private final DatabaseService databaseService;
-    private int currentTurnNum;
-
-    /**
-     * Construct a GameStateController using a Dao.
-     */
-    public GameStateController() {
-        this.databaseService = new DatabaseService(new DatabaseFake());
+    public enum PlayerExistence {
+        PLAYER_EXISTS,
+        PLAYER_DOES_NOT_EXIST
     }
+
+    private static final DatabaseService databaseService = new DatabaseService(new DatabaseFake());
+    private static int currentTurnNum;
+    private static GameState currentGameState;
+    private static Map<String, PlayerInfo> playerInfoMap;
+
+    public static GameState getCurrentGameState() {
+        if (currentGameState == null) {
+            currentGameState = new GameState();
+        }
+        return currentGameState;
+    }
+
 
     /**
      * Log the date of the turn, for use later to retrieve GameStates by Date
@@ -35,103 +46,89 @@ public class GameStateController {
      * @param date date to store
      * @return 1 if fail, 0 if success
      */
-    public int logTurnDate(final int turn, final Date date) {
+    public static int logTurnDate(final int turn, final Date date) {
         currentTurnNum = turn;
         return databaseService.logTurnDate(turn, date);
     }
 
+
     /**
      * Store GameState asynchronously.
      * @param turn turn to store for
-     * @param gameState GameState to store
      * @return 1 if fail, 0 if success
      */
-    public int asyncStoreGameState(int turn, GameState gameState) {
-        // TODO: insert Async stuff
-        new Thread(() -> storeGameState(turn, gameState)).start();
+    public static int asyncStoreGameState(int turn) {
+        new Thread(() -> databaseService.storeGameState(turn, getCurrentGameState())).start();
         return 0;
     }
 
-    /**
-     * Stores a GameState in the database.
-     * @param turn turn to store for
-     * @param gameState GameState to store
-     * @return 1 if fail, 0 if success
-     */
-    public int storeGameState(int turn, GameState gameState) {
-        return databaseService.storeGameState(turn, gameState);
-    }
-
-    /**
-     * Get Player Decisions from all endpoints.
-     * @param turn turn to get PlayerDecision for
-     * @return List of PlayerDecisions received for that turn
-     */
-    public List<PlayerDecision> getPlayerDecisions(int turn) {
-        return PlayerBinaryWebSocketHandler.getTurnAllPlayers(turn);
-    }
-
-    /**
-     * Return a new GameState given a list of PlayerDecisions.
-     * @param gameState GameState to use to update
-     * @param playerDecisions PlayerDecision objects to use to update
-     * @return new GameState
-     */
-    public GameState updateGameState(GameState gameState, List<PlayerDecision> playerDecisions) {
-        return GameLogic.doTurn(gameState, playerDecisions);
-    }
 
     /**
      * Given a gameState, use its internal state to create a VisualizerTurn to send
      * to players
-     * @param gameState GameState to use to construct a VisualizerTurn
      * @return VisualizerTurn from the given GameState
      */
-    public VisualizerChange constructVisualizerChange(GameState gameState) {
+    public static VisualizerChange constructVisualizerChange() {
+        GameState gameState = getCurrentGameState();
         // TODO: construct VisualizerTurn
         return VisualizerChange.newBuilder()
-                .setTurnNumber(currentTurnNum)
                 .build();
     }
+
 
     /**
      * Given a gameState, use its internal state to create a PlayerTurn to send
      * to players
      * @param playerName name of the player to get the playerTurn for
-     * @param turnNumber turn the playerTurn is for
      * @return PlayerTurn from the given GameState
      */
-    public PlayerTurn constructPlayerTurn(String playerName, int turnNumber) {
+    public static PlayerTurn constructPlayerTurn(String playerName) {
         // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
                 .setPlayerName(playerName)
-                .setTurn(turnNumber)
                 .setIncrement(1)
                 .build();
     }
 
-    /**
-     * Retrieve VisualizerTurns if necessary
-     * @return List of VisualizerTurns
-     */
-    public List<VisualizerChange> getVisualizerChanges() {
-        return databaseService.getVisualizerTurns();
+    public static Map<String, PlayerInfo> getPlayerInfoMap() {
+        if (playerInfoMap == null) {
+            playerInfoMap = new HashMap<>();
+        }
+        return playerInfoMap;
+    }
+
+    public static GameState sendPlayerRequestsAndUpdateGameState() {
+        List<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
+        GameState updatedGameState = GameLogic.doTurn(getCurrentGameState(), decisions);
+        currentGameState = updatedGameState;
+        return updatedGameState;
     }
 
     /**
-     * Check whether the game is over (currently checks for whether the number is at 10
-     * @param gameState GameState to check
-     * @return whether the game is over
+     * Add a player IP by the player name and IP.
+     * @param playerName name of player to add
+     * @param playerIp IP of player to add
+     * @return Whether or not the player existed in list of players previously.
      */
-    public boolean isGameOver(GameState gameState) {
-        return false; //@TODO remove this
+    public static PlayerExistence addPlayerIp(String playerName, String playerIp) {
+        Date currentDate = new Date();
+
+        Map<String, PlayerInfo> playerInfoMap = getPlayerInfoMap();
+
+        if (playerInfoMap.containsKey(playerName)) {
+            playerInfoMap.put(playerName, new PlayerInfo(playerIp, currentDate, currentTurnNum));
+            return PlayerExistence.PLAYER_EXISTS;
+        }
+
+        playerInfoMap.put(playerName, new PlayerInfo(playerIp, currentDate, currentTurnNum));
+        return PlayerExistence.PLAYER_DOES_NOT_EXIST;
     }
 
     /**
      * Gets the current turn number
      * @return current turn number
      */
-    public int getCurrentTurn() {
+    public static int getCurrentTurn() {
         return currentTurnNum;
     }
 }

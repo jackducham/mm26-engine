@@ -14,7 +14,5 @@ public interface Database {
 
     int logTurnDate(final int turn, final Date date);
 
-    List<VisualizerChange> getVisualizerChanges();
-
     int turnBeforeDate(final Date date);
 }
