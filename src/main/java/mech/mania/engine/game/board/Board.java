@@ -1,6 +1,6 @@
 package mech.mania.engine.game.board;
 
-import mech.mania.engine.game.characters.Enemy;
+import mech.mania.engine.game.characters.Monster;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Position;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Board {
     private Tile[][] grid;
-    private List<Enemy> enemies;
+    private List<Monster> enemies;
     private List<Player> players;
     private List<Position> portals;
     private String BoardID;
@@ -17,7 +17,7 @@ public class Board {
         return grid;
     }
 
-    public List<Enemy> getEnemies() {
+    public List<Monster> getEnemies() {
         return enemies;
     }
 
