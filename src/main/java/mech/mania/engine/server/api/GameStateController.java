@@ -90,7 +90,6 @@ public class GameStateController {
     public VisualizerChange constructVisualizerChange(GameState gameState) {
         // TODO: construct VisualizerTurn
         return VisualizerChange.newBuilder()
-                .setTurnNumber(currentTurnNum)
                 .build();
     }
 
@@ -105,7 +104,6 @@ public class GameStateController {
         // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
                 .setPlayerName(playerName)
-                .setTurn(turnNumber)
                 .setIncrement(1)
                 .build();
     }

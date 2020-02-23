@@ -167,7 +167,6 @@ class ServerTests {
                 override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
                     val playerTurn = PlayerTurn.parseFrom(message.payload)
                     val playerDecision = PlayerDecision.newBuilder()
-                            .setTurn(playerTurn.turn)
                             .setPlayerName("Joe%02d".format(i))
                             .setIncrement(1)
                             .build()

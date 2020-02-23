@@ -2,6 +2,7 @@ package mech.mania.engine;
 
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.server.api.GameStateController;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 import org.junit.After;
 import org.junit.Before;
 
@@ -51,8 +52,8 @@ public class GameStateTests {
      * @param commands String[] of commands to use
      * @return PlayerDecision object
      */
-    private PlayerDecisionProtos.PlayerDecision createDecisionsFromCommands(String[] commands) {
-        PlayerDecisionProtos.PlayerDecision.Builder decision = PlayerDecisionProtos.PlayerDecision.newBuilder();
+    private PlayerDecision createDecisionsFromCommands(String[] commands) {
+        PlayerDecision.Builder decision = PlayerDecision.newBuilder();
 
         String randomName = UUID.randomUUID().toString();
         decision.setPlayerName(randomName);  // give player a random name
