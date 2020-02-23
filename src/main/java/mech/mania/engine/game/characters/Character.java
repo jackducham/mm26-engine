@@ -1,5 +1,8 @@
 package mech.mania.engine.game.characters;
 
+import static java.lang.Math.max;
+
+import java.util.Map;
 import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
 
@@ -11,6 +14,8 @@ public abstract class Character {
     protected Position position;
     protected Weapon weapon;
     List<TempStatusModifier> activeEffects;
+    private Map<Player, Double> taggedPlayersDamage;
+
 
     public Position getPosition() {
         return position;
@@ -26,6 +31,23 @@ public abstract class Character {
 
     public void updateCurrentHealth(double delta) {
         currentHealth += delta;
+    }
+
+    public void takeDamage(double physicalDamage, double magicalDamage, Player player) {
+        double actualDamage = max(0, physicalDamage - getPhysicalDefense())
+            + max(0, magicalDamage - getMagicalDefense());
+
+        if (taggedPlayersDamage.containsKey(player)) {
+            taggedPlayersDamage.put(player, taggedPlayersDamage.get(player) + actualDamage);
+        } else {
+            taggedPlayersDamage.put(player, actualDamage);
+        }
+
+        updateCurrentHealth(-actualDamage);
+    }
+
+    public void removePlayer(Player toRemove) {
+        taggedPlayersDamage.remove(toRemove);
     }
 
     public Weapon getWeapon() {
@@ -45,6 +67,8 @@ public abstract class Character {
     public int getTotalExperience(){
         return experience;
     }
+
+    public abstract void onDeath();
 
     /* Stat getter methods */
     static final double baseMaxHealth = 0;

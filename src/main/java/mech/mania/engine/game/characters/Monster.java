@@ -69,6 +69,10 @@ public class Monster extends Character {
         //TODO: return Decision instance
     }
 
+    public void onDeath() {
+        //TODO
+    }
+
     /**
      * Called by the game when a player dies or leaves the board
      * @param toRemove Player to remove

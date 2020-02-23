@@ -193,6 +193,9 @@ public class Player extends Character {
         return true;
     }
 
+    public void onDeath() {
+        //TODO
+    }
 
     //Equip Item and Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
