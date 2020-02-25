@@ -4,36 +4,24 @@ import static java.lang.Math.max;
 
 import java.util.HashMap;
 import java.util.Map;
+import mech.mania.engine.game.GameState;
+import mech.mania.engine.game.board.Board;
+import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.items.Item;
 
 import java.util.List;
+import mech.mania.engine.game.items.Weapon;
 
 public class Monster extends Character {
     private List<Item> drops;
-    private Map<Player, Double> taggedPlayersDamage;
-    private Position spawnPoint;
 
-    public Monster(List<Item> drops, Position spawnPoint) {
+    public Monster(int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
+        super(experience, spawnPoint, weapon);
         this.drops = drops;
-        taggedPlayersDamage = new HashMap<Player, Double>();
-        this.spawnPoint = spawnPoint;
     }
 
-    public void takeDamage(double physicalDamage, double magicalDamage, Player player) {
-        double actualDamage = max(0, physicalDamage - getPhysicalDefense())
-                                + max(0, magicalDamage - getMagicalDefense());
-
-        if (taggedPlayersDamage.containsKey(player)) {
-            taggedPlayersDamage.put(player, taggedPlayersDamage.get(player) + actualDamage);
-        } else {
-            taggedPlayersDamage.put(player, actualDamage);
-        }
-
-        //TODO: update the monster's HP based on damage taken. Method does not yet exist.
-    }
-
-    // this should return a Decision- to be implemented
-    public void makeDecision() {
+    // TODO: return a Decision object
+    public void makeDecision(GameState gameState) {
         if (taggedPlayersDamage.isEmpty()) {
             if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
                 //TODO: call non-existent pathfinder code to navigate home
@@ -69,15 +57,12 @@ public class Monster extends Character {
         //TODO: return Decision instance
     }
 
-    public void onDeath() {
-        //TODO
-    }
-
-    /**
-     * Called by the game when a player dies or leaves the board
-     * @param toRemove Player to remove
-     */
-    public void removePlayer(Player toRemove) {
-        taggedPlayersDamage.remove(toRemove);
+    @Override
+    public void distributeRewards(GameState gameState) {
+        super.distributeRewards(gameState);
+        Board current = gameState.getBoard(position.getBoardID());
+        Tile currentTile = current.getGrid()[position.getX()][position.getY()];
+        // TODO: update how items are dropped
+        currentTile.getItems().addAll(drops);
     }
 }
