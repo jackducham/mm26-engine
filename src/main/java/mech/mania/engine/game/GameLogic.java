@@ -1,7 +1,7 @@
 package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
-import mech.mania.engine.game.characters.Enemy;
+import mech.mania.engine.game.characters.Monster;
 import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
@@ -155,7 +155,7 @@ public class GameLogic {
     public static void addAttackEffectToCharacters(Character attacker, Position attackCoordinate, GameState gameState) {
         Board board = gameState.getPvpBoard();
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
-        List<Enemy> enemies = board.getEnemies();
+        List<Monster> enemies = board.getEnemies();
         List<Player> players = board.getPlayers();
         Map<Position, Integer> affectedPositions = returnAffectedPositions(attacker, attackCoordinate, gameState);
 
@@ -174,13 +174,13 @@ public class GameLogic {
             }
         }
 
-        for (Enemy enemy: enemies) {
-            if (enemy == attacker) {
+        for (Monster monster: enemies) {
+            if (monster == attacker) {
                 continue;
             }
-            Position playerPos = enemy.getPosition();
+            Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                enemy.addEffect(onHitEffect);
+                monster.addEffect(onHitEffect);
             }
         }
 
