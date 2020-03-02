@@ -30,9 +30,4 @@ public class DatabaseRedis implements Database {
     public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
         return 0;
     }
-
-    @Override
-    public List<VisualizerChange> getVisualizerChanges() {
-        return new ArrayList<>();
-    }
 }

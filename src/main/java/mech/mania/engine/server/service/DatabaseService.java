@@ -31,8 +31,8 @@ public class DatabaseService {
      * @param visualizerChange VisualizerTurn to store
      * @return 1 if fail, 0 if success
      */
-    public int storeVisualizerTurn(final int turn, final VisualizerChange visualizerChange) {
-        return database.storeVisualizerTurn(turn, visualizerChange);
+    public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
+        return database.storeVisualizerChange(turn, visualizerChange);
     }
 
     /**
@@ -43,13 +43,5 @@ public class DatabaseService {
      */
     public int logTurnDate(final int turn, final Date date) {
         return database.logTurnDate(turn, date);
-    }
-
-    /**
-     * Retrieve list of VisualizerTurns
-     * @return List of VisualizerTurn
-     */
-    public List<VisualizerChange> getVisualizerTurns() {
-        return database.getVisualizerChanges();
     }
 }
