@@ -75,7 +75,7 @@ public class InfraRESTHandler {
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
             LOGGER.warning("InvalidProtocolBufferException on /player/ request from Infra: " + e.getMessage());
-            InfraStatus.newBuilder()
+            return InfraStatus.newBuilder()
                     .setStatus(400)
                     .setMessage("InvalidProtocolBufferException: " + e.getMessage())
                     .build()

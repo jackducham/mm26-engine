@@ -11,6 +11,7 @@ import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.service.DatabaseService;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,6 +91,9 @@ public class GameStateController {
     }
 
     public static Map<String, PlayerInfo> getPlayerInfoMap() {
+        if (playerInfoMap == null) {
+            playerInfoMap = new HashMap<>();
+        }
         return playerInfoMap;
     }
 
@@ -108,6 +112,8 @@ public class GameStateController {
      */
     public static PlayerExistence addPlayerIp(String playerName, String playerIp) {
         Date currentDate = new Date();
+
+        Map<String, PlayerInfo> playerInfoMap = getPlayerInfoMap();
 
         if (playerInfoMap.containsKey(playerName)) {
             playerInfoMap.put(playerName, new PlayerInfo(playerIp, currentDate, currentTurnNum));

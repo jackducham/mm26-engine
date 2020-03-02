@@ -4,21 +4,19 @@ import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import mech.mania.engine.server.communication.infra.model.InfraProtos
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn
+import mech.mania.engine.server.communication.infra.model.InfraProtos.InfraStatus
+import mech.mania.engine.server.communication.infra.model.InfraProtos.InfraPlayer
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
-import java.io.DataOutputStream
+import java.io.*
 import java.net.*
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.ExecutionException
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.TimeoutException
+import java.util.concurrent.*
 import java.util.logging.Logger
 
 
@@ -69,7 +67,7 @@ class ServerTests {
         val url = URL("http://localhost:$port/infra/endgame")
         try {
             val bytes = url.readBytes()
-            val statusObj = InfraProtos.InfraStatus.parseFrom(bytes)
+            val statusObj = InfraStatus.parseFrom(bytes)
             LOGGER.info("Response upon sending endgame signal: ${statusObj.message}")
             Thread.sleep(1000)
         } catch (e: Exception) {
@@ -98,27 +96,26 @@ class ServerTests {
             }
 
             val randomPort: Int = socket.localPort
-            LOGGER.info("Attempting to connect on port $randomPort")
 
-            val server = HttpServer.create(InetSocketAddress(randomPort), 0).apply {
+            HttpServer.create(InetSocketAddress(randomPort), 0).apply {
                 createContext("/server") { exchange: HttpExchange ->
-                    // read in input from server
-                    // once the turn is parsed, use that turn to call a passed in function
-                    val turn = PlayerTurn.parseFrom(exchange.requestBody.readAllBytes())
-
-                    // calculate what to do with turn
-                    val decision = f(turn)
-
-                    // send back response
-                    val os = exchange.responseBody
-                    os.write(decision.toByteArray())
-                    os.close()
+                    try {
+                        // read in input from server
+                        // once the turn is parsed, use that turn to call a passed in function
+                        val turn = PlayerTurn.parseFrom(exchange.requestBody.readAllBytes())
+                        // calculate what to do with turn
+                        val decision = f(turn)
+                        // send back response
+                        decision.writeTo(exchange.responseBody)
+                    } finally {
+                        exchange.close()
+                    }
                 }
                 start()
             }
 
             val playerName = java.util.UUID.randomUUID().toString()
-            val playerAddr = "${server.address.address}".substring(1) + ":" + server.address.port
+            val playerAddr = "http://localhost:$randomPort/server"
             LOGGER.info("Creating player \"$playerName\" with IP address $playerAddr")
 
             playerNames.add(playerName)
@@ -126,23 +123,26 @@ class ServerTests {
         }
 
         for (i in 0.until(n)) {
-            val con = URL(INFRA_NEW_URL).openConnection() as HttpURLConnection
+            with (URL(INFRA_NEW_URL).openConnection() as HttpURLConnection) {
+                requestMethod = "POST"
+                doOutput = true
+                setRequestProperty("Content-Type", "application/octet-stream")
 
-            // optional default is GET
-            con.requestMethod = "POST"
-            con.doOutput = true
+                InfraPlayer.newBuilder()
+                        .setPlayerIp(playerAddrs[i])
+                        .setPlayerName(playerNames[i])
+                        .build()
+                        .writeTo(outputStream)
+                connect()
 
-            val bytes = InfraProtos.InfraPlayer.newBuilder()
-                    .setPlayerIp(playerAddrs[i])
-                    .setPlayerName(playerNames[i])
-                    .build()
-                    .toByteArray()
+                outputStream.flush()
+                outputStream.close()
 
-            con.outputStream.write(bytes)
-            con.outputStream.flush()
-            con.outputStream.close()
-            con.connectTimeout = 1000
-            con.connect()
+                val recvBytes = inputStream.readAllBytes()
+                val infraStatus = InfraStatus.parseFrom(recvBytes)
+                inputStream.close()
+                disconnect()
+            }
         }
     }
 
@@ -155,7 +155,7 @@ class ServerTests {
         // wait for an actual object to end the test
         val completableFuture: CompletableFuture<Boolean> = CompletableFuture()
 
-        connectNPlayers(5) {
+        connectNPlayers(1) {
             completableFuture.complete(true)
             PlayerDecision.newBuilder()
                     .setIncrement(1)
@@ -163,5 +163,25 @@ class ServerTests {
         }
 
         assert(completableFuture.get(20, TimeUnit.SECONDS))
+    }
+
+
+    /**
+     * Test to see if the endpoint works and can be connected to via websocket
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canReceiveMultiplePlayerTurns() {
+        // wait for an actual object to end the test
+        val latch = CountDownLatch(5)
+
+        connectNPlayers(5) {
+            latch.countDown()
+            PlayerDecision.newBuilder()
+                    .setIncrement(1)
+                    .build()
+        }
+
+        assert(latch.await(10, TimeUnit.SECONDS))
     }
 }

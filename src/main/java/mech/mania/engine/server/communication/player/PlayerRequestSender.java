@@ -50,20 +50,9 @@ public class PlayerRequestSender {
 
                 int responseCode = http.getResponseCode();
                 if (responseCode == STATUS_OK) {
-                    InputStream isr = http.getInputStream();
-
-                    // https://www.baeldung.com/convert-input-stream-to-array-of-bytes
-                    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-                    int nRead;
-                    byte[] data = new byte[1024];
-                    while ((nRead = isr.read(data, 0, data.length)) != -1) {
-                        buffer.write(data, 0, nRead);
-                    }
-
-                    isr.close();
-
-                    decision = PlayerDecision.parseFrom(buffer.toByteArray());
-
+                    InputStream is = http.getInputStream();
+                    decision = PlayerDecision.parseFrom(is.readAllBytes());
+                    is.close();
                 } else {
                     LOGGER.warning("Non-OK Status Code from player \"" + playerInfo.getKey() + "\" @ " + url);
                 }
