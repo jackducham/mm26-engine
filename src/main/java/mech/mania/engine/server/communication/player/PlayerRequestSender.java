@@ -1,5 +1,6 @@
 package mech.mania.engine.server.communication.player;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.model.PlayerInfo;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
@@ -31,34 +32,31 @@ public class PlayerRequestSender {
         return playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
             URL url = null;
             PlayerDecision decision = null;
+            HttpURLConnection http = null;
 
             try {
                 // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
                 url = new URL(playerInfo.getValue().getIpAddr());
                 URLConnection con = url.openConnection();
-                HttpURLConnection http = (HttpURLConnection) con;
+                http = (HttpURLConnection) con;
+            } catch (IOException e) {
+                LOGGER.warning(String.format("MalformedURLException: could not connect to player \"%s\" at url %s: %s",
+                        playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+            }
+
+            assert http != null;
+            try {
                 http.setRequestMethod("POST");
                 http.setDoOutput(true);
 
                 String playerName = playerInfo.getKey();
                 PlayerTurn turn = GameStateController.constructPlayerTurn(playerName);
 
-                OutputStream os = http.getOutputStream();
-                os.write(turn.toByteArray());
-                os.flush();
-                os.close();
+                turn.writeTo(http.getOutputStream());
+                decision = PlayerDecision.parseFrom(http.getInputStream());
 
-                int responseCode = http.getResponseCode();
-                if (responseCode == STATUS_OK) {
-                    InputStream is = http.getInputStream();
-                    decision = PlayerDecision.parseFrom(is.readAllBytes());
-                    is.close();
-                } else {
-                    LOGGER.warning("Non-OK Status Code from player \"" + playerInfo.getKey() + "\" @ " + url);
-                }
-
-            } catch (MalformedURLException e) {
-                LOGGER.warning(String.format("MalformedURLException: could not connect to player \"%s\" at url %s: %s",
+            } catch (InvalidProtocolBufferException e) {
+                LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
             } catch (ProtocolException e) {
                 LOGGER.warning(String.format("ProtocolException: could not connect to player \"%s\" at url %s: %s",
@@ -66,6 +64,8 @@ public class PlayerRequestSender {
             } catch (IOException e) {
                 LOGGER.warning(String.format("IOException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+            } finally {
+                http.disconnect();
             }
 
             return decision;

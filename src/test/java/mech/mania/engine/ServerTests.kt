@@ -39,7 +39,7 @@ class ServerTests {
     private var INFRA_NEW_URL: String = "http://localhost:$port/infra/player/new"
     private var INFRA_RECONNECT_URL: String = "http://localhost:$port/infra/player/reconnect"
 
-    private var LOGGER = Logger.getLogger("ServerTests")
+    private var LOGGER = Logger.getLogger(ServerTests::class.toString())
 
     /**
      * Set up the testing environment by initializing variables and starting the game server.
@@ -99,17 +99,18 @@ class ServerTests {
 
             HttpServer.create(InetSocketAddress(randomPort), 0).apply {
                 createContext("/server") { exchange: HttpExchange ->
-                    try {
-                        // read in input from server
-                        // once the turn is parsed, use that turn to call a passed in function
-                        val turn = PlayerTurn.parseFrom(exchange.requestBody.readAllBytes())
-                        // calculate what to do with turn
-                        val decision = f(turn)
-                        // send back response
-                        decision.writeTo(exchange.responseBody)
-                    } finally {
-                        exchange.close()
-                    }
+                    exchange.responseHeaders["Content-Type"] = "application/octet-stream"
+
+                    // read in input from server
+                    // once the turn is parsed, use that turn to call a passed in function
+                    val turn = PlayerTurn.parseFrom(exchange.requestBody)
+
+                    // calculate what to do with turn
+                    val decision: PlayerDecision = f(turn)
+                    val size: Long = decision.toByteArray().size.toLong()
+                    // send back response
+                    exchange.sendResponseHeaders(200, size)
+                    decision.writeTo(exchange.responseBody)
                 }
                 start()
             }
@@ -162,7 +163,7 @@ class ServerTests {
                     .build()
         }
 
-        assert(completableFuture.get(20, TimeUnit.SECONDS))
+        assert(completableFuture.get(10, TimeUnit.SECONDS))
     }
 
 
