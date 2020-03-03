@@ -1,25 +1,24 @@
 package mech.mania.engine
 
-import junit.framework.TestCase.assertNotNull
+import com.sun.net.httpserver.HttpExchange
+import com.sun.net.httpserver.HttpServer
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos
-import mech.mania.engine.server.communication.player.model.PlayerTurnProtos
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn
+import mech.mania.engine.server.communication.infra.model.InfraProtos.InfraStatus
+import mech.mania.engine.server.communication.infra.model.InfraProtos.InfraPlayer
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
-import org.springframework.web.socket.BinaryMessage
-import org.springframework.web.socket.CloseStatus
-import org.springframework.web.socket.WebSocketSession
-import org.springframework.web.socket.client.standard.StandardWebSocketClient
-import org.springframework.web.socket.handler.BinaryWebSocketHandler
-import java.net.URISyntaxException
-import java.net.URL
+import java.io.*
+import java.net.*
 import java.util.concurrent.*
+import java.util.logging.Logger
+
 
 /*
  * Follow this blog post:
@@ -33,11 +32,14 @@ class ServerTests {
     /** Port to launch the Game server on */
     private val port = 8080
 
-    /** URL that player connect to */
-    private var PLAYER_URL: String = "ws://localhost:$port/player"
-
     /** URL that visualizer will connect to */
     private var VISUALIZER_URL: String = "ws://localhost:$port/visualizer"
+
+    /** URL that infra will send new/reconnect player messages to */
+    private var INFRA_NEW_URL: String = "http://localhost:$port/infra/player/new"
+    private var INFRA_RECONNECT_URL: String = "http://localhost:$port/infra/player/reconnect"
+
+    private var LOGGER = Logger.getLogger(ServerTests::class.toString())
 
     /**
      * Set up the testing environment by initializing variables and starting the game server.
@@ -56,152 +58,131 @@ class ServerTests {
     }
 
     /**
-     * Clean up afterwards by sending a HTTP GET request to /api/v1/infra/endgame.
+     * Clean up afterwards by sending a HTTP GET request to /infra/endgame.
      */
     @After
     fun cleanup() {
         // end game server - send HTTP request to server
         // https://stackoverflow.com/questions/46177133/http-request-in-kotlin
-        val url = URL("http://localhost:$port/api/v1/infra/endgame")
+        val url = URL("http://localhost:$port/infra/endgame")
         try {
-            println("Response upon sending endgame signal: ${url.readText()}")
+            val bytes = url.readBytes()
+            val statusObj = InfraStatus.parseFrom(bytes)
+            LOGGER.info("Response upon sending endgame signal: ${statusObj.message}")
             Thread.sleep(1000)
         } catch (e: Exception) {
             // if the server has already closed, then ignore
-            println("Server has already closed.")
+            LOGGER.info("Server has already closed")
         }
     }
+
+    /**
+     * Helper function that creates player servers with random names + ip addresses, sends POST
+     * requests to the game to add those players to the game.
+     */
+    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> PlayerDecision) {
+        val playerNames: ArrayList<String> = ArrayList()
+        val playerAddrs: ArrayList<String> = ArrayList()
+
+        for (i in 0.until(n)) {
+            // find a free port
+            var socket: ServerSocket?
+            try {
+                socket = ServerSocket(0)
+                socket.close()
+            } catch (e: Exception) {
+                LOGGER.warning("No more free ports found: " + e.message)
+                return
+            }
+
+            val randomPort: Int = socket.localPort
+
+            HttpServer.create(InetSocketAddress(randomPort), 0).apply {
+                createContext("/server") { exchange: HttpExchange ->
+                    exchange.responseHeaders["Content-Type"] = "application/octet-stream"
+
+                    // read in input from server
+                    // once the turn is parsed, use that turn to call a passed in function
+                    val turn = PlayerTurn.parseFrom(exchange.requestBody)
+
+                    // calculate what to do with turn
+                    val decision: PlayerDecision = f(turn)
+                    val size: Long = decision.toByteArray().size.toLong()
+                    // send back response
+                    exchange.sendResponseHeaders(200, size)
+                    decision.writeTo(exchange.responseBody)
+                }
+                start()
+            }
+
+            val playerName = java.util.UUID.randomUUID().toString()
+            val playerAddr = "http://localhost:$randomPort/server"
+            LOGGER.info("Creating player \"$playerName\" with IP address $playerAddr")
+
+            playerNames.add(playerName)
+            playerAddrs.add(playerAddr)
+        }
+
+        for (i in 0.until(n)) {
+            with (URL(INFRA_NEW_URL).openConnection() as HttpURLConnection) {
+                requestMethod = "POST"
+                doOutput = true
+                setRequestProperty("Content-Type", "application/octet-stream")
+
+                InfraPlayer.newBuilder()
+                        .setPlayerIp(playerAddrs[i])
+                        .setPlayerName(playerNames[i])
+                        .build()
+                        .writeTo(outputStream)
+                connect()
+
+                outputStream.flush()
+                outputStream.close()
+
+                val recvBytes = inputStream.readAllBytes()
+                val infraStatus = InfraStatus.parseFrom(recvBytes)
+                inputStream.close()
+                disconnect()
+            }
+        }
+    }
+
+    /**
+    * Test to see if the endpoint works and can be connected to via websocket
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canReceivePlayerTurn() {
+        // wait for an actual object to end the test
+        val completableFuture: CompletableFuture<Boolean> = CompletableFuture()
+
+        connectNPlayers(1) {
+            completableFuture.complete(true)
+            PlayerDecision.newBuilder()
+                    .setIncrement(1)
+                    .build()
+        }
+
+        assert(completableFuture.get(10, TimeUnit.SECONDS))
+    }
+
 
     /**
      * Test to see if the endpoint works and can be connected to via websocket
      */
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-    fun canReceivePlayerTurn() {
+    fun canReceiveMultiplePlayerTurns() {
         // wait for an actual object to end the test
-        val completableFuture: CompletableFuture<PlayerTurnProtos.PlayerTurn> = CompletableFuture()
+        val latch = CountDownLatch(5)
 
-        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
-            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-                completableFuture.complete(playerTurn)
-            }
-        }, PLAYER_URL)
-
-        val playerTurn: PlayerTurnProtos.PlayerTurn = completableFuture.get(10, TimeUnit.SECONDS)
-        assertNotNull(playerTurn)
-    }
-
-    /**
-     * Test to see if the game state can be updated
-     */
-    @Test
-    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-    fun canUpdateGameState() {
-        // wait for an actual object to end the test
-        val countDownLatch = CountDownLatch(1)
-
-        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
-            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-
-                // once the game understands that we are in the game, then the test is over
-                if (playerTurn.playerName == "Joe") {
-                    countDownLatch.countDown()
-                } else {
-                    val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
-                            .setPlayerName("Joe")
-                            .setIncrement(1)
-                            .build()
-
-                    session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
-                }
-            }
-        }, PLAYER_URL)
-
-        assert(countDownLatch.await(10, TimeUnit.SECONDS))
-    }
-
-//    /**
-//     * Test to see if the game actually ends
-//     */
-//    @Test
-//    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-//    fun canGameEnd() {
-//        // wait until afterConnectionClosed to countDown to finish the test
-//        val countDownLatch = CountDownLatch(1)
-//
-//        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
-//            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-//                val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-//                val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
-//                        .setTurn(playerTurn.turn)
-//                        .setPlayerName("Joe")
-//                        .setIncrement(1)
-//                        .build()
-//
-//                session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
-//            }
-//
-//            override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
-//                countDownLatch.countDown()
-//            }
-//        }, URL)
-//
-//        assert(countDownLatch.await(10, TimeUnit.SECONDS))
-//    }
-
-    /**
-     * Test to see if the game actually ends with multiple players sending stuff every turn
-     */
-    @Test
-    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-    fun canGameEndMultiplePlayers() {
-        val n = 100
-
-        // wait until afterConnectionClosed to countDown to finish the test
-        val countDownLatch = CountDownLatch(n)
-
-        for (i in 0 until n) {
-            StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
-                override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                    val playerTurn = PlayerTurnProtos.PlayerTurn.parseFrom(message.payload)
-                    val playerDecision = PlayerDecisionProtos.PlayerDecision.newBuilder()
-                            .setTurn(playerTurn.turn)
-                            .setPlayerName("Joe%02d".format(i))
-                            .setIncrement(1)
-                            .build()
-
-                    session.sendMessage(BinaryMessage(playerDecision.toByteArray()))
-                }
-
-                override fun afterConnectionClosed(session: WebSocketSession, status: CloseStatus) {
-                    countDownLatch.countDown()
-                }
-            }, PLAYER_URL)
+        connectNPlayers(5) {
+            latch.countDown()
+            PlayerDecision.newBuilder()
+                    .setIncrement(1)
+                    .build()
         }
 
-        assert(countDownLatch.await(10, TimeUnit.SECONDS))
-    }
-
-    /**
-     * Test to see if the Visualizer can connect with the proper protobuf
-     */
-    @Test
-    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-    fun visualizerCanConnect() {
-        // wait until afterConnectionClosed to countDown to finish the test
-        val countDownLatch = CountDownLatch(1)
-
-        StandardWebSocketClient().doHandshake(object : BinaryWebSocketHandler() {
-            override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
-                val turn = VisualizerTurnProtos.VisualizerTurn.parseFrom(message.payload)
-                if (turn.turnNumber == 3L) {
-                    countDownLatch.countDown()
-                }
-            }
-        }, VISUALIZER_URL)
-
-        assert(countDownLatch.await(5, TimeUnit.SECONDS))
+        assert(latch.await(10, TimeUnit.SECONDS))
     }
 }

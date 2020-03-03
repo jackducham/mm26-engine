@@ -8,10 +8,9 @@ import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
-import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos.VisualizerTurn;
-import mech.mania.engine.game.items.Item;
+import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +28,10 @@ public class GameLogic {
      * @param decisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions){
-        VisualizerTurn.Builder visualizerTurn = VisualizerTurn.newBuilder();
-        // TODO: do turn logic
-        // TODO: update visualizerTurn
-        VisualizerBinaryWebSocketHandler.sendTurn(visualizerTurn.build());
-        return null;
+    public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions) {
+        // TODO: update GameState using List<PlayerDecision>
+        // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
+        return gameState;
     }
 
     /**
