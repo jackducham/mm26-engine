@@ -6,6 +6,7 @@ import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Character;
+import mech.mania.engine.game.items.Item;
 import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
