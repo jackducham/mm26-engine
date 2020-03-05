@@ -2,6 +2,7 @@ package mech.mania.engine.server.api;
 
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.server.communication.infra.InfraRESTHandler;
 import mech.mania.engine.server.communication.player.PlayerRequestSender;
 import mech.mania.engine.server.communication.player.model.PlayerInfo;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * An API for getting information from the game state. Will handle storing GameState,
@@ -26,6 +28,7 @@ public class GameStateController {
         PLAYER_DOES_NOT_EXIST
     }
 
+    private static final Logger LOGGER = Logger.getLogger( GameStateController.class.getName() );
     private static final DatabaseService databaseService = new DatabaseService(new DatabaseFake());
     private static int currentTurnNum;
     private static GameState currentGameState;
@@ -38,6 +41,11 @@ public class GameStateController {
         return currentGameState;
     }
 
+    public static void resetState() {
+        currentTurnNum = 0;
+        currentGameState = null;
+        playerInfoMap = null;
+    }
 
     /**
      * Log the date of the turn, for use later to retrieve GameStates by Date
@@ -58,7 +66,12 @@ public class GameStateController {
      * @return 1 if fail, 0 if success
      */
     public static int asyncStoreGameState(int turn) {
-        new Thread(() -> databaseService.storeGameState(turn, getCurrentGameState())).start();
+        new Thread(() -> {
+            if (databaseService.storeGameState(turn, getCurrentGameState()) != 0) {
+                LOGGER.warning("asyncStoreGameState returned non-zero status");
+            }
+            LOGGER.fine("asyncStoreGameState thread closed.");
+        }).start();
         return 0;
     }
 

@@ -74,6 +74,7 @@ class ServerTests {
             // if the server has already closed, then ignore
             LOGGER.info("Server has already closed")
         }
+        Main.resetState()
     }
 
     /**
@@ -84,7 +85,7 @@ class ServerTests {
         val playerNames: ArrayList<String> = ArrayList()
         val playerAddrs: ArrayList<String> = ArrayList()
 
-        for (i in 0.until(n)) {
+        for (i in 0 until n) {
             // find a free port
             var socket: ServerSocket?
             try {
@@ -123,7 +124,7 @@ class ServerTests {
             playerAddrs.add(playerAddr)
         }
 
-        for (i in 0.until(n)) {
+        for (i in 0 until n) {
             with (URL(INFRA_NEW_URL).openConnection() as HttpURLConnection) {
                 requestMethod = "POST"
                 doOutput = true
@@ -140,7 +141,7 @@ class ServerTests {
                 outputStream.close()
 
                 val recvBytes = inputStream.readAllBytes()
-                val infraStatus = InfraStatus.parseFrom(recvBytes)
+                InfraStatus.parseFrom(recvBytes)
                 inputStream.close()
                 disconnect()
             }

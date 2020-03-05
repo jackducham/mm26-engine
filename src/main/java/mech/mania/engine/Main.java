@@ -34,6 +34,7 @@ public class Main {
 	public static void main(String[] args) {
 		setup(args);
 		runGame();
+		resetState();
 	}
 
 	public static void setup(String[] args) {
@@ -49,10 +50,13 @@ public class Main {
 		ctx = app.run();
 
 		LOGGER.info("Starting server on port " + port);
+	}
 
+	public static void resetState() {
 		// reset state
 		gameOver = false;
 		turnCount = 0;
+		GameStateController.resetState();
 	}
 
 	public static void runGame() {
@@ -63,7 +67,7 @@ public class Main {
 
 			// Log the current date for the beginning of the turn in the database
 			Date currDate = new Date(); // TODO: change to milliseconds?
-			LOGGER.info("Current time: " + currDate);
+			LOGGER.fine("Current time: " + currDate);
 			GameStateController.logTurnDate(turnCount, currDate);
 
 			// Get the players' decisions

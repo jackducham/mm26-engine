@@ -20,25 +20,25 @@ public class DatabaseFake implements Database {
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
-        LOGGER.info("Logging GameState for turn " + turn + ", GameState: " + gameState.toString());
+        LOGGER.fine("Logging GameState for turn " + turn + ", GameState: " + gameState.toString());
         gameStates.put(turn, gameState);
-        LOGGER.info(gameStates.size() + " GameStates stored currently");
+        LOGGER.fine(gameStates.size() + " GameStates stored currently");
         return 0;
     }
 
     @Override
     public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
-        LOGGER.info("Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerChange.toString());
+        LOGGER.fine("Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerChange.toString());
         visualizerChanges.put(turn, visualizerChange);
-        LOGGER.info(visualizerChanges.size() + " VisualizerTurns stored currently");
+        LOGGER.fine(visualizerChanges.size() + " VisualizerTurns stored currently");
         return 0;
     }
 
     @Override
     public int logTurnDate(int turn, Date date) {
-        LOGGER.info("Logging date for turn " + turn + ", date: " + date.toString());
+        LOGGER.fine("Logging date for turn " + turn + ", date: " + date.toString());
         dates.put(turn, date);
-        LOGGER.info(dates.size() + " dates stored currently");
+        LOGGER.fine(dates.size() + " dates stored currently");
         return 0;
     }
 
