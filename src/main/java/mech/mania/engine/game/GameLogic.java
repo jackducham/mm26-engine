@@ -1,9 +1,11 @@
 package mech.mania.engine.game;
 
+import javafx.geometry.Pos;
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
+import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.items.Weapon;
 import mech.mania.engine.server.communication.player.model.PlayerDecisionProtos.PlayerDecision;
 import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
@@ -175,6 +177,36 @@ public class GameLogic {
 
         return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
+
+
+    // on the main or gamelogic/gamestate. doTurn will call this
+    // validate player move, they give tile they want to go to, check to see if its possible for them to go there.
+    //
+
+    /**
+     * Checks whether the desired move from the character is valid
+     * @param oldPosition Current position of the player
+     * @param newPosition Desired position of the player
+     * @param character Character that is moving
+     * @return whether the move is valid
+     */
+    public static boolean validateMove(Position oldPosition, Position newPosition, Character character) {
+        int distance = calculateManhattanDistance(oldPosition, newPosition);
+        return (character.getSpeed() <= distance);
+    }
+
+    // create the path to show the movement, work with visualizer
+    public static List<Position> movementPath(Position oldPosition, Position newPosition) {
+        List<Position> path = new List<Position>();
+
+        return path;
+    }
+    // internally doesnt matter how they get to their spot, visualizer needs to be given a path.
+    // player function just changes the position. Create a new function to just make a path for visualizer.
+    // new package similar to -> server -> communication -> visualizer called movement instead and do something
+    // with the package that communicates a list of positions that will give to visualizer.
+
+
 
     /**
      * @param pos1 first position

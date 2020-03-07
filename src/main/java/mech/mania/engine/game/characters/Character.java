@@ -1,5 +1,8 @@
 package mech.mania.engine.game.characters;
 
+import mech.mania.engine.game.GameState;
+import mech.mania.engine.game.GameLogic;
+import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.items.Weapon;
 
 public abstract class Character {
@@ -37,6 +40,24 @@ public abstract class Character {
     public int getTotalExperience(){
         return experience;
     }
+
+
+    /**
+     * Updates the characters new position if it is valid, otherwise nothing happens
+     * @param oldPosition position the character is currently at
+     * @param newPosition position the character wants to move to, it is already verified
+     */
+    public void moveCharacter(Position oldPosition, Position newPosition) {
+        if (GameLogic.validateMove(oldPosition, newPosition, this)) {
+            setPosition(position);
+        }
+        // else nothing happens
+    }
+
+
+
+
+
 
     /* Stat getter methods */
     static final double baseMaxHealth = 0;
