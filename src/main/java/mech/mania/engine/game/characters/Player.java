@@ -1,8 +1,8 @@
 package mech.mania.engine.game.characters;
 
+import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.items.*;
 
-import java.util.List;
 
 public class Player extends Character {
     private static final int INVENTORY_SIZE = 16;
@@ -11,14 +11,19 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
-    List<TempStatusModifier> activeEffects;
 
-    public Player() {
-        experience = 0;
+    public Player(Position spawnPoint, String name) {
+        super(0, spawnPoint, null);
+        this.name = name;
         hat = null;
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
+    }
+
+    // TODO: return Decision object
+    public void makeDecision(GameState gameState) {
+        // TODO: call the PlayerStrategy to provide a decision and return that.
     }
 
     public String getName() {
@@ -39,10 +44,6 @@ public class Player extends Character {
 
     public Item[] getInventory() {
         return inventory;
-    }
-
-    public List<TempStatusModifier> getActiveEffects() {
-        return activeEffects;
     }
 
     @Override
@@ -207,7 +208,7 @@ public class Player extends Character {
      * @return true if successful
      */
     public boolean equipItem(int index) {
-        Item itemToEquip = null;
+        Item itemToEquip;
         if (inventory[index] != null) {
             itemToEquip = inventory[index];
         } else {
@@ -216,7 +217,7 @@ public class Player extends Character {
         if (itemToEquip instanceof Hat) {
             return equipHat((Hat)itemToEquip, index);
         } else if (itemToEquip instanceof Clothes) {
-            return equipCloths((Clothes)itemToEquip, index);
+            return equipClothes((Clothes)itemToEquip, index);
         } else if (itemToEquip instanceof Shoes) {
             return equipShoes((Shoes)itemToEquip, index);
         } else if (itemToEquip instanceof Weapon) {
@@ -248,7 +249,7 @@ public class Player extends Character {
      * @param clothesToEquip the clothes which will replace the currently equipped clothes
      * @return true if clothes were successfully equipped
      */
-    private boolean equipCloths(Clothes clothesToEquip, int index) {
+    private boolean equipClothes(Clothes clothesToEquip, int index) {
         Clothes temp = clothes;
         clothes = clothesToEquip;
         inventory[index] = temp;

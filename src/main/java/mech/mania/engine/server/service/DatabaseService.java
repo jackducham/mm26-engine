@@ -1,8 +1,8 @@
 package mech.mania.engine.server.service;
 
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
 import mech.mania.engine.server.dao.Database;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.Date;
 import java.util.List;
@@ -28,11 +28,11 @@ public class DatabaseService {
     /**
      * Store a VisualizerTurn
      * @param turn turn to store for
-     * @param visualizerTurn VisualizerTurn to store
+     * @param visualizerChange VisualizerTurn to store
      * @return 1 if fail, 0 if success
      */
-    public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
-        return database.storeVisualizerTurn(turn, visualizerTurn);
+    public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
+        return database.storeVisualizerChange(turn, visualizerChange);
     }
 
     /**
@@ -43,13 +43,5 @@ public class DatabaseService {
      */
     public int logTurnDate(final int turn, final Date date) {
         return database.logTurnDate(turn, date);
-    }
-
-    /**
-     * Retrieve list of VisualizerTurns
-     * @return List of VisualizerTurn
-     */
-    public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
-        return database.getVisualizerTurns();
     }
 }
