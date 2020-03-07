@@ -1,7 +1,7 @@
 package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerTurnProtos;
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,12 +27,7 @@ public class DatabaseRedis implements Database {
     }
 
     @Override
-    public int storeVisualizerTurn(final int turn, final VisualizerTurnProtos.VisualizerTurn visualizerTurn) {
+    public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
         return 0;
-    }
-
-    @Override
-    public List<VisualizerTurnProtos.VisualizerTurn> getVisualizerTurns() {
-        return new ArrayList<>();
     }
 }
