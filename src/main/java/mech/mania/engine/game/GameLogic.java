@@ -60,6 +60,7 @@ public class GameLogic {
 
     /**
      * Checks whether a player can take the UsePortal action.
+     * @param gameState current gameState.
      * @param pvpBoard part of PlayerDecision?
      * @param playerID part of PlayerDecision?
      * @param player part of PlayerDecision?
@@ -67,16 +68,16 @@ public class GameLogic {
      * @param playerIDtoBoardMap part of PlayerDecision?
      * @return true if the action can be taken, false otherwise.
      */
-    public static boolean canUsePortal(Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
+    public static boolean canUsePortal(GameState gameState, Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
         for (Position portalPosition : pvpBoard.getPortals()) {
-            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(player, pvpBoard)) {
+            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(gameState, player, pvpBoard)) {
                 return true;
             }
         }
 
         Board playerBoard = playerIDtoBoardMap.get(playerID);
         for (Position portalPosition : playerBoard.getPortals()) {
-            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(player, playerIDtoBoardMap.get(playerID))) {
+            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(gameState, player, playerIDtoBoardMap.get(playerID))) {
                 return true;
             }
         }
@@ -111,7 +112,7 @@ public class GameLogic {
     }
 
     /**
-     *
+     * Provides a list of position affected by a given player's attack.
      * @param player character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
      * @param gameState current gameState
@@ -147,17 +148,17 @@ public class GameLogic {
 
     /**
      * Adds an item to the Player's inventory and removes it from the tile.
-     *
+     * @param gameState current gameState
      * @param player player to give the item to
      * @param index index of the item in the tile's items that the player is picking up
-     * @param tile the tile the player picking an item up from
      * @return true if successful
      */
-    public boolean pickUpItem(Player player, int index, Tile tile) {
+    public boolean pickUpItem(GameState gameState, Player player, int index) {
+        Tile currentTile = getTileAtPosition(gameState, player.getPosition());
         for(int i = 0; i < player.getInventory().length; i++) {
             if(player.getInventory()[i] == null) {
-                Item temp = tile.getItems().get(index);
-                tile.getItems().remove(index);
+                Item temp = currentTile.getItems().get(index);
+                currentTile.getItems().remove(index);
                 player.getInventory()[i] = temp;
                 return true;
             }
@@ -167,18 +168,18 @@ public class GameLogic {
 
     /**
      * Removes one or more items from a Player's inventory and adds them to the items on a tile.
-     *
+     * @param gameState current gameState
      * @param player the player dropping items
      * @param itemsToDrop the indices of the items in the player's inventory which are being dropped
-     * @param tile the tile the items will be dropped on
      * @return true if successful
      */
-    public boolean dropItems(Player player, int[] itemsToDrop, Tile tile) {
+    public boolean dropItems(GameState gameState, Player player, int[] itemsToDrop) {
+        Tile currentTile = getTileAtPosition(gameState, player.getPosition());
         for(int i = 0; i < itemsToDrop.length; i++) {
             if(player.getInventory()[itemsToDrop[i]] != null) {
                 Item temp = player.getInventory()[itemsToDrop[i]];
                 player.getInventory()[itemsToDrop[i]] = null;
-                tile.getItems().add(temp);
+                currentTile.getItems().add(temp);
             }
         }
         return true;
@@ -192,8 +193,18 @@ public class GameLogic {
      * @param board The target board.
      * @return true if the player is on the board, false otherwise.
      */
-    public static boolean isPlayerOnBoard(Player player, Board board) {
+    public static boolean isPlayerOnBoard(GameState gameState, Player player, Board board) {
         return (board.getPlayers().contains(player));
+    }
+
+    /**
+     * Provides the Tile at a given Position.
+     * @param gameState current gameState
+     * @param position position of the Tile to be retrieved
+     * @return the Tile at the given position
+     */
+    public static Tile getTileAtPosition(GameState gameState, Position position) {
+        return gameState.getBoard(position.getBoardID()).getGrid()[position.getX()][position.getY()];
     }
 
     /**
