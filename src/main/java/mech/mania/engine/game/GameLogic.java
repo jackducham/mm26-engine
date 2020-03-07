@@ -46,9 +46,11 @@ public class GameLogic {
                 addAttackEffectToCharacters(gameState, character, actionPosition);
                 break;
             case MOVE:
+                // TODO pending method implementation
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
+                // TODO pending method implementation
                 usePortal(gameState, character, actionPosition);
                 break;
             case EQUIP:
@@ -59,12 +61,14 @@ public class GameLogic {
                 Tile[][] grid = gameState.getBoard(actionPosition.getBoardID()).getGrid();
                 Tile actionTile = grid[actionPosition.getX()][actionPosition.getY()];
                 player = (Player)character;
+                // TODO pending method implementation
                 player.dropItem(actionTile, decision.getInventoryIndex());
                 break;
             case PICKUP:
                 grid = gameState.getBoard(actionPosition.getBoardID()).getGrid();
                 actionTile = grid[actionPosition.getX()][actionPosition.getY()];
                 player = (Player)character;
+                // TODO pending method implementation
                 player.pickUpItem(actionTile);
                 break;
         }
