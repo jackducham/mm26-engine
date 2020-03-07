@@ -1,9 +1,11 @@
 package mech.mania.engine.game.characters;
-
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.items.Weapon;
+import mech.mania.engine.game.items.TempStatusModifier;
+import java.util.List;
+
 
 public abstract class Character {
     protected double currentHealth;
@@ -41,7 +43,6 @@ public abstract class Character {
         return experience;
     }
 
-
     /**
      * Updates the characters new position if it is valid, otherwise nothing happens
      * @param oldPosition position the character is currently at
@@ -53,11 +54,6 @@ public abstract class Character {
         }
         // else nothing happens
     }
-
-
-
-
-
 
     /* Stat getter methods */
     static final double baseMaxHealth = 0;
@@ -94,5 +90,8 @@ public abstract class Character {
     static final double magicalDefenseScaling = 0;
     public double getMagicalDefense() {
         return baseMagicalDefense + getLevel()*magicalDefenseScaling;
+    }
+    public List<TempStatusModifier> getActiveEffects() {
+        return activeEffects;
     }
 }
