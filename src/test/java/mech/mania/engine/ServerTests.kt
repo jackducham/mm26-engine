@@ -81,7 +81,9 @@ class ServerTests {
      * Helper function that creates player servers with random names + ip addresses, sends POST
      * requests to the game to add those players to the game.
      */
-    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> PlayerDecision) {
+    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> PlayerDecision,
+                                onReceive: (turn: PlayerTurn) -> Unit,
+                                onSend: (decision: PlayerDecision) -> Unit) {
         val playerNames: ArrayList<String> = ArrayList()
         val playerAddrs: ArrayList<String> = ArrayList()
 
@@ -105,13 +107,16 @@ class ServerTests {
                     // read in input from server
                     // once the turn is parsed, use that turn to call a passed in function
                     val turn = PlayerTurn.parseFrom(exchange.requestBody)
+                    onReceive(turn)
 
                     // calculate what to do with turn
                     val decision: PlayerDecision = f(turn)
                     val size: Long = decision.toByteArray().size.toLong()
+
                     // send back response
                     exchange.sendResponseHeaders(200, size)
                     decision.writeTo(exchange.responseBody)
+                    onSend(decision)
                 }
                 start()
             }
@@ -140,8 +145,7 @@ class ServerTests {
                 outputStream.flush()
                 outputStream.close()
 
-                val recvBytes = inputStream.readAllBytes()
-                InfraStatus.parseFrom(recvBytes)
+                InfraStatus.parseFrom(inputStream.readBytes())
                 inputStream.close()
                 disconnect()
             }
@@ -157,12 +161,15 @@ class ServerTests {
         // wait for an actual object to end the test
         val completableFuture: CompletableFuture<Boolean> = CompletableFuture()
 
-        connectNPlayers(1) {
-            completableFuture.complete(true)
+        connectNPlayers(1, {
             PlayerDecision.newBuilder()
                     .setIncrement(1)
                     .build()
-        }
+        }, {
+            // pass
+        }, {
+            completableFuture.complete(true)
+        })
 
         assert(completableFuture.get(10, TimeUnit.SECONDS))
     }
@@ -177,12 +184,59 @@ class ServerTests {
         // wait for an actual object to end the test
         val latch = CountDownLatch(5)
 
-        connectNPlayers(5) {
-            latch.countDown()
+        connectNPlayers(5, {
             PlayerDecision.newBuilder()
                     .setIncrement(1)
                     .build()
-        }
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
+
+        assert(latch.await(10, TimeUnit.SECONDS))
+    }
+
+    /**
+     * Test to see if the endpoint works and can be connected to via websocket
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canReceiveMultipleTurns() {
+        // wait for an actual object to end the test
+        val latch = CountDownLatch(5)
+
+        connectNPlayers(1, {
+            PlayerDecision.newBuilder()
+                    .setIncrement(1)
+                    .build()
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
+
+        assert(latch.await(10, TimeUnit.SECONDS))
+    }
+
+    /**
+     * Test to see if the endpoint works and can be connected to via websocket
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canReceiveMultiplePlayers() {
+        // wait for an actual object to end the test
+        val latch = CountDownLatch(25)
+
+        connectNPlayers(5, {
+            PlayerDecision.newBuilder()
+                    .setIncrement(1)
+                    .build()
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
 
         assert(latch.await(10, TimeUnit.SECONDS))
     }

@@ -1,7 +1,7 @@
 package mech.mania.engine.server.dao;
 
 import mech.mania.engine.game.GameState;
-import mech.mania.engine.server.communication.infra.InfraRESTHandler;
+import mech.mania.engine.server.communication.player.model.PlayerInfo;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.*;
@@ -14,12 +14,16 @@ public class DatabaseFake implements Database {
     
     private static final Logger LOGGER = Logger.getLogger( DatabaseFake.class.getName() );
 
-    private Map<Integer, GameState> gameStates = new HashMap<>();
-    private Map<Integer, VisualizerChange> visualizerChanges = new HashMap<>();
-    private Map<Integer, Date> dates = new HashMap<>();
+    private final Map<Integer, GameState> gameStates = new HashMap<>();
+    private final Map<Integer, VisualizerChange> visualizerChanges = new HashMap<>();
+
+    private int currentTurnNum = 0;
+    private GameState currentGameState = new GameState();
+    private final Map<String, PlayerInfo> currentPlayerInfoMap = new HashMap<>();
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
+        this.currentGameState = gameState;
         LOGGER.fine("Logging GameState for turn " + turn + ", GameState: " + gameState.toString());
         gameStates.put(turn, gameState);
         LOGGER.fine(gameStates.size() + " GameStates stored currently");
@@ -35,17 +39,45 @@ public class DatabaseFake implements Database {
     }
 
     @Override
-    public int logTurnDate(int turn, Date date) {
-        LOGGER.fine("Logging date for turn " + turn + ", date: " + date.toString());
-        dates.put(turn, date);
-        LOGGER.fine(dates.size() + " dates stored currently");
-        return 0;
+    public int getCurrentTurnNum() {
+        return currentTurnNum;
     }
 
     @Override
-    public int turnBeforeDate(final Date date) {
-
-        return 0;
+    public int updateCurrentTurnNum(final int newTurn) {
+        currentTurnNum = newTurn;
+        return 1;
     }
 
+    @Override
+    public GameState getCurrentGameState() {
+        return currentGameState == null ? new GameState() : currentGameState;
+    }
+
+    @Override
+    public Map<String, PlayerInfo> getPlayerInfoMap() {
+        return currentPlayerInfoMap;
+    }
+
+    @Override
+    public PlayerExistence updatePlayerInfoMap(String playerName, String playerIp) {
+        Map<String, PlayerInfo> playerInfoMap = getPlayerInfoMap();
+
+        if (playerInfoMap.containsKey(playerName)) {
+            playerInfoMap.put(playerName, new PlayerInfo(playerIp, playerInfoMap.get(playerName).getTurnJoined()));
+            return PlayerExistence.PLAYER_EXISTS;
+        }
+
+        playerInfoMap.put(playerName, new PlayerInfo(playerIp, getCurrentTurnNum()));
+        return PlayerExistence.PLAYER_DOES_NOT_EXIST;
+    }
+
+    @Override
+    public void reset() {
+        currentTurnNum = 0;
+        currentGameState = null;
+        currentPlayerInfoMap.clear();
+        gameStates.clear();
+        visualizerChanges.clear();
+    }
 }
