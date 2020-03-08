@@ -24,4 +24,12 @@ public class Tile {
     public TileType getType() {
         return type;
     }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void removeItem(int index) {
+        items.remove(index);
+    }
 }
