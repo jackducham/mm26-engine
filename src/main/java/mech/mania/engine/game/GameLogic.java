@@ -6,14 +6,12 @@ import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Character;
+import mech.mania.engine.game.characters.CharacterDecision;
 import mech.mania.engine.game.items.Item;
 import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
-import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -33,6 +31,44 @@ public class GameLogic {
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
         return gameState;
+    }
+
+    public static void processDecision(GameState gameState, Character character, CharacterDecision decision) {
+        if (decision == null) {
+            return;
+        }
+        Position actionPosition = decision.getActionPosition();
+        switch (decision.getDecision()) {
+            case ATTACK:
+                addAttackEffectToCharacters(gameState, character, actionPosition);
+                break;
+            case MOVE:
+                // TODO pending method implementation
+                moveCharacter(gameState, character, actionPosition);
+                break;
+            case PORTAL:
+                // TODO pending method implementation
+                usePortal(gameState, character, actionPosition);
+                break;
+            case EQUIP:
+                Player player = (Player)character;
+                player.equipItem(decision.getInventoryIndex());
+                break;
+            case DROP:
+                Tile[][] grid = gameState.getBoard(actionPosition.getBoardID()).getGrid();
+                Tile actionTile = grid[actionPosition.getX()][actionPosition.getY()];
+                player = (Player)character;
+                // TODO pending method implementation
+                player.dropItem(actionTile, decision.getInventoryIndex());
+                break;
+            case PICKUP:
+                grid = gameState.getBoard(actionPosition.getBoardID()).getGrid();
+                actionTile = grid[actionPosition.getX()][actionPosition.getY()];
+                player = (Player)character;
+                // TODO pending method implementation
+                player.pickUpItem(actionTile);
+                break;
+        }
     }
 
     /**
@@ -165,7 +201,7 @@ public class GameLogic {
      * @param attackCoordinate coordinate to attack
      * @param gameState current gamestate
      */
-    public static void addAttackEffectToCharacters(Character attacker, Position attackCoordinate, GameState gameState) {
+    public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
         Board board = gameState.getPvpBoard();
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
         List<Monster> enemies = board.getEnemies();
