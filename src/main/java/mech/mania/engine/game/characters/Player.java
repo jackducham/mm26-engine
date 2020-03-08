@@ -32,8 +32,19 @@ public class Player extends Character {
         return shoes;
     }
 
+    public int getInventorySize() {
+        return INVENTORY_SIZE;
+    }
+
     public Item[] getInventory() {
         return inventory;
+    }
+
+    public void setInventory(int index, Item item) {
+        if (index < 0 || index > INVENTORY_SIZE) {
+            return;
+        }
+        inventory[index] = item;
     }
 
     @Override
@@ -293,48 +304,6 @@ public class Player extends Character {
     }
 
     /**
-     * Gets tile item at inventory index, removes it, and adds it to first available spot in player inventory
-     * @param tile
-     * @param inventoryIndex index in tile's inventory
-     * @return
-     */
-    public boolean pickUpItem(Tile tile, int inventoryIndex) {
-        if (inventoryIndex < 0 || inventoryIndex > tile.getItems().size()) {
-            return false;
-        }
-        int index = getFreeInventoryIndex();
-        if (index == -1) {
-            return false;
-        }
-
-        Item item = tile.getItems().get(inventoryIndex);
-        inventory[index] = item;
-        tile.removeItem(inventoryIndex);
-        return true;
-    }
-
-    /**
-     * Drop item from player's inventory at inventoryIndex on tile
-     * @param tile
-     * @param inventoryIndex
-     * @return
-     */
-    public boolean dropItem(Tile tile, int inventoryIndex) {
-        if (inventoryIndex < 0 || inventoryIndex > INVENTORY_SIZE) {
-            return false;
-        }
-        if (inventory[inventoryIndex] == null) {
-            return false;
-        }
-
-        Item item = inventory[inventoryIndex];
-        inventory[inventoryIndex] = null;
-        tile.addItem(item);
-        return true;
-    }
-
-    /**
-     *
      * @return index of first null inventory space, -1 if none
      */
     public int getFreeInventoryIndex() {
