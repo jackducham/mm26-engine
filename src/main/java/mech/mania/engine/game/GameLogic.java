@@ -54,18 +54,14 @@ public class GameLogic {
                 player.equipItem(decision.getInventoryIndex());
                 break;
             case DROP:
-                Tile[][] grid = gameState.getBoard(actionPosition.getBoardID()).getGrid();
-                Tile actionTile = grid[actionPosition.getX()][actionPosition.getY()];
-                player = (Player)character;
-                // TODO pending method implementation
+                Tile actionTile = getTileAtPosition(gameState, actionPosition);
+                player = (Player) character;
                 player.dropItem(actionTile, decision.getInventoryIndex());
                 break;
             case PICKUP:
-                grid = gameState.getBoard(actionPosition.getBoardID()).getGrid();
-                actionTile = grid[actionPosition.getX()][actionPosition.getY()];
+                actionTile = getTileAtPosition(gameState, actionPosition);
                 player = (Player)character;
-                // TODO pending method implementation
-                player.pickUpItem(actionTile);
+                player.pickUpItem(actionTile, decision.getInventoryIndex());
                 break;
         }
     }
