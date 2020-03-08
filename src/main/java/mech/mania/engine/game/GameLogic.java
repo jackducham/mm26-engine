@@ -36,51 +36,65 @@ public class GameLogic {
     }
 
     /**
-     *
-     * @param gameState
-     * @param playersToMove
-     * @param targetPositions
-     * @return
+     * Moves a given character to a given position if it is reachable. Only used for moving characters within a single board.
+     * @param gameState current gameState
+     * @param character player to be moved
+     * @param targetPosition position the player should be moved to
+     * @return A list of position which make up the path used to reach the target
      */
-    public static boolean movePlayers(GameState gameState, Player[] playersToMove, Position[] targetPositions) {
-        if (playersToMove.length != targetPositions.length) {
-            return false;
+    public static List<Position> moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) {
+            return new ArrayList<Position>();
         }
-
-        for (int i = 0; i < playersToMove.length; i++) {
-            Board board = gameState.getBoard(targetPositions[i].getBoardID());
-            if (validatePosition(gameState, targetPositions[i]) && board.getPlayers().contains(playersToMove[i])) {
-                playersToMove[i].setPosition(targetPositions[i]);
-            } else {
-                return false;
-            }
+        List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
+        if(path.size() > character.getSpeed()) {
+            return new ArrayList<Position>();
         }
-        return true;
+        character.setPosition(targetPosition);
+        return path;
+        //Default return value might be empty, or might be of size one
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
 
     /**
      * Checks whether a player can take the UsePortal action.
-     * @param gameState current gameState.
-     * @param pvpBoard part of PlayerDecision?
-     * @param playerID part of PlayerDecision?
-     * @param player part of PlayerDecision?
-     * @param currentPlayerPosition part of PlayerDecision?
-     * @param playerIDtoBoardMap part of PlayerDecision?
-     * @return true if the action can be taken, false otherwise.
+     * @param gameState current gameState
+     * @param player player to be moved
+     * @return true if the action can be taken, false otherwise
      */
-    public static boolean canUsePortal(GameState gameState, Board pvpBoard, UUID playerID, Player player, Position currentPlayerPosition, Map<UUID, Board> playerIDtoBoardMap) {
-        for (Position portalPosition : pvpBoard.getPortals()) {
-            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(gameState, player, pvpBoard)) {
+    public static boolean canUsePortal(GameState gameState, Player player) {
+        for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
+            if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
                 return true;
             }
         }
-
-        Board playerBoard = playerIDtoBoardMap.get(playerID);
-        for (Position portalPosition : playerBoard.getPortals()) {
-            if (currentPlayerPosition == portalPosition && isPlayerOnBoard(gameState, player, playerIDtoBoardMap.get(playerID))) {
+        for(int i = 0; i < gameState.getPvpBoard().getPortals().size(); i++) {
+            if(player.getPosition() == gameState.getPvpBoard().getPortals().get(i)) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Moves a player to the portal at given index, if they are able.
+     * @param gameState current gameState
+     * @param player player using a portal
+     * @param portalIndex index of target portal on pvpBoard or -1 if targeting the home portal
+     * @return true if successful
+     */
+    public static boolean usePortal(GameState gameState, Player player, int portalIndex) {
+        if(canUsePortal(gameState, player)) {
+            if(portalIndex == -1) {
+                player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(0));
+                return true;
+            }
+            for(int i = 0; i < gameState.getPvpBoard().getPortals().size(); i++) {
+                if(i == portalIndex) {
+                    player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i));
+                    return true;
+                }
             }
         }
         return false;
@@ -114,7 +128,7 @@ public class GameLogic {
 
     /**
      * Provides a list of position affected by a given player's attack.
-     * @param player character that's doing the attacking
+     * @param character character that's doing the attacking
      * @param attackCoordinate central Position where the weapon is attacking
      * @param gameState current gameState
      * @return hashmap of Positions that would get attacked by the player's weapon
@@ -278,5 +292,16 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
+    }
+
+    /**
+     * Provides a list of positions from a start position to and end position.
+     * @param gameState current gameState
+     * @param start position at beginning of desired path
+     * @param end position at end of desired path
+     * @return a List of positions along the path
+     */
+    public static List<Position> findPath(GameState gameState, Position start, Position end) {
+        return new ArrayList<Position>();
     }
 }
