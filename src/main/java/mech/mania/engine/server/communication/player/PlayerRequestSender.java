@@ -11,6 +11,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -26,11 +27,14 @@ public class PlayerRequestSender {
     public static List<PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
         Map<String, PlayerInfo> playerInfoMap = GameStateController.getPlayerInfoMap();
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
+            LOGGER.info("No players connected");
             return new ArrayList<>();
         }
 
-        return playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
-            URL url = null;
+        AtomicInteger errors = new AtomicInteger();
+        AtomicInteger numPlayers = new AtomicInteger();
+        List<PlayerDecision> decisions = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+            URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
 
@@ -58,19 +62,25 @@ public class PlayerRequestSender {
             } catch (InvalidProtocolBufferException e) {
                 LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+                errors.getAndIncrement();
             } catch (ProtocolException e) {
                 LOGGER.warning(String.format("ProtocolException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+                errors.getAndIncrement();
             } catch (IOException e) {
                 LOGGER.warning(String.format("IOException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+                errors.getAndIncrement();
             } finally {
                 http.disconnect();
             }
 
+            numPlayers.getAndIncrement();
             return decision;
-
         }).collect(Collectors.toList());
+
+        LOGGER.info(String.format("Sent PlayerTurn to %d players with %d errors.", numPlayers.get(), errors.get()));
+        return decisions;
     }
 }
 
