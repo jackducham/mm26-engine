@@ -6,28 +6,17 @@ import mech.mania.engine.game.items.*;
 
 public class Player extends Character {
     private static final int INVENTORY_SIZE = 16;
-    private String name;
     private Hat hat;
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
 
     public Player(Position spawnPoint, String name) {
-        super(0, spawnPoint, null);
-        this.name = name;
+        super(0, spawnPoint, null, name);
         hat = null;
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
-    }
-
-    // TODO: return Decision object
-    public void makeDecision(GameState gameState) {
-        // TODO: call the PlayerStrategy to provide a decision and return that.
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Hat getHat() {

@@ -23,20 +23,21 @@ public abstract class Character {
     protected Map<Player, Double> taggedPlayersDamage;
     private boolean isDead;
     private int ticksSinceDeath;
+    private String name;
 
-    protected Character(int experience, Position spawnPoint, Weapon weapon) {
+
+    protected Character(int experience, Position spawnPoint, Weapon weapon, String name) {
         this.currentHealth = getMaxHealth();
         this.experience = experience;
         this.position = spawnPoint;
         this.spawnPoint = spawnPoint;
+        this.name = name;
         this.weapon = weapon;
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
         this.isDead = false;
         this.ticksSinceDeath = -1;
     }
-    // TODO: needs to return Decision object
-    public abstract void makeDecision(GameState gameState);
 
     public void takeDamage(double physicalDamage, double magicalDamage, Player player) {
         double actualDamage = max(0, physicalDamage - getPhysicalDefense())
@@ -114,6 +115,10 @@ public abstract class Character {
     public double getPercentExpToNextLevel() {
         // TODO: experience formula
         return 0.0;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getTotalExperience(){
