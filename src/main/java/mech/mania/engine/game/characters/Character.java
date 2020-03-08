@@ -38,8 +38,6 @@ public abstract class Character {
         this.isDead = false;
         this.ticksSinceDeath = -1;
     }
-    // TODO: needs to return Decision object
-    public abstract void makeDecision(GameState gameState);
 
     public void takeDamage(double physicalDamage, double magicalDamage, Player player) {
         double actualDamage = max(0, physicalDamage - getPhysicalDefense())

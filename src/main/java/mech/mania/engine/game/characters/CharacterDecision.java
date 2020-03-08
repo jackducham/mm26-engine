@@ -1,4 +1,4 @@
-package mech.mania.engine.game.characters.decisions;
+package mech.mania.engine.game.characters;
 
 import mech.mania.engine.game.characters.Position;
 

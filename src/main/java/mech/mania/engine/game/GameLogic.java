@@ -6,15 +6,12 @@ import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Character;
-import mech.mania.engine.game.characters.decisions.CharacterDecision;
+import mech.mania.engine.game.characters.CharacterDecision;
 import mech.mania.engine.game.items.Item;
 import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
-import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
-import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;

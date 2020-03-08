@@ -19,11 +19,6 @@ public class Player extends Character {
         inventory = new Item[INVENTORY_SIZE];
     }
 
-    // TODO: return Decision object
-    public void makeDecision(GameState gameState) {
-        // TODO: call the PlayerStrategy to provide a decision and return that.
-    }
-
     public Hat getHat() {
         return hat;
     }
