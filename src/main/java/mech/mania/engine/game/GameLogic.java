@@ -41,6 +41,7 @@ public class GameLogic {
             return;
         }
         Position actionPosition = decision.getActionPosition();
+        int index = decision.getIndex();
         switch (decision.getDecision()) {
             case ATTACK:
                 addAttackEffectToCharacters(gameState, character, actionPosition);
@@ -51,20 +52,20 @@ public class GameLogic {
                 break;
             case PORTAL:
                 // TODO pending method implementation
-                usePortal(gameState, character, actionPosition);
+                usePortal(gameState, character, index);
                 break;
             case EQUIP:
                 Player player = (Player) character;
-                player.equipItem(decision.getInventoryIndex());
+                player.equipItem(index);
                 break;
             case DROP:
                 player = (Player) character;
                 // @TODO need to implement array for players to drop multiple items
-                dropItems(gameState, player, decision.getInventoryIndex());
+                dropItems(gameState, player, index);
                 break;
             case PICKUP:
                 player = (Player) character;
-                pickUpItem(gameState, player, decision.getInventoryIndex());
+                pickUpItem(gameState, player, decision.getIndex());
                 break;
         }
     }
@@ -80,13 +81,12 @@ public class GameLogic {
         if (!validatePosition(gameState, targetPosition)) {
             return new ArrayList<>();
         }
-        List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
+        List<Position> path = findPath(gameState, character.getPosition(), targetPosition); //Default return value might be empty, or might be of size one
         if(path.size() > character.getSpeed()) {
             return new ArrayList<>();
         }
         character.setPosition(targetPosition);
         return path;
-        //Default return value might be empty, or might be of size one
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -97,7 +97,8 @@ public class GameLogic {
      * @param player player to be moved
      * @return true if the action can be taken, false otherwise
      */
-    public static boolean canUsePortal(GameState gameState, Player player) {
+    public static boolean canUsePortal(GameState gameState, Character player) {
+        if(player instanceof Monster) return false; // Only players can take portals
         for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
             if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
                 return true;
@@ -118,7 +119,7 @@ public class GameLogic {
      * @param portalIndex index of target portal on pvpBoard or -1 if targeting the home portal
      * @return true if successful
      */
-    public static boolean usePortal(GameState gameState, Player player, int portalIndex) {
+    public static boolean usePortal(GameState gameState, Character player, int portalIndex) {
         if(canUsePortal(gameState, player)) {
             if(portalIndex == -1) {
                 player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(0));
@@ -267,21 +268,18 @@ public class GameLogic {
      * Removes one or more items from a Player's inventory and adds them to the items on a tile.
      * @param gameState current gameState
      * @param player the player dropping items
-     * @param itemsToDrop the indices of the items in the player's inventory which are being dropped
+     * @param index the index of the item in the player's inventory which is being dropped
      * @return true if successful
      */
-    public static boolean dropItems(GameState gameState, Player player, int[] itemsToDrop) {
+    public static boolean dropItems(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
-        for (int index: itemsToDrop) {
-            if (index < 0 || index > player.getInventorySize()) {
-                // @TODO if player gives 1 invalid index in drop list, is entire thing failed?
-                continue;
-            }
-            if (player.getInventory()[index] != null) {
-                Item item = player.getInventory()[index];
-                player.setInventory(index, null);
-                currentTile.addItem(item);
-            }
+        if (index < 0 || index > player.getInventorySize()) {
+            return false;
+        }
+        if (player.getInventory()[index] != null) {
+            Item item = player.getInventory()[index];
+            player.setInventory(index, null);
+            currentTile.addItem(item);
         }
         return true;
     }
