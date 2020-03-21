@@ -47,11 +47,9 @@ public class GameLogic {
                 addAttackEffectToCharacters(gameState, character, actionPosition);
                 break;
             case MOVE:
-                // TODO pending method implementation
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
-                // TODO pending method implementation
                 usePortal(gameState, character, index);
                 break;
             case EQUIP:
@@ -60,7 +58,6 @@ public class GameLogic {
                 break;
             case DROP:
                 player = (Player) character;
-                // @TODO need to implement array for players to drop multiple items
                 dropItems(gameState, player, index);
                 break;
             case PICKUP:
