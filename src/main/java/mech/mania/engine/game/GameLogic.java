@@ -327,11 +327,6 @@ public class GameLogic {
         return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
 
-
-    // on the main or gamelogic/gamestate. doTurn will call this
-    // validate player move, they give tile they want to go to, check to see if its possible for them to go there.
-    //
-
     /**
      * Checks whether the desired move from the character is valid
      * @param oldPosition Current position of the player
@@ -344,19 +339,6 @@ public class GameLogic {
         return (character.getSpeed() <= distance);
     }
 
-    // create the path to show the movement, work with visualizer
-    public static List<Position> movementPath(Position oldPosition, Position newPosition) {
-        List<Position> path = new ArrayList<Position>();
-
-        return path;
-    }
-    // internally doesnt matter how they get to their spot, visualizer needs to be given a path.
-    // player function just changes the position. Create a new function to just make a path for visualizer.
-    // new package similar to -> server -> communication -> visualizer called movement instead and do something
-    // with the package that communicates a list of positions that will give to visualizer.
-
-
-
     /**
      * @param pos1 first position
      * @param pos2 second position
@@ -367,13 +349,21 @@ public class GameLogic {
     }
 
     /**
-     * Provides a list of positions from a start position to and end position.
+     * Provides a list of positions from a start position to and end position. For use in determining
+     * if a move is valid and sending to visualizer.
      * @param gameState current gameState
      * @param start position at beginning of desired path
      * @param end position at end of desired path
      * @return a List of positions along the path
      */
     public static List<Position> findPath(GameState gameState, Position start, Position end) {
+        // TODO: Remove these comments before making a pull request
+        // internally doesnt matter how they get to their spot, visualizer needs to be given a path.
+        // player function just changes the position. Create a new function to just make a path for visualizer.
+        // new package similar to -> server -> communication -> visualizer called movement instead and do something
+        // with the package that communicates a list of positions that will give to visualizer.
+
+        // TODO: Implement A* path finding. Make sure that if start==end, this function returns an EMPTY list.
         return new ArrayList<Position>();
     }
 }
