@@ -1,33 +1,23 @@
 package mech.mania.engine.game.characters;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.items.*;
 
 
 public class Player extends Character {
     private static final int INVENTORY_SIZE = 16;
-    private String name;
     private Hat hat;
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
 
     public Player(Position spawnPoint, String name) {
-        super(0, spawnPoint, null);
-        this.name = name;
+        super(0, spawnPoint, null, name);
         hat = null;
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
-    }
-
-    // TODO: return Decision object
-    public void makeDecision(GameState gameState) {
-        // TODO: call the PlayerStrategy to provide a decision and return that.
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Hat getHat() {
@@ -42,8 +32,19 @@ public class Player extends Character {
         return shoes;
     }
 
+    public int getInventorySize() {
+        return INVENTORY_SIZE;
+    }
+
     public Item[] getInventory() {
         return inventory;
+    }
+
+    public void setInventory(int index, Item item) {
+        if (index < 0 || index > INVENTORY_SIZE) {
+            return;
+        }
+        inventory[index] = item;
     }
 
     @Override
@@ -300,5 +301,18 @@ public class Player extends Character {
             consumableToConsume.setStacks(stacks - 1);
         }
         return true;
+    }
+
+    /**
+     * @return index of first null inventory space, -1 if none
+     */
+    public int getFreeInventoryIndex() {
+        for (int i = 0; i < INVENTORY_SIZE; i++) {
+            Item item = inventory[i];
+            if (item == null) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

@@ -6,14 +6,14 @@ import mech.mania.engine.server.communication.player.PlayerRequestSender;
 import mech.mania.engine.server.communication.player.model.PlayerInfo;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn;
+import mech.mania.engine.server.communication.visualizer.VisualizerBinaryWebSocketHandler;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 import mech.mania.engine.server.dao.DatabaseFake;
-import mech.mania.engine.server.service.DatabaseService;
+import mech.mania.engine.server.dao.Database;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * An API for getting information from the game state. Will handle storing GameState,
@@ -21,47 +21,97 @@ import java.util.Map;
  */
 public class GameStateController {
 
-    public enum PlayerExistence {
-        PLAYER_EXISTS,
-        PLAYER_DOES_NOT_EXIST
+    private static final Logger LOGGER = Logger.getLogger( GameStateController.class.getName() );
+    private static final Database DATABASE = new DatabaseFake();
+
+
+
+    // ---------------------------- FUNCTIONS CALLED BY MAIN ------------------------------------
+    /**
+     * Resets state in the database
+     * @return 1 if successful, 0 if failure
+     */
+    public static int resetState() {
+        DATABASE.reset();
+        return 1;
     }
-
-    private static final DatabaseService databaseService = new DatabaseService(new DatabaseFake());
-    private static int currentTurnNum;
-    private static GameState currentGameState;
-    private static Map<String, PlayerInfo> playerInfoMap;
-
-    public static GameState getCurrentGameState() {
-        if (currentGameState == null) {
-            currentGameState = new GameState();
-        }
-        return currentGameState;
-    }
-
 
     /**
-     * Log the date of the turn, for use later to retrieve GameStates by Date
-     *
-     * @param turn turn number
-     * @param date date to store
-     * @return 1 if fail, 0 if success
+     * Cleans up Visualizer connection (only Websocket connection)
+     * TODO: tell players to close their own servers?
+     * @return 1 if successful, 0 if failure
      */
-    public static int logTurnDate(final int turn, final Date date) {
-        currentTurnNum = turn;
-        return databaseService.logTurnDate(turn, date);
+    public static int cleanUpConnections() {
+        VisualizerBinaryWebSocketHandler.destroy();
+        return 1;
     }
 
+    /**
+     * Constructs from constructVisualizerChange, and sends it
+     * @return 1 if successful, 0 if failure
+     */
+    public static int sendVisualizerChange() {
+        VisualizerChange change = constructVisualizerChange();
+        VisualizerBinaryWebSocketHandler.sendChange(change);
+        return 1;
+    }
 
     /**
      * Store GameState asynchronously.
-     * @param turn turn to store for
      * @return 1 if fail, 0 if success
      */
-    public static int asyncStoreGameState(int turn) {
-        new Thread(() -> databaseService.storeGameState(turn, getCurrentGameState())).start();
+    public static int asyncStoreCurrentGameState() {
+        new Thread(() -> {
+            if (DATABASE.storeGameState(getCurrentTurnNum(), getCurrentGameState()) != 0) {
+                LOGGER.warning("asyncStoreGameState returned non-zero status");
+            }
+            LOGGER.fine("asyncStoreGameState thread closed.");
+        }).start();
         return 0;
     }
 
+    /**
+     * Gets player decisions by sending requests and updates the current GameState
+     * @return updated GameState after getting PlayerDecisions and updating
+     */
+    public static GameState sendPlayerRequestsAndUpdateGameState() {
+        List<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
+        GameState updatedGameState = GameLogic.doTurn(getCurrentGameState(), decisions);
+        DATABASE.storeGameState(DATABASE.getCurrentTurnNum(), updatedGameState);
+        return updatedGameState;
+    }
+
+
+
+
+    // -------------------------- HELPER FUNCTIONS -----------------------------------------------
+    /**
+     * Gets the current GameState from the database
+     * @return current GameState
+     */
+    public static GameState getCurrentGameState() {
+        return DATABASE.getCurrentGameState();
+    }
+
+    /**
+     * Gets the current playerInfoMap
+     * @return Map between player name and PlayerInfo object
+     */
+    public static Map<String, PlayerInfo> getPlayerInfoMap() {
+        return DATABASE.getPlayerInfoMap();
+    }
+
+    /**
+     * Increments the turn number in the database
+     * @return 1 if successful, 0 if failure
+     */
+    public static int incrementTurn() {
+        return updateTurnNum(getCurrentTurnNum() + 1);
+    }
+
+    public static int updateTurnNum(int newTurn) {
+        return DATABASE.updateCurrentTurnNum(newTurn);
+    }
 
     /**
      * Given a gameState, use its internal state to create a VisualizerTurn to send
@@ -74,7 +124,6 @@ public class GameStateController {
         return VisualizerChange.newBuilder()
                 .build();
     }
-
 
     /**
      * Given a gameState, use its internal state to create a PlayerTurn to send
@@ -90,45 +139,21 @@ public class GameStateController {
                 .build();
     }
 
-    public static Map<String, PlayerInfo> getPlayerInfoMap() {
-        if (playerInfoMap == null) {
-            playerInfoMap = new HashMap<>();
-        }
-        return playerInfoMap;
-    }
-
-    public static GameState sendPlayerRequestsAndUpdateGameState() {
-        List<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
-        GameState updatedGameState = GameLogic.doTurn(getCurrentGameState(), decisions);
-        currentGameState = updatedGameState;
-        return updatedGameState;
-    }
-
     /**
      * Add a player IP by the player name and IP.
      * @param playerName name of player to add
      * @param playerIp IP of player to add
      * @return Whether or not the player existed in list of players previously.
      */
-    public static PlayerExistence addPlayerIp(String playerName, String playerIp) {
-        Date currentDate = new Date();
-
-        Map<String, PlayerInfo> playerInfoMap = getPlayerInfoMap();
-
-        if (playerInfoMap.containsKey(playerName)) {
-            playerInfoMap.put(playerName, new PlayerInfo(playerIp, currentDate, currentTurnNum));
-            return PlayerExistence.PLAYER_EXISTS;
-        }
-
-        playerInfoMap.put(playerName, new PlayerInfo(playerIp, currentDate, currentTurnNum));
-        return PlayerExistence.PLAYER_DOES_NOT_EXIST;
+    public static Database.PlayerExistence addPlayerIp(String playerName, String playerIp) {
+        return DATABASE.updatePlayerInfoMap(playerName, playerIp);
     }
 
     /**
      * Gets the current turn number
      * @return current turn number
      */
-    public static int getCurrentTurn() {
-        return currentTurnNum;
+    public static int getCurrentTurnNum() {
+        return DATABASE.getCurrentTurnNum();
     }
 }

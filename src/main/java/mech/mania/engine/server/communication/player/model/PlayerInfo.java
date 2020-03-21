@@ -4,13 +4,10 @@ import java.util.Date;
 
 public class PlayerInfo {
     String ipAddr;
-    // TODO: decide on whether this should be Date or first turn
-    Date loginTime;
     int turnJoined;
 
-    public PlayerInfo(String ipAddr, Date loginTime, int turnJoined) {
+    public PlayerInfo(String ipAddr, int turnJoined) {
         this.ipAddr = ipAddr;
-        this.loginTime = loginTime;
         this.turnJoined = turnJoined;
     }
 
@@ -20,9 +17,5 @@ public class PlayerInfo {
 
     public String getIpAddr() {
         return ipAddr;
-    }
-
-    public Date getLoginTime() {
-        return loginTime;
     }
 }
