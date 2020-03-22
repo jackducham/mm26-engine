@@ -12,7 +12,7 @@ import mech.mania.engine.game.items.Weapon;
 import java.util.List;
 
 public abstract class Character {
-    private static final int reviveTicks = 0;
+    private static final int reviveTicks = 1;
 
     protected double currentHealth;
     protected int experience; // XP reward on death (monster & player) AND XP gained by player
@@ -21,7 +21,6 @@ public abstract class Character {
     protected Weapon weapon;
     List<TempStatusModifier> activeEffects;
     protected Map<Player, Double> taggedPlayersDamage;
-    private boolean isDead;
     private int ticksSinceDeath;
     private String name;
 
@@ -35,7 +34,6 @@ public abstract class Character {
         this.weapon = weapon;
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
-        this.isDead = false;
         this.ticksSinceDeath = -1;
     }
 
@@ -50,36 +48,14 @@ public abstract class Character {
         }
 
         updateCurrentHealth(-actualDamage);
-        if (currentHealth <= 0) {
-            isDead = true;
-            ticksSinceDeath = 0;
-        }
     }
 
     protected void distributeRewards(GameState gameState) {
         for (Player player : taggedPlayersDamage.keySet()) {
-            player.experience += this.experience;
+            player.experience += this.getLevel();
         }
     }
 
-    public void respawn() {
-        position = spawnPoint;
-        currentHealth = getMaxHealth();
-        isDead = false;
-        ticksSinceDeath = -1;
-    }
-
-    public void onDeath(GameState gameState) {
-        isDead = true;
-        ticksSinceDeath = 0;
-        activeEffects.clear();
-        distributeRewards(gameState);
-        taggedPlayersDamage.clear();
-    }
-
-    public void updateDeathTicks() {
-        ticksSinceDeath++;
-    }
     public void removePlayer(Player toRemove) {
         taggedPlayersDamage.remove(toRemove);
     }
@@ -91,12 +67,32 @@ public abstract class Character {
     }
 
     public boolean isDead() {
-        if (ticksSinceDeath == reviveTicks) {
-            isDead = false;
-            ticksSinceDeath = -1;
-        }
-        return isDead;
+        return currentHealth <= 0;
     }
+
+    /**
+     * This should be externally called at the end of the CharacterDecision loop.
+     * @param gameState gameState to give rewards to
+     */
+    public void updateDeathState(GameState gameState) {
+        // player is already dead
+        if (ticksSinceDeath >= 0) {
+            ticksSinceDeath++;
+            if (ticksSinceDeath == reviveTicks) {
+                // revive player
+                position = spawnPoint;
+                currentHealth = getMaxHealth();
+                ticksSinceDeath = -1;
+            }
+        } else if (currentHealth <= 0) { // player has just died
+            ticksSinceDeath = 0;
+            activeEffects.clear();
+            distributeRewards(gameState);
+            taggedPlayersDamage.clear();
+        }
+
+    }
+
     public Weapon getWeapon() {
         return weapon;
     }
