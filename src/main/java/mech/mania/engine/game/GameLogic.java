@@ -30,9 +30,47 @@ public class GameLogic {
      * @param decisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         // TODO: update GameState using List<PlayerDecision>
+        // TODO: convert PlayerDecision to CharacterDecision
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
+        Board pvpBoard = gameState.getPvpBoard();
+        for (Player player: pvpBoard.getPlayers()) {
+            if (player.getCurrentHealth() <= 0) {
+                //remove from taggedPlayers map
+                // TODO: check if player is in taggedPlayers map
+                for (int i = 0; i < pvpBoard.getPlayers().size(); i++) {
+                    pvpBoard.getPlayers().get(i).removePlayer(player);
+                }
+                for (int i = 0; i < pvpBoard.getEnemies().size(); i++) {
+                    pvpBoard.getEnemies().get(i).removePlayer(player);
+                }
+            }
+        }
+
+        Map<String, CharacterDecision> cDecisions;
+        Map<String, CharacterDecision> inventoryActions = new HashMap<String, CharacterDecision>();
+        Map<String, CharacterDecision> attackActions = new HashMap<String, CharacterDecision>();
+        Map<String, CharacterDecision> movementActions = new HashMap<String, CharacterDecision>();
+
+        for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
+            if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
+                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
+                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
+                inventoryActions.put(entry.getKey(), entry.getValue());
+
+            } else if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.ATTACK) {
+                attackActions.put(entry.getKey(), entry.getValue());
+
+            } else {
+                movementActions.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        for (Map.Entry<String, CharacterDecision> entry : inventoryActions.entrySet()) {
+
+        }
+
         return gameState;
     }
 
