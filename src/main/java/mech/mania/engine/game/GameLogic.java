@@ -203,7 +203,7 @@ public class GameLogic {
     public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
         Board board = gameState.getPvpBoard();
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
-        List<Monster> enemies = board.getEnemies();
+        List<Monster> enemies = board.getMonsters();
         List<Player> players = board.getPlayers();
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 

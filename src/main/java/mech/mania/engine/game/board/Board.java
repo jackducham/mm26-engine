@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Board {
     private Tile[][] grid;
-    private List<Monster> enemies;
+    private List<Monster> monsters;
     private List<Player> players;
     private List<Position> portals;
     private String BoardID;
@@ -17,8 +17,8 @@ public class Board {
         return grid;
     }
 
-    public List<Monster> getEnemies() {
-        return enemies;
+    public List<Monster> getMonsters() {
+        return monsters;
     }
 
     public List<Player> getPlayers() {
