@@ -99,16 +99,14 @@ public class GameLogic {
      */
     public static boolean canUsePortal(GameState gameState, Character player) {
         if(player instanceof Monster) return false; // Only players can take portals
+
+        //checks the portals on the player's current board
         for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
             if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
                 return true;
             }
         }
-        for(int i = 0; i < gameState.getPvpBoard().getPortals().size(); i++) {
-            if(player.getPosition() == gameState.getPvpBoard().getPortals().get(i)) {
-                return true;
-            }
-        }
+
         return false;
     }
 
@@ -121,17 +119,23 @@ public class GameLogic {
      */
     public static boolean usePortal(GameState gameState, Character player, int portalIndex) {
         if(canUsePortal(gameState, player)) {
+
+            //sends player to home board
             if(portalIndex == -1) {
-                player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(0));
+                player.setPosition(gameState.getBoard(player.getSpawnPoint().getBoardID()).getPortals().get(0));
                 return true;
             }
-            for(int i = 0; i < gameState.getPvpBoard().getPortals().size(); i++) {
-                if(i == portalIndex) {
-                    player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i));
-                    return true;
-                }
+
+            //checks for out of bounds indices
+            if(portalIndex >= gameState.getPvpBoard().getPortals().size() || portalIndex < -1) {
+                return false;
             }
+
+            //handles usual cases
+            player.setPosition(gameState.getPvpBoard().getPortals().get(portalIndex));
+            return true;
         }
+
         return false;
     }
 
