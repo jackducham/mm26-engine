@@ -99,6 +99,9 @@ public abstract class Character {
     public Weapon getWeapon() {
         return weapon;
     }
+    public Position getSpawnPoint() {
+        return spawnPoint;
+    }
     public Position getPosition() {
         return position;
     }
