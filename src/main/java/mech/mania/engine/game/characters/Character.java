@@ -23,6 +23,7 @@ public abstract class Character {
     protected Map<Player, Double> taggedPlayersDamage;
     private int ticksSinceDeath;
     private String name;
+    private boolean isDead;
 
 
     protected Character(int experience, Position spawnPoint, Weapon weapon, String name) {
@@ -67,7 +68,7 @@ public abstract class Character {
     }
 
     public boolean isDead() {
-        return currentHealth <= 0;
+        return isDead;
     }
 
     /**
@@ -76,19 +77,21 @@ public abstract class Character {
      */
     public void updateDeathState(GameState gameState) {
         // player is already dead
-        if (ticksSinceDeath >= 0) {
+        if (isDead) {
             ticksSinceDeath++;
             if (ticksSinceDeath == reviveTicks) {
                 // revive player
                 position = spawnPoint;
                 currentHealth = getMaxHealth();
                 ticksSinceDeath = -1;
+                isDead = false;
             }
         } else if (currentHealth <= 0) { // player has just died
             ticksSinceDeath = 0;
             activeEffects.clear();
             distributeRewards(gameState);
             taggedPlayersDamage.clear();
+            isDead = true;
         }
 
     }
