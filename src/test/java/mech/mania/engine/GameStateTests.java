@@ -55,9 +55,6 @@ public class GameStateTests {
     private PlayerDecision createDecisionsFromCommands(String[] commands) {
         PlayerDecision.Builder decision = PlayerDecision.newBuilder();
 
-        String randomName = UUID.randomUUID().toString();
-        decision.setPlayerName(randomName);  // give player a random name
-
         // TODO: create more commands for convenience
         for (String command : commands) {
             switch (command) {
