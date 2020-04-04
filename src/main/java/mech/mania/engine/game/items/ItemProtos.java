@@ -6522,10 +6522,10 @@ public final class ItemProtos {
     mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
-     * <code>double damage_per_turn = 2;</code>
+     * <code>int32 damage_per_turn = 2;</code>
      * @return The damagePerTurn.
      */
-    double getDamagePerTurn();
+    int getDamagePerTurn();
 
     /**
      * <code>int32 duration = 3;</code>
@@ -6591,9 +6591,9 @@ public final class ItemProtos {
 
               break;
             }
-            case 17: {
+            case 16: {
 
-              damagePerTurn_ = input.readDouble();
+              damagePerTurn_ = input.readInt32();
               break;
             }
             case 24: {
@@ -6657,12 +6657,12 @@ public final class ItemProtos {
     }
 
     public static final int DAMAGE_PER_TURN_FIELD_NUMBER = 2;
-    private double damagePerTurn_;
+    private int damagePerTurn_;
     /**
-     * <code>double damage_per_turn = 2;</code>
+     * <code>int32 damage_per_turn = 2;</code>
      * @return The damagePerTurn.
      */
-    public double getDamagePerTurn() {
+    public int getDamagePerTurn() {
       return damagePerTurn_;
     }
 
@@ -6693,8 +6693,8 @@ public final class ItemProtos {
       if (stats_ != null) {
         output.writeMessage(1, getStats());
       }
-      if (damagePerTurn_ != 0D) {
-        output.writeDouble(2, damagePerTurn_);
+      if (damagePerTurn_ != 0) {
+        output.writeInt32(2, damagePerTurn_);
       }
       if (duration_ != 0) {
         output.writeInt32(3, duration_);
@@ -6712,9 +6712,9 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStats());
       }
-      if (damagePerTurn_ != 0D) {
+      if (damagePerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, damagePerTurn_);
+          .computeInt32Size(2, damagePerTurn_);
       }
       if (duration_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -6740,9 +6740,8 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (java.lang.Double.doubleToLongBits(getDamagePerTurn())
-          != java.lang.Double.doubleToLongBits(
-              other.getDamagePerTurn())) return false;
+      if (getDamagePerTurn()
+          != other.getDamagePerTurn()) return false;
       if (getDuration()
           != other.getDuration()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -6761,8 +6760,7 @@ public final class ItemProtos {
         hash = (53 * hash) + getStats().hashCode();
       }
       hash = (37 * hash) + DAMAGE_PER_TURN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getDamagePerTurn()));
+      hash = (53 * hash) + getDamagePerTurn();
       hash = (37 * hash) + DURATION_FIELD_NUMBER;
       hash = (53 * hash) + getDuration();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -6904,7 +6902,7 @@ public final class ItemProtos {
           stats_ = null;
           statsBuilder_ = null;
         }
-        damagePerTurn_ = 0D;
+        damagePerTurn_ = 0;
 
         duration_ = 0;
 
@@ -6992,7 +6990,7 @@ public final class ItemProtos {
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
-        if (other.getDamagePerTurn() != 0D) {
+        if (other.getDamagePerTurn() != 0) {
           setDamagePerTurn(other.getDamagePerTurn());
         }
         if (other.getDuration() != 0) {
@@ -7146,32 +7144,32 @@ public final class ItemProtos {
         return statsBuilder_;
       }
 
-      private double damagePerTurn_ ;
+      private int damagePerTurn_ ;
       /**
-       * <code>double damage_per_turn = 2;</code>
+       * <code>int32 damage_per_turn = 2;</code>
        * @return The damagePerTurn.
        */
-      public double getDamagePerTurn() {
+      public int getDamagePerTurn() {
         return damagePerTurn_;
       }
       /**
-       * <code>double damage_per_turn = 2;</code>
+       * <code>int32 damage_per_turn = 2;</code>
        * @param value The damagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setDamagePerTurn(double value) {
+      public Builder setDamagePerTurn(int value) {
         
         damagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double damage_per_turn = 2;</code>
+       * <code>int32 damage_per_turn = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearDamagePerTurn() {
         
-        damagePerTurn_ = 0D;
+        damagePerTurn_ = 0;
         onChanged();
         return this;
       }
@@ -7331,7 +7329,7 @@ public final class ItemProtos {
       " \001(\005\022\037\n\027physical_defense_change\030\007 \001(\005\"d\n" +
       "\022TempStatusModifier\022#\n\005stats\030\001 \001(\0132\024.ite" +
       "m.StatusModifier\022\027\n\017damage_per_turn\030\002 \001(" +
-      "\001\022\020\n\010duration\030\003 \001(\005B;\n\034mech.mania.engine" +
+      "\005\022\020\n\010duration\030\003 \001(\005B;\n\034mech.mania.engine" +
       ".game.itemsB\nItemProtos\252\002\016MM26.IO.Models" +
       "b\006proto3"
     };
