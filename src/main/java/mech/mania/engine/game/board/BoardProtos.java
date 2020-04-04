@@ -2454,13 +2454,9 @@ public final class BoardProtos {
        */
       IMPASSIBLE(2),
       /**
-       * <code>INN = 3;</code>
+       * <code>PORTAL = 3;</code>
        */
-      INN(3),
-      /**
-       * <code>PORTAL = 4;</code>
-       */
-      PORTAL(4),
+      PORTAL(3),
       UNRECOGNIZED(-1),
       ;
 
@@ -2477,13 +2473,9 @@ public final class BoardProtos {
        */
       public static final int IMPASSIBLE_VALUE = 2;
       /**
-       * <code>INN = 3;</code>
+       * <code>PORTAL = 3;</code>
        */
-      public static final int INN_VALUE = 3;
-      /**
-       * <code>PORTAL = 4;</code>
-       */
-      public static final int PORTAL_VALUE = 4;
+      public static final int PORTAL_VALUE = 3;
 
 
       public final int getNumber() {
@@ -2513,8 +2505,7 @@ public final class BoardProtos {
           case 0: return VOID;
           case 1: return BLANK;
           case 2: return IMPASSIBLE;
-          case 3: return INN;
-          case 4: return PORTAL;
+          case 3: return PORTAL;
           default: return null;
         }
       }
@@ -3348,12 +3339,12 @@ public final class BoardProtos {
       "\010monsters\030\004 \003(\0132\022.character.Monster\022\"\n\007p" +
       "layers\030\005 \003(\0132\021.character.Player\022$\n\007porta" +
       "ls\030\006 \003(\0132\023.character.Position\022\020\n\010board_i" +
-      "d\030\007 \001(\t\"\220\001\n\004Tile\022\'\n\ttile_type\030\001 \001(\0162\024.bo" +
+      "d\030\007 \001(\t\"\207\001\n\004Tile\022\'\n\ttile_type\030\001 \001(\0162\024.bo" +
       "ard.Tile.TileType\022\031\n\005items\030\002 \003(\0132\n.item." +
-      "Item\"D\n\010TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n" +
-      "\nIMPASSIBLE\020\002\022\007\n\003INN\020\003\022\n\n\006PORTAL\020\004B<\n\034me" +
-      "ch.mania.engine.game.boardB\013BoardProtos\252" +
-      "\002\016MM26.IO.Modelsb\006proto3"
+      "Item\";\n\010TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n" +
+      "\nIMPASSIBLE\020\002\022\n\n\006PORTAL\020\003B<\n\034mech.mania." +
+      "engine.game.boardB\013BoardProtos\252\002\016MM26.IO" +
+      ".Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
