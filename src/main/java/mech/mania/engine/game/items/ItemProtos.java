@@ -23,7 +23,7 @@ public final class ItemProtos {
      * Stand-in for inheritance
      * </pre>
      *
-     * <code>int32 maxStack = 1;</code>
+     * <code>int32 max_stack = 1;</code>
      * @return The maxStack.
      */
     int getMaxStack();
@@ -332,14 +332,14 @@ public final class ItemProtos {
           itemCase_);
     }
 
-    public static final int MAXSTACK_FIELD_NUMBER = 1;
+    public static final int MAX_STACK_FIELD_NUMBER = 1;
     private int maxStack_;
     /**
      * <pre>
      * Stand-in for inheritance
      * </pre>
      *
-     * <code>int32 maxStack = 1;</code>
+     * <code>int32 max_stack = 1;</code>
      * @return The maxStack.
      */
     public int getMaxStack() {
@@ -639,7 +639,7 @@ public final class ItemProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + MAXSTACK_FIELD_NUMBER;
+      hash = (37 * hash) + MAX_STACK_FIELD_NUMBER;
       hash = (53 * hash) + getMaxStack();
       if (hasStats()) {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
@@ -1009,7 +1009,7 @@ public final class ItemProtos {
        * Stand-in for inheritance
        * </pre>
        *
-       * <code>int32 maxStack = 1;</code>
+       * <code>int32 max_stack = 1;</code>
        * @return The maxStack.
        */
       public int getMaxStack() {
@@ -1020,7 +1020,7 @@ public final class ItemProtos {
        * Stand-in for inheritance
        * </pre>
        *
-       * <code>int32 maxStack = 1;</code>
+       * <code>int32 max_stack = 1;</code>
        * @param value The maxStack to set.
        * @return This builder for chaining.
        */
@@ -1035,7 +1035,7 @@ public final class ItemProtos {
        * Stand-in for inheritance
        * </pre>
        *
-       * <code>int32 maxStack = 1;</code>
+       * <code>int32 max_stack = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearMaxStack() {
@@ -3994,23 +3994,23 @@ public final class ItemProtos {
     int getRange();
 
     /**
-     * <code>int32 splashRadius = 3;</code>
+     * <code>int32 splash_radius = 3;</code>
      * @return The splashRadius.
      */
     int getSplashRadius();
 
     /**
-     * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
      * @return Whether the onHitEffect field is set.
      */
     boolean hasOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
      * @return The onHitEffect.
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder();
   }
@@ -4160,34 +4160,34 @@ public final class ItemProtos {
       return range_;
     }
 
-    public static final int SPLASHRADIUS_FIELD_NUMBER = 3;
+    public static final int SPLASH_RADIUS_FIELD_NUMBER = 3;
     private int splashRadius_;
     /**
-     * <code>int32 splashRadius = 3;</code>
+     * <code>int32 splash_radius = 3;</code>
      * @return The splashRadius.
      */
     public int getSplashRadius() {
       return splashRadius_;
     }
 
-    public static final int ONHITEFFECT_FIELD_NUMBER = 4;
+    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 4;
     private mech.mania.engine.game.items.ItemProtos.TempStatusModifier onHitEffect_;
     /**
-     * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
      * @return Whether the onHitEffect field is set.
      */
     public boolean hasOnHitEffect() {
       return onHitEffect_ != null;
     }
     /**
-     * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
      * @return The onHitEffect.
      */
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
       return onHitEffect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
     }
     /**
-     * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
      */
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
       return getOnHitEffect();
@@ -4290,10 +4290,10 @@ public final class ItemProtos {
       }
       hash = (37 * hash) + RANGE_FIELD_NUMBER;
       hash = (53 * hash) + getRange();
-      hash = (37 * hash) + SPLASHRADIUS_FIELD_NUMBER;
+      hash = (37 * hash) + SPLASH_RADIUS_FIELD_NUMBER;
       hash = (53 * hash) + getSplashRadius();
       if (hasOnHitEffect()) {
-        hash = (37 * hash) + ONHITEFFECT_FIELD_NUMBER;
+        hash = (37 * hash) + ON_HIT_EFFECT_FIELD_NUMBER;
         hash = (53 * hash) + getOnHitEffect().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -4723,14 +4723,14 @@ public final class ItemProtos {
 
       private int splashRadius_ ;
       /**
-       * <code>int32 splashRadius = 3;</code>
+       * <code>int32 splash_radius = 3;</code>
        * @return The splashRadius.
        */
       public int getSplashRadius() {
         return splashRadius_;
       }
       /**
-       * <code>int32 splashRadius = 3;</code>
+       * <code>int32 splash_radius = 3;</code>
        * @param value The splashRadius to set.
        * @return This builder for chaining.
        */
@@ -4741,7 +4741,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>int32 splashRadius = 3;</code>
+       * <code>int32 splash_radius = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearSplashRadius() {
@@ -4755,14 +4755,14 @@ public final class ItemProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> onHitEffectBuilder_;
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        * @return Whether the onHitEffect field is set.
        */
       public boolean hasOnHitEffect() {
         return onHitEffectBuilder_ != null || onHitEffect_ != null;
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        * @return The onHitEffect.
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
@@ -4773,7 +4773,7 @@ public final class ItemProtos {
         }
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       public Builder setOnHitEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
@@ -4789,7 +4789,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       public Builder setOnHitEffect(
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -4803,7 +4803,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       public Builder mergeOnHitEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
@@ -4821,7 +4821,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       public Builder clearOnHitEffect() {
         if (onHitEffectBuilder_ == null) {
@@ -4835,7 +4835,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getOnHitEffectBuilder() {
         
@@ -4843,7 +4843,7 @@ public final class ItemProtos {
         return getOnHitEffectFieldBuilder().getBuilder();
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
         if (onHitEffectBuilder_ != null) {
@@ -4854,7 +4854,7 @@ public final class ItemProtos {
         }
       }
       /**
-       * <code>.item.TempStatusModifier onHitEffect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
@@ -7239,32 +7239,32 @@ public final class ItemProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nitem.proto\022\004item\"\347\001\n\004Item\022\020\n\010maxStack\030" +
-      "\001 \001(\005\022#\n\005stats\030\002 \001(\0132\024.item.StatusModifi" +
-      "er\022 \n\007clothes\030\003 \001(\0132\r.item.ClothesH\000\022\030\n\003" +
-      "hat\030\004 \001(\0132\t.item.HatH\000\022\034\n\005shoes\030\005 \001(\0132\013." +
-      "item.ShoesH\000\022\036\n\006weapon\030\006 \001(\0132\014.item.Weap" +
-      "onH\000\022&\n\nconsumable\030\007 \001(\0132\020.item.Consumab" +
-      "leH\000B\006\n\004item\".\n\007Clothes\022#\n\005stats\030\001 \001(\0132\024" +
-      ".item.StatusModifier\"j\n\003Hat\022#\n\005stats\030\001 \001" +
-      "(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030\002" +
-      " \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022\010" +
-      "\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item." +
-      "StatusModifier\"\201\001\n\006Weapon\022#\n\005stats\030\001 \001(\013" +
-      "2\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\024\n" +
-      "\014splashRadius\030\003 \001(\005\022-\n\013onHitEffect\030\004 \001(\013" +
-      "2\030.item.TempStatusModifier\"5\n\nConsumable" +
-      "\022\'\n\005stats\030\001 \001(\0132\030.item.TempStatusModifie" +
-      "r\"\324\001\n\016StatusModifier\022\024\n\014speed_change\030\001 \001" +
-      "(\005\022\025\n\rhealth_change\030\002 \001(\005\022\031\n\021experience_" +
-      "change\030\003 \001(\005\022\033\n\023magic_damage_change\030\004 \001(" +
-      "\005\022\036\n\026physical_damage_change\030\005 \001(\005\022\034\n\024mag" +
-      "ic_defense_change\030\006 \001(\005\022\037\n\027physical_defe" +
-      "nse_change\030\007 \001(\005\"d\n\022TempStatusModifier\022#" +
-      "\n\005stats\030\001 \001(\0132\024.item.StatusModifier\022\027\n\017d" +
-      "amage_per_turn\030\002 \001(\001\022\020\n\010duration\030\003 \001(\005B;" +
-      "\n\034mech.mania.engine.game.itemsB\nItemProt" +
-      "os\252\002\016MM26.IO.Modelsb\006proto3"
+      "\n\nitem.proto\022\004item\"\350\001\n\004Item\022\021\n\tmax_stack" +
+      "\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132\024.item.StatusModif" +
+      "ier\022 \n\007clothes\030\003 \001(\0132\r.item.ClothesH\000\022\030\n" +
+      "\003hat\030\004 \001(\0132\t.item.HatH\000\022\034\n\005shoes\030\005 \001(\0132\013" +
+      ".item.ShoesH\000\022\036\n\006weapon\030\006 \001(\0132\014.item.Wea" +
+      "ponH\000\022&\n\nconsumable\030\007 \001(\0132\020.item.Consuma" +
+      "bleH\000B\006\n\004item\".\n\007Clothes\022#\n\005stats\030\001 \001(\0132" +
+      "\024.item.StatusModifier\"j\n\003Hat\022#\n\005stats\030\001 " +
+      "\001(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030" +
+      "\002 \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022" +
+      "\010\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item" +
+      ".StatusModifier\"\204\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
+      "\0132\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\025" +
+      "\n\rsplash_radius\030\003 \001(\005\022/\n\ron_hit_effect\030\004" +
+      " \001(\0132\030.item.TempStatusModifier\"5\n\nConsum" +
+      "able\022\'\n\005stats\030\001 \001(\0132\030.item.TempStatusMod" +
+      "ifier\"\324\001\n\016StatusModifier\022\024\n\014speed_change" +
+      "\030\001 \001(\005\022\025\n\rhealth_change\030\002 \001(\005\022\031\n\021experie" +
+      "nce_change\030\003 \001(\005\022\033\n\023magic_damage_change\030" +
+      "\004 \001(\005\022\036\n\026physical_damage_change\030\005 \001(\005\022\034\n" +
+      "\024magic_defense_change\030\006 \001(\005\022\037\n\027physical_" +
+      "defense_change\030\007 \001(\005\"d\n\022TempStatusModifi" +
+      "er\022#\n\005stats\030\001 \001(\0132\024.item.StatusModifier\022" +
+      "\027\n\017damage_per_turn\030\002 \001(\001\022\020\n\010duration\030\003 \001" +
+      "(\005B;\n\034mech.mania.engine.game.itemsB\nItem" +
+      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -75,27 +75,27 @@ public final class BoardProtos {
         int index);
 
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> 
-        getEnemiesList();
+    java.util.List<mech.mania.engine.game.characters.CharacterProtos.Monster> 
+        getMonstersList();
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    mech.mania.engine.game.characters.CharacterProtos.Enemy getEnemies(int index);
+    mech.mania.engine.game.characters.CharacterProtos.Monster getMonsters(int index);
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    int getEnemiesCount();
+    int getMonstersCount();
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-        getEnemiesOrBuilderList();
+    java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder> 
+        getMonstersOrBuilderList();
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder getEnemiesOrBuilder(
+    mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder getMonstersOrBuilder(
         int index);
 
     /**
@@ -147,12 +147,12 @@ public final class BoardProtos {
         int index);
 
     /**
-     * <code>string boardId = 7;</code>
+     * <code>string board_id = 7;</code>
      * @return The boardId.
      */
     java.lang.String getBoardId();
     /**
-     * <code>string boardId = 7;</code>
+     * <code>string board_id = 7;</code>
      * @return The bytes for boardId.
      */
     com.google.protobuf.ByteString
@@ -172,7 +172,7 @@ public final class BoardProtos {
     }
     private Board() {
       grid_ = java.util.Collections.emptyList();
-      enemies_ = java.util.Collections.emptyList();
+      monsters_ = java.util.Collections.emptyList();
       players_ = java.util.Collections.emptyList();
       portals_ = java.util.Collections.emptyList();
       boardId_ = "";
@@ -230,11 +230,11 @@ public final class BoardProtos {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                enemies_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Enemy>();
+                monsters_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Monster>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              enemies_.add(
-                  input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Enemy.parser(), extensionRegistry));
+              monsters_.add(
+                  input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Monster.parser(), extensionRegistry));
               break;
             }
             case 42: {
@@ -280,7 +280,7 @@ public final class BoardProtos {
           grid_ = java.util.Collections.unmodifiableList(grid_);
         }
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          enemies_ = java.util.Collections.unmodifiableList(enemies_);
+          monsters_ = java.util.Collections.unmodifiableList(monsters_);
         }
         if (((mutable_bitField0_ & 0x00000004) != 0)) {
           players_ = java.util.Collections.unmodifiableList(players_);
@@ -380,39 +380,39 @@ public final class BoardProtos {
       return grid_.get(index);
     }
 
-    public static final int ENEMIES_FIELD_NUMBER = 4;
-    private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> enemies_;
+    public static final int MONSTERS_FIELD_NUMBER = 4;
+    private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Monster> monsters_;
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> getEnemiesList() {
-      return enemies_;
+    public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Monster> getMonstersList() {
+      return monsters_;
     }
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-        getEnemiesOrBuilderList() {
-      return enemies_;
+    public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder> 
+        getMonstersOrBuilderList() {
+      return monsters_;
     }
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    public int getEnemiesCount() {
-      return enemies_.size();
+    public int getMonstersCount() {
+      return monsters_.size();
     }
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    public mech.mania.engine.game.characters.CharacterProtos.Enemy getEnemies(int index) {
-      return enemies_.get(index);
+    public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsters(int index) {
+      return monsters_.get(index);
     }
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
+     * <code>repeated .character.Monster monsters = 4;</code>
      */
-    public mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder getEnemiesOrBuilder(
+    public mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder getMonstersOrBuilder(
         int index) {
-      return enemies_.get(index);
+      return monsters_.get(index);
     }
 
     public static final int PLAYERS_FIELD_NUMBER = 5;
@@ -485,10 +485,10 @@ public final class BoardProtos {
       return portals_.get(index);
     }
 
-    public static final int BOARDID_FIELD_NUMBER = 7;
+    public static final int BOARD_ID_FIELD_NUMBER = 7;
     private volatile java.lang.Object boardId_;
     /**
-     * <code>string boardId = 7;</code>
+     * <code>string board_id = 7;</code>
      * @return The boardId.
      */
     public java.lang.String getBoardId() {
@@ -504,7 +504,7 @@ public final class BoardProtos {
       }
     }
     /**
-     * <code>string boardId = 7;</code>
+     * <code>string board_id = 7;</code>
      * @return The bytes for boardId.
      */
     public com.google.protobuf.ByteString
@@ -544,8 +544,8 @@ public final class BoardProtos {
       for (int i = 0; i < grid_.size(); i++) {
         output.writeMessage(3, grid_.get(i));
       }
-      for (int i = 0; i < enemies_.size(); i++) {
-        output.writeMessage(4, enemies_.get(i));
+      for (int i = 0; i < monsters_.size(); i++) {
+        output.writeMessage(4, monsters_.get(i));
       }
       for (int i = 0; i < players_.size(); i++) {
         output.writeMessage(5, players_.get(i));
@@ -577,9 +577,9 @@ public final class BoardProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, grid_.get(i));
       }
-      for (int i = 0; i < enemies_.size(); i++) {
+      for (int i = 0; i < monsters_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, enemies_.get(i));
+          .computeMessageSize(4, monsters_.get(i));
       }
       for (int i = 0; i < players_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -613,8 +613,8 @@ public final class BoardProtos {
           != other.getColumns()) return false;
       if (!getGridList()
           .equals(other.getGridList())) return false;
-      if (!getEnemiesList()
-          .equals(other.getEnemiesList())) return false;
+      if (!getMonstersList()
+          .equals(other.getMonstersList())) return false;
       if (!getPlayersList()
           .equals(other.getPlayersList())) return false;
       if (!getPortalsList()
@@ -640,9 +640,9 @@ public final class BoardProtos {
         hash = (37 * hash) + GRID_FIELD_NUMBER;
         hash = (53 * hash) + getGridList().hashCode();
       }
-      if (getEnemiesCount() > 0) {
-        hash = (37 * hash) + ENEMIES_FIELD_NUMBER;
-        hash = (53 * hash) + getEnemiesList().hashCode();
+      if (getMonstersCount() > 0) {
+        hash = (37 * hash) + MONSTERS_FIELD_NUMBER;
+        hash = (53 * hash) + getMonstersList().hashCode();
       }
       if (getPlayersCount() > 0) {
         hash = (37 * hash) + PLAYERS_FIELD_NUMBER;
@@ -652,7 +652,7 @@ public final class BoardProtos {
         hash = (37 * hash) + PORTALS_FIELD_NUMBER;
         hash = (53 * hash) + getPortalsList().hashCode();
       }
-      hash = (37 * hash) + BOARDID_FIELD_NUMBER;
+      hash = (37 * hash) + BOARD_ID_FIELD_NUMBER;
       hash = (53 * hash) + getBoardId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -783,7 +783,7 @@ public final class BoardProtos {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getGridFieldBuilder();
-          getEnemiesFieldBuilder();
+          getMonstersFieldBuilder();
           getPlayersFieldBuilder();
           getPortalsFieldBuilder();
         }
@@ -801,11 +801,11 @@ public final class BoardProtos {
         } else {
           gridBuilder_.clear();
         }
-        if (enemiesBuilder_ == null) {
-          enemies_ = java.util.Collections.emptyList();
+        if (monstersBuilder_ == null) {
+          monsters_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          enemiesBuilder_.clear();
+          monstersBuilder_.clear();
         }
         if (playersBuilder_ == null) {
           players_ = java.util.Collections.emptyList();
@@ -859,14 +859,14 @@ public final class BoardProtos {
         } else {
           result.grid_ = gridBuilder_.build();
         }
-        if (enemiesBuilder_ == null) {
+        if (monstersBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
-            enemies_ = java.util.Collections.unmodifiableList(enemies_);
+            monsters_ = java.util.Collections.unmodifiableList(monsters_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.enemies_ = enemies_;
+          result.monsters_ = monsters_;
         } else {
-          result.enemies_ = enemiesBuilder_.build();
+          result.monsters_ = monstersBuilder_.build();
         }
         if (playersBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0)) {
@@ -967,29 +967,29 @@ public final class BoardProtos {
             }
           }
         }
-        if (enemiesBuilder_ == null) {
-          if (!other.enemies_.isEmpty()) {
-            if (enemies_.isEmpty()) {
-              enemies_ = other.enemies_;
+        if (monstersBuilder_ == null) {
+          if (!other.monsters_.isEmpty()) {
+            if (monsters_.isEmpty()) {
+              monsters_ = other.monsters_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureEnemiesIsMutable();
-              enemies_.addAll(other.enemies_);
+              ensureMonstersIsMutable();
+              monsters_.addAll(other.monsters_);
             }
             onChanged();
           }
         } else {
-          if (!other.enemies_.isEmpty()) {
-            if (enemiesBuilder_.isEmpty()) {
-              enemiesBuilder_.dispose();
-              enemiesBuilder_ = null;
-              enemies_ = other.enemies_;
+          if (!other.monsters_.isEmpty()) {
+            if (monstersBuilder_.isEmpty()) {
+              monstersBuilder_.dispose();
+              monstersBuilder_ = null;
+              monsters_ = other.monsters_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              enemiesBuilder_ = 
+              monstersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEnemiesFieldBuilder() : null;
+                   getMonstersFieldBuilder() : null;
             } else {
-              enemiesBuilder_.addAllMessages(other.enemies_);
+              monstersBuilder_.addAllMessages(other.monsters_);
             }
           }
         }
@@ -1451,244 +1451,244 @@ public final class BoardProtos {
         return gridBuilder_;
       }
 
-      private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> enemies_ =
+      private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Monster> monsters_ =
         java.util.Collections.emptyList();
-      private void ensureEnemiesIsMutable() {
+      private void ensureMonstersIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          enemies_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Enemy>(enemies_);
+          monsters_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Monster>(monsters_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.characters.CharacterProtos.Enemy, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder, mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> enemiesBuilder_;
+          mech.mania.engine.game.characters.CharacterProtos.Monster, mech.mania.engine.game.characters.CharacterProtos.Monster.Builder, mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder> monstersBuilder_;
 
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> getEnemiesList() {
-        if (enemiesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(enemies_);
+      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Monster> getMonstersList() {
+        if (monstersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(monsters_);
         } else {
-          return enemiesBuilder_.getMessageList();
+          return monstersBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public int getEnemiesCount() {
-        if (enemiesBuilder_ == null) {
-          return enemies_.size();
+      public int getMonstersCount() {
+        if (monstersBuilder_ == null) {
+          return monsters_.size();
         } else {
-          return enemiesBuilder_.getCount();
+          return monstersBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy getEnemies(int index) {
-        if (enemiesBuilder_ == null) {
-          return enemies_.get(index);
+      public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsters(int index) {
+        if (monstersBuilder_ == null) {
+          return monsters_.get(index);
         } else {
-          return enemiesBuilder_.getMessage(index);
+          return monstersBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder setEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy value) {
-        if (enemiesBuilder_ == null) {
+      public Builder setMonsters(
+          int index, mech.mania.engine.game.characters.CharacterProtos.Monster value) {
+        if (monstersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEnemiesIsMutable();
-          enemies_.set(index, value);
+          ensureMonstersIsMutable();
+          monsters_.set(index, value);
           onChanged();
         } else {
-          enemiesBuilder_.setMessage(index, value);
+          monstersBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder setEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder builderForValue) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.set(index, builderForValue.build());
+      public Builder setMonsters(
+          int index, mech.mania.engine.game.characters.CharacterProtos.Monster.Builder builderForValue) {
+        if (monstersBuilder_ == null) {
+          ensureMonstersIsMutable();
+          monsters_.set(index, builderForValue.build());
           onChanged();
         } else {
-          enemiesBuilder_.setMessage(index, builderForValue.build());
+          monstersBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder addEnemies(mech.mania.engine.game.characters.CharacterProtos.Enemy value) {
-        if (enemiesBuilder_ == null) {
+      public Builder addMonsters(mech.mania.engine.game.characters.CharacterProtos.Monster value) {
+        if (monstersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEnemiesIsMutable();
-          enemies_.add(value);
+          ensureMonstersIsMutable();
+          monsters_.add(value);
           onChanged();
         } else {
-          enemiesBuilder_.addMessage(value);
+          monstersBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder addEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy value) {
-        if (enemiesBuilder_ == null) {
+      public Builder addMonsters(
+          int index, mech.mania.engine.game.characters.CharacterProtos.Monster value) {
+        if (monstersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEnemiesIsMutable();
-          enemies_.add(index, value);
+          ensureMonstersIsMutable();
+          monsters_.add(index, value);
           onChanged();
         } else {
-          enemiesBuilder_.addMessage(index, value);
+          monstersBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder addEnemies(
-          mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder builderForValue) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.add(builderForValue.build());
+      public Builder addMonsters(
+          mech.mania.engine.game.characters.CharacterProtos.Monster.Builder builderForValue) {
+        if (monstersBuilder_ == null) {
+          ensureMonstersIsMutable();
+          monsters_.add(builderForValue.build());
           onChanged();
         } else {
-          enemiesBuilder_.addMessage(builderForValue.build());
+          monstersBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder addEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder builderForValue) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.add(index, builderForValue.build());
+      public Builder addMonsters(
+          int index, mech.mania.engine.game.characters.CharacterProtos.Monster.Builder builderForValue) {
+        if (monstersBuilder_ == null) {
+          ensureMonstersIsMutable();
+          monsters_.add(index, builderForValue.build());
           onChanged();
         } else {
-          enemiesBuilder_.addMessage(index, builderForValue.build());
+          monstersBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder addAllEnemies(
-          java.lang.Iterable<? extends mech.mania.engine.game.characters.CharacterProtos.Enemy> values) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
+      public Builder addAllMonsters(
+          java.lang.Iterable<? extends mech.mania.engine.game.characters.CharacterProtos.Monster> values) {
+        if (monstersBuilder_ == null) {
+          ensureMonstersIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, enemies_);
+              values, monsters_);
           onChanged();
         } else {
-          enemiesBuilder_.addAllMessages(values);
+          monstersBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder clearEnemies() {
-        if (enemiesBuilder_ == null) {
-          enemies_ = java.util.Collections.emptyList();
+      public Builder clearMonsters() {
+        if (monstersBuilder_ == null) {
+          monsters_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
-          enemiesBuilder_.clear();
+          monstersBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public Builder removeEnemies(int index) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.remove(index);
+      public Builder removeMonsters(int index) {
+        if (monstersBuilder_ == null) {
+          ensureMonstersIsMutable();
+          monsters_.remove(index);
           onChanged();
         } else {
-          enemiesBuilder_.remove(index);
+          monstersBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder getEnemiesBuilder(
+      public mech.mania.engine.game.characters.CharacterProtos.Monster.Builder getMonstersBuilder(
           int index) {
-        return getEnemiesFieldBuilder().getBuilder(index);
+        return getMonstersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder getEnemiesOrBuilder(
+      public mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder getMonstersOrBuilder(
           int index) {
-        if (enemiesBuilder_ == null) {
-          return enemies_.get(index);  } else {
-          return enemiesBuilder_.getMessageOrBuilder(index);
+        if (monstersBuilder_ == null) {
+          return monsters_.get(index);  } else {
+          return monstersBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-           getEnemiesOrBuilderList() {
-        if (enemiesBuilder_ != null) {
-          return enemiesBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder> 
+           getMonstersOrBuilderList() {
+        if (monstersBuilder_ != null) {
+          return monstersBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(enemies_);
+          return java.util.Collections.unmodifiableList(monsters_);
         }
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder addEnemiesBuilder() {
-        return getEnemiesFieldBuilder().addBuilder(
-            mech.mania.engine.game.characters.CharacterProtos.Enemy.getDefaultInstance());
+      public mech.mania.engine.game.characters.CharacterProtos.Monster.Builder addMonstersBuilder() {
+        return getMonstersFieldBuilder().addBuilder(
+            mech.mania.engine.game.characters.CharacterProtos.Monster.getDefaultInstance());
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder addEnemiesBuilder(
+      public mech.mania.engine.game.characters.CharacterProtos.Monster.Builder addMonstersBuilder(
           int index) {
-        return getEnemiesFieldBuilder().addBuilder(
-            index, mech.mania.engine.game.characters.CharacterProtos.Enemy.getDefaultInstance());
+        return getMonstersFieldBuilder().addBuilder(
+            index, mech.mania.engine.game.characters.CharacterProtos.Monster.getDefaultInstance());
       }
       /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
+       * <code>repeated .character.Monster monsters = 4;</code>
        */
-      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder> 
-           getEnemiesBuilderList() {
-        return getEnemiesFieldBuilder().getBuilderList();
+      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Monster.Builder> 
+           getMonstersBuilderList() {
+        return getMonstersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.characters.CharacterProtos.Enemy, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder, mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-          getEnemiesFieldBuilder() {
-        if (enemiesBuilder_ == null) {
-          enemiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.game.characters.CharacterProtos.Enemy, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder, mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder>(
-                  enemies_,
+          mech.mania.engine.game.characters.CharacterProtos.Monster, mech.mania.engine.game.characters.CharacterProtos.Monster.Builder, mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder> 
+          getMonstersFieldBuilder() {
+        if (monstersBuilder_ == null) {
+          monstersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.game.characters.CharacterProtos.Monster, mech.mania.engine.game.characters.CharacterProtos.Monster.Builder, mech.mania.engine.game.characters.CharacterProtos.MonsterOrBuilder>(
+                  monsters_,
                   ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
-          enemies_ = null;
+          monsters_ = null;
         }
-        return enemiesBuilder_;
+        return monstersBuilder_;
       }
 
       private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player> players_ =
@@ -2173,7 +2173,7 @@ public final class BoardProtos {
 
       private java.lang.Object boardId_ = "";
       /**
-       * <code>string boardId = 7;</code>
+       * <code>string board_id = 7;</code>
        * @return The boardId.
        */
       public java.lang.String getBoardId() {
@@ -2189,7 +2189,7 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>string boardId = 7;</code>
+       * <code>string board_id = 7;</code>
        * @return The bytes for boardId.
        */
       public com.google.protobuf.ByteString
@@ -2206,7 +2206,7 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>string boardId = 7;</code>
+       * <code>string board_id = 7;</code>
        * @param value The boardId to set.
        * @return This builder for chaining.
        */
@@ -2221,7 +2221,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>string boardId = 7;</code>
+       * <code>string board_id = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearBoardId() {
@@ -2231,7 +2231,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>string boardId = 7;</code>
+       * <code>string board_id = 7;</code>
        * @param value The bytes for boardId to set.
        * @return This builder for chaining.
        */
@@ -3343,17 +3343,17 @@ public final class BoardProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\013board.proto\022\005board\032\nitem.proto\032\017charac" +
-      "ter.proto\"\277\001\n\005Board\022\014\n\004rows\030\001 \001(\005\022\017\n\007col" +
-      "umns\030\002 \001(\005\022\031\n\004grid\030\003 \003(\0132\013.board.Tile\022!\n" +
-      "\007enemies\030\004 \003(\0132\020.character.Enemy\022\"\n\007play" +
-      "ers\030\005 \003(\0132\021.character.Player\022$\n\007portals\030" +
-      "\006 \003(\0132\023.character.Position\022\017\n\007boardId\030\007 " +
-      "\001(\t\"\220\001\n\004Tile\022\'\n\ttile_type\030\001 \001(\0162\024.board." +
-      "Tile.TileType\022\031\n\005items\030\002 \003(\0132\n.item.Item" +
-      "\"D\n\010TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n\nIMP" +
-      "ASSIBLE\020\002\022\007\n\003INN\020\003\022\n\n\006PORTAL\020\004B<\n\034mech.m" +
-      "ania.engine.game.boardB\013BoardProtos\252\002\016MM" +
-      "26.IO.Modelsb\006proto3"
+      "ter.proto\"\303\001\n\005Board\022\014\n\004rows\030\001 \001(\005\022\017\n\007col" +
+      "umns\030\002 \001(\005\022\031\n\004grid\030\003 \003(\0132\013.board.Tile\022$\n" +
+      "\010monsters\030\004 \003(\0132\022.character.Monster\022\"\n\007p" +
+      "layers\030\005 \003(\0132\021.character.Player\022$\n\007porta" +
+      "ls\030\006 \003(\0132\023.character.Position\022\020\n\010board_i" +
+      "d\030\007 \001(\t\"\220\001\n\004Tile\022\'\n\ttile_type\030\001 \001(\0162\024.bo" +
+      "ard.Tile.TileType\022\031\n\005items\030\002 \003(\0132\n.item." +
+      "Item\"D\n\010TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n" +
+      "\nIMPASSIBLE\020\002\022\007\n\003INN\020\003\022\n\n\006PORTAL\020\004B<\n\034me" +
+      "ch.mania.engine.game.boardB\013BoardProtos\252" +
+      "\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3366,7 +3366,7 @@ public final class BoardProtos {
     internal_static_board_Board_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_board_Board_descriptor,
-        new java.lang.String[] { "Rows", "Columns", "Grid", "Enemies", "Players", "Portals", "BoardId", });
+        new java.lang.String[] { "Rows", "Columns", "Grid", "Monsters", "Players", "Portals", "BoardId", });
     internal_static_board_Tile_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_board_Tile_fieldAccessorTable = new
