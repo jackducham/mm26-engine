@@ -37,7 +37,7 @@ public class Monster extends Character {
             }
         } else {
             Player highestDamagePlayer = null;
-            double highestDamage = -1;
+            int highestDamage = -1;
             for (Player player : taggedPlayersDamage.keySet()) {
                 if (taggedPlayersDamage.get(player) > highestDamage) {
                     highestDamagePlayer = player;
