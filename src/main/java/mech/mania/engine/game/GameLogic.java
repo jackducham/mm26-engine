@@ -58,7 +58,7 @@ public class GameLogic {
                 break;
             case DROP:
                 player = (Player) character;
-                dropItems(gameState, player, index);
+                dropItem(gameState, player, index);
                 break;
             case PICKUP:
                 player = (Player) character;
@@ -266,13 +266,13 @@ public class GameLogic {
     }
 
     /**
-     * Removes one or more items from a Player's inventory and adds them to the items on a tile.
+     * Removes one item from a Player's inventory and adds it to the items on a tile.
      * @param gameState current gameState
      * @param player the player dropping items
      * @param index the index of the item in the player's inventory which is being dropped
      * @return true if successful
      */
-    public static boolean dropItems(GameState gameState, Player player, int index) {
+    public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
         if (index < 0 || index > player.getInventorySize()) {
             return false;
