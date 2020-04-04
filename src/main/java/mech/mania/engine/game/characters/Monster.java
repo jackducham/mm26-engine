@@ -3,12 +3,12 @@ package mech.mania.engine.game.characters;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.Tile;
-import mech.mania.engine.game.items.Item;
+import mech.mania.engine.game.items.*;
 
 import mech.mania.engine.game.GameLogic;
 
+import java.util.ArrayList;
 import java.util.List;
-import mech.mania.engine.game.items.Weapon;
 
 public class Monster extends Character {
     private List<Item> drops;
@@ -16,6 +16,36 @@ public class Monster extends Character {
     public Monster(int experience, Position spawnPoint, Weapon weapon, List<Item> drops, String name) {
         super(experience, spawnPoint, weapon, name);
         this.drops = drops;
+    }
+
+    public Monster(CharacterProtos.Monster monsterProto) {
+        super(
+                monsterProto.getCharacter().getExperience(),
+                new Position(monsterProto.getCharacter().getSpawnPoint()),
+                new Weapon(monsterProto.getCharacter().getWeapon()),
+                monsterProto.getCharacter().getName()
+        );
+
+        drops = new ArrayList<>(monsterProto.getDropsCount());
+        for (int i = 0; i < monsterProto.getDropsCount(); i++) {
+            ItemProtos.Item protoItem = monsterProto.getDrops(i);
+            switch(protoItem.getItemCase()) {
+                case CLOTHES:
+                    drops.set(i, new Clothes(protoItem.getClothes()));
+                    break;
+                case HAT:
+                    drops.set(i, new Hat(protoItem.getHat()));
+                    break;
+                case SHOES:
+                    drops.set(i, new Shoes(protoItem.getShoes()));
+                    break;
+                case WEAPON:
+                    drops.set(i, new Weapon(protoItem.getWeapon()));
+                    break;
+                case CONSUMABLE:
+                    drops.set(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+            }
+        }
     }
 
     private Position findPositionToMove(GameState gameState, Position destination) {

@@ -20,6 +20,16 @@ public class StatusModifier {
         this.physicalDefenseChange = physicalDefenseChange;
     }
 
+    public StatusModifier(ItemProtos.StatusModifier statusModifierProto) {
+        this.speedChange = statusModifierProto.getSpeedChange();
+        this.healthChange = statusModifierProto.getHealthChange();
+        this.experienceChange = statusModifierProto.getExperienceChange();
+        this.magicDamageChange = statusModifierProto.getMagicDamageChange();
+        this.physicalDamageChange = statusModifierProto.getPhysicalDamageChange();
+        this.magicDefenseChange = statusModifierProto.getMagicDefenseChange();
+        this.physicalDefenseChange = statusModifierProto.getPhysicalDefenseChange();
+    }
+
     public double getSpeedChange() {
         return speedChange;
     }

@@ -10,6 +10,13 @@ public class Consumable extends Item {
         this.stacks = 1;
     }
 
+    public Consumable(int maxStack, ItemProtos.Consumable consumableProto) {
+        // TODO: these should be fixed after Sahil's fixes to protos
+        super(maxStack);
+        this.effect = new TempStatusModifier(consumableProto.getEffect());
+        this.stacks = consumableProto.getStacks();
+    }
+
     public int getStacks() {
         return stacks;
     }

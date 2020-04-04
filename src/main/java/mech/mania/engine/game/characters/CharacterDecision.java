@@ -1,5 +1,7 @@
 package mech.mania.engine.game.characters;
 
+import mech.mania.engine.server.communication.player.model.PlayerProtos;
+
 public class CharacterDecision {
     public enum decisionTypes {
         MOVE, ATTACK, EQUIP, DROP, PICKUP, PORTAL
@@ -18,6 +20,29 @@ public class CharacterDecision {
         this.decision = decision;
         this.actionPosition = actionPosition;
         this.index = inventoryIndex;
+    }
+
+    public CharacterDecision(PlayerProtos.PlayerDecision playerProto) {
+        switch(playerProto.getDecisionType()) {
+            case MOVE:
+                decision = decisionTypes.MOVE;
+                break;
+            case ATTACK:
+                decision = decisionTypes.ATTACK;
+                break;
+            case EQUIP:
+                decision = decisionTypes.EQUIP;
+                break;
+            case DROP:
+                decision = decisionTypes.DROP;
+                break;
+            case PICKUP:
+                decision = decisionTypes.PICKUP;
+                break;
+            case TRAVEL:
+                decision = decisionTypes.PORTAL;
+                break;
+        }
     }
 
     public decisionTypes getDecision() {

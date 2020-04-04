@@ -13,6 +13,13 @@ public class Weapon extends Wearable {
         this.onHitEffect = onHitEffect;
     }
 
+    public Weapon(ItemProtos.Weapon weaponProto) {
+        super(new StatusModifier(weaponProto.getStats()));
+        this.range = weaponProto.getRange();
+        this.splashRadius = weaponProto.getSplashRadius();
+        this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
+    }
+
     public int getRange() {
         return range;
     }

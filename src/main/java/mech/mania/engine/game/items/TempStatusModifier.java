@@ -12,4 +12,18 @@ public class TempStatusModifier extends StatusModifier {
         this.duration = duration;
         this.damagePerTurn = damagePerTurn;
     }
+
+    public TempStatusModifier(ItemProtos.TempStatusModifier tempStatusModifierProto) {
+        super(
+                tempStatusModifierProto.getStats().getSpeedChange(),
+                tempStatusModifierProto.getStats().getHealthChange(),
+                tempStatusModifierProto.getStats().getExperienceChange(),
+                tempStatusModifierProto.getStats().getMagicDamageChange(),
+                tempStatusModifierProto.getStats().getPhysicalDamageChange(),
+                tempStatusModifierProto.getStats().getMagicDefenseChange(),
+                tempStatusModifierProto.getStats().getPhysicalDefenseChange()
+        );
+        this.duration = tempStatusModifierProto.getDuration();
+        this.damagePerTurn = tempStatusModifierProto.getDamagePerTurn();
+    }
 }

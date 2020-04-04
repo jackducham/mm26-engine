@@ -10,6 +10,12 @@ public class Position {
         this.y = y;
     }
 
+    public Position(CharacterProtos.Position positionProto) {
+        x = positionProto.getX();
+        y = positionProto.getY();
+        board_id = positionProto.getBoardId();
+    }
+
     public int getX() {
         return x;
     }
