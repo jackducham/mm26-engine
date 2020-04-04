@@ -134,9 +134,9 @@ public abstract class Character {
         return baseMaxHealth + getLevel()*maxHealthScaling;
     }
 
-    static final double baseSpeed = 0;
-    static final double speedScaling = 0;
-    public double getSpeed() {
+    static final int baseSpeed = 0;
+    static final int speedScaling = 0;
+    public int getSpeed() {
         return baseSpeed + getLevel()*speedScaling;
     }
 

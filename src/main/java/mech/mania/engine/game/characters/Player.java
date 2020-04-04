@@ -71,8 +71,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getSpeed() {
-        double speed = super.getSpeed();
+    public int getSpeed() {
+        int speed = super.getSpeed();
 
         // Add wearable effects
         if (hat != null) {

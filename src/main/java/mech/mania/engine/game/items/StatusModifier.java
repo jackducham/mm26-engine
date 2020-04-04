@@ -1,7 +1,7 @@
 package mech.mania.engine.game.items;
 
 public class StatusModifier {
-    private double speedChange;
+    private int speedChange;
     private double healthChange;
     private double experienceChange;
     private double magicDamageChange;
@@ -9,7 +9,7 @@ public class StatusModifier {
     private double magicDefenseChange;
     private double physicalDefenseChange;
 
-    public StatusModifier(double speedChange, double healthChange, double experienceChange, double magicDamageChange,
+    public StatusModifier(int speedChange, double healthChange, double experienceChange, double magicDamageChange,
                           double physicalDamageChange, double magicDefenseChange, double physicalDefenseChange) {
         this.speedChange = speedChange;
         this.healthChange = healthChange;
@@ -20,11 +20,11 @@ public class StatusModifier {
         this.physicalDefenseChange = physicalDefenseChange;
     }
 
-    public double getSpeedChange() {
+    public int getSpeedChange() {
         return speedChange;
     }
 
-    public void setSpeedChange(double speedChange) {
+    public void setSpeedChange(int speedChange) {
         this.speedChange = speedChange;
     }
 
