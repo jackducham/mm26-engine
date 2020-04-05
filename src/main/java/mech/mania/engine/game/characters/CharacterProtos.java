@@ -19,10 +19,10 @@ public final class CharacterProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>double current_health = 1;</code>
+     * <code>int32 current_health = 1;</code>
      * @return The currentHealth.
      */
-    double getCurrentHealth();
+    int getCurrentHealth();
 
     /**
      * <code>int32 experience = 2;</code>
@@ -225,9 +225,9 @@ public final class CharacterProtos {
             case 0:
               done = true;
               break;
-            case 9: {
+            case 8: {
 
-              currentHealth_ = input.readDouble();
+              currentHealth_ = input.readInt32();
               break;
             }
             case 16: {
@@ -360,12 +360,12 @@ public final class CharacterProtos {
     }
 
     public static final int CURRENT_HEALTH_FIELD_NUMBER = 1;
-    private double currentHealth_;
+    private int currentHealth_;
     /**
-     * <code>double current_health = 1;</code>
+     * <code>int32 current_health = 1;</code>
      * @return The currentHealth.
      */
-    public double getCurrentHealth() {
+    public int getCurrentHealth() {
       return currentHealth_;
     }
 
@@ -645,8 +645,8 @@ public final class CharacterProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (currentHealth_ != 0D) {
-        output.writeDouble(1, currentHealth_);
+      if (currentHealth_ != 0) {
+        output.writeInt32(1, currentHealth_);
       }
       if (experience_ != 0) {
         output.writeInt32(2, experience_);
@@ -687,9 +687,9 @@ public final class CharacterProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (currentHealth_ != 0D) {
+      if (currentHealth_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(1, currentHealth_);
+          .computeInt32Size(1, currentHealth_);
       }
       if (experience_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -747,9 +747,8 @@ public final class CharacterProtos {
       }
       mech.mania.engine.game.characters.CharacterProtos.Character other = (mech.mania.engine.game.characters.CharacterProtos.Character) obj;
 
-      if (java.lang.Double.doubleToLongBits(getCurrentHealth())
-          != java.lang.Double.doubleToLongBits(
-              other.getCurrentHealth())) return false;
+      if (getCurrentHealth()
+          != other.getCurrentHealth()) return false;
       if (getExperience()
           != other.getExperience()) return false;
       if (hasPosition() != other.hasPosition()) return false;
@@ -789,8 +788,7 @@ public final class CharacterProtos {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CURRENT_HEALTH_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getCurrentHealth()));
+      hash = (53 * hash) + getCurrentHealth();
       hash = (37 * hash) + EXPERIENCE_FIELD_NUMBER;
       hash = (53 * hash) + getExperience();
       if (hasPosition()) {
@@ -976,7 +974,7 @@ public final class CharacterProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        currentHealth_ = 0D;
+        currentHealth_ = 0;
 
         experience_ = 0;
 
@@ -1117,7 +1115,7 @@ public final class CharacterProtos {
 
       public Builder mergeFrom(mech.mania.engine.game.characters.CharacterProtos.Character other) {
         if (other == mech.mania.engine.game.characters.CharacterProtos.Character.getDefaultInstance()) return this;
-        if (other.getCurrentHealth() != 0D) {
+        if (other.getCurrentHealth() != 0) {
           setCurrentHealth(other.getCurrentHealth());
         }
         if (other.getExperience() != 0) {
@@ -1200,32 +1198,32 @@ public final class CharacterProtos {
       }
       private int bitField0_;
 
-      private double currentHealth_ ;
+      private int currentHealth_ ;
       /**
-       * <code>double current_health = 1;</code>
+       * <code>int32 current_health = 1;</code>
        * @return The currentHealth.
        */
-      public double getCurrentHealth() {
+      public int getCurrentHealth() {
         return currentHealth_;
       }
       /**
-       * <code>double current_health = 1;</code>
+       * <code>int32 current_health = 1;</code>
        * @param value The currentHealth to set.
        * @return This builder for chaining.
        */
-      public Builder setCurrentHealth(double value) {
+      public Builder setCurrentHealth(int value) {
         
         currentHealth_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double current_health = 1;</code>
+       * <code>int32 current_health = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearCurrentHealth() {
         
-        currentHealth_ = 0D;
+        currentHealth_ = 0;
         onChanged();
         return this;
       }
@@ -5509,7 +5507,7 @@ public final class CharacterProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017character.proto\022\tcharacter\032\nitem.proto" +
-      "\"\233\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\001\022\022" +
+      "\"\233\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\022" +
       "\n\nexperience\030\002 \001(\005\022%\n\010position\030\003 \001(\0132\023.c" +
       "haracter.Position\022(\n\013spawn_point\030\004 \001(\0132\023" +
       ".character.Position\022\034\n\006weapon\030\005 \001(\0132\014.it" +

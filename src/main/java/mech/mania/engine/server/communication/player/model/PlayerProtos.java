@@ -190,9 +190,9 @@ public final class PlayerProtos {
        */
       ATTACK(2),
       /**
-       * <code>TRAVEL = 3;</code>
+       * <code>PORTAL = 3;</code>
        */
-      TRAVEL(3),
+      PORTAL(3),
       /**
        * <code>DROP = 4;</code>
        */
@@ -221,9 +221,9 @@ public final class PlayerProtos {
        */
       public static final int ATTACK_VALUE = 2;
       /**
-       * <code>TRAVEL = 3;</code>
+       * <code>PORTAL = 3;</code>
        */
-      public static final int TRAVEL_VALUE = 3;
+      public static final int PORTAL_VALUE = 3;
       /**
        * <code>DROP = 4;</code>
        */
@@ -265,7 +265,7 @@ public final class PlayerProtos {
           case 0: return NONE;
           case 1: return MOVE;
           case 2: return ATTACK;
-          case 3: return TRAVEL;
+          case 3: return PORTAL;
           case 4: return DROP;
           case 5: return EQUIP;
           case 6: return PICKUP;
@@ -1048,7 +1048,11 @@ public final class PlayerProtos {
 
     /**
      * <pre>
-     *game_state.GameState game_state = 2;
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
      * </pre>
      *
      * <code>string player_name = 1;</code>
@@ -1057,7 +1061,11 @@ public final class PlayerProtos {
     java.lang.String getPlayerName();
     /**
      * <pre>
-     *game_state.GameState game_state = 2;
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
      * </pre>
      *
      * <code>string player_name = 1;</code>
@@ -1158,7 +1166,11 @@ public final class PlayerProtos {
     private volatile java.lang.Object playerName_;
     /**
      * <pre>
-     *game_state.GameState game_state = 2;
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
      * </pre>
      *
      * <code>string player_name = 1;</code>
@@ -1178,7 +1190,11 @@ public final class PlayerProtos {
     }
     /**
      * <pre>
-     *game_state.GameState game_state = 2;
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
      * </pre>
      *
      * <code>string player_name = 1;</code>
@@ -1507,7 +1523,11 @@ public final class PlayerProtos {
       private java.lang.Object playerName_ = "";
       /**
        * <pre>
-       *game_state.GameState game_state = 2;
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
        * </pre>
        *
        * <code>string player_name = 1;</code>
@@ -1527,7 +1547,11 @@ public final class PlayerProtos {
       }
       /**
        * <pre>
-       *game_state.GameState game_state = 2;
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
        * </pre>
        *
        * <code>string player_name = 1;</code>
@@ -1548,7 +1572,11 @@ public final class PlayerProtos {
       }
       /**
        * <pre>
-       *game_state.GameState game_state = 2;
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
        * </pre>
        *
        * <code>string player_name = 1;</code>
@@ -1567,7 +1595,11 @@ public final class PlayerProtos {
       }
       /**
        * <pre>
-       *game_state.GameState game_state = 2;
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
        * </pre>
        *
        * <code>string player_name = 1;</code>
@@ -1581,7 +1613,11 @@ public final class PlayerProtos {
       }
       /**
        * <pre>
-       *game_state.GameState game_state = 2;
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
        * </pre>
        *
        * <code>string player_name = 1;</code>
@@ -1678,7 +1714,7 @@ public final class PlayerProtos {
       "cisionType\022+\n\016targetPosition\030\002 \001(\0132\023.cha" +
       "racter.Position\022\r\n\005index\030\003 \001(\005\"[\n\014Decisi" +
       "onType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n" +
-      "\n\006TRAVEL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKU" +
+      "\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKU" +
       "P\020\006\"!\n\nPlayerTurn\022\023\n\013player_name\030\001 \001(\tBC" +
       "\n3mech.mania.engine.server.communication" +
       ".player.modelB\014PlayerProtosb\006proto3"

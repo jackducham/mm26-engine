@@ -4927,19 +4927,25 @@ public final class ItemProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.item.TempStatusModifier stats = 1;</code>
-     * @return Whether the stats field is set.
+     * <code>.item.TempStatusModifier effect = 1;</code>
+     * @return Whether the effect field is set.
      */
-    boolean hasStats();
+    boolean hasEffect();
     /**
-     * <code>.item.TempStatusModifier stats = 1;</code>
-     * @return The stats.
+     * <code>.item.TempStatusModifier effect = 1;</code>
+     * @return The effect.
      */
-    mech.mania.engine.game.items.ItemProtos.TempStatusModifier getStats();
+    mech.mania.engine.game.items.ItemProtos.TempStatusModifier getEffect();
     /**
-     * <code>.item.TempStatusModifier stats = 1;</code>
+     * <code>.item.TempStatusModifier effect = 1;</code>
      */
-    mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder();
+
+    /**
+     * <code>int32 stacks = 2;</code>
+     * @return The stacks.
+     */
+    int getStacks();
   }
   /**
    * Protobuf type {@code item.Consumable}
@@ -4988,15 +4994,20 @@ public final class ItemProtos {
               break;
             case 10: {
               mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder subBuilder = null;
-              if (stats_ != null) {
-                subBuilder = stats_.toBuilder();
+              if (effect_ != null) {
+                subBuilder = effect_.toBuilder();
               }
-              stats_ = input.readMessage(mech.mania.engine.game.items.ItemProtos.TempStatusModifier.parser(), extensionRegistry);
+              effect_ = input.readMessage(mech.mania.engine.game.items.ItemProtos.TempStatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(stats_);
-                stats_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(effect_);
+                effect_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 16: {
+
+              stacks_ = input.readInt32();
               break;
             }
             default: {
@@ -5031,27 +5042,37 @@ public final class ItemProtos {
               mech.mania.engine.game.items.ItemProtos.Consumable.class, mech.mania.engine.game.items.ItemProtos.Consumable.Builder.class);
     }
 
-    public static final int STATS_FIELD_NUMBER = 1;
-    private mech.mania.engine.game.items.ItemProtos.TempStatusModifier stats_;
+    public static final int EFFECT_FIELD_NUMBER = 1;
+    private mech.mania.engine.game.items.ItemProtos.TempStatusModifier effect_;
     /**
-     * <code>.item.TempStatusModifier stats = 1;</code>
-     * @return Whether the stats field is set.
+     * <code>.item.TempStatusModifier effect = 1;</code>
+     * @return Whether the effect field is set.
      */
-    public boolean hasStats() {
-      return stats_ != null;
+    public boolean hasEffect() {
+      return effect_ != null;
     }
     /**
-     * <code>.item.TempStatusModifier stats = 1;</code>
-     * @return The stats.
+     * <code>.item.TempStatusModifier effect = 1;</code>
+     * @return The effect.
      */
-    public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getStats() {
-      return stats_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : stats_;
+    public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getEffect() {
+      return effect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
     }
     /**
-     * <code>.item.TempStatusModifier stats = 1;</code>
+     * <code>.item.TempStatusModifier effect = 1;</code>
      */
-    public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getStatsOrBuilder() {
-      return getStats();
+    public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
+      return getEffect();
+    }
+
+    public static final int STACKS_FIELD_NUMBER = 2;
+    private int stacks_;
+    /**
+     * <code>int32 stacks = 2;</code>
+     * @return The stacks.
+     */
+    public int getStacks() {
+      return stacks_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5068,8 +5089,11 @@ public final class ItemProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (stats_ != null) {
-        output.writeMessage(1, getStats());
+      if (effect_ != null) {
+        output.writeMessage(1, getEffect());
+      }
+      if (stacks_ != 0) {
+        output.writeInt32(2, stacks_);
       }
       unknownFields.writeTo(output);
     }
@@ -5080,9 +5104,13 @@ public final class ItemProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (stats_ != null) {
+      if (effect_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getStats());
+          .computeMessageSize(1, getEffect());
+      }
+      if (stacks_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, stacks_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5099,11 +5127,13 @@ public final class ItemProtos {
       }
       mech.mania.engine.game.items.ItemProtos.Consumable other = (mech.mania.engine.game.items.ItemProtos.Consumable) obj;
 
-      if (hasStats() != other.hasStats()) return false;
-      if (hasStats()) {
-        if (!getStats()
-            .equals(other.getStats())) return false;
+      if (hasEffect() != other.hasEffect()) return false;
+      if (hasEffect()) {
+        if (!getEffect()
+            .equals(other.getEffect())) return false;
       }
+      if (getStacks()
+          != other.getStacks()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5115,10 +5145,12 @@ public final class ItemProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasStats()) {
-        hash = (37 * hash) + STATS_FIELD_NUMBER;
-        hash = (53 * hash) + getStats().hashCode();
+      if (hasEffect()) {
+        hash = (37 * hash) + EFFECT_FIELD_NUMBER;
+        hash = (53 * hash) + getEffect().hashCode();
       }
+      hash = (37 * hash) + STACKS_FIELD_NUMBER;
+      hash = (53 * hash) + getStacks();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5252,12 +5284,14 @@ public final class ItemProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (statsBuilder_ == null) {
-          stats_ = null;
+        if (effectBuilder_ == null) {
+          effect_ = null;
         } else {
-          stats_ = null;
-          statsBuilder_ = null;
+          effect_ = null;
+          effectBuilder_ = null;
         }
+        stacks_ = 0;
+
         return this;
       }
 
@@ -5284,11 +5318,12 @@ public final class ItemProtos {
       @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Consumable buildPartial() {
         mech.mania.engine.game.items.ItemProtos.Consumable result = new mech.mania.engine.game.items.ItemProtos.Consumable(this);
-        if (statsBuilder_ == null) {
-          result.stats_ = stats_;
+        if (effectBuilder_ == null) {
+          result.effect_ = effect_;
         } else {
-          result.stats_ = statsBuilder_.build();
+          result.effect_ = effectBuilder_.build();
         }
+        result.stacks_ = stacks_;
         onBuilt();
         return result;
       }
@@ -5337,8 +5372,11 @@ public final class ItemProtos {
 
       public Builder mergeFrom(mech.mania.engine.game.items.ItemProtos.Consumable other) {
         if (other == mech.mania.engine.game.items.ItemProtos.Consumable.getDefaultInstance()) return this;
-        if (other.hasStats()) {
-          mergeStats(other.getStats());
+        if (other.hasEffect()) {
+          mergeEffect(other.getEffect());
+        }
+        if (other.getStacks() != 0) {
+          setStacks(other.getStacks());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5369,123 +5407,153 @@ public final class ItemProtos {
         return this;
       }
 
-      private mech.mania.engine.game.items.ItemProtos.TempStatusModifier stats_;
+      private mech.mania.engine.game.items.ItemProtos.TempStatusModifier effect_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> effectBuilder_;
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
-       * @return Whether the stats field is set.
+       * <code>.item.TempStatusModifier effect = 1;</code>
+       * @return Whether the effect field is set.
        */
-      public boolean hasStats() {
-        return statsBuilder_ != null || stats_ != null;
+      public boolean hasEffect() {
+        return effectBuilder_ != null || effect_ != null;
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
-       * @return The stats.
+       * <code>.item.TempStatusModifier effect = 1;</code>
+       * @return The effect.
        */
-      public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getStats() {
-        if (statsBuilder_ == null) {
-          return stats_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : stats_;
+      public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getEffect() {
+        if (effectBuilder_ == null) {
+          return effect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
         } else {
-          return statsBuilder_.getMessage();
+          return effectBuilder_.getMessage();
         }
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public Builder setStats(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
-        if (statsBuilder_ == null) {
+      public Builder setEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
+        if (effectBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          stats_ = value;
+          effect_ = value;
           onChanged();
         } else {
-          statsBuilder_.setMessage(value);
+          effectBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public Builder setStats(
+      public Builder setEffect(
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
-        if (statsBuilder_ == null) {
-          stats_ = builderForValue.build();
+        if (effectBuilder_ == null) {
+          effect_ = builderForValue.build();
           onChanged();
         } else {
-          statsBuilder_.setMessage(builderForValue.build());
+          effectBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public Builder mergeStats(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
-        if (statsBuilder_ == null) {
-          if (stats_ != null) {
-            stats_ =
-              mech.mania.engine.game.items.ItemProtos.TempStatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+      public Builder mergeEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
+        if (effectBuilder_ == null) {
+          if (effect_ != null) {
+            effect_ =
+              mech.mania.engine.game.items.ItemProtos.TempStatusModifier.newBuilder(effect_).mergeFrom(value).buildPartial();
           } else {
-            stats_ = value;
+            effect_ = value;
           }
           onChanged();
         } else {
-          statsBuilder_.mergeFrom(value);
+          effectBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public Builder clearStats() {
-        if (statsBuilder_ == null) {
-          stats_ = null;
+      public Builder clearEffect() {
+        if (effectBuilder_ == null) {
+          effect_ = null;
           onChanged();
         } else {
-          stats_ = null;
-          statsBuilder_ = null;
+          effect_ = null;
+          effectBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getEffectBuilder() {
         
         onChanged();
-        return getStatsFieldBuilder().getBuilder();
+        return getEffectFieldBuilder().getBuilder();
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getStatsOrBuilder() {
-        if (statsBuilder_ != null) {
-          return statsBuilder_.getMessageOrBuilder();
+      public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
+        if (effectBuilder_ != null) {
+          return effectBuilder_.getMessageOrBuilder();
         } else {
-          return stats_ == null ?
-              mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : stats_;
+          return effect_ == null ?
+              mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
         }
       }
       /**
-       * <code>.item.TempStatusModifier stats = 1;</code>
+       * <code>.item.TempStatusModifier effect = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
-          getStatsFieldBuilder() {
-        if (statsBuilder_ == null) {
-          statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getEffectFieldBuilder() {
+        if (effectBuilder_ == null) {
+          effectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder>(
-                  getStats(),
+                  getEffect(),
                   getParentForChildren(),
                   isClean());
-          stats_ = null;
+          effect_ = null;
         }
-        return statsBuilder_;
+        return effectBuilder_;
+      }
+
+      private int stacks_ ;
+      /**
+       * <code>int32 stacks = 2;</code>
+       * @return The stacks.
+       */
+      public int getStacks() {
+        return stacks_;
+      }
+      /**
+       * <code>int32 stacks = 2;</code>
+       * @param value The stacks to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStacks(int value) {
+        
+        stacks_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 stacks = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStacks() {
+        
+        stacks_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -6454,10 +6522,10 @@ public final class ItemProtos {
     mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
-     * <code>double damage_per_turn = 2;</code>
+     * <code>int32 damage_per_turn = 2;</code>
      * @return The damagePerTurn.
      */
-    double getDamagePerTurn();
+    int getDamagePerTurn();
 
     /**
      * <code>int32 duration = 3;</code>
@@ -6523,9 +6591,9 @@ public final class ItemProtos {
 
               break;
             }
-            case 17: {
+            case 16: {
 
-              damagePerTurn_ = input.readDouble();
+              damagePerTurn_ = input.readInt32();
               break;
             }
             case 24: {
@@ -6589,12 +6657,12 @@ public final class ItemProtos {
     }
 
     public static final int DAMAGE_PER_TURN_FIELD_NUMBER = 2;
-    private double damagePerTurn_;
+    private int damagePerTurn_;
     /**
-     * <code>double damage_per_turn = 2;</code>
+     * <code>int32 damage_per_turn = 2;</code>
      * @return The damagePerTurn.
      */
-    public double getDamagePerTurn() {
+    public int getDamagePerTurn() {
       return damagePerTurn_;
     }
 
@@ -6625,8 +6693,8 @@ public final class ItemProtos {
       if (stats_ != null) {
         output.writeMessage(1, getStats());
       }
-      if (damagePerTurn_ != 0D) {
-        output.writeDouble(2, damagePerTurn_);
+      if (damagePerTurn_ != 0) {
+        output.writeInt32(2, damagePerTurn_);
       }
       if (duration_ != 0) {
         output.writeInt32(3, duration_);
@@ -6644,9 +6712,9 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStats());
       }
-      if (damagePerTurn_ != 0D) {
+      if (damagePerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, damagePerTurn_);
+          .computeInt32Size(2, damagePerTurn_);
       }
       if (duration_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -6672,9 +6740,8 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (java.lang.Double.doubleToLongBits(getDamagePerTurn())
-          != java.lang.Double.doubleToLongBits(
-              other.getDamagePerTurn())) return false;
+      if (getDamagePerTurn()
+          != other.getDamagePerTurn()) return false;
       if (getDuration()
           != other.getDuration()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -6693,8 +6760,7 @@ public final class ItemProtos {
         hash = (53 * hash) + getStats().hashCode();
       }
       hash = (37 * hash) + DAMAGE_PER_TURN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getDamagePerTurn()));
+      hash = (53 * hash) + getDamagePerTurn();
       hash = (37 * hash) + DURATION_FIELD_NUMBER;
       hash = (53 * hash) + getDuration();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -6836,7 +6902,7 @@ public final class ItemProtos {
           stats_ = null;
           statsBuilder_ = null;
         }
-        damagePerTurn_ = 0D;
+        damagePerTurn_ = 0;
 
         duration_ = 0;
 
@@ -6924,7 +6990,7 @@ public final class ItemProtos {
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
-        if (other.getDamagePerTurn() != 0D) {
+        if (other.getDamagePerTurn() != 0) {
           setDamagePerTurn(other.getDamagePerTurn());
         }
         if (other.getDuration() != 0) {
@@ -7078,32 +7144,32 @@ public final class ItemProtos {
         return statsBuilder_;
       }
 
-      private double damagePerTurn_ ;
+      private int damagePerTurn_ ;
       /**
-       * <code>double damage_per_turn = 2;</code>
+       * <code>int32 damage_per_turn = 2;</code>
        * @return The damagePerTurn.
        */
-      public double getDamagePerTurn() {
+      public int getDamagePerTurn() {
         return damagePerTurn_;
       }
       /**
-       * <code>double damage_per_turn = 2;</code>
+       * <code>int32 damage_per_turn = 2;</code>
        * @param value The damagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setDamagePerTurn(double value) {
+      public Builder setDamagePerTurn(int value) {
         
         damagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double damage_per_turn = 2;</code>
+       * <code>int32 damage_per_turn = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearDamagePerTurn() {
         
-        damagePerTurn_ = 0D;
+        damagePerTurn_ = 0;
         onChanged();
         return this;
       }
@@ -7253,18 +7319,19 @@ public final class ItemProtos {
       ".StatusModifier\"\204\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
       "\0132\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\025" +
       "\n\rsplash_radius\030\003 \001(\005\022/\n\ron_hit_effect\030\004" +
-      " \001(\0132\030.item.TempStatusModifier\"5\n\nConsum" +
-      "able\022\'\n\005stats\030\001 \001(\0132\030.item.TempStatusMod" +
-      "ifier\"\324\001\n\016StatusModifier\022\024\n\014speed_change" +
-      "\030\001 \001(\005\022\025\n\rhealth_change\030\002 \001(\005\022\031\n\021experie" +
-      "nce_change\030\003 \001(\005\022\033\n\023magic_damage_change\030" +
-      "\004 \001(\005\022\036\n\026physical_damage_change\030\005 \001(\005\022\034\n" +
-      "\024magic_defense_change\030\006 \001(\005\022\037\n\027physical_" +
-      "defense_change\030\007 \001(\005\"d\n\022TempStatusModifi" +
-      "er\022#\n\005stats\030\001 \001(\0132\024.item.StatusModifier\022" +
-      "\027\n\017damage_per_turn\030\002 \001(\001\022\020\n\010duration\030\003 \001" +
-      "(\005B;\n\034mech.mania.engine.game.itemsB\nItem" +
-      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
+      " \001(\0132\030.item.TempStatusModifier\"F\n\nConsum" +
+      "able\022(\n\006effect\030\001 \001(\0132\030.item.TempStatusMo" +
+      "difier\022\016\n\006stacks\030\002 \001(\005\"\324\001\n\016StatusModifie" +
+      "r\022\024\n\014speed_change\030\001 \001(\005\022\025\n\rhealth_change" +
+      "\030\002 \001(\005\022\031\n\021experience_change\030\003 \001(\005\022\033\n\023mag" +
+      "ic_damage_change\030\004 \001(\005\022\036\n\026physical_damag" +
+      "e_change\030\005 \001(\005\022\034\n\024magic_defense_change\030\006" +
+      " \001(\005\022\037\n\027physical_defense_change\030\007 \001(\005\"d\n" +
+      "\022TempStatusModifier\022#\n\005stats\030\001 \001(\0132\024.ite" +
+      "m.StatusModifier\022\027\n\017damage_per_turn\030\002 \001(" +
+      "\005\022\020\n\010duration\030\003 \001(\005B;\n\034mech.mania.engine" +
+      ".game.itemsB\nItemProtos\252\002\016MM26.IO.Models" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7305,7 +7372,7 @@ public final class ItemProtos {
     internal_static_item_Consumable_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Consumable_descriptor,
-        new java.lang.String[] { "Stats", });
+        new java.lang.String[] { "Effect", "Stacks", });
     internal_static_item_StatusModifier_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_item_StatusModifier_fieldAccessorTable = new
