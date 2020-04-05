@@ -13,6 +13,23 @@ public class Hat extends Wearable {
         // TODO: copy HatEffect
     }
 
+    public ItemProtos.Hat buildProtoClassHat() {
+        ItemProtos.Hat.Builder hatBuilder = ItemProtos.Hat.newBuilder();
+
+        hatBuilder.setStats(stats.buildProtoClass());
+        // TODO: add HatEffect
+
+        return hatBuilder.build();
+    }
+
+    public ItemProtos.Item buildProtoClassItem() {
+        ItemProtos.Hat hatProtoClass = buildProtoClassHat();
+        ItemProtos.Item.Builder itemBuilder = ItemProtos.Item.newBuilder();
+        itemBuilder.setHat(hatProtoClass);
+
+        return itemBuilder.build();
+    }
+
     public HatEffect getHatEffect() {
         return hatEffect;
     }

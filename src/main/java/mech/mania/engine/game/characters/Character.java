@@ -1,5 +1,6 @@
 package mech.mania.engine.game.characters;
 
+import static java.lang.Math.exp;
 import static java.lang.Math.max;
 
 import java.util.ArrayList;
@@ -36,6 +37,28 @@ public abstract class Character {
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
         this.ticksSinceDeath = -1;
+    }
+
+    public CharacterProtos.Character buildProtoClassCharacter() {
+        CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
+        // TODO: remove cast once health has been changed to int
+        characterBuilder.setCurrentHealth((int)currentHealth);
+        characterBuilder.setExperience(experience);
+        characterBuilder.setPosition(position.buildProtoClass());
+        characterBuilder.setSpawnPoint(spawnPoint.buildProtoClass());
+        characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
+
+        for (int i = 0; i < activeEffects.size(); i++) {
+            characterBuilder.setActiveEffects(i, activeEffects.get(i).buildProtoClassTemp());
+        }
+
+        // TODO: add players/player names
+
+        characterBuilder.setTicksSinceDeath(ticksSinceDeath);
+        characterBuilder.setName(name);
+        characterBuilder.setIsDead(isDead);
+
+        return characterBuilder.build();
     }
 
     public void takeDamage(double physicalDamage, double magicalDamage, Player player) {

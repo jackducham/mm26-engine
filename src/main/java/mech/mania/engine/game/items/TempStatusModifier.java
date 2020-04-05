@@ -26,4 +26,17 @@ public class TempStatusModifier extends StatusModifier {
         this.duration = tempStatusModifierProto.getDuration();
         this.damagePerTurn = tempStatusModifierProto.getDamagePerTurn();
     }
+
+    public ItemProtos.TempStatusModifier buildProtoClassTemp() {
+        ItemProtos.TempStatusModifier.Builder tempStatusModifierBuilder = ItemProtos.TempStatusModifier.newBuilder();
+        tempStatusModifierBuilder.setDuration(duration);
+
+        // TODO: remove cast once type is fixed
+        tempStatusModifierBuilder.setDamagePerTurn((int) damagePerTurn);
+
+        ItemProtos.StatusModifier statusModifierProtoClass = super.buildProtoClass();
+
+        tempStatusModifierBuilder.setStats(statusModifierProtoClass);
+        return tempStatusModifierBuilder.build();
+    }
 }

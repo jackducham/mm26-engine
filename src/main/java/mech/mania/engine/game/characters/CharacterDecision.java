@@ -39,7 +39,7 @@ public class CharacterDecision {
             case PICKUP:
                 decision = decisionTypes.PICKUP;
                 break;
-            case TRAVEL:
+            case PORTAL:
                 decision = decisionTypes.PORTAL;
                 break;
         }

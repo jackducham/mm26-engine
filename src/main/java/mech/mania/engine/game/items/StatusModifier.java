@@ -30,6 +30,21 @@ public class StatusModifier {
         this.physicalDefenseChange = statusModifierProto.getPhysicalDefenseChange();
     }
 
+    public ItemProtos.StatusModifier buildProtoClass() {
+        ItemProtos.StatusModifier.Builder statusModifierBuilder = ItemProtos.StatusModifier.newBuilder();
+
+        // TODO: fix int casts once type has been changed
+        statusModifierBuilder.setSpeedChange((int) speedChange);
+        statusModifierBuilder.setHealthChange((int) healthChange);
+        statusModifierBuilder.setExperienceChange((int) experienceChange);
+        statusModifierBuilder.setMagicDamageChange((int) magicDamageChange);
+        statusModifierBuilder.setPhysicalDamageChange((int) physicalDamageChange);
+        statusModifierBuilder.setMagicDefenseChange((int) magicDefenseChange);
+        statusModifierBuilder.setPhysicalDefenseChange((int) physicalDefenseChange);
+
+        return statusModifierBuilder.build();
+    }
+
     public double getSpeedChange() {
         return speedChange;
     }

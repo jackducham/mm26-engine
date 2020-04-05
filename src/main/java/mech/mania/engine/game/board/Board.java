@@ -43,6 +43,34 @@ public class Board {
 
     }
 
+    public BoardProtos.Board buildProtoClass() {
+        BoardProtos.Board.Builder boardBuilder = BoardProtos.Board.newBuilder();
+
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[r].length; c++) {
+                boardBuilder.addGrid(r * grid[c].length + c, grid[r][c].buildProtoClass());
+            }
+        }
+
+        for (int i = 0; i < monsters.size(); i++) {
+            boardBuilder.addMonsters(i, monsters.get(i).buildProtoClassMonster());
+        }
+
+        for (int i = 0; i < players.size(); i++) {
+            boardBuilder.addPlayers(i, players.get(i).buildProtoClassPlayer());
+        }
+
+        for (int i = 0; i < portals.size(); i++) {
+            boardBuilder.addPortals(i, portals.get(i).buildProtoClass());
+        }
+
+        boardBuilder.setBoardId(getBoardID());
+        boardBuilder.setRows(grid.length);
+        boardBuilder.setColumns(grid[0].length);
+
+        return boardBuilder.build();
+    }
+
     public Tile[][] getGrid() {
         return grid;
     }

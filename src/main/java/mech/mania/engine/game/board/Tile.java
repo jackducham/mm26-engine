@@ -23,23 +23,18 @@ public class Tile {
             ItemProtos.Item protoItem = tileProto.getItems(i);
             switch(protoItem.getItemCase()) {
                 case CLOTHES:
-                    // TODO: create Clothes constructor
                     items.set(i, new Clothes(protoItem.getClothes()));
                     break;
                 case HAT:
-                    // TODO: create Hat constructor
                     items.set(i, new Hat(protoItem.getHat()));
                     break;
                 case SHOES:
-                    // TODO: create Shoes constructor
                     items.set(i, new Shoes(protoItem.getShoes()));
                     break;
                 case WEAPON:
-                    // TODO: create Weapon constructor
                     items.set(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    // TODO: create Consumable constructor
                     items.set(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
             }
         }
@@ -58,6 +53,41 @@ public class Tile {
                 type = TileType.PORTAL;
                 break;
         }
+    }
+
+    public BoardProtos.Tile buildProtoClass() {
+        BoardProtos.Tile.Builder tileBuilder = BoardProtos.Tile.newBuilder();
+        switch (type) {
+            case VOID:
+                tileBuilder.setTileType(BoardProtos.Tile.TileType.VOID);
+                break;
+            case BLANK:
+                tileBuilder.setTileType(BoardProtos.Tile.TileType.BLANK);
+                break;
+            case IMPASSIBLE:
+                tileBuilder.setTileType(BoardProtos.Tile.TileType.IMPASSIBLE);
+                break;
+            case PORTAL:
+                tileBuilder.setTileType(BoardProtos.Tile.TileType.PORTAL);
+                break;
+        }
+
+        for (int i = 0; i < items.size(); i++) {
+            Item curItem = items.get(i);
+            if (curItem instanceof Clothes) {
+                tileBuilder.setItems(i, ((Clothes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Hat) {
+                tileBuilder.setItems(i, ((Hat)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Shoes) {
+                tileBuilder.setItems(i, ((Shoes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Weapon) {
+                tileBuilder.setItems(i, ((Weapon)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Consumable) {
+                tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClass());
+            }
+        }
+
+        return tileBuilder.build();
     }
 
     public List<Item> getItems() {

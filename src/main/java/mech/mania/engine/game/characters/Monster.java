@@ -48,6 +48,29 @@ public class Monster extends Character {
         }
     }
 
+
+    public CharacterProtos.Monster buildProtoClassMonster() {
+        CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
+        CharacterProtos.Monster.Builder monsterBuilder = CharacterProtos.Monster.newBuilder();
+        monsterBuilder.mergeCharacter(characterProtoClass);
+        for (int i = 0; i < drops.size(); i++) {
+            Item curItem = drops.get(i);
+            if (curItem instanceof Clothes) {
+                monsterBuilder.setDrops(i, ((Clothes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Hat) {
+                monsterBuilder.setDrops(i, ((Hat)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Shoes) {
+                monsterBuilder.setDrops(i, ((Shoes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Weapon) {
+                monsterBuilder.setDrops(i, ((Weapon)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Consumable) {
+                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClass());
+            }
+        }
+
+        return monsterBuilder.build();
+    }
+
     private Position findPositionToMove(GameState gameState, Position destination) {
         List<Position> path = GameLogic.findPath(gameState, this.position, destination);
         Position toMove;

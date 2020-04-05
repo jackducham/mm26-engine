@@ -11,10 +11,21 @@ public class Consumable extends Item {
     }
 
     public Consumable(int maxStack, ItemProtos.Consumable consumableProto) {
-        // TODO: these should be fixed after Sahil's fixes to protos
         super(maxStack);
         this.effect = new TempStatusModifier(consumableProto.getEffect());
         this.stacks = consumableProto.getStacks();
+    }
+
+    public ItemProtos.Item buildProtoClass() {
+        ItemProtos.Consumable.Builder consumableBuilder = ItemProtos.Consumable.newBuilder();
+        consumableBuilder.setStacks(stacks);
+        consumableBuilder.setEffect(effect.buildProtoClassTemp());
+
+        ItemProtos.Item.Builder itemBuilder = ItemProtos.Item.newBuilder();
+        itemBuilder.setMaxStack(maxStack);
+        itemBuilder.setConsumable(consumableBuilder.build());
+
+        return itemBuilder.build();
     }
 
     public int getStacks() {

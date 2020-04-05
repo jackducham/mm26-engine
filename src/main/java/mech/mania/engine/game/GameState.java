@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GameState {
-    private int turnNumber;
+    private long turnNumber;
     private Board pvpBoard;
     private ArrayList<Board> playerBoards;
 
@@ -32,5 +32,7 @@ public class GameState {
         for (int i = 0; i < gameStateProto.getPlayerBoardsCount(); i++) {
             playerBoards.set(i, new Board(gameStateProto.getPlayerBoards(i)));
         }
+
+        turnNumber = gameStateProto.getStateId();
     }
 }
