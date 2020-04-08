@@ -114,8 +114,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getMaxHealth() {
-        double maxHealth = super.getMaxHealth();
+    public int getMaxHealth() {
+        int maxHealth = super.getMaxHealth();
 
         // Add wearable effects
         if (hat != null) {
@@ -137,8 +137,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getSpeed() {
-        double speed = super.getSpeed();
+    public int getSpeed() {
+        int speed = super.getSpeed();
 
         // Add wearable effects
         if (hat != null) {
@@ -160,8 +160,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getPhysicalDamage() {
-        double physicalDamage = super.getPhysicalDamage();
+    public int getPhysicalDamage() {
+        int physicalDamage = super.getPhysicalDamage();
 
         // Add wearable effects
         if (hat != null) {
@@ -183,8 +183,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getMagicalDamage() {
-        double magicalDamage = super.getMagicalDamage();
+    public int getMagicalDamage() {
+        int magicalDamage = super.getMagicalDamage();
 
         // Add wearable effects
         if (hat != null) {
@@ -206,8 +206,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getMagicalDefense() {
-        double magicalDefense = super.getMagicalDefense();
+    public int getMagicalDefense() {
+        int magicalDefense = super.getMagicalDefense();
 
         // Add wearable effects
         if (hat != null) {
@@ -229,8 +229,8 @@ public class Player extends Character {
     }
 
     @Override
-    public double getPhysicalDefense() {
-        double physicalDefense = super.getPhysicalDefense();
+    public int getPhysicalDefense() {
+        int physicalDefense = super.getPhysicalDefense();
 
         // Add wearable effects
         if (hat != null) {

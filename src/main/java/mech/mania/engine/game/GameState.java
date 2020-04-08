@@ -4,8 +4,6 @@ import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.model.GameStateProtos;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.UUID;
 
 public class GameState {
     private long turnNumber;

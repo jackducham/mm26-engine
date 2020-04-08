@@ -1,6 +1,5 @@
 package mech.mania.engine.game.characters;
 
-import static java.lang.Math.exp;
 import static java.lang.Math.max;
 
 import java.util.ArrayList;
@@ -15,13 +14,13 @@ import java.util.List;
 public abstract class Character {
     private static final int reviveTicks = 1;
 
-    protected double currentHealth;
+    protected int currentHealth;
     protected int experience; // XP reward on death (monster & player) AND XP gained by player
     protected Position position;
     protected Position spawnPoint;
     protected Weapon weapon;
     List<TempStatusModifier> activeEffects;
-    protected Map<Player, Double> taggedPlayersDamage;
+    protected Map<Player, Integer> taggedPlayersDamage;
     private int ticksSinceDeath;
     private String name;
     private boolean isDead;
@@ -42,7 +41,7 @@ public abstract class Character {
     public CharacterProtos.Character buildProtoClassCharacter() {
         CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
         // TODO: remove cast once health has been changed to int
-        characterBuilder.setCurrentHealth((int)currentHealth);
+        characterBuilder.setCurrentHealth(currentHealth);
         characterBuilder.setExperience(experience);
         characterBuilder.setPosition(position.buildProtoClass());
         characterBuilder.setSpawnPoint(spawnPoint.buildProtoClass());
@@ -61,8 +60,8 @@ public abstract class Character {
         return characterBuilder.build();
     }
 
-    public void takeDamage(double physicalDamage, double magicalDamage, Player player) {
-        double actualDamage = max(0, physicalDamage - getPhysicalDefense())
+    public void takeDamage(int physicalDamage, int magicalDamage, Player player) {
+        int actualDamage = max(0, physicalDamage - getPhysicalDefense())
             + max(0, magicalDamage - getMagicalDefense());
 
         if (taggedPlayersDamage.containsKey(player)) {
@@ -83,7 +82,7 @@ public abstract class Character {
     public void removePlayer(Player toRemove) {
         taggedPlayersDamage.remove(toRemove);
     }
-    public void updateCurrentHealth(double delta) {
+    public void updateCurrentHealth(int delta) {
         currentHealth += delta;
     }
     public void setPosition(Position position) {
@@ -128,7 +127,7 @@ public abstract class Character {
     public Position getPosition() {
         return position;
     }
-    public double getCurrentHealth() {
+    public int getCurrentHealth() {
         return currentHealth;
     }
 
@@ -137,9 +136,9 @@ public abstract class Character {
         return 0;
     }
 
-    public double getPercentExpToNextLevel() {
+    public int getExpToNextLevel() {
         // TODO: experience formula
-        return 0.0;
+        return 0;
     }
 
     public String getName() {
@@ -151,39 +150,39 @@ public abstract class Character {
     }
 
     /* Stat getter methods */
-    static final double baseMaxHealth = 0;
-    static final double maxHealthScaling = 0;
-    public double getMaxHealth() {
+    static final int baseMaxHealth = 0;
+    static final int maxHealthScaling = 0;
+    public int getMaxHealth() {
         return baseMaxHealth + getLevel()*maxHealthScaling;
     }
 
-    static final double baseSpeed = 0;
-    static final double speedScaling = 0;
-    public double getSpeed() {
+    static final int baseSpeed = 0;
+    static final int speedScaling = 0;
+    public int getSpeed() {
         return baseSpeed + getLevel()*speedScaling;
     }
 
-    static final double basePhysicalDamage = 0;
-    static final double physicalDamageScaling = 0;
-    public double getPhysicalDamage() {
+    static final int basePhysicalDamage = 0;
+    static final int physicalDamageScaling = 0;
+    public int getPhysicalDamage() {
         return basePhysicalDamage + getLevel()*physicalDamageScaling;
     }
 
-    static final double baseMagicalDamage = 0;
-    static final double magicalDamageScaling = 0;
-    public double getMagicalDamage() {
+    static final int baseMagicalDamage = 0;
+    static final int magicalDamageScaling = 0;
+    public int getMagicalDamage() {
         return baseMagicalDamage + getLevel()*magicalDamageScaling;
     }
 
-    static final double basePhysicalDefense = 0;
-    static final double physicalDefenseScaling = 0;
-    public double getPhysicalDefense() {
+    static final int basePhysicalDefense = 0;
+    static final int physicalDefenseScaling = 0;
+    public int getPhysicalDefense() {
         return basePhysicalDefense + getLevel()*physicalDefenseScaling;
     }
 
-    static final double baseMagicalDefense = 0;
-    static final double magicalDefenseScaling = 0;
-    public double getMagicalDefense() {
+    static final int baseMagicalDefense = 0;
+    static final int magicalDefenseScaling = 0;
+    public int getMagicalDefense() {
         return baseMagicalDefense + getLevel()*magicalDefenseScaling;
     }
 

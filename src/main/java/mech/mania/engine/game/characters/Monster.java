@@ -77,8 +77,7 @@ public class Monster extends Character {
         if (path.size() < getSpeed()) {
             toMove = path.get(path.size() - 1);
         } else {
-            // TODO remove cast once getSpeed returns int
-            toMove = path.get((int)getSpeed() - 1);
+            toMove = path.get(getSpeed() - 1);
         }
         return toMove;
     }
@@ -91,7 +90,7 @@ public class Monster extends Character {
             }
         } else {
             Player highestDamagePlayer = null;
-            double highestDamage = -1;
+            int highestDamage = -1;
             for (Player player : taggedPlayersDamage.keySet()) {
                 if (taggedPlayersDamage.get(player) > highestDamage) {
                     highestDamagePlayer = player;
