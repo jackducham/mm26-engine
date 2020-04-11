@@ -25,43 +25,106 @@ public final class GameStateProtos {
     long getStateId();
 
     /**
-     * <code>.board.Board pvpBoard = 2;</code>
-     * @return Whether the pvpBoard field is set.
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
      */
-    boolean hasPvpBoard();
+    int getBoardNamesCount();
     /**
-     * <code>.board.Board pvpBoard = 2;</code>
-     * @return The pvpBoard.
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
      */
-    mech.mania.engine.game.board.BoardProtos.Board getPvpBoard();
+    boolean containsBoardNames(
+        java.lang.String key);
     /**
-     * <code>.board.Board pvpBoard = 2;</code>
+     * Use {@link #getBoardNamesMap()} instead.
      */
-    mech.mania.engine.game.board.BoardProtos.BoardOrBuilder getPvpBoardOrBuilder();
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+    getBoardNames();
+    /**
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     */
+    java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+    getBoardNamesMap();
+    /**
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     */
+
+    mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrDefault(
+        java.lang.String key,
+        mech.mania.engine.game.board.BoardProtos.Board defaultValue);
+    /**
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     */
+
+    mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrThrow(
+        java.lang.String key);
 
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
      */
-    java.util.List<mech.mania.engine.game.board.BoardProtos.Board> 
-        getPlayerBoardsList();
+    int getPlayerNamesCount();
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
      */
-    mech.mania.engine.game.board.BoardProtos.Board getPlayerBoards(int index);
+    boolean containsPlayerNames(
+        java.lang.String key);
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * Use {@link #getPlayerNamesMap()} instead.
      */
-    int getPlayerBoardsCount();
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+    getPlayerNames();
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
      */
-    java.util.List<? extends mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> 
-        getPlayerBoardsOrBuilderList();
+    java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+    getPlayerNamesMap();
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
      */
-    mech.mania.engine.game.board.BoardProtos.BoardOrBuilder getPlayerBoardsOrBuilder(
-        int index);
+
+    mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrDefault(
+        java.lang.String key,
+        mech.mania.engine.game.characters.CharacterProtos.Player defaultValue);
+    /**
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     */
+
+    mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+    int getMonsterNamesCount();
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+    boolean containsMonsterNames(
+        java.lang.String key);
+    /**
+     * Use {@link #getMonsterNamesMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+    getMonsterNames();
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+    java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+    getMonsterNamesMap();
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+
+    mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrDefault(
+        java.lang.String key,
+        mech.mania.engine.game.characters.CharacterProtos.Monster defaultValue);
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+
+    mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrThrow(
+        java.lang.String key);
   }
   /**
    * Protobuf type {@code game_state.GameState}
@@ -76,7 +139,6 @@ public final class GameStateProtos {
       super(builder);
     }
     private GameState() {
-      playerBoards_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -116,25 +178,42 @@ public final class GameStateProtos {
               break;
             }
             case 18: {
-              mech.mania.engine.game.board.BoardProtos.Board.Builder subBuilder = null;
-              if (pvpBoard_ != null) {
-                subBuilder = pvpBoard_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                boardNames_ = com.google.protobuf.MapField.newMapField(
+                    BoardNamesDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000001;
               }
-              pvpBoard_ = input.readMessage(mech.mania.engine.game.board.BoardProtos.Board.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(pvpBoard_);
-                pvpBoard_ = subBuilder.buildPartial();
-              }
-
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+              boardNames__ = input.readMessage(
+                  BoardNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              boardNames_.getMutableMap().put(
+                  boardNames__.getKey(), boardNames__.getValue());
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                playerBoards_ = new java.util.ArrayList<mech.mania.engine.game.board.BoardProtos.Board>();
-                mutable_bitField0_ |= 0x00000001;
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                playerNames_ = com.google.protobuf.MapField.newMapField(
+                    PlayerNamesDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000002;
               }
-              playerBoards_.add(
-                  input.readMessage(mech.mania.engine.game.board.BoardProtos.Board.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+              playerNames__ = input.readMessage(
+                  PlayerNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              playerNames_.getMutableMap().put(
+                  playerNames__.getKey(), playerNames__.getValue());
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                monsterNames_ = com.google.protobuf.MapField.newMapField(
+                    MonsterNamesDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000004;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+              monsterNames__ = input.readMessage(
+                  MonsterNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              monsterNames_.getMutableMap().put(
+                  monsterNames__.getKey(), monsterNames__.getValue());
               break;
             }
             default: {
@@ -152,9 +231,6 @@ public final class GameStateProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          playerBoards_ = java.util.Collections.unmodifiableList(playerBoards_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -164,6 +240,22 @@ public final class GameStateProtos {
       return mech.mania.engine.game.model.GameStateProtos.internal_static_game_state_GameState_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 2:
+          return internalGetBoardNames();
+        case 3:
+          return internalGetPlayerNames();
+        case 4:
+          return internalGetMonsterNames();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -182,62 +274,232 @@ public final class GameStateProtos {
       return stateId_;
     }
 
-    public static final int PVPBOARD_FIELD_NUMBER = 2;
-    private mech.mania.engine.game.board.BoardProtos.Board pvpBoard_;
-    /**
-     * <code>.board.Board pvpBoard = 2;</code>
-     * @return Whether the pvpBoard field is set.
-     */
-    public boolean hasPvpBoard() {
-      return pvpBoard_ != null;
+    public static final int BOARDNAMES_FIELD_NUMBER = 2;
+    private static final class BoardNamesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>newDefaultInstance(
+                  mech.mania.engine.game.model.GameStateProtos.internal_static_game_state_GameState_BoardNamesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  mech.mania.engine.game.board.BoardProtos.Board.getDefaultInstance());
     }
-    /**
-     * <code>.board.Board pvpBoard = 2;</code>
-     * @return The pvpBoard.
-     */
-    public mech.mania.engine.game.board.BoardProtos.Board getPvpBoard() {
-      return pvpBoard_ == null ? mech.mania.engine.game.board.BoardProtos.Board.getDefaultInstance() : pvpBoard_;
-    }
-    /**
-     * <code>.board.Board pvpBoard = 2;</code>
-     */
-    public mech.mania.engine.game.board.BoardProtos.BoardOrBuilder getPvpBoardOrBuilder() {
-      return getPvpBoard();
+    private com.google.protobuf.MapField<
+        java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> boardNames_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+    internalGetBoardNames() {
+      if (boardNames_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            BoardNamesDefaultEntryHolder.defaultEntry);
+      }
+      return boardNames_;
     }
 
-    public static final int PLAYERBOARDS_FIELD_NUMBER = 3;
-    private java.util.List<mech.mania.engine.game.board.BoardProtos.Board> playerBoards_;
-    /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
-     */
-    public java.util.List<mech.mania.engine.game.board.BoardProtos.Board> getPlayerBoardsList() {
-      return playerBoards_;
+    public int getBoardNamesCount() {
+      return internalGetBoardNames().getMap().size();
     }
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
      */
-    public java.util.List<? extends mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> 
-        getPlayerBoardsOrBuilderList() {
-      return playerBoards_;
+
+    public boolean containsBoardNames(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetBoardNames().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * Use {@link #getBoardNamesMap()} instead.
      */
-    public int getPlayerBoardsCount() {
-      return playerBoards_.size();
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> getBoardNames() {
+      return getBoardNamesMap();
     }
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
      */
-    public mech.mania.engine.game.board.BoardProtos.Board getPlayerBoards(int index) {
-      return playerBoards_.get(index);
+
+    public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> getBoardNamesMap() {
+      return internalGetBoardNames().getMap();
     }
     /**
-     * <code>repeated .board.Board playerBoards = 3;</code>
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
      */
-    public mech.mania.engine.game.board.BoardProtos.BoardOrBuilder getPlayerBoardsOrBuilder(
-        int index) {
-      return playerBoards_.get(index);
+
+    public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrDefault(
+        java.lang.String key,
+        mech.mania.engine.game.board.BoardProtos.Board defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> map =
+          internalGetBoardNames().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     */
+
+    public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> map =
+          internalGetBoardNames().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int PLAYERNAMES_FIELD_NUMBER = 3;
+    private static final class PlayerNamesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>newDefaultInstance(
+                  mech.mania.engine.game.model.GameStateProtos.internal_static_game_state_GameState_PlayerNamesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  mech.mania.engine.game.characters.CharacterProtos.Player.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> playerNames_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+    internalGetPlayerNames() {
+      if (playerNames_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            PlayerNamesDefaultEntryHolder.defaultEntry);
+      }
+      return playerNames_;
+    }
+
+    public int getPlayerNamesCount() {
+      return internalGetPlayerNames().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     */
+
+    public boolean containsPlayerNames(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetPlayerNames().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getPlayerNamesMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> getPlayerNames() {
+      return getPlayerNamesMap();
+    }
+    /**
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     */
+
+    public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> getPlayerNamesMap() {
+      return internalGetPlayerNames().getMap();
+    }
+    /**
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     */
+
+    public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrDefault(
+        java.lang.String key,
+        mech.mania.engine.game.characters.CharacterProtos.Player defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> map =
+          internalGetPlayerNames().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     */
+
+    public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> map =
+          internalGetPlayerNames().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int MONSTERNAMES_FIELD_NUMBER = 4;
+    private static final class MonsterNamesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>newDefaultInstance(
+                  mech.mania.engine.game.model.GameStateProtos.internal_static_game_state_GameState_MonsterNamesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  mech.mania.engine.game.characters.CharacterProtos.Monster.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> monsterNames_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+    internalGetMonsterNames() {
+      if (monsterNames_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            MonsterNamesDefaultEntryHolder.defaultEntry);
+      }
+      return monsterNames_;
+    }
+
+    public int getMonsterNamesCount() {
+      return internalGetMonsterNames().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+
+    public boolean containsMonsterNames(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetMonsterNames().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getMonsterNamesMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> getMonsterNames() {
+      return getMonsterNamesMap();
+    }
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+
+    public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> getMonsterNamesMap() {
+      return internalGetMonsterNames().getMap();
+    }
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+
+    public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrDefault(
+        java.lang.String key,
+        mech.mania.engine.game.characters.CharacterProtos.Monster defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> map =
+          internalGetMonsterNames().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     */
+
+    public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> map =
+          internalGetMonsterNames().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -257,12 +519,24 @@ public final class GameStateProtos {
       if (stateId_ != 0L) {
         output.writeInt64(1, stateId_);
       }
-      if (pvpBoard_ != null) {
-        output.writeMessage(2, getPvpBoard());
-      }
-      for (int i = 0; i < playerBoards_.size(); i++) {
-        output.writeMessage(3, playerBoards_.get(i));
-      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetBoardNames(),
+          BoardNamesDefaultEntryHolder.defaultEntry,
+          2);
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetPlayerNames(),
+          PlayerNamesDefaultEntryHolder.defaultEntry,
+          3);
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetMonsterNames(),
+          MonsterNamesDefaultEntryHolder.defaultEntry,
+          4);
       unknownFields.writeTo(output);
     }
 
@@ -276,13 +550,35 @@ public final class GameStateProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, stateId_);
       }
-      if (pvpBoard_ != null) {
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> entry
+           : internalGetBoardNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+        boardNames__ = BoardNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getPvpBoard());
+            .computeMessageSize(2, boardNames__);
       }
-      for (int i = 0; i < playerBoards_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> entry
+           : internalGetPlayerNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+        playerNames__ = PlayerNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, playerBoards_.get(i));
+            .computeMessageSize(3, playerNames__);
+      }
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> entry
+           : internalGetMonsterNames().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+        monsterNames__ = MonsterNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(4, monsterNames__);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -301,13 +597,12 @@ public final class GameStateProtos {
 
       if (getStateId()
           != other.getStateId()) return false;
-      if (hasPvpBoard() != other.hasPvpBoard()) return false;
-      if (hasPvpBoard()) {
-        if (!getPvpBoard()
-            .equals(other.getPvpBoard())) return false;
-      }
-      if (!getPlayerBoardsList()
-          .equals(other.getPlayerBoardsList())) return false;
+      if (!internalGetBoardNames().equals(
+          other.internalGetBoardNames())) return false;
+      if (!internalGetPlayerNames().equals(
+          other.internalGetPlayerNames())) return false;
+      if (!internalGetMonsterNames().equals(
+          other.internalGetMonsterNames())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -322,13 +617,17 @@ public final class GameStateProtos {
       hash = (37 * hash) + STATE_ID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStateId());
-      if (hasPvpBoard()) {
-        hash = (37 * hash) + PVPBOARD_FIELD_NUMBER;
-        hash = (53 * hash) + getPvpBoard().hashCode();
+      if (!internalGetBoardNames().getMap().isEmpty()) {
+        hash = (37 * hash) + BOARDNAMES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetBoardNames().hashCode();
       }
-      if (getPlayerBoardsCount() > 0) {
-        hash = (37 * hash) + PLAYERBOARDS_FIELD_NUMBER;
-        hash = (53 * hash) + getPlayerBoardsList().hashCode();
+      if (!internalGetPlayerNames().getMap().isEmpty()) {
+        hash = (37 * hash) + PLAYERNAMES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetPlayerNames().hashCode();
+      }
+      if (!internalGetMonsterNames().getMap().isEmpty()) {
+        hash = (37 * hash) + MONSTERNAMES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetMonsterNames().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -437,6 +736,36 @@ public final class GameStateProtos {
         return mech.mania.engine.game.model.GameStateProtos.internal_static_game_state_GameState_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 2:
+            return internalGetBoardNames();
+          case 3:
+            return internalGetPlayerNames();
+          case 4:
+            return internalGetMonsterNames();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 2:
+            return internalGetMutableBoardNames();
+          case 3:
+            return internalGetMutablePlayerNames();
+          case 4:
+            return internalGetMutableMonsterNames();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -458,7 +787,6 @@ public final class GameStateProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getPlayerBoardsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -466,18 +794,9 @@ public final class GameStateProtos {
         super.clear();
         stateId_ = 0L;
 
-        if (pvpBoardBuilder_ == null) {
-          pvpBoard_ = null;
-        } else {
-          pvpBoard_ = null;
-          pvpBoardBuilder_ = null;
-        }
-        if (playerBoardsBuilder_ == null) {
-          playerBoards_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          playerBoardsBuilder_.clear();
-        }
+        internalGetMutableBoardNames().clear();
+        internalGetMutablePlayerNames().clear();
+        internalGetMutableMonsterNames().clear();
         return this;
       }
 
@@ -506,20 +825,12 @@ public final class GameStateProtos {
         mech.mania.engine.game.model.GameStateProtos.GameState result = new mech.mania.engine.game.model.GameStateProtos.GameState(this);
         int from_bitField0_ = bitField0_;
         result.stateId_ = stateId_;
-        if (pvpBoardBuilder_ == null) {
-          result.pvpBoard_ = pvpBoard_;
-        } else {
-          result.pvpBoard_ = pvpBoardBuilder_.build();
-        }
-        if (playerBoardsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            playerBoards_ = java.util.Collections.unmodifiableList(playerBoards_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.playerBoards_ = playerBoards_;
-        } else {
-          result.playerBoards_ = playerBoardsBuilder_.build();
-        }
+        result.boardNames_ = internalGetBoardNames();
+        result.boardNames_.makeImmutable();
+        result.playerNames_ = internalGetPlayerNames();
+        result.playerNames_.makeImmutable();
+        result.monsterNames_ = internalGetMonsterNames();
+        result.monsterNames_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -571,35 +882,12 @@ public final class GameStateProtos {
         if (other.getStateId() != 0L) {
           setStateId(other.getStateId());
         }
-        if (other.hasPvpBoard()) {
-          mergePvpBoard(other.getPvpBoard());
-        }
-        if (playerBoardsBuilder_ == null) {
-          if (!other.playerBoards_.isEmpty()) {
-            if (playerBoards_.isEmpty()) {
-              playerBoards_ = other.playerBoards_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensurePlayerBoardsIsMutable();
-              playerBoards_.addAll(other.playerBoards_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.playerBoards_.isEmpty()) {
-            if (playerBoardsBuilder_.isEmpty()) {
-              playerBoardsBuilder_.dispose();
-              playerBoardsBuilder_ = null;
-              playerBoards_ = other.playerBoards_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              playerBoardsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPlayerBoardsFieldBuilder() : null;
-            } else {
-              playerBoardsBuilder_.addAllMessages(other.playerBoards_);
-            }
-          }
-        }
+        internalGetMutableBoardNames().mergeFrom(
+            other.internalGetBoardNames());
+        internalGetMutablePlayerNames().mergeFrom(
+            other.internalGetPlayerNames());
+        internalGetMutableMonsterNames().mergeFrom(
+            other.internalGetMonsterNames());
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -660,363 +948,373 @@ public final class GameStateProtos {
         return this;
       }
 
-      private mech.mania.engine.game.board.BoardProtos.Board pvpBoard_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.game.board.BoardProtos.Board, mech.mania.engine.game.board.BoardProtos.Board.Builder, mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> pvpBoardBuilder_;
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       * @return Whether the pvpBoard field is set.
-       */
-      public boolean hasPvpBoard() {
-        return pvpBoardBuilder_ != null || pvpBoard_ != null;
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       * @return The pvpBoard.
-       */
-      public mech.mania.engine.game.board.BoardProtos.Board getPvpBoard() {
-        if (pvpBoardBuilder_ == null) {
-          return pvpBoard_ == null ? mech.mania.engine.game.board.BoardProtos.Board.getDefaultInstance() : pvpBoard_;
-        } else {
-          return pvpBoardBuilder_.getMessage();
+      private com.google.protobuf.MapField<
+          java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> boardNames_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+      internalGetBoardNames() {
+        if (boardNames_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              BoardNamesDefaultEntryHolder.defaultEntry);
         }
+        return boardNames_;
       }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      public Builder setPvpBoard(mech.mania.engine.game.board.BoardProtos.Board value) {
-        if (pvpBoardBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          pvpBoard_ = value;
-          onChanged();
-        } else {
-          pvpBoardBuilder_.setMessage(value);
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+      internalGetMutableBoardNames() {
+        onChanged();;
+        if (boardNames_ == null) {
+          boardNames_ = com.google.protobuf.MapField.newMapField(
+              BoardNamesDefaultEntryHolder.defaultEntry);
         }
-
-        return this;
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      public Builder setPvpBoard(
-          mech.mania.engine.game.board.BoardProtos.Board.Builder builderForValue) {
-        if (pvpBoardBuilder_ == null) {
-          pvpBoard_ = builderForValue.build();
-          onChanged();
-        } else {
-          pvpBoardBuilder_.setMessage(builderForValue.build());
+        if (!boardNames_.isMutable()) {
+          boardNames_ = boardNames_.copy();
         }
-
-        return this;
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      public Builder mergePvpBoard(mech.mania.engine.game.board.BoardProtos.Board value) {
-        if (pvpBoardBuilder_ == null) {
-          if (pvpBoard_ != null) {
-            pvpBoard_ =
-              mech.mania.engine.game.board.BoardProtos.Board.newBuilder(pvpBoard_).mergeFrom(value).buildPartial();
-          } else {
-            pvpBoard_ = value;
-          }
-          onChanged();
-        } else {
-          pvpBoardBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      public Builder clearPvpBoard() {
-        if (pvpBoardBuilder_ == null) {
-          pvpBoard_ = null;
-          onChanged();
-        } else {
-          pvpBoard_ = null;
-          pvpBoardBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.Board.Builder getPvpBoardBuilder() {
-        
-        onChanged();
-        return getPvpBoardFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.BoardOrBuilder getPvpBoardOrBuilder() {
-        if (pvpBoardBuilder_ != null) {
-          return pvpBoardBuilder_.getMessageOrBuilder();
-        } else {
-          return pvpBoard_ == null ?
-              mech.mania.engine.game.board.BoardProtos.Board.getDefaultInstance() : pvpBoard_;
-        }
-      }
-      /**
-       * <code>.board.Board pvpBoard = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.game.board.BoardProtos.Board, mech.mania.engine.game.board.BoardProtos.Board.Builder, mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> 
-          getPvpBoardFieldBuilder() {
-        if (pvpBoardBuilder_ == null) {
-          pvpBoardBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.game.board.BoardProtos.Board, mech.mania.engine.game.board.BoardProtos.Board.Builder, mech.mania.engine.game.board.BoardProtos.BoardOrBuilder>(
-                  getPvpBoard(),
-                  getParentForChildren(),
-                  isClean());
-          pvpBoard_ = null;
-        }
-        return pvpBoardBuilder_;
+        return boardNames_;
       }
 
-      private java.util.List<mech.mania.engine.game.board.BoardProtos.Board> playerBoards_ =
-        java.util.Collections.emptyList();
-      private void ensurePlayerBoardsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          playerBoards_ = new java.util.ArrayList<mech.mania.engine.game.board.BoardProtos.Board>(playerBoards_);
-          bitField0_ |= 0x00000001;
-         }
+      public int getBoardNamesCount() {
+        return internalGetBoardNames().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       */
+
+      public boolean containsBoardNames(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetBoardNames().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getBoardNamesMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> getBoardNames() {
+        return getBoardNamesMap();
+      }
+      /**
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       */
+
+      public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> getBoardNamesMap() {
+        return internalGetBoardNames().getMap();
+      }
+      /**
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       */
+
+      public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrDefault(
+          java.lang.String key,
+          mech.mania.engine.game.board.BoardProtos.Board defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> map =
+            internalGetBoardNames().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       */
+
+      public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> map =
+            internalGetBoardNames().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.board.BoardProtos.Board, mech.mania.engine.game.board.BoardProtos.Board.Builder, mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> playerBoardsBuilder_;
+      public Builder clearBoardNames() {
+        internalGetMutableBoardNames().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       */
 
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public java.util.List<mech.mania.engine.game.board.BoardProtos.Board> getPlayerBoardsList() {
-        if (playerBoardsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(playerBoards_);
-        } else {
-          return playerBoardsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public int getPlayerBoardsCount() {
-        if (playerBoardsBuilder_ == null) {
-          return playerBoards_.size();
-        } else {
-          return playerBoardsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.Board getPlayerBoards(int index) {
-        if (playerBoardsBuilder_ == null) {
-          return playerBoards_.get(index);
-        } else {
-          return playerBoardsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public Builder setPlayerBoards(
-          int index, mech.mania.engine.game.board.BoardProtos.Board value) {
-        if (playerBoardsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.set(index, value);
-          onChanged();
-        } else {
-          playerBoardsBuilder_.setMessage(index, value);
-        }
+      public Builder removeBoardNames(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableBoardNames().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * Use alternate mutation accessors instead.
        */
-      public Builder setPlayerBoards(
-          int index, mech.mania.engine.game.board.BoardProtos.Board.Builder builderForValue) {
-        if (playerBoardsBuilder_ == null) {
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          playerBoardsBuilder_.setMessage(index, builderForValue.build());
-        }
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
+      getMutableBoardNames() {
+        return internalGetMutableBoardNames().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       */
+      public Builder putBoardNames(
+          java.lang.String key,
+          mech.mania.engine.game.board.BoardProtos.Board value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableBoardNames().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
        */
-      public Builder addPlayerBoards(mech.mania.engine.game.board.BoardProtos.Board value) {
-        if (playerBoardsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.add(value);
-          onChanged();
-        } else {
-          playerBoardsBuilder_.addMessage(value);
+
+      public Builder putAllBoardNames(
+          java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> values) {
+        internalGetMutableBoardNames().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> playerNames_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+      internalGetPlayerNames() {
+        if (playerNames_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              PlayerNamesDefaultEntryHolder.defaultEntry);
         }
+        return playerNames_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+      internalGetMutablePlayerNames() {
+        onChanged();;
+        if (playerNames_ == null) {
+          playerNames_ = com.google.protobuf.MapField.newMapField(
+              PlayerNamesDefaultEntryHolder.defaultEntry);
+        }
+        if (!playerNames_.isMutable()) {
+          playerNames_ = playerNames_.copy();
+        }
+        return playerNames_;
+      }
+
+      public int getPlayerNamesCount() {
+        return internalGetPlayerNames().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       */
+
+      public boolean containsPlayerNames(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetPlayerNames().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getPlayerNamesMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> getPlayerNames() {
+        return getPlayerNamesMap();
+      }
+      /**
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       */
+
+      public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> getPlayerNamesMap() {
+        return internalGetPlayerNames().getMap();
+      }
+      /**
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       */
+
+      public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrDefault(
+          java.lang.String key,
+          mech.mania.engine.game.characters.CharacterProtos.Player defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> map =
+            internalGetPlayerNames().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       */
+
+      public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> map =
+            internalGetPlayerNames().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearPlayerNames() {
+        internalGetMutablePlayerNames().getMutableMap()
+            .clear();
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
        */
-      public Builder addPlayerBoards(
-          int index, mech.mania.engine.game.board.BoardProtos.Board value) {
-        if (playerBoardsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.add(index, value);
-          onChanged();
-        } else {
-          playerBoardsBuilder_.addMessage(index, value);
-        }
+
+      public Builder removePlayerNames(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutablePlayerNames().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * Use alternate mutation accessors instead.
        */
-      public Builder addPlayerBoards(
-          mech.mania.engine.game.board.BoardProtos.Board.Builder builderForValue) {
-        if (playerBoardsBuilder_ == null) {
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.add(builderForValue.build());
-          onChanged();
-        } else {
-          playerBoardsBuilder_.addMessage(builderForValue.build());
-        }
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
+      getMutablePlayerNames() {
+        return internalGetMutablePlayerNames().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       */
+      public Builder putPlayerNames(
+          java.lang.String key,
+          mech.mania.engine.game.characters.CharacterProtos.Player value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutablePlayerNames().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
        */
-      public Builder addPlayerBoards(
-          int index, mech.mania.engine.game.board.BoardProtos.Board.Builder builderForValue) {
-        if (playerBoardsBuilder_ == null) {
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          playerBoardsBuilder_.addMessage(index, builderForValue.build());
+
+      public Builder putAllPlayerNames(
+          java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> values) {
+        internalGetMutablePlayerNames().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> monsterNames_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+      internalGetMonsterNames() {
+        if (monsterNames_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              MonsterNamesDefaultEntryHolder.defaultEntry);
         }
+        return monsterNames_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+      internalGetMutableMonsterNames() {
+        onChanged();;
+        if (monsterNames_ == null) {
+          monsterNames_ = com.google.protobuf.MapField.newMapField(
+              MonsterNamesDefaultEntryHolder.defaultEntry);
+        }
+        if (!monsterNames_.isMutable()) {
+          monsterNames_ = monsterNames_.copy();
+        }
+        return monsterNames_;
+      }
+
+      public int getMonsterNamesCount() {
+        return internalGetMonsterNames().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       */
+
+      public boolean containsMonsterNames(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetMonsterNames().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getMonsterNamesMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> getMonsterNames() {
+        return getMonsterNamesMap();
+      }
+      /**
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       */
+
+      public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> getMonsterNamesMap() {
+        return internalGetMonsterNames().getMap();
+      }
+      /**
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       */
+
+      public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrDefault(
+          java.lang.String key,
+          mech.mania.engine.game.characters.CharacterProtos.Monster defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> map =
+            internalGetMonsterNames().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       */
+
+      public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> map =
+            internalGetMonsterNames().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearMonsterNames() {
+        internalGetMutableMonsterNames().getMutableMap()
+            .clear();
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
        */
-      public Builder addAllPlayerBoards(
-          java.lang.Iterable<? extends mech.mania.engine.game.board.BoardProtos.Board> values) {
-        if (playerBoardsBuilder_ == null) {
-          ensurePlayerBoardsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, playerBoards_);
-          onChanged();
-        } else {
-          playerBoardsBuilder_.addAllMessages(values);
-        }
+
+      public Builder removeMonsterNames(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableMonsterNames().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * Use alternate mutation accessors instead.
        */
-      public Builder clearPlayerBoards() {
-        if (playerBoardsBuilder_ == null) {
-          playerBoards_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          playerBoardsBuilder_.clear();
-        }
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
+      getMutableMonsterNames() {
+        return internalGetMutableMonsterNames().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       */
+      public Builder putMonsterNames(
+          java.lang.String key,
+          mech.mania.engine.game.characters.CharacterProtos.Monster value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableMonsterNames().getMutableMap()
+            .put(key, value);
         return this;
       }
       /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
+       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
        */
-      public Builder removePlayerBoards(int index) {
-        if (playerBoardsBuilder_ == null) {
-          ensurePlayerBoardsIsMutable();
-          playerBoards_.remove(index);
-          onChanged();
-        } else {
-          playerBoardsBuilder_.remove(index);
-        }
+
+      public Builder putAllMonsterNames(
+          java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> values) {
+        internalGetMutableMonsterNames().getMutableMap()
+            .putAll(values);
         return this;
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.Board.Builder getPlayerBoardsBuilder(
-          int index) {
-        return getPlayerBoardsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.BoardOrBuilder getPlayerBoardsOrBuilder(
-          int index) {
-        if (playerBoardsBuilder_ == null) {
-          return playerBoards_.get(index);  } else {
-          return playerBoardsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public java.util.List<? extends mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> 
-           getPlayerBoardsOrBuilderList() {
-        if (playerBoardsBuilder_ != null) {
-          return playerBoardsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(playerBoards_);
-        }
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.Board.Builder addPlayerBoardsBuilder() {
-        return getPlayerBoardsFieldBuilder().addBuilder(
-            mech.mania.engine.game.board.BoardProtos.Board.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public mech.mania.engine.game.board.BoardProtos.Board.Builder addPlayerBoardsBuilder(
-          int index) {
-        return getPlayerBoardsFieldBuilder().addBuilder(
-            index, mech.mania.engine.game.board.BoardProtos.Board.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .board.Board playerBoards = 3;</code>
-       */
-      public java.util.List<mech.mania.engine.game.board.BoardProtos.Board.Builder> 
-           getPlayerBoardsBuilderList() {
-        return getPlayerBoardsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.board.BoardProtos.Board, mech.mania.engine.game.board.BoardProtos.Board.Builder, mech.mania.engine.game.board.BoardProtos.BoardOrBuilder> 
-          getPlayerBoardsFieldBuilder() {
-        if (playerBoardsBuilder_ == null) {
-          playerBoardsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.game.board.BoardProtos.Board, mech.mania.engine.game.board.BoardProtos.Board.Builder, mech.mania.engine.game.board.BoardProtos.BoardOrBuilder>(
-                  playerBoards_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          playerBoards_ = null;
-        }
-        return playerBoardsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1564,6 +1862,21 @@ public final class GameStateProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_state_GameState_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_state_GameState_BoardNamesEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_state_GameState_BoardNamesEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_state_GameState_PlayerNamesEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_state_GameState_PlayerNamesEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_state_GameState_MonsterNamesEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_state_GameState_MonsterNamesEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_state_GameChange_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1578,12 +1891,20 @@ public final class GameStateProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\020game_state.proto\022\ngame_state\032\013board.pr" +
-      "oto\032\017character.proto\"a\n\tGameState\022\020\n\010sta" +
-      "te_id\030\001 \001(\003\022\036\n\010pvpBoard\030\002 \001(\0132\014.board.Bo" +
-      "ard\022\"\n\014playerBoards\030\003 \003(\0132\014.board.Board\"" +
-      "\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003B@\n\034mech" +
-      ".mania.engine.game.modelB\017GameStateProto" +
-      "s\252\002\016MM26.IO.Modelsb\006proto3"
+      "oto\032\017character.proto\"\245\003\n\tGameState\022\020\n\010st" +
+      "ate_id\030\001 \001(\003\0229\n\nboardNames\030\002 \003(\0132%.game_" +
+      "state.GameState.BoardNamesEntry\022;\n\013playe" +
+      "rNames\030\003 \003(\0132&.game_state.GameState.Play" +
+      "erNamesEntry\022=\n\014monsterNames\030\004 \003(\0132\'.gam" +
+      "e_state.GameState.MonsterNamesEntry\032?\n\017B" +
+      "oardNamesEntry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030\002 \001" +
+      "(\0132\014.board.Board:\0028\001\032E\n\020PlayerNamesEntry" +
+      "\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 \001(\0132\021.character" +
+      ".Player:\0028\001\032G\n\021MonsterNamesEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.character.Monster" +
+      ":\0028\001\"\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003B@\n" +
+      "\034mech.mania.engine.game.modelB\017GameState" +
+      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1596,7 +1917,25 @@ public final class GameStateProtos {
     internal_static_game_state_GameState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_state_GameState_descriptor,
-        new java.lang.String[] { "StateId", "PvpBoard", "PlayerBoards", });
+        new java.lang.String[] { "StateId", "BoardNames", "PlayerNames", "MonsterNames", });
+    internal_static_game_state_GameState_BoardNamesEntry_descriptor =
+      internal_static_game_state_GameState_descriptor.getNestedTypes().get(0);
+    internal_static_game_state_GameState_BoardNamesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_state_GameState_BoardNamesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_game_state_GameState_PlayerNamesEntry_descriptor =
+      internal_static_game_state_GameState_descriptor.getNestedTypes().get(1);
+    internal_static_game_state_GameState_PlayerNamesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_state_GameState_PlayerNamesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_game_state_GameState_MonsterNamesEntry_descriptor =
+      internal_static_game_state_GameState_descriptor.getNestedTypes().get(2);
+    internal_static_game_state_GameState_MonsterNamesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_state_GameState_MonsterNamesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_game_state_GameChange_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_game_state_GameChange_fieldAccessorTable = new

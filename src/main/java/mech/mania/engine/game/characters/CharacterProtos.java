@@ -104,7 +104,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
     int getTaggedPlayersDamageCount();
     /**
@@ -112,7 +112,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
     boolean containsTaggedPlayersDamage(
         java.lang.String key);
@@ -120,37 +120,37 @@ public final class CharacterProtos {
      * Use {@link #getTaggedPlayersDamageMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Double>
+    java.util.Map<java.lang.String, java.lang.Integer>
     getTaggedPlayersDamage();
     /**
      * <pre>
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
-    java.util.Map<java.lang.String, java.lang.Double>
+    java.util.Map<java.lang.String, java.lang.Integer>
     getTaggedPlayersDamageMap();
     /**
      * <pre>
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
 
-    double getTaggedPlayersDamageOrDefault(
+    int getTaggedPlayersDamageOrDefault(
         java.lang.String key,
-        double defaultValue);
+        int defaultValue);
     /**
      * <pre>
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
 
-    double getTaggedPlayersDamageOrThrow(
+    int getTaggedPlayersDamageOrThrow(
         java.lang.String key);
 
     /**
@@ -289,7 +289,7 @@ public final class CharacterProtos {
                     TaggedPlayersDamageDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Double>
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
               taggedPlayersDamage__ = input.readMessage(
                   TaggedPlayersDamageDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               taggedPlayersDamage_.getMutableMap().put(
@@ -486,18 +486,18 @@ public final class CharacterProtos {
     public static final int TAGGED_PLAYERS_DAMAGE_FIELD_NUMBER = 7;
     private static final class TaggedPlayersDamageDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Double> defaultEntry =
+          java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Double>newDefaultInstance(
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
                   mech.mania.engine.game.characters.CharacterProtos.internal_static_character_Character_TaggedPlayersDamageEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
-                  0D);
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
     }
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Double> taggedPlayersDamage_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
+        java.lang.String, java.lang.Integer> taggedPlayersDamage_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
     internalGetTaggedPlayersDamage() {
       if (taggedPlayersDamage_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -514,7 +514,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
 
     public boolean containsTaggedPlayersDamage(
@@ -526,7 +526,7 @@ public final class CharacterProtos {
      * Use {@link #getTaggedPlayersDamageMap()} instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Double> getTaggedPlayersDamage() {
+    public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
       return getTaggedPlayersDamageMap();
     }
     /**
@@ -534,10 +534,10 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
 
-    public java.util.Map<java.lang.String, java.lang.Double> getTaggedPlayersDamageMap() {
+    public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
       return internalGetTaggedPlayersDamage().getMap();
     }
     /**
@@ -545,14 +545,14 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
 
-    public double getTaggedPlayersDamageOrDefault(
+    public int getTaggedPlayersDamageOrDefault(
         java.lang.String key,
-        double defaultValue) {
+        int defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.Double> map =
+      java.util.Map<java.lang.String, java.lang.Integer> map =
           internalGetTaggedPlayersDamage().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
@@ -561,13 +561,13 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
      */
 
-    public double getTaggedPlayersDamageOrThrow(
+    public int getTaggedPlayersDamageOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.Double> map =
+      java.util.Map<java.lang.String, java.lang.Integer> map =
           internalGetTaggedPlayersDamage().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -711,9 +711,9 @@ public final class CharacterProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, activeEffects_.get(i));
       }
-      for (java.util.Map.Entry<java.lang.String, java.lang.Double> entry
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
            : internalGetTaggedPlayersDamage().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Double>
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
         taggedPlayersDamage__ = TaggedPlayersDamageDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -1856,8 +1856,8 @@ public final class CharacterProtos {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Double> taggedPlayersDamage_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
+          java.lang.String, java.lang.Integer> taggedPlayersDamage_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
       internalGetTaggedPlayersDamage() {
         if (taggedPlayersDamage_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -1865,7 +1865,7 @@ public final class CharacterProtos {
         }
         return taggedPlayersDamage_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
       internalGetMutableTaggedPlayersDamage() {
         onChanged();;
         if (taggedPlayersDamage_ == null) {
@@ -1886,7 +1886,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
 
       public boolean containsTaggedPlayersDamage(
@@ -1898,7 +1898,7 @@ public final class CharacterProtos {
        * Use {@link #getTaggedPlayersDamageMap()} instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Double> getTaggedPlayersDamage() {
+      public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
         return getTaggedPlayersDamageMap();
       }
       /**
@@ -1906,10 +1906,10 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
 
-      public java.util.Map<java.lang.String, java.lang.Double> getTaggedPlayersDamageMap() {
+      public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
         return internalGetTaggedPlayersDamage().getMap();
       }
       /**
@@ -1917,14 +1917,14 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
 
-      public double getTaggedPlayersDamageOrDefault(
+      public int getTaggedPlayersDamageOrDefault(
           java.lang.String key,
-          double defaultValue) {
+          int defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.Double> map =
+        java.util.Map<java.lang.String, java.lang.Integer> map =
             internalGetTaggedPlayersDamage().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
@@ -1933,13 +1933,13 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
 
-      public double getTaggedPlayersDamageOrThrow(
+      public int getTaggedPlayersDamageOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.Double> map =
+        java.util.Map<java.lang.String, java.lang.Integer> map =
             internalGetTaggedPlayersDamage().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -1957,7 +1957,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
 
       public Builder removeTaggedPlayersDamage(
@@ -1971,7 +1971,7 @@ public final class CharacterProtos {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Double>
+      public java.util.Map<java.lang.String, java.lang.Integer>
       getMutableTaggedPlayersDamage() {
         return internalGetMutableTaggedPlayersDamage().getMutableMap();
       }
@@ -1980,11 +1980,11 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
       public Builder putTaggedPlayersDamage(
           java.lang.String key,
-          double value) {
+          int value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         
         internalGetMutableTaggedPlayersDamage().getMutableMap()
@@ -1996,11 +1996,11 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, double&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
        */
 
       public Builder putAllTaggedPlayersDamage(
-          java.util.Map<java.lang.String, java.lang.Double> values) {
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
         internalGetMutableTaggedPlayersDamage().getMutableMap()
             .putAll(values);
         return this;
@@ -5517,7 +5517,7 @@ public final class CharacterProtos {
       "ayersDamageEntry\022\017\n\007is_dead\030\010 \001(\010\022\031\n\021tic" +
       "ks_since_death\030\t \001(\005\022\014\n\004name\030\n \001(\t\032:\n\030Ta" +
       "ggedPlayersDamageEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
-      "alue\030\002 \001(\001:\0028\001\"M\n\007Monster\022\'\n\tcharacter\030\001" +
+      "alue\030\002 \001(\005:\0028\001\"M\n\007Monster\022\'\n\tcharacter\030\001" +
       " \001(\0132\024.character.Character\022\031\n\005drops\030\002 \003(" +
       "\0132\n.item.Item\"\244\001\n\006Player\022\'\n\tcharacter\030\001 " +
       "\001(\0132\024.character.Character\022\026\n\003hat\030\002 \001(\0132\t" +
