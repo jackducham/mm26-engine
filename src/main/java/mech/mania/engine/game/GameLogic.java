@@ -15,10 +15,7 @@ import mech.mania.engine.game.items.Weapon;
 
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * A class to execute the game logic.
@@ -30,7 +27,7 @@ public class GameLogic {
      * @param decisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Collection<PlayerDecision> decisions) {
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
         return gameState;

@@ -11,6 +11,7 @@ import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.
 import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.dao.Database;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -75,7 +76,7 @@ public class GameStateController {
      * @return updated GameState after getting PlayerDecisions and updating
      */
     public static GameState sendPlayerRequestsAndUpdateGameState() {
-        List<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
+        Collection<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
         GameState updatedGameState = GameLogic.doTurn(getCurrentGameState(), decisions);
         DATABASE.storeGameState(DATABASE.getCurrentTurnNum(), updatedGameState);
         return updatedGameState;
