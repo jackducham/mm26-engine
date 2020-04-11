@@ -1,7 +1,5 @@
 package mech.mania.engine.game.characters;
 
-import mech.mania.engine.game.GameState;
-import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.items.*;
 
 
@@ -18,6 +16,74 @@ public class Player extends Character {
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
+    }
+
+    public Player(CharacterProtos.Player playerProto) {
+        super(
+                playerProto.getCharacter().getExperience(),
+                new Position(playerProto.getCharacter().getSpawnPoint()),
+                new Weapon(playerProto.getCharacter().getWeapon()),
+                playerProto.getCharacter().getName()
+        );
+        // TODO: add taggedPlayersDamage
+        hat = new Hat(playerProto.getHat());
+        clothes = new Clothes(playerProto.getClothes());
+        shoes = new Shoes(playerProto.getShoes());
+        inventory = new Item[INVENTORY_SIZE];
+
+        for (int i = 0; i < playerProto.getInventoryCount(); i++) {
+            ItemProtos.Item protoItem = playerProto.getInventory(i);
+            switch(protoItem.getItemCase()) {
+                case CLOTHES:
+                    inventory[i] = new Clothes(protoItem.getClothes());
+                    break;
+                case HAT:
+                    inventory[i] = new Hat(protoItem.getHat());
+                    break;
+                case SHOES:
+                    inventory[i] = new Shoes(protoItem.getShoes());
+                    break;
+                case WEAPON:
+                    inventory[i] = new Weapon(protoItem.getWeapon());
+                    break;
+                case CONSUMABLE:
+                    inventory[i] = new Consumable(protoItem.getMaxStack(), protoItem.getConsumable());
+            }
+        }
+    }
+
+    public CharacterProtos.Player buildProtoClassPlayer() {
+        CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
+        CharacterProtos.Player.Builder playerBuilder = CharacterProtos.Player.newBuilder();
+
+        playerBuilder.mergeCharacter(characterProtoClass);
+
+        for (int i = 0; i < INVENTORY_SIZE; i++) {
+            Item curItem = inventory[i];
+            if (curItem instanceof Clothes) {
+                playerBuilder.setInventory(i, ((Clothes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Hat) {
+                playerBuilder.setInventory(i, ((Hat)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Shoes) {
+                playerBuilder.setInventory(i, ((Shoes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Weapon) {
+                playerBuilder.setInventory(i, ((Weapon)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Consumable) {
+                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClass());
+            }
+        }
+
+        if (hat != null) {
+            playerBuilder.setHat(hat.buildProtoClassHat());
+        }
+        if (clothes != null) {
+            playerBuilder.setClothes(clothes.buildProtoClassClothes());
+        }
+        if (shoes != null) {
+            playerBuilder.setShoes(shoes.buildProtoClassShoes());
+        }
+
+        return playerBuilder.build();
     }
 
     public Hat getHat() {

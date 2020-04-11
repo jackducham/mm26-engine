@@ -135,7 +135,6 @@ public class GameStateController {
         // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
                 .setPlayerName(playerName)
-                .setIncrement(1)
                 .build();
     }
 

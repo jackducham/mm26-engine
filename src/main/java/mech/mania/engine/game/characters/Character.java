@@ -20,7 +20,7 @@ public abstract class Character {
     protected Position spawnPoint;
     protected Weapon weapon;
     List<TempStatusModifier> activeEffects;
-    protected Map<Player, Integer> taggedPlayersDamage;
+    protected Map<String, Integer> taggedPlayersDamage;
     private int ticksSinceDeath;
     private String name;
     private boolean isDead;
@@ -38,26 +38,48 @@ public abstract class Character {
         this.ticksSinceDeath = -1;
     }
 
-    public void takeDamage(int physicalDamage, int magicalDamage, Player player) {
+    public CharacterProtos.Character buildProtoClassCharacter() {
+        CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
+        characterBuilder.setCurrentHealth(currentHealth);
+        characterBuilder.setExperience(experience);
+        characterBuilder.setPosition(position.buildProtoClass());
+        characterBuilder.setSpawnPoint(spawnPoint.buildProtoClass());
+        characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
+
+        for (int i = 0; i < activeEffects.size(); i++) {
+            characterBuilder.setActiveEffects(i, activeEffects.get(i).buildProtoClassTemp());
+        }
+
+        characterBuilder.putAllTaggedPlayersDamage(taggedPlayersDamage);
+
+        characterBuilder.setTicksSinceDeath(ticksSinceDeath);
+        characterBuilder.setName(name);
+        characterBuilder.setIsDead(isDead);
+
+        return characterBuilder.build();
+    }
+
+    public void takeDamage(int physicalDamage, int magicalDamage, String playerName) {
         int actualDamage = max(0, physicalDamage - getPhysicalDefense())
             + max(0, magicalDamage - getMagicalDefense());
 
-        if (taggedPlayersDamage.containsKey(player)) {
-            taggedPlayersDamage.put(player, taggedPlayersDamage.get(player) + actualDamage);
+        if (taggedPlayersDamage.containsKey(playerName)) {
+            taggedPlayersDamage.put(playerName, taggedPlayersDamage.get(playerName) + actualDamage);
         } else {
-            taggedPlayersDamage.put(player, actualDamage);
+            taggedPlayersDamage.put(playerName, actualDamage);
         }
 
         updateCurrentHealth(-actualDamage);
     }
 
     protected void distributeRewards(GameState gameState) {
-        for (Player player : taggedPlayersDamage.keySet()) {
+        for (String playerName : taggedPlayersDamage.keySet()) {
+            Player player = gameState.getPlayer(playerName);
             player.experience += this.getLevel();
         }
     }
 
-    public void removePlayer(Player toRemove) {
+    public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);
     }
     public void updateCurrentHealth(int delta) {

@@ -3,12 +3,12 @@ package mech.mania.engine.game.characters;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.Tile;
-import mech.mania.engine.game.items.Item;
+import mech.mania.engine.game.items.*;
 
 import mech.mania.engine.game.GameLogic;
 
+import java.util.ArrayList;
 import java.util.List;
-import mech.mania.engine.game.items.Weapon;
 
 public class Monster extends Character {
     private List<Item> drops;
@@ -16,6 +16,59 @@ public class Monster extends Character {
     public Monster(int experience, Position spawnPoint, Weapon weapon, List<Item> drops, String name) {
         super(experience, spawnPoint, weapon, name);
         this.drops = drops;
+    }
+
+    public Monster(CharacterProtos.Monster monsterProto) {
+        super(
+                monsterProto.getCharacter().getExperience(),
+                new Position(monsterProto.getCharacter().getSpawnPoint()),
+                new Weapon(monsterProto.getCharacter().getWeapon()),
+                monsterProto.getCharacter().getName()
+        );
+
+        drops = new ArrayList<>(monsterProto.getDropsCount());
+        for (int i = 0; i < monsterProto.getDropsCount(); i++) {
+            ItemProtos.Item protoItem = monsterProto.getDrops(i);
+            switch(protoItem.getItemCase()) {
+                case CLOTHES:
+                    drops.set(i, new Clothes(protoItem.getClothes()));
+                    break;
+                case HAT:
+                    drops.set(i, new Hat(protoItem.getHat()));
+                    break;
+                case SHOES:
+                    drops.set(i, new Shoes(protoItem.getShoes()));
+                    break;
+                case WEAPON:
+                    drops.set(i, new Weapon(protoItem.getWeapon()));
+                    break;
+                case CONSUMABLE:
+                    drops.set(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+            }
+        }
+    }
+
+
+    public CharacterProtos.Monster buildProtoClassMonster() {
+        CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
+        CharacterProtos.Monster.Builder monsterBuilder = CharacterProtos.Monster.newBuilder();
+        monsterBuilder.mergeCharacter(characterProtoClass);
+        for (int i = 0; i < drops.size(); i++) {
+            Item curItem = drops.get(i);
+            if (curItem instanceof Clothes) {
+                monsterBuilder.setDrops(i, ((Clothes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Hat) {
+                monsterBuilder.setDrops(i, ((Hat)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Shoes) {
+                monsterBuilder.setDrops(i, ((Shoes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Weapon) {
+                monsterBuilder.setDrops(i, ((Weapon)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Consumable) {
+                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClass());
+            }
+        }
+
+        return monsterBuilder.build();
     }
 
     private Position findPositionToMove(GameState gameState, Position destination) {
@@ -36,16 +89,16 @@ public class Monster extends Character {
                 return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
             }
         } else {
-            Player highestDamagePlayer = null;
+            String highestDamagePlayer = null;
             int highestDamage = -1;
-            for (Player player : taggedPlayersDamage.keySet()) {
-                if (taggedPlayersDamage.get(player) > highestDamage) {
-                    highestDamagePlayer = player;
-                    highestDamage = taggedPlayersDamage.get(player);
+            for (String playerName : taggedPlayersDamage.keySet()) {
+                if (taggedPlayersDamage.get(playerName) > highestDamage) {
+                    highestDamagePlayer = playerName;
+                    highestDamage = taggedPlayersDamage.get(playerName);
                 }
             }
 
-            Position toAttack = highestDamagePlayer.getPosition();
+            Position toAttack = gameState.getPlayer(highestDamagePlayer).position;
 
             int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
             if (manhattanDistance <= weapon.getRange()) {
