@@ -23,6 +23,13 @@ public class GameState {
         return boardNames.get("pvp");
     }
 
+    public GameState() {
+        turnNumber = 0;
+        boardNames = new HashMap<>();
+        playerNames = new HashMap<>();
+        monsterNames = new HashMap<>();
+    }
+
     public Board getBoard(String boardId){
         if (boardNames.containsKey(boardId)) {
             return boardNames.get(boardId);
@@ -71,26 +78,22 @@ public class GameState {
         gameStateBuilder.setStateId(turnNumber);
 
         for (String boardID : boardNames.keySet()) {
-            gameStateBuilder.putBoardNames(boardID, boardNames.get(boardID));
+            gameStateBuilder.putBoardNames(boardID, boardNames.get(boardID).buildProtoClass());
         }
 
-        int playerIndex = 0;
-        for (Player player : playerNames.values()) {
-            gameStateBuilder.addPlayerNames(playerIndex, player.buildProtoClassPlayer());
-            playerIndex++;
+        for (String playerName : playerNames.keySet()) {
+            gameStateBuilder.putPlayerNames(playerName, playerNames.get(playerName).buildProtoClassPlayer());
         }
 
-        int monsterIndex = 0;
-        for (Monster monster : monsterNames.values()) {
-            gameStateBuilder.addMonsterNames(monsterIndex, monster.buildProtoClassMonster());
-            monsterIndex++;
+        for (String monsterName : monsterNames.keySet()) {
+            gameStateBuilder.putMonsterNames(monsterName, monsterNames.get(monsterName).buildProtoClassMonster());
         }
 
         return gameStateBuilder.build();
     }
 
     public GameState(GameStateProtos.GameState gameStateProto) {
-        boardNames = new HashMap<>(gameStateProto.getPlayerBoardsCount());
+        boardNames = new HashMap<>();
 
         Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNames();
 
@@ -103,17 +106,15 @@ public class GameState {
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
 
-        // TODO: add allMonsters field to GameStateProto
-        List<CharacterProtos.Monster> allMonsters = gameStateProto.getMonsterNames();
-        for (CharacterProtos.Monster monsterProto : allMonsters) {
-            Monster newMonster = new Monster(monsterProto);
+        Map<String, CharacterProtos.Monster> allMonsters = gameStateProto.getMonsterNamesMap();
+        for (String monsterName : allMonsters.keySet()) {
+            Monster newMonster = new Monster(allMonsters.get(monsterName));
             monsterNames.put(newMonster.getName(), newMonster);
         }
 
-        // TODO: add allPlayers field to GameStateProto
-        List<CharacterProtos.Player> allPlayers = gameStateProto.getPlayerNames();
-        for (CharacterProtos.Player playerProto : allPlayers) {
-            Player newPlayer = new Player(playerProto);
+        Map<String, CharacterProtos.Player> allPlayers = gameStateProto.getPlayerNamesMap();
+        for (String playerName : allPlayers.keySet()) {
+            Player newPlayer = new Player(allPlayers.get(playerName));
             playerNames.put(newPlayer.getName(), newPlayer);
         }
     }

@@ -40,7 +40,6 @@ public abstract class Character {
 
     public CharacterProtos.Character buildProtoClassCharacter() {
         CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
-        // TODO: remove cast once health has been changed to int
         characterBuilder.setCurrentHealth(currentHealth);
         characterBuilder.setExperience(experience);
         characterBuilder.setPosition(position.buildProtoClass());
@@ -51,7 +50,7 @@ public abstract class Character {
             characterBuilder.setActiveEffects(i, activeEffects.get(i).buildProtoClassTemp());
         }
 
-        // TODO: add players/player names
+        characterBuilder.putAllTaggedPlayersDamage(taggedPlayersDamage);
 
         characterBuilder.setTicksSinceDeath(ticksSinceDeath);
         characterBuilder.setName(name);

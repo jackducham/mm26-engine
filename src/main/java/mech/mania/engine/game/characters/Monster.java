@@ -89,16 +89,16 @@ public class Monster extends Character {
                 return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
             }
         } else {
-            Player highestDamagePlayer = null;
+            String highestDamagePlayer = null;
             int highestDamage = -1;
-            for (Player player : taggedPlayersDamage.keySet()) {
-                if (taggedPlayersDamage.get(player) > highestDamage) {
-                    highestDamagePlayer = player;
-                    highestDamage = taggedPlayersDamage.get(player);
+            for (String playerName : taggedPlayersDamage.keySet()) {
+                if (taggedPlayersDamage.get(playerName) > highestDamage) {
+                    highestDamagePlayer = playerName;
+                    highestDamage = taggedPlayersDamage.get(playerName);
                 }
             }
 
-            Position toAttack = highestDamagePlayer.getPosition();
+            Position toAttack = gameState.getPlayer(highestDamagePlayer).position;
 
             int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
             if (manhattanDistance <= weapon.getRange()) {
