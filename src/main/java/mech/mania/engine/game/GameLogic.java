@@ -202,10 +202,10 @@ public class GameLogic {
      * @param gameState current gamestate
      */
     public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
-        Board board = gameState.getPvpBoard();
+        Board board = gameState.getBoard(attackCoordinate.getBoardID());
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
-        List<Monster> enemies = board.getMonsters();
-        List<Player> players = board.getPlayers();
+        List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
+        List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         // Character gave invalid attack position
@@ -223,7 +223,7 @@ public class GameLogic {
             }
         }
 
-        for (Monster monster: enemies) {
+        for (Monster monster: monsters) {
             if (monster == attacker) {
                 continue;
             }
@@ -286,16 +286,6 @@ public class GameLogic {
     }
 
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
-
-    /**
-     * Checks whether given player is on given board.
-     * @param player The target player.
-     * @param board The target board.
-     * @return true if the player is on the board, false otherwise.
-     */
-    public static boolean isPlayerOnBoard(GameState gameState, Player player, Board board) {
-        return (board.getPlayers().contains(player));
-    }
 
     /**
      * Provides the Tile at a given Position.

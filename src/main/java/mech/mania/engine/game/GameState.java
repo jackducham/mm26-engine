@@ -1,7 +1,7 @@
 package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
-import mech.mania.engine.game.characters.Character;
+import mech.mania.engine.game.board.BoardProtos;
 import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.*;
 import mech.mania.engine.game.model.GameStateProtos;
@@ -10,77 +10,111 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class GameState {
     private long turnNumber;
-    private Board pvpBoard;
-    private ArrayList<Board> playerBoards;
-    private Map<String, Character> characterNames;
+    private Map<String, Board> boardNames;
+    private Map<String, Player> playerNames;
+    private Map<String, Monster> monsterNames;
 
     public Board getPvpBoard() {
-        return pvpBoard;
+        return boardNames.get("pvp");
     }
 
-    public Board getBoard(String boardID){
-        if(pvpBoard.getBoardID().equals(boardID)){return pvpBoard;}
-        for(Board b : playerBoards) {
-            if (b.getBoardID().equals(boardID)) {
-                return b;
-            }
+    public Board getBoard(String boardId){
+        if (boardNames.containsKey(boardId)) {
+            return boardNames.get(boardId);
         }
         return null;
+    }
+
+    public Player getPlayer(String playerId) {
+        if (playerNames.containsKey(playerId)) {
+            return playerNames.get(playerId);
+        }
+        return null;
+    }
+
+    public Monster getMonster(String monsterId) {
+        if (monsterNames.containsKey(monsterId)) {
+            return monsterNames.get(monsterId);
+        }
+        return null;
+    }
+
+    public List<Monster> getMonstersOnBoard(String boardId) {
+        if (!boardNames.containsKey(boardId)) {
+            return new ArrayList<>();
+        }
+
+        Predicate<Monster> byBoard = monster -> monster.getPosition().getBoardID().equals(boardId);
+
+        return monsterNames.values().stream().filter(byBoard)
+                .collect(Collectors.toList());
+    }
+
+    public List<Player> getPlayersOnBoard(String boardId) {
+        if (!boardNames.containsKey(boardId)) {
+            return new ArrayList<>();
+        }
+
+        Predicate<Player> byBoard = player -> player.getPosition().getBoardID().equals(boardId);
+
+        return playerNames.values().stream().filter(byBoard)
+                .collect(Collectors.toList());
     }
 
     public GameStateProtos.GameState buildProtoClass() {
         GameStateProtos.GameState.Builder gameStateBuilder = GameStateProtos.GameState.newBuilder();
         gameStateBuilder.setStateId(turnNumber);
 
-        gameStateBuilder.setPvpBoard(pvpBoard.buildProtoClass());
+        for (String boardID : boardNames.keySet()) {
+            gameStateBuilder.putBoardNames(boardID, boardNames.get(boardID));
+        }
 
-        for (int i = 0; i < playerBoards.size(); i++) {
-            gameStateBuilder.addPlayerBoards(i, playerBoards.get(i).buildProtoClass());
+        int playerIndex = 0;
+        for (Player player : playerNames.values()) {
+            gameStateBuilder.addPlayerNames(playerIndex, player.buildProtoClassPlayer());
+            playerIndex++;
         }
 
         int monsterIndex = 0;
-        int playerIndex = 0;
-        for (Character character : characterNames.values()) {
-            if (character instanceof Monster) {
-                // TODO: add allMonsters field to GameStateProto
-                gameStateBuilder.addAllMonsters(monsterIndex, ((Monster) character).buildProtoClassMonster());
-                monsterIndex++;
-            } else {
-                // TODO: add allPlayers field to GameStateProto
-                gameStateBuilder.addAllPlayers(playerIndex, ((Player)character).buildProtoClassPlayer());
-                playerIndex++;
-            }
+        for (Monster monster : monsterNames.values()) {
+            gameStateBuilder.addMonsterNames(monsterIndex, monster.buildProtoClassMonster());
+            monsterIndex++;
         }
 
         return gameStateBuilder.build();
     }
 
     public GameState(GameStateProtos.GameState gameStateProto) {
-        this.pvpBoard = new Board(gameStateProto.getPvpBoard());
-        playerBoards = new ArrayList<>(gameStateProto.getPlayerBoardsCount());
-        for (int i = 0; i < gameStateProto.getPlayerBoardsCount(); i++) {
-            playerBoards.set(i, new Board(gameStateProto.getPlayerBoards(i)));
+        boardNames = new HashMap<>(gameStateProto.getPlayerBoardsCount());
+
+        Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNames();
+
+        for (String boardId : boardProtoMap.keySet()) {
+            boardNames.put(boardId, new Board(boardProtoMap.get(boardId)));
         }
 
         turnNumber = gameStateProto.getStateId();
 
-        characterNames = new HashMap<>();
+        playerNames = new HashMap<>();
+        monsterNames = new HashMap<>();
 
         // TODO: add allMonsters field to GameStateProto
-        List<CharacterProtos.Monster> allMonsters = gameStateProto.getAllMonsters();
+        List<CharacterProtos.Monster> allMonsters = gameStateProto.getMonsterNames();
         for (CharacterProtos.Monster monsterProto : allMonsters) {
-            Character newMonster = new Monster(monsterProto);
-            characterNames.put(newMonster.getName(), newMonster);
+            Monster newMonster = new Monster(monsterProto);
+            monsterNames.put(newMonster.getName(), newMonster);
         }
 
         // TODO: add allPlayers field to GameStateProto
-        List<CharacterProtos.Player> allPlayers = gameStateProto.getAllPlayers();
+        List<CharacterProtos.Player> allPlayers = gameStateProto.getPlayerNames();
         for (CharacterProtos.Player playerProto : allPlayers) {
-            Character newPlayer = new Player(playerProto);
-            characterNames.put(newPlayer.getName(), newPlayer);
+            Player newPlayer = new Player(playerProto);
+            playerNames.put(newPlayer.getName(), newPlayer);
         }
     }
 }

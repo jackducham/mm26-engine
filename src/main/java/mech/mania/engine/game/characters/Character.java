@@ -20,7 +20,7 @@ public abstract class Character {
     protected Position spawnPoint;
     protected Weapon weapon;
     List<TempStatusModifier> activeEffects;
-    protected Map<Player, Integer> taggedPlayersDamage;
+    protected Map<String, Integer> taggedPlayersDamage;
     private int ticksSinceDeath;
     private String name;
     private boolean isDead;
@@ -60,26 +60,27 @@ public abstract class Character {
         return characterBuilder.build();
     }
 
-    public void takeDamage(int physicalDamage, int magicalDamage, Player player) {
+    public void takeDamage(int physicalDamage, int magicalDamage, String playerName) {
         int actualDamage = max(0, physicalDamage - getPhysicalDefense())
             + max(0, magicalDamage - getMagicalDefense());
 
-        if (taggedPlayersDamage.containsKey(player)) {
-            taggedPlayersDamage.put(player, taggedPlayersDamage.get(player) + actualDamage);
+        if (taggedPlayersDamage.containsKey(playerName)) {
+            taggedPlayersDamage.put(playerName, taggedPlayersDamage.get(playerName) + actualDamage);
         } else {
-            taggedPlayersDamage.put(player, actualDamage);
+            taggedPlayersDamage.put(playerName, actualDamage);
         }
 
         updateCurrentHealth(-actualDamage);
     }
 
     protected void distributeRewards(GameState gameState) {
-        for (Player player : taggedPlayersDamage.keySet()) {
+        for (String playerName : taggedPlayersDamage.keySet()) {
+            Player player = gameState.getPlayer(playerName);
             player.experience += this.getLevel();
         }
     }
 
-    public void removePlayer(Player toRemove) {
+    public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);
     }
     public void updateCurrentHealth(int delta) {
