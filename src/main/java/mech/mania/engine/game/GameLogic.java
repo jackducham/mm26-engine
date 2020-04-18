@@ -30,7 +30,7 @@ public class GameLogic {
      * @param decisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, List<PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
         return gameState;

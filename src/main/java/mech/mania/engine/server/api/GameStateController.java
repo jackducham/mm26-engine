@@ -75,7 +75,7 @@ public class GameStateController {
      * @return updated GameState after getting PlayerDecisions and updating
      */
     public static GameState sendPlayerRequestsAndUpdateGameState() {
-        List<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
+        Map<String, PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
         GameState updatedGameState = GameLogic.doTurn(getCurrentGameState(), decisions);
         DATABASE.storeGameState(DATABASE.getCurrentTurnNum(), updatedGameState);
         return updatedGameState;
