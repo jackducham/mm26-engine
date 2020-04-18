@@ -13,6 +13,14 @@ public class TempStatusModifier extends StatusModifier {
         this.damagePerTurn = damagePerTurn;
     }
 
+    public void updateTurnsLeft() {
+        duration--;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
     public TempStatusModifier(ItemProtos.TempStatusModifier tempStatusModifierProto) {
         super(
                 tempStatusModifierProto.getStats().getSpeedChange(),

@@ -220,6 +220,7 @@ public class GameLogic {
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 player.addEffect(onHitEffect);
+                player.takeDamage(onHitEffect.getPhysicalDamageChange(), onHitEffect.getMagicDamageChange(), attacker.getName());
             }
         }
 
@@ -230,6 +231,7 @@ public class GameLogic {
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 monster.addEffect(onHitEffect);
+                monster.takeDamage(onHitEffect.getPhysicalDamageChange(), onHitEffect.getMagicDamageChange(), attacker.getName());
             }
         }
 
