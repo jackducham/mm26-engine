@@ -33,4 +33,9 @@ public class Position {
     public void setBoardID(String board_id) {
         this.board_id = board_id;
     }
+
+    public boolean equals(Position other) {
+        return this.board_id.equals(other.board_id)
+                && this.x == other.x && this.y == other.y;
+    }
 }
