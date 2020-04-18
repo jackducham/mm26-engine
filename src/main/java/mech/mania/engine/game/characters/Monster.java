@@ -18,13 +18,23 @@ public class Monster extends Character {
         this.drops = drops;
     }
 
+    private Position findPositionToMove(GameState gameState, Position destination) {
+        List<Position> path = GameLogic.findPath(gameState, this.position, destination);
+        Position toMove;
+        if (path.size() < getSpeed()) {
+            toMove = path.get(path.size() - 1);
+        } else {
+            // TODO remove cast once getSpeed returns int
+            toMove = path.get((int)getSpeed() - 1);
+        }
+        return toMove;
+    }
+
     public CharacterDecision makeDecision(GameState gameState) {
         if (taggedPlayersDamage.isEmpty()) {
             if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
-                //TODO: call non-existent pathfinder code to navigate home as much as possible
-                // spawnPoint should be passed into pathfinder code; this returns the actual point
-                // to move to
-                return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, spawnPoint);
+                Position toMove = findPositionToMove(gameState, spawnPoint);
+                return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
             }
         } else {
             Player highestDamagePlayer = null;
@@ -42,10 +52,9 @@ public class Monster extends Character {
             if (manhattanDistance <= weapon.getRange()) {
                 return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
             } else {
-                // TODO: call non-existent pathfinder code to navigate as close as possible
-                // toAttack should be passed into pathfinder code; this returns the actual point
-                // to move to
-                return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toAttack);
+
+                Position toMove = findPositionToMove(gameState, toAttack);
+                return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
             }
         }
         return null;
@@ -56,7 +65,6 @@ public class Monster extends Character {
         super.distributeRewards(gameState);
         Board current = gameState.getBoard(position.getBoardID());
         Tile currentTile = current.getGrid()[position.getX()][position.getY()];
-        // TODO: update how items are dropped
         currentTile.getItems().addAll(drops);
     }
 }
