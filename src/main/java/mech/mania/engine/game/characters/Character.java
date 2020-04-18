@@ -98,7 +98,7 @@ public abstract class Character {
         Iterator<TempStatusModifier> itr = activeEffects.iterator();
         while (itr.hasNext()) {
             TempStatusModifier effect = itr.next();
-            if (effect.getDuration() <= 0) { // remove inactive effects
+            if (effect.getDuration() == 0) { // remove inactive effects
                 itr.remove();
             } else {
                 speedChange += effect.getSpeedChange();
@@ -193,37 +193,37 @@ public abstract class Character {
     static final int baseMaxHealth = 0;
     static final int maxHealthScaling = 0;
     public int getMaxHealth() {
-        return baseMaxHealth + getLevel()*maxHealthScaling - healthChange;
+        return baseMaxHealth + getLevel()*maxHealthScaling + healthChange;
     }
 
     static final int baseSpeed = 0;
     static final int speedScaling = 0;
     public int getSpeed() {
-        return baseSpeed + getLevel()*speedScaling - speedChange;
+        return baseSpeed + getLevel()*speedScaling + speedChange;
     }
 
     static final int basePhysicalDamage = 0;
     static final int physicalDamageScaling = 0;
     public int getPhysicalDamage() {
-        return basePhysicalDamage + getLevel()*physicalDamageScaling - physicalDamageChange;
+        return basePhysicalDamage + getLevel()*physicalDamageScaling + physicalDamageChange;
     }
 
     static final int baseMagicalDamage = 0;
     static final int magicalDamageScaling = 0;
     public int getMagicalDamage() {
-        return baseMagicalDamage + getLevel()*magicalDamageScaling - magicDamageChange;
+        return baseMagicalDamage + getLevel()*magicalDamageScaling + magicDamageChange;
     }
 
     static final int basePhysicalDefense = 0;
     static final int physicalDefenseScaling = 0;
     public int getPhysicalDefense() {
-        return basePhysicalDefense + getLevel()*physicalDefenseScaling - physicalDamageChange;
+        return basePhysicalDefense + getLevel()*physicalDefenseScaling + physicalDamageChange;
     }
 
     static final int baseMagicalDefense = 0;
     static final int magicalDefenseScaling = 0;
     public int getMagicalDefense() {
-        return baseMagicalDefense + getLevel()*magicalDefenseScaling - magicDefenseChange;
+        return baseMagicalDefense + getLevel()*magicalDefenseScaling + magicDefenseChange;
     }
 
     public List<TempStatusModifier> getActiveEffects() {

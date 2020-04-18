@@ -3,6 +3,8 @@ package mech.mania.engine.game.items;
 public class Weapon extends Wearable {
     protected int range = 0;
     protected int splashRadius = 0;
+    protected int magicDamage;
+    protected int physicalDamage;
     protected TempStatusModifier onHitEffect;
 
     public Weapon(StatusModifier stats, int range, int splashRadius,
