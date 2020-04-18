@@ -8,9 +8,7 @@ import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTu
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -24,16 +22,17 @@ public class PlayerRequestSender {
      * Sends POST request to each player that we have saved currently.
      * @return if every single request was successful, returns true, else false.
      */
-    public static List<PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
+    public static Map<String, PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
         Map<String, PlayerInfo> playerInfoMap = GameStateController.getPlayerInfoMap();
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
-            return new ArrayList<>();
+            return new HashMap<>();
         }
 
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
-        List<PlayerDecision> decisions = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+        Map<String, PlayerDecision> decisions = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+            String name = playerInfo.getKey();
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
@@ -76,8 +75,8 @@ public class PlayerRequestSender {
             }
 
             numPlayers.getAndIncrement();
-            return decision;
-        }).collect(Collectors.toList());
+            return new AbstractMap.SimpleEntry<>(name, decision);
+        }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         LOGGER.info(String.format("Sent PlayerTurn to %d players with %d errors.", numPlayers.get(), errors.get()));
         return decisions;
