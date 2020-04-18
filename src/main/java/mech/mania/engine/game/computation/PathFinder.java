@@ -4,8 +4,7 @@ import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Position;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PathFinder {
     /**
@@ -37,17 +36,39 @@ public class PathFinder {
 
         // Otherwise use A* path finding to find a path
         // This will break is getBoardID returns an ID that does not exist cause it'll be null
-        Tile[][] grid = gameState.getBoard(start.getBoardID()).getGrid();
-
-
-        // current will change depending on the f value of the cells around it, it only begins at 'start'
-        Position current = start;
+        Tile[][] tileGrid = gameState.getBoard(start.getBoardID()).getGrid();
+        final int ROWS = tileGrid.length;
+        final int COLS = tileGrid[0].length;
 
         // 2 Lists, closed list and open list
         // Closed list is all the cells that have been visited, maybe a boolean 2d array that will keep track of visited cells
         // Open list which keeps track of f values for certain cells, this will likely be the list that will be returned at the end maybe?
-        // boolean[][] closedList = grid;
-        // ArrayList openList = new ArrayList<Position>();
+
+        // Transforming tileGrid into A* cells
+        Cell[][] grid = new Cell[ROWS][COLS];
+        for(int i = 0; i < ROWS; i++){
+            for(int j = 0; j < COLS; j++){
+                grid[i][j] = new Cell(tileGrid[i][j].getType() == Tile.TileType.IMPASSIBLE);
+            }
+        }
+
+        // current will change depending on the f value of the cells around it, it only begins at 'start'
+        Cell current = grid[start.getX()][start.getY()];
+        current.g = 0;
+        current.h = 0;
+        current.f = 0;
+        current.valid = true;
+
+        // Closed list keeps track of visited cells
+        boolean[][] closedList = new boolean[ROWS][COLS];
+
+        // Open list keeps track of current candidates
+        Set<Cell> openList = new HashSet<Cell>();
+
+        // Stack for path
+        Stack<Cell> path = new Stack<Cell>();
+
+
 
         // DO this 4 times, to check cell above, below, left, and right of current cell (which would be Position point)
         if (isValid(gameState, current)) {
@@ -86,5 +107,25 @@ public class PathFinder {
     // h is the heuristic
     public static double calculateH(GameState gameState, Position point, Position end) {
         return ((double) Math.sqrt(((point.getX() - end.getX()) * (point.getX() - end.getX())) + ((point.getY() - end.getY()) * (point.getY() - end.getY()))));
+    }
+}
+
+private class Cell{
+    public int g, h, f;
+    public boolean valid;
+    public Cell parent;
+
+    public Cell(int g, int h, int f, boolean v){
+        this.g = g;
+        this.h = h;
+        this.v = v;
+        parent = null;
+    }
+    public Cell(boolean v){
+        g = INT_MAX;
+        h = INT_MAX;
+        f = INT_MAX;
+        this.v = v;
+        parent = null;
     }
 }
