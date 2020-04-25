@@ -2,7 +2,11 @@ package mech.mania.engine.game.items;
 
 public class TempStatusModifier extends StatusModifier {
     private int duration;
-    private int damagePerTurn;               // Concept: poison type of damage that effects player over time
+    private int damagePerTurn;
+    /* damagePerTurn is a flat amount of damage delt to the character each turn,
+     * which is still affected by damageChange and percentDamageChange.
+     * (either physical [for bleeding] or magic [for poison], whichever set applies)
+     */
 
     public TempStatusModifier(int speedChange, int healthChange, int experienceChange,
                               int magicDamageChange, int physicalDamageChange, int magicDefenseChange,
