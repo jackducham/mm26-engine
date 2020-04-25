@@ -70,7 +70,7 @@ public abstract class Character {
         return characterBuilder.build();
     }
 
-    public void takeDamage(int physicalDamage, int magicalDamage, String attacker) {
+    public void takeDamage(int physicalDamage, int magicalDamage, TempStatusModifier attackEffect, String attacker) {
         int actualDamage = max(0, physicalDamage - getPhysicalDefense())
             + max(0, magicalDamage - getMagicalDefense());
 
@@ -79,6 +79,8 @@ public abstract class Character {
         } else {
             taggedPlayersDamage.put(attacker, actualDamage);
         }
+
+        activeEffects.add(attackEffect);
 
         updateCurrentHealth(-actualDamage);
     }

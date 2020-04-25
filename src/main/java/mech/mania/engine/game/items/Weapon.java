@@ -20,6 +20,9 @@ public class Weapon extends Wearable {
         this.range = weaponProto.getRange();
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
+        // TODO: these will compile after proto import
+        this.magicDamage = weaponProto.getMagicDamage();
+        this.physicalDamage = weaponProto.getPhysicalDamage();
     }
 
     public ItemProtos.Item buildProtoClassItem() {
@@ -36,6 +39,9 @@ public class Weapon extends Wearable {
         weaponBuilder.setRange(range);
         weaponBuilder.setSplashRadius(splashRadius);
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
+        // TODO: these will compile after proto import
+        weaponBuilder.setMagicDamage(magicDamage);
+        weaponBuilder.setPhysicalDamage(physicalDamage);
 
         return weaponBuilder.build();
     }
@@ -50,5 +56,13 @@ public class Weapon extends Wearable {
 
     public TempStatusModifier getOnHitEffect() {
         return onHitEffect;
+    }
+
+    public int getMagicDamage() {
+        return magicDamage;
+    }
+
+    public int getPhysicalDamage() {
+        return physicalDamage;
     }
 }
