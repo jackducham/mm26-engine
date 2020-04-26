@@ -25,6 +25,8 @@ public class PlayerRequestSender {
      */
     public static Collection<PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
         Map<String, PlayerInfo> playerInfoMap = GameStateController.getPlayerInfoMap();
+//        Map<String, PlayerInfo> playerInfoMap = new HashMap<>();
+//        playerInfoMap.putAll(GameStateController.getPlayerInfoMap());
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
             return new ArrayList<>();
