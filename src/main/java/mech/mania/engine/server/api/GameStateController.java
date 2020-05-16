@@ -76,7 +76,7 @@ public class GameStateController {
      * @return updated GameState after getting PlayerDecisions and updating
      */
     public static GameState sendPlayerRequestsAndUpdateGameState() {
-        Collection<PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
+        Map<String, PlayerDecision> decisions = PlayerRequestSender.sendPlayerRequestsAndUpdateGameState();
         GameState updatedGameState = GameLogic.doTurn(getCurrentGameState(), decisions);
         DATABASE.storeGameState(DATABASE.getCurrentTurnNum(), updatedGameState);
         return updatedGameState;
@@ -136,7 +136,6 @@ public class GameStateController {
         // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
                 .setPlayerName(playerName)
-                .setIncrement(1)
                 .build();
     }
 

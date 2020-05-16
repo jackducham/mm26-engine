@@ -165,7 +165,6 @@ class ServerTests {
 
         connectNPlayers(1, {
             PlayerDecision.newBuilder()
-                    .setIncrement(1)
                     .build()
         }, {
             // pass
@@ -188,7 +187,6 @@ class ServerTests {
 
         connectNPlayers(5, {
             PlayerDecision.newBuilder()
-                    .setIncrement(1)
                     .build()
         }, {
             // pass
@@ -210,7 +208,6 @@ class ServerTests {
 
         connectNPlayers(1, {
             PlayerDecision.newBuilder()
-                    .setIncrement(1)
                     .build()
         }, {
             // pass
@@ -232,7 +229,6 @@ class ServerTests {
 
         connectNPlayers(5, {
             PlayerDecision.newBuilder()
-                    .setIncrement(1)
                     .build()
         }, {
             // pass
