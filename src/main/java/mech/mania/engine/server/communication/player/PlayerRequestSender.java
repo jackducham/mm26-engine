@@ -8,9 +8,8 @@ import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTu
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -24,8 +23,10 @@ public class PlayerRequestSender {
      * Sends POST request to each player that we have saved currently.
      * @return if every single request was successful, returns true, else false.
      */
-    public static List<PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
+    public static Collection<PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
         Map<String, PlayerInfo> playerInfoMap = GameStateController.getPlayerInfoMap();
+//        Map<String, PlayerInfo> playerInfoMap = new HashMap<>();
+//        playerInfoMap.putAll(GameStateController.getPlayerInfoMap());
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
             return new ArrayList<>();
@@ -33,7 +34,7 @@ public class PlayerRequestSender {
 
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
-        List<PlayerDecision> decisions = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+        ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
@@ -77,10 +78,12 @@ public class PlayerRequestSender {
 
             numPlayers.getAndIncrement();
             return decision;
-        }).collect(Collectors.toList());
+        })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toConcurrentMap(d -> UUID.randomUUID().toString(), d -> d));
 
         LOGGER.info(String.format("Sent PlayerTurn to %d players with %d errors.", numPlayers.get(), errors.get()));
-        return decisions;
+        return map.values();
     }
 }
 
