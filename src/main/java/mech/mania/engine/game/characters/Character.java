@@ -80,7 +80,10 @@ public abstract class Character {
             taggedPlayersDamage.put(attacker, actualDamage);
         }
 
-        activeEffects.add(attackEffect);
+        if (attackEffect != null) {
+            activeEffects.add(attackEffect);
+        }
+
 
         updateCurrentHealth(-actualDamage);
     }
