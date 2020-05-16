@@ -9,7 +9,6 @@ import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTu
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -23,18 +22,17 @@ public class PlayerRequestSender {
      * Sends POST request to each player that we have saved currently.
      * @return if every single request was successful, returns true, else false.
      */
-    public static Collection<PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
+    public static Map<String, PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
         Map<String, PlayerInfo> playerInfoMap = GameStateController.getPlayerInfoMap();
-//        Map<String, PlayerInfo> playerInfoMap = new HashMap<>();
-//        playerInfoMap.putAll(GameStateController.getPlayerInfoMap());
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
-            return new ArrayList<>();
+            return new HashMap<>();
         }
 
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
-        ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+        Map<String, PlayerDecision> decisions = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+            String name = playerInfo.getKey();
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
@@ -77,13 +75,11 @@ public class PlayerRequestSender {
             }
 
             numPlayers.getAndIncrement();
-            return decision;
-        })
-                .filter(Objects::nonNull)
-                .collect(Collectors.toConcurrentMap(d -> UUID.randomUUID().toString(), d -> d));
+            return new AbstractMap.SimpleEntry<>(name, decision);
+        }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         LOGGER.info(String.format("Sent PlayerTurn to %d players with %d errors.", numPlayers.get(), errors.get()));
-        return map.values();
+        return decisions;
     }
 }
 

@@ -32,7 +32,7 @@ public final class BoardProtos {
 
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -41,7 +41,7 @@ public final class BoardProtos {
         getGridList();
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -49,7 +49,7 @@ public final class BoardProtos {
     mech.mania.engine.game.board.BoardProtos.Tile getGrid(int index);
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -57,7 +57,7 @@ public final class BoardProtos {
     int getGridCount();
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -66,7 +66,7 @@ public final class BoardProtos {
         getGridOrBuilderList();
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -75,88 +75,28 @@ public final class BoardProtos {
         int index);
 
     /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> 
-        getEnemiesList();
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    mech.mania.engine.game.characters.CharacterProtos.Enemy getEnemies(int index);
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    int getEnemiesCount();
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-        getEnemiesOrBuilderList();
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder getEnemiesOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player> 
-        getPlayersList();
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    mech.mania.engine.game.characters.CharacterProtos.Player getPlayers(int index);
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    int getPlayersCount();
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder> 
-        getPlayersOrBuilderList();
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder getPlayersOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position> 
         getPortalsList();
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     mech.mania.engine.game.characters.CharacterProtos.Position getPortals(int index);
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     int getPortalsCount();
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
         getPortalsOrBuilderList();
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
         int index);
-
-    /**
-     * <code>string boardId = 7;</code>
-     * @return The boardId.
-     */
-    java.lang.String getBoardId();
-    /**
-     * <code>string boardId = 7;</code>
-     * @return The bytes for boardId.
-     */
-    com.google.protobuf.ByteString
-        getBoardIdBytes();
   }
   /**
    * Protobuf type {@code board.Board}
@@ -172,10 +112,7 @@ public final class BoardProtos {
     }
     private Board() {
       grid_ = java.util.Collections.emptyList();
-      enemies_ = java.util.Collections.emptyList();
-      players_ = java.util.Collections.emptyList();
       portals_ = java.util.Collections.emptyList();
-      boardId_ = "";
     }
 
     @java.lang.Override
@@ -230,35 +167,11 @@ public final class BoardProtos {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                enemies_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Enemy>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              enemies_.add(
-                  input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Enemy.parser(), extensionRegistry));
-              break;
-            }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                players_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Player>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              players_.add(
-                  input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Player.parser(), extensionRegistry));
-              break;
-            }
-            case 50: {
-              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 portals_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Position>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000002;
               }
               portals_.add(
                   input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Position.parser(), extensionRegistry));
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              boardId_ = s;
               break;
             }
             default: {
@@ -280,12 +193,6 @@ public final class BoardProtos {
           grid_ = java.util.Collections.unmodifiableList(grid_);
         }
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          enemies_ = java.util.Collections.unmodifiableList(enemies_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          players_ = java.util.Collections.unmodifiableList(players_);
-        }
-        if (((mutable_bitField0_ & 0x00000008) != 0)) {
           portals_ = java.util.Collections.unmodifiableList(portals_);
         }
         this.unknownFields = unknownFields.build();
@@ -329,7 +236,7 @@ public final class BoardProtos {
     private java.util.List<mech.mania.engine.game.board.BoardProtos.Tile> grid_;
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -339,7 +246,7 @@ public final class BoardProtos {
     }
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -350,7 +257,7 @@ public final class BoardProtos {
     }
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -360,7 +267,7 @@ public final class BoardProtos {
     }
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -370,7 +277,7 @@ public final class BoardProtos {
     }
     /**
      * <pre>
-     * Protos only have 1D lists
+     * Protos only have 1D lists (row-major)
      * </pre>
      *
      * <code>repeated .board.Tile grid = 3;</code>
@@ -380,145 +287,39 @@ public final class BoardProtos {
       return grid_.get(index);
     }
 
-    public static final int ENEMIES_FIELD_NUMBER = 4;
-    private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> enemies_;
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> getEnemiesList() {
-      return enemies_;
-    }
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-        getEnemiesOrBuilderList() {
-      return enemies_;
-    }
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    public int getEnemiesCount() {
-      return enemies_.size();
-    }
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    public mech.mania.engine.game.characters.CharacterProtos.Enemy getEnemies(int index) {
-      return enemies_.get(index);
-    }
-    /**
-     * <code>repeated .character.Enemy enemies = 4;</code>
-     */
-    public mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder getEnemiesOrBuilder(
-        int index) {
-      return enemies_.get(index);
-    }
-
-    public static final int PLAYERS_FIELD_NUMBER = 5;
-    private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player> players_;
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player> getPlayersList() {
-      return players_;
-    }
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder> 
-        getPlayersOrBuilderList() {
-      return players_;
-    }
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    public int getPlayersCount() {
-      return players_.size();
-    }
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    public mech.mania.engine.game.characters.CharacterProtos.Player getPlayers(int index) {
-      return players_.get(index);
-    }
-    /**
-     * <code>repeated .character.Player players = 5;</code>
-     */
-    public mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder getPlayersOrBuilder(
-        int index) {
-      return players_.get(index);
-    }
-
-    public static final int PORTALS_FIELD_NUMBER = 6;
+    public static final int PORTALS_FIELD_NUMBER = 4;
     private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position> portals_;
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position> getPortalsList() {
       return portals_;
     }
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
         getPortalsOrBuilderList() {
       return portals_;
     }
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     public int getPortalsCount() {
       return portals_.size();
     }
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     public mech.mania.engine.game.characters.CharacterProtos.Position getPortals(int index) {
       return portals_.get(index);
     }
     /**
-     * <code>repeated .character.Position portals = 6;</code>
+     * <code>repeated .character.Position portals = 4;</code>
      */
     public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
         int index) {
       return portals_.get(index);
-    }
-
-    public static final int BOARDID_FIELD_NUMBER = 7;
-    private volatile java.lang.Object boardId_;
-    /**
-     * <code>string boardId = 7;</code>
-     * @return The boardId.
-     */
-    public java.lang.String getBoardId() {
-      java.lang.Object ref = boardId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        boardId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string boardId = 7;</code>
-     * @return The bytes for boardId.
-     */
-    public com.google.protobuf.ByteString
-        getBoardIdBytes() {
-      java.lang.Object ref = boardId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        boardId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -544,17 +345,8 @@ public final class BoardProtos {
       for (int i = 0; i < grid_.size(); i++) {
         output.writeMessage(3, grid_.get(i));
       }
-      for (int i = 0; i < enemies_.size(); i++) {
-        output.writeMessage(4, enemies_.get(i));
-      }
-      for (int i = 0; i < players_.size(); i++) {
-        output.writeMessage(5, players_.get(i));
-      }
       for (int i = 0; i < portals_.size(); i++) {
-        output.writeMessage(6, portals_.get(i));
-      }
-      if (!getBoardIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, boardId_);
+        output.writeMessage(4, portals_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -577,20 +369,9 @@ public final class BoardProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, grid_.get(i));
       }
-      for (int i = 0; i < enemies_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, enemies_.get(i));
-      }
-      for (int i = 0; i < players_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, players_.get(i));
-      }
       for (int i = 0; i < portals_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, portals_.get(i));
-      }
-      if (!getBoardIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, boardId_);
+          .computeMessageSize(4, portals_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -613,14 +394,8 @@ public final class BoardProtos {
           != other.getColumns()) return false;
       if (!getGridList()
           .equals(other.getGridList())) return false;
-      if (!getEnemiesList()
-          .equals(other.getEnemiesList())) return false;
-      if (!getPlayersList()
-          .equals(other.getPlayersList())) return false;
       if (!getPortalsList()
           .equals(other.getPortalsList())) return false;
-      if (!getBoardId()
-          .equals(other.getBoardId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -640,20 +415,10 @@ public final class BoardProtos {
         hash = (37 * hash) + GRID_FIELD_NUMBER;
         hash = (53 * hash) + getGridList().hashCode();
       }
-      if (getEnemiesCount() > 0) {
-        hash = (37 * hash) + ENEMIES_FIELD_NUMBER;
-        hash = (53 * hash) + getEnemiesList().hashCode();
-      }
-      if (getPlayersCount() > 0) {
-        hash = (37 * hash) + PLAYERS_FIELD_NUMBER;
-        hash = (53 * hash) + getPlayersList().hashCode();
-      }
       if (getPortalsCount() > 0) {
         hash = (37 * hash) + PORTALS_FIELD_NUMBER;
         hash = (53 * hash) + getPortalsList().hashCode();
       }
-      hash = (37 * hash) + BOARDID_FIELD_NUMBER;
-      hash = (53 * hash) + getBoardId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -783,8 +548,6 @@ public final class BoardProtos {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getGridFieldBuilder();
-          getEnemiesFieldBuilder();
-          getPlayersFieldBuilder();
           getPortalsFieldBuilder();
         }
       }
@@ -801,26 +564,12 @@ public final class BoardProtos {
         } else {
           gridBuilder_.clear();
         }
-        if (enemiesBuilder_ == null) {
-          enemies_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          enemiesBuilder_.clear();
-        }
-        if (playersBuilder_ == null) {
-          players_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        } else {
-          playersBuilder_.clear();
-        }
         if (portalsBuilder_ == null) {
           portals_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           portalsBuilder_.clear();
         }
-        boardId_ = "";
-
         return this;
       }
 
@@ -859,34 +608,15 @@ public final class BoardProtos {
         } else {
           result.grid_ = gridBuilder_.build();
         }
-        if (enemiesBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            enemies_ = java.util.Collections.unmodifiableList(enemies_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.enemies_ = enemies_;
-        } else {
-          result.enemies_ = enemiesBuilder_.build();
-        }
-        if (playersBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
-            players_ = java.util.Collections.unmodifiableList(players_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.players_ = players_;
-        } else {
-          result.players_ = playersBuilder_.build();
-        }
         if (portalsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             portals_ = java.util.Collections.unmodifiableList(portals_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.portals_ = portals_;
         } else {
           result.portals_ = portalsBuilder_.build();
         }
-        result.boardId_ = boardId_;
         onBuilt();
         return result;
       }
@@ -967,63 +697,11 @@ public final class BoardProtos {
             }
           }
         }
-        if (enemiesBuilder_ == null) {
-          if (!other.enemies_.isEmpty()) {
-            if (enemies_.isEmpty()) {
-              enemies_ = other.enemies_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureEnemiesIsMutable();
-              enemies_.addAll(other.enemies_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.enemies_.isEmpty()) {
-            if (enemiesBuilder_.isEmpty()) {
-              enemiesBuilder_.dispose();
-              enemiesBuilder_ = null;
-              enemies_ = other.enemies_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              enemiesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEnemiesFieldBuilder() : null;
-            } else {
-              enemiesBuilder_.addAllMessages(other.enemies_);
-            }
-          }
-        }
-        if (playersBuilder_ == null) {
-          if (!other.players_.isEmpty()) {
-            if (players_.isEmpty()) {
-              players_ = other.players_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensurePlayersIsMutable();
-              players_.addAll(other.players_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.players_.isEmpty()) {
-            if (playersBuilder_.isEmpty()) {
-              playersBuilder_.dispose();
-              playersBuilder_ = null;
-              players_ = other.players_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              playersBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPlayersFieldBuilder() : null;
-            } else {
-              playersBuilder_.addAllMessages(other.players_);
-            }
-          }
-        }
         if (portalsBuilder_ == null) {
           if (!other.portals_.isEmpty()) {
             if (portals_.isEmpty()) {
               portals_ = other.portals_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensurePortalsIsMutable();
               portals_.addAll(other.portals_);
@@ -1036,7 +714,7 @@ public final class BoardProtos {
               portalsBuilder_.dispose();
               portalsBuilder_ = null;
               portals_ = other.portals_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000002);
               portalsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPortalsFieldBuilder() : null;
@@ -1044,10 +722,6 @@ public final class BoardProtos {
               portalsBuilder_.addAllMessages(other.portals_);
             }
           }
-        }
-        if (!other.getBoardId().isEmpty()) {
-          boardId_ = other.boardId_;
-          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1153,7 +827,7 @@ public final class BoardProtos {
 
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1167,7 +841,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1181,7 +855,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1195,7 +869,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1216,7 +890,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1234,7 +908,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1254,7 +928,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1275,7 +949,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1293,7 +967,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1311,7 +985,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1330,7 +1004,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1347,7 +1021,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1364,7 +1038,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1375,7 +1049,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1389,7 +1063,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1404,7 +1078,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1415,7 +1089,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1427,7 +1101,7 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Protos only have 1D lists
+       * Protos only have 1D lists (row-major)
        * </pre>
        *
        * <code>repeated .board.Tile grid = 3;</code>
@@ -1451,492 +1125,12 @@ public final class BoardProtos {
         return gridBuilder_;
       }
 
-      private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> enemies_ =
-        java.util.Collections.emptyList();
-      private void ensureEnemiesIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          enemies_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Enemy>(enemies_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.characters.CharacterProtos.Enemy, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder, mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> enemiesBuilder_;
-
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy> getEnemiesList() {
-        if (enemiesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(enemies_);
-        } else {
-          return enemiesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public int getEnemiesCount() {
-        if (enemiesBuilder_ == null) {
-          return enemies_.size();
-        } else {
-          return enemiesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy getEnemies(int index) {
-        if (enemiesBuilder_ == null) {
-          return enemies_.get(index);
-        } else {
-          return enemiesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder setEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy value) {
-        if (enemiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemiesIsMutable();
-          enemies_.set(index, value);
-          onChanged();
-        } else {
-          enemiesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder setEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder builderForValue) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          enemiesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder addEnemies(mech.mania.engine.game.characters.CharacterProtos.Enemy value) {
-        if (enemiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemiesIsMutable();
-          enemies_.add(value);
-          onChanged();
-        } else {
-          enemiesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder addEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy value) {
-        if (enemiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemiesIsMutable();
-          enemies_.add(index, value);
-          onChanged();
-        } else {
-          enemiesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder addEnemies(
-          mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder builderForValue) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.add(builderForValue.build());
-          onChanged();
-        } else {
-          enemiesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder addEnemies(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder builderForValue) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          enemiesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder addAllEnemies(
-          java.lang.Iterable<? extends mech.mania.engine.game.characters.CharacterProtos.Enemy> values) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, enemies_);
-          onChanged();
-        } else {
-          enemiesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder clearEnemies() {
-        if (enemiesBuilder_ == null) {
-          enemies_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          enemiesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public Builder removeEnemies(int index) {
-        if (enemiesBuilder_ == null) {
-          ensureEnemiesIsMutable();
-          enemies_.remove(index);
-          onChanged();
-        } else {
-          enemiesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder getEnemiesBuilder(
-          int index) {
-        return getEnemiesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder getEnemiesOrBuilder(
-          int index) {
-        if (enemiesBuilder_ == null) {
-          return enemies_.get(index);  } else {
-          return enemiesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-           getEnemiesOrBuilderList() {
-        if (enemiesBuilder_ != null) {
-          return enemiesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(enemies_);
-        }
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder addEnemiesBuilder() {
-        return getEnemiesFieldBuilder().addBuilder(
-            mech.mania.engine.game.characters.CharacterProtos.Enemy.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder addEnemiesBuilder(
-          int index) {
-        return getEnemiesFieldBuilder().addBuilder(
-            index, mech.mania.engine.game.characters.CharacterProtos.Enemy.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.Enemy enemies = 4;</code>
-       */
-      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder> 
-           getEnemiesBuilderList() {
-        return getEnemiesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.characters.CharacterProtos.Enemy, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder, mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder> 
-          getEnemiesFieldBuilder() {
-        if (enemiesBuilder_ == null) {
-          enemiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.game.characters.CharacterProtos.Enemy, mech.mania.engine.game.characters.CharacterProtos.Enemy.Builder, mech.mania.engine.game.characters.CharacterProtos.EnemyOrBuilder>(
-                  enemies_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          enemies_ = null;
-        }
-        return enemiesBuilder_;
-      }
-
-      private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player> players_ =
-        java.util.Collections.emptyList();
-      private void ensurePlayersIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
-          players_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Player>(players_);
-          bitField0_ |= 0x00000004;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.characters.CharacterProtos.Player, mech.mania.engine.game.characters.CharacterProtos.Player.Builder, mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder> playersBuilder_;
-
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player> getPlayersList() {
-        if (playersBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(players_);
-        } else {
-          return playersBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public int getPlayersCount() {
-        if (playersBuilder_ == null) {
-          return players_.size();
-        } else {
-          return playersBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Player getPlayers(int index) {
-        if (playersBuilder_ == null) {
-          return players_.get(index);
-        } else {
-          return playersBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder setPlayers(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Player value) {
-        if (playersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayersIsMutable();
-          players_.set(index, value);
-          onChanged();
-        } else {
-          playersBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder setPlayers(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Player.Builder builderForValue) {
-        if (playersBuilder_ == null) {
-          ensurePlayersIsMutable();
-          players_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          playersBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder addPlayers(mech.mania.engine.game.characters.CharacterProtos.Player value) {
-        if (playersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayersIsMutable();
-          players_.add(value);
-          onChanged();
-        } else {
-          playersBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder addPlayers(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Player value) {
-        if (playersBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePlayersIsMutable();
-          players_.add(index, value);
-          onChanged();
-        } else {
-          playersBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder addPlayers(
-          mech.mania.engine.game.characters.CharacterProtos.Player.Builder builderForValue) {
-        if (playersBuilder_ == null) {
-          ensurePlayersIsMutable();
-          players_.add(builderForValue.build());
-          onChanged();
-        } else {
-          playersBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder addPlayers(
-          int index, mech.mania.engine.game.characters.CharacterProtos.Player.Builder builderForValue) {
-        if (playersBuilder_ == null) {
-          ensurePlayersIsMutable();
-          players_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          playersBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder addAllPlayers(
-          java.lang.Iterable<? extends mech.mania.engine.game.characters.CharacterProtos.Player> values) {
-        if (playersBuilder_ == null) {
-          ensurePlayersIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, players_);
-          onChanged();
-        } else {
-          playersBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder clearPlayers() {
-        if (playersBuilder_ == null) {
-          players_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-          onChanged();
-        } else {
-          playersBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public Builder removePlayers(int index) {
-        if (playersBuilder_ == null) {
-          ensurePlayersIsMutable();
-          players_.remove(index);
-          onChanged();
-        } else {
-          playersBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Player.Builder getPlayersBuilder(
-          int index) {
-        return getPlayersFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder getPlayersOrBuilder(
-          int index) {
-        if (playersBuilder_ == null) {
-          return players_.get(index);  } else {
-          return playersBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder> 
-           getPlayersOrBuilderList() {
-        if (playersBuilder_ != null) {
-          return playersBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(players_);
-        }
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Player.Builder addPlayersBuilder() {
-        return getPlayersFieldBuilder().addBuilder(
-            mech.mania.engine.game.characters.CharacterProtos.Player.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public mech.mania.engine.game.characters.CharacterProtos.Player.Builder addPlayersBuilder(
-          int index) {
-        return getPlayersFieldBuilder().addBuilder(
-            index, mech.mania.engine.game.characters.CharacterProtos.Player.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.Player players = 5;</code>
-       */
-      public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Player.Builder> 
-           getPlayersBuilderList() {
-        return getPlayersFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.game.characters.CharacterProtos.Player, mech.mania.engine.game.characters.CharacterProtos.Player.Builder, mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder> 
-          getPlayersFieldBuilder() {
-        if (playersBuilder_ == null) {
-          playersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.game.characters.CharacterProtos.Player, mech.mania.engine.game.characters.CharacterProtos.Player.Builder, mech.mania.engine.game.characters.CharacterProtos.PlayerOrBuilder>(
-                  players_,
-                  ((bitField0_ & 0x00000004) != 0),
-                  getParentForChildren(),
-                  isClean());
-          players_ = null;
-        }
-        return playersBuilder_;
-      }
-
       private java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position> portals_ =
         java.util.Collections.emptyList();
       private void ensurePortalsIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           portals_ = new java.util.ArrayList<mech.mania.engine.game.characters.CharacterProtos.Position>(portals_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -1944,7 +1138,7 @@ public final class BoardProtos {
           mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> portalsBuilder_;
 
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position> getPortalsList() {
         if (portalsBuilder_ == null) {
@@ -1954,7 +1148,7 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public int getPortalsCount() {
         if (portalsBuilder_ == null) {
@@ -1964,7 +1158,7 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position getPortals(int index) {
         if (portalsBuilder_ == null) {
@@ -1974,7 +1168,7 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder setPortals(
           int index, mech.mania.engine.game.characters.CharacterProtos.Position value) {
@@ -1991,7 +1185,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder setPortals(
           int index, mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
@@ -2005,7 +1199,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(mech.mania.engine.game.characters.CharacterProtos.Position value) {
         if (portalsBuilder_ == null) {
@@ -2021,7 +1215,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(
           int index, mech.mania.engine.game.characters.CharacterProtos.Position value) {
@@ -2038,7 +1232,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(
           mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
@@ -2052,7 +1246,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(
           int index, mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
@@ -2066,7 +1260,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addAllPortals(
           java.lang.Iterable<? extends mech.mania.engine.game.characters.CharacterProtos.Position> values) {
@@ -2081,12 +1275,12 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder clearPortals() {
         if (portalsBuilder_ == null) {
           portals_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           portalsBuilder_.clear();
@@ -2094,7 +1288,7 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder removePortals(int index) {
         if (portalsBuilder_ == null) {
@@ -2107,14 +1301,14 @@ public final class BoardProtos {
         return this;
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position.Builder getPortalsBuilder(
           int index) {
         return getPortalsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
           int index) {
@@ -2124,7 +1318,7 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
            getPortalsOrBuilderList() {
@@ -2135,14 +1329,14 @@ public final class BoardProtos {
         }
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position.Builder addPortalsBuilder() {
         return getPortalsFieldBuilder().addBuilder(
             mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance());
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position.Builder addPortalsBuilder(
           int index) {
@@ -2150,7 +1344,7 @@ public final class BoardProtos {
             index, mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance());
       }
       /**
-       * <code>repeated .character.Position portals = 6;</code>
+       * <code>repeated .character.Position portals = 4;</code>
        */
       public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position.Builder> 
            getPortalsBuilderList() {
@@ -2163,88 +1357,12 @@ public final class BoardProtos {
           portalsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder>(
                   portals_,
-                  ((bitField0_ & 0x00000008) != 0),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           portals_ = null;
         }
         return portalsBuilder_;
-      }
-
-      private java.lang.Object boardId_ = "";
-      /**
-       * <code>string boardId = 7;</code>
-       * @return The boardId.
-       */
-      public java.lang.String getBoardId() {
-        java.lang.Object ref = boardId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          boardId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string boardId = 7;</code>
-       * @return The bytes for boardId.
-       */
-      public com.google.protobuf.ByteString
-          getBoardIdBytes() {
-        java.lang.Object ref = boardId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          boardId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string boardId = 7;</code>
-       * @param value The boardId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBoardId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        boardId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string boardId = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearBoardId() {
-        
-        boardId_ = getDefaultInstance().getBoardId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string boardId = 7;</code>
-       * @param value The bytes for boardId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBoardIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        boardId_ = value;
-        onChanged();
-        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2454,13 +1572,9 @@ public final class BoardProtos {
        */
       IMPASSIBLE(2),
       /**
-       * <code>INN = 3;</code>
+       * <code>PORTAL = 3;</code>
        */
-      INN(3),
-      /**
-       * <code>PORTAL = 4;</code>
-       */
-      PORTAL(4),
+      PORTAL(3),
       UNRECOGNIZED(-1),
       ;
 
@@ -2477,13 +1591,9 @@ public final class BoardProtos {
        */
       public static final int IMPASSIBLE_VALUE = 2;
       /**
-       * <code>INN = 3;</code>
+       * <code>PORTAL = 3;</code>
        */
-      public static final int INN_VALUE = 3;
-      /**
-       * <code>PORTAL = 4;</code>
-       */
-      public static final int PORTAL_VALUE = 4;
+      public static final int PORTAL_VALUE = 3;
 
 
       public final int getNumber() {
@@ -2513,8 +1623,7 @@ public final class BoardProtos {
           case 0: return VOID;
           case 1: return BLANK;
           case 2: return IMPASSIBLE;
-          case 3: return INN;
-          case 4: return PORTAL;
+          case 3: return PORTAL;
           default: return null;
         }
       }
@@ -3343,17 +2452,15 @@ public final class BoardProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\013board.proto\022\005board\032\nitem.proto\032\017charac" +
-      "ter.proto\"\277\001\n\005Board\022\014\n\004rows\030\001 \001(\005\022\017\n\007col" +
-      "umns\030\002 \001(\005\022\031\n\004grid\030\003 \003(\0132\013.board.Tile\022!\n" +
-      "\007enemies\030\004 \003(\0132\020.character.Enemy\022\"\n\007play" +
-      "ers\030\005 \003(\0132\021.character.Player\022$\n\007portals\030" +
-      "\006 \003(\0132\023.character.Position\022\017\n\007boardId\030\007 " +
-      "\001(\t\"\220\001\n\004Tile\022\'\n\ttile_type\030\001 \001(\0162\024.board." +
-      "Tile.TileType\022\031\n\005items\030\002 \003(\0132\n.item.Item" +
-      "\"D\n\010TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n\nIMP" +
-      "ASSIBLE\020\002\022\007\n\003INN\020\003\022\n\n\006PORTAL\020\004B<\n\034mech.m" +
-      "ania.engine.game.boardB\013BoardProtos\252\002\016MM" +
-      "26.IO.Modelsb\006proto3"
+      "ter.proto\"g\n\005Board\022\014\n\004rows\030\001 \001(\005\022\017\n\007colu" +
+      "mns\030\002 \001(\005\022\031\n\004grid\030\003 \003(\0132\013.board.Tile\022$\n\007" +
+      "portals\030\004 \003(\0132\023.character.Position\"\207\001\n\004T" +
+      "ile\022\'\n\ttile_type\030\001 \001(\0162\024.board.Tile.Tile" +
+      "Type\022\031\n\005items\030\002 \003(\0132\n.item.Item\";\n\010TileT" +
+      "ype\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n\nIMPASSIBLE\020\002" +
+      "\022\n\n\006PORTAL\020\003B<\n\034mech.mania.engine.game.b" +
+      "oardB\013BoardProtos\252\002\016MM26.IO.Modelsb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3366,7 +2473,7 @@ public final class BoardProtos {
     internal_static_board_Board_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_board_Board_descriptor,
-        new java.lang.String[] { "Rows", "Columns", "Grid", "Enemies", "Players", "Portals", "BoardId", });
+        new java.lang.String[] { "Rows", "Columns", "Grid", "Portals", });
     internal_static_board_Tile_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_board_Tile_fieldAccessorTable = new

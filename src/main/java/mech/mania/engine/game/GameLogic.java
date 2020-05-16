@@ -15,7 +15,10 @@ import mech.mania.engine.game.items.Weapon;
 
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * A class to execute the game logic.
@@ -27,7 +30,7 @@ public class GameLogic {
      * @param decisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, Collection<PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
         return gameState;
@@ -44,11 +47,9 @@ public class GameLogic {
                 addAttackEffectToCharacters(gameState, character, actionPosition);
                 break;
             case MOVE:
-                // TODO pending method implementation
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
-                // TODO pending method implementation
                 usePortal(gameState, character, index);
                 break;
             case EQUIP:
@@ -57,8 +58,7 @@ public class GameLogic {
                 break;
             case DROP:
                 player = (Player) character;
-                // @TODO need to implement array for players to drop multiple items
-                dropItems(gameState, player, index);
+                dropItem(gameState, player, index);
                 break;
             case PICKUP:
                 player = (Player) character;
@@ -202,10 +202,10 @@ public class GameLogic {
      * @param gameState current gamestate
      */
     public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
-        Board board = gameState.getPvpBoard();
+        Board board = gameState.getBoard(attackCoordinate.getBoardID());
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
-        List<Monster> enemies = board.getMonsters();
-        List<Player> players = board.getPlayers();
+        List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
+        List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         // Character gave invalid attack position
@@ -223,7 +223,7 @@ public class GameLogic {
             }
         }
 
-        for (Monster monster: enemies) {
+        for (Monster monster: monsters) {
             if (monster == attacker) {
                 continue;
             }
@@ -266,13 +266,13 @@ public class GameLogic {
     }
 
     /**
-     * Removes one or more items from a Player's inventory and adds them to the items on a tile.
+     * Removes one item from a Player's inventory and adds it to the items on a tile.
      * @param gameState current gameState
      * @param player the player dropping items
      * @param index the index of the item in the player's inventory which is being dropped
      * @return true if successful
      */
-    public static boolean dropItems(GameState gameState, Player player, int index) {
+    public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
         if (index < 0 || index > player.getInventorySize()) {
             return false;
@@ -286,16 +286,6 @@ public class GameLogic {
     }
 
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
-
-    /**
-     * Checks whether given player is on given board.
-     * @param player The target player.
-     * @param board The target board.
-     * @return true if the player is on the board, false otherwise.
-     */
-    public static boolean isPlayerOnBoard(GameState gameState, Player player, Board board) {
-        return (board.getPlayers().contains(player));
-    }
 
     /**
      * Provides the Tile at a given Position.
