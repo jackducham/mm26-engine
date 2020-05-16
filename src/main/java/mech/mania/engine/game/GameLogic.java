@@ -44,7 +44,7 @@ public class GameLogic {
         int index = decision.getIndex();
         switch (decision.getDecision()) {
             case ATTACK:
-                addAttackEffectToCharacters(gameState, character, actionPosition);
+                processAttack(gameState, character, actionPosition);
                 break;
             case MOVE:
                 moveCharacter(gameState, character, actionPosition);
@@ -201,7 +201,7 @@ public class GameLogic {
      * @param attackCoordinate coordinate to attack
      * @param gameState current gamestate
      */
-    public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
+    public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
         Board board = gameState.getBoard(attackCoordinate.getBoardID());
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
         List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
@@ -219,8 +219,12 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                player.addEffect(onHitEffect);
-                player.takeDamage(onHitEffect.getFlatPhysicalDamagePerTurn(), onHitEffect.getFlatMagicDamagePerTurn(), attacker.getName());
+                player.takeDamage(
+                                    attacker.getWeapon().getPhysicalDamage(),
+                                    attacker.getWeapon().getMagicDamage(),
+                                    onHitEffect,
+                                    attacker.getName()
+                );
             }
         }
 
@@ -231,7 +235,12 @@ public class GameLogic {
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 monster.addEffect(onHitEffect);
-                monster.takeDamage(onHitEffect.getFlatPhysicalDamagePerTurn(), onHitEffect.getFlatMagicDamagePerTurn(), attacker.getName());
+                monster.takeDamage(
+                        attacker.getWeapon().getPhysicalDamage(),
+                        attacker.getWeapon().getMagicDamage(),
+                        onHitEffect,
+                        attacker.getName()
+                );
             }
         }
 
