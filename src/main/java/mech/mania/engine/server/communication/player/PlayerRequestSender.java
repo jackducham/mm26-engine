@@ -25,8 +25,6 @@ public class PlayerRequestSender {
      */
     public static Map<String, PlayerDecision> sendPlayerRequestsAndUpdateGameState() {
         Map<String, PlayerInfo> playerInfoMap = GameStateController.getPlayerInfoMap();
-//        Map<String, PlayerInfo> playerInfoMap = new HashMap<>();
-//        playerInfoMap.putAll(GameStateController.getPlayerInfoMap());
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
             return new HashMap<>();
@@ -35,10 +33,11 @@ public class PlayerRequestSender {
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
         ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
-
+            String playerName = playerInfo.getKey();
             try {
                 // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
                 url = new URL(playerInfo.getValue().getIpAddr());
@@ -48,18 +47,15 @@ public class PlayerRequestSender {
                 LOGGER.warning(String.format("MalformedURLException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
             }
-
             assert http != null;
             try {
                 http.setRequestMethod("POST");
                 http.setDoOutput(true);
 
-                String playerName = playerInfo.getKey();
                 PlayerTurn turn = GameStateController.constructPlayerTurn(playerName);
-
                 turn.writeTo(http.getOutputStream());
-                decision = PlayerDecision.parseFrom(http.getInputStream());
 
+                decision = PlayerDecision.parseFrom(http.getInputStream());
             } catch (InvalidProtocolBufferException e) {
                 LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
                         playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
@@ -75,10 +71,9 @@ public class PlayerRequestSender {
             } finally {
                 http.disconnect();
             }
-
             numPlayers.getAndIncrement();
-            return new AbstractMap.SimpleEntry<>(name, decision);
-        }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            return new AbstractMap.SimpleEntry<>(playerName, decision);
+        }).collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
 
         LOGGER.info(String.format("Sent PlayerTurn to %d players with %d errors.", numPlayers.get(), errors.get()));
         return map;
