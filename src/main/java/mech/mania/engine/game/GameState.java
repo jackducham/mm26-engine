@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class fGameState {
+public class GameState {
     private long turnNumber;
     private Map<String, Board> boardNames;
     private Map<String, Player> playerNames;

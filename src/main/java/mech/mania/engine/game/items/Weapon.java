@@ -55,7 +55,7 @@ public class Weapon extends Wearable {
         return onHitEffect;
     }
 
-    public int getPhysicalDamage() {
+    public int getDamage() {
         return damage;
     }
 }

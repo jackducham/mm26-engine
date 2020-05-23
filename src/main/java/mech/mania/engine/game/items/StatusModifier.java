@@ -76,10 +76,15 @@ public class StatusModifier {
         ItemProtos.StatusModifier.Builder statusModifierBuilder = ItemProtos.StatusModifier.newBuilder();
 
         statusModifierBuilder.setFlatSpeedChange(flatSpeedChange);
+        statusModifierBuilder.setPercentSpeedChange(percentSpeedChange);
         statusModifierBuilder.setFlatHealthChange(flatHealthChange);
+        statusModifierBuilder.setPercentHealthChange(percentHealthChange);
         statusModifierBuilder.setFlatExperienceChange(flatExperienceChange);
+        statusModifierBuilder.setPercentExperienceChange(percentExperienceChange);
         statusModifierBuilder.setFlatDamageChange(flatDamageChange);
+        statusModifierBuilder.setPercentDamageChange(percentDamageChange);
         statusModifierBuilder.setFlatDefenseChange(flatDefenseChange);
+        statusModifierBuilder.setPercentDefenseChange(percentDefenseChange);
 
         return statusModifierBuilder.build();
     }
