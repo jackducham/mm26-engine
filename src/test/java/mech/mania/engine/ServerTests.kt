@@ -18,6 +18,7 @@ import java.io.*
 import java.net.*
 import java.util.concurrent.*
 import java.util.logging.Logger
+import kotlin.test.assertTrue
 
 
 /*
@@ -40,6 +41,7 @@ class ServerTests {
     private var INFRA_RECONNECT_URL: String = "http://localhost:$port/infra/player/reconnect"
 
     private var LOGGER = Logger.getLogger(ServerTests::class.toString())
+
 
     /**
      * Set up the testing environment by initializing variables and starting the game server.
@@ -69,7 +71,7 @@ class ServerTests {
             val bytes = url.readBytes()
             val statusObj = InfraStatus.parseFrom(bytes)
             LOGGER.info("Response upon sending endgame signal: ${statusObj.message}")
-            Thread.sleep(1000)
+            Thread.sleep(5000)
         } catch (e: Exception) {
             // if the server has already closed, then ignore
             LOGGER.info("Server has already closed")
@@ -123,7 +125,7 @@ class ServerTests {
 
             val playerName = java.util.UUID.randomUUID().toString()
             val playerAddr = "http://localhost:$randomPort/server"
-            LOGGER.info("Creating player \"$playerName\" with IP address $playerAddr")
+            LOGGER.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
             playerNames.add(playerName)
             playerAddrs.add(playerAddr)
@@ -163,6 +165,7 @@ class ServerTests {
 
         connectNPlayers(1, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -170,7 +173,7 @@ class ServerTests {
             completableFuture.complete(true)
         })
 
-        assert(completableFuture.get(10, TimeUnit.SECONDS))
+        assertTrue(completableFuture.get(30, TimeUnit.SECONDS), "CompletableFuture final value: ${completableFuture.get()}")
     }
 
 
@@ -185,6 +188,7 @@ class ServerTests {
 
         connectNPlayers(5, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -192,7 +196,7 @@ class ServerTests {
             latch.countDown()
         })
 
-        assert(latch.await(10, TimeUnit.SECONDS))
+        assertTrue(latch.await(30, TimeUnit.SECONDS), "Latch final value: ${latch.count}")
     }
 
     /**
@@ -206,6 +210,7 @@ class ServerTests {
 
         connectNPlayers(1, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -213,7 +218,7 @@ class ServerTests {
             latch.countDown()
         })
 
-        assert(latch.await(10, TimeUnit.SECONDS))
+        assertTrue(latch.await(30, TimeUnit.SECONDS), "Latch final value: ${latch.count}")
     }
 
     /**
@@ -227,6 +232,7 @@ class ServerTests {
 
         connectNPlayers(5, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -234,6 +240,50 @@ class ServerTests {
             latch.countDown()
         })
 
-        assert(latch.await(10, TimeUnit.SECONDS))
+        assertTrue(latch.await(30, TimeUnit.SECONDS), "Latch final value: ${latch.count}")
+    }
+
+    /**
+     * Test to see if the endpoint works and can be connected to via websocket
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canReceiveManyPlayers() {
+        // wait for an actual object to end the test
+        val latch = CountDownLatch(5000)
+
+        connectNPlayers(1000, {
+            PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
+                    .build()
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
+
+        assertTrue(latch.await(30, TimeUnit.SECONDS), "Latch final value: ${latch.count}")
+    }
+
+    /**
+     * Test to see if the endpoint works and can be connected to via websocket
+     */
+    @Test
+    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    fun canReceiveManyPlayersLongTime() {
+        // wait for an actual object to end the test
+        val latch = CountDownLatch(5000)
+
+        connectNPlayers(100, {
+            PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
+                    .build()
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
+
+        assertTrue(latch.await(100, TimeUnit.SECONDS), "Latch final value: ${latch.count}")
     }
 }

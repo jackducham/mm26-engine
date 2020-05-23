@@ -95,7 +95,7 @@ public class GameState {
     public GameState(GameStateProtos.GameState gameStateProto) {
         boardNames = new HashMap<>();
 
-        Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNames();
+        Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNamesMap();
 
         for (String boardId : boardProtoMap.keySet()) {
             boardNames.put(boardId, new Board(boardProtoMap.get(boardId)));
