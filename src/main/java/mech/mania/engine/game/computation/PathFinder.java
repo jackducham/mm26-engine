@@ -4,6 +4,7 @@ import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Position;
 
+import javax.annotation.Priority;
 import java.util.*;
 
 public class PathFinder {
@@ -48,47 +49,68 @@ public class PathFinder {
         Cell[][] grid = new Cell[ROWS][COLS];
         for(int i = 0; i < ROWS; i++){
             for(int j = 0; j < COLS; j++){
-                grid[i][j] = new Cell(tileGrid[i][j].getType() == Tile.TileType.IMPASSIBLE);
+                grid[i][j] = new Cell(i, j, tileGrid[i][j].getType() != Tile.TileType.IMPASSIBLE);
             }
         }
 
-        // current will change depending on the f value of the cells around it, it only begins at 'start'
-        Cell current = grid[start.getX()][start.getY()];
-        current.g = 0;
-        current.h = 0;
-        current.f = 0;
-        current.valid = true;
+        Cell endCell = grid[end.getY()][end.getY()];
+        Cell startCell = grid[start.getX()][start.getY()];
+        startCell.g = 0;
+        startCell.f = calculateH(startCell, endCell);
+
+        // If start is not a valid position, return empty list
+        if(!startCell.valid) return new ArrayList<Position>();
 
         // Closed list keeps track of visited cells
         boolean[][] closedList = new boolean[ROWS][COLS];
 
-        // Open list keeps track of current candidates
-        Set<Cell> openList = new HashSet<Cell>();
+        // Open list keeps track of current candidates in order of lowest f-value
+        PriorityQueue<Cell> openList = new PriorityQueue<>(10, new CellComparator());
+        openList.add(startCell);
 
-        // Stack for path
-        Stack<Cell> path = new Stack<Cell>();
+        while(!openList.isEmpty()) {
+            Cell current = openList.poll();
 
-
-
-        // DO this 4 times, to check cell above, below, left, and right of current cell (which would be Position point)
-        if (isValid(gameState, current)) {
-
-            // If at destination
-            if (isDestination(current, end)) {
-                // Add this cell to list then return list
+            if(isDestination(current, end)){
+                return reconstructPath(start, current);
             }
 
-            // Check to see if it is on the closed list already and whether it is blocked, if neither then continue otherwise ignore this cell
-            else if (isImpassible(gameState, current) == false) {
-                // do some wacky stuff here
-                // check this cells new f g and h values, compare to the other 3 and find the best one?
+            ArrayList<Cell> neighbors = new ArrayList<Cell>();
+            if (isValid(gameState, new Position(current.x + 1, current.y, start.getBoardID()))) {
+                neighbors.add(grid[current.x + 1][current.y]);
+            }
+            if (isValid(gameState, new Position(current.x, current.y + 1, start.getBoardID()))) {
+                neighbors.add(grid[current.x][current.y + 1]);
+            }
+            if (isValid(gameState, new Position(current.x - 1, current.y, start.getBoardID()))) {
+                neighbors.add(grid[current.x - 1][current.y]);
+            }
+            if (isValid(gameState, new Position(current.x, current.y - 1, start.getBoardID()))) {
+                neighbors.add(grid[current.x][current.y - 1]);
+            }
+
+            // DO this 4 times, to check cell above, below, left, and right of current cell (which would be Position point)
+            for (Cell n : neighbors) {
+                if(!n.valid) continue; // Skip impassable terrain
+                int tentative_gValue = current.g + 1;
+                if(tentative_gValue < n.g){
+                    // This is the new best path to n
+                    n.parent = current;
+                    n.g = tentative_gValue;
+                    n.f = n.g + calculateH(n, endCell);
+                    if(!openList.contains(n)){
+                        openList.add(n);
+                    }
+                }
             }
         }
+
+        return new ArrayList<Position>(); // Goal is unreachable
     }
 
     // helper function to check whether given cell is valid
     public static boolean isValid(GameState gameState, Position point) {
-        return (point.getX() >= 0) && (point.getX() < gameState.getBoard(point.getBoardID()).getGrid().length) &&
+        return  (point.getX() >= 0) && (point.getX() < gameState.getBoard(point.getBoardID()).getGrid().length) &&
                 (point.getY() > 0) && (point.getY() < gameState.getBoard(point.getBoardID()).getGrid()[0].length);
     }
 
@@ -99,33 +121,24 @@ public class PathFinder {
     }
 
     // helper function to check whether the destination has been reached
-    public static boolean isDestination(Position point, Position end) {
-        return (point == end);
+    public static boolean isDestination(Cell point, Position end) {
+        return (point.x == end.getX() && point.y == end.getY());
     }
 
     // Assume 3 values per node, 'f' , 'g', 'h'. f = g + h where g is 1 (distance between tiles) and h is total distance from that point to end tile
     // h is the heuristic
-    public static double calculateH(GameState gameState, Position point, Position end) {
-        return ((double) Math.sqrt(((point.getX() - end.getX()) * (point.getX() - end.getX())) + ((point.getY() - end.getY()) * (point.getY() - end.getY()))));
+    public static int calculateH(Cell point, Cell end) {
+        return Math.abs(point.x - end.x) + Math.abs(point.y - end.y);
     }
-}
 
-private class Cell{
-    public int g, h, f;
-    public boolean valid;
-    public Cell parent;
+    public static ArrayList<Position> reconstructPath(Position start, Cell endCell){
+        Cell current = endCell;
+        ArrayList<Position> path = new ArrayList<>();
+        while(! (current.x == start.getX() && current.y == start.getY())){
+            path.add(0, new Position(current.x, current.y, start.getBoardID()));
+            current = current.parent;
+        }
 
-    public Cell(int g, int h, int f, boolean v){
-        this.g = g;
-        this.h = h;
-        this.v = v;
-        parent = null;
-    }
-    public Cell(boolean v){
-        g = INT_MAX;
-        h = INT_MAX;
-        f = INT_MAX;
-        this.v = v;
-        parent = null;
+        return path;
     }
 }

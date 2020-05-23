@@ -5,9 +5,10 @@ public class Position {
     private int y;
     private String board_id;
 
-    public Position(int x, int y) {
+    public Position(int x, int y, String board_id) {
         this.x = x;
         this.y = y;
+        this.board_id = board_id;
     }
 
     public int getX() {
