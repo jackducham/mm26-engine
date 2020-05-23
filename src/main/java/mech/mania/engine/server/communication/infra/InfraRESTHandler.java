@@ -70,7 +70,7 @@ public class InfraRESTHandler {
                     break;
             }
 
-            LOGGER.info(String.format("Received request from infra to connect with player \"%s\" @ %s", name, ip));
+            LOGGER.fine(String.format("Received request from infra to connect with player \"%s\" @ %s", name, ip));
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred

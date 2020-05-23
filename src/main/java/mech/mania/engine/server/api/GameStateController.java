@@ -11,6 +11,7 @@ import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.
 import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.dao.Database;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
