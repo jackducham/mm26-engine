@@ -31,10 +31,8 @@ public abstract class Character {
     protected int flatSpeedChange, percentSpeedChange;
     protected int flatHealthChange, percentHealthChange;
     protected int flatExperienceChange, percentExperienceChange;
-    protected int flatMagicDefenseChange, percentMagicDefenseChange;
-    protected int flatPhysicalDefenseChange, percentPhysicalDefenseChange;
-    protected int flatMagicDamageChange, percentMagicDamageChange;
-    protected int flatPhysicalDamageChange, percentPhysicalDamageChange;
+    protected int flatDefenseChange, percentDefenseChange;
+    protected int flatDamageChange, percentDamageChange;
 
 
     protected Character(int experience, Position spawnPoint, Weapon weapon, String name) {
@@ -71,9 +69,8 @@ public abstract class Character {
         return characterBuilder.build();
     }
 
-    public void takeDamage(int physicalDamage, int magicalDamage, TempStatusModifier attackEffect, String attacker) {
-        int actualDamage = max(0, physicalDamage - getPhysicalDefense())
-            + max(0, magicalDamage - getMagicalDefense());
+    public void takeDamage(int damage, TempStatusModifier attackEffect, String attacker) {
+        int actualDamage = max(0, damage - getDefense());
 
         if (taggedPlayersDamage.containsKey(attacker)) {
             taggedPlayersDamage.put(attacker, taggedPlayersDamage.get(attacker) + actualDamage);
@@ -93,18 +90,14 @@ public abstract class Character {
         this.flatSpeedChange = 0;
         this.flatHealthChange = 0;
         this.flatExperienceChange = 0;
-        this.flatMagicDefenseChange = 0;
-        this.flatPhysicalDefenseChange = 0;
-        this.flatMagicDamageChange = 0;
-        this.flatPhysicalDamageChange = 0;
+        this.flatDefenseChange = 0;
+        this.flatDamageChange = 0;
 
         this.percentSpeedChange = 0;
         this.percentHealthChange = 0;
         this.percentExperienceChange = 0;
-        this.percentMagicDefenseChange = 0;
-        this.percentPhysicalDefenseChange = 0;
-        this.percentMagicDamageChange = 0;
-        this.percentPhysicalDamageChange = 0;
+        this.percentDefenseChange = 0;
+        this.percentDamageChange = 0;
     }
 
     public void applyActiveEffects() {
@@ -118,19 +111,15 @@ public abstract class Character {
                 flatSpeedChange += effect.getFlatSpeedChange();
                 flatHealthChange += effect.getFlatHealthChange();
                 flatExperienceChange += effect.getFlatExperienceChange();
-                flatMagicDefenseChange += effect.getFlatMagicDefenseChange();
-                flatPhysicalDefenseChange += effect.getFlatPhysicalDefenseChange();
-                flatMagicDamageChange += effect.getFlatMagicDamageChange();
-                flatPhysicalDamageChange += effect.getFlatPhysicalDamageChange();
+                flatDefenseChange += effect.getFlatDefenseChange();
+                flatDamageChange += effect.getFlatDamageChange();
 
                 // Assumes debuffs are [0, 1) and buffs are (1, inf)
                 percentSpeedChange *= effect.getPercentSpeedChange();
                 percentHealthChange *= effect.getPercentHealthChange();
                 percentExperienceChange *= effect.getPercentExperienceChange();
-                percentMagicDefenseChange *= effect.getPercentMagicDefenseChange();
-                percentPhysicalDefenseChange *= effect.getPercentPhysicalDefenseChange();
-                percentMagicDamageChange *= effect.getPercentMagicDamageChange();
-                percentPhysicalDamageChange *= effect.getPercentPhysicalDamageChange();
+                percentDefenseChange *= effect.getPercentDefenseChange();
+                percentDamageChange *= effect.getPercentDamageChange();
             }
         }
     }
@@ -225,28 +214,16 @@ public abstract class Character {
         return (baseSpeed + getLevel()*speedScaling + flatSpeedChange)*percentSpeedChange;
     }
 
-    static final int basePhysicalDamage = 0;
-    static final int physicalDamageScaling = 0;
-    public int getPhysicalDamage() {
-        return (basePhysicalDamage + getLevel()*physicalDamageScaling + flatPhysicalDamageChange)*percentPhysicalDamageChange;
+    static final int baseDamage = 0;
+    static final int damageScaling = 0;
+    public int getDamage() {
+        return (baseDamage + getLevel()*damageScaling + flatDamageChange)*percentDamageChange;
     }
 
-    static final int baseMagicalDamage = 0;
-    static final int magicalDamageScaling = 0;
-    public int getMagicalDamage() {
-        return (baseMagicalDamage + getLevel()*magicalDamageScaling + flatMagicDamageChange)*percentMagicDamageChange;
-    }
-
-    static final int basePhysicalDefense = 0;
-    static final int physicalDefenseScaling = 0;
-    public int getPhysicalDefense() {
-        return (basePhysicalDefense + getLevel()*physicalDefenseScaling + flatPhysicalDefenseChange)*percentPhysicalDefenseChange;
-    }
-
-    static final int baseMagicalDefense = 0;
-    static final int magicalDefenseScaling = 0;
-    public int getMagicalDefense() {
-        return (baseMagicalDefense + getLevel()*magicalDefenseScaling + flatMagicDefenseChange)*percentMagicDefenseChange;
+    static final int baseDefense = 0;
+    static final int defenseScaling = 0;
+    public int getDefense() {
+        return (baseDefense + getLevel()*defenseScaling + flatDefenseChange)*percentDefenseChange;
     }
 
     public List<TempStatusModifier> getActiveEffects() {
