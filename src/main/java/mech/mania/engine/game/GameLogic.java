@@ -218,8 +218,7 @@ public class GameLogic {
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 player.takeDamage(
-                                    attacker.getWeapon().getPhysicalDamage(),
-                                    attacker.getWeapon().getMagicDamage(),
+                                    attacker.getWeapon().getDamage(),
                                     onHitEffect,
                                     attacker.getName()
                 );
@@ -234,8 +233,7 @@ public class GameLogic {
             if (affectedPositions.containsKey(playerPos)) {
                 monster.addEffect(onHitEffect);
                 monster.takeDamage(
-                        attacker.getWeapon().getPhysicalDamage(),
-                        attacker.getWeapon().getMagicDamage(),
+                        attacker.getWeapon().getDamage(),
                         onHitEffect,
                         attacker.getName()
                 );

@@ -3,8 +3,7 @@ package mech.mania.engine.game.items;
 public class Weapon extends Wearable {
     protected int range = 0;
     protected int splashRadius = 0;
-    protected int magicDamage;
-    protected int physicalDamage;
+    protected int damage;
     protected TempStatusModifier onHitEffect;
 
     public Weapon(StatusModifier stats, int range, int splashRadius,
@@ -21,8 +20,7 @@ public class Weapon extends Wearable {
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
         // TODO: these will compile after proto import
-        this.magicDamage = weaponProto.getMagicDamage();
-        this.physicalDamage = weaponProto.getPhysicalDamage();
+        this.damage = weaponProto.getDamage();
     }
 
     public ItemProtos.Item buildProtoClassItem() {
@@ -40,8 +38,7 @@ public class Weapon extends Wearable {
         weaponBuilder.setSplashRadius(splashRadius);
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
         // TODO: these will compile after proto import
-        weaponBuilder.setMagicDamage(magicDamage);
-        weaponBuilder.setPhysicalDamage(physicalDamage);
+        weaponBuilder.setDamage(damage);
 
         return weaponBuilder.build();
     }
@@ -58,11 +55,7 @@ public class Weapon extends Wearable {
         return onHitEffect;
     }
 
-    public int getMagicDamage() {
-        return magicDamage;
-    }
-
     public int getPhysicalDamage() {
-        return physicalDamage;
+        return damage;
     }
 }
