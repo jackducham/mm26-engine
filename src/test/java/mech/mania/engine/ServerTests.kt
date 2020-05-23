@@ -165,6 +165,7 @@ class ServerTests {
 
         connectNPlayers(1, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -187,6 +188,7 @@ class ServerTests {
 
         connectNPlayers(5, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -208,6 +210,7 @@ class ServerTests {
 
         connectNPlayers(1, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -229,6 +232,7 @@ class ServerTests {
 
         connectNPlayers(5, {
             PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -250,7 +254,7 @@ class ServerTests {
 
         connectNPlayers(1000, {
             PlayerDecision.newBuilder()
-                    .setIncrement(1)
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
@@ -272,7 +276,7 @@ class ServerTests {
 
         connectNPlayers(100, {
             PlayerDecision.newBuilder()
-                    .setIncrement(1)
+                    .setDecisionTypeValue(1)
                     .build()
         }, {
             // pass
