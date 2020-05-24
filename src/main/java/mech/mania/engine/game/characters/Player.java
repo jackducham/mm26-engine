@@ -177,127 +177,65 @@ public class Player extends Character {
     }
 
     @Override
-    public int getPhysicalDamage() {
+    public int getDamage() {
         // First add all flat values
-        int physicalDamage = basePhysicalDamage + getLevel()*physicalDamageScaling + flatPhysicalDamageChange;
+        int damage = baseDamage + getLevel() * damageScaling + flatDamageChange;
 
         // Add flat wearable effects
         if (hat != null) {
-            physicalDamage += hat.getStats().getFlatPhysicalDamageChange();
+            damage += hat.getStats().getFlatDamageChange();
         }
         if (clothes != null) {
-            physicalDamage += clothes.getStats().getFlatPhysicalDamageChange();
+            damage += clothes.getStats().getFlatDamageChange();
         }
         if (shoes != null) {
-            physicalDamage += shoes.getStats().getFlatPhysicalDamageChange();
+            damage += shoes.getStats().getFlatDamageChange();
         }
 
         // Add percent effects
         if (hat != null) {
-            physicalDamage *= hat.getStats().getPercentPhysicalDamageChange();
+            damage *= hat.getStats().getPercentDamageChange();
         }
         if (clothes != null) {
-            physicalDamage *= clothes.getStats().getPercentPhysicalDamageChange();
+            damage *= clothes.getStats().getPercentDamageChange();
         }
         if (shoes != null) {
-            physicalDamage *= shoes.getStats().getPercentPhysicalDamageChange();
+            damage *= shoes.getStats().getPercentDamageChange();
         }
-        physicalDamage *= percentPhysicalDamageChange;
+        damage *= percentDamageChange;
 
-        return physicalDamage;
+        return damage;
     }
 
     @Override
-    public int getMagicalDamage() {
+    public int getDefense() {
         // First add all flat values
-        int magicalDamage = baseMagicalDamage + getLevel()*magicalDamageScaling + flatMagicDamageChange;
+        int defense = baseDefense + getLevel() * defenseScaling + flatDefenseChange;
 
         // Add flat wearable effects
         if (hat != null) {
-            magicalDamage += hat.getStats().getFlatMagicDamageChange();
+            defense += hat.getStats().getFlatDefenseChange();
         }
         if (clothes != null) {
-            magicalDamage += clothes.getStats().getFlatMagicDamageChange();
+            defense += clothes.getStats().getFlatDefenseChange();
         }
         if (shoes != null) {
-            magicalDamage += shoes.getStats().getFlatMagicDamageChange();
+            defense += shoes.getStats().getFlatDefenseChange();
         }
 
         // Add percent effects
         if (hat != null) {
-            magicalDamage *= hat.getStats().getPercentMagicDamageChange();
+            defense *= hat.getStats().getPercentDefenseChange();
         }
         if (clothes != null) {
-            magicalDamage *= clothes.getStats().getPercentMagicDamageChange();
+            defense *= clothes.getStats().getPercentDefenseChange();
         }
         if (shoes != null) {
-            magicalDamage *= shoes.getStats().getPercentMagicDamageChange();
+            defense *= shoes.getStats().getPercentDefenseChange();
         }
-        magicalDamage *= percentMagicDamageChange;
+        defense *= percentDefenseChange;
 
-        return magicalDamage;
-    }
-
-    @Override
-    public int getMagicalDefense() {
-        // First add all flat values
-        int magicalDefense = baseMagicalDefense + getLevel()*magicalDefenseScaling + flatMagicDefenseChange;
-
-        // Add flat wearable effects
-        if (hat != null) {
-            magicalDefense += hat.getStats().getFlatMagicDefenseChange();
-        }
-        if (clothes != null) {
-            magicalDefense += clothes.getStats().getFlatMagicDefenseChange();
-        }
-        if (shoes != null) {
-            magicalDefense += shoes.getStats().getFlatMagicDefenseChange();
-        }
-
-        // Add percent effects
-        if (hat != null) {
-            magicalDefense *= hat.getStats().getPercentMagicDefenseChange();
-        }
-        if (clothes != null) {
-            magicalDefense *= clothes.getStats().getPercentMagicDefenseChange();
-        }
-        if (shoes != null) {
-            magicalDefense *= shoes.getStats().getPercentMagicDefenseChange();
-        }
-        magicalDefense *= percentMagicDefenseChange;
-
-        return magicalDefense;
-    }
-
-    @Override
-    public int getPhysicalDefense() {
-        // First add all flat values
-        int physicalDefense = basePhysicalDefense + getLevel()*physicalDefenseScaling + flatPhysicalDefenseChange;
-
-        // Add flat wearable effects
-        if (hat != null) {
-            physicalDefense += hat.getStats().getFlatPhysicalDefenseChange();
-        }
-        if (clothes != null) {
-            physicalDefense += clothes.getStats().getFlatPhysicalDefenseChange();
-        }
-        if (shoes != null) {
-            physicalDefense += shoes.getStats().getFlatPhysicalDefenseChange();
-        }
-
-        // Add percent effects
-        if (hat != null) {
-            physicalDefense *= hat.getStats().getPercentPhysicalDefenseChange();
-        }
-        if (clothes != null) {
-            physicalDefense *= clothes.getStats().getPercentPhysicalDefenseChange();
-        }
-        if (shoes != null) {
-            physicalDefense *= shoes.getStats().getPercentPhysicalDefenseChange();
-        }
-        physicalDefense *= percentPhysicalDefenseChange;
-
-        return physicalDefense;
+        return defense;
     }
 
 

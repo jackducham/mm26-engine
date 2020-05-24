@@ -2,25 +2,22 @@ package mech.mania.engine.game.items;
 
 public class TempStatusModifier extends StatusModifier {
     private int duration;
-    private int flatMagicDamagePerTurn;
-    private int flatPhysicalDamagePerTurn;
+    private int flatDamagePerTurn;
+    private double percentDamagePerTurn;
     /* damagePerTurn is a flat amount of damage delt to the character each turn,
      * which is still affected by damageChange and percentDamageChange.
-     * (either physical [for bleeding] or magic [for poison], whichever set applies)
      */
 
     public TempStatusModifier(int flatSpeedChange, double percentSpeedChange, int flatHealthChange, double percentHealthChange,
-                              int flatExperienceChange, double percentExperienceChange, int flatMagicDamageChange,
-                              double percentMagicDamageChange, int flatPhysicalDamageChange,
-                              double percentPhysicalDamageChange, int flatMagicDefenseChange,
-                              double percentMagicDefenseChange, int flatPhysicalDefenseChange,
-                              double percentPhysicalDefenseChange, int flatRegenPerTurn, int duration, int flatMagicDamagePerTurn, int flatPhysicalDamagePerTurn) {
+                              int flatExperienceChange, double percentExperienceChange, int flatDamageChange,
+                              double percentDamageChange, int flatDefenseChange,
+                              double percentDefenseChange, int flatRegenPerTurn, int duration,
+                              int flatDamagePerTurn, double percentDamagePerTurn) {
         super(flatSpeedChange, percentSpeedChange, flatHealthChange, percentHealthChange, flatExperienceChange, percentExperienceChange,
-                flatMagicDamageChange, percentMagicDamageChange, flatPhysicalDamageChange, percentPhysicalDamageChange,
-                flatMagicDefenseChange, percentMagicDefenseChange, flatPhysicalDefenseChange, percentPhysicalDefenseChange, flatRegenPerTurn);
+                flatDamageChange, percentDamageChange, flatDefenseChange, percentDefenseChange, flatRegenPerTurn);
         this.duration = duration;
-        this.flatMagicDamagePerTurn = flatMagicDamagePerTurn;
-        this.flatPhysicalDamagePerTurn = flatPhysicalDamagePerTurn;
+        this.flatDamagePerTurn = flatDamagePerTurn;
+        this.percentDamagePerTurn = percentDamagePerTurn;
     }
 
     public void updateTurnsLeft() {
@@ -39,27 +36,23 @@ public class TempStatusModifier extends StatusModifier {
                 tempStatusModifierProto.getStats().getPercentHealthChange(),
                 tempStatusModifierProto.getStats().getFlatExperienceChange(),
                 tempStatusModifierProto.getStats().getPercentExperienceChange(),
-                tempStatusModifierProto.getStats().getFlatMagicDamageChange(),
-                tempStatusModifierProto.getStats().getPercentMagicDamageChange(),
-                tempStatusModifierProto.getStats().getFlatPhysicalDamageChange(),
-                tempStatusModifierProto.getStats().getPercentPhysicalDamageChange(),
-                tempStatusModifierProto.getStats().getFlatMagicDefenseChange(),
-                tempStatusModifierProto.getStats().getPercentMagicDefenseChange(),
-                tempStatusModifierProto.getStats().getFlatPhysicalDefenseChange(),
-                tempStatusModifierProto.getStats().getPercentPhysicalDefenseChange(),
+                tempStatusModifierProto.getStats().getFlatDamageChange(),
+                tempStatusModifierProto.getStats().getPercentDamageChange(),
+                tempStatusModifierProto.getStats().getFlatDefenseChange(),
+                tempStatusModifierProto.getStats().getPercentDefenseChange(),
                 tempStatusModifierProto.getStats().getFlatRegenPerTurn()
         );
         this.duration = tempStatusModifierProto.getDuration();
-        this.flatMagicDamagePerTurn = tempStatusModifierProto.getFlatMagicalDamagePerTurn();
-        this.flatPhysicalDamagePerTurn = tempStatusModifierProto.getFlatPhysicalDamagePerTurn();
+        this.flatDamagePerTurn = tempStatusModifierProto.getFlatDamagePerTurn();
+        this.percentDamagePerTurn = tempStatusModifierProto.getPercentDamagePerTurn();
     }
 
     public ItemProtos.TempStatusModifier buildProtoClassTemp() {
         ItemProtos.TempStatusModifier.Builder tempStatusModifierBuilder = ItemProtos.TempStatusModifier.newBuilder();
         tempStatusModifierBuilder.setDuration(duration);
 
-        tempStatusModifierBuilder.setFlatMagicalDamagePerTurn(flatMagicDamagePerTurn);
-        tempStatusModifierBuilder.setFlatPhysicalDamagePerTurn(flatPhysicalDamagePerTurn);
+        tempStatusModifierBuilder.setFlatDamagePerTurn(flatDamagePerTurn);
+        tempStatusModifierBuilder.setPercentDamagePerTurn(percentDamagePerTurn);
 
         ItemProtos.StatusModifier statusModifierProtoClass = super.buildProtoClass();
 
@@ -67,11 +60,11 @@ public class TempStatusModifier extends StatusModifier {
         return tempStatusModifierBuilder.build();
     }
 
-    public int getFlatMagicDamagePerTurn() {
-        return flatMagicDamagePerTurn;
+    public int getFlatDamagePerTurn() {
+        return flatDamagePerTurn;
     }
 
-    public int getFlatPhysicalDamagePerTurn() {
-        return flatPhysicalDamagePerTurn;
+    public double getPercentDamagePerTurn() {
+        return percentDamagePerTurn;
     }
 }

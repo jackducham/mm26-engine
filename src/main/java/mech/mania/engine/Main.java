@@ -57,9 +57,8 @@ public class Main {
 
 			GameStateController.sendVisualizerChange();
 
-			// Simulate time passing
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				LOGGER.info("Thread.sleep interrupted:\n" + e.getMessage());
 			}

@@ -22,53 +22,35 @@ public class StatusModifier {
      * for example, if you gain 525 XP (base kill XP of 500 + an experienceChange of 25),
      * a percentExperienceChange of 0.5 makes that 788 i.e. (500 + 25) * (1 + 0.5).
      */
-    private int flatMagicDamageChange;
-    private double percentMagicDamageChange;
-    /* magicDamageChange is a flat bonus to the magic damage dealt per hit.
-     * percentMagicDamageChange is a percentage magic damage modifier:
-     * for example, if you deal 30 magic damage (NO BASE MAGIC DAMAGE),
-     * a percentMagicDamageChange of 0.15 makes that 35 i.e. (30) * (1 + 0.15).
+    private int flatDamageChange;
+    private double percentDamageChange;
+    /* damageChange is a flat bonus to the damage dealt per hit.
+     * percentDamageChange is a percentage damage modifier:
+     * for example, if you deal 70 damage (NO BASE DAMAGE),
+     * a percentDamageChange of 0.2 makes that 84 i.e. (70) * (1 + 0.2).
      */
-    private int flatPhysicalDamageChange;
-    private double percentPhysicalDamageChange;
-    /* physicalDamageChange is a flat bonus to the physical damage dealt per hit.
-     * percentPhysicalDamageChange is a percentage physical damage modifier:
-     * for example, if you deal 70 physical damage (NO BASE PHYSICAL DAMAGE),
-     * a percentPhysicalDamageChange of 0.2 makes that 84 i.e. (70) * (1 + 0.2).
-     */
-    private int flatMagicDefenseChange;
-    private double percentMagicDefenseChange;
-    /* magicDefenseChange is a flat modifier to the magic damage taken per hit.
-     * percentMagicDefenseChange is a percentage magic damage taken modifier:
-     * for example, if you take 50 magic damage (base damage of 75 - a magicDefenseChange of 25),
-     * a percentMagicDefenseChange of 0.2 makes that 40 i.e. (75 - 25) * (1 - 0.2).
-     */
-    private int flatPhysicalDefenseChange;
-    private double percentPhysicalDefenseChange;
-    /* physicalDefenseChange is a flat modifier to the physical damage taken per hit.
-     * percentPhysicalDefenseChange is a percentage physical damage taken modifier:
-     * for example, if you take 300 physical damage (base damage of 425 - a physicalDamageChange of 125),
-     * a percentPhysicalDamageChange of 0.75 makes that 75 i.e. (425 - 125) * (1 - 0.75).
+    private int flatDefenseChange;
+    private double percentDefenseChange;
+    /* defenseChange is a flat modifier to the defense per hit.
+     * percentDefenseChange is a percentage damage taken modifier:
+     * for example, if you take 50 damage (base damage of 75 - a DefenseChange of 25),
+     * a percentDefenseChange of 0.2 makes that 40 i.e. (75 - 25) * (1 - 0.2).
      */
     private int flatRegenPerTurn;
     // regenPerTurn is a flat amount of HP added to the current HP every turn.
 
 
-    public StatusModifier(int speedChange, double percentSpeedChange, int healthChange, double percentHealthChange, int experienceChange, double percentExperienceChange, int magicDamageChange, double percentMagicDamageChange, int physicalDamageChange, double percentPhysicalDamageChange, int magicDefenseChange, double percentMagicDefenseChange, int physicalDefenseChange, double percentPhysicalDefenseChange, int regenPerTurn) {
+    public StatusModifier(int speedChange, double percentSpeedChange, int healthChange, double percentHealthChange, int experienceChange, double percentExperienceChange, int damageChange, double percentDamageChange, int defenseChange, double percentDefenseChange, int regenPerTurn) {
         this.flatSpeedChange = speedChange;
         this.percentSpeedChange = percentSpeedChange;
         this.flatHealthChange = healthChange;
         this.percentHealthChange = percentHealthChange;
         this.flatExperienceChange = experienceChange;
         this.percentExperienceChange = percentExperienceChange;
-        this.flatMagicDamageChange = magicDamageChange;
-        this.percentMagicDamageChange = percentMagicDamageChange;
-        this.flatPhysicalDamageChange = physicalDamageChange;
-        this.percentPhysicalDamageChange = percentPhysicalDamageChange;
-        this.flatMagicDefenseChange = magicDefenseChange;
-        this.percentMagicDefenseChange = percentMagicDefenseChange;
-        this.flatPhysicalDefenseChange = physicalDefenseChange;
-        this.percentPhysicalDefenseChange = percentPhysicalDefenseChange;
+        this.flatDamageChange = damageChange;
+        this.percentDamageChange = percentDamageChange;
+        this.flatDefenseChange = defenseChange;
+        this.percentDefenseChange = percentDefenseChange;
         this.flatRegenPerTurn = regenPerTurn;
     }
 
@@ -79,31 +61,30 @@ public class StatusModifier {
         this.flatHealthChange = statusModifierProto.getFlatHealthChange();
         this.flatExperienceChange = statusModifierProto.getFlatExperienceChange();
 
-        this.flatMagicDamageChange = statusModifierProto.getFlatMagicDamageChange();
-        this.flatPhysicalDamageChange = statusModifierProto.getFlatPhysicalDamageChange();
-        this.flatMagicDefenseChange = statusModifierProto.getFlatMagicDefenseChange();
-        this.flatPhysicalDefenseChange = statusModifierProto.getFlatPhysicalDefenseChange();
+        this.flatDamageChange = statusModifierProto.getFlatDamageChange();
+        this.flatDefenseChange = statusModifierProto.getFlatDefenseChange();
 
         this.percentSpeedChange = statusModifierProto.getPercentSpeedChange();
         this.percentHealthChange = statusModifierProto.getPercentHealthChange();
         this.percentExperienceChange = statusModifierProto.getPercentExperienceChange();
 
-        this.percentMagicDamageChange = statusModifierProto.getPercentMagicDamageChange();
-        this.percentPhysicalDamageChange = statusModifierProto.getPercentPhysicalDamageChange();
-        this.percentMagicDefenseChange = statusModifierProto.getPercentMagicDefenseChange();
-        this.flatPhysicalDefenseChange = statusModifierProto.getFlatPhysicalDefenseChange();
+        this.percentDamageChange = statusModifierProto.getPercentDamageChange();
+        this.percentDefenseChange = statusModifierProto.getPercentDefenseChange();
     }
 
     public ItemProtos.StatusModifier buildProtoClass() {
         ItemProtos.StatusModifier.Builder statusModifierBuilder = ItemProtos.StatusModifier.newBuilder();
 
         statusModifierBuilder.setFlatSpeedChange(flatSpeedChange);
+        statusModifierBuilder.setPercentSpeedChange(percentSpeedChange);
         statusModifierBuilder.setFlatHealthChange(flatHealthChange);
+        statusModifierBuilder.setPercentHealthChange(percentHealthChange);
         statusModifierBuilder.setFlatExperienceChange(flatExperienceChange);
-        statusModifierBuilder.setFlatMagicDamageChange(flatMagicDamageChange);
-        statusModifierBuilder.setFlatPhysicalDamageChange(flatPhysicalDamageChange);
-        statusModifierBuilder.setFlatMagicDefenseChange(flatMagicDefenseChange);
-        statusModifierBuilder.setFlatPhysicalDefenseChange(flatPhysicalDefenseChange);
+        statusModifierBuilder.setPercentExperienceChange(percentExperienceChange);
+        statusModifierBuilder.setFlatDamageChange(flatDamageChange);
+        statusModifierBuilder.setPercentDamageChange(percentDamageChange);
+        statusModifierBuilder.setFlatDefenseChange(flatDefenseChange);
+        statusModifierBuilder.setPercentDefenseChange(percentDefenseChange);
 
         return statusModifierBuilder.build();
     }
@@ -156,68 +137,36 @@ public class StatusModifier {
         this.percentExperienceChange = percentExperienceChange;
     }
 
-    public int getFlatMagicDamageChange() {
-        return flatMagicDamageChange;
+    public int getFlatDamageChange() {
+        return flatDamageChange;
     }
 
-    public void setFlatMagicDamageChange(int flatMagicDamageChange) {
-        this.flatMagicDamageChange = flatMagicDamageChange;
+    public void setFlatDamageChange(int flatDamageChange) {
+        this.flatDamageChange = flatDamageChange;
     }
 
-    public double getPercentMagicDamageChange() {
-        return percentMagicDamageChange;
+    public double getPercentDamageChange() {
+        return percentDamageChange;
     }
 
-    public void setPercentMagicDamageChange(double percentMagicDamageChange) {
-        this.percentMagicDamageChange = percentMagicDamageChange;
+    public void setPercentDamageChange(double percentDamageChange) {
+        this.percentDamageChange = percentDamageChange;
     }
 
-    public int getFlatPhysicalDamageChange() {
-        return flatPhysicalDamageChange;
+    public int getFlatDefenseChange() {
+        return flatDefenseChange;
     }
 
-    public void setFlatPhysicalDamageChange(int flatPhysicalDamageChange) {
-        this.flatPhysicalDamageChange = flatPhysicalDamageChange;
+    public void setFlatDefenseChange(int flatDefenseChange) {
+        this.flatDefenseChange = flatDefenseChange;
     }
 
-    public double getPercentPhysicalDamageChange() {
-        return percentPhysicalDamageChange;
+    public double getPercentDefenseChange() {
+        return percentDefenseChange;
     }
 
-    public void setPercentPhysicalDamageChange(double percentPhysicalDamageChange) {
-        this.percentPhysicalDamageChange = percentPhysicalDamageChange;
-    }
-
-    public int getFlatMagicDefenseChange() {
-        return flatMagicDefenseChange;
-    }
-
-    public void setFlatMagicDefenseChange(int flatMagicDefenseChange) {
-        this.flatMagicDefenseChange = flatMagicDefenseChange;
-    }
-
-    public double getPercentMagicDefenseChange() {
-        return percentMagicDefenseChange;
-    }
-
-    public void setPercentMagicDefenseChange(double percentMagicDefenseChange) {
-        this.percentMagicDefenseChange = percentMagicDefenseChange;
-    }
-
-    public int getFlatPhysicalDefenseChange() {
-        return flatPhysicalDefenseChange;
-    }
-
-    public void setFlatPhysicalDefenseChange(int flatPhysicalDefenseChange) {
-        this.flatPhysicalDefenseChange = flatPhysicalDefenseChange;
-    }
-
-    public double getPercentPhysicalDefenseChange() {
-        return percentPhysicalDefenseChange;
-    }
-
-    public void setPercentPhysicalDefenseChange(double percentPhysicalDefenseChange) {
-        this.percentPhysicalDefenseChange = percentPhysicalDefenseChange;
+    public void setPercentDefenseChange(double percentDefenseChange) {
+        this.percentDefenseChange = percentDefenseChange;
     }
 
     public int getFlatRegenPerTurn() {
