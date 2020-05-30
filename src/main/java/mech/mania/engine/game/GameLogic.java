@@ -15,10 +15,7 @@ import mech.mania.engine.game.items.Weapon;
 
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * A class to execute the game logic.
@@ -82,14 +79,12 @@ public class GameLogic {
         int index = decision.getIndex();
         switch (decision.getDecision()) {
             case ATTACK:
-                addAttackEffectToCharacters(gameState, character, actionPosition);
+                processAttack(gameState, character, actionPosition);
                 break;
             case MOVE:
-                // TODO pending method implementation
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
-                // TODO pending method implementation
                 usePortal(gameState, character, index);
                 break;
             case EQUIP:
@@ -98,8 +93,7 @@ public class GameLogic {
                 break;
             case DROP:
                 player = (Player) character;
-                // @TODO need to implement array for players to drop multiple items
-                dropItems(gameState, player, index);
+                dropItem(gameState, player, index);
                 break;
             case PICKUP:
                 player = (Player) character;
@@ -137,16 +131,14 @@ public class GameLogic {
      */
     public static boolean canUsePortal(GameState gameState, Character player) {
         if(player instanceof Monster) return false; // Only players can take portals
+
+        //checks the portals on the player's current board
         for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
             if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
                 return true;
             }
         }
-        for(int i = 0; i < gameState.getPvpBoard().getPortals().size(); i++) {
-            if(player.getPosition() == gameState.getPvpBoard().getPortals().get(i)) {
-                return true;
-            }
-        }
+
         return false;
     }
 
@@ -159,17 +151,23 @@ public class GameLogic {
      */
     public static boolean usePortal(GameState gameState, Character player, int portalIndex) {
         if(canUsePortal(gameState, player)) {
+
+            //sends player to home board
             if(portalIndex == -1) {
-                player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(0));
+                player.setPosition(gameState.getBoard(player.getSpawnPoint().getBoardID()).getPortals().get(0));
                 return true;
             }
-            for(int i = 0; i < gameState.getPvpBoard().getPortals().size(); i++) {
-                if(i == portalIndex) {
-                    player.setPosition(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i));
-                    return true;
-                }
+
+            //checks for out of bounds indices
+            if(portalIndex >= gameState.getPvpBoard().getPortals().size() || portalIndex < -1) {
+                return false;
             }
+
+            //handles usual cases
+            player.setPosition(gameState.getPvpBoard().getPortals().get(portalIndex));
+            return true;
         }
+
         return false;
     }
 
@@ -238,11 +236,11 @@ public class GameLogic {
      * @param attackCoordinate coordinate to attack
      * @param gameState current gamestate
      */
-    public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
-        Board board = gameState.getPvpBoard();
+    public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
+        Board board = gameState.getBoard(attackCoordinate.getBoardID());
         TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
-        List<Monster> enemies = board.getEnemies();
-        List<Player> players = board.getPlayers();
+        List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
+        List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         // Character gave invalid attack position
@@ -256,17 +254,26 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                player.addEffect(onHitEffect);
+                player.takeDamage(
+                                    attacker.getWeapon().getDamage(),
+                                    onHitEffect,
+                                    attacker.getName()
+                );
             }
         }
 
-        for (Monster monster: enemies) {
+        for (Monster monster: monsters) {
             if (monster == attacker) {
                 continue;
             }
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 monster.addEffect(onHitEffect);
+                monster.takeDamage(
+                        attacker.getWeapon().getDamage(),
+                        onHitEffect,
+                        attacker.getName()
+                );
             }
         }
 
@@ -303,13 +310,13 @@ public class GameLogic {
     }
 
     /**
-     * Removes one or more items from a Player's inventory and adds them to the items on a tile.
+     * Removes one item from a Player's inventory and adds it to the items on a tile.
      * @param gameState current gameState
      * @param player the player dropping items
      * @param index the index of the item in the player's inventory which is being dropped
      * @return true if successful
      */
-    public static boolean dropItems(GameState gameState, Player player, int index) {
+    public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
         if (index < 0 || index > player.getInventorySize()) {
             return false;
@@ -323,16 +330,6 @@ public class GameLogic {
     }
 
     // ============================= GENERAL HELPER FUNCTIONS ========================================================== //
-
-    /**
-     * Checks whether given player is on given board.
-     * @param player The target player.
-     * @param board The target board.
-     * @return true if the player is on the board, false otherwise.
-     */
-    public static boolean isPlayerOnBoard(GameState gameState, Player player, Board board) {
-        return (board.getPlayers().contains(player));
-    }
 
     /**
      * Provides the Tile at a given Position.

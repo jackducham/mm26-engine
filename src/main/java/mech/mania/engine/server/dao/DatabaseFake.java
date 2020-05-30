@@ -5,6 +5,7 @@ import mech.mania.engine.server.communication.player.model.PlayerInfo;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 /**
@@ -19,7 +20,7 @@ public class DatabaseFake implements Database {
 
     private int currentTurnNum = 0;
     private GameState currentGameState = new GameState();
-    private final Map<String, PlayerInfo> currentPlayerInfoMap = new HashMap<>();
+    private final Map<String, PlayerInfo> currentPlayerInfoMap = new ConcurrentHashMap<>();
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {

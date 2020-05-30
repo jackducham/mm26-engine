@@ -1,7 +1,5 @@
 package mech.mania.engine.game.characters;
 
-import mech.mania.engine.game.GameState;
-import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.items.*;
 
 
@@ -18,6 +16,75 @@ public class Player extends Character {
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
+    }
+
+    public Player(CharacterProtos.Player playerProto) {
+        super(
+                playerProto.getCharacter().getExperience(),
+                new Position(playerProto.getCharacter().getSpawnPoint()),
+                new Weapon(playerProto.getCharacter().getWeapon()),
+                playerProto.getCharacter().getName()
+        );
+
+        // TODO: add taggedPlayersDamage
+        hat = new Hat(playerProto.getHat());
+        clothes = new Clothes(playerProto.getClothes());
+        shoes = new Shoes(playerProto.getShoes());
+        inventory = new Item[INVENTORY_SIZE];
+
+        for (int i = 0; i < playerProto.getInventoryCount(); i++) {
+            ItemProtos.Item protoItem = playerProto.getInventory(i);
+            switch(protoItem.getItemCase()) {
+                case CLOTHES:
+                    inventory[i] = new Clothes(protoItem.getClothes());
+                    break;
+                case HAT:
+                    inventory[i] = new Hat(protoItem.getHat());
+                    break;
+                case SHOES:
+                    inventory[i] = new Shoes(protoItem.getShoes());
+                    break;
+                case WEAPON:
+                    inventory[i] = new Weapon(protoItem.getWeapon());
+                    break;
+                case CONSUMABLE:
+                    inventory[i] = new Consumable(protoItem.getMaxStack(), protoItem.getConsumable());
+            }
+        }
+    }
+
+    public CharacterProtos.Player buildProtoClassPlayer() {
+        CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
+        CharacterProtos.Player.Builder playerBuilder = CharacterProtos.Player.newBuilder();
+
+        playerBuilder.mergeCharacter(characterProtoClass);
+
+        for (int i = 0; i < INVENTORY_SIZE; i++) {
+            Item curItem = inventory[i];
+            if (curItem instanceof Clothes) {
+                playerBuilder.setInventory(i, ((Clothes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Hat) {
+                playerBuilder.setInventory(i, ((Hat)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Shoes) {
+                playerBuilder.setInventory(i, ((Shoes)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Weapon) {
+                playerBuilder.setInventory(i, ((Weapon)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Consumable) {
+                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClass());
+            }
+        }
+
+        if (hat != null) {
+            playerBuilder.setHat(hat.buildProtoClassHat());
+        }
+        if (clothes != null) {
+            playerBuilder.setClothes(clothes.buildProtoClassClothes());
+        }
+        if (shoes != null) {
+            playerBuilder.setShoes(shoes.buildProtoClassShoes());
+        }
+
+        return playerBuilder.build();
     }
 
     public Hat getHat() {
@@ -48,141 +115,127 @@ public class Player extends Character {
     }
 
     @Override
-    public double getMaxHealth() {
-        double maxHealth = super.getMaxHealth();
+    public int getMaxHealth() {
+        // First add all flat values
+        int maxHealth = baseMaxHealth + getLevel()*maxHealthScaling + flatHealthChange;
 
-        // Add wearable effects
+        // Add flat wearable effects
         if (hat != null) {
-            maxHealth += hat.getStats().getHealthChange();
+            maxHealth += hat.getStats().getFlatHealthChange();
         }
         if (clothes != null) {
-            maxHealth += clothes.getStats().getHealthChange();
+            maxHealth += clothes.getStats().getFlatHealthChange();
         }
         if (shoes != null) {
-            maxHealth += shoes.getStats().getHealthChange();
+            maxHealth += shoes.getStats().getFlatHealthChange();
         }
 
-        // Add active effects
-        for (TempStatusModifier mod : activeEffects) {
-            maxHealth += mod.getHealthChange();
+        // Add percent effects
+        if (hat != null) {
+            maxHealth *= hat.getStats().getPercentHealthChange();
         }
+        if (clothes != null) {
+            maxHealth *= clothes.getStats().getPercentHealthChange();
+        }
+        if (shoes != null) {
+            maxHealth *= shoes.getStats().getPercentHealthChange();
+        }
+        maxHealth *= percentHealthChange;
 
         return maxHealth;
     }
 
     @Override
-    public double getSpeed() {
-        double speed = super.getSpeed();
+    public int getSpeed() {
+        // First add all flat values
+        int speed = baseSpeed + getLevel()*speedScaling + flatSpeedChange;
 
-        // Add wearable effects
+        // Add flat wearable effects
         if (hat != null) {
-            speed += hat.getStats().getSpeedChange();
+            speed += hat.getStats().getFlatSpeedChange();
         }
         if (clothes != null) {
-            speed += clothes.getStats().getSpeedChange();
+            speed += clothes.getStats().getFlatSpeedChange();
         }
         if (shoes != null) {
-            speed += shoes.getStats().getSpeedChange();
+            speed += shoes.getStats().getFlatSpeedChange();
         }
 
-        // Add active effects
-        for (TempStatusModifier mod : activeEffects) {
-            speed += mod.getSpeedChange();
+        // Add percent effects
+        if (hat != null) {
+            speed *= hat.getStats().getPercentSpeedChange();
         }
+        if (clothes != null) {
+            speed *= clothes.getStats().getPercentSpeedChange();
+        }
+        if (shoes != null) {
+            speed *= shoes.getStats().getPercentSpeedChange();
+        }
+        speed *= percentSpeedChange;
 
         return speed;
     }
 
     @Override
-    public double getPhysicalDamage() {
-        double physicalDamage = super.getPhysicalDamage();
+    public int getDamage() {
+        // First add all flat values
+        int damage = baseDamage + getLevel() * damageScaling + flatDamageChange;
 
-        // Add wearable effects
+        // Add flat wearable effects
         if (hat != null) {
-            physicalDamage += hat.getStats().getPhysicalDamageChange();
+            damage += hat.getStats().getFlatDamageChange();
         }
         if (clothes != null) {
-            physicalDamage += clothes.getStats().getPhysicalDamageChange();
+            damage += clothes.getStats().getFlatDamageChange();
         }
         if (shoes != null) {
-            physicalDamage += shoes.getStats().getPhysicalDamageChange();
+            damage += shoes.getStats().getFlatDamageChange();
         }
 
-        // Add active effects
-        for (TempStatusModifier mod : activeEffects) {
-            physicalDamage += mod.getPhysicalDamageChange();
+        // Add percent effects
+        if (hat != null) {
+            damage *= hat.getStats().getPercentDamageChange();
         }
+        if (clothes != null) {
+            damage *= clothes.getStats().getPercentDamageChange();
+        }
+        if (shoes != null) {
+            damage *= shoes.getStats().getPercentDamageChange();
+        }
+        damage *= percentDamageChange;
 
-        return physicalDamage;
+        return damage;
     }
 
     @Override
-    public double getMagicalDamage() {
-        double magicalDamage = super.getMagicalDamage();
+    public int getDefense() {
+        // First add all flat values
+        int defense = baseDefense + getLevel() * defenseScaling + flatDefenseChange;
 
-        // Add wearable effects
+        // Add flat wearable effects
         if (hat != null) {
-            magicalDamage += hat.getStats().getMagicDamageChange();
+            defense += hat.getStats().getFlatDefenseChange();
         }
         if (clothes != null) {
-            magicalDamage += clothes.getStats().getMagicDamageChange();
+            defense += clothes.getStats().getFlatDefenseChange();
         }
         if (shoes != null) {
-            magicalDamage += shoes.getStats().getMagicDamageChange();
+            defense += shoes.getStats().getFlatDefenseChange();
         }
 
-        // Add active effects
-        for (TempStatusModifier mod : activeEffects) {
-            magicalDamage += mod.getMagicDamageChange();
-        }
-
-        return magicalDamage;
-    }
-
-    @Override
-    public double getMagicalDefense() {
-        double magicalDefense = super.getMagicalDefense();
-
-        // Add wearable effects
+        // Add percent effects
         if (hat != null) {
-            magicalDefense += hat.getStats().getMagicDefenseChange();
+            defense *= hat.getStats().getPercentDefenseChange();
         }
         if (clothes != null) {
-            magicalDefense += clothes.getStats().getMagicDefenseChange();
+            defense *= clothes.getStats().getPercentDefenseChange();
         }
         if (shoes != null) {
-            magicalDefense += shoes.getStats().getMagicDefenseChange();
+            defense *= shoes.getStats().getPercentDefenseChange();
         }
+        defense *= percentDefenseChange;
 
-        // Add active effects
-        for (TempStatusModifier mod : activeEffects) {
-            magicalDefense += mod.getMagicDefenseChange();
-        }
-
-        return magicalDefense;
-    }
-
-    @Override
-    public double getPhysicalDefense() {
-        double physicalDefense = super.getPhysicalDefense();
-
-        // Add wearable effects
-        if (hat != null) {
-            physicalDefense += hat.getStats().getPhysicalDefenseChange();
-        }
-        if (clothes != null) {
-            physicalDefense += clothes.getStats().getPhysicalDefenseChange();
-        }
-        if (shoes != null) {
-            physicalDefense += shoes.getStats().getPhysicalDefenseChange();
-        }
-
-        // Add active effects
-        for (TempStatusModifier mod : activeEffects) {
-            physicalDefense += mod.getPhysicalDefenseChange();
-        }
-
-        return physicalDefense;
+        return defense;
     }
 
 

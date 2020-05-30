@@ -28,7 +28,7 @@ public class Main {
 	public static void setup(String[] args) {
 		if (args.length == 0) {
 			args = new String[1];
-			args[0] = System.getenv("PORT");
+			args[0] = "8080";  // System.getenv("PORT");
 		}
 
 		// Start server to communicate with infrastructure
@@ -57,9 +57,8 @@ public class Main {
 
 			GameStateController.sendVisualizerChange();
 
-			// Simulate time passing
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				LOGGER.info("Thread.sleep interrupted:\n" + e.getMessage());
 			}

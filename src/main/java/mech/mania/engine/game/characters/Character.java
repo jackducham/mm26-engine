@@ -9,21 +9,30 @@ import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.items.TempStatusModifier;
 import mech.mania.engine.game.items.Weapon;
 
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class Character {
-    private static final int reviveTicks = 0;
+    private static final int reviveTicks = 1;
 
-    protected double currentHealth;
+    protected int currentHealth;
     protected int experience; // XP reward on death (monster & player) AND XP gained by player
     protected Position position;
     protected Position spawnPoint;
     protected Weapon weapon;
     List<TempStatusModifier> activeEffects;
-    protected Map<Player, Double> taggedPlayersDamage;
-    private boolean isDead;
+    protected Map<String, Integer> taggedPlayersDamage;
     private int ticksSinceDeath;
     private String name;
+    private boolean isDead;
+
+    // TODO: consider using a StatusModifier or TempStatusModifier object here instead of so many variables!
+    // current active effects
+    protected int flatSpeedChange, percentSpeedChange;
+    protected int flatHealthChange, percentHealthChange;
+    protected int flatExperienceChange, percentExperienceChange;
+    protected int flatDefenseChange, percentDefenseChange;
+    protected int flatDamageChange, percentDamageChange;
 
 
     protected Character(int experience, Position spawnPoint, Weapon weapon, String name) {
@@ -35,55 +44,97 @@ public abstract class Character {
         this.weapon = weapon;
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
-        this.isDead = false;
         this.ticksSinceDeath = -1;
+        resetActiveEffects();
     }
 
-    public void takeDamage(double physicalDamage, double magicalDamage, Player player) {
-        double actualDamage = max(0, physicalDamage - getPhysicalDefense())
-            + max(0, magicalDamage - getMagicalDefense());
+    public CharacterProtos.Character buildProtoClassCharacter() {
+        CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
+        characterBuilder.setCurrentHealth(currentHealth);
+        characterBuilder.setExperience(experience);
+        characterBuilder.setPosition(position.buildProtoClass());
+        characterBuilder.setSpawnPoint(spawnPoint.buildProtoClass());
+        characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
 
-        if (taggedPlayersDamage.containsKey(player)) {
-            taggedPlayersDamage.put(player, taggedPlayersDamage.get(player) + actualDamage);
-        } else {
-            taggedPlayersDamage.put(player, actualDamage);
+        for (int i = 0; i < activeEffects.size(); i++) {
+            characterBuilder.setActiveEffects(i, activeEffects.get(i).buildProtoClassTemp());
         }
 
+        characterBuilder.putAllTaggedPlayersDamage(taggedPlayersDamage);
+
+        characterBuilder.setTicksSinceDeath(ticksSinceDeath);
+        characterBuilder.setName(name);
+        characterBuilder.setIsDead(isDead);
+
+        return characterBuilder.build();
+    }
+
+    public void takeDamage(int damage, TempStatusModifier attackEffect, String attacker) {
+        int actualDamage = max(0, damage - getDefense());
+
+        if (taggedPlayersDamage.containsKey(attacker)) {
+            taggedPlayersDamage.put(attacker, taggedPlayersDamage.get(attacker) + actualDamage);
+        } else {
+            taggedPlayersDamage.put(attacker, actualDamage);
+        }
+
+        if (attackEffect != null) {
+            activeEffects.add(attackEffect);
+        }
+
+
         updateCurrentHealth(-actualDamage);
-        if (currentHealth <= 0) {
-            isDead = true;
-            ticksSinceDeath = 0;
+    }
+
+    public void resetActiveEffects() {
+        this.flatSpeedChange = 0;
+        this.flatHealthChange = 0;
+        this.flatExperienceChange = 0;
+        this.flatDefenseChange = 0;
+        this.flatDamageChange = 0;
+
+        this.percentSpeedChange = 0;
+        this.percentHealthChange = 0;
+        this.percentExperienceChange = 0;
+        this.percentDefenseChange = 0;
+        this.percentDamageChange = 0;
+    }
+
+    public void applyActiveEffects() {
+        resetActiveEffects();
+        Iterator<TempStatusModifier> itr = activeEffects.iterator();
+        while (itr.hasNext()) {
+            TempStatusModifier effect = itr.next();
+            if (effect.getDuration() == 0) { // remove inactive effects
+                itr.remove();
+            } else {
+                flatSpeedChange += effect.getFlatSpeedChange();
+                flatHealthChange += effect.getFlatHealthChange();
+                flatExperienceChange += effect.getFlatExperienceChange();
+                flatDefenseChange += effect.getFlatDefenseChange();
+                flatDamageChange += effect.getFlatDamageChange();
+
+                // Assumes debuffs are [0, 1) and buffs are (1, inf)
+                percentSpeedChange *= effect.getPercentSpeedChange();
+                percentHealthChange *= effect.getPercentHealthChange();
+                percentExperienceChange *= effect.getPercentExperienceChange();
+                percentDefenseChange *= effect.getPercentDefenseChange();
+                percentDamageChange *= effect.getPercentDamageChange();
+            }
         }
     }
 
     protected void distributeRewards(GameState gameState) {
-        for (Player player : taggedPlayersDamage.keySet()) {
-            player.experience += this.experience;
+        for (String playerName : taggedPlayersDamage.keySet()) {
+            Player player = gameState.getPlayer(playerName);
+            player.experience += this.getLevel();
         }
     }
 
-    public void respawn() {
-        position = spawnPoint;
-        currentHealth = getMaxHealth();
-        isDead = false;
-        ticksSinceDeath = -1;
-    }
-
-    public void onDeath(GameState gameState) {
-        isDead = true;
-        ticksSinceDeath = 0;
-        activeEffects.clear();
-        distributeRewards(gameState);
-        taggedPlayersDamage.clear();
-    }
-
-    public void updateDeathTicks() {
-        ticksSinceDeath++;
-    }
-    public void removePlayer(Player toRemove) {
+    public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);
     }
-    public void updateCurrentHealth(double delta) {
+    public void updateCurrentHealth(int delta) {
         currentHealth += delta;
     }
     public void setPosition(Position position) {
@@ -91,19 +142,44 @@ public abstract class Character {
     }
 
     public boolean isDead() {
-        if (ticksSinceDeath == reviveTicks) {
-            isDead = false;
-            ticksSinceDeath = -1;
-        }
         return isDead;
     }
+
+    /**
+     * This should be externally called at the end of the CharacterDecision loop.
+     * @param gameState gameState to give rewards to
+     */
+    public void updateDeathState(GameState gameState) {
+        // player is already dead
+        if (isDead) {
+            ticksSinceDeath++;
+            if (ticksSinceDeath == reviveTicks) {
+                // revive player
+                position = spawnPoint;
+                currentHealth = getMaxHealth();
+                ticksSinceDeath = -1;
+                isDead = false;
+            }
+        } else if (currentHealth <= 0) { // player has just died
+            ticksSinceDeath = 0;
+            activeEffects.clear();
+            distributeRewards(gameState);
+            taggedPlayersDamage.clear();
+            isDead = true;
+        }
+
+    }
+
     public Weapon getWeapon() {
         return weapon;
+    }
+    public Position getSpawnPoint() {
+        return spawnPoint;
     }
     public Position getPosition() {
         return position;
     }
-    public double getCurrentHealth() {
+    public int getCurrentHealth() {
         return currentHealth;
     }
 
@@ -112,9 +188,9 @@ public abstract class Character {
         return 0;
     }
 
-    public double getPercentExpToNextLevel() {
+    public int getExpToNextLevel() {
         // TODO: experience formula
-        return 0.0;
+        return 0;
     }
 
     public String getName() {
@@ -126,40 +202,28 @@ public abstract class Character {
     }
 
     /* Stat getter methods */
-    static final double baseMaxHealth = 0;
-    static final double maxHealthScaling = 0;
-    public double getMaxHealth() {
-        return baseMaxHealth + getLevel()*maxHealthScaling;
+    static final int baseMaxHealth = 0;
+    static final int maxHealthScaling = 0;
+    public int getMaxHealth() {
+        return (baseMaxHealth + getLevel()*maxHealthScaling + flatHealthChange)*percentHealthChange;
     }
 
-    static final double baseSpeed = 0;
-    static final double speedScaling = 0;
-    public double getSpeed() {
-        return baseSpeed + getLevel()*speedScaling;
+    static final int baseSpeed = 0;
+    static final int speedScaling = 0;
+    public int getSpeed() {
+        return (baseSpeed + getLevel()*speedScaling + flatSpeedChange)*percentSpeedChange;
     }
 
-    static final double basePhysicalDamage = 0;
-    static final double physicalDamageScaling = 0;
-    public double getPhysicalDamage() {
-        return basePhysicalDamage + getLevel()*physicalDamageScaling;
+    static final int baseDamage = 0;
+    static final int damageScaling = 0;
+    public int getDamage() {
+        return (baseDamage + getLevel()*damageScaling + flatDamageChange)*percentDamageChange;
     }
 
-    static final double baseMagicalDamage = 0;
-    static final double magicalDamageScaling = 0;
-    public double getMagicalDamage() {
-        return baseMagicalDamage + getLevel()*magicalDamageScaling;
-    }
-
-    static final double basePhysicalDefense = 0;
-    static final double physicalDefenseScaling = 0;
-    public double getPhysicalDefense() {
-        return basePhysicalDefense + getLevel()*physicalDefenseScaling;
-    }
-
-    static final double baseMagicalDefense = 0;
-    static final double magicalDefenseScaling = 0;
-    public double getMagicalDefense() {
-        return baseMagicalDefense + getLevel()*magicalDefenseScaling;
+    static final int baseDefense = 0;
+    static final int defenseScaling = 0;
+    public int getDefense() {
+        return (baseDefense + getLevel()*defenseScaling + flatDefenseChange)*percentDefenseChange;
     }
 
     public List<TempStatusModifier> getActiveEffects() {

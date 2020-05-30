@@ -19,38 +19,52 @@ public final class PlayerProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string player_uuid = 1;</code>
-     * @return The playerUuid.
+     * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
      */
-    java.lang.String getPlayerUuid();
+    int getDecisionTypeValue();
     /**
-     * <code>string player_uuid = 1;</code>
-     * @return The bytes for playerUuid.
+     * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+     * @return The decisionType.
      */
-    com.google.protobuf.ByteString
-        getPlayerUuidBytes();
-
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
-     */
-    java.lang.String getPlayerName();
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
-     */
-    com.google.protobuf.ByteString
-        getPlayerNameBytes();
+    mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType getDecisionType();
 
     /**
      * <pre>
-     * TODO: Insert data needed here
+     * For MOVE, ATTACK
      * </pre>
      *
-     * <code>int32 increment = 3;</code>
-     * @return The increment.
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return Whether the targetPosition field is set.
      */
-    int getIncrement();
+    boolean hasTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return The targetPosition.
+     */
+    mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     */
+    mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder();
+
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    int getIndex();
   }
   /**
    * <pre>
@@ -69,8 +83,7 @@ public final class PlayerProtos {
       super(builder);
     }
     private PlayerDecision() {
-      playerUuid_ = "";
-      playerName_ = "";
+      decisionType_ = 0;
     }
 
     @java.lang.Override
@@ -103,21 +116,28 @@ public final class PlayerProtos {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
+              int rawValue = input.readEnum();
 
-              playerUuid_ = s;
+              decisionType_ = rawValue;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              mech.mania.engine.game.characters.CharacterProtos.Position.Builder subBuilder = null;
+              if (targetPosition_ != null) {
+                subBuilder = targetPosition_.toBuilder();
+              }
+              targetPosition_ = input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(targetPosition_);
+                targetPosition_ = subBuilder.buildPartial();
+              }
 
-              playerName_ = s;
               break;
             }
             case 24: {
 
-              increment_ = input.readInt32();
+              index_ = input.readInt32();
               break;
             }
             default: {
@@ -152,90 +172,221 @@ public final class PlayerProtos {
               mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.class, mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.Builder.class);
     }
 
-    public static final int PLAYER_UUID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object playerUuid_;
     /**
-     * <code>string player_uuid = 1;</code>
-     * @return The playerUuid.
+     * Protobuf enum {@code player_communication.PlayerDecision.DecisionType}
      */
-    public java.lang.String getPlayerUuid() {
-      java.lang.Object ref = playerUuid_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerUuid_ = s;
-        return s;
+    public enum DecisionType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NONE = 0;</code>
+       */
+      NONE(0),
+      /**
+       * <code>MOVE = 1;</code>
+       */
+      MOVE(1),
+      /**
+       * <code>ATTACK = 2;</code>
+       */
+      ATTACK(2),
+      /**
+       * <code>PORTAL = 3;</code>
+       */
+      PORTAL(3),
+      /**
+       * <code>DROP = 4;</code>
+       */
+      DROP(4),
+      /**
+       * <code>EQUIP = 5;</code>
+       */
+      EQUIP(5),
+      /**
+       * <code>PICKUP = 6;</code>
+       */
+      PICKUP(6),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>NONE = 0;</code>
+       */
+      public static final int NONE_VALUE = 0;
+      /**
+       * <code>MOVE = 1;</code>
+       */
+      public static final int MOVE_VALUE = 1;
+      /**
+       * <code>ATTACK = 2;</code>
+       */
+      public static final int ATTACK_VALUE = 2;
+      /**
+       * <code>PORTAL = 3;</code>
+       */
+      public static final int PORTAL_VALUE = 3;
+      /**
+       * <code>DROP = 4;</code>
+       */
+      public static final int DROP_VALUE = 4;
+      /**
+       * <code>EQUIP = 5;</code>
+       */
+      public static final int EQUIP_VALUE = 5;
+      /**
+       * <code>PICKUP = 6;</code>
+       */
+      public static final int PICKUP_VALUE = 6;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
       }
-    }
-    /**
-     * <code>string player_uuid = 1;</code>
-     * @return The bytes for playerUuid.
-     */
-    public com.google.protobuf.ByteString
-        getPlayerUuidBytes() {
-      java.lang.Object ref = playerUuid_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerUuid_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DecisionType valueOf(int value) {
+        return forNumber(value);
       }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static DecisionType forNumber(int value) {
+        switch (value) {
+          case 0: return NONE;
+          case 1: return MOVE;
+          case 2: return ATTACK;
+          case 3: return PORTAL;
+          case 4: return DROP;
+          case 5: return EQUIP;
+          case 6: return PICKUP;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DecisionType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DecisionType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DecisionType>() {
+              public DecisionType findValueByNumber(int number) {
+                return DecisionType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final DecisionType[] VALUES = values();
+
+      public static DecisionType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private DecisionType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:player_communication.PlayerDecision.DecisionType)
     }
 
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object playerName_;
+    public static final int DECISIONTYPE_FIELD_NUMBER = 1;
+    private int decisionType_;
     /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
+     * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
      */
-    public java.lang.String getPlayerName() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerName_ = s;
-        return s;
-      }
+    public int getDecisionTypeValue() {
+      return decisionType_;
     }
     /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
+     * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+     * @return The decisionType.
      */
-    public com.google.protobuf.ByteString
-        getPlayerNameBytes() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType getDecisionType() {
+      @SuppressWarnings("deprecation")
+      mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType result = mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType.UNRECOGNIZED : result;
     }
 
-    public static final int INCREMENT_FIELD_NUMBER = 3;
-    private int increment_;
+    public static final int TARGETPOSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.game.characters.CharacterProtos.Position targetPosition_;
     /**
      * <pre>
-     * TODO: Insert data needed here
+     * For MOVE, ATTACK
      * </pre>
      *
-     * <code>int32 increment = 3;</code>
-     * @return The increment.
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return Whether the targetPosition field is set.
      */
-    public int getIncrement() {
-      return increment_;
+    public boolean hasTargetPosition() {
+      return targetPosition_ != null;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return The targetPosition.
+     */
+    public mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition() {
+      return targetPosition_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     */
+    public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+      return getTargetPosition();
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 3;
+    private int index_;
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    public int getIndex() {
+      return index_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -252,14 +403,14 @@ public final class PlayerProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getPlayerUuidBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerUuid_);
+      if (decisionType_ != mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType.NONE.getNumber()) {
+        output.writeEnum(1, decisionType_);
       }
-      if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
+      if (targetPosition_ != null) {
+        output.writeMessage(2, getTargetPosition());
       }
-      if (increment_ != 0) {
-        output.writeInt32(3, increment_);
+      if (index_ != 0) {
+        output.writeInt32(3, index_);
       }
       unknownFields.writeTo(output);
     }
@@ -270,15 +421,17 @@ public final class PlayerProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (!getPlayerUuidBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerUuid_);
-      }
-      if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
-      }
-      if (increment_ != 0) {
+      if (decisionType_ != mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, increment_);
+          .computeEnumSize(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, index_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -295,12 +448,14 @@ public final class PlayerProtos {
       }
       mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision other = (mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision) obj;
 
-      if (!getPlayerUuid()
-          .equals(other.getPlayerUuid())) return false;
-      if (!getPlayerName()
-          .equals(other.getPlayerName())) return false;
-      if (getIncrement()
-          != other.getIncrement()) return false;
+      if (decisionType_ != other.decisionType_) return false;
+      if (hasTargetPosition() != other.hasTargetPosition()) return false;
+      if (hasTargetPosition()) {
+        if (!getTargetPosition()
+            .equals(other.getTargetPosition())) return false;
+      }
+      if (getIndex()
+          != other.getIndex()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -312,12 +467,14 @@ public final class PlayerProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PLAYER_UUID_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerUuid().hashCode();
-      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerName().hashCode();
-      hash = (37 * hash) + INCREMENT_FIELD_NUMBER;
-      hash = (53 * hash) + getIncrement();
+      hash = (37 * hash) + DECISIONTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + decisionType_;
+      if (hasTargetPosition()) {
+        hash = (37 * hash) + TARGETPOSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getTargetPosition().hashCode();
+      }
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -455,11 +612,15 @@ public final class PlayerProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        playerUuid_ = "";
+        decisionType_ = 0;
 
-        playerName_ = "";
-
-        increment_ = 0;
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+        index_ = 0;
 
         return this;
       }
@@ -487,9 +648,13 @@ public final class PlayerProtos {
       @java.lang.Override
       public mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision buildPartial() {
         mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision result = new mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision(this);
-        result.playerUuid_ = playerUuid_;
-        result.playerName_ = playerName_;
-        result.increment_ = increment_;
+        result.decisionType_ = decisionType_;
+        if (targetPositionBuilder_ == null) {
+          result.targetPosition_ = targetPosition_;
+        } else {
+          result.targetPosition_ = targetPositionBuilder_.build();
+        }
+        result.index_ = index_;
         onBuilt();
         return result;
       }
@@ -538,16 +703,14 @@ public final class PlayerProtos {
 
       public Builder mergeFrom(mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision other) {
         if (other == mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.getDefaultInstance()) return this;
-        if (!other.getPlayerUuid().isEmpty()) {
-          playerUuid_ = other.playerUuid_;
-          onChanged();
+        if (other.decisionType_ != 0) {
+          setDecisionTypeValue(other.getDecisionTypeValue());
         }
-        if (!other.getPlayerName().isEmpty()) {
-          playerName_ = other.playerName_;
-          onChanged();
+        if (other.hasTargetPosition()) {
+          mergeTargetPosition(other.getTargetPosition());
         }
-        if (other.getIncrement() != 0) {
-          setIncrement(other.getIncrement());
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -578,196 +741,251 @@ public final class PlayerProtos {
         return this;
       }
 
-      private java.lang.Object playerUuid_ = "";
+      private int decisionType_ = 0;
       /**
-       * <code>string player_uuid = 1;</code>
-       * @return The playerUuid.
+       * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+       * @return The enum numeric value on the wire for decisionType.
        */
-      public java.lang.String getPlayerUuid() {
-        java.lang.Object ref = playerUuid_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerUuid_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getDecisionTypeValue() {
+        return decisionType_;
       }
       /**
-       * <code>string player_uuid = 1;</code>
-       * @return The bytes for playerUuid.
-       */
-      public com.google.protobuf.ByteString
-          getPlayerUuidBytes() {
-        java.lang.Object ref = playerUuid_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerUuid_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string player_uuid = 1;</code>
-       * @param value The playerUuid to set.
+       * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+       * @param value The enum numeric value on the wire for decisionType to set.
        * @return This builder for chaining.
        */
-      public Builder setPlayerUuid(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerUuid_ = value;
+      public Builder setDecisionTypeValue(int value) {
+        decisionType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string player_uuid = 1;</code>
+       * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+       * @return The decisionType.
+       */
+      public mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType getDecisionType() {
+        @SuppressWarnings("deprecation")
+        mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType result = mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
+       * @param value The decisionType to set.
        * @return This builder for chaining.
        */
-      public Builder clearPlayerUuid() {
+      public Builder setDecisionType(mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision.DecisionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         
-        playerUuid_ = getDefaultInstance().getPlayerUuid();
+        decisionType_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>string player_uuid = 1;</code>
-       * @param value The bytes for playerUuid to set.
+       * <code>.player_communication.PlayerDecision.DecisionType decisionType = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder setPlayerUuidBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearDecisionType() {
         
-        playerUuid_ = value;
+        decisionType_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object playerName_ = "";
+      private mech.mania.engine.game.characters.CharacterProtos.Position targetPosition_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> targetPositionBuilder_;
       /**
-       * <code>string player_name = 2;</code>
-       * @return The playerName.
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       * @return Whether the targetPosition field is set.
        */
-      public java.lang.String getPlayerName() {
-        java.lang.Object ref = playerName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerName_ = s;
-          return s;
+      public boolean hasTargetPosition() {
+        return targetPositionBuilder_ != null || targetPosition_ != null;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       * @return The targetPosition.
+       */
+      public mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          return targetPosition_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
         } else {
-          return (java.lang.String) ref;
+          return targetPositionBuilder_.getMessage();
         }
       }
       /**
-       * <code>string player_name = 2;</code>
-       * @return The bytes for playerName.
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getPlayerNameBytes() {
-        java.lang.Object ref = playerName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerName_ = b;
-          return b;
+      public Builder setTargetPosition(mech.mania.engine.game.characters.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          targetPosition_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          targetPositionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder setTargetPosition(
+          mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = builderForValue.build();
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder mergeTargetPosition(mech.mania.engine.game.characters.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (targetPosition_ != null) {
+            targetPosition_ =
+              mech.mania.engine.game.characters.CharacterProtos.Position.newBuilder(targetPosition_).mergeFrom(value).buildPartial();
+          } else {
+            targetPosition_ = value;
+          }
+          onChanged();
+        } else {
+          targetPositionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder clearTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+          onChanged();
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public mech.mania.engine.game.characters.CharacterProtos.Position.Builder getTargetPositionBuilder() {
+        
+        onChanged();
+        return getTargetPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+        if (targetPositionBuilder_ != null) {
+          return targetPositionBuilder_.getMessageOrBuilder();
+        } else {
+          return targetPosition_ == null ?
+              mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
         }
       }
       /**
-       * <code>string player_name = 2;</code>
-       * @param value The playerName to set.
-       * @return This builder for chaining.
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
        */
-      public Builder setPlayerName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerName() {
-        
-        playerName_ = getDefaultInstance().getPlayerName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The bytes for playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerName_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
+          getTargetPositionFieldBuilder() {
+        if (targetPositionBuilder_ == null) {
+          targetPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder>(
+                  getTargetPosition(),
+                  getParentForChildren(),
+                  isClean());
+          targetPosition_ = null;
+        }
+        return targetPositionBuilder_;
       }
 
-      private int increment_ ;
+      private int index_ ;
       /**
        * <pre>
-       * TODO: Insert data needed here
+       * For TRAVEL, DROP, EQUIP, PICKUP
        * </pre>
        *
-       * <code>int32 increment = 3;</code>
-       * @return The increment.
+       * <code>int32 index = 3;</code>
+       * @return The index.
        */
-      public int getIncrement() {
-        return increment_;
+      public int getIndex() {
+        return index_;
       }
       /**
        * <pre>
-       * TODO: Insert data needed here
+       * For TRAVEL, DROP, EQUIP, PICKUP
        * </pre>
        *
-       * <code>int32 increment = 3;</code>
-       * @param value The increment to set.
+       * <code>int32 index = 3;</code>
+       * @param value The index to set.
        * @return This builder for chaining.
        */
-      public Builder setIncrement(int value) {
+      public Builder setIndex(int value) {
         
-        increment_ = value;
+        index_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * TODO: Insert data needed here
+       * For TRAVEL, DROP, EQUIP, PICKUP
        * </pre>
        *
-       * <code>int32 increment = 3;</code>
+       * <code>int32 index = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearIncrement() {
+      public Builder clearIndex() {
         
-        increment_ = 0;
+        index_ = 0;
         onChanged();
         return this;
       }
@@ -829,61 +1047,32 @@ public final class PlayerProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
+     * </pre>
+     *
      * <code>string player_name = 1;</code>
      * @return The playerName.
      */
     java.lang.String getPlayerName();
     /**
+     * <pre>
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
+     * </pre>
+     *
      * <code>string player_name = 1;</code>
      * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
         getPlayerNameBytes();
-
-    /**
-     * <pre>
-     * TODO: What is this?
-     * </pre>
-     *
-     * <code>int32 increment = 2;</code>
-     * @return The increment.
-     */
-    int getIncrement();
-
-    /**
-     * <code>.game_state.GameState game_state = 4;</code>
-     * @return Whether the gameState field is set.
-     */
-    boolean hasGameState();
-    /**
-     * <code>.game_state.GameState game_state = 4;</code>
-     * @return The gameState.
-     */
-    mech.mania.engine.game.model.GameStateProtos.GameState getGameState();
-    /**
-     * <code>.game_state.GameState game_state = 4;</code>
-     */
-    mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
-
-    /**
-     * <code>string test1 = 5;</code>
-     * @return The test1.
-     */
-    java.lang.String getTest1();
-    /**
-     * <code>string test1 = 5;</code>
-     * @return The bytes for test1.
-     */
-    com.google.protobuf.ByteString
-        getTest1Bytes();
-
-    /**
-     * <code>int32 test2 = 6;</code>
-     * @return The test2.
-     */
-    int getTest2();
-
-    public mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn.TestCase getTestCase();
   }
   /**
    * <pre>
@@ -941,35 +1130,6 @@ public final class PlayerProtos {
               playerName_ = s;
               break;
             }
-            case 16: {
-
-              increment_ = input.readInt32();
-              break;
-            }
-            case 34: {
-              mech.mania.engine.game.model.GameStateProtos.GameState.Builder subBuilder = null;
-              if (gameState_ != null) {
-                subBuilder = gameState_.toBuilder();
-              }
-              gameState_ = input.readMessage(mech.mania.engine.game.model.GameStateProtos.GameState.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(gameState_);
-                gameState_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-              testCase_ = 5;
-              test_ = s;
-              break;
-            }
-            case 48: {
-              testCase_ = 6;
-              test_ = input.readInt32();
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1002,50 +1162,17 @@ public final class PlayerProtos {
               mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn.class, mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn.Builder.class);
     }
 
-    private int testCase_ = 0;
-    private java.lang.Object test_;
-    public enum TestCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      TEST1(5),
-      TEST2(6),
-      TEST_NOT_SET(0);
-      private final int value;
-      private TestCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static TestCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static TestCase forNumber(int value) {
-        switch (value) {
-          case 5: return TEST1;
-          case 6: return TEST2;
-          case 0: return TEST_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public TestCase
-    getTestCase() {
-      return TestCase.forNumber(
-          testCase_);
-    }
-
     public static final int PLAYER_NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object playerName_;
     /**
+     * <pre>
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
+     * </pre>
+     *
      * <code>string player_name = 1;</code>
      * @return The playerName.
      */
@@ -1062,6 +1189,14 @@ public final class PlayerProtos {
       }
     }
     /**
+     * <pre>
+     *game_state.GameState game_state = 1;
+     *oneof test{ // Testing sending info and how oneof's work
+     *  string test1 = 2;
+     *  int32 test2 = 3;
+     *}
+     * </pre>
+     *
      * <code>string player_name = 1;</code>
      * @return The bytes for playerName.
      */
@@ -1077,100 +1212,6 @@ public final class PlayerProtos {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int INCREMENT_FIELD_NUMBER = 2;
-    private int increment_;
-    /**
-     * <pre>
-     * TODO: What is this?
-     * </pre>
-     *
-     * <code>int32 increment = 2;</code>
-     * @return The increment.
-     */
-    public int getIncrement() {
-      return increment_;
-    }
-
-    public static final int GAME_STATE_FIELD_NUMBER = 4;
-    private mech.mania.engine.game.model.GameStateProtos.GameState gameState_;
-    /**
-     * <code>.game_state.GameState game_state = 4;</code>
-     * @return Whether the gameState field is set.
-     */
-    public boolean hasGameState() {
-      return gameState_ != null;
-    }
-    /**
-     * <code>.game_state.GameState game_state = 4;</code>
-     * @return The gameState.
-     */
-    public mech.mania.engine.game.model.GameStateProtos.GameState getGameState() {
-      return gameState_ == null ? mech.mania.engine.game.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-    }
-    /**
-     * <code>.game_state.GameState game_state = 4;</code>
-     */
-    public mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
-      return getGameState();
-    }
-
-    public static final int TEST1_FIELD_NUMBER = 5;
-    /**
-     * <code>string test1 = 5;</code>
-     * @return The test1.
-     */
-    public java.lang.String getTest1() {
-      java.lang.Object ref = "";
-      if (testCase_ == 5) {
-        ref = test_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (testCase_ == 5) {
-          test_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string test1 = 5;</code>
-     * @return The bytes for test1.
-     */
-    public com.google.protobuf.ByteString
-        getTest1Bytes() {
-      java.lang.Object ref = "";
-      if (testCase_ == 5) {
-        ref = test_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (testCase_ == 5) {
-          test_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int TEST2_FIELD_NUMBER = 6;
-    /**
-     * <code>int32 test2 = 6;</code>
-     * @return The test2.
-     */
-    public int getTest2() {
-      if (testCase_ == 6) {
-        return (java.lang.Integer) test_;
-      }
-      return 0;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1190,19 +1231,6 @@ public final class PlayerProtos {
       if (!getPlayerNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerName_);
       }
-      if (increment_ != 0) {
-        output.writeInt32(2, increment_);
-      }
-      if (gameState_ != null) {
-        output.writeMessage(4, getGameState());
-      }
-      if (testCase_ == 5) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, test_);
-      }
-      if (testCase_ == 6) {
-        output.writeInt32(
-            6, (int)((java.lang.Integer) test_));
-      }
       unknownFields.writeTo(output);
     }
 
@@ -1214,22 +1242,6 @@ public final class PlayerProtos {
       size = 0;
       if (!getPlayerNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerName_);
-      }
-      if (increment_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, increment_);
-      }
-      if (gameState_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getGameState());
-      }
-      if (testCase_ == 5) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, test_);
-      }
-      if (testCase_ == 6) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(
-              6, (int)((java.lang.Integer) test_));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1248,26 +1260,6 @@ public final class PlayerProtos {
 
       if (!getPlayerName()
           .equals(other.getPlayerName())) return false;
-      if (getIncrement()
-          != other.getIncrement()) return false;
-      if (hasGameState() != other.hasGameState()) return false;
-      if (hasGameState()) {
-        if (!getGameState()
-            .equals(other.getGameState())) return false;
-      }
-      if (!getTestCase().equals(other.getTestCase())) return false;
-      switch (testCase_) {
-        case 5:
-          if (!getTest1()
-              .equals(other.getTest1())) return false;
-          break;
-        case 6:
-          if (getTest2()
-              != other.getTest2()) return false;
-          break;
-        case 0:
-        default:
-      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1281,24 +1273,6 @@ public final class PlayerProtos {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerName().hashCode();
-      hash = (37 * hash) + INCREMENT_FIELD_NUMBER;
-      hash = (53 * hash) + getIncrement();
-      if (hasGameState()) {
-        hash = (37 * hash) + GAME_STATE_FIELD_NUMBER;
-        hash = (53 * hash) + getGameState().hashCode();
-      }
-      switch (testCase_) {
-        case 5:
-          hash = (37 * hash) + TEST1_FIELD_NUMBER;
-          hash = (53 * hash) + getTest1().hashCode();
-          break;
-        case 6:
-          hash = (37 * hash) + TEST2_FIELD_NUMBER;
-          hash = (53 * hash) + getTest2();
-          break;
-        case 0:
-        default:
-      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1438,16 +1412,6 @@ public final class PlayerProtos {
         super.clear();
         playerName_ = "";
 
-        increment_ = 0;
-
-        if (gameStateBuilder_ == null) {
-          gameState_ = null;
-        } else {
-          gameState_ = null;
-          gameStateBuilder_ = null;
-        }
-        testCase_ = 0;
-        test_ = null;
         return this;
       }
 
@@ -1475,19 +1439,6 @@ public final class PlayerProtos {
       public mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn buildPartial() {
         mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn result = new mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerTurn(this);
         result.playerName_ = playerName_;
-        result.increment_ = increment_;
-        if (gameStateBuilder_ == null) {
-          result.gameState_ = gameState_;
-        } else {
-          result.gameState_ = gameStateBuilder_.build();
-        }
-        if (testCase_ == 5) {
-          result.test_ = test_;
-        }
-        if (testCase_ == 6) {
-          result.test_ = test_;
-        }
-        result.testCase_ = testCase_;
         onBuilt();
         return result;
       }
@@ -1540,27 +1491,6 @@ public final class PlayerProtos {
           playerName_ = other.playerName_;
           onChanged();
         }
-        if (other.getIncrement() != 0) {
-          setIncrement(other.getIncrement());
-        }
-        if (other.hasGameState()) {
-          mergeGameState(other.getGameState());
-        }
-        switch (other.getTestCase()) {
-          case TEST1: {
-            testCase_ = 5;
-            test_ = other.test_;
-            onChanged();
-            break;
-          }
-          case TEST2: {
-            setTest2(other.getTest2());
-            break;
-          }
-          case TEST_NOT_SET: {
-            break;
-          }
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1589,24 +1519,17 @@ public final class PlayerProtos {
         }
         return this;
       }
-      private int testCase_ = 0;
-      private java.lang.Object test_;
-      public TestCase
-          getTestCase() {
-        return TestCase.forNumber(
-            testCase_);
-      }
-
-      public Builder clearTest() {
-        testCase_ = 0;
-        test_ = null;
-        onChanged();
-        return this;
-      }
-
 
       private java.lang.Object playerName_ = "";
       /**
+       * <pre>
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
+       * </pre>
+       *
        * <code>string player_name = 1;</code>
        * @return The playerName.
        */
@@ -1623,6 +1546,14 @@ public final class PlayerProtos {
         }
       }
       /**
+       * <pre>
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
+       * </pre>
+       *
        * <code>string player_name = 1;</code>
        * @return The bytes for playerName.
        */
@@ -1640,6 +1571,14 @@ public final class PlayerProtos {
         }
       }
       /**
+       * <pre>
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
+       * </pre>
+       *
        * <code>string player_name = 1;</code>
        * @param value The playerName to set.
        * @return This builder for chaining.
@@ -1655,6 +1594,14 @@ public final class PlayerProtos {
         return this;
       }
       /**
+       * <pre>
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
+       * </pre>
+       *
        * <code>string player_name = 1;</code>
        * @return This builder for chaining.
        */
@@ -1665,6 +1612,14 @@ public final class PlayerProtos {
         return this;
       }
       /**
+       * <pre>
+       *game_state.GameState game_state = 1;
+       *oneof test{ // Testing sending info and how oneof's work
+       *  string test1 = 2;
+       *  int32 test2 = 3;
+       *}
+       * </pre>
+       *
        * <code>string player_name = 1;</code>
        * @param value The bytes for playerName to set.
        * @return This builder for chaining.
@@ -1678,288 +1633,6 @@ public final class PlayerProtos {
         
         playerName_ = value;
         onChanged();
-        return this;
-      }
-
-      private int increment_ ;
-      /**
-       * <pre>
-       * TODO: What is this?
-       * </pre>
-       *
-       * <code>int32 increment = 2;</code>
-       * @return The increment.
-       */
-      public int getIncrement() {
-        return increment_;
-      }
-      /**
-       * <pre>
-       * TODO: What is this?
-       * </pre>
-       *
-       * <code>int32 increment = 2;</code>
-       * @param value The increment to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIncrement(int value) {
-        
-        increment_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * TODO: What is this?
-       * </pre>
-       *
-       * <code>int32 increment = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIncrement() {
-        
-        increment_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private mech.mania.engine.game.model.GameStateProtos.GameState gameState_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.game.model.GameStateProtos.GameState, mech.mania.engine.game.model.GameStateProtos.GameState.Builder, mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder> gameStateBuilder_;
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       * @return Whether the gameState field is set.
-       */
-      public boolean hasGameState() {
-        return gameStateBuilder_ != null || gameState_ != null;
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       * @return The gameState.
-       */
-      public mech.mania.engine.game.model.GameStateProtos.GameState getGameState() {
-        if (gameStateBuilder_ == null) {
-          return gameState_ == null ? mech.mania.engine.game.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-        } else {
-          return gameStateBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      public Builder setGameState(mech.mania.engine.game.model.GameStateProtos.GameState value) {
-        if (gameStateBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          gameState_ = value;
-          onChanged();
-        } else {
-          gameStateBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      public Builder setGameState(
-          mech.mania.engine.game.model.GameStateProtos.GameState.Builder builderForValue) {
-        if (gameStateBuilder_ == null) {
-          gameState_ = builderForValue.build();
-          onChanged();
-        } else {
-          gameStateBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      public Builder mergeGameState(mech.mania.engine.game.model.GameStateProtos.GameState value) {
-        if (gameStateBuilder_ == null) {
-          if (gameState_ != null) {
-            gameState_ =
-              mech.mania.engine.game.model.GameStateProtos.GameState.newBuilder(gameState_).mergeFrom(value).buildPartial();
-          } else {
-            gameState_ = value;
-          }
-          onChanged();
-        } else {
-          gameStateBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      public Builder clearGameState() {
-        if (gameStateBuilder_ == null) {
-          gameState_ = null;
-          onChanged();
-        } else {
-          gameState_ = null;
-          gameStateBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      public mech.mania.engine.game.model.GameStateProtos.GameState.Builder getGameStateBuilder() {
-        
-        onChanged();
-        return getGameStateFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      public mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
-        if (gameStateBuilder_ != null) {
-          return gameStateBuilder_.getMessageOrBuilder();
-        } else {
-          return gameState_ == null ?
-              mech.mania.engine.game.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-        }
-      }
-      /**
-       * <code>.game_state.GameState game_state = 4;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.game.model.GameStateProtos.GameState, mech.mania.engine.game.model.GameStateProtos.GameState.Builder, mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder> 
-          getGameStateFieldBuilder() {
-        if (gameStateBuilder_ == null) {
-          gameStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.game.model.GameStateProtos.GameState, mech.mania.engine.game.model.GameStateProtos.GameState.Builder, mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder>(
-                  getGameState(),
-                  getParentForChildren(),
-                  isClean());
-          gameState_ = null;
-        }
-        return gameStateBuilder_;
-      }
-
-      /**
-       * <code>string test1 = 5;</code>
-       * @return The test1.
-       */
-      public java.lang.String getTest1() {
-        java.lang.Object ref = "";
-        if (testCase_ == 5) {
-          ref = test_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (testCase_ == 5) {
-            test_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string test1 = 5;</code>
-       * @return The bytes for test1.
-       */
-      public com.google.protobuf.ByteString
-          getTest1Bytes() {
-        java.lang.Object ref = "";
-        if (testCase_ == 5) {
-          ref = test_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (testCase_ == 5) {
-            test_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string test1 = 5;</code>
-       * @param value The test1 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTest1(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  testCase_ = 5;
-        test_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string test1 = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTest1() {
-        if (testCase_ == 5) {
-          testCase_ = 0;
-          test_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string test1 = 5;</code>
-       * @param value The bytes for test1 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTest1Bytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        testCase_ = 5;
-        test_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>int32 test2 = 6;</code>
-       * @return The test2.
-       */
-      public int getTest2() {
-        if (testCase_ == 6) {
-          return (java.lang.Integer) test_;
-        }
-        return 0;
-      }
-      /**
-       * <code>int32 test2 = 6;</code>
-       * @param value The test2 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTest2(int value) {
-        testCase_ = 6;
-        test_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 test2 = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTest2() {
-        if (testCase_ == 6) {
-          testCase_ = 0;
-          test_ = null;
-          onChanged();
-        }
         return this;
       }
       @java.lang.Override
@@ -2035,33 +1708,37 @@ public final class PlayerProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\023player_protos.proto\022\024player_communicat" +
-      "ion\032\020game_state.proto\"M\n\016PlayerDecision\022" +
-      "\023\n\013player_uuid\030\001 \001(\t\022\023\n\013player_name\030\002 \001(" +
-      "\t\022\021\n\tincrement\030\003 \001(\005\"\211\001\n\nPlayerTurn\022\023\n\013p" +
-      "layer_name\030\001 \001(\t\022\021\n\tincrement\030\002 \001(\005\022)\n\ng" +
-      "ame_state\030\004 \001(\0132\025.game_state.GameState\022\017" +
-      "\n\005test1\030\005 \001(\tH\000\022\017\n\005test2\030\006 \001(\005H\000B\006\n\004test" +
-      "BC\n3mech.mania.engine.server.communicati" +
-      "on.player.modelB\014PlayerProtosb\006proto3"
+      "ion\032\020game_state.proto\032\017character.proto\"\362" +
+      "\001\n\016PlayerDecision\022G\n\014decisionType\030\001 \001(\0162" +
+      "1.player_communication.PlayerDecision.De" +
+      "cisionType\022+\n\016targetPosition\030\002 \001(\0132\023.cha" +
+      "racter.Position\022\r\n\005index\030\003 \001(\005\"[\n\014Decisi" +
+      "onType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n" +
+      "\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKU" +
+      "P\020\006\"!\n\nPlayerTurn\022\023\n\013player_name\030\001 \001(\tBC" +
+      "\n3mech.mania.engine.server.communication" +
+      ".player.modelB\014PlayerProtosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           mech.mania.engine.game.model.GameStateProtos.getDescriptor(),
+          mech.mania.engine.game.characters.CharacterProtos.getDescriptor(),
         });
     internal_static_player_communication_PlayerDecision_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_player_communication_PlayerDecision_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_PlayerDecision_descriptor,
-        new java.lang.String[] { "PlayerUuid", "PlayerName", "Increment", });
+        new java.lang.String[] { "DecisionType", "TargetPosition", "Index", });
     internal_static_player_communication_PlayerTurn_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_player_communication_PlayerTurn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_PlayerTurn_descriptor,
-        new java.lang.String[] { "PlayerName", "Increment", "GameState", "Test1", "Test2", "Test", });
+        new java.lang.String[] { "PlayerName", });
     mech.mania.engine.game.model.GameStateProtos.getDescriptor();
+    mech.mania.engine.game.characters.CharacterProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
