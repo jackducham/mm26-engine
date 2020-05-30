@@ -28,24 +28,34 @@ public class GameLogic {
      * @return the resulting {@link GameState}.
      */
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
+        // ========== NOTES & TODOS ========== \\
         // TODO: update GameState using List<PlayerDecision>
         // TODO: convert PlayerDecision to CharacterDecision
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
-        Board pvpBoard = gameState.getPvpBoard();
-        for (Player player: pvpBoard.getPlayers()) {
+
+
+        // ========== HANDLE DEAD PLAYERS ========== \\
+        List<Player> deadPlayers = new LinkedList<Player>();
+        //keeping a list of dead players, so they can be respawned after everything else has happened.
+
+        for (Player player: gameState.getAllPlayers()) {
             if (player.getCurrentHealth() <= 0) {
-                //remove from taggedPlayers map
-                // TODO: check if player is in taggedPlayers map
-                for (int i = 0; i < pvpBoard.getPlayers().size(); i++) {
-                    pvpBoard.getPlayers().get(i).removePlayer(player);
-                }
-                for (int i = 0; i < pvpBoard.getEnemies().size(); i++) {
-                    pvpBoard.getEnemies().get(i).removePlayer(player);
-                }
+                deadPlayers.add(player);
+                decisions.remove(player);
             }
         }
 
-        Map<String, CharacterDecision> cDecisions;
+
+        // ========== CONVERT DECISIONS ========== \\
+        //I (DREW) HAVE NO IDEA IF THIS IS RIGHT. SOMEONE ELSE SHOULD TAKE A LOOK AT THIS.
+        Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
+        for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
+            CharacterDecision newDecision = new CharacterDecision(entry.getValue());
+            cDecisions.put(entry.getKey(), newDecision);
+        }
+
+
+        // ========== SORT DECISIONS ========== \\
         Map<String, CharacterDecision> inventoryActions = new HashMap<String, CharacterDecision>();
         Map<String, CharacterDecision> attackActions = new HashMap<String, CharacterDecision>();
         Map<String, CharacterDecision> movementActions = new HashMap<String, CharacterDecision>();
@@ -64,9 +74,30 @@ public class GameLogic {
             }
         }
 
+
+        // ========== HANDLE INVENTORY ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : inventoryActions.entrySet()) {
 
         }
+
+
+        // ========== HANDLE ATTACK ACTIONS ========== \\
+        for (Map.Entry<String, CharacterDecision> entry : attackActions.entrySet()) {
+
+        }
+
+
+        // ========== HANDLE MOVEMENT ACTIONS ========== \\
+        for (Map.Entry<String, CharacterDecision> entry : movementActions.entrySet()) {
+
+        }
+
+
+        // ========== RESPAWN DEAD PLAYERS ========== \\
+        for (Player player : deadPlayers) {
+
+        }
+
 
         return gameState;
     }
