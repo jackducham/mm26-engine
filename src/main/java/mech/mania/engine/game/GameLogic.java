@@ -121,6 +121,9 @@ public class GameLogic {
 
         // ========== HANDLE ATTACK ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : attackActions.entrySet()) {
+            Player attacker = gameState.getPlayer(entry.getKey());
+            Position target = entry.getValue().getActionPosition();
+            //Player defenders = gameState.getPlayersOnBoard(target.getBoardID()).
 
         }
 

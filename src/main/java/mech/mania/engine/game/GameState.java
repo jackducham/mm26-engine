@@ -81,6 +81,17 @@ public class GameState {
                 .collect(Collectors.toList());
     }
 
+    public List<Player> getPlayersAtPosition(Position position) {
+        List<Player> players = getPlayersOnBoard(position.getBoardID());
+        List<Player> toReturn = new ArrayList<Player>();
+        for(Player player : players) {
+            if(player.getPosition() == position) {
+                toReturn.add(player);
+            }
+        }
+        return toReturn;
+    }
+
     public GameStateProtos.GameState buildProtoClass() {
         GameStateProtos.GameState.Builder gameStateBuilder = GameStateProtos.GameState.newBuilder();
         gameStateBuilder.setStateId(turnNumber);
