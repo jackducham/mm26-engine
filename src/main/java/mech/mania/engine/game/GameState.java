@@ -2,6 +2,7 @@ package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.BoardProtos;
+import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.*;
 import mech.mania.engine.game.model.GameStateProtos;
@@ -44,6 +45,18 @@ public class GameState {
         return null;
     }
 
+    public Character getCharacter(String characterId) {
+        if(playerNames.containsKey(characterId)) {
+            return playerNames.get(characterId);
+        }
+
+        if(monsterNames.containsKey(characterId)) {
+            return monsterNames.get(characterId);
+        }
+
+        return null;
+    }
+
     public List<Player> getAllPlayers() {
         List<Player> players = new ArrayList<Player>();
         for(Player player: playerNames.values()) {
@@ -79,17 +92,6 @@ public class GameState {
 
         return playerNames.values().stream().filter(byBoard)
                 .collect(Collectors.toList());
-    }
-
-    public List<Player> getPlayersAtPosition(Position position) {
-        List<Player> players = getPlayersOnBoard(position.getBoardID());
-        List<Player> toReturn = new ArrayList<Player>();
-        for(Player player : players) {
-            if(player.getPosition() == position) {
-                toReturn.add(player);
-            }
-        }
-        return toReturn;
     }
 
     public GameStateProtos.GameState buildProtoClass() {

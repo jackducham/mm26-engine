@@ -37,11 +37,13 @@ public class GameLogic {
         //keeping a list of dead players, so they can be respawned after everything else has happened.
 
         for (Player player: gameState.getAllPlayers()) {
-            if (player.getCurrentHealth() <= 0) {
+            if (player.isDead()) {
                 deadPlayers.add(player);
-                decisions.remove(player);
+                decisions.remove(player.getName());
             }
         }
+
+        // ========== APPLY TEMP EFFECTS AND REDUCE TURNS REMAINING ========== \\
 
 
         // ========== CONVERT DECISIONS ========== \\
@@ -75,62 +77,19 @@ public class GameLogic {
 
         // ========== HANDLE INVENTORY ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : inventoryActions.entrySet()) {
-
-            Player player = gameState.getPlayer(entry.getKey());
-            Tile playerLocation = gameState.getBoard(player.getPosition().getBoardID())
-                    .getGrid()[player.getPosition().getX()][player.getPosition().getY()];
-
-
-            int index = entry.getValue().getIndex();
-            if(entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP) {
-                if(index >= player.getInventorySize() || index < 0) {
-                    break;
-                }
-
-                //NOTE: as currently implemented, calling this function on a consumable, uses the consumable.
-                //I think this is the only way to use one as of current.
-                player.equipItem(index);
-
-            }
-
-            if(entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
-                if(index >= player.getInventorySize() || index < 0) {
-                    break;
-                }
-
-                playerLocation.addItem(player.getInventory()[index]);
-                player.getInventory()[index] = null;
-            }
-
-            if(entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP) {
-                int numItems = playerLocation.getItems().size();
-                if(index >= numItems || index < 0) {
-                    break;
-                }
-
-                int freeInvIndex = player.getFreeInventoryIndex();
-                if(freeInvIndex == -1) {
-                    break;
-                }
-
-                player.getInventory()[freeInvIndex] = playerLocation.getItems().get(index);
-                playerLocation.removeItem(index);
-            }
+            processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
         }
 
 
         // ========== HANDLE ATTACK ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : attackActions.entrySet()) {
-            Player attacker = gameState.getPlayer(entry.getKey());
-            Position target = entry.getValue().getActionPosition();
-            //Player defenders = gameState.getPlayersOnBoard(target.getBoardID()).
-
+            processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
         }
 
 
         // ========== HANDLE MOVEMENT ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : movementActions.entrySet()) {
-
+            processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
         }
 
 
@@ -292,7 +251,7 @@ public class GameLogic {
 
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
-                Position position = new Position(x, y);
+                Position position = new Position(x, y, attackCoordinate.getBoardID());
                 if (calculateManhattanDistance(position, attackCoordinate) <= radius && validatePosition(gameState, position)) {
                     affectedPositions.put(position, 1);
                 }
@@ -327,7 +286,7 @@ public class GameLogic {
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 player.takeDamage(
-                                    attacker.getWeapon().getDamage(),
+                                    attacker.getDamage(),
                                     onHitEffect,
                                     attacker.getName()
                 );
@@ -342,7 +301,7 @@ public class GameLogic {
             if (affectedPositions.containsKey(playerPos)) {
                 monster.addEffect(onHitEffect);
                 monster.takeDamage(
-                        attacker.getWeapon().getDamage(),
+                        attacker.getDamage(),
                         onHitEffect,
                         attacker.getName()
                 );
