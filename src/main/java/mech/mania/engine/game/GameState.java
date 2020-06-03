@@ -65,6 +65,14 @@ public class GameState {
         return players;
     }
 
+    public List<Monster> getAllMonsters() {
+        List<Monster> monsters = new ArrayList<Monster>();
+        for(Monster monster: monsterNames.values()) {
+            monsters.add(monster);
+        }
+        return monsters;
+    }
+
     public Monster getMonster(String monsterId) {
         if (monsterNames.containsKey(monsterId)) {
             return monsterNames.get(monsterId);

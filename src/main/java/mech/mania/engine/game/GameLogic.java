@@ -28,30 +28,30 @@ public class GameLogic {
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         // ========== NOTES & TODOS ========== \\
         // TODO: update GameState using List<PlayerDecision>
-        // TODO: convert PlayerDecision to CharacterDecision (MAYBE DONE??? NEED SOMEONE ELSE TO TAKE A LOOK AND MAKE SURE)
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
 
-        // ========== HANDLE DEAD PLAYERS ========== \\
-        List<Player> deadPlayers = new LinkedList<Player>();
-        //keeping a list of dead players, so they can be respawned after everything else has happened.
-
-        for (Player player: gameState.getAllPlayers()) {
-            if (player.isDead()) {
-                deadPlayers.add(player);
-                decisions.remove(player.getName());
-            }
-        }
 
         // ========== APPLY TEMP EFFECTS AND REDUCE TURNS REMAINING ========== \\
+        List<Player> players = gameState.getAllPlayers();
+        List<Monster> monsters = gameState.getAllMonsters();
+
+        for(Player player : players) {
+            player.applyActiveEffects();
+        }
+        for(Monster monster : monsters) {
+            monster.applyActiveEffects();
+        }
 
 
-        // ========== CONVERT DECISIONS ========== \\
-        //I (DREW) HAVE NO IDEA IF THIS IS RIGHT. SOMEONE ELSE SHOULD TAKE A LOOK AT THIS.
+        // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
         for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
-            CharacterDecision newDecision = new CharacterDecision(entry.getValue());
-            cDecisions.put(entry.getKey(), newDecision);
+            if(!gameState.getPlayer(entry.getKey()).isDead()) {
+                CharacterDecision newDecision = new CharacterDecision(entry.getValue());
+                cDecisions.put(entry.getKey(), newDecision);
+            }
+
         }
 
 
@@ -93,9 +93,13 @@ public class GameLogic {
         }
 
 
-        // ========== RESPAWN DEAD PLAYERS ========== \\
-        for (Player player : deadPlayers) {
-
+        // ========== HANDLE DEAD/DYING PLAYERS ========== \\
+        //updateDeathState handles clearing active effects, setting status to dead/alive, respawning, and distributing rewards
+        for (Player player: players) {
+            player.updateDeathState(gameState);
+        }
+        for (Monster monster: monsters) {
+            monster.updateDeathState(gameState);
         }
 
 
