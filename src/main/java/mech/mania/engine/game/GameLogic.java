@@ -9,9 +9,7 @@ import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterDecision;
 
-import mech.mania.engine.game.items.Item;
-import mech.mania.engine.game.items.TempStatusModifier;
-import mech.mania.engine.game.items.Weapon;
+import mech.mania.engine.game.items.*;
 
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 
@@ -30,7 +28,7 @@ public class GameLogic {
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         // ========== NOTES & TODOS ========== \\
         // TODO: update GameState using List<PlayerDecision>
-        // TODO: convert PlayerDecision to CharacterDecision
+        // TODO: convert PlayerDecision to CharacterDecision (MAYBE DONE??? NEED SOMEONE ELSE TO TAKE A LOOK AND MAKE SURE)
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
 
@@ -78,6 +76,46 @@ public class GameLogic {
         // ========== HANDLE INVENTORY ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : inventoryActions.entrySet()) {
 
+            Player player = gameState.getPlayer(entry.getKey());
+            Tile playerLocation = gameState.getBoard(player.getPosition().getBoardID())
+                    .getGrid()[player.getPosition().getX()][player.getPosition().getY()];
+
+
+            int index = entry.getValue().getIndex();
+            if(entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP) {
+                if(index >= player.getInventorySize() || index < 0) {
+                    break;
+                }
+
+                //NOTE: as currently implemented, calling this function on a consumable, uses the consumable.
+                //I think this is the only way to use one as of current.
+                player.equipItem(index);
+
+            }
+
+            if(entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
+                if(index >= player.getInventorySize() || index < 0) {
+                    break;
+                }
+
+                playerLocation.addItem(player.getInventory()[index]);
+                player.getInventory()[index] = null;
+            }
+
+            if(entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP) {
+                int numItems = playerLocation.getItems().size();
+                if(index >= numItems || index < 0) {
+                    break;
+                }
+
+                int freeInvIndex = player.getFreeInventoryIndex();
+                if(freeInvIndex == -1) {
+                    break;
+                }
+
+                player.getInventory()[freeInvIndex] = playerLocation.getItems().get(index);
+                playerLocation.removeItem(index);
+            }
         }
 
 
