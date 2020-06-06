@@ -3,8 +3,10 @@ package mech.mania.engine.game;
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.BoardProtos;
 import mech.mania.engine.game.characters.CharacterProtos;
-import mech.mania.engine.game.characters.*;
+import mech.mania.engine.game.characters.Monster;
+import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.model.GameStateProtos;
+import mech.mania.engine.game.model.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,19 +20,48 @@ public class GameState {
     private Map<String, Board> boardNames;
     private Map<String, Player> playerNames;
     private Map<String, Monster> monsterNames;
-
-    public Board getPvpBoard() {
-        return boardNames.get("pvp");
-    }
+    public VisualizerChange stateChange;
 
     public GameState() {
         turnNumber = 0;
         boardNames = new HashMap<>();
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
+        stateChange = new VisualizerChange();
     }
 
-    public Board getBoard(String boardId){
+    public GameState(GameStateProtos.GameState gameStateProto) {
+        boardNames = new HashMap<>();
+
+        Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNames();
+
+        for (String boardId : boardProtoMap.keySet()) {
+            boardNames.put(boardId, new Board(boardProtoMap.get(boardId)));
+        }
+
+        turnNumber = gameStateProto.getStateId();
+
+        playerNames = new HashMap<>();
+        monsterNames = new HashMap<>();
+
+        Map<String, CharacterProtos.Monster> allMonsters = gameStateProto.getMonsterNamesMap();
+        for (String monsterName : allMonsters.keySet()) {
+            Monster newMonster = new Monster(allMonsters.get(monsterName));
+            monsterNames.put(newMonster.getName(), newMonster);
+        }
+
+        Map<String, CharacterProtos.Player> allPlayers = gameStateProto.getPlayerNamesMap();
+        for (String playerName : allPlayers.keySet()) {
+            Player newPlayer = new Player(allPlayers.get(playerName));
+            playerNames.put(newPlayer.getName(), newPlayer);
+        }
+    }
+
+    public Board getPvpBoard() {
+        return boardNames.get("pvp");
+    }
+
+    public Board getBoard(String boardId) {
         if (boardNames.containsKey(boardId)) {
             return boardNames.get(boardId);
         }
@@ -90,32 +121,5 @@ public class GameState {
         }
 
         return gameStateBuilder.build();
-    }
-
-    public GameState(GameStateProtos.GameState gameStateProto) {
-        boardNames = new HashMap<>();
-
-        Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNames();
-
-        for (String boardId : boardProtoMap.keySet()) {
-            boardNames.put(boardId, new Board(boardProtoMap.get(boardId)));
-        }
-
-        turnNumber = gameStateProto.getStateId();
-
-        playerNames = new HashMap<>();
-        monsterNames = new HashMap<>();
-
-        Map<String, CharacterProtos.Monster> allMonsters = gameStateProto.getMonsterNamesMap();
-        for (String monsterName : allMonsters.keySet()) {
-            Monster newMonster = new Monster(allMonsters.get(monsterName));
-            monsterNames.put(newMonster.getName(), newMonster);
-        }
-
-        Map<String, CharacterProtos.Player> allPlayers = gameStateProto.getPlayerNamesMap();
-        for (String playerName : allPlayers.keySet()) {
-            Player newPlayer = new Player(allPlayers.get(playerName));
-            playerNames.put(newPlayer.getName(), newPlayer);
-        }
     }
 }
