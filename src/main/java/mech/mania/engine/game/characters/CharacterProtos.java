@@ -25,76 +25,94 @@ public final class CharacterProtos {
     int getCurrentHealth();
 
     /**
-     * <code>int32 experience = 2;</code>
+     * <code>int32 base_max_health = 2;</code>
+     * @return The baseMaxHealth.
+     */
+    int getBaseMaxHealth();
+
+    /**
+     * <code>int32 experience = 3;</code>
      * @return The experience.
      */
     int getExperience();
 
     /**
-     * <code>.character.Position position = 3;</code>
+     * <code>int32 level = 4;</code>
+     * @return The level.
+     */
+    int getLevel();
+
+    /**
+     * <code>int32 base_speed = 5;</code>
+     * @return The baseSpeed.
+     */
+    int getBaseSpeed();
+
+    /**
+     * <code>.character.Position position = 6;</code>
      * @return Whether the position field is set.
      */
     boolean hasPosition();
     /**
-     * <code>.character.Position position = 3;</code>
+     * <code>.character.Position position = 6;</code>
      * @return The position.
      */
     mech.mania.engine.game.characters.CharacterProtos.Position getPosition();
     /**
-     * <code>.character.Position position = 3;</code>
+     * <code>.character.Position position = 6;</code>
      */
     mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
 
     /**
-     * <code>.character.Position spawn_point = 4;</code>
+     * <code>.character.Position spawn_point = 7;</code>
      * @return Whether the spawnPoint field is set.
      */
     boolean hasSpawnPoint();
     /**
-     * <code>.character.Position spawn_point = 4;</code>
+     * <code>.character.Position spawn_point = 7;</code>
      * @return The spawnPoint.
      */
     mech.mania.engine.game.characters.CharacterProtos.Position getSpawnPoint();
     /**
-     * <code>.character.Position spawn_point = 4;</code>
+     * <code>.character.Position spawn_point = 7;</code>
      */
     mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getSpawnPointOrBuilder();
 
     /**
-     * <code>.item.Weapon weapon = 5;</code>
+     * <code>.item.Weapon weapon = 8;</code>
      * @return Whether the weapon field is set.
      */
     boolean hasWeapon();
     /**
-     * <code>.item.Weapon weapon = 5;</code>
+     * <code>.item.Weapon weapon = 8;</code>
      * @return The weapon.
      */
     mech.mania.engine.game.items.ItemProtos.Weapon getWeapon();
     /**
-     * <code>.item.Weapon weapon = 5;</code>
+     * <code>.item.Weapon weapon = 8;</code>
      */
     mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder getWeaponOrBuilder();
 
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
     java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> 
         getActiveEffectsList();
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifier getActiveEffects(int index);
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
     int getActiveEffectsCount();
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
     java.util.List<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
         getActiveEffectsOrBuilderList();
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
         int index);
@@ -104,7 +122,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
     int getTaggedPlayersDamageCount();
     /**
@@ -112,7 +130,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
     boolean containsTaggedPlayersDamage(
         java.lang.String key);
@@ -127,7 +145,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
     java.util.Map<java.lang.String, java.lang.Integer>
     getTaggedPlayersDamageMap();
@@ -136,7 +154,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
 
     int getTaggedPlayersDamageOrDefault(
@@ -147,31 +165,31 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
 
     int getTaggedPlayersDamageOrThrow(
         java.lang.String key);
 
     /**
-     * <code>bool is_dead = 8;</code>
+     * <code>bool is_dead = 11;</code>
      * @return The isDead.
      */
     boolean getIsDead();
 
     /**
-     * <code>int32 ticks_since_death = 9;</code>
+     * <code>int32 ticks_since_death = 12;</code>
      * @return The ticksSinceDeath.
      */
     int getTicksSinceDeath();
 
     /**
-     * <code>string name = 10;</code>
+     * <code>string name = 13;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
-     * <code>string name = 10;</code>
+     * <code>string name = 13;</code>
      * @return The bytes for name.
      */
     com.google.protobuf.ByteString
@@ -180,7 +198,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Character}
    */
-  public  static final class Character extends
+  public static final class Character extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Character)
       CharacterOrBuilder {
@@ -232,10 +250,25 @@ public final class CharacterProtos {
             }
             case 16: {
 
+              baseMaxHealth_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
               experience_ = input.readInt32();
               break;
             }
-            case 26: {
+            case 32: {
+
+              level_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              baseSpeed_ = input.readInt32();
+              break;
+            }
+            case 50: {
               mech.mania.engine.game.characters.CharacterProtos.Position.Builder subBuilder = null;
               if (position_ != null) {
                 subBuilder = position_.toBuilder();
@@ -248,7 +281,7 @@ public final class CharacterProtos {
 
               break;
             }
-            case 34: {
+            case 58: {
               mech.mania.engine.game.characters.CharacterProtos.Position.Builder subBuilder = null;
               if (spawnPoint_ != null) {
                 subBuilder = spawnPoint_.toBuilder();
@@ -261,7 +294,7 @@ public final class CharacterProtos {
 
               break;
             }
-            case 42: {
+            case 66: {
               mech.mania.engine.game.items.ItemProtos.Weapon.Builder subBuilder = null;
               if (weapon_ != null) {
                 subBuilder = weapon_.toBuilder();
@@ -274,7 +307,7 @@ public final class CharacterProtos {
 
               break;
             }
-            case 50: {
+            case 74: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 activeEffects_ = new java.util.ArrayList<mech.mania.engine.game.items.ItemProtos.TempStatusModifier>();
                 mutable_bitField0_ |= 0x00000001;
@@ -283,7 +316,7 @@ public final class CharacterProtos {
                   input.readMessage(mech.mania.engine.game.items.ItemProtos.TempStatusModifier.parser(), extensionRegistry));
               break;
             }
-            case 58: {
+            case 82: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 taggedPlayersDamage_ = com.google.protobuf.MapField.newMapField(
                     TaggedPlayersDamageDefaultEntryHolder.defaultEntry);
@@ -296,17 +329,17 @@ public final class CharacterProtos {
                   taggedPlayersDamage__.getKey(), taggedPlayersDamage__.getValue());
               break;
             }
-            case 64: {
+            case 88: {
 
               isDead_ = input.readBool();
               break;
             }
-            case 72: {
+            case 96: {
 
               ticksSinceDeath_ = input.readInt32();
               break;
             }
-            case 82: {
+            case 106: {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
@@ -344,7 +377,7 @@ public final class CharacterProtos {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 7:
+        case 10:
           return internalGetTaggedPlayersDamage();
         default:
           throw new RuntimeException(
@@ -365,125 +398,174 @@ public final class CharacterProtos {
      * <code>int32 current_health = 1;</code>
      * @return The currentHealth.
      */
+    @java.lang.Override
     public int getCurrentHealth() {
       return currentHealth_;
     }
 
-    public static final int EXPERIENCE_FIELD_NUMBER = 2;
+    public static final int BASE_MAX_HEALTH_FIELD_NUMBER = 2;
+    private int baseMaxHealth_;
+    /**
+     * <code>int32 base_max_health = 2;</code>
+     * @return The baseMaxHealth.
+     */
+    @java.lang.Override
+    public int getBaseMaxHealth() {
+      return baseMaxHealth_;
+    }
+
+    public static final int EXPERIENCE_FIELD_NUMBER = 3;
     private int experience_;
     /**
-     * <code>int32 experience = 2;</code>
+     * <code>int32 experience = 3;</code>
      * @return The experience.
      */
+    @java.lang.Override
     public int getExperience() {
       return experience_;
     }
 
-    public static final int POSITION_FIELD_NUMBER = 3;
+    public static final int LEVEL_FIELD_NUMBER = 4;
+    private int level_;
+    /**
+     * <code>int32 level = 4;</code>
+     * @return The level.
+     */
+    @java.lang.Override
+    public int getLevel() {
+      return level_;
+    }
+
+    public static final int BASE_SPEED_FIELD_NUMBER = 5;
+    private int baseSpeed_;
+    /**
+     * <code>int32 base_speed = 5;</code>
+     * @return The baseSpeed.
+     */
+    @java.lang.Override
+    public int getBaseSpeed() {
+      return baseSpeed_;
+    }
+
+    public static final int POSITION_FIELD_NUMBER = 6;
     private mech.mania.engine.game.characters.CharacterProtos.Position position_;
     /**
-     * <code>.character.Position position = 3;</code>
+     * <code>.character.Position position = 6;</code>
      * @return Whether the position field is set.
      */
+    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
     /**
-     * <code>.character.Position position = 3;</code>
+     * <code>.character.Position position = 6;</code>
      * @return The position.
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
-     * <code>.character.Position position = 3;</code>
+     * <code>.character.Position position = 6;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
 
-    public static final int SPAWN_POINT_FIELD_NUMBER = 4;
+    public static final int SPAWN_POINT_FIELD_NUMBER = 7;
     private mech.mania.engine.game.characters.CharacterProtos.Position spawnPoint_;
     /**
-     * <code>.character.Position spawn_point = 4;</code>
+     * <code>.character.Position spawn_point = 7;</code>
      * @return Whether the spawnPoint field is set.
      */
+    @java.lang.Override
     public boolean hasSpawnPoint() {
       return spawnPoint_ != null;
     }
     /**
-     * <code>.character.Position spawn_point = 4;</code>
+     * <code>.character.Position spawn_point = 7;</code>
      * @return The spawnPoint.
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.Position getSpawnPoint() {
       return spawnPoint_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : spawnPoint_;
     }
     /**
-     * <code>.character.Position spawn_point = 4;</code>
+     * <code>.character.Position spawn_point = 7;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getSpawnPointOrBuilder() {
       return getSpawnPoint();
     }
 
-    public static final int WEAPON_FIELD_NUMBER = 5;
+    public static final int WEAPON_FIELD_NUMBER = 8;
     private mech.mania.engine.game.items.ItemProtos.Weapon weapon_;
     /**
-     * <code>.item.Weapon weapon = 5;</code>
+     * <code>.item.Weapon weapon = 8;</code>
      * @return Whether the weapon field is set.
      */
+    @java.lang.Override
     public boolean hasWeapon() {
       return weapon_ != null;
     }
     /**
-     * <code>.item.Weapon weapon = 5;</code>
+     * <code>.item.Weapon weapon = 8;</code>
      * @return The weapon.
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Weapon getWeapon() {
       return weapon_ == null ? mech.mania.engine.game.items.ItemProtos.Weapon.getDefaultInstance() : weapon_;
     }
     /**
-     * <code>.item.Weapon weapon = 5;</code>
+     * <code>.item.Weapon weapon = 8;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
       return getWeapon();
     }
 
-    public static final int ACTIVEEFFECTS_FIELD_NUMBER = 6;
+    public static final int ACTIVEEFFECTS_FIELD_NUMBER = 9;
     private java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> activeEffects_;
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> getActiveEffectsList() {
       return activeEffects_;
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
         getActiveEffectsOrBuilderList() {
       return activeEffects_;
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
+    @java.lang.Override
     public int getActiveEffectsCount() {
       return activeEffects_.size();
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getActiveEffects(int index) {
       return activeEffects_.get(index);
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
         int index) {
       return activeEffects_.get(index);
     }
 
-    public static final int TAGGED_PLAYERS_DAMAGE_FIELD_NUMBER = 7;
+    public static final int TAGGED_PLAYERS_DAMAGE_FIELD_NUMBER = 10;
     private static final class TaggedPlayersDamageDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, java.lang.Integer> defaultEntry =
@@ -514,9 +596,10 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
 
+    @java.lang.Override
     public boolean containsTaggedPlayersDamage(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -525,6 +608,7 @@ public final class CharacterProtos {
     /**
      * Use {@link #getTaggedPlayersDamageMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
       return getTaggedPlayersDamageMap();
@@ -534,8 +618,9 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
       return internalGetTaggedPlayersDamage().getMap();
@@ -545,8 +630,9 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
+    @java.lang.Override
 
     public int getTaggedPlayersDamageOrDefault(
         java.lang.String key,
@@ -561,8 +647,9 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
      */
+    @java.lang.Override
 
     public int getTaggedPlayersDamageOrThrow(
         java.lang.String key) {
@@ -575,32 +662,35 @@ public final class CharacterProtos {
       return map.get(key);
     }
 
-    public static final int IS_DEAD_FIELD_NUMBER = 8;
+    public static final int IS_DEAD_FIELD_NUMBER = 11;
     private boolean isDead_;
     /**
-     * <code>bool is_dead = 8;</code>
+     * <code>bool is_dead = 11;</code>
      * @return The isDead.
      */
+    @java.lang.Override
     public boolean getIsDead() {
       return isDead_;
     }
 
-    public static final int TICKS_SINCE_DEATH_FIELD_NUMBER = 9;
+    public static final int TICKS_SINCE_DEATH_FIELD_NUMBER = 12;
     private int ticksSinceDeath_;
     /**
-     * <code>int32 ticks_since_death = 9;</code>
+     * <code>int32 ticks_since_death = 12;</code>
      * @return The ticksSinceDeath.
      */
+    @java.lang.Override
     public int getTicksSinceDeath() {
       return ticksSinceDeath_;
     }
 
-    public static final int NAME_FIELD_NUMBER = 10;
+    public static final int NAME_FIELD_NUMBER = 13;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 10;</code>
+     * <code>string name = 13;</code>
      * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -614,9 +704,10 @@ public final class CharacterProtos {
       }
     }
     /**
-     * <code>string name = 10;</code>
+     * <code>string name = 13;</code>
      * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -648,35 +739,44 @@ public final class CharacterProtos {
       if (currentHealth_ != 0) {
         output.writeInt32(1, currentHealth_);
       }
+      if (baseMaxHealth_ != 0) {
+        output.writeInt32(2, baseMaxHealth_);
+      }
       if (experience_ != 0) {
-        output.writeInt32(2, experience_);
+        output.writeInt32(3, experience_);
+      }
+      if (level_ != 0) {
+        output.writeInt32(4, level_);
+      }
+      if (baseSpeed_ != 0) {
+        output.writeInt32(5, baseSpeed_);
       }
       if (position_ != null) {
-        output.writeMessage(3, getPosition());
+        output.writeMessage(6, getPosition());
       }
       if (spawnPoint_ != null) {
-        output.writeMessage(4, getSpawnPoint());
+        output.writeMessage(7, getSpawnPoint());
       }
       if (weapon_ != null) {
-        output.writeMessage(5, getWeapon());
+        output.writeMessage(8, getWeapon());
       }
       for (int i = 0; i < activeEffects_.size(); i++) {
-        output.writeMessage(6, activeEffects_.get(i));
+        output.writeMessage(9, activeEffects_.get(i));
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetTaggedPlayersDamage(),
           TaggedPlayersDamageDefaultEntryHolder.defaultEntry,
-          7);
+          10);
       if (isDead_ != false) {
-        output.writeBool(8, isDead_);
+        output.writeBool(11, isDead_);
       }
       if (ticksSinceDeath_ != 0) {
-        output.writeInt32(9, ticksSinceDeath_);
+        output.writeInt32(12, ticksSinceDeath_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, name_);
       }
       unknownFields.writeTo(output);
     }
@@ -691,25 +791,37 @@ public final class CharacterProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, currentHealth_);
       }
+      if (baseMaxHealth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, baseMaxHealth_);
+      }
       if (experience_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, experience_);
+          .computeInt32Size(3, experience_);
+      }
+      if (level_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, level_);
+      }
+      if (baseSpeed_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, baseSpeed_);
       }
       if (position_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getPosition());
+          .computeMessageSize(6, getPosition());
       }
       if (spawnPoint_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getSpawnPoint());
+          .computeMessageSize(7, getSpawnPoint());
       }
       if (weapon_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getWeapon());
+          .computeMessageSize(8, getWeapon());
       }
       for (int i = 0; i < activeEffects_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, activeEffects_.get(i));
+          .computeMessageSize(9, activeEffects_.get(i));
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
            : internalGetTaggedPlayersDamage().getMap().entrySet()) {
@@ -719,18 +831,18 @@ public final class CharacterProtos {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(7, taggedPlayersDamage__);
+            .computeMessageSize(10, taggedPlayersDamage__);
       }
       if (isDead_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, isDead_);
+          .computeBoolSize(11, isDead_);
       }
       if (ticksSinceDeath_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, ticksSinceDeath_);
+          .computeInt32Size(12, ticksSinceDeath_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, name_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -749,8 +861,14 @@ public final class CharacterProtos {
 
       if (getCurrentHealth()
           != other.getCurrentHealth()) return false;
+      if (getBaseMaxHealth()
+          != other.getBaseMaxHealth()) return false;
       if (getExperience()
           != other.getExperience()) return false;
+      if (getLevel()
+          != other.getLevel()) return false;
+      if (getBaseSpeed()
+          != other.getBaseSpeed()) return false;
       if (hasPosition() != other.hasPosition()) return false;
       if (hasPosition()) {
         if (!getPosition()
@@ -789,8 +907,14 @@ public final class CharacterProtos {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CURRENT_HEALTH_FIELD_NUMBER;
       hash = (53 * hash) + getCurrentHealth();
+      hash = (37 * hash) + BASE_MAX_HEALTH_FIELD_NUMBER;
+      hash = (53 * hash) + getBaseMaxHealth();
       hash = (37 * hash) + EXPERIENCE_FIELD_NUMBER;
       hash = (53 * hash) + getExperience();
+      hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getLevel();
+      hash = (37 * hash) + BASE_SPEED_FIELD_NUMBER;
+      hash = (53 * hash) + getBaseSpeed();
       if (hasPosition()) {
         hash = (37 * hash) + POSITION_FIELD_NUMBER;
         hash = (53 * hash) + getPosition().hashCode();
@@ -929,7 +1053,7 @@ public final class CharacterProtos {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 7:
+          case 10:
             return internalGetTaggedPlayersDamage();
           default:
             throw new RuntimeException(
@@ -940,7 +1064,7 @@ public final class CharacterProtos {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 7:
+          case 10:
             return internalGetMutableTaggedPlayersDamage();
           default:
             throw new RuntimeException(
@@ -976,7 +1100,13 @@ public final class CharacterProtos {
         super.clear();
         currentHealth_ = 0;
 
+        baseMaxHealth_ = 0;
+
         experience_ = 0;
+
+        level_ = 0;
+
+        baseSpeed_ = 0;
 
         if (positionBuilder_ == null) {
           position_ = null;
@@ -1037,7 +1167,10 @@ public final class CharacterProtos {
         mech.mania.engine.game.characters.CharacterProtos.Character result = new mech.mania.engine.game.characters.CharacterProtos.Character(this);
         int from_bitField0_ = bitField0_;
         result.currentHealth_ = currentHealth_;
+        result.baseMaxHealth_ = baseMaxHealth_;
         result.experience_ = experience_;
+        result.level_ = level_;
+        result.baseSpeed_ = baseSpeed_;
         if (positionBuilder_ == null) {
           result.position_ = position_;
         } else {
@@ -1118,8 +1251,17 @@ public final class CharacterProtos {
         if (other.getCurrentHealth() != 0) {
           setCurrentHealth(other.getCurrentHealth());
         }
+        if (other.getBaseMaxHealth() != 0) {
+          setBaseMaxHealth(other.getBaseMaxHealth());
+        }
         if (other.getExperience() != 0) {
           setExperience(other.getExperience());
+        }
+        if (other.getLevel() != 0) {
+          setLevel(other.getLevel());
+        }
+        if (other.getBaseSpeed() != 0) {
+          setBaseSpeed(other.getBaseSpeed());
         }
         if (other.hasPosition()) {
           mergePosition(other.getPosition());
@@ -1203,6 +1345,7 @@ public final class CharacterProtos {
        * <code>int32 current_health = 1;</code>
        * @return The currentHealth.
        */
+      @java.lang.Override
       public int getCurrentHealth() {
         return currentHealth_;
       }
@@ -1228,16 +1371,48 @@ public final class CharacterProtos {
         return this;
       }
 
+      private int baseMaxHealth_ ;
+      /**
+       * <code>int32 base_max_health = 2;</code>
+       * @return The baseMaxHealth.
+       */
+      @java.lang.Override
+      public int getBaseMaxHealth() {
+        return baseMaxHealth_;
+      }
+      /**
+       * <code>int32 base_max_health = 2;</code>
+       * @param value The baseMaxHealth to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBaseMaxHealth(int value) {
+        
+        baseMaxHealth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 base_max_health = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBaseMaxHealth() {
+        
+        baseMaxHealth_ = 0;
+        onChanged();
+        return this;
+      }
+
       private int experience_ ;
       /**
-       * <code>int32 experience = 2;</code>
+       * <code>int32 experience = 3;</code>
        * @return The experience.
        */
+      @java.lang.Override
       public int getExperience() {
         return experience_;
       }
       /**
-       * <code>int32 experience = 2;</code>
+       * <code>int32 experience = 3;</code>
        * @param value The experience to set.
        * @return This builder for chaining.
        */
@@ -1248,7 +1423,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>int32 experience = 2;</code>
+       * <code>int32 experience = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearExperience() {
@@ -1258,18 +1433,80 @@ public final class CharacterProtos {
         return this;
       }
 
+      private int level_ ;
+      /**
+       * <code>int32 level = 4;</code>
+       * @return The level.
+       */
+      @java.lang.Override
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>int32 level = 4;</code>
+       * @param value The level to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLevel(int value) {
+        
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 level = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLevel() {
+        
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int baseSpeed_ ;
+      /**
+       * <code>int32 base_speed = 5;</code>
+       * @return The baseSpeed.
+       */
+      @java.lang.Override
+      public int getBaseSpeed() {
+        return baseSpeed_;
+      }
+      /**
+       * <code>int32 base_speed = 5;</code>
+       * @param value The baseSpeed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBaseSpeed(int value) {
+        
+        baseSpeed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 base_speed = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBaseSpeed() {
+        
+        baseSpeed_ = 0;
+        onChanged();
+        return this;
+      }
+
       private mech.mania.engine.game.characters.CharacterProtos.Position position_;
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> positionBuilder_;
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        * @return Whether the position field is set.
        */
       public boolean hasPosition() {
         return positionBuilder_ != null || position_ != null;
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        * @return The position.
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position getPosition() {
@@ -1280,7 +1517,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       public Builder setPosition(mech.mania.engine.game.characters.CharacterProtos.Position value) {
         if (positionBuilder_ == null) {
@@ -1296,7 +1533,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       public Builder setPosition(
           mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
@@ -1310,7 +1547,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       public Builder mergePosition(mech.mania.engine.game.characters.CharacterProtos.Position value) {
         if (positionBuilder_ == null) {
@@ -1328,7 +1565,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       public Builder clearPosition() {
         if (positionBuilder_ == null) {
@@ -1342,7 +1579,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position.Builder getPositionBuilder() {
         
@@ -1350,7 +1587,7 @@ public final class CharacterProtos {
         return getPositionFieldBuilder().getBuilder();
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
         if (positionBuilder_ != null) {
@@ -1361,7 +1598,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>.character.Position position = 3;</code>
+       * <code>.character.Position position = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
@@ -1381,14 +1618,14 @@ public final class CharacterProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> spawnPointBuilder_;
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        * @return Whether the spawnPoint field is set.
        */
       public boolean hasSpawnPoint() {
         return spawnPointBuilder_ != null || spawnPoint_ != null;
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        * @return The spawnPoint.
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position getSpawnPoint() {
@@ -1399,7 +1636,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       public Builder setSpawnPoint(mech.mania.engine.game.characters.CharacterProtos.Position value) {
         if (spawnPointBuilder_ == null) {
@@ -1415,7 +1652,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       public Builder setSpawnPoint(
           mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
@@ -1429,7 +1666,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       public Builder mergeSpawnPoint(mech.mania.engine.game.characters.CharacterProtos.Position value) {
         if (spawnPointBuilder_ == null) {
@@ -1447,7 +1684,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       public Builder clearSpawnPoint() {
         if (spawnPointBuilder_ == null) {
@@ -1461,7 +1698,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.Position.Builder getSpawnPointBuilder() {
         
@@ -1469,7 +1706,7 @@ public final class CharacterProtos {
         return getSpawnPointFieldBuilder().getBuilder();
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getSpawnPointOrBuilder() {
         if (spawnPointBuilder_ != null) {
@@ -1480,7 +1717,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>.character.Position spawn_point = 4;</code>
+       * <code>.character.Position spawn_point = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
@@ -1500,14 +1737,14 @@ public final class CharacterProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.Weapon, mech.mania.engine.game.items.ItemProtos.Weapon.Builder, mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder> weaponBuilder_;
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        * @return Whether the weapon field is set.
        */
       public boolean hasWeapon() {
         return weaponBuilder_ != null || weapon_ != null;
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        * @return The weapon.
        */
       public mech.mania.engine.game.items.ItemProtos.Weapon getWeapon() {
@@ -1518,7 +1755,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       public Builder setWeapon(mech.mania.engine.game.items.ItemProtos.Weapon value) {
         if (weaponBuilder_ == null) {
@@ -1534,7 +1771,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       public Builder setWeapon(
           mech.mania.engine.game.items.ItemProtos.Weapon.Builder builderForValue) {
@@ -1548,7 +1785,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       public Builder mergeWeapon(mech.mania.engine.game.items.ItemProtos.Weapon value) {
         if (weaponBuilder_ == null) {
@@ -1566,7 +1803,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       public Builder clearWeapon() {
         if (weaponBuilder_ == null) {
@@ -1580,7 +1817,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.Weapon.Builder getWeaponBuilder() {
         
@@ -1588,7 +1825,7 @@ public final class CharacterProtos {
         return getWeaponFieldBuilder().getBuilder();
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
         if (weaponBuilder_ != null) {
@@ -1599,7 +1836,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>.item.Weapon weapon = 5;</code>
+       * <code>.item.Weapon weapon = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.Weapon, mech.mania.engine.game.items.ItemProtos.Weapon.Builder, mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder> 
@@ -1628,7 +1865,7 @@ public final class CharacterProtos {
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> activeEffectsBuilder_;
 
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> getActiveEffectsList() {
         if (activeEffectsBuilder_ == null) {
@@ -1638,7 +1875,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public int getActiveEffectsCount() {
         if (activeEffectsBuilder_ == null) {
@@ -1648,7 +1885,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getActiveEffects(int index) {
         if (activeEffectsBuilder_ == null) {
@@ -1658,7 +1895,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder setActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
@@ -1675,7 +1912,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder setActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -1689,7 +1926,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder addActiveEffects(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (activeEffectsBuilder_ == null) {
@@ -1705,7 +1942,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder addActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
@@ -1722,7 +1959,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder addActiveEffects(
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -1736,7 +1973,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder addActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -1750,7 +1987,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder addAllActiveEffects(
           java.lang.Iterable<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifier> values) {
@@ -1765,7 +2002,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder clearActiveEffects() {
         if (activeEffectsBuilder_ == null) {
@@ -1778,7 +2015,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public Builder removeActiveEffects(int index) {
         if (activeEffectsBuilder_ == null) {
@@ -1791,14 +2028,14 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getActiveEffectsBuilder(
           int index) {
         return getActiveEffectsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
           int index) {
@@ -1808,7 +2045,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public java.util.List<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
            getActiveEffectsOrBuilderList() {
@@ -1819,14 +2056,14 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder addActiveEffectsBuilder() {
         return getActiveEffectsFieldBuilder().addBuilder(
             mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder addActiveEffectsBuilder(
           int index) {
@@ -1834,7 +2071,7 @@ public final class CharacterProtos {
             index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 6;</code>
+       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
        */
       public java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder> 
            getActiveEffectsBuilderList() {
@@ -1886,9 +2123,10 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
 
+      @java.lang.Override
       public boolean containsTaggedPlayersDamage(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1897,6 +2135,7 @@ public final class CharacterProtos {
       /**
        * Use {@link #getTaggedPlayersDamageMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
         return getTaggedPlayersDamageMap();
@@ -1906,8 +2145,9 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
         return internalGetTaggedPlayersDamage().getMap();
@@ -1917,8 +2157,9 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
+      @java.lang.Override
 
       public int getTaggedPlayersDamageOrDefault(
           java.lang.String key,
@@ -1933,8 +2174,9 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
+      @java.lang.Override
 
       public int getTaggedPlayersDamageOrThrow(
           java.lang.String key) {
@@ -1957,7 +2199,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
 
       public Builder removeTaggedPlayersDamage(
@@ -1980,7 +2222,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
       public Builder putTaggedPlayersDamage(
           java.lang.String key,
@@ -1996,7 +2238,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 7;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
        */
 
       public Builder putAllTaggedPlayersDamage(
@@ -2008,14 +2250,15 @@ public final class CharacterProtos {
 
       private boolean isDead_ ;
       /**
-       * <code>bool is_dead = 8;</code>
+       * <code>bool is_dead = 11;</code>
        * @return The isDead.
        */
+      @java.lang.Override
       public boolean getIsDead() {
         return isDead_;
       }
       /**
-       * <code>bool is_dead = 8;</code>
+       * <code>bool is_dead = 11;</code>
        * @param value The isDead to set.
        * @return This builder for chaining.
        */
@@ -2026,7 +2269,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>bool is_dead = 8;</code>
+       * <code>bool is_dead = 11;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsDead() {
@@ -2038,14 +2281,15 @@ public final class CharacterProtos {
 
       private int ticksSinceDeath_ ;
       /**
-       * <code>int32 ticks_since_death = 9;</code>
+       * <code>int32 ticks_since_death = 12;</code>
        * @return The ticksSinceDeath.
        */
+      @java.lang.Override
       public int getTicksSinceDeath() {
         return ticksSinceDeath_;
       }
       /**
-       * <code>int32 ticks_since_death = 9;</code>
+       * <code>int32 ticks_since_death = 12;</code>
        * @param value The ticksSinceDeath to set.
        * @return This builder for chaining.
        */
@@ -2056,7 +2300,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>int32 ticks_since_death = 9;</code>
+       * <code>int32 ticks_since_death = 12;</code>
        * @return This builder for chaining.
        */
       public Builder clearTicksSinceDeath() {
@@ -2068,7 +2312,7 @@ public final class CharacterProtos {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 10;</code>
+       * <code>string name = 13;</code>
        * @return The name.
        */
       public java.lang.String getName() {
@@ -2084,7 +2328,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>string name = 10;</code>
+       * <code>string name = 13;</code>
        * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
@@ -2101,7 +2345,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>string name = 10;</code>
+       * <code>string name = 13;</code>
        * @param value The name to set.
        * @return This builder for chaining.
        */
@@ -2116,7 +2360,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>string name = 10;</code>
+       * <code>string name = 13;</code>
        * @return This builder for chaining.
        */
       public Builder clearName() {
@@ -2126,7 +2370,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>string name = 10;</code>
+       * <code>string name = 13;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
@@ -2240,7 +2484,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Monster}
    */
-  public  static final class Monster extends
+  public static final class Monster extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Monster)
       MonsterOrBuilder {
@@ -2347,6 +2591,7 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return Whether the character field is set.
      */
+    @java.lang.Override
     public boolean hasCharacter() {
       return character_ != null;
     }
@@ -2354,12 +2599,14 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return The character.
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.Character getCharacter() {
       return character_ == null ? mech.mania.engine.game.characters.CharacterProtos.Character.getDefaultInstance() : character_;
     }
     /**
      * <code>.character.Character character = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.CharacterOrBuilder getCharacterOrBuilder() {
       return getCharacter();
     }
@@ -2369,12 +2616,14 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.game.items.ItemProtos.Item> getDropsList() {
       return drops_;
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.game.items.ItemProtos.ItemOrBuilder> 
         getDropsOrBuilderList() {
       return drops_;
@@ -2382,18 +2631,21 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public int getDropsCount() {
       return drops_.size();
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Item getDrops(int index) {
       return drops_.get(index);
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ItemOrBuilder getDropsOrBuilder(
         int index) {
       return drops_.get(index);
@@ -3273,7 +3525,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Player}
    */
-  public  static final class Player extends
+  public static final class Player extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Player)
       PlayerOrBuilder {
@@ -3419,6 +3671,7 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return Whether the character field is set.
      */
+    @java.lang.Override
     public boolean hasCharacter() {
       return character_ != null;
     }
@@ -3426,12 +3679,14 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return The character.
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.Character getCharacter() {
       return character_ == null ? mech.mania.engine.game.characters.CharacterProtos.Character.getDefaultInstance() : character_;
     }
     /**
      * <code>.character.Character character = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.CharacterOrBuilder getCharacterOrBuilder() {
       return getCharacter();
     }
@@ -3442,6 +3697,7 @@ public final class CharacterProtos {
      * <code>.item.Hat hat = 2;</code>
      * @return Whether the hat field is set.
      */
+    @java.lang.Override
     public boolean hasHat() {
       return hat_ != null;
     }
@@ -3449,12 +3705,14 @@ public final class CharacterProtos {
      * <code>.item.Hat hat = 2;</code>
      * @return The hat.
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Hat getHat() {
       return hat_ == null ? mech.mania.engine.game.items.ItemProtos.Hat.getDefaultInstance() : hat_;
     }
     /**
      * <code>.item.Hat hat = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.HatOrBuilder getHatOrBuilder() {
       return getHat();
     }
@@ -3465,6 +3723,7 @@ public final class CharacterProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return Whether the clothes field is set.
      */
+    @java.lang.Override
     public boolean hasClothes() {
       return clothes_ != null;
     }
@@ -3472,12 +3731,14 @@ public final class CharacterProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return The clothes.
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Clothes getClothes() {
       return clothes_ == null ? mech.mania.engine.game.items.ItemProtos.Clothes.getDefaultInstance() : clothes_;
     }
     /**
      * <code>.item.Clothes clothes = 3;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
       return getClothes();
     }
@@ -3488,6 +3749,7 @@ public final class CharacterProtos {
      * <code>.item.Shoes shoes = 4;</code>
      * @return Whether the shoes field is set.
      */
+    @java.lang.Override
     public boolean hasShoes() {
       return shoes_ != null;
     }
@@ -3495,12 +3757,14 @@ public final class CharacterProtos {
      * <code>.item.Shoes shoes = 4;</code>
      * @return The shoes.
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Shoes getShoes() {
       return shoes_ == null ? mech.mania.engine.game.items.ItemProtos.Shoes.getDefaultInstance() : shoes_;
     }
     /**
      * <code>.item.Shoes shoes = 4;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
       return getShoes();
     }
@@ -3510,12 +3774,14 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.game.items.ItemProtos.Item> getInventoryList() {
       return inventory_;
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.game.items.ItemProtos.ItemOrBuilder> 
         getInventoryOrBuilderList() {
       return inventory_;
@@ -3523,18 +3789,21 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public int getInventoryCount() {
       return inventory_.size();
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Item getInventory(int index) {
       return inventory_.get(index);
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ItemOrBuilder getInventoryOrBuilder(
         int index) {
       return inventory_.get(index);
@@ -4801,7 +5070,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Position}
    */
-  public  static final class Position extends
+  public static final class Position extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Position)
       PositionOrBuilder {
@@ -4898,6 +5167,7 @@ public final class CharacterProtos {
      * <code>string boardId = 1;</code>
      * @return The boardId.
      */
+    @java.lang.Override
     public java.lang.String getBoardId() {
       java.lang.Object ref = boardId_;
       if (ref instanceof java.lang.String) {
@@ -4914,6 +5184,7 @@ public final class CharacterProtos {
      * <code>string boardId = 1;</code>
      * @return The bytes for boardId.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getBoardIdBytes() {
       java.lang.Object ref = boardId_;
@@ -4934,6 +5205,7 @@ public final class CharacterProtos {
      * <code>int32 x = 2;</code>
      * @return The x.
      */
+    @java.lang.Override
     public int getX() {
       return x_;
     }
@@ -4944,6 +5216,7 @@ public final class CharacterProtos {
      * <code>int32 y = 3;</code>
      * @return The y.
      */
+    @java.lang.Override
     public int getY() {
       return y_;
     }
@@ -5365,6 +5638,7 @@ public final class CharacterProtos {
        * <code>int32 x = 2;</code>
        * @return The x.
        */
+      @java.lang.Override
       public int getX() {
         return x_;
       }
@@ -5395,6 +5669,7 @@ public final class CharacterProtos {
        * <code>int32 y = 3;</code>
        * @return The y.
        */
+      @java.lang.Override
       public int getY() {
         return y_;
       }
@@ -5472,6 +5747,1045 @@ public final class CharacterProtos {
 
   }
 
+  public interface CharacterDecisionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:character.CharacterDecision)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
+     */
+    int getDecisionTypeValue();
+    /**
+     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * @return The decisionType.
+     */
+    mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType getDecisionType();
+
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return Whether the targetPosition field is set.
+     */
+    boolean hasTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return The targetPosition.
+     */
+    mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     */
+    mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder();
+
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    int getIndex();
+  }
+  /**
+   * <pre>
+   * Proto sent from player to engine
+   * </pre>
+   *
+   * Protobuf type {@code character.CharacterDecision}
+   */
+  public static final class CharacterDecision extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:character.CharacterDecision)
+      CharacterDecisionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CharacterDecision.newBuilder() to construct.
+    private CharacterDecision(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CharacterDecision() {
+      decisionType_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CharacterDecision();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CharacterDecision(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              decisionType_ = rawValue;
+              break;
+            }
+            case 18: {
+              mech.mania.engine.game.characters.CharacterProtos.Position.Builder subBuilder = null;
+              if (targetPosition_ != null) {
+                subBuilder = targetPosition_.toBuilder();
+              }
+              targetPosition_ = input.readMessage(mech.mania.engine.game.characters.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(targetPosition_);
+                targetPosition_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+
+              index_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.game.characters.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.game.characters.CharacterProtos.internal_static_character_CharacterDecision_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.class, mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code character.CharacterDecision.DecisionType}
+     */
+    public enum DecisionType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NONE = 0;</code>
+       */
+      NONE(0),
+      /**
+       * <code>MOVE = 1;</code>
+       */
+      MOVE(1),
+      /**
+       * <code>ATTACK = 2;</code>
+       */
+      ATTACK(2),
+      /**
+       * <code>PORTAL = 3;</code>
+       */
+      PORTAL(3),
+      /**
+       * <code>DROP = 4;</code>
+       */
+      DROP(4),
+      /**
+       * <code>EQUIP = 5;</code>
+       */
+      EQUIP(5),
+      /**
+       * <code>PICKUP = 6;</code>
+       */
+      PICKUP(6),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>NONE = 0;</code>
+       */
+      public static final int NONE_VALUE = 0;
+      /**
+       * <code>MOVE = 1;</code>
+       */
+      public static final int MOVE_VALUE = 1;
+      /**
+       * <code>ATTACK = 2;</code>
+       */
+      public static final int ATTACK_VALUE = 2;
+      /**
+       * <code>PORTAL = 3;</code>
+       */
+      public static final int PORTAL_VALUE = 3;
+      /**
+       * <code>DROP = 4;</code>
+       */
+      public static final int DROP_VALUE = 4;
+      /**
+       * <code>EQUIP = 5;</code>
+       */
+      public static final int EQUIP_VALUE = 5;
+      /**
+       * <code>PICKUP = 6;</code>
+       */
+      public static final int PICKUP_VALUE = 6;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DecisionType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static DecisionType forNumber(int value) {
+        switch (value) {
+          case 0: return NONE;
+          case 1: return MOVE;
+          case 2: return ATTACK;
+          case 3: return PORTAL;
+          case 4: return DROP;
+          case 5: return EQUIP;
+          case 6: return PICKUP;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DecisionType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DecisionType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DecisionType>() {
+              public DecisionType findValueByNumber(int number) {
+                return DecisionType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final DecisionType[] VALUES = values();
+
+      public static DecisionType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private DecisionType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:character.CharacterDecision.DecisionType)
+    }
+
+    public static final int DECISIONTYPE_FIELD_NUMBER = 1;
+    private int decisionType_;
+    /**
+     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
+     */
+    @java.lang.Override public int getDecisionTypeValue() {
+      return decisionType_;
+    }
+    /**
+     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * @return The decisionType.
+     */
+    @java.lang.Override public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType getDecisionType() {
+      @SuppressWarnings("deprecation")
+      mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.UNRECOGNIZED : result;
+    }
+
+    public static final int TARGETPOSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.game.characters.CharacterProtos.Position targetPosition_;
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return Whether the targetPosition field is set.
+     */
+    @java.lang.Override
+    public boolean hasTargetPosition() {
+      return targetPosition_ != null;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     * @return The targetPosition.
+     */
+    @java.lang.Override
+    public mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition() {
+      return targetPosition_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position targetPosition = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+      return getTargetPosition();
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 3;
+    private int index_;
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.NONE.getNumber()) {
+        output.writeEnum(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        output.writeMessage(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        output.writeInt32(3, index_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, index_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.game.characters.CharacterProtos.CharacterDecision)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.game.characters.CharacterProtos.CharacterDecision other = (mech.mania.engine.game.characters.CharacterProtos.CharacterDecision) obj;
+
+      if (decisionType_ != other.decisionType_) return false;
+      if (hasTargetPosition() != other.hasTargetPosition()) return false;
+      if (hasTargetPosition()) {
+        if (!getTargetPosition()
+            .equals(other.getTargetPosition())) return false;
+      }
+      if (getIndex()
+          != other.getIndex()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DECISIONTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + decisionType_;
+      if (hasTargetPosition()) {
+        hash = (37 * hash) + TARGETPOSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getTargetPosition().hashCode();
+      }
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.game.characters.CharacterProtos.CharacterDecision prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Proto sent from player to engine
+     * </pre>
+     *
+     * Protobuf type {@code character.CharacterDecision}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:character.CharacterDecision)
+        mech.mania.engine.game.characters.CharacterProtos.CharacterDecisionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.game.characters.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.game.characters.CharacterProtos.internal_static_character_CharacterDecision_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.class, mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        decisionType_ = 0;
+
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+        index_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.game.characters.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision getDefaultInstanceForType() {
+        return mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision build() {
+        mech.mania.engine.game.characters.CharacterProtos.CharacterDecision result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision buildPartial() {
+        mech.mania.engine.game.characters.CharacterProtos.CharacterDecision result = new mech.mania.engine.game.characters.CharacterProtos.CharacterDecision(this);
+        result.decisionType_ = decisionType_;
+        if (targetPositionBuilder_ == null) {
+          result.targetPosition_ = targetPosition_;
+        } else {
+          result.targetPosition_ = targetPositionBuilder_.build();
+        }
+        result.index_ = index_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.game.characters.CharacterProtos.CharacterDecision) {
+          return mergeFrom((mech.mania.engine.game.characters.CharacterProtos.CharacterDecision)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.game.characters.CharacterProtos.CharacterDecision other) {
+        if (other == mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.getDefaultInstance()) return this;
+        if (other.decisionType_ != 0) {
+          setDecisionTypeValue(other.getDecisionTypeValue());
+        }
+        if (other.hasTargetPosition()) {
+          mergeTargetPosition(other.getTargetPosition());
+        }
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.game.characters.CharacterProtos.CharacterDecision parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.game.characters.CharacterProtos.CharacterDecision) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int decisionType_ = 0;
+      /**
+       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * @return The enum numeric value on the wire for decisionType.
+       */
+      @java.lang.Override public int getDecisionTypeValue() {
+        return decisionType_;
+      }
+      /**
+       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * @param value The enum numeric value on the wire for decisionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDecisionTypeValue(int value) {
+        
+        decisionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * @return The decisionType.
+       */
+      @java.lang.Override
+      public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType getDecisionType() {
+        @SuppressWarnings("deprecation")
+        mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * @param value The decisionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDecisionType(mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        decisionType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDecisionType() {
+        
+        decisionType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private mech.mania.engine.game.characters.CharacterProtos.Position targetPosition_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> targetPositionBuilder_;
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       * @return Whether the targetPosition field is set.
+       */
+      public boolean hasTargetPosition() {
+        return targetPositionBuilder_ != null || targetPosition_ != null;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       * @return The targetPosition.
+       */
+      public mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          return targetPosition_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+        } else {
+          return targetPositionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder setTargetPosition(mech.mania.engine.game.characters.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          targetPosition_ = value;
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder setTargetPosition(
+          mech.mania.engine.game.characters.CharacterProtos.Position.Builder builderForValue) {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = builderForValue.build();
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder mergeTargetPosition(mech.mania.engine.game.characters.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (targetPosition_ != null) {
+            targetPosition_ =
+              mech.mania.engine.game.characters.CharacterProtos.Position.newBuilder(targetPosition_).mergeFrom(value).buildPartial();
+          } else {
+            targetPosition_ = value;
+          }
+          onChanged();
+        } else {
+          targetPositionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public Builder clearTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+          onChanged();
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public mech.mania.engine.game.characters.CharacterProtos.Position.Builder getTargetPositionBuilder() {
+        
+        onChanged();
+        return getTargetPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+        if (targetPositionBuilder_ != null) {
+          return targetPositionBuilder_.getMessageOrBuilder();
+        } else {
+          return targetPosition_ == null ?
+              mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+        }
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position targetPosition = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
+          getTargetPositionFieldBuilder() {
+        if (targetPositionBuilder_ == null) {
+          targetPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.game.characters.CharacterProtos.Position, mech.mania.engine.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder>(
+                  getTargetPosition(),
+                  getParentForChildren(),
+                  isClean());
+          targetPosition_ = null;
+        }
+        return targetPositionBuilder_;
+      }
+
+      private int index_ ;
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @return The index.
+       */
+      @java.lang.Override
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @param value The index to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:character.CharacterDecision)
+    }
+
+    // @@protoc_insertion_point(class_scope:character.CharacterDecision)
+    private static final mech.mania.engine.game.characters.CharacterProtos.CharacterDecision DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.game.characters.CharacterProtos.CharacterDecision();
+    }
+
+    public static mech.mania.engine.game.characters.CharacterProtos.CharacterDecision getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CharacterDecision>
+        PARSER = new com.google.protobuf.AbstractParser<CharacterDecision>() {
+      @java.lang.Override
+      public CharacterDecision parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CharacterDecision(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CharacterDecision> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CharacterDecision> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_character_Character_descriptor;
   private static final 
@@ -5497,6 +6811,11 @@ public final class CharacterProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_character_Position_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_character_CharacterDecision_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_character_CharacterDecision_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5507,26 +6826,34 @@ public final class CharacterProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017character.proto\022\tcharacter\032\nitem.proto" +
-      "\"\233\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\022" +
-      "\n\nexperience\030\002 \001(\005\022%\n\010position\030\003 \001(\0132\023.c" +
-      "haracter.Position\022(\n\013spawn_point\030\004 \001(\0132\023" +
-      ".character.Position\022\034\n\006weapon\030\005 \001(\0132\014.it" +
-      "em.Weapon\022/\n\ractiveEffects\030\006 \003(\0132\030.item." +
-      "TempStatusModifier\022L\n\025tagged_players_dam" +
-      "age\030\007 \003(\0132-.character.Character.TaggedPl" +
-      "ayersDamageEntry\022\017\n\007is_dead\030\010 \001(\010\022\031\n\021tic" +
-      "ks_since_death\030\t \001(\005\022\014\n\004name\030\n \001(\t\032:\n\030Ta" +
-      "ggedPlayersDamageEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
-      "alue\030\002 \001(\005:\0028\001\"M\n\007Monster\022\'\n\tcharacter\030\001" +
-      " \001(\0132\024.character.Character\022\031\n\005drops\030\002 \003(" +
-      "\0132\n.item.Item\"\244\001\n\006Player\022\'\n\tcharacter\030\001 " +
-      "\001(\0132\024.character.Character\022\026\n\003hat\030\002 \001(\0132\t" +
-      ".item.Hat\022\036\n\007clothes\030\003 \001(\0132\r.item.Clothe" +
-      "s\022\032\n\005shoes\030\004 \001(\0132\013.item.Shoes\022\035\n\tinvento" +
-      "ry\030\005 \003(\0132\n.item.Item\"1\n\010Position\022\017\n\007boar" +
-      "dId\030\001 \001(\t\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005BE\n!mech." +
-      "mania.engine.game.charactersB\017CharacterP" +
-      "rotos\252\002\016MM26.IO.Modelsb\006proto3"
+      "\"\327\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
+      "\n\017base_max_health\030\002 \001(\005\022\022\n\nexperience\030\003 " +
+      "\001(\005\022\r\n\005level\030\004 \001(\005\022\022\n\nbase_speed\030\005 \001(\005\022%" +
+      "\n\010position\030\006 \001(\0132\023.character.Position\022(\n" +
+      "\013spawn_point\030\007 \001(\0132\023.character.Position\022" +
+      "\034\n\006weapon\030\010 \001(\0132\014.item.Weapon\022/\n\ractiveE" +
+      "ffects\030\t \003(\0132\030.item.TempStatusModifier\022L" +
+      "\n\025tagged_players_damage\030\n \003(\0132-.characte" +
+      "r.Character.TaggedPlayersDamageEntry\022\017\n\007" +
+      "is_dead\030\013 \001(\010\022\031\n\021ticks_since_death\030\014 \001(\005" +
+      "\022\014\n\004name\030\r \001(\t\032:\n\030TaggedPlayersDamageEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M\n\007Mo" +
+      "nster\022\'\n\tcharacter\030\001 \001(\0132\024.character.Cha" +
+      "racter\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001\n\006Pl" +
+      "ayer\022\'\n\tcharacter\030\001 \001(\0132\024.character.Char" +
+      "acter\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clothes" +
+      "\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\0132\013.i" +
+      "tem.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item.Item" +
+      "\"1\n\010Position\022\017\n\007boardId\030\001 \001(\t\022\t\n\001x\030\002 \001(\005" +
+      "\022\t\n\001y\030\003 \001(\005\"\355\001\n\021CharacterDecision\022?\n\014dec" +
+      "isionType\030\001 \001(\0162).character.CharacterDec" +
+      "ision.DecisionType\022+\n\016targetPosition\030\002 \001" +
+      "(\0132\023.character.Position\022\r\n\005index\030\003 \001(\005\"[" +
+      "\n\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006AT" +
+      "TACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022" +
+      "\n\n\006PICKUP\020\006BE\n!mech.mania.engine.game.ch" +
+      "aractersB\017CharacterProtos\252\002\016MM26.IO.Mode" +
+      "lsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5538,7 +6865,7 @@ public final class CharacterProtos {
     internal_static_character_Character_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Character_descriptor,
-        new java.lang.String[] { "CurrentHealth", "Experience", "Position", "SpawnPoint", "Weapon", "ActiveEffects", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", });
+        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffects", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", });
     internal_static_character_Character_TaggedPlayersDamageEntry_descriptor =
       internal_static_character_Character_descriptor.getNestedTypes().get(0);
     internal_static_character_Character_TaggedPlayersDamageEntry_fieldAccessorTable = new
@@ -5563,6 +6890,12 @@ public final class CharacterProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Position_descriptor,
         new java.lang.String[] { "BoardId", "X", "Y", });
+    internal_static_character_CharacterDecision_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_character_CharacterDecision_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_character_CharacterDecision_descriptor,
+        new java.lang.String[] { "DecisionType", "TargetPosition", "Index", });
     mech.mania.engine.game.items.ItemProtos.getDescriptor();
   }
 
