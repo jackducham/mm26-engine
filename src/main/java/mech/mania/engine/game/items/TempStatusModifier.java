@@ -2,32 +2,24 @@ package mech.mania.engine.game.items;
 
 public class TempStatusModifier extends StatusModifier {
     private int duration;
-    private int flatDamagePerTurn;
-    private double percentDamagePerTurn;
-    /* damagePerTurn is a flat amount of damage delt to the character each turn,
-     * which is still affected by damageChange and percentDamageChange.
-     */
+    private int turnsLeft;
+    private int damagePerTurn; // flat amount of damage dealt to the character each turn,
 
-    public TempStatusModifier(int flatSpeedChange, double percentSpeedChange, int flatHealthChange, double percentHealthChange,
-                              int flatExperienceChange, double percentExperienceChange, int flatDamageChange,
-                              double percentDamageChange, int flatDefenseChange,
-                              double percentDefenseChange, int flatRegenPerTurn, int duration,
-                              int flatDamagePerTurn, double percentDamagePerTurn) {
+
+    public TempStatusModifier(int flatSpeedChange, double percentSpeedChange,
+                              int flatHealthChange, double percentHealthChange,
+                              int flatExperienceChange, double percentExperienceChange,
+                              int flatAttackChange, double percentAttackChange,
+                              int flatDefenseChange, double percentDefenseChange,
+                              int flatRegenPerTurn, int duration, int damagePerTurn) {
         super(flatSpeedChange, percentSpeedChange, flatHealthChange, percentHealthChange, flatExperienceChange, percentExperienceChange,
-                flatDamageChange, percentDamageChange, flatDefenseChange, percentDefenseChange, flatRegenPerTurn);
+                flatAttackChange, percentAttackChange, flatDefenseChange, percentDefenseChange, flatRegenPerTurn);
         this.duration = duration;
-        this.flatDamagePerTurn = flatDamagePerTurn;
-        this.percentDamagePerTurn = percentDamagePerTurn;
+        this.turnsLeft = duration;
+        this.damagePerTurn = damagePerTurn;
     }
 
-    public void updateTurnsLeft() {
-        duration--;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
+    // @TODO: Update ItemProtos
     public TempStatusModifier(ItemProtos.TempStatusModifier tempStatusModifierProto) {
         super(
                 tempStatusModifierProto.getStats().getFlatSpeedChange(),
@@ -43,16 +35,15 @@ public class TempStatusModifier extends StatusModifier {
                 tempStatusModifierProto.getStats().getFlatRegenPerTurn()
         );
         this.duration = tempStatusModifierProto.getDuration();
-        this.flatDamagePerTurn = tempStatusModifierProto.getFlatDamagePerTurn();
-        this.percentDamagePerTurn = tempStatusModifierProto.getPercentDamagePerTurn();
+        this.turnsLeft = tempStatusModifierProto.getTurnsLeft();
+        this.damagePerTurn = tempStatusModifierProto.getDamagePerTurn();
     }
 
     public ItemProtos.TempStatusModifier buildProtoClassTemp() {
         ItemProtos.TempStatusModifier.Builder tempStatusModifierBuilder = ItemProtos.TempStatusModifier.newBuilder();
         tempStatusModifierBuilder.setDuration(duration);
-
-        tempStatusModifierBuilder.setFlatDamagePerTurn(flatDamagePerTurn);
-        tempStatusModifierBuilder.setPercentDamagePerTurn(percentDamagePerTurn);
+        tempStatusModifierBuilder.setTurnsLeft(turnsLeft);
+        tempStatusModifierBuilder.setDamagePerTurn(damagePerTurn);
 
         ItemProtos.StatusModifier statusModifierProtoClass = super.buildProtoClass();
 
@@ -60,11 +51,19 @@ public class TempStatusModifier extends StatusModifier {
         return tempStatusModifierBuilder.build();
     }
 
-    public int getFlatDamagePerTurn() {
-        return flatDamagePerTurn;
+    public void updateTurnsLeft() {
+        turnsLeft--;
     }
 
-    public double getPercentDamagePerTurn() {
-        return percentDamagePerTurn;
+    public int getDuration() {
+        return duration;
+    }
+
+    public int getTurnsLeft() {
+        return turnsLeft;
+    }
+
+    public int getDamagePerTurn() {
+        return damagePerTurn;
     }
 }

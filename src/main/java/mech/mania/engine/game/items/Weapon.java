@@ -4,6 +4,7 @@ public class Weapon extends Wearable {
     protected int range = 0;
     protected int splashRadius = 0;
     protected int damage;
+
     protected TempStatusModifier onHitEffect;
 
     public Weapon(StatusModifier stats, int range, int splashRadius,

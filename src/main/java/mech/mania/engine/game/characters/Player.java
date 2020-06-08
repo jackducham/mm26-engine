@@ -10,8 +10,9 @@ public class Player extends Character {
     private Shoes shoes;
     private Item[] inventory;
 
-    public Player(Position spawnPoint, String name) {
-        super(0, spawnPoint, null, name);
+    public Player(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
+                  Position spawnPoint) {
+        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, 0, spawnPoint, null);
         hat = null;
         clothes = null;
         shoes = null;
@@ -115,40 +116,8 @@ public class Player extends Character {
     }
 
     @Override
-    public int getMaxHealth() {
-        // First add all flat values
-        int maxHealth = baseMaxHealth + getLevel()*maxHealthScaling + flatHealthChange;
-
-        // Add flat wearable effects
-        if (hat != null) {
-            maxHealth += hat.getStats().getFlatHealthChange();
-        }
-        if (clothes != null) {
-            maxHealth += clothes.getStats().getFlatHealthChange();
-        }
-        if (shoes != null) {
-            maxHealth += shoes.getStats().getFlatHealthChange();
-        }
-
-        // Add percent effects
-        if (hat != null) {
-            maxHealth *= hat.getStats().getPercentHealthChange();
-        }
-        if (clothes != null) {
-            maxHealth *= clothes.getStats().getPercentHealthChange();
-        }
-        if (shoes != null) {
-            maxHealth *= shoes.getStats().getPercentHealthChange();
-        }
-        maxHealth *= percentHealthChange;
-
-        return maxHealth;
-    }
-
-    @Override
-    public int getSpeed() {
-        // First add all flat values
-        int speed = baseSpeed + getLevel()*speedScaling + flatSpeedChange;
+    public double getSpeed() {
+        double speed = super.getSpeed();
 
         // Add flat wearable effects
         if (hat != null) {
@@ -159,6 +128,9 @@ public class Player extends Character {
         }
         if (shoes != null) {
             speed += shoes.getStats().getFlatSpeedChange();
+        }
+        if (weapon != null) {
+            speed += weapon.getStats().getFlatSpeedChange();
         }
 
         // Add percent effects
@@ -171,46 +143,121 @@ public class Player extends Character {
         if (shoes != null) {
             speed *= shoes.getStats().getPercentSpeedChange();
         }
-        speed *= percentSpeedChange;
+        if (weapon != null) {
+            speed *= weapon.getStats().getPercentSpeedChange();
+        }
 
         return speed;
     }
 
     @Override
-    public int getDamage() {
-        // First add all flat values
-        int damage = baseDamage + getLevel() * damageScaling + flatDamageChange;
+    public double getMaxHealth() {
+        double maxHealth = super.getMaxHealth();
 
         // Add flat wearable effects
         if (hat != null) {
-            damage += hat.getStats().getFlatDamageChange();
+            maxHealth += hat.getStats().getFlatHealthChange();
         }
         if (clothes != null) {
-            damage += clothes.getStats().getFlatDamageChange();
+            maxHealth += clothes.getStats().getFlatHealthChange();
         }
         if (shoes != null) {
-            damage += shoes.getStats().getFlatDamageChange();
+            maxHealth += shoes.getStats().getFlatHealthChange();
+        }
+        if (weapon != null) {
+            maxHealth += weapon.getStats().getFlatHealthChange();
         }
 
         // Add percent effects
         if (hat != null) {
-            damage *= hat.getStats().getPercentDamageChange();
+            maxHealth *= hat.getStats().getPercentHealthChange();
         }
         if (clothes != null) {
-            damage *= clothes.getStats().getPercentDamageChange();
+            maxHealth *= clothes.getStats().getPercentHealthChange();
         }
         if (shoes != null) {
-            damage *= shoes.getStats().getPercentDamageChange();
+            maxHealth *= shoes.getStats().getPercentHealthChange();
         }
-        damage *= percentDamageChange;
+        if (weapon != null) {
+            maxHealth *= weapon.getStats().getPercentHealthChange();
+        }
 
-        return damage;
+        return maxHealth;
     }
 
     @Override
-    public int getDefense() {
-        // First add all flat values
-        int defense = baseDefense + getLevel() * defenseScaling + flatDefenseChange;
+    public double getExperience() {
+        double experience = super.getExperience();
+
+        // Add flat wearable effects
+        if (hat != null) {
+            experience += hat.getStats().getFlatExperienceChange();
+        }
+        if (clothes != null) {
+            experience += clothes.getStats().getFlatExperienceChange();
+        }
+        if (shoes != null) {
+            experience += shoes.getStats().getFlatExperienceChange();
+        }
+        if (weapon != null) {
+            experience += weapon.getStats().getFlatExperienceChange();
+        }
+
+        // Add percent effects
+        if (hat != null) {
+            experience *= hat.getStats().getPercentExperienceChange();
+        }
+        if (clothes != null) {
+            experience *= clothes.getStats().getPercentExperienceChange();
+        }
+        if (shoes != null) {
+            experience *= shoes.getStats().getPercentExperienceChange();
+        }
+        if (weapon != null) {
+            experience *= weapon.getStats().getPercentExperienceChange();
+        }
+
+        return experience;
+    }
+
+    @Override
+    public double getAttack() {
+        double attack = super.getAttack();
+
+        // Add flat wearable effects
+        if (hat != null) {
+            attack += hat.getStats().getFlatAttackChange();
+        }
+        if (clothes != null) {
+            attack += clothes.getStats().getFlatAttackChange();
+        }
+        if (shoes != null) {
+            attack += shoes.getStats().getFlatAttackChange();
+        }
+        if (weapon != null) {
+            attack += weapon.getStats().getFlatAttackChange();
+        }
+
+        // Add percent effects
+        if (hat != null) {
+            attack *= hat.getStats().getPercentAttackChange();
+        }
+        if (clothes != null) {
+            attack *= clothes.getStats().getPercentAttackChange();
+        }
+        if (shoes != null) {
+            attack *= shoes.getStats().getPercentAttackChange();
+        }
+        if (weapon != null) {
+            attack *= weapon.getStats().getPercentAttackChange();
+        }
+
+        return attack;
+    }
+
+    @Override
+    public double getDefense() {
+        double defense = super.getDefense();
 
         // Add flat wearable effects
         if (hat != null) {
@@ -221,6 +268,9 @@ public class Player extends Character {
         }
         if (shoes != null) {
             defense += shoes.getStats().getFlatDefenseChange();
+        }
+        if (weapon != null) {
+            defense += weapon.getStats().getFlatDefenseChange();
         }
 
         // Add percent effects
@@ -233,7 +283,9 @@ public class Player extends Character {
         if (shoes != null) {
             defense *= shoes.getStats().getPercentDefenseChange();
         }
-        defense *= percentDefenseChange;
+        if (weapon != null) {
+            defense *= weapon.getStats().getPercentDefenseChange();
+        }
 
         return defense;
     }
@@ -242,19 +294,20 @@ public class Player extends Character {
     /**
      * Adds a new temporary status modifier to the Player's list of modifiers.
      *
-     * @param statusToApply the status which will be added to the Player's list
+     * @param effect the status which will be added to the Player's list
      * @return true if successful
      */
-    public boolean applyStatus(TempStatusModifier statusToApply) {
-        if(statusToApply == null) {
+    public boolean applyEffect(TempStatusModifier effect) {
+        if(effect == null) {
             return false;
         }
-        activeEffects.add(statusToApply);
+        activeEffects.add(effect);
+        activeAttackers.add(""); // add empty String to keep index matching
         return true;
     }
 
 
-    //Equip Item and Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // Equip Item and Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     /**
      * Exchanges an item in the Player's inventory with an equipped.
      *
@@ -347,7 +400,7 @@ public class Player extends Character {
      */
     private boolean useConsumable(Consumable consumableToConsume, int index) {
         int stacks = consumableToConsume.getStacks();
-        applyStatus(consumableToConsume.getEffect());
+        applyEffect(consumableToConsume.getEffect());
         if(stacks == 1) {
             inventory[index] = null;
         } else {

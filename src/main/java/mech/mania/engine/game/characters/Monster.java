@@ -13,11 +13,13 @@ import java.util.List;
 public class Monster extends Character {
     private List<Item> drops;
 
-    public Monster(int experience, Position spawnPoint, Weapon weapon, List<Item> drops, String name) {
-        super(experience, spawnPoint, weapon, name);
+    public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
+                   int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
+        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
         this.drops = drops;
     }
 
+    // @TODO: Update CharacterProtos
     public Monster(CharacterProtos.Monster monsterProto) {
         super(
                 monsterProto.getCharacter().getExperience(),
@@ -47,7 +49,6 @@ public class Monster extends Character {
             }
         }
     }
-
 
     public CharacterProtos.Monster buildProtoClassMonster() {
         CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
@@ -84,30 +85,33 @@ public class Monster extends Character {
 
     public CharacterDecision makeDecision(GameState gameState) {
         if (taggedPlayersDamage.isEmpty()) {
-            if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
-                Position toMove = findPositionToMove(gameState, spawnPoint);
-                return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
-            }
+            return moveToStartDecision(gameState);
         } else {
-            String highestDamagePlayer = null;
-            int highestDamage = -1;
-            for (String playerName : taggedPlayersDamage.keySet()) {
-                if (taggedPlayersDamage.get(playerName) > highestDamage) {
-                    highestDamagePlayer = playerName;
-                    highestDamage = taggedPlayersDamage.get(playerName);
-                }
+            String highestDamagePlayer = getPlayerWithMostDamage();
+            Player player = gameState.getPlayer(highestDamagePlayer);
+
+            // @TODO: Minor bug - if highestDamagePlayer is a Monster, Monster will move to start
+            if (player == null) {
+                return moveToStartDecision(gameState);
             }
 
-            Position toAttack = gameState.getPlayer(highestDamagePlayer).position;
+            Position toAttack = player.position;
 
             int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
             if (manhattanDistance <= weapon.getRange()) {
                 return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
             } else {
-
                 Position toMove = findPositionToMove(gameState, toAttack);
                 return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
             }
+        }
+    }
+
+    public CharacterDecision moveToStartDecision(GameState gameState) {
+        // @TODO: Can update if statement to Position .equals() method
+        if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
+            Position toMove = findPositionToMove(gameState, spawnPoint);
+            return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
         }
         return null;
     }
