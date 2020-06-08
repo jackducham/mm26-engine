@@ -157,9 +157,17 @@ public abstract class Character {
     }
 
     /**
+     * Applies active effects and updates the death state
+     * This should be called once a turn
+     */
+    public void updateCharacter(GameState gameState) {
+        applyActiveEffects();
+        updateDeathState(gameState);
+    }
+
+    /**
      * This function calculates the permanent damage per turn done by each weapon
      *      and compiles the temp effects of the Weapon
-     * This should be externally called at the end of the CharacterDecision loop.
      */
     public void applyActiveEffects() {
         int i = 0;
@@ -195,7 +203,7 @@ public abstract class Character {
     }
 
     /**
-     * This should be externally called at the end of the CharacterDecision loop.
+     * Check if Character is dead and revives them and distributes rewards accordingly
      * @param gameState gameState to give rewards to
      */
     public void updateDeathState(GameState gameState) {
