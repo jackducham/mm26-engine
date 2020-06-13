@@ -60,7 +60,7 @@ public final class PlayerProtos {
    *
    * Protobuf type {@code player_communication.PlayerTurn}
    */
-  public static final class PlayerTurn extends
+  public  static final class PlayerTurn extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.PlayerTurn)
       PlayerTurnOrBuilder {
@@ -205,7 +205,6 @@ public final class PlayerProtos {
      * <code>.game_state.GameState game_state = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -213,14 +212,12 @@ public final class PlayerProtos {
      * <code>.game_state.GameState game_state = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.game.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.game.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game_state.GameState game_state = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -275,7 +272,6 @@ public final class PlayerProtos {
      * <code>int32 test2 = 3;</code>
      * @return The test2.
      */
-    @java.lang.Override
     public int getTest2() {
       if (testCase_ == 3) {
         return (java.lang.Integer) test_;
@@ -804,7 +800,6 @@ public final class PlayerProtos {
        * <code>string test1 = 2;</code>
        * @return The test1.
        */
-      @java.lang.Override
       public java.lang.String getTest1() {
         java.lang.Object ref = "";
         if (testCase_ == 2) {
@@ -826,7 +821,6 @@ public final class PlayerProtos {
        * <code>string test1 = 2;</code>
        * @return The bytes for test1.
        */
-      @java.lang.Override
       public com.google.protobuf.ByteString
           getTest1Bytes() {
         java.lang.Object ref = "";
@@ -980,15 +974,15 @@ public final class PlayerProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
     int getDecisionTypeValue();
     /**
-     * <code>.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The decisionType.
      */
-    Enums.DecisionType getDecisionType();
+    mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType();
 
     /**
      * <pre>
@@ -1034,7 +1028,7 @@ public final class PlayerProtos {
    *
    * Protobuf type {@code player_communication.PlayerDecision}
    */
-  public static final class PlayerDecision extends
+  public  static final class PlayerDecision extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.PlayerDecision)
       PlayerDecisionOrBuilder {
@@ -1136,20 +1130,20 @@ public final class PlayerProtos {
     public static final int DECISIONTYPE_FIELD_NUMBER = 1;
     private int decisionType_;
     /**
-     * <code>.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
-    @java.lang.Override public int getDecisionTypeValue() {
+    public int getDecisionTypeValue() {
       return decisionType_;
     }
     /**
-     * <code>.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The decisionType.
      */
-    @java.lang.Override public Enums.DecisionType getDecisionType() {
+    public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
       @SuppressWarnings("deprecation")
-      Enums.DecisionType result = Enums.DecisionType.valueOf(decisionType_);
-      return result == null ? Enums.DecisionType.UNRECOGNIZED : result;
+      mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
     }
 
     public static final int TARGETPOSITION_FIELD_NUMBER = 2;
@@ -1162,7 +1156,6 @@ public final class PlayerProtos {
      * <code>.character.Position targetPosition = 2;</code>
      * @return Whether the targetPosition field is set.
      */
-    @java.lang.Override
     public boolean hasTargetPosition() {
       return targetPosition_ != null;
     }
@@ -1174,7 +1167,6 @@ public final class PlayerProtos {
      * <code>.character.Position targetPosition = 2;</code>
      * @return The targetPosition.
      */
-    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.Position getTargetPosition() {
       return targetPosition_ == null ? mech.mania.engine.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
     }
@@ -1185,7 +1177,6 @@ public final class PlayerProtos {
      *
      * <code>.character.Position targetPosition = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
       return getTargetPosition();
     }
@@ -1200,7 +1191,6 @@ public final class PlayerProtos {
      * <code>int32 index = 3;</code>
      * @return The index.
      */
-    @java.lang.Override
     public int getIndex() {
       return index_;
     }
@@ -1219,7 +1209,7 @@ public final class PlayerProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (decisionType_ != Enums.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
         output.writeEnum(1, decisionType_);
       }
       if (targetPosition_ != null) {
@@ -1237,7 +1227,7 @@ public final class PlayerProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (decisionType_ != Enums.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, decisionType_);
       }
@@ -1559,39 +1549,37 @@ public final class PlayerProtos {
 
       private int decisionType_ = 0;
       /**
-       * <code>.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @return The enum numeric value on the wire for decisionType.
        */
-      @java.lang.Override public int getDecisionTypeValue() {
+      public int getDecisionTypeValue() {
         return decisionType_;
       }
       /**
-       * <code>.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @param value The enum numeric value on the wire for decisionType to set.
        * @return This builder for chaining.
        */
       public Builder setDecisionTypeValue(int value) {
-        
         decisionType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @return The decisionType.
        */
-      @java.lang.Override
-      public Enums.DecisionType getDecisionType() {
+      public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
         @SuppressWarnings("deprecation")
-        Enums.DecisionType result = Enums.DecisionType.valueOf(decisionType_);
-        return result == null ? Enums.DecisionType.UNRECOGNIZED : result;
+        mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @param value The decisionType to set.
        * @return This builder for chaining.
        */
-      public Builder setDecisionType(Enums.DecisionType value) {
+      public Builder setDecisionType(mech.mania.engine.game.characters.CharacterProtos.DecisionType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1601,7 +1589,7 @@ public final class PlayerProtos {
         return this;
       }
       /**
-       * <code>.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDecisionType() {
@@ -1775,7 +1763,6 @@ public final class PlayerProtos {
        * <code>int32 index = 3;</code>
        * @return The index.
        */
-      @java.lang.Override
       public int getIndex() {
         return index_;
       }
@@ -1880,21 +1867,20 @@ public final class PlayerProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014player.proto\022\024player_communication\032\013en" +
-      "ums.proto\032\020game_state.proto\032\017character.p" +
-      "roto\"a\n\nPlayerTurn\022)\n\ngame_state\030\001 \001(\0132\025" +
-      ".game_state.GameState\022\017\n\005test1\030\002 \001(\tH\000\022\017" +
-      "\n\005test2\030\003 \001(\005H\000B\006\n\004test\"q\n\016PlayerDecisio" +
-      "n\022#\n\014decisionType\030\001 \001(\0162\r.DecisionType\022+" +
-      "\n\016targetPosition\030\002 \001(\0132\023.character.Posit" +
-      "ion\022\r\n\005index\030\003 \001(\005BT\n3mech.mania.engine." +
-      "server.communication.player.modelB\014Playe" +
-      "rProtos\252\002\016MM26.IO.Modelsb\006proto3"
+      "\n\014player.proto\022\024player_communication\032\020ga" +
+      "me_state.proto\032\017character.proto\"a\n\nPlaye" +
+      "rTurn\022)\n\ngame_state\030\001 \001(\0132\025.game_state.G" +
+      "ameState\022\017\n\005test1\030\002 \001(\tH\000\022\017\n\005test2\030\003 \001(\005" +
+      "H\000B\006\n\004test\"{\n\016PlayerDecision\022-\n\014decision" +
+      "Type\030\001 \001(\0162\027.character.DecisionType\022+\n\016t" +
+      "argetPosition\030\002 \001(\0132\023.character.Position" +
+      "\022\r\n\005index\030\003 \001(\005BT\n3mech.mania.engine.ser" +
+      "ver.communication.player.modelB\014PlayerPr" +
+      "otos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          Enums.getDescriptor(),
           mech.mania.engine.game.model.GameStateProtos.getDescriptor(),
           mech.mania.engine.game.characters.CharacterProtos.getDescriptor(),
         });
@@ -1910,7 +1896,6 @@ public final class PlayerProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_PlayerDecision_descriptor,
         new java.lang.String[] { "DecisionType", "TargetPosition", "Index", });
-    Enums.getDescriptor();
     mech.mania.engine.game.model.GameStateProtos.getDescriptor();
     mech.mania.engine.game.characters.CharacterProtos.getDescriptor();
   }

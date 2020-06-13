@@ -15,7 +15,7 @@ public final class VisualizerProtos {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface VisualizerChangeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:game.VisualizerChange)
+      // @@protoc_insertion_point(interface_extends:player_communication.VisualizerChange)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -44,11 +44,11 @@ public final class VisualizerProtos {
         getNewPlayerNamesBytes(int index);
 
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
     int getCharacterStatChangesCount();
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
     boolean containsCharacterStatChanges(
         java.lang.String key);
@@ -59,30 +59,30 @@ public final class VisualizerProtos {
     java.util.Map<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange>
     getCharacterStatChanges();
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
     java.util.Map<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange>
     getCharacterStatChangesMap();
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
 
     mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrDefault(
         java.lang.String key,
         mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange defaultValue);
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
 
     mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrThrow(
         java.lang.String key);
   }
   /**
-   * Protobuf type {@code game.VisualizerChange}
+   * Protobuf type {@code player_communication.VisualizerChange}
    */
-  public static final class VisualizerChange extends
+  public  static final class VisualizerChange extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:game.VisualizerChange)
+      // @@protoc_insertion_point(message_implements:player_communication.VisualizerChange)
       VisualizerChangeOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use VisualizerChange.newBuilder() to construct.
@@ -170,7 +170,7 @@ public final class VisualizerProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_VisualizerChange_descriptor;
+      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_VisualizerChange_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -188,7 +188,7 @@ public final class VisualizerProtos {
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_VisualizerChange_fieldAccessorTable
+      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_VisualizerChange_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange.class, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange.Builder.class);
     }
@@ -234,7 +234,7 @@ public final class VisualizerProtos {
           java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange>newDefaultInstance(
-                  mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_VisualizerChange_CharacterStatChangesEntry_descriptor, 
+                  mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_VisualizerChange_CharacterStatChangesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -255,10 +255,9 @@ public final class VisualizerProtos {
       return internalGetCharacterStatChanges().getMap().size();
     }
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
 
-    @java.lang.Override
     public boolean containsCharacterStatChanges(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -267,23 +266,20 @@ public final class VisualizerProtos {
     /**
      * Use {@link #getCharacterStatChangesMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange> getCharacterStatChanges() {
       return getCharacterStatChangesMap();
     }
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
-    @java.lang.Override
 
     public java.util.Map<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange> getCharacterStatChangesMap() {
       return internalGetCharacterStatChanges().getMap();
     }
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrDefault(
         java.lang.String key,
@@ -294,9 +290,8 @@ public final class VisualizerProtos {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrThrow(
         java.lang.String key) {
@@ -493,15 +488,15 @@ public final class VisualizerProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code game.VisualizerChange}
+     * Protobuf type {@code player_communication.VisualizerChange}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:game.VisualizerChange)
+        // @@protoc_insertion_point(builder_implements:player_communication.VisualizerChange)
         mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChangeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_VisualizerChange_descriptor;
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_VisualizerChange_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -529,7 +524,7 @@ public final class VisualizerProtos {
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_VisualizerChange_fieldAccessorTable
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_VisualizerChange_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange.class, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange.Builder.class);
       }
@@ -561,7 +556,7 @@ public final class VisualizerProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_VisualizerChange_descriptor;
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_VisualizerChange_descriptor;
       }
 
       @java.lang.Override
@@ -816,10 +811,9 @@ public final class VisualizerProtos {
         return internalGetCharacterStatChanges().getMap().size();
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
 
-      @java.lang.Override
       public boolean containsCharacterStatChanges(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -828,23 +822,20 @@ public final class VisualizerProtos {
       /**
        * Use {@link #getCharacterStatChangesMap()} instead.
        */
-      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange> getCharacterStatChanges() {
         return getCharacterStatChangesMap();
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
-      @java.lang.Override
 
       public java.util.Map<java.lang.String, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange> getCharacterStatChangesMap() {
         return internalGetCharacterStatChanges().getMap();
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrDefault(
           java.lang.String key,
@@ -855,9 +846,8 @@ public final class VisualizerProtos {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrThrow(
           java.lang.String key) {
@@ -876,7 +866,7 @@ public final class VisualizerProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
 
       public Builder removeCharacterStatChanges(
@@ -895,7 +885,7 @@ public final class VisualizerProtos {
         return internalGetMutableCharacterStatChanges().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
       public Builder putCharacterStatChanges(
           java.lang.String key,
@@ -907,7 +897,7 @@ public final class VisualizerProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .game.CharacterChange&gt; characterStatChanges = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; characterStatChanges = 2;</code>
        */
 
       public Builder putAllCharacterStatChanges(
@@ -929,10 +919,10 @@ public final class VisualizerProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:game.VisualizerChange)
+      // @@protoc_insertion_point(builder_scope:player_communication.VisualizerChange)
     }
 
-    // @@protoc_insertion_point(class_scope:game.VisualizerChange)
+    // @@protoc_insertion_point(class_scope:player_communication.VisualizerChange)
     private static final mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.VisualizerChange();
@@ -970,7 +960,7 @@ public final class VisualizerProtos {
   }
 
   public interface CharacterChangeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:game.CharacterChange)
+      // @@protoc_insertion_point(interface_extends:player_communication.CharacterChange)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -986,15 +976,15 @@ public final class VisualizerProtos {
     boolean getRespawned();
 
     /**
-     * <code>.DecisionType decisionType = 3;</code>
+     * <code>.character.DecisionType decisionType = 3;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
     int getDecisionTypeValue();
     /**
-     * <code>.DecisionType decisionType = 3;</code>
+     * <code>.character.DecisionType decisionType = 3;</code>
      * @return The decisionType.
      */
-    Enums.DecisionType getDecisionType();
+    mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType();
 
     /**
      * <code>repeated .character.Position path = 4;</code>
@@ -1021,11 +1011,11 @@ public final class VisualizerProtos {
         int index);
   }
   /**
-   * Protobuf type {@code game.CharacterChange}
+   * Protobuf type {@code player_communication.CharacterChange}
    */
-  public static final class CharacterChange extends
+  public  static final class CharacterChange extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:game.CharacterChange)
+      // @@protoc_insertion_point(message_implements:player_communication.CharacterChange)
       CharacterChangeOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use CharacterChange.newBuilder() to construct.
@@ -1117,13 +1107,13 @@ public final class VisualizerProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_CharacterChange_descriptor;
+      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_CharacterChange_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_CharacterChange_fieldAccessorTable
+      return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_CharacterChange_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange.class, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange.Builder.class);
     }
@@ -1134,7 +1124,6 @@ public final class VisualizerProtos {
      * <code>bool died = 1;</code>
      * @return The died.
      */
-    @java.lang.Override
     public boolean getDied() {
       return died_;
     }
@@ -1145,7 +1134,6 @@ public final class VisualizerProtos {
      * <code>bool respawned = 2;</code>
      * @return The respawned.
      */
-    @java.lang.Override
     public boolean getRespawned() {
       return respawned_;
     }
@@ -1153,20 +1141,20 @@ public final class VisualizerProtos {
     public static final int DECISIONTYPE_FIELD_NUMBER = 3;
     private int decisionType_;
     /**
-     * <code>.DecisionType decisionType = 3;</code>
+     * <code>.character.DecisionType decisionType = 3;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
-    @java.lang.Override public int getDecisionTypeValue() {
+    public int getDecisionTypeValue() {
       return decisionType_;
     }
     /**
-     * <code>.DecisionType decisionType = 3;</code>
+     * <code>.character.DecisionType decisionType = 3;</code>
      * @return The decisionType.
      */
-    @java.lang.Override public Enums.DecisionType getDecisionType() {
+    public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
       @SuppressWarnings("deprecation")
-      Enums.DecisionType result = Enums.DecisionType.valueOf(decisionType_);
-      return result == null ? Enums.DecisionType.UNRECOGNIZED : result;
+      mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
     }
 
     public static final int PATH_FIELD_NUMBER = 4;
@@ -1174,14 +1162,12 @@ public final class VisualizerProtos {
     /**
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.game.characters.CharacterProtos.Position> getPathList() {
       return path_;
     }
     /**
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder> 
         getPathOrBuilderList() {
       return path_;
@@ -1189,21 +1175,18 @@ public final class VisualizerProtos {
     /**
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public int getPathCount() {
       return path_.size();
     }
     /**
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.Position getPath(int index) {
       return path_.get(index);
     }
     /**
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.characters.CharacterProtos.PositionOrBuilder getPathOrBuilder(
         int index) {
       return path_.get(index);
@@ -1229,7 +1212,7 @@ public final class VisualizerProtos {
       if (respawned_ != false) {
         output.writeBool(2, respawned_);
       }
-      if (decisionType_ != Enums.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
         output.writeEnum(3, decisionType_);
       }
       for (int i = 0; i < path_.size(); i++) {
@@ -1252,7 +1235,7 @@ public final class VisualizerProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, respawned_);
       }
-      if (decisionType_ != Enums.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, decisionType_);
       }
@@ -1401,21 +1384,21 @@ public final class VisualizerProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code game.CharacterChange}
+     * Protobuf type {@code player_communication.CharacterChange}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:game.CharacterChange)
+        // @@protoc_insertion_point(builder_implements:player_communication.CharacterChange)
         mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChangeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_CharacterChange_descriptor;
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_CharacterChange_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_CharacterChange_fieldAccessorTable
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_CharacterChange_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange.class, mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange.Builder.class);
       }
@@ -1457,7 +1440,7 @@ public final class VisualizerProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_game_CharacterChange_descriptor;
+        return mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.internal_static_player_communication_CharacterChange_descriptor;
       }
 
       @java.lang.Override
@@ -1608,7 +1591,6 @@ public final class VisualizerProtos {
        * <code>bool died = 1;</code>
        * @return The died.
        */
-      @java.lang.Override
       public boolean getDied() {
         return died_;
       }
@@ -1639,7 +1621,6 @@ public final class VisualizerProtos {
        * <code>bool respawned = 2;</code>
        * @return The respawned.
        */
-      @java.lang.Override
       public boolean getRespawned() {
         return respawned_;
       }
@@ -1667,39 +1648,37 @@ public final class VisualizerProtos {
 
       private int decisionType_ = 0;
       /**
-       * <code>.DecisionType decisionType = 3;</code>
+       * <code>.character.DecisionType decisionType = 3;</code>
        * @return The enum numeric value on the wire for decisionType.
        */
-      @java.lang.Override public int getDecisionTypeValue() {
+      public int getDecisionTypeValue() {
         return decisionType_;
       }
       /**
-       * <code>.DecisionType decisionType = 3;</code>
+       * <code>.character.DecisionType decisionType = 3;</code>
        * @param value The enum numeric value on the wire for decisionType to set.
        * @return This builder for chaining.
        */
       public Builder setDecisionTypeValue(int value) {
-        
         decisionType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.DecisionType decisionType = 3;</code>
+       * <code>.character.DecisionType decisionType = 3;</code>
        * @return The decisionType.
        */
-      @java.lang.Override
-      public Enums.DecisionType getDecisionType() {
+      public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
         @SuppressWarnings("deprecation")
-        Enums.DecisionType result = Enums.DecisionType.valueOf(decisionType_);
-        return result == null ? Enums.DecisionType.UNRECOGNIZED : result;
+        mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.DecisionType decisionType = 3;</code>
+       * <code>.character.DecisionType decisionType = 3;</code>
        * @param value The decisionType to set.
        * @return This builder for chaining.
        */
-      public Builder setDecisionType(Enums.DecisionType value) {
+      public Builder setDecisionType(mech.mania.engine.game.characters.CharacterProtos.DecisionType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1709,7 +1688,7 @@ public final class VisualizerProtos {
         return this;
       }
       /**
-       * <code>.DecisionType decisionType = 3;</code>
+       * <code>.character.DecisionType decisionType = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearDecisionType() {
@@ -1971,10 +1950,10 @@ public final class VisualizerProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:game.CharacterChange)
+      // @@protoc_insertion_point(builder_scope:player_communication.CharacterChange)
     }
 
-    // @@protoc_insertion_point(class_scope:game.CharacterChange)
+    // @@protoc_insertion_point(class_scope:player_communication.CharacterChange)
     private static final mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.CharacterChange();
@@ -2012,20 +1991,20 @@ public final class VisualizerProtos {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_VisualizerChange_descriptor;
+    internal_static_player_communication_VisualizerChange_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_VisualizerChange_fieldAccessorTable;
+      internal_static_player_communication_VisualizerChange_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_VisualizerChange_CharacterStatChangesEntry_descriptor;
+    internal_static_player_communication_VisualizerChange_CharacterStatChangesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_VisualizerChange_CharacterStatChangesEntry_fieldAccessorTable;
+      internal_static_player_communication_VisualizerChange_CharacterStatChangesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_CharacterChange_descriptor;
+    internal_static_player_communication_CharacterChange_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_CharacterChange_fieldAccessorTable;
+      internal_static_player_communication_CharacterChange_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2035,46 +2014,45 @@ public final class VisualizerProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020visualizer.proto\022\004game\032\017character.prot" +
-      "o\032\013enums.proto\"\320\001\n\020VisualizerChange\022\030\n\020n" +
-      "ew_player_names\030\001 \003(\t\022N\n\024characterStatCh" +
-      "anges\030\002 \003(\01320.game.VisualizerChange.Char" +
-      "acterStatChangesEntry\032R\n\031CharacterStatCh" +
-      "angesEntry\022\013\n\003key\030\001 \001(\t\022$\n\005value\030\002 \001(\0132\025" +
-      ".game.CharacterChange:\0028\001\"z\n\017CharacterCh" +
-      "ange\022\014\n\004died\030\001 \001(\010\022\021\n\trespawned\030\002 \001(\010\022#\n" +
-      "\014decisionType\030\003 \001(\0162\r.DecisionType\022!\n\004pa" +
-      "th\030\004 \003(\0132\023.character.PositionB\\\n7mech.ma" +
-      "nia.engine.server.communication.visualiz" +
-      "er.modelB\020VisualizerProtos\252\002\016MM26.IO.Mod" +
-      "elsb\006proto3"
+      "\n\020visualizer.proto\022\024player_communication" +
+      "\032\017character.proto\"\360\001\n\020VisualizerChange\022\030" +
+      "\n\020new_player_names\030\001 \003(\t\022^\n\024characterSta" +
+      "tChanges\030\002 \003(\0132@.player_communication.Vi" +
+      "sualizerChange.CharacterStatChangesEntry" +
+      "\032b\n\031CharacterStatChangesEntry\022\013\n\003key\030\001 \001" +
+      "(\t\0224\n\005value\030\002 \001(\0132%.player_communication" +
+      ".CharacterChange:\0028\001\"\204\001\n\017CharacterChange" +
+      "\022\014\n\004died\030\001 \001(\010\022\021\n\trespawned\030\002 \001(\010\022-\n\014dec" +
+      "isionType\030\003 \001(\0162\027.character.DecisionType" +
+      "\022!\n\004path\030\004 \003(\0132\023.character.PositionB\\\n7m" +
+      "ech.mania.engine.server.communication.vi" +
+      "sualizer.modelB\020VisualizerProtos\252\002\016MM26." +
+      "IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           mech.mania.engine.game.characters.CharacterProtos.getDescriptor(),
-          Enums.getDescriptor(),
         });
-    internal_static_game_VisualizerChange_descriptor =
+    internal_static_player_communication_VisualizerChange_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_game_VisualizerChange_fieldAccessorTable = new
+    internal_static_player_communication_VisualizerChange_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_VisualizerChange_descriptor,
+        internal_static_player_communication_VisualizerChange_descriptor,
         new java.lang.String[] { "NewPlayerNames", "CharacterStatChanges", });
-    internal_static_game_VisualizerChange_CharacterStatChangesEntry_descriptor =
-      internal_static_game_VisualizerChange_descriptor.getNestedTypes().get(0);
-    internal_static_game_VisualizerChange_CharacterStatChangesEntry_fieldAccessorTable = new
+    internal_static_player_communication_VisualizerChange_CharacterStatChangesEntry_descriptor =
+      internal_static_player_communication_VisualizerChange_descriptor.getNestedTypes().get(0);
+    internal_static_player_communication_VisualizerChange_CharacterStatChangesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_VisualizerChange_CharacterStatChangesEntry_descriptor,
+        internal_static_player_communication_VisualizerChange_CharacterStatChangesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_game_CharacterChange_descriptor =
+    internal_static_player_communication_CharacterChange_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_game_CharacterChange_fieldAccessorTable = new
+    internal_static_player_communication_CharacterChange_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_CharacterChange_descriptor,
+        internal_static_player_communication_CharacterChange_descriptor,
         new java.lang.String[] { "Died", "Respawned", "DecisionType", "Path", });
     mech.mania.engine.game.characters.CharacterProtos.getDescriptor();
-    Enums.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -45,7 +45,7 @@ public final class InfraProtos {
   /**
    * Protobuf type {@code infra.InfraPlayer}
    */
-  public static final class InfraPlayer extends
+  public  static final class InfraPlayer extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:infra.InfraPlayer)
       InfraPlayerOrBuilder {
@@ -139,7 +139,6 @@ public final class InfraProtos {
      * <code>string player_name = 1;</code>
      * @return The playerName.
      */
-    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -156,7 +155,6 @@ public final class InfraProtos {
      * <code>string player_name = 1;</code>
      * @return The bytes for playerName.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -177,7 +175,6 @@ public final class InfraProtos {
      * <code>string player_ip = 2;</code>
      * @return The playerIp.
      */
-    @java.lang.Override
     public java.lang.String getPlayerIp() {
       java.lang.Object ref = playerIp_;
       if (ref instanceof java.lang.String) {
@@ -194,7 +191,6 @@ public final class InfraProtos {
      * <code>string player_ip = 2;</code>
      * @return The bytes for playerIp.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerIpBytes() {
       java.lang.Object ref = playerIp_;
@@ -757,7 +753,7 @@ public final class InfraProtos {
   /**
    * Protobuf type {@code infra.InfraStatus}
    */
-  public static final class InfraStatus extends
+  public  static final class InfraStatus extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:infra.InfraStatus)
       InfraStatusOrBuilder {
@@ -849,7 +845,6 @@ public final class InfraProtos {
      * <code>int32 status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public int getStatus() {
       return status_;
     }
@@ -860,7 +855,6 @@ public final class InfraProtos {
      * <code>string message = 2;</code>
      * @return The message.
      */
-    @java.lang.Override
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
@@ -877,7 +871,6 @@ public final class InfraProtos {
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
       java.lang.Object ref = message_;
@@ -1216,7 +1209,6 @@ public final class InfraProtos {
        * <code>int32 status = 1;</code>
        * @return The status.
        */
-      @java.lang.Override
       public int getStatus() {
         return status_;
       }
@@ -1392,8 +1384,9 @@ public final class InfraProtos {
       "\n\013infra.proto\022\005infra\"5\n\013InfraPlayer\022\023\n\013p" +
       "layer_name\030\001 \001(\t\022\021\n\tplayer_ip\030\002 \001(\t\".\n\013I" +
       "nfraStatus\022\016\n\006status\030\001 \001(\005\022\017\n\007message\030\002 " +
-      "\001(\tBA\n2mech.mania.engine.server.communic" +
-      "ation.infra.modelB\013InfraProtosb\006proto3"
+      "\001(\tBR\n2mech.mania.engine.server.communic" +
+      "ation.infra.modelB\013InfraProtos\252\002\016MM26.IO" +
+      ".Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

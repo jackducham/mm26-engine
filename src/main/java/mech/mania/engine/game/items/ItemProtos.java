@@ -123,7 +123,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Item}
    */
-  public static final class Item extends
+  public  static final class Item extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Item)
       ItemOrBuilder {
@@ -342,7 +342,6 @@ public final class ItemProtos {
      * <code>int32 max_stack = 1;</code>
      * @return The maxStack.
      */
-    @java.lang.Override
     public int getMaxStack() {
       return maxStack_;
     }
@@ -353,7 +352,6 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 2;</code>
      * @return Whether the stats field is set.
      */
-    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -361,14 +359,12 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 2;</code>
      * @return The stats.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifier getStats() {
       return stats_ == null ? mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
@@ -378,7 +374,6 @@ public final class ItemProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return Whether the clothes field is set.
      */
-    @java.lang.Override
     public boolean hasClothes() {
       return itemCase_ == 3;
     }
@@ -386,7 +381,6 @@ public final class ItemProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return The clothes.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Clothes getClothes() {
       if (itemCase_ == 3) {
          return (mech.mania.engine.game.items.ItemProtos.Clothes) item_;
@@ -396,7 +390,6 @@ public final class ItemProtos {
     /**
      * <code>.item.Clothes clothes = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
       if (itemCase_ == 3) {
          return (mech.mania.engine.game.items.ItemProtos.Clothes) item_;
@@ -409,7 +402,6 @@ public final class ItemProtos {
      * <code>.item.Hat hat = 4;</code>
      * @return Whether the hat field is set.
      */
-    @java.lang.Override
     public boolean hasHat() {
       return itemCase_ == 4;
     }
@@ -417,7 +409,6 @@ public final class ItemProtos {
      * <code>.item.Hat hat = 4;</code>
      * @return The hat.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Hat getHat() {
       if (itemCase_ == 4) {
          return (mech.mania.engine.game.items.ItemProtos.Hat) item_;
@@ -427,7 +418,6 @@ public final class ItemProtos {
     /**
      * <code>.item.Hat hat = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.HatOrBuilder getHatOrBuilder() {
       if (itemCase_ == 4) {
          return (mech.mania.engine.game.items.ItemProtos.Hat) item_;
@@ -440,7 +430,6 @@ public final class ItemProtos {
      * <code>.item.Shoes shoes = 5;</code>
      * @return Whether the shoes field is set.
      */
-    @java.lang.Override
     public boolean hasShoes() {
       return itemCase_ == 5;
     }
@@ -448,7 +437,6 @@ public final class ItemProtos {
      * <code>.item.Shoes shoes = 5;</code>
      * @return The shoes.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Shoes getShoes() {
       if (itemCase_ == 5) {
          return (mech.mania.engine.game.items.ItemProtos.Shoes) item_;
@@ -458,7 +446,6 @@ public final class ItemProtos {
     /**
      * <code>.item.Shoes shoes = 5;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
       if (itemCase_ == 5) {
          return (mech.mania.engine.game.items.ItemProtos.Shoes) item_;
@@ -471,7 +458,6 @@ public final class ItemProtos {
      * <code>.item.Weapon weapon = 6;</code>
      * @return Whether the weapon field is set.
      */
-    @java.lang.Override
     public boolean hasWeapon() {
       return itemCase_ == 6;
     }
@@ -479,7 +465,6 @@ public final class ItemProtos {
      * <code>.item.Weapon weapon = 6;</code>
      * @return The weapon.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Weapon getWeapon() {
       if (itemCase_ == 6) {
          return (mech.mania.engine.game.items.ItemProtos.Weapon) item_;
@@ -489,7 +474,6 @@ public final class ItemProtos {
     /**
      * <code>.item.Weapon weapon = 6;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
       if (itemCase_ == 6) {
          return (mech.mania.engine.game.items.ItemProtos.Weapon) item_;
@@ -502,7 +486,6 @@ public final class ItemProtos {
      * <code>.item.Consumable consumable = 7;</code>
      * @return Whether the consumable field is set.
      */
-    @java.lang.Override
     public boolean hasConsumable() {
       return itemCase_ == 7;
     }
@@ -510,7 +493,6 @@ public final class ItemProtos {
      * <code>.item.Consumable consumable = 7;</code>
      * @return The consumable.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.Consumable getConsumable() {
       if (itemCase_ == 7) {
          return (mech.mania.engine.game.items.ItemProtos.Consumable) item_;
@@ -520,7 +502,6 @@ public final class ItemProtos {
     /**
      * <code>.item.Consumable consumable = 7;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder() {
       if (itemCase_ == 7) {
          return (mech.mania.engine.game.items.ItemProtos.Consumable) item_;
@@ -1031,7 +1012,6 @@ public final class ItemProtos {
        * <code>int32 max_stack = 1;</code>
        * @return The maxStack.
        */
-      @java.lang.Override
       public int getMaxStack() {
         return maxStack_;
       }
@@ -1190,7 +1170,6 @@ public final class ItemProtos {
        * <code>.item.Clothes clothes = 3;</code>
        * @return Whether the clothes field is set.
        */
-      @java.lang.Override
       public boolean hasClothes() {
         return itemCase_ == 3;
       }
@@ -1198,7 +1177,6 @@ public final class ItemProtos {
        * <code>.item.Clothes clothes = 3;</code>
        * @return The clothes.
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Clothes getClothes() {
         if (clothesBuilder_ == null) {
           if (itemCase_ == 3) {
@@ -1292,7 +1270,6 @@ public final class ItemProtos {
       /**
        * <code>.item.Clothes clothes = 3;</code>
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
         if ((itemCase_ == 3) && (clothesBuilder_ != null)) {
           return clothesBuilder_.getMessageOrBuilder();
@@ -1331,7 +1308,6 @@ public final class ItemProtos {
        * <code>.item.Hat hat = 4;</code>
        * @return Whether the hat field is set.
        */
-      @java.lang.Override
       public boolean hasHat() {
         return itemCase_ == 4;
       }
@@ -1339,7 +1315,6 @@ public final class ItemProtos {
        * <code>.item.Hat hat = 4;</code>
        * @return The hat.
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Hat getHat() {
         if (hatBuilder_ == null) {
           if (itemCase_ == 4) {
@@ -1433,7 +1408,6 @@ public final class ItemProtos {
       /**
        * <code>.item.Hat hat = 4;</code>
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.HatOrBuilder getHatOrBuilder() {
         if ((itemCase_ == 4) && (hatBuilder_ != null)) {
           return hatBuilder_.getMessageOrBuilder();
@@ -1472,7 +1446,6 @@ public final class ItemProtos {
        * <code>.item.Shoes shoes = 5;</code>
        * @return Whether the shoes field is set.
        */
-      @java.lang.Override
       public boolean hasShoes() {
         return itemCase_ == 5;
       }
@@ -1480,7 +1453,6 @@ public final class ItemProtos {
        * <code>.item.Shoes shoes = 5;</code>
        * @return The shoes.
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Shoes getShoes() {
         if (shoesBuilder_ == null) {
           if (itemCase_ == 5) {
@@ -1574,7 +1546,6 @@ public final class ItemProtos {
       /**
        * <code>.item.Shoes shoes = 5;</code>
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
         if ((itemCase_ == 5) && (shoesBuilder_ != null)) {
           return shoesBuilder_.getMessageOrBuilder();
@@ -1613,7 +1584,6 @@ public final class ItemProtos {
        * <code>.item.Weapon weapon = 6;</code>
        * @return Whether the weapon field is set.
        */
-      @java.lang.Override
       public boolean hasWeapon() {
         return itemCase_ == 6;
       }
@@ -1621,7 +1591,6 @@ public final class ItemProtos {
        * <code>.item.Weapon weapon = 6;</code>
        * @return The weapon.
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Weapon getWeapon() {
         if (weaponBuilder_ == null) {
           if (itemCase_ == 6) {
@@ -1715,7 +1684,6 @@ public final class ItemProtos {
       /**
        * <code>.item.Weapon weapon = 6;</code>
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
         if ((itemCase_ == 6) && (weaponBuilder_ != null)) {
           return weaponBuilder_.getMessageOrBuilder();
@@ -1754,7 +1722,6 @@ public final class ItemProtos {
        * <code>.item.Consumable consumable = 7;</code>
        * @return Whether the consumable field is set.
        */
-      @java.lang.Override
       public boolean hasConsumable() {
         return itemCase_ == 7;
       }
@@ -1762,7 +1729,6 @@ public final class ItemProtos {
        * <code>.item.Consumable consumable = 7;</code>
        * @return The consumable.
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Consumable getConsumable() {
         if (consumableBuilder_ == null) {
           if (itemCase_ == 7) {
@@ -1856,7 +1822,6 @@ public final class ItemProtos {
       /**
        * <code>.item.Consumable consumable = 7;</code>
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder() {
         if ((itemCase_ == 7) && (consumableBuilder_ != null)) {
           return consumableBuilder_.getMessageOrBuilder();
@@ -1963,7 +1928,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Clothes}
    */
-  public static final class Clothes extends
+  public  static final class Clothes extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Clothes)
       ClothesOrBuilder {
@@ -2056,7 +2021,6 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
-    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -2064,14 +2028,12 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifier getStats() {
       return stats_ == null ? mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
@@ -2595,7 +2557,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Hat}
    */
-  public static final class Hat extends
+  public  static final class Hat extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Hat)
       HatOrBuilder {
@@ -2758,10 +2720,6 @@ public final class ItemProtos {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -2802,7 +2760,6 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
-    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -2810,14 +2767,12 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifier getStats() {
       return stats_ == null ? mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
@@ -2828,14 +2783,14 @@ public final class ItemProtos {
      * <code>.item.Hat.HatEffect hat_effect = 2;</code>
      * @return The enum numeric value on the wire for hatEffect.
      */
-    @java.lang.Override public int getHatEffectValue() {
+    public int getHatEffectValue() {
       return hatEffect_;
     }
     /**
      * <code>.item.Hat.HatEffect hat_effect = 2;</code>
      * @return The hatEffect.
      */
-    @java.lang.Override public mech.mania.engine.game.items.ItemProtos.Hat.HatEffect getHatEffect() {
+    public mech.mania.engine.game.items.ItemProtos.Hat.HatEffect getHatEffect() {
       @SuppressWarnings("deprecation")
       mech.mania.engine.game.items.ItemProtos.Hat.HatEffect result = mech.mania.engine.game.items.ItemProtos.Hat.HatEffect.valueOf(hatEffect_);
       return result == null ? mech.mania.engine.game.items.ItemProtos.Hat.HatEffect.UNRECOGNIZED : result;
@@ -3296,7 +3251,7 @@ public final class ItemProtos {
        * <code>.item.Hat.HatEffect hat_effect = 2;</code>
        * @return The enum numeric value on the wire for hatEffect.
        */
-      @java.lang.Override public int getHatEffectValue() {
+      public int getHatEffectValue() {
         return hatEffect_;
       }
       /**
@@ -3305,7 +3260,6 @@ public final class ItemProtos {
        * @return This builder for chaining.
        */
       public Builder setHatEffectValue(int value) {
-        
         hatEffect_ = value;
         onChanged();
         return this;
@@ -3314,7 +3268,6 @@ public final class ItemProtos {
        * <code>.item.Hat.HatEffect hat_effect = 2;</code>
        * @return The hatEffect.
        */
-      @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.Hat.HatEffect getHatEffect() {
         @SuppressWarnings("deprecation")
         mech.mania.engine.game.items.ItemProtos.Hat.HatEffect result = mech.mania.engine.game.items.ItemProtos.Hat.HatEffect.valueOf(hatEffect_);
@@ -3419,7 +3372,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Shoes}
    */
-  public static final class Shoes extends
+  public  static final class Shoes extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Shoes)
       ShoesOrBuilder {
@@ -3512,7 +3465,6 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
-    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -3520,14 +3472,12 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifier getStats() {
       return stats_ == null ? mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
@@ -4079,7 +4029,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Weapon}
    */
-  public static final class Weapon extends
+  public  static final class Weapon extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Weapon)
       WeaponOrBuilder {
@@ -4205,7 +4155,6 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
-    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -4213,14 +4162,12 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifier getStats() {
       return stats_ == null ? mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
@@ -4231,7 +4178,6 @@ public final class ItemProtos {
      * <code>int32 range = 2;</code>
      * @return The range.
      */
-    @java.lang.Override
     public int getRange() {
       return range_;
     }
@@ -4242,7 +4188,6 @@ public final class ItemProtos {
      * <code>int32 splash_radius = 3;</code>
      * @return The splashRadius.
      */
-    @java.lang.Override
     public int getSplashRadius() {
       return splashRadius_;
     }
@@ -4253,7 +4198,6 @@ public final class ItemProtos {
      * <code>int32 magic_damage = 4;</code>
      * @return The magicDamage.
      */
-    @java.lang.Override
     public int getMagicDamage() {
       return magicDamage_;
     }
@@ -4264,7 +4208,6 @@ public final class ItemProtos {
      * <code>int32 physical_damage = 5;</code>
      * @return The physicalDamage.
      */
-    @java.lang.Override
     public int getPhysicalDamage() {
       return physicalDamage_;
     }
@@ -4275,7 +4218,6 @@ public final class ItemProtos {
      * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
      * @return Whether the onHitEffect field is set.
      */
-    @java.lang.Override
     public boolean hasOnHitEffect() {
       return onHitEffect_ != null;
     }
@@ -4283,14 +4225,12 @@ public final class ItemProtos {
      * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
      * @return The onHitEffect.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
       return onHitEffect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
     }
     /**
      * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
       return getOnHitEffect();
     }
@@ -4832,7 +4772,6 @@ public final class ItemProtos {
        * <code>int32 range = 2;</code>
        * @return The range.
        */
-      @java.lang.Override
       public int getRange() {
         return range_;
       }
@@ -4863,7 +4802,6 @@ public final class ItemProtos {
        * <code>int32 splash_radius = 3;</code>
        * @return The splashRadius.
        */
-      @java.lang.Override
       public int getSplashRadius() {
         return splashRadius_;
       }
@@ -4894,7 +4832,6 @@ public final class ItemProtos {
        * <code>int32 magic_damage = 4;</code>
        * @return The magicDamage.
        */
-      @java.lang.Override
       public int getMagicDamage() {
         return magicDamage_;
       }
@@ -4925,7 +4862,6 @@ public final class ItemProtos {
        * <code>int32 physical_damage = 5;</code>
        * @return The physicalDamage.
        */
-      @java.lang.Override
       public int getPhysicalDamage() {
         return physicalDamage_;
       }
@@ -5150,7 +5086,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Consumable}
    */
-  public static final class Consumable extends
+  public  static final class Consumable extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Consumable)
       ConsumableOrBuilder {
@@ -5248,7 +5184,6 @@ public final class ItemProtos {
      * <code>.item.TempStatusModifier effect = 1;</code>
      * @return Whether the effect field is set.
      */
-    @java.lang.Override
     public boolean hasEffect() {
       return effect_ != null;
     }
@@ -5256,14 +5191,12 @@ public final class ItemProtos {
      * <code>.item.TempStatusModifier effect = 1;</code>
      * @return The effect.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getEffect() {
       return effect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
     }
     /**
      * <code>.item.TempStatusModifier effect = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
       return getEffect();
     }
@@ -5274,7 +5207,6 @@ public final class ItemProtos {
      * <code>int32 stacks = 2;</code>
      * @return The stacks.
      */
-    @java.lang.Override
     public int getStacks() {
       return stacks_;
     }
@@ -5735,7 +5667,6 @@ public final class ItemProtos {
        * <code>int32 stacks = 2;</code>
        * @return The stacks.
        */
-      @java.lang.Override
       public int getStacks() {
         return stacks_;
       }
@@ -5910,7 +5841,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.StatusModifier}
    */
-  public static final class StatusModifier extends
+  public  static final class StatusModifier extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.StatusModifier)
       StatusModifierOrBuilder {
@@ -6065,7 +5996,6 @@ public final class ItemProtos {
      * <code>int32 flat_speed_change = 1;</code>
      * @return The flatSpeedChange.
      */
-    @java.lang.Override
     public int getFlatSpeedChange() {
       return flatSpeedChange_;
     }
@@ -6076,7 +6006,6 @@ public final class ItemProtos {
      * <code>float percent_speed_change = 2;</code>
      * @return The percentSpeedChange.
      */
-    @java.lang.Override
     public float getPercentSpeedChange() {
       return percentSpeedChange_;
     }
@@ -6087,7 +6016,6 @@ public final class ItemProtos {
      * <code>int32 flat_health_change = 3;</code>
      * @return The flatHealthChange.
      */
-    @java.lang.Override
     public int getFlatHealthChange() {
       return flatHealthChange_;
     }
@@ -6098,7 +6026,6 @@ public final class ItemProtos {
      * <code>float percent_health_change = 4;</code>
      * @return The percentHealthChange.
      */
-    @java.lang.Override
     public float getPercentHealthChange() {
       return percentHealthChange_;
     }
@@ -6109,7 +6036,6 @@ public final class ItemProtos {
      * <code>int32 flat_experience_change = 5;</code>
      * @return The flatExperienceChange.
      */
-    @java.lang.Override
     public int getFlatExperienceChange() {
       return flatExperienceChange_;
     }
@@ -6120,7 +6046,6 @@ public final class ItemProtos {
      * <code>float percent_experience_change = 6;</code>
      * @return The percentExperienceChange.
      */
-    @java.lang.Override
     public float getPercentExperienceChange() {
       return percentExperienceChange_;
     }
@@ -6131,7 +6056,6 @@ public final class ItemProtos {
      * <code>int32 flat_magic_damage_change = 7;</code>
      * @return The flatMagicDamageChange.
      */
-    @java.lang.Override
     public int getFlatMagicDamageChange() {
       return flatMagicDamageChange_;
     }
@@ -6142,7 +6066,6 @@ public final class ItemProtos {
      * <code>float percent_magic_damage_change = 8;</code>
      * @return The percentMagicDamageChange.
      */
-    @java.lang.Override
     public float getPercentMagicDamageChange() {
       return percentMagicDamageChange_;
     }
@@ -6153,7 +6076,6 @@ public final class ItemProtos {
      * <code>int32 flat_physical_damage_change = 9;</code>
      * @return The flatPhysicalDamageChange.
      */
-    @java.lang.Override
     public int getFlatPhysicalDamageChange() {
       return flatPhysicalDamageChange_;
     }
@@ -6164,7 +6086,6 @@ public final class ItemProtos {
      * <code>float percent_physical_damage_change = 10;</code>
      * @return The percentPhysicalDamageChange.
      */
-    @java.lang.Override
     public float getPercentPhysicalDamageChange() {
       return percentPhysicalDamageChange_;
     }
@@ -6175,7 +6096,6 @@ public final class ItemProtos {
      * <code>int32 flat_magic_defense_change = 11;</code>
      * @return The flatMagicDefenseChange.
      */
-    @java.lang.Override
     public int getFlatMagicDefenseChange() {
       return flatMagicDefenseChange_;
     }
@@ -6186,7 +6106,6 @@ public final class ItemProtos {
      * <code>float percent_magic_defense_change = 12;</code>
      * @return The percentMagicDefenseChange.
      */
-    @java.lang.Override
     public float getPercentMagicDefenseChange() {
       return percentMagicDefenseChange_;
     }
@@ -6197,7 +6116,6 @@ public final class ItemProtos {
      * <code>int32 flat_physical_defense_change = 13;</code>
      * @return The flatPhysicalDefenseChange.
      */
-    @java.lang.Override
     public int getFlatPhysicalDefenseChange() {
       return flatPhysicalDefenseChange_;
     }
@@ -6208,7 +6126,6 @@ public final class ItemProtos {
      * <code>float percent_physical_defense_change = 14;</code>
      * @return The percentPhysicalDefenseChange.
      */
-    @java.lang.Override
     public float getPercentPhysicalDefenseChange() {
       return percentPhysicalDefenseChange_;
     }
@@ -6219,7 +6136,6 @@ public final class ItemProtos {
      * <code>int32 flat_regen_per_turn = 15;</code>
      * @return The flatRegenPerTurn.
      */
-    @java.lang.Override
     public int getFlatRegenPerTurn() {
       return flatRegenPerTurn_;
     }
@@ -6783,7 +6699,6 @@ public final class ItemProtos {
        * <code>int32 flat_speed_change = 1;</code>
        * @return The flatSpeedChange.
        */
-      @java.lang.Override
       public int getFlatSpeedChange() {
         return flatSpeedChange_;
       }
@@ -6814,7 +6729,6 @@ public final class ItemProtos {
        * <code>float percent_speed_change = 2;</code>
        * @return The percentSpeedChange.
        */
-      @java.lang.Override
       public float getPercentSpeedChange() {
         return percentSpeedChange_;
       }
@@ -6845,7 +6759,6 @@ public final class ItemProtos {
        * <code>int32 flat_health_change = 3;</code>
        * @return The flatHealthChange.
        */
-      @java.lang.Override
       public int getFlatHealthChange() {
         return flatHealthChange_;
       }
@@ -6876,7 +6789,6 @@ public final class ItemProtos {
        * <code>float percent_health_change = 4;</code>
        * @return The percentHealthChange.
        */
-      @java.lang.Override
       public float getPercentHealthChange() {
         return percentHealthChange_;
       }
@@ -6907,7 +6819,6 @@ public final class ItemProtos {
        * <code>int32 flat_experience_change = 5;</code>
        * @return The flatExperienceChange.
        */
-      @java.lang.Override
       public int getFlatExperienceChange() {
         return flatExperienceChange_;
       }
@@ -6938,7 +6849,6 @@ public final class ItemProtos {
        * <code>float percent_experience_change = 6;</code>
        * @return The percentExperienceChange.
        */
-      @java.lang.Override
       public float getPercentExperienceChange() {
         return percentExperienceChange_;
       }
@@ -6969,7 +6879,6 @@ public final class ItemProtos {
        * <code>int32 flat_magic_damage_change = 7;</code>
        * @return The flatMagicDamageChange.
        */
-      @java.lang.Override
       public int getFlatMagicDamageChange() {
         return flatMagicDamageChange_;
       }
@@ -7000,7 +6909,6 @@ public final class ItemProtos {
        * <code>float percent_magic_damage_change = 8;</code>
        * @return The percentMagicDamageChange.
        */
-      @java.lang.Override
       public float getPercentMagicDamageChange() {
         return percentMagicDamageChange_;
       }
@@ -7031,7 +6939,6 @@ public final class ItemProtos {
        * <code>int32 flat_physical_damage_change = 9;</code>
        * @return The flatPhysicalDamageChange.
        */
-      @java.lang.Override
       public int getFlatPhysicalDamageChange() {
         return flatPhysicalDamageChange_;
       }
@@ -7062,7 +6969,6 @@ public final class ItemProtos {
        * <code>float percent_physical_damage_change = 10;</code>
        * @return The percentPhysicalDamageChange.
        */
-      @java.lang.Override
       public float getPercentPhysicalDamageChange() {
         return percentPhysicalDamageChange_;
       }
@@ -7093,7 +6999,6 @@ public final class ItemProtos {
        * <code>int32 flat_magic_defense_change = 11;</code>
        * @return The flatMagicDefenseChange.
        */
-      @java.lang.Override
       public int getFlatMagicDefenseChange() {
         return flatMagicDefenseChange_;
       }
@@ -7124,7 +7029,6 @@ public final class ItemProtos {
        * <code>float percent_magic_defense_change = 12;</code>
        * @return The percentMagicDefenseChange.
        */
-      @java.lang.Override
       public float getPercentMagicDefenseChange() {
         return percentMagicDefenseChange_;
       }
@@ -7155,7 +7059,6 @@ public final class ItemProtos {
        * <code>int32 flat_physical_defense_change = 13;</code>
        * @return The flatPhysicalDefenseChange.
        */
-      @java.lang.Override
       public int getFlatPhysicalDefenseChange() {
         return flatPhysicalDefenseChange_;
       }
@@ -7186,7 +7089,6 @@ public final class ItemProtos {
        * <code>float percent_physical_defense_change = 14;</code>
        * @return The percentPhysicalDefenseChange.
        */
-      @java.lang.Override
       public float getPercentPhysicalDefenseChange() {
         return percentPhysicalDefenseChange_;
       }
@@ -7217,7 +7119,6 @@ public final class ItemProtos {
        * <code>int32 flat_regen_per_turn = 15;</code>
        * @return The flatRegenPerTurn.
        */
-      @java.lang.Override
       public int getFlatRegenPerTurn() {
         return flatRegenPerTurn_;
       }
@@ -7341,7 +7242,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.TempStatusModifier}
    */
-  public static final class TempStatusModifier extends
+  public  static final class TempStatusModifier extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.TempStatusModifier)
       TempStatusModifierOrBuilder {
@@ -7454,7 +7355,6 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
-    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -7462,14 +7362,12 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifier getStats() {
       return stats_ == null ? mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
@@ -7480,7 +7378,6 @@ public final class ItemProtos {
      * <code>int32 flat_magical_damage_per_turn = 2;</code>
      * @return The flatMagicalDamagePerTurn.
      */
-    @java.lang.Override
     public int getFlatMagicalDamagePerTurn() {
       return flatMagicalDamagePerTurn_;
     }
@@ -7491,7 +7388,6 @@ public final class ItemProtos {
      * <code>int32 flat_physical_damage_per_turn = 3;</code>
      * @return The flatPhysicalDamagePerTurn.
      */
-    @java.lang.Override
     public int getFlatPhysicalDamagePerTurn() {
       return flatPhysicalDamagePerTurn_;
     }
@@ -7502,7 +7398,6 @@ public final class ItemProtos {
      * <code>int32 flat_regen_per_turn = 4;</code>
      * @return The flatRegenPerTurn.
      */
-    @java.lang.Override
     public int getFlatRegenPerTurn() {
       return flatRegenPerTurn_;
     }
@@ -7513,7 +7408,6 @@ public final class ItemProtos {
      * <code>int32 duration = 5;</code>
      * @return The duration.
      */
-    @java.lang.Override
     public int getDuration() {
       return duration_;
     }
@@ -8025,7 +7919,6 @@ public final class ItemProtos {
        * <code>int32 flat_magical_damage_per_turn = 2;</code>
        * @return The flatMagicalDamagePerTurn.
        */
-      @java.lang.Override
       public int getFlatMagicalDamagePerTurn() {
         return flatMagicalDamagePerTurn_;
       }
@@ -8056,7 +7949,6 @@ public final class ItemProtos {
        * <code>int32 flat_physical_damage_per_turn = 3;</code>
        * @return The flatPhysicalDamagePerTurn.
        */
-      @java.lang.Override
       public int getFlatPhysicalDamagePerTurn() {
         return flatPhysicalDamagePerTurn_;
       }
@@ -8087,7 +7979,6 @@ public final class ItemProtos {
        * <code>int32 flat_regen_per_turn = 4;</code>
        * @return The flatRegenPerTurn.
        */
-      @java.lang.Override
       public int getFlatRegenPerTurn() {
         return flatRegenPerTurn_;
       }
@@ -8118,7 +8009,6 @@ public final class ItemProtos {
        * <code>int32 duration = 5;</code>
        * @return The duration.
        */
-      @java.lang.Override
       public int getDuration() {
         return duration_;
       }

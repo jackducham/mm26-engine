@@ -3,6 +3,7 @@ package mech.mania.engine.game.model;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.*;
 
+import mech.mania.engine.server.communication.player.model.PlayerProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos;
 
 import java.util.ArrayList;
@@ -65,9 +66,34 @@ public class VisualizerChange {
         public VisualizerProtos.CharacterChange buildProtoClass() {
             VisualizerProtos.CharacterChange.Builder builder = VisualizerProtos.CharacterChange.newBuilder();
             builder.setDied(died);
-            builder.setRevived(revived);
-            builder.setDecisionType(decision);
-            builder.setPath(path);
+            builder.setRespawned(revived);
+
+            switch (decision) {
+                case MOVE:
+                    builder.setDecisionType(CharacterProtos.DecisionType.MOVE);
+                    break;
+                case ATTACK:
+                    builder.setDecisionType(CharacterProtos.DecisionType.ATTACK);
+                    break;
+                case PORTAL:
+                    builder.setDecisionType(CharacterProtos.DecisionType.PORTAL);
+                    break;
+                case DROP:
+                    builder.setDecisionType(CharacterProtos.DecisionType.DROP);
+                    break;
+                case EQUIP:
+                    builder.setDecisionType(CharacterProtos.DecisionType.EQUIP);
+                    break;
+                case PICKUP:
+                    builder.setDecisionType(CharacterProtos.DecisionType.PICKUP);
+                    break;
+                default:
+                    builder.setDecisionType(CharacterProtos.DecisionType.NONE);
+            }
+
+            for (Position position : path) {
+                builder.addPath(position.buildProtoClass());
+            }
 
             return builder.build();
         }
@@ -75,10 +101,11 @@ public class VisualizerChange {
 
     public VisualizerProtos.VisualizerChange buildProtoClass() {
         VisualizerProtos.VisualizerChange.Builder builder = VisualizerProtos.VisualizerChange.newBuilder();
-        builder.putAllNewPlayerNames(newPlayerNames);
+//        builder.putAllNewPlayerNames(newPlayerNames);
+        builder.addAllNewPlayerNames(newPlayerNames);
 
         for (String name : characterChanges.keySet()) {
-            builder.putCharacterChange(name, characterChanges.get(name).buildProtoClass());
+            builder.putCharacterStatChanges(name, characterChanges.get(name).buildProtoClass());
         }
 
         return builder.build();
