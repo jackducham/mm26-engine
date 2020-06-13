@@ -3,6 +3,8 @@ package mech.mania.engine.game.model;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.*;
 
+import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,8 +62,8 @@ public class VisualizerChange {
         List<Position> path = null;
 
 
-        public VisualizerChangeProtos.CharacterChange buildProtoClass() {
-            VisualizerChangeProtos.CharacterChange.Builder builder = VisualizerChangeProtos.CharacterChange.newBuilder();
+        public VisualizerProtos.CharacterChange buildProtoClass() {
+            VisualizerProtos.CharacterChange.Builder builder = VisualizerProtos.CharacterChange.newBuilder();
             builder.setDied(died);
             builder.setRevived(revived);
             builder.setDecisionType(decision);
@@ -71,8 +73,8 @@ public class VisualizerChange {
         }
     }
 
-    public VisualizerChangeProtos.VisualizerChange buildProtoClass() {
-        VisualizerChangeProtos.VisualizerProto.Builder builder = VisualizerChangeProtos.VisualizerProto.newBuilder();
+    public VisualizerProtos.VisualizerChange buildProtoClass() {
+        VisualizerProtos.VisualizerChange.Builder builder = VisualizerProtos.VisualizerChange.newBuilder();
         builder.putAllNewPlayerNames(newPlayerNames);
 
         for (String name : characterChanges.keySet()) {
