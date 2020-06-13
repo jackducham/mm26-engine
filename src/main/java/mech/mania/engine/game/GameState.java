@@ -2,6 +2,7 @@ package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.BoardProtos;
+import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.*;
 import mech.mania.engine.game.model.GameStateProtos;
@@ -42,6 +43,34 @@ public class GameState {
             return playerNames.get(playerId);
         }
         return null;
+    }
+
+    public Character getCharacter(String characterId) {
+        if(playerNames.containsKey(characterId)) {
+            return playerNames.get(characterId);
+        }
+
+        if(monsterNames.containsKey(characterId)) {
+            return monsterNames.get(characterId);
+        }
+
+        return null;
+    }
+
+    public List<Player> getAllPlayers() {
+        List<Player> players = new ArrayList<Player>();
+        for(Player player: playerNames.values()) {
+            players.add(player);
+        }
+        return players;
+    }
+
+    public List<Monster> getAllMonsters() {
+        List<Monster> monsters = new ArrayList<Monster>();
+        for(Monster monster: monsterNames.values()) {
+            monsters.add(monster);
+        }
+        return monsters;
     }
 
     public Monster getMonster(String monsterId) {
