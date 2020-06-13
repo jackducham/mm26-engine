@@ -25,7 +25,7 @@ public abstract class Character {
     protected final int baseDefense;
 
     /** Character's ongoing stats */
-    protected double currentHealth;
+    protected int currentHealth;
     protected int experience;
 
     /** Death parameters */
@@ -45,7 +45,7 @@ public abstract class Character {
     List<TempStatusModifier> activeEffects;
 
     // map of attackers to amount of actual damage done
-    protected Map<String, Double> taggedPlayersDamage;
+    protected Map<String, Integer> taggedPlayersDamage;
 
     // cumulative effects from all currentEffects. These are reset every turn
     StatusModifier temporaryEffects;
@@ -122,7 +122,7 @@ public abstract class Character {
             activeAttackers.add(attacker);
             activeEffects.add(weapon.getOnHitEffect());
         }
-        double actualDamage = calculateActualDamage(attacker, weapon, attackerATK);
+        int actualDamage = (int) calculateActualDamage(attacker, weapon, attackerATK);
         applyDamage(attacker, actualDamage);
     }
 
@@ -146,7 +146,7 @@ public abstract class Character {
      * @param attacker Character name of attacker
      * @param actualDamage calculated damage done to health
      */
-    public void applyDamage(String attacker, double actualDamage) {
+    public void applyDamage(String attacker, int actualDamage) {
         if (taggedPlayersDamage.containsKey(attacker)) {
             taggedPlayersDamage.put(attacker, taggedPlayersDamage.get(attacker) + actualDamage);
         } else {
@@ -240,7 +240,7 @@ public abstract class Character {
     protected void distributeRewards(GameState gameState) {
         for (Map.Entry mapElement : taggedPlayersDamage.entrySet()) {
             String attackerName = (String) mapElement.getKey();
-            Double damage = (Double) mapElement.getValue();
+            Integer damage = (Integer) mapElement.getValue();
 
             Player player = gameState.getPlayer(attackerName);
             if (player != null) { // attacker is Monster
@@ -254,7 +254,7 @@ public abstract class Character {
      */
     protected String getPlayerWithMostDamage() {
         String highestDamagePlayer = null;
-        double highestDamage = -1;
+        int highestDamage = -1;
         for (String playerName : taggedPlayersDamage.keySet()) {
             if (taggedPlayersDamage.get(playerName) > highestDamage) {
                 highestDamagePlayer = playerName;
@@ -272,33 +272,36 @@ public abstract class Character {
         return name;
     }
 
-    // @TODO: Discuss double vs int
-    // Since we have percent values, Java wants us to make everything a double
-    public double getSpeed() {
-        return (baseSpeed + temporaryEffects.getFlatSpeedChange()) * temporaryEffects.getPercentSpeedChange();
+    public int getSpeed() {
+        double speed = (baseSpeed + temporaryEffects.getFlatSpeedChange()) * temporaryEffects.getPercentSpeedChange();
+        return (int) speed;
     }
 
-    public double getMaxHealth() {
-        return (baseMaxHealth + temporaryEffects.getFlatHealthChange()) * temporaryEffects.getPercentHealthChange();
+    public int getMaxHealth() {
+        double maxHealth = (baseMaxHealth + temporaryEffects.getFlatHealthChange()) * temporaryEffects.getPercentHealthChange();
+        return (int) maxHealth;
     }
 
-    public double getExperience() {
-        return (experience + temporaryEffects.getFlatExperienceChange()) * temporaryEffects.getPercentExperienceChange();
+    public int getExperience() {
+        double xp = (experience + temporaryEffects.getFlatExperienceChange()) * temporaryEffects.getPercentExperienceChange();
+        return (int) xp;
     }
 
-    public double getAttack() {
-        return (baseAttack + temporaryEffects.getFlatAttackChange()) * temporaryEffects.getPercentAttackChange();
+    public int getAttack() {
+        double attack = (baseAttack + temporaryEffects.getFlatAttackChange()) * temporaryEffects.getPercentAttackChange();
+        return (int) attack;
     }
 
-    public double getDefense() {
-        return (baseDefense + temporaryEffects.getFlatDefenseChange()) * temporaryEffects.getPercentDefenseChange();
+    public int getDefense() {
+        double defense = (baseDefense + temporaryEffects.getFlatDefenseChange()) * temporaryEffects.getPercentDefenseChange();
+        return (int) defense;
     }
 
-    public double getCurrentHealth() {
+    public int getCurrentHealth() {
         return min(currentHealth, getMaxHealth());
     }
 
-    public void updateCurrentHealth(double currentHealth) {
+    public void updateCurrentHealth(int currentHealth) {
         this.currentHealth += currentHealth;
     }
 

@@ -116,7 +116,7 @@ public class Player extends Character {
     }
 
     @Override
-    public double getSpeed() {
+    public int getSpeed() {
         double speed = super.getSpeed();
 
         // Add flat wearable effects
@@ -147,11 +147,11 @@ public class Player extends Character {
             speed *= weapon.getStats().getPercentSpeedChange();
         }
 
-        return speed;
+        return (int) speed;
     }
 
     @Override
-    public double getMaxHealth() {
+    public int getMaxHealth() {
         double maxHealth = super.getMaxHealth();
 
         // Add flat wearable effects
@@ -182,11 +182,11 @@ public class Player extends Character {
             maxHealth *= weapon.getStats().getPercentHealthChange();
         }
 
-        return maxHealth;
+        return (int) maxHealth;
     }
 
     @Override
-    public double getExperience() {
+    public int getExperience() {
         double experience = super.getExperience();
 
         // Add flat wearable effects
@@ -217,11 +217,11 @@ public class Player extends Character {
             experience *= weapon.getStats().getPercentExperienceChange();
         }
 
-        return experience;
+        return (int) experience;
     }
 
     @Override
-    public double getAttack() {
+    public int getAttack() {
         double attack = super.getAttack();
 
         // Add flat wearable effects
@@ -252,11 +252,11 @@ public class Player extends Character {
             attack *= weapon.getStats().getPercentAttackChange();
         }
 
-        return attack;
+        return (int) attack;
     }
 
     @Override
-    public double getDefense() {
+    public int getDefense() {
         double defense = super.getDefense();
 
         // Add flat wearable effects
@@ -287,7 +287,7 @@ public class Player extends Character {
             defense *= weapon.getStats().getPercentDefenseChange();
         }
 
-        return defense;
+        return (int) defense;
     }
 
 
