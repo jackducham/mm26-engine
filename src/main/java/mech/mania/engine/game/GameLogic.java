@@ -267,19 +267,18 @@ public class GameLogic {
 
     /**
      * Applies Weapon's onHitEffect to the TempStatusModifier of all characters within the range of the attackCoordinate
+     * @param gameState current gameState
      * @param attacker character doing the attacking
      * @param attackCoordinate coordinate to attack
-     * @param gameState current gamestate
      */
     public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
         Board board = gameState.getBoard(attackCoordinate.getBoardID());
-        TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
         List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
         List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         // Character gave invalid attack position
-        if (affectedPositions.isEmpty()) {
+        if (affectedPositions == null || affectedPositions.isEmpty()) {
             return;
         }
 
@@ -289,11 +288,7 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                player.takeDamage(
-                                    attacker.getDamage(),
-                                    onHitEffect,
-                                    attacker.getName()
-                );
+                player.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
             }
         }
 
@@ -303,12 +298,7 @@ public class GameLogic {
             }
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                monster.addEffect(onHitEffect);
-                monster.takeDamage(
-                        attacker.getDamage(),
-                        onHitEffect,
-                        attacker.getName()
-                );
+                monster.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
             }
         }
 
