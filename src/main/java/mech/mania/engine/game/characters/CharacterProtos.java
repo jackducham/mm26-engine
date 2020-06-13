@@ -14,6 +14,159 @@ public final class CharacterProtos {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code character.DecisionType}
+   */
+  public enum DecisionType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>NONE = 0;</code>
+     */
+    NONE(0),
+    /**
+     * <code>MOVE = 1;</code>
+     */
+    MOVE(1),
+    /**
+     * <code>ATTACK = 2;</code>
+     */
+    ATTACK(2),
+    /**
+     * <code>PORTAL = 3;</code>
+     */
+    PORTAL(3),
+    /**
+     * <code>DROP = 4;</code>
+     */
+    DROP(4),
+    /**
+     * <code>EQUIP = 5;</code>
+     */
+    EQUIP(5),
+    /**
+     * <code>PICKUP = 6;</code>
+     */
+    PICKUP(6),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>NONE = 0;</code>
+     */
+    public static final int NONE_VALUE = 0;
+    /**
+     * <code>MOVE = 1;</code>
+     */
+    public static final int MOVE_VALUE = 1;
+    /**
+     * <code>ATTACK = 2;</code>
+     */
+    public static final int ATTACK_VALUE = 2;
+    /**
+     * <code>PORTAL = 3;</code>
+     */
+    public static final int PORTAL_VALUE = 3;
+    /**
+     * <code>DROP = 4;</code>
+     */
+    public static final int DROP_VALUE = 4;
+    /**
+     * <code>EQUIP = 5;</code>
+     */
+    public static final int EQUIP_VALUE = 5;
+    /**
+     * <code>PICKUP = 6;</code>
+     */
+    public static final int PICKUP_VALUE = 6;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static DecisionType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static DecisionType forNumber(int value) {
+      switch (value) {
+        case 0: return NONE;
+        case 1: return MOVE;
+        case 2: return ATTACK;
+        case 3: return PORTAL;
+        case 4: return DROP;
+        case 5: return EQUIP;
+        case 6: return PICKUP;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<DecisionType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        DecisionType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<DecisionType>() {
+            public DecisionType findValueByNumber(int number) {
+              return DecisionType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return mech.mania.engine.game.characters.CharacterProtos.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final DecisionType[] VALUES = values();
+
+    public static DecisionType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private DecisionType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:character.DecisionType)
+  }
+
   public interface CharacterOrBuilder extends
       // @@protoc_insertion_point(interface_extends:character.Character)
       com.google.protobuf.MessageOrBuilder {
@@ -94,25 +247,25 @@ public final class CharacterProtos {
     mech.mania.engine.game.items.ItemProtos.WeaponOrBuilder getWeaponOrBuilder();
 
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> 
         getActiveEffectsList();
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifier getActiveEffects(int index);
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     int getActiveEffectsCount();
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     java.util.List<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
         getActiveEffectsOrBuilderList();
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
         int index);
@@ -525,17 +678,17 @@ public final class CharacterProtos {
       return getWeapon();
     }
 
-    public static final int ACTIVEEFFECTS_FIELD_NUMBER = 9;
+    public static final int ACTIVE_EFFECTS_FIELD_NUMBER = 9;
     private java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> activeEffects_;
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     @java.lang.Override
     public java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> getActiveEffectsList() {
       return activeEffects_;
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     @java.lang.Override
     public java.util.List<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
@@ -543,21 +696,21 @@ public final class CharacterProtos {
       return activeEffects_;
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     @java.lang.Override
     public int getActiveEffectsCount() {
       return activeEffects_.size();
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getActiveEffects(int index) {
       return activeEffects_.get(index);
     }
     /**
-     * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
      */
     @java.lang.Override
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
@@ -928,7 +1081,7 @@ public final class CharacterProtos {
         hash = (53 * hash) + getWeapon().hashCode();
       }
       if (getActiveEffectsCount() > 0) {
-        hash = (37 * hash) + ACTIVEEFFECTS_FIELD_NUMBER;
+        hash = (37 * hash) + ACTIVE_EFFECTS_FIELD_NUMBER;
         hash = (53 * hash) + getActiveEffectsList().hashCode();
       }
       if (!internalGetTaggedPlayersDamage().getMap().isEmpty()) {
@@ -1865,7 +2018,7 @@ public final class CharacterProtos {
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> activeEffectsBuilder_;
 
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier> getActiveEffectsList() {
         if (activeEffectsBuilder_ == null) {
@@ -1875,7 +2028,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public int getActiveEffectsCount() {
         if (activeEffectsBuilder_ == null) {
@@ -1885,7 +2038,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getActiveEffects(int index) {
         if (activeEffectsBuilder_ == null) {
@@ -1895,7 +2048,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder setActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
@@ -1912,7 +2065,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder setActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -1926,7 +2079,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder addActiveEffects(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (activeEffectsBuilder_ == null) {
@@ -1942,7 +2095,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder addActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
@@ -1959,7 +2112,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder addActiveEffects(
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -1973,7 +2126,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder addActiveEffects(
           int index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -1987,7 +2140,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder addAllActiveEffects(
           java.lang.Iterable<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifier> values) {
@@ -2002,7 +2155,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder clearActiveEffects() {
         if (activeEffectsBuilder_ == null) {
@@ -2015,7 +2168,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public Builder removeActiveEffects(int index) {
         if (activeEffectsBuilder_ == null) {
@@ -2028,14 +2181,14 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getActiveEffectsBuilder(
           int index) {
         return getActiveEffectsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
           int index) {
@@ -2045,7 +2198,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public java.util.List<? extends mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
            getActiveEffectsOrBuilderList() {
@@ -2056,14 +2209,14 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder addActiveEffectsBuilder() {
         return getActiveEffectsFieldBuilder().addBuilder(
             mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder addActiveEffectsBuilder(
           int index) {
@@ -2071,7 +2224,7 @@ public final class CharacterProtos {
             index, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.TempStatusModifier activeEffects = 9;</code>
+       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
        */
       public java.util.List<mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder> 
            getActiveEffectsBuilderList() {
@@ -5044,12 +5197,12 @@ public final class CharacterProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string boardId = 1;</code>
+     * <code>string board_id = 1;</code>
      * @return The boardId.
      */
     java.lang.String getBoardId();
     /**
-     * <code>string boardId = 1;</code>
+     * <code>string board_id = 1;</code>
      * @return The bytes for boardId.
      */
     com.google.protobuf.ByteString
@@ -5161,10 +5314,10 @@ public final class CharacterProtos {
               mech.mania.engine.game.characters.CharacterProtos.Position.class, mech.mania.engine.game.characters.CharacterProtos.Position.Builder.class);
     }
 
-    public static final int BOARDID_FIELD_NUMBER = 1;
+    public static final int BOARD_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object boardId_;
     /**
-     * <code>string boardId = 1;</code>
+     * <code>string board_id = 1;</code>
      * @return The boardId.
      */
     @java.lang.Override
@@ -5181,7 +5334,7 @@ public final class CharacterProtos {
       }
     }
     /**
-     * <code>string boardId = 1;</code>
+     * <code>string board_id = 1;</code>
      * @return The bytes for boardId.
      */
     @java.lang.Override
@@ -5296,7 +5449,7 @@ public final class CharacterProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + BOARDID_FIELD_NUMBER;
+      hash = (37 * hash) + BOARD_ID_FIELD_NUMBER;
       hash = (53 * hash) + getBoardId().hashCode();
       hash = (37 * hash) + X_FIELD_NUMBER;
       hash = (53 * hash) + getX();
@@ -5559,7 +5712,7 @@ public final class CharacterProtos {
 
       private java.lang.Object boardId_ = "";
       /**
-       * <code>string boardId = 1;</code>
+       * <code>string board_id = 1;</code>
        * @return The boardId.
        */
       public java.lang.String getBoardId() {
@@ -5575,7 +5728,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>string boardId = 1;</code>
+       * <code>string board_id = 1;</code>
        * @return The bytes for boardId.
        */
       public com.google.protobuf.ByteString
@@ -5592,7 +5745,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>string boardId = 1;</code>
+       * <code>string board_id = 1;</code>
        * @param value The boardId to set.
        * @return This builder for chaining.
        */
@@ -5607,7 +5760,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>string boardId = 1;</code>
+       * <code>string board_id = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearBoardId() {
@@ -5617,7 +5770,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>string boardId = 1;</code>
+       * <code>string board_id = 1;</code>
        * @param value The bytes for boardId to set.
        * @return This builder for chaining.
        */
@@ -5752,15 +5905,15 @@ public final class CharacterProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
     int getDecisionTypeValue();
     /**
-     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The decisionType.
      */
-    mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType getDecisionType();
+    mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType();
 
     /**
      * <pre>
@@ -5905,176 +6058,23 @@ public final class CharacterProtos {
               mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.class, mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.Builder.class);
     }
 
-    /**
-     * Protobuf enum {@code character.CharacterDecision.DecisionType}
-     */
-    public enum DecisionType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>NONE = 0;</code>
-       */
-      NONE(0),
-      /**
-       * <code>MOVE = 1;</code>
-       */
-      MOVE(1),
-      /**
-       * <code>ATTACK = 2;</code>
-       */
-      ATTACK(2),
-      /**
-       * <code>PORTAL = 3;</code>
-       */
-      PORTAL(3),
-      /**
-       * <code>DROP = 4;</code>
-       */
-      DROP(4),
-      /**
-       * <code>EQUIP = 5;</code>
-       */
-      EQUIP(5),
-      /**
-       * <code>PICKUP = 6;</code>
-       */
-      PICKUP(6),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <code>NONE = 0;</code>
-       */
-      public static final int NONE_VALUE = 0;
-      /**
-       * <code>MOVE = 1;</code>
-       */
-      public static final int MOVE_VALUE = 1;
-      /**
-       * <code>ATTACK = 2;</code>
-       */
-      public static final int ATTACK_VALUE = 2;
-      /**
-       * <code>PORTAL = 3;</code>
-       */
-      public static final int PORTAL_VALUE = 3;
-      /**
-       * <code>DROP = 4;</code>
-       */
-      public static final int DROP_VALUE = 4;
-      /**
-       * <code>EQUIP = 5;</code>
-       */
-      public static final int EQUIP_VALUE = 5;
-      /**
-       * <code>PICKUP = 6;</code>
-       */
-      public static final int PICKUP_VALUE = 6;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static DecisionType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static DecisionType forNumber(int value) {
-        switch (value) {
-          case 0: return NONE;
-          case 1: return MOVE;
-          case 2: return ATTACK;
-          case 3: return PORTAL;
-          case 4: return DROP;
-          case 5: return EQUIP;
-          case 6: return PICKUP;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<DecisionType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          DecisionType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<DecisionType>() {
-              public DecisionType findValueByNumber(int number) {
-                return DecisionType.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final DecisionType[] VALUES = values();
-
-      public static DecisionType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private DecisionType(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:character.CharacterDecision.DecisionType)
-    }
-
     public static final int DECISIONTYPE_FIELD_NUMBER = 1;
     private int decisionType_;
     /**
-     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
     @java.lang.Override public int getDecisionTypeValue() {
       return decisionType_;
     }
     /**
-     * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+     * <code>.character.DecisionType decisionType = 1;</code>
      * @return The decisionType.
      */
-    @java.lang.Override public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType getDecisionType() {
+    @java.lang.Override public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
       @SuppressWarnings("deprecation")
-      mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.valueOf(decisionType_);
-      return result == null ? mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.UNRECOGNIZED : result;
+      mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
     }
 
     public static final int TARGETPOSITION_FIELD_NUMBER = 2;
@@ -6144,7 +6144,7 @@ public final class CharacterProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
         output.writeEnum(1, decisionType_);
       }
       if (targetPosition_ != null) {
@@ -6162,7 +6162,7 @@ public final class CharacterProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, decisionType_);
       }
@@ -6484,14 +6484,14 @@ public final class CharacterProtos {
 
       private int decisionType_ = 0;
       /**
-       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @return The enum numeric value on the wire for decisionType.
        */
       @java.lang.Override public int getDecisionTypeValue() {
         return decisionType_;
       }
       /**
-       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @param value The enum numeric value on the wire for decisionType to set.
        * @return This builder for chaining.
        */
@@ -6502,21 +6502,21 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @return The decisionType.
        */
       @java.lang.Override
-      public mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType getDecisionType() {
+      public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
         @SuppressWarnings("deprecation")
-        mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.valueOf(decisionType_);
-        return result == null ? mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType.UNRECOGNIZED : result;
+        mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @param value The decisionType to set.
        * @return This builder for chaining.
        */
-      public Builder setDecisionType(mech.mania.engine.game.characters.CharacterProtos.CharacterDecision.DecisionType value) {
+      public Builder setDecisionType(mech.mania.engine.game.characters.CharacterProtos.DecisionType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -6526,7 +6526,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>.character.CharacterDecision.DecisionType decisionType = 1;</code>
+       * <code>.character.DecisionType decisionType = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDecisionType() {
@@ -6826,34 +6826,33 @@ public final class CharacterProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017character.proto\022\tcharacter\032\nitem.proto" +
-      "\"\327\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
+      "\"\330\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
       "\n\017base_max_health\030\002 \001(\005\022\022\n\nexperience\030\003 " +
       "\001(\005\022\r\n\005level\030\004 \001(\005\022\022\n\nbase_speed\030\005 \001(\005\022%" +
       "\n\010position\030\006 \001(\0132\023.character.Position\022(\n" +
       "\013spawn_point\030\007 \001(\0132\023.character.Position\022" +
-      "\034\n\006weapon\030\010 \001(\0132\014.item.Weapon\022/\n\ractiveE" +
-      "ffects\030\t \003(\0132\030.item.TempStatusModifier\022L" +
-      "\n\025tagged_players_damage\030\n \003(\0132-.characte" +
-      "r.Character.TaggedPlayersDamageEntry\022\017\n\007" +
-      "is_dead\030\013 \001(\010\022\031\n\021ticks_since_death\030\014 \001(\005" +
-      "\022\014\n\004name\030\r \001(\t\032:\n\030TaggedPlayersDamageEnt" +
-      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M\n\007Mo" +
-      "nster\022\'\n\tcharacter\030\001 \001(\0132\024.character.Cha" +
-      "racter\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001\n\006Pl" +
-      "ayer\022\'\n\tcharacter\030\001 \001(\0132\024.character.Char" +
-      "acter\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clothes" +
-      "\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\0132\013.i" +
-      "tem.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item.Item" +
-      "\"1\n\010Position\022\017\n\007boardId\030\001 \001(\t\022\t\n\001x\030\002 \001(\005" +
-      "\022\t\n\001y\030\003 \001(\005\"\355\001\n\021CharacterDecision\022?\n\014dec" +
-      "isionType\030\001 \001(\0162).character.CharacterDec" +
-      "ision.DecisionType\022+\n\016targetPosition\030\002 \001" +
-      "(\0132\023.character.Position\022\r\n\005index\030\003 \001(\005\"[" +
-      "\n\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006AT" +
-      "TACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022" +
-      "\n\n\006PICKUP\020\006BE\n!mech.mania.engine.game.ch" +
-      "aractersB\017CharacterProtos\252\002\016MM26.IO.Mode" +
-      "lsb\006proto3"
+      "\034\n\006weapon\030\010 \001(\0132\014.item.Weapon\0220\n\016active_" +
+      "effects\030\t \003(\0132\030.item.TempStatusModifier\022" +
+      "L\n\025tagged_players_damage\030\n \003(\0132-.charact" +
+      "er.Character.TaggedPlayersDamageEntry\022\017\n" +
+      "\007is_dead\030\013 \001(\010\022\031\n\021ticks_since_death\030\014 \001(" +
+      "\005\022\014\n\004name\030\r \001(\t\032:\n\030TaggedPlayersDamageEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M\n\007M" +
+      "onster\022\'\n\tcharacter\030\001 \001(\0132\024.character.Ch" +
+      "aracter\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001\n\006P" +
+      "layer\022\'\n\tcharacter\030\001 \001(\0132\024.character.Cha" +
+      "racter\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clothe" +
+      "s\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\0132\013." +
+      "item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item.Ite" +
+      "m\"2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001" +
+      "(\005\022\t\n\001y\030\003 \001(\005\"~\n\021CharacterDecision\022-\n\014de" +
+      "cisionType\030\001 \001(\0162\027.character.DecisionTyp" +
+      "e\022+\n\016targetPosition\030\002 \001(\0132\023.character.Po" +
+      "sition\022\r\n\005index\030\003 \001(\005*[\n\014DecisionType\022\010\n" +
+      "\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020" +
+      "\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BE\n!me" +
+      "ch.mania.engine.game.charactersB\017Charact" +
+      "erProtos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
