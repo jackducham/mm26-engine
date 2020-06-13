@@ -986,15 +986,15 @@ public final class VisualizerProtos {
     boolean getRespawned();
 
     /**
-     * <code>.character.DecisionType decisionType = 3;</code>
+     * <code>.DecisionType decisionType = 3;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
     int getDecisionTypeValue();
     /**
-     * <code>.character.DecisionType decisionType = 3;</code>
+     * <code>.DecisionType decisionType = 3;</code>
      * @return The decisionType.
      */
-    mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType();
+    Enums.DecisionType getDecisionType();
 
     /**
      * <code>repeated .character.Position path = 4;</code>
@@ -1153,20 +1153,20 @@ public final class VisualizerProtos {
     public static final int DECISIONTYPE_FIELD_NUMBER = 3;
     private int decisionType_;
     /**
-     * <code>.character.DecisionType decisionType = 3;</code>
+     * <code>.DecisionType decisionType = 3;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
     @java.lang.Override public int getDecisionTypeValue() {
       return decisionType_;
     }
     /**
-     * <code>.character.DecisionType decisionType = 3;</code>
+     * <code>.DecisionType decisionType = 3;</code>
      * @return The decisionType.
      */
-    @java.lang.Override public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
+    @java.lang.Override public Enums.DecisionType getDecisionType() {
       @SuppressWarnings("deprecation")
-      mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
-      return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+      Enums.DecisionType result = Enums.DecisionType.valueOf(decisionType_);
+      return result == null ? Enums.DecisionType.UNRECOGNIZED : result;
     }
 
     public static final int PATH_FIELD_NUMBER = 4;
@@ -1229,7 +1229,7 @@ public final class VisualizerProtos {
       if (respawned_ != false) {
         output.writeBool(2, respawned_);
       }
-      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != Enums.DecisionType.NONE.getNumber()) {
         output.writeEnum(3, decisionType_);
       }
       for (int i = 0; i < path_.size(); i++) {
@@ -1252,7 +1252,7 @@ public final class VisualizerProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, respawned_);
       }
-      if (decisionType_ != mech.mania.engine.game.characters.CharacterProtos.DecisionType.NONE.getNumber()) {
+      if (decisionType_ != Enums.DecisionType.NONE.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, decisionType_);
       }
@@ -1667,14 +1667,14 @@ public final class VisualizerProtos {
 
       private int decisionType_ = 0;
       /**
-       * <code>.character.DecisionType decisionType = 3;</code>
+       * <code>.DecisionType decisionType = 3;</code>
        * @return The enum numeric value on the wire for decisionType.
        */
       @java.lang.Override public int getDecisionTypeValue() {
         return decisionType_;
       }
       /**
-       * <code>.character.DecisionType decisionType = 3;</code>
+       * <code>.DecisionType decisionType = 3;</code>
        * @param value The enum numeric value on the wire for decisionType to set.
        * @return This builder for chaining.
        */
@@ -1685,21 +1685,21 @@ public final class VisualizerProtos {
         return this;
       }
       /**
-       * <code>.character.DecisionType decisionType = 3;</code>
+       * <code>.DecisionType decisionType = 3;</code>
        * @return The decisionType.
        */
       @java.lang.Override
-      public mech.mania.engine.game.characters.CharacterProtos.DecisionType getDecisionType() {
+      public Enums.DecisionType getDecisionType() {
         @SuppressWarnings("deprecation")
-        mech.mania.engine.game.characters.CharacterProtos.DecisionType result = mech.mania.engine.game.characters.CharacterProtos.DecisionType.valueOf(decisionType_);
-        return result == null ? mech.mania.engine.game.characters.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+        Enums.DecisionType result = Enums.DecisionType.valueOf(decisionType_);
+        return result == null ? Enums.DecisionType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.character.DecisionType decisionType = 3;</code>
+       * <code>.DecisionType decisionType = 3;</code>
        * @param value The decisionType to set.
        * @return This builder for chaining.
        */
-      public Builder setDecisionType(mech.mania.engine.game.characters.CharacterProtos.DecisionType value) {
+      public Builder setDecisionType(Enums.DecisionType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1709,7 +1709,7 @@ public final class VisualizerProtos {
         return this;
       }
       /**
-       * <code>.character.DecisionType decisionType = 3;</code>
+       * <code>.DecisionType decisionType = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearDecisionType() {
@@ -2036,24 +2036,24 @@ public final class VisualizerProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\020visualizer.proto\022\004game\032\017character.prot" +
-      "o\032\nitem.proto\"\320\001\n\020VisualizerChange\022\030\n\020ne" +
-      "w_player_names\030\001 \003(\t\022N\n\024characterStatCha" +
-      "nges\030\002 \003(\01320.game.VisualizerChange.Chara" +
-      "cterStatChangesEntry\032R\n\031CharacterStatCha" +
-      "ngesEntry\022\013\n\003key\030\001 \001(\t\022$\n\005value\030\002 \001(\0132\025." +
-      "game.CharacterChange:\0028\001\"\204\001\n\017CharacterCh" +
-      "ange\022\014\n\004died\030\001 \001(\010\022\021\n\trespawned\030\002 \001(\010\022-\n" +
-      "\014decisionType\030\003 \001(\0162\027.character.Decision" +
-      "Type\022!\n\004path\030\004 \003(\0132\023.character.PositionB" +
-      "\\\n7mech.mania.engine.server.communicatio" +
-      "n.visualizer.modelB\020VisualizerProtos\252\002\016M" +
-      "M26.IO.Modelsb\006proto3"
+      "o\032\013enums.proto\"\320\001\n\020VisualizerChange\022\030\n\020n" +
+      "ew_player_names\030\001 \003(\t\022N\n\024characterStatCh" +
+      "anges\030\002 \003(\01320.game.VisualizerChange.Char" +
+      "acterStatChangesEntry\032R\n\031CharacterStatCh" +
+      "angesEntry\022\013\n\003key\030\001 \001(\t\022$\n\005value\030\002 \001(\0132\025" +
+      ".game.CharacterChange:\0028\001\"z\n\017CharacterCh" +
+      "ange\022\014\n\004died\030\001 \001(\010\022\021\n\trespawned\030\002 \001(\010\022#\n" +
+      "\014decisionType\030\003 \001(\0162\r.DecisionType\022!\n\004pa" +
+      "th\030\004 \003(\0132\023.character.PositionB\\\n7mech.ma" +
+      "nia.engine.server.communication.visualiz" +
+      "er.modelB\020VisualizerProtos\252\002\016MM26.IO.Mod" +
+      "elsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           mech.mania.engine.game.characters.CharacterProtos.getDescriptor(),
-          mech.mania.engine.game.items.ItemProtos.getDescriptor(),
+          Enums.getDescriptor(),
         });
     internal_static_game_VisualizerChange_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -2074,7 +2074,7 @@ public final class VisualizerProtos {
         internal_static_game_CharacterChange_descriptor,
         new java.lang.String[] { "Died", "Respawned", "DecisionType", "Path", });
     mech.mania.engine.game.characters.CharacterProtos.getDescriptor();
-    mech.mania.engine.game.items.ItemProtos.getDescriptor();
+    Enums.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
