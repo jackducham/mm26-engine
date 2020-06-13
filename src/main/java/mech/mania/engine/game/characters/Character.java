@@ -47,9 +47,6 @@ public abstract class Character {
     // map of attackers to amount of actual damage done
     protected Map<String, Integer> taggedPlayersDamage;
 
-    // cumulative effects from all currentEffects. These are reset every turn
-    StatusModifier temporaryEffects;
-
     /**
      * Constructor for Characters
      */
@@ -75,8 +72,6 @@ public abstract class Character {
         this.activeAttackers = new ArrayList<>();
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
-        this.temporaryEffects = new StatusModifier();
-
     }
 
     // @TODO: CharacterProtos need to be updated
@@ -161,15 +156,15 @@ public abstract class Character {
      * This should be called once a turn
      */
     public void updateCharacter(GameState gameState) {
-        applyActiveEffects();
+        updateActiveEffects();
         updateDeathState(gameState);
     }
 
     /**
-     * This function calculates the permanent damage per turn done by each weapon
-     *      and compiles the temp effects of the Weapon
+     * This function updates the activeEffects turns left and removes inactive effects
+     * It also calculates and applies the permanent damage per turn done by each weapon
      */
-    public void applyActiveEffects() {
+    public void updateActiveEffects() {
         int i = 0;
         Iterator<TempStatusModifier> itr = activeEffects.iterator();
         while (itr.hasNext()) {
@@ -178,24 +173,9 @@ public abstract class Character {
                 itr.remove();
                 activeAttackers.remove(i);
             } else {
+                // applies change to currentHealth of Character
+                // this can ONLY be called once per turn for correct calculations
                 applyDamage(activeAttackers.get(i), effect.getDamagePerTurn());
-                temporaryEffects.resetStatusModifier();
-
-                temporaryEffects.addFlatSpeedChange(effect.getFlatSpeedChange());
-                temporaryEffects.addFlatHealthChange(effect.getFlatHealthChange());
-                temporaryEffects.addFlatExperienceChange(effect.getFlatExperienceChange());
-                temporaryEffects.addFlatAttackChange(effect.getFlatAttackChange());
-                temporaryEffects.addFlatDefenseChange(effect.getFlatDefenseChange());
-
-                temporaryEffects.addPercentSpeedChange(effect.getPercentSpeedChange());
-                temporaryEffects.addPercentHealthChange(effect.getPercentHealthChange());
-                temporaryEffects.addPercentExperienceChange(effect.getPercentExperienceChange());
-                temporaryEffects.addPercentAttackChange(effect.getPercentAttackChange());
-                temporaryEffects.addPercentDefenseChange(effect.getPercentDefenseChange());
-
-                // @TODO: is flatRegenPerTurn permanent current health change or temporary?
-                // Currently implemented as a permanent health change
-                updateCurrentHealth(temporaryEffects.getFlatRegenPerTurn());
             }
             effect.updateTurnsLeft();
             i++;
@@ -273,32 +253,67 @@ public abstract class Character {
     }
 
     public int getSpeed() {
-        double speed = (baseSpeed + temporaryEffects.getFlatSpeedChange()) * temporaryEffects.getPercentSpeedChange();
+        int flatChange = 0;
+        double percentChange = 0;
+        for (TempStatusModifier effect: activeEffects) {
+            flatChange += effect.getFlatSpeedChange();
+            percentChange += effect.getPercentSpeedChange();
+        }
+
+        double speed = (baseSpeed + flatChange) * percentChange;
         return (int) speed;
     }
 
     public int getMaxHealth() {
-        double maxHealth = (baseMaxHealth + temporaryEffects.getFlatHealthChange()) * temporaryEffects.getPercentHealthChange();
+        int flatChange = 0;
+        double percentChange = 0;
+        for (TempStatusModifier effect: activeEffects) {
+            flatChange += effect.getFlatHealthChange();
+            percentChange += effect.getPercentHealthChange();
+        }
+        double maxHealth = (baseMaxHealth + flatChange) * percentChange;
         return (int) maxHealth;
     }
 
     public int getExperience() {
-        double xp = (experience + temporaryEffects.getFlatExperienceChange()) * temporaryEffects.getPercentExperienceChange();
+        int flatChange = 0;
+        double percentChange = 0;
+        for (TempStatusModifier effect: activeEffects) {
+            flatChange += effect.getFlatExperienceChange();
+            percentChange += effect.getPercentExperienceChange();
+        }
+        double xp = (experience + flatChange) * percentChange;
         return (int) xp;
     }
 
     public int getAttack() {
-        double attack = (baseAttack + temporaryEffects.getFlatAttackChange()) * temporaryEffects.getPercentAttackChange();
+        int flatChange = 0;
+        double percentChange = 0;
+        for (TempStatusModifier effect: activeEffects) {
+            flatChange += effect.getFlatAttackChange();
+            percentChange += effect.getPercentAttackChange();
+        }
+        double attack = (baseAttack + flatChange) * percentChange;
         return (int) attack;
     }
 
     public int getDefense() {
-        double defense = (baseDefense + temporaryEffects.getFlatDefenseChange()) * temporaryEffects.getPercentDefenseChange();
+        int flatChange = 0;
+        double percentChange = 0;
+        for (TempStatusModifier effect: activeEffects) {
+            flatChange += effect.getFlatDefenseChange();
+            percentChange += effect.getPercentDefenseChange();
+        }
+        double defense = (baseDefense + flatChange) * percentChange;
         return (int) defense;
     }
 
     public int getCurrentHealth() {
-        return min(currentHealth, getMaxHealth());
+        int health = currentHealth;
+        for (TempStatusModifier effect: activeEffects) {
+            health += effect.getFlatRegenPerTurn();
+        }
+        return min(health, getMaxHealth());
     }
 
     public void updateCurrentHealth(int currentHealth) {
