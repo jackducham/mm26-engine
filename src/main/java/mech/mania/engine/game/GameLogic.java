@@ -31,19 +31,6 @@ public class GameLogic {
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
 
-
-        // ========== APPLY TEMP EFFECTS AND REDUCE TURNS REMAINING ========== \\
-        List<Player> players = gameState.getAllPlayers();
-        List<Monster> monsters = gameState.getAllMonsters();
-
-        for(Player player : players) {
-            player.applyActiveEffects();
-        }
-        for(Monster monster : monsters) {
-            monster.applyActiveEffects();
-        }
-
-
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
         for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
@@ -93,15 +80,18 @@ public class GameLogic {
         }
 
 
-        // ========== HANDLE DEAD/DYING PLAYERS ========== \\
-        //updateDeathState handles clearing active effects, setting status to dead/alive, respawning, and distributing rewards
+        // ========== UPDATE PLAYER FUNCTIONS ========== \\
+        //updateCharacter handles clearing active effects, setting status to dead/alive,
+        // respawning, and distributing rewards
+        List<Player> players = gameState.getAllPlayers();
+        List<Monster> monsters = gameState.getAllMonsters();
+
         for (Player player: players) {
-            player.updateDeathState(gameState);
+            player.updateCharacter(gameState);
         }
         for (Monster monster: monsters) {
-            monster.updateDeathState(gameState);
+            monster.updateCharacter(gameState);
         }
-
 
         return gameState;
     }
