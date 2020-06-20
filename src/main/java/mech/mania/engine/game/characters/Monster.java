@@ -22,10 +22,14 @@ public class Monster extends Character {
     // @TODO: Update CharacterProtos
     public Monster(CharacterProtos.Monster monsterProto) {
         super(
+                monsterProto.getCharacter().getName(),
+                monsterProto.getCharacter().getBaseSpeed(),
+                monsterProto.getCharacter().getBaseMaxHealth(),
+                monsterProto.getCharacter().getBaseAttack(),
+                monsterProto.getCharacter().getBaseDefense(),
                 monsterProto.getCharacter().getExperience(),
                 new Position(monsterProto.getCharacter().getSpawnPoint()),
-                new Weapon(monsterProto.getCharacter().getWeapon()),
-                monsterProto.getCharacter().getName()
+                new Weapon(monsterProto.getCharacter().getWeapon())
         );
 
         drops = new ArrayList<>(monsterProto.getDropsCount());

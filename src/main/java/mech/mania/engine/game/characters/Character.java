@@ -169,7 +169,7 @@ public abstract class Character {
         Iterator<TempStatusModifier> itr = activeEffects.iterator();
         while (itr.hasNext()) {
             TempStatusModifier effect = itr.next();
-            if (effect.getDuration() <= 0) { // remove inactive effects
+            if (effect.getTurnsLeft() <= 0) { // remove inactive effects
                 itr.remove();
                 activeAttackers.remove(i);
             } else {

@@ -6979,10 +6979,10 @@ public final class ItemProtos {
     int getFlatRegenPerTurn();
 
     /**
-     * <code>int32 duration = 5;</code>
-     * @return The duration.
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
      */
-    int getDuration();
+    int getTurnsLeft();
   }
   /**
    * Protobuf type {@code item.TempStatusModifier}
@@ -7059,7 +7059,7 @@ public final class ItemProtos {
             }
             case 40: {
 
-              duration_ = input.readInt32();
+              turnsLeft_ = input.readInt32();
               break;
             }
             default: {
@@ -7153,15 +7153,15 @@ public final class ItemProtos {
       return flatRegenPerTurn_;
     }
 
-    public static final int DURATION_FIELD_NUMBER = 5;
-    private int duration_;
+    public static final int TURNS_LEFT_FIELD_NUMBER = 5;
+    private int turnsLeft_;
     /**
-     * <code>int32 duration = 5;</code>
-     * @return The duration.
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
      */
     @java.lang.Override
-    public int getDuration() {
-      return duration_;
+    public int getTurnsLeft() {
+      return turnsLeft_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7190,8 +7190,8 @@ public final class ItemProtos {
       if (flatRegenPerTurn_ != 0) {
         output.writeInt32(4, flatRegenPerTurn_);
       }
-      if (duration_ != 0) {
-        output.writeInt32(5, duration_);
+      if (turnsLeft_ != 0) {
+        output.writeInt32(5, turnsLeft_);
       }
       unknownFields.writeTo(output);
     }
@@ -7218,9 +7218,9 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, flatRegenPerTurn_);
       }
-      if (duration_ != 0) {
+      if (turnsLeft_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, duration_);
+          .computeInt32Size(5, turnsLeft_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7249,8 +7249,8 @@ public final class ItemProtos {
               other.getPercentDamagePerTurn())) return false;
       if (getFlatRegenPerTurn()
           != other.getFlatRegenPerTurn()) return false;
-      if (getDuration()
-          != other.getDuration()) return false;
+      if (getTurnsLeft()
+          != other.getTurnsLeft()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7273,8 +7273,8 @@ public final class ItemProtos {
           java.lang.Double.doubleToLongBits(getPercentDamagePerTurn()));
       hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
       hash = (53 * hash) + getFlatRegenPerTurn();
-      hash = (37 * hash) + DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getDuration();
+      hash = (37 * hash) + TURNS_LEFT_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsLeft();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7420,7 +7420,7 @@ public final class ItemProtos {
 
         flatRegenPerTurn_ = 0;
 
-        duration_ = 0;
+        turnsLeft_ = 0;
 
         return this;
       }
@@ -7456,7 +7456,7 @@ public final class ItemProtos {
         result.flatDamagePerTurn_ = flatDamagePerTurn_;
         result.percentDamagePerTurn_ = percentDamagePerTurn_;
         result.flatRegenPerTurn_ = flatRegenPerTurn_;
-        result.duration_ = duration_;
+        result.turnsLeft_ = turnsLeft_;
         onBuilt();
         return result;
       }
@@ -7517,8 +7517,8 @@ public final class ItemProtos {
         if (other.getFlatRegenPerTurn() != 0) {
           setFlatRegenPerTurn(other.getFlatRegenPerTurn());
         }
-        if (other.getDuration() != 0) {
-          setDuration(other.getDuration());
+        if (other.getTurnsLeft() != 0) {
+          setTurnsLeft(other.getTurnsLeft());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7761,33 +7761,33 @@ public final class ItemProtos {
         return this;
       }
 
-      private int duration_ ;
+      private int turnsLeft_ ;
       /**
-       * <code>int32 duration = 5;</code>
-       * @return The duration.
+       * <code>int32 turns_left = 5;</code>
+       * @return The turnsLeft.
        */
       @java.lang.Override
-      public int getDuration() {
-        return duration_;
+      public int getTurnsLeft() {
+        return turnsLeft_;
       }
       /**
-       * <code>int32 duration = 5;</code>
-       * @param value The duration to set.
+       * <code>int32 turns_left = 5;</code>
+       * @param value The turnsLeft to set.
        * @return This builder for chaining.
        */
-      public Builder setDuration(int value) {
+      public Builder setTurnsLeft(int value) {
         
-        duration_ = value;
+        turnsLeft_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 duration = 5;</code>
+       * <code>int32 turns_left = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDuration() {
+      public Builder clearTurnsLeft() {
         
-        duration_ = 0;
+        turnsLeft_ = 0;
         onChanged();
         return this;
       }
@@ -7918,13 +7918,13 @@ public final class ItemProtos {
       "\022\032\n\022flat_damage_change\030\007 \001(\005\022\035\n\025percent_" +
       "damage_change\030\010 \001(\001\022\033\n\023flat_defense_chan" +
       "ge\030\t \001(\005\022\036\n\026percent_defense_change\030\n \001(\001" +
-      "\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\247\001\n\022TempSt" +
+      "\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\251\001\n\022TempSt" +
       "atusModifier\022#\n\005stats\030\001 \001(\0132\024.item.Statu" +
       "sModifier\022\034\n\024flat_damage_per_turn\030\002 \001(\005\022" +
       "\037\n\027percent_damage_per_turn\030\003 \001(\001\022\033\n\023flat" +
-      "_regen_per_turn\030\004 \001(\005\022\020\n\010duration\030\005 \001(\005B" +
-      ";\n\034mech.mania.engine.game.itemsB\nItemPro" +
-      "tos\252\002\016MM26.IO.Modelsb\006proto3"
+      "_regen_per_turn\030\004 \001(\005\022\022\n\nturns_left\030\005 \001(" +
+      "\005B;\n\034mech.mania.engine.game.itemsB\nItemP" +
+      "rotos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7977,7 +7977,7 @@ public final class ItemProtos {
     internal_static_item_TempStatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_TempStatusModifier_descriptor,
-        new java.lang.String[] { "Stats", "FlatDamagePerTurn", "PercentDamagePerTurn", "FlatRegenPerTurn", "Duration", });
+        new java.lang.String[] { "Stats", "FlatDamagePerTurn", "PercentDamagePerTurn", "FlatRegenPerTurn", "TurnsLeft", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,7 +1,6 @@
 package mech.mania.engine.game.items;
 
 public class TempStatusModifier extends StatusModifier {
-    private int duration;
     private int turnsLeft;
     private int damagePerTurn; // flat amount of damage dealt to the character each turn,
 
@@ -14,7 +13,6 @@ public class TempStatusModifier extends StatusModifier {
                               int flatRegenPerTurn, int duration, int damagePerTurn) {
         super(flatSpeedChange, percentSpeedChange, flatHealthChange, percentHealthChange, flatExperienceChange, percentExperienceChange,
                 flatAttackChange, percentAttackChange, flatDefenseChange, percentDefenseChange, flatRegenPerTurn);
-        this.duration = duration;
         this.turnsLeft = duration;
         this.damagePerTurn = damagePerTurn;
     }
@@ -34,16 +32,14 @@ public class TempStatusModifier extends StatusModifier {
                 tempStatusModifierProto.getStats().getPercentDefenseChange(),
                 tempStatusModifierProto.getStats().getFlatRegenPerTurn()
         );
-        this.duration = tempStatusModifierProto.getDuration();
         this.turnsLeft = tempStatusModifierProto.getTurnsLeft();
-        this.damagePerTurn = tempStatusModifierProto.getDamagePerTurn();
+        this.damagePerTurn = tempStatusModifierProto.getFlatDamagePerTurn();
     }
 
     public ItemProtos.TempStatusModifier buildProtoClassTemp() {
         ItemProtos.TempStatusModifier.Builder tempStatusModifierBuilder = ItemProtos.TempStatusModifier.newBuilder();
-        tempStatusModifierBuilder.setDuration(duration);
         tempStatusModifierBuilder.setTurnsLeft(turnsLeft);
-        tempStatusModifierBuilder.setDamagePerTurn(damagePerTurn);
+        tempStatusModifierBuilder.setFlatDamagePerTurn(damagePerTurn);
 
         ItemProtos.StatusModifier statusModifierProtoClass = super.buildProtoClass();
 
@@ -53,10 +49,6 @@ public class TempStatusModifier extends StatusModifier {
 
     public void updateTurnsLeft() {
         turnsLeft--;
-    }
-
-    public int getDuration() {
-        return duration;
     }
 
     public int getTurnsLeft() {

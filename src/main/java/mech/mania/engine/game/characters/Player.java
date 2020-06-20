@@ -21,10 +21,14 @@ public class Player extends Character {
 
     public Player(CharacterProtos.Player playerProto) {
         super(
+                playerProto.getCharacter().getName(),
+                playerProto.getCharacter().getBaseSpeed(),
+                playerProto.getCharacter().getBaseMaxHealth(),
+                playerProto.getCharacter().getBaseAttack(),
+                playerProto.getCharacter().getBaseDefense(),
                 playerProto.getCharacter().getExperience(),
                 new Position(playerProto.getCharacter().getSpawnPoint()),
-                new Weapon(playerProto.getCharacter().getWeapon()),
-                playerProto.getCharacter().getName()
+                new Weapon(playerProto.getCharacter().getWeapon())
         );
 
         // TODO: add taggedPlayersDamage
