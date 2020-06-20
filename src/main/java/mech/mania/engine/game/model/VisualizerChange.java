@@ -3,7 +3,6 @@ package mech.mania.engine.game.model;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.*;
 
-import mech.mania.engine.server.communication.player.model.PlayerProtos;
 import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos;
 
 import java.util.ArrayList;
@@ -101,7 +100,6 @@ public class VisualizerChange {
 
     public VisualizerProtos.VisualizerChange buildProtoClass() {
         VisualizerProtos.VisualizerChange.Builder builder = VisualizerProtos.VisualizerChange.newBuilder();
-//        builder.putAllNewPlayerNames(newPlayerNames);
         builder.addAllNewPlayerNames(newPlayerNames);
 
         for (String name : characterChanges.keySet()) {

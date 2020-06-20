@@ -4000,29 +4000,23 @@ public final class ItemProtos {
     int getSplashRadius();
 
     /**
-     * <code>int32 magic_damage = 4;</code>
-     * @return The magicDamage.
+     * <code>int32 damage = 4;</code>
+     * @return The damage.
      */
-    int getMagicDamage();
+    int getDamage();
 
     /**
-     * <code>int32 physical_damage = 5;</code>
-     * @return The physicalDamage.
-     */
-    int getPhysicalDamage();
-
-    /**
-     * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return Whether the onHitEffect field is set.
      */
     boolean hasOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return The onHitEffect.
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder();
   }
@@ -4096,15 +4090,10 @@ public final class ItemProtos {
             }
             case 32: {
 
-              magicDamage_ = input.readInt32();
+              damage_ = input.readInt32();
               break;
             }
-            case 40: {
-
-              physicalDamage_ = input.readInt32();
-              break;
-            }
-            case 50: {
+            case 42: {
               mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder subBuilder = null;
               if (onHitEffect_ != null) {
                 subBuilder = onHitEffect_.toBuilder();
@@ -4192,44 +4181,34 @@ public final class ItemProtos {
       return splashRadius_;
     }
 
-    public static final int MAGIC_DAMAGE_FIELD_NUMBER = 4;
-    private int magicDamage_;
+    public static final int DAMAGE_FIELD_NUMBER = 4;
+    private int damage_;
     /**
-     * <code>int32 magic_damage = 4;</code>
-     * @return The magicDamage.
+     * <code>int32 damage = 4;</code>
+     * @return The damage.
      */
-    public int getMagicDamage() {
-      return magicDamage_;
+    public int getDamage() {
+      return damage_;
     }
 
-    public static final int PHYSICAL_DAMAGE_FIELD_NUMBER = 5;
-    private int physicalDamage_;
-    /**
-     * <code>int32 physical_damage = 5;</code>
-     * @return The physicalDamage.
-     */
-    public int getPhysicalDamage() {
-      return physicalDamage_;
-    }
-
-    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 6;
+    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 5;
     private mech.mania.engine.game.items.ItemProtos.TempStatusModifier onHitEffect_;
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return Whether the onHitEffect field is set.
      */
     public boolean hasOnHitEffect() {
       return onHitEffect_ != null;
     }
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return The onHitEffect.
      */
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
       return onHitEffect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
     }
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      */
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
       return getOnHitEffect();
@@ -4258,14 +4237,11 @@ public final class ItemProtos {
       if (splashRadius_ != 0) {
         output.writeInt32(3, splashRadius_);
       }
-      if (magicDamage_ != 0) {
-        output.writeInt32(4, magicDamage_);
-      }
-      if (physicalDamage_ != 0) {
-        output.writeInt32(5, physicalDamage_);
+      if (damage_ != 0) {
+        output.writeInt32(4, damage_);
       }
       if (onHitEffect_ != null) {
-        output.writeMessage(6, getOnHitEffect());
+        output.writeMessage(5, getOnHitEffect());
       }
       unknownFields.writeTo(output);
     }
@@ -4288,17 +4264,13 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, splashRadius_);
       }
-      if (magicDamage_ != 0) {
+      if (damage_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, magicDamage_);
-      }
-      if (physicalDamage_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, physicalDamage_);
+          .computeInt32Size(4, damage_);
       }
       if (onHitEffect_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getOnHitEffect());
+          .computeMessageSize(5, getOnHitEffect());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4324,10 +4296,8 @@ public final class ItemProtos {
           != other.getRange()) return false;
       if (getSplashRadius()
           != other.getSplashRadius()) return false;
-      if (getMagicDamage()
-          != other.getMagicDamage()) return false;
-      if (getPhysicalDamage()
-          != other.getPhysicalDamage()) return false;
+      if (getDamage()
+          != other.getDamage()) return false;
       if (hasOnHitEffect() != other.hasOnHitEffect()) return false;
       if (hasOnHitEffect()) {
         if (!getOnHitEffect()
@@ -4352,10 +4322,8 @@ public final class ItemProtos {
       hash = (53 * hash) + getRange();
       hash = (37 * hash) + SPLASH_RADIUS_FIELD_NUMBER;
       hash = (53 * hash) + getSplashRadius();
-      hash = (37 * hash) + MAGIC_DAMAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMagicDamage();
-      hash = (37 * hash) + PHYSICAL_DAMAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getPhysicalDamage();
+      hash = (37 * hash) + DAMAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getDamage();
       if (hasOnHitEffect()) {
         hash = (37 * hash) + ON_HIT_EFFECT_FIELD_NUMBER;
         hash = (53 * hash) + getOnHitEffect().hashCode();
@@ -4503,9 +4471,7 @@ public final class ItemProtos {
 
         splashRadius_ = 0;
 
-        magicDamage_ = 0;
-
-        physicalDamage_ = 0;
+        damage_ = 0;
 
         if (onHitEffectBuilder_ == null) {
           onHitEffect_ = null;
@@ -4546,8 +4512,7 @@ public final class ItemProtos {
         }
         result.range_ = range_;
         result.splashRadius_ = splashRadius_;
-        result.magicDamage_ = magicDamage_;
-        result.physicalDamage_ = physicalDamage_;
+        result.damage_ = damage_;
         if (onHitEffectBuilder_ == null) {
           result.onHitEffect_ = onHitEffect_;
         } else {
@@ -4610,11 +4575,8 @@ public final class ItemProtos {
         if (other.getSplashRadius() != 0) {
           setSplashRadius(other.getSplashRadius());
         }
-        if (other.getMagicDamage() != 0) {
-          setMagicDamage(other.getMagicDamage());
-        }
-        if (other.getPhysicalDamage() != 0) {
-          setPhysicalDamage(other.getPhysicalDamage());
+        if (other.getDamage() != 0) {
+          setDamage(other.getDamage());
         }
         if (other.hasOnHitEffect()) {
           mergeOnHitEffect(other.getOnHitEffect());
@@ -4827,62 +4789,32 @@ public final class ItemProtos {
         return this;
       }
 
-      private int magicDamage_ ;
+      private int damage_ ;
       /**
-       * <code>int32 magic_damage = 4;</code>
-       * @return The magicDamage.
+       * <code>int32 damage = 4;</code>
+       * @return The damage.
        */
-      public int getMagicDamage() {
-        return magicDamage_;
+      public int getDamage() {
+        return damage_;
       }
       /**
-       * <code>int32 magic_damage = 4;</code>
-       * @param value The magicDamage to set.
+       * <code>int32 damage = 4;</code>
+       * @param value The damage to set.
        * @return This builder for chaining.
        */
-      public Builder setMagicDamage(int value) {
+      public Builder setDamage(int value) {
         
-        magicDamage_ = value;
+        damage_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 magic_damage = 4;</code>
+       * <code>int32 damage = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearMagicDamage() {
+      public Builder clearDamage() {
         
-        magicDamage_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int physicalDamage_ ;
-      /**
-       * <code>int32 physical_damage = 5;</code>
-       * @return The physicalDamage.
-       */
-      public int getPhysicalDamage() {
-        return physicalDamage_;
-      }
-      /**
-       * <code>int32 physical_damage = 5;</code>
-       * @param value The physicalDamage to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhysicalDamage(int value) {
-        
-        physicalDamage_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 physical_damage = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPhysicalDamage() {
-        
-        physicalDamage_ = 0;
+        damage_ = 0;
         onChanged();
         return this;
       }
@@ -4891,14 +4823,14 @@ public final class ItemProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> onHitEffectBuilder_;
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        * @return Whether the onHitEffect field is set.
        */
       public boolean hasOnHitEffect() {
         return onHitEffectBuilder_ != null || onHitEffect_ != null;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        * @return The onHitEffect.
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
@@ -4909,7 +4841,7 @@ public final class ItemProtos {
         }
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder setOnHitEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
@@ -4925,7 +4857,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder setOnHitEffect(
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -4939,7 +4871,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder mergeOnHitEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
@@ -4957,7 +4889,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder clearOnHitEffect() {
         if (onHitEffectBuilder_ == null) {
@@ -4971,7 +4903,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getOnHitEffectBuilder() {
         
@@ -4979,7 +4911,7 @@ public final class ItemProtos {
         return getOnHitEffectFieldBuilder().getBuilder();
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
         if (onHitEffectBuilder_ != null) {
@@ -4990,7 +4922,7 @@ public final class ItemProtos {
         }
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 6;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
@@ -5755,10 +5687,10 @@ public final class ItemProtos {
     int getFlatSpeedChange();
 
     /**
-     * <code>float percent_speed_change = 2;</code>
+     * <code>double percent_speed_change = 2;</code>
      * @return The percentSpeedChange.
      */
-    float getPercentSpeedChange();
+    double getPercentSpeedChange();
 
     /**
      * <code>int32 flat_health_change = 3;</code>
@@ -5767,10 +5699,10 @@ public final class ItemProtos {
     int getFlatHealthChange();
 
     /**
-     * <code>float percent_health_change = 4;</code>
+     * <code>double percent_health_change = 4;</code>
      * @return The percentHealthChange.
      */
-    float getPercentHealthChange();
+    double getPercentHealthChange();
 
     /**
      * <code>int32 flat_experience_change = 5;</code>
@@ -5779,61 +5711,37 @@ public final class ItemProtos {
     int getFlatExperienceChange();
 
     /**
-     * <code>float percent_experience_change = 6;</code>
+     * <code>double percent_experience_change = 6;</code>
      * @return The percentExperienceChange.
      */
-    float getPercentExperienceChange();
+    double getPercentExperienceChange();
 
     /**
-     * <code>int32 flat_magic_damage_change = 7;</code>
-     * @return The flatMagicDamageChange.
+     * <code>int32 flat_damage_change = 7;</code>
+     * @return The flatDamageChange.
      */
-    int getFlatMagicDamageChange();
+    int getFlatDamageChange();
 
     /**
-     * <code>float percent_magic_damage_change = 8;</code>
-     * @return The percentMagicDamageChange.
+     * <code>double percent_damage_change = 8;</code>
+     * @return The percentDamageChange.
      */
-    float getPercentMagicDamageChange();
+    double getPercentDamageChange();
 
     /**
-     * <code>int32 flat_physical_damage_change = 9;</code>
-     * @return The flatPhysicalDamageChange.
+     * <code>int32 flat_defense_change = 9;</code>
+     * @return The flatDefenseChange.
      */
-    int getFlatPhysicalDamageChange();
+    int getFlatDefenseChange();
 
     /**
-     * <code>float percent_physical_damage_change = 10;</code>
-     * @return The percentPhysicalDamageChange.
+     * <code>double percent_defense_change = 10;</code>
+     * @return The percentDefenseChange.
      */
-    float getPercentPhysicalDamageChange();
+    double getPercentDefenseChange();
 
     /**
-     * <code>int32 flat_magic_defense_change = 11;</code>
-     * @return The flatMagicDefenseChange.
-     */
-    int getFlatMagicDefenseChange();
-
-    /**
-     * <code>float percent_magic_defense_change = 12;</code>
-     * @return The percentMagicDefenseChange.
-     */
-    float getPercentMagicDefenseChange();
-
-    /**
-     * <code>int32 flat_physical_defense_change = 13;</code>
-     * @return The flatPhysicalDefenseChange.
-     */
-    int getFlatPhysicalDefenseChange();
-
-    /**
-     * <code>float percent_physical_defense_change = 14;</code>
-     * @return The percentPhysicalDefenseChange.
-     */
-    float getPercentPhysicalDefenseChange();
-
-    /**
-     * <code>int32 flat_regen_per_turn = 15;</code>
+     * <code>int32 flat_regen_per_turn = 11;</code>
      * @return The flatRegenPerTurn.
      */
     int getFlatRegenPerTurn();
@@ -5888,9 +5796,9 @@ public final class ItemProtos {
               flatSpeedChange_ = input.readInt32();
               break;
             }
-            case 21: {
+            case 17: {
 
-              percentSpeedChange_ = input.readFloat();
+              percentSpeedChange_ = input.readDouble();
               break;
             }
             case 24: {
@@ -5898,9 +5806,9 @@ public final class ItemProtos {
               flatHealthChange_ = input.readInt32();
               break;
             }
-            case 37: {
+            case 33: {
 
-              percentHealthChange_ = input.readFloat();
+              percentHealthChange_ = input.readDouble();
               break;
             }
             case 40: {
@@ -5908,52 +5816,32 @@ public final class ItemProtos {
               flatExperienceChange_ = input.readInt32();
               break;
             }
-            case 53: {
+            case 49: {
 
-              percentExperienceChange_ = input.readFloat();
+              percentExperienceChange_ = input.readDouble();
               break;
             }
             case 56: {
 
-              flatMagicDamageChange_ = input.readInt32();
+              flatDamageChange_ = input.readInt32();
               break;
             }
-            case 69: {
+            case 65: {
 
-              percentMagicDamageChange_ = input.readFloat();
+              percentDamageChange_ = input.readDouble();
               break;
             }
             case 72: {
 
-              flatPhysicalDamageChange_ = input.readInt32();
+              flatDefenseChange_ = input.readInt32();
               break;
             }
-            case 85: {
+            case 81: {
 
-              percentPhysicalDamageChange_ = input.readFloat();
+              percentDefenseChange_ = input.readDouble();
               break;
             }
             case 88: {
-
-              flatMagicDefenseChange_ = input.readInt32();
-              break;
-            }
-            case 101: {
-
-              percentMagicDefenseChange_ = input.readFloat();
-              break;
-            }
-            case 104: {
-
-              flatPhysicalDefenseChange_ = input.readInt32();
-              break;
-            }
-            case 117: {
-
-              percentPhysicalDefenseChange_ = input.readFloat();
-              break;
-            }
-            case 120: {
 
               flatRegenPerTurn_ = input.readInt32();
               break;
@@ -6001,12 +5889,12 @@ public final class ItemProtos {
     }
 
     public static final int PERCENT_SPEED_CHANGE_FIELD_NUMBER = 2;
-    private float percentSpeedChange_;
+    private double percentSpeedChange_;
     /**
-     * <code>float percent_speed_change = 2;</code>
+     * <code>double percent_speed_change = 2;</code>
      * @return The percentSpeedChange.
      */
-    public float getPercentSpeedChange() {
+    public double getPercentSpeedChange() {
       return percentSpeedChange_;
     }
 
@@ -6021,12 +5909,12 @@ public final class ItemProtos {
     }
 
     public static final int PERCENT_HEALTH_CHANGE_FIELD_NUMBER = 4;
-    private float percentHealthChange_;
+    private double percentHealthChange_;
     /**
-     * <code>float percent_health_change = 4;</code>
+     * <code>double percent_health_change = 4;</code>
      * @return The percentHealthChange.
      */
-    public float getPercentHealthChange() {
+    public double getPercentHealthChange() {
       return percentHealthChange_;
     }
 
@@ -6041,99 +5929,59 @@ public final class ItemProtos {
     }
 
     public static final int PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER = 6;
-    private float percentExperienceChange_;
+    private double percentExperienceChange_;
     /**
-     * <code>float percent_experience_change = 6;</code>
+     * <code>double percent_experience_change = 6;</code>
      * @return The percentExperienceChange.
      */
-    public float getPercentExperienceChange() {
+    public double getPercentExperienceChange() {
       return percentExperienceChange_;
     }
 
-    public static final int FLAT_MAGIC_DAMAGE_CHANGE_FIELD_NUMBER = 7;
-    private int flatMagicDamageChange_;
+    public static final int FLAT_DAMAGE_CHANGE_FIELD_NUMBER = 7;
+    private int flatDamageChange_;
     /**
-     * <code>int32 flat_magic_damage_change = 7;</code>
-     * @return The flatMagicDamageChange.
+     * <code>int32 flat_damage_change = 7;</code>
+     * @return The flatDamageChange.
      */
-    public int getFlatMagicDamageChange() {
-      return flatMagicDamageChange_;
+    public int getFlatDamageChange() {
+      return flatDamageChange_;
     }
 
-    public static final int PERCENT_MAGIC_DAMAGE_CHANGE_FIELD_NUMBER = 8;
-    private float percentMagicDamageChange_;
+    public static final int PERCENT_DAMAGE_CHANGE_FIELD_NUMBER = 8;
+    private double percentDamageChange_;
     /**
-     * <code>float percent_magic_damage_change = 8;</code>
-     * @return The percentMagicDamageChange.
+     * <code>double percent_damage_change = 8;</code>
+     * @return The percentDamageChange.
      */
-    public float getPercentMagicDamageChange() {
-      return percentMagicDamageChange_;
+    public double getPercentDamageChange() {
+      return percentDamageChange_;
     }
 
-    public static final int FLAT_PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER = 9;
-    private int flatPhysicalDamageChange_;
+    public static final int FLAT_DEFENSE_CHANGE_FIELD_NUMBER = 9;
+    private int flatDefenseChange_;
     /**
-     * <code>int32 flat_physical_damage_change = 9;</code>
-     * @return The flatPhysicalDamageChange.
+     * <code>int32 flat_defense_change = 9;</code>
+     * @return The flatDefenseChange.
      */
-    public int getFlatPhysicalDamageChange() {
-      return flatPhysicalDamageChange_;
+    public int getFlatDefenseChange() {
+      return flatDefenseChange_;
     }
 
-    public static final int PERCENT_PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER = 10;
-    private float percentPhysicalDamageChange_;
+    public static final int PERCENT_DEFENSE_CHANGE_FIELD_NUMBER = 10;
+    private double percentDefenseChange_;
     /**
-     * <code>float percent_physical_damage_change = 10;</code>
-     * @return The percentPhysicalDamageChange.
+     * <code>double percent_defense_change = 10;</code>
+     * @return The percentDefenseChange.
      */
-    public float getPercentPhysicalDamageChange() {
-      return percentPhysicalDamageChange_;
+    public double getPercentDefenseChange() {
+      return percentDefenseChange_;
     }
 
-    public static final int FLAT_MAGIC_DEFENSE_CHANGE_FIELD_NUMBER = 11;
-    private int flatMagicDefenseChange_;
-    /**
-     * <code>int32 flat_magic_defense_change = 11;</code>
-     * @return The flatMagicDefenseChange.
-     */
-    public int getFlatMagicDefenseChange() {
-      return flatMagicDefenseChange_;
-    }
-
-    public static final int PERCENT_MAGIC_DEFENSE_CHANGE_FIELD_NUMBER = 12;
-    private float percentMagicDefenseChange_;
-    /**
-     * <code>float percent_magic_defense_change = 12;</code>
-     * @return The percentMagicDefenseChange.
-     */
-    public float getPercentMagicDefenseChange() {
-      return percentMagicDefenseChange_;
-    }
-
-    public static final int FLAT_PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER = 13;
-    private int flatPhysicalDefenseChange_;
-    /**
-     * <code>int32 flat_physical_defense_change = 13;</code>
-     * @return The flatPhysicalDefenseChange.
-     */
-    public int getFlatPhysicalDefenseChange() {
-      return flatPhysicalDefenseChange_;
-    }
-
-    public static final int PERCENT_PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER = 14;
-    private float percentPhysicalDefenseChange_;
-    /**
-     * <code>float percent_physical_defense_change = 14;</code>
-     * @return The percentPhysicalDefenseChange.
-     */
-    public float getPercentPhysicalDefenseChange() {
-      return percentPhysicalDefenseChange_;
-    }
-
-    public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 15;
+    public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 11;
     private int flatRegenPerTurn_;
     /**
-     * <code>int32 flat_regen_per_turn = 15;</code>
+     * <code>int32 flat_regen_per_turn = 11;</code>
      * @return The flatRegenPerTurn.
      */
     public int getFlatRegenPerTurn() {
@@ -6157,47 +6005,35 @@ public final class ItemProtos {
       if (flatSpeedChange_ != 0) {
         output.writeInt32(1, flatSpeedChange_);
       }
-      if (percentSpeedChange_ != 0F) {
-        output.writeFloat(2, percentSpeedChange_);
+      if (percentSpeedChange_ != 0D) {
+        output.writeDouble(2, percentSpeedChange_);
       }
       if (flatHealthChange_ != 0) {
         output.writeInt32(3, flatHealthChange_);
       }
-      if (percentHealthChange_ != 0F) {
-        output.writeFloat(4, percentHealthChange_);
+      if (percentHealthChange_ != 0D) {
+        output.writeDouble(4, percentHealthChange_);
       }
       if (flatExperienceChange_ != 0) {
         output.writeInt32(5, flatExperienceChange_);
       }
-      if (percentExperienceChange_ != 0F) {
-        output.writeFloat(6, percentExperienceChange_);
+      if (percentExperienceChange_ != 0D) {
+        output.writeDouble(6, percentExperienceChange_);
       }
-      if (flatMagicDamageChange_ != 0) {
-        output.writeInt32(7, flatMagicDamageChange_);
+      if (flatDamageChange_ != 0) {
+        output.writeInt32(7, flatDamageChange_);
       }
-      if (percentMagicDamageChange_ != 0F) {
-        output.writeFloat(8, percentMagicDamageChange_);
+      if (percentDamageChange_ != 0D) {
+        output.writeDouble(8, percentDamageChange_);
       }
-      if (flatPhysicalDamageChange_ != 0) {
-        output.writeInt32(9, flatPhysicalDamageChange_);
+      if (flatDefenseChange_ != 0) {
+        output.writeInt32(9, flatDefenseChange_);
       }
-      if (percentPhysicalDamageChange_ != 0F) {
-        output.writeFloat(10, percentPhysicalDamageChange_);
-      }
-      if (flatMagicDefenseChange_ != 0) {
-        output.writeInt32(11, flatMagicDefenseChange_);
-      }
-      if (percentMagicDefenseChange_ != 0F) {
-        output.writeFloat(12, percentMagicDefenseChange_);
-      }
-      if (flatPhysicalDefenseChange_ != 0) {
-        output.writeInt32(13, flatPhysicalDefenseChange_);
-      }
-      if (percentPhysicalDefenseChange_ != 0F) {
-        output.writeFloat(14, percentPhysicalDefenseChange_);
+      if (percentDefenseChange_ != 0D) {
+        output.writeDouble(10, percentDefenseChange_);
       }
       if (flatRegenPerTurn_ != 0) {
-        output.writeInt32(15, flatRegenPerTurn_);
+        output.writeInt32(11, flatRegenPerTurn_);
       }
       unknownFields.writeTo(output);
     }
@@ -6212,61 +6048,45 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, flatSpeedChange_);
       }
-      if (percentSpeedChange_ != 0F) {
+      if (percentSpeedChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, percentSpeedChange_);
+          .computeDoubleSize(2, percentSpeedChange_);
       }
       if (flatHealthChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, flatHealthChange_);
       }
-      if (percentHealthChange_ != 0F) {
+      if (percentHealthChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, percentHealthChange_);
+          .computeDoubleSize(4, percentHealthChange_);
       }
       if (flatExperienceChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, flatExperienceChange_);
       }
-      if (percentExperienceChange_ != 0F) {
+      if (percentExperienceChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(6, percentExperienceChange_);
+          .computeDoubleSize(6, percentExperienceChange_);
       }
-      if (flatMagicDamageChange_ != 0) {
+      if (flatDamageChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, flatMagicDamageChange_);
+          .computeInt32Size(7, flatDamageChange_);
       }
-      if (percentMagicDamageChange_ != 0F) {
+      if (percentDamageChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(8, percentMagicDamageChange_);
+          .computeDoubleSize(8, percentDamageChange_);
       }
-      if (flatPhysicalDamageChange_ != 0) {
+      if (flatDefenseChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, flatPhysicalDamageChange_);
+          .computeInt32Size(9, flatDefenseChange_);
       }
-      if (percentPhysicalDamageChange_ != 0F) {
+      if (percentDefenseChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(10, percentPhysicalDamageChange_);
-      }
-      if (flatMagicDefenseChange_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, flatMagicDefenseChange_);
-      }
-      if (percentMagicDefenseChange_ != 0F) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(12, percentMagicDefenseChange_);
-      }
-      if (flatPhysicalDefenseChange_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, flatPhysicalDefenseChange_);
-      }
-      if (percentPhysicalDefenseChange_ != 0F) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(14, percentPhysicalDefenseChange_);
+          .computeDoubleSize(10, percentDefenseChange_);
       }
       if (flatRegenPerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(15, flatRegenPerTurn_);
+          .computeInt32Size(11, flatRegenPerTurn_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6285,39 +6105,29 @@ public final class ItemProtos {
 
       if (getFlatSpeedChange()
           != other.getFlatSpeedChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentSpeedChange())
-          != java.lang.Float.floatToIntBits(
+      if (java.lang.Double.doubleToLongBits(getPercentSpeedChange())
+          != java.lang.Double.doubleToLongBits(
               other.getPercentSpeedChange())) return false;
       if (getFlatHealthChange()
           != other.getFlatHealthChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentHealthChange())
-          != java.lang.Float.floatToIntBits(
+      if (java.lang.Double.doubleToLongBits(getPercentHealthChange())
+          != java.lang.Double.doubleToLongBits(
               other.getPercentHealthChange())) return false;
       if (getFlatExperienceChange()
           != other.getFlatExperienceChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentExperienceChange())
-          != java.lang.Float.floatToIntBits(
+      if (java.lang.Double.doubleToLongBits(getPercentExperienceChange())
+          != java.lang.Double.doubleToLongBits(
               other.getPercentExperienceChange())) return false;
-      if (getFlatMagicDamageChange()
-          != other.getFlatMagicDamageChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentMagicDamageChange())
-          != java.lang.Float.floatToIntBits(
-              other.getPercentMagicDamageChange())) return false;
-      if (getFlatPhysicalDamageChange()
-          != other.getFlatPhysicalDamageChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentPhysicalDamageChange())
-          != java.lang.Float.floatToIntBits(
-              other.getPercentPhysicalDamageChange())) return false;
-      if (getFlatMagicDefenseChange()
-          != other.getFlatMagicDefenseChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentMagicDefenseChange())
-          != java.lang.Float.floatToIntBits(
-              other.getPercentMagicDefenseChange())) return false;
-      if (getFlatPhysicalDefenseChange()
-          != other.getFlatPhysicalDefenseChange()) return false;
-      if (java.lang.Float.floatToIntBits(getPercentPhysicalDefenseChange())
-          != java.lang.Float.floatToIntBits(
-              other.getPercentPhysicalDefenseChange())) return false;
+      if (getFlatDamageChange()
+          != other.getFlatDamageChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDamageChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDamageChange())) return false;
+      if (getFlatDefenseChange()
+          != other.getFlatDefenseChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDefenseChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDefenseChange())) return false;
       if (getFlatRegenPerTurn()
           != other.getFlatRegenPerTurn()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -6334,38 +6144,28 @@ public final class ItemProtos {
       hash = (37 * hash) + FLAT_SPEED_CHANGE_FIELD_NUMBER;
       hash = (53 * hash) + getFlatSpeedChange();
       hash = (37 * hash) + PERCENT_SPEED_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentSpeedChange());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentSpeedChange()));
       hash = (37 * hash) + FLAT_HEALTH_CHANGE_FIELD_NUMBER;
       hash = (53 * hash) + getFlatHealthChange();
       hash = (37 * hash) + PERCENT_HEALTH_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentHealthChange());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentHealthChange()));
       hash = (37 * hash) + FLAT_EXPERIENCE_CHANGE_FIELD_NUMBER;
       hash = (53 * hash) + getFlatExperienceChange();
       hash = (37 * hash) + PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentExperienceChange());
-      hash = (37 * hash) + FLAT_MAGIC_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatMagicDamageChange();
-      hash = (37 * hash) + PERCENT_MAGIC_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentMagicDamageChange());
-      hash = (37 * hash) + FLAT_PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatPhysicalDamageChange();
-      hash = (37 * hash) + PERCENT_PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentPhysicalDamageChange());
-      hash = (37 * hash) + FLAT_MAGIC_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatMagicDefenseChange();
-      hash = (37 * hash) + PERCENT_MAGIC_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentMagicDefenseChange());
-      hash = (37 * hash) + FLAT_PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatPhysicalDefenseChange();
-      hash = (37 * hash) + PERCENT_PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPercentPhysicalDefenseChange());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentExperienceChange()));
+      hash = (37 * hash) + FLAT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDamageChange();
+      hash = (37 * hash) + PERCENT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDamageChange()));
+      hash = (37 * hash) + FLAT_DEFENSE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDefenseChange();
+      hash = (37 * hash) + PERCENT_DEFENSE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDefenseChange()));
       hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
       hash = (53 * hash) + getFlatRegenPerTurn();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -6503,31 +6303,23 @@ public final class ItemProtos {
         super.clear();
         flatSpeedChange_ = 0;
 
-        percentSpeedChange_ = 0F;
+        percentSpeedChange_ = 0D;
 
         flatHealthChange_ = 0;
 
-        percentHealthChange_ = 0F;
+        percentHealthChange_ = 0D;
 
         flatExperienceChange_ = 0;
 
-        percentExperienceChange_ = 0F;
+        percentExperienceChange_ = 0D;
 
-        flatMagicDamageChange_ = 0;
+        flatDamageChange_ = 0;
 
-        percentMagicDamageChange_ = 0F;
+        percentDamageChange_ = 0D;
 
-        flatPhysicalDamageChange_ = 0;
+        flatDefenseChange_ = 0;
 
-        percentPhysicalDamageChange_ = 0F;
-
-        flatMagicDefenseChange_ = 0;
-
-        percentMagicDefenseChange_ = 0F;
-
-        flatPhysicalDefenseChange_ = 0;
-
-        percentPhysicalDefenseChange_ = 0F;
+        percentDefenseChange_ = 0D;
 
         flatRegenPerTurn_ = 0;
 
@@ -6563,14 +6355,10 @@ public final class ItemProtos {
         result.percentHealthChange_ = percentHealthChange_;
         result.flatExperienceChange_ = flatExperienceChange_;
         result.percentExperienceChange_ = percentExperienceChange_;
-        result.flatMagicDamageChange_ = flatMagicDamageChange_;
-        result.percentMagicDamageChange_ = percentMagicDamageChange_;
-        result.flatPhysicalDamageChange_ = flatPhysicalDamageChange_;
-        result.percentPhysicalDamageChange_ = percentPhysicalDamageChange_;
-        result.flatMagicDefenseChange_ = flatMagicDefenseChange_;
-        result.percentMagicDefenseChange_ = percentMagicDefenseChange_;
-        result.flatPhysicalDefenseChange_ = flatPhysicalDefenseChange_;
-        result.percentPhysicalDefenseChange_ = percentPhysicalDefenseChange_;
+        result.flatDamageChange_ = flatDamageChange_;
+        result.percentDamageChange_ = percentDamageChange_;
+        result.flatDefenseChange_ = flatDefenseChange_;
+        result.percentDefenseChange_ = percentDefenseChange_;
         result.flatRegenPerTurn_ = flatRegenPerTurn_;
         onBuilt();
         return result;
@@ -6623,44 +6411,32 @@ public final class ItemProtos {
         if (other.getFlatSpeedChange() != 0) {
           setFlatSpeedChange(other.getFlatSpeedChange());
         }
-        if (other.getPercentSpeedChange() != 0F) {
+        if (other.getPercentSpeedChange() != 0D) {
           setPercentSpeedChange(other.getPercentSpeedChange());
         }
         if (other.getFlatHealthChange() != 0) {
           setFlatHealthChange(other.getFlatHealthChange());
         }
-        if (other.getPercentHealthChange() != 0F) {
+        if (other.getPercentHealthChange() != 0D) {
           setPercentHealthChange(other.getPercentHealthChange());
         }
         if (other.getFlatExperienceChange() != 0) {
           setFlatExperienceChange(other.getFlatExperienceChange());
         }
-        if (other.getPercentExperienceChange() != 0F) {
+        if (other.getPercentExperienceChange() != 0D) {
           setPercentExperienceChange(other.getPercentExperienceChange());
         }
-        if (other.getFlatMagicDamageChange() != 0) {
-          setFlatMagicDamageChange(other.getFlatMagicDamageChange());
+        if (other.getFlatDamageChange() != 0) {
+          setFlatDamageChange(other.getFlatDamageChange());
         }
-        if (other.getPercentMagicDamageChange() != 0F) {
-          setPercentMagicDamageChange(other.getPercentMagicDamageChange());
+        if (other.getPercentDamageChange() != 0D) {
+          setPercentDamageChange(other.getPercentDamageChange());
         }
-        if (other.getFlatPhysicalDamageChange() != 0) {
-          setFlatPhysicalDamageChange(other.getFlatPhysicalDamageChange());
+        if (other.getFlatDefenseChange() != 0) {
+          setFlatDefenseChange(other.getFlatDefenseChange());
         }
-        if (other.getPercentPhysicalDamageChange() != 0F) {
-          setPercentPhysicalDamageChange(other.getPercentPhysicalDamageChange());
-        }
-        if (other.getFlatMagicDefenseChange() != 0) {
-          setFlatMagicDefenseChange(other.getFlatMagicDefenseChange());
-        }
-        if (other.getPercentMagicDefenseChange() != 0F) {
-          setPercentMagicDefenseChange(other.getPercentMagicDefenseChange());
-        }
-        if (other.getFlatPhysicalDefenseChange() != 0) {
-          setFlatPhysicalDefenseChange(other.getFlatPhysicalDefenseChange());
-        }
-        if (other.getPercentPhysicalDefenseChange() != 0F) {
-          setPercentPhysicalDefenseChange(other.getPercentPhysicalDefenseChange());
+        if (other.getPercentDefenseChange() != 0D) {
+          setPercentDefenseChange(other.getPercentDefenseChange());
         }
         if (other.getFlatRegenPerTurn() != 0) {
           setFlatRegenPerTurn(other.getFlatRegenPerTurn());
@@ -6724,32 +6500,32 @@ public final class ItemProtos {
         return this;
       }
 
-      private float percentSpeedChange_ ;
+      private double percentSpeedChange_ ;
       /**
-       * <code>float percent_speed_change = 2;</code>
+       * <code>double percent_speed_change = 2;</code>
        * @return The percentSpeedChange.
        */
-      public float getPercentSpeedChange() {
+      public double getPercentSpeedChange() {
         return percentSpeedChange_;
       }
       /**
-       * <code>float percent_speed_change = 2;</code>
+       * <code>double percent_speed_change = 2;</code>
        * @param value The percentSpeedChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPercentSpeedChange(float value) {
+      public Builder setPercentSpeedChange(double value) {
         
         percentSpeedChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>float percent_speed_change = 2;</code>
+       * <code>double percent_speed_change = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearPercentSpeedChange() {
         
-        percentSpeedChange_ = 0F;
+        percentSpeedChange_ = 0D;
         onChanged();
         return this;
       }
@@ -6784,32 +6560,32 @@ public final class ItemProtos {
         return this;
       }
 
-      private float percentHealthChange_ ;
+      private double percentHealthChange_ ;
       /**
-       * <code>float percent_health_change = 4;</code>
+       * <code>double percent_health_change = 4;</code>
        * @return The percentHealthChange.
        */
-      public float getPercentHealthChange() {
+      public double getPercentHealthChange() {
         return percentHealthChange_;
       }
       /**
-       * <code>float percent_health_change = 4;</code>
+       * <code>double percent_health_change = 4;</code>
        * @param value The percentHealthChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPercentHealthChange(float value) {
+      public Builder setPercentHealthChange(double value) {
         
         percentHealthChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>float percent_health_change = 4;</code>
+       * <code>double percent_health_change = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearPercentHealthChange() {
         
-        percentHealthChange_ = 0F;
+        percentHealthChange_ = 0D;
         onChanged();
         return this;
       }
@@ -6844,286 +6620,166 @@ public final class ItemProtos {
         return this;
       }
 
-      private float percentExperienceChange_ ;
+      private double percentExperienceChange_ ;
       /**
-       * <code>float percent_experience_change = 6;</code>
+       * <code>double percent_experience_change = 6;</code>
        * @return The percentExperienceChange.
        */
-      public float getPercentExperienceChange() {
+      public double getPercentExperienceChange() {
         return percentExperienceChange_;
       }
       /**
-       * <code>float percent_experience_change = 6;</code>
+       * <code>double percent_experience_change = 6;</code>
        * @param value The percentExperienceChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPercentExperienceChange(float value) {
+      public Builder setPercentExperienceChange(double value) {
         
         percentExperienceChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>float percent_experience_change = 6;</code>
+       * <code>double percent_experience_change = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearPercentExperienceChange() {
         
-        percentExperienceChange_ = 0F;
+        percentExperienceChange_ = 0D;
         onChanged();
         return this;
       }
 
-      private int flatMagicDamageChange_ ;
+      private int flatDamageChange_ ;
       /**
-       * <code>int32 flat_magic_damage_change = 7;</code>
-       * @return The flatMagicDamageChange.
+       * <code>int32 flat_damage_change = 7;</code>
+       * @return The flatDamageChange.
        */
-      public int getFlatMagicDamageChange() {
-        return flatMagicDamageChange_;
+      public int getFlatDamageChange() {
+        return flatDamageChange_;
       }
       /**
-       * <code>int32 flat_magic_damage_change = 7;</code>
-       * @param value The flatMagicDamageChange to set.
+       * <code>int32 flat_damage_change = 7;</code>
+       * @param value The flatDamageChange to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatMagicDamageChange(int value) {
+      public Builder setFlatDamageChange(int value) {
         
-        flatMagicDamageChange_ = value;
+        flatDamageChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_magic_damage_change = 7;</code>
+       * <code>int32 flat_damage_change = 7;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatMagicDamageChange() {
+      public Builder clearFlatDamageChange() {
         
-        flatMagicDamageChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float percentMagicDamageChange_ ;
-      /**
-       * <code>float percent_magic_damage_change = 8;</code>
-       * @return The percentMagicDamageChange.
-       */
-      public float getPercentMagicDamageChange() {
-        return percentMagicDamageChange_;
-      }
-      /**
-       * <code>float percent_magic_damage_change = 8;</code>
-       * @param value The percentMagicDamageChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPercentMagicDamageChange(float value) {
-        
-        percentMagicDamageChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>float percent_magic_damage_change = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPercentMagicDamageChange() {
-        
-        percentMagicDamageChange_ = 0F;
+        flatDamageChange_ = 0;
         onChanged();
         return this;
       }
 
-      private int flatPhysicalDamageChange_ ;
+      private double percentDamageChange_ ;
       /**
-       * <code>int32 flat_physical_damage_change = 9;</code>
-       * @return The flatPhysicalDamageChange.
+       * <code>double percent_damage_change = 8;</code>
+       * @return The percentDamageChange.
        */
-      public int getFlatPhysicalDamageChange() {
-        return flatPhysicalDamageChange_;
+      public double getPercentDamageChange() {
+        return percentDamageChange_;
       }
       /**
-       * <code>int32 flat_physical_damage_change = 9;</code>
-       * @param value The flatPhysicalDamageChange to set.
+       * <code>double percent_damage_change = 8;</code>
+       * @param value The percentDamageChange to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatPhysicalDamageChange(int value) {
+      public Builder setPercentDamageChange(double value) {
         
-        flatPhysicalDamageChange_ = value;
+        percentDamageChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_physical_damage_change = 9;</code>
+       * <code>double percent_damage_change = 8;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatPhysicalDamageChange() {
+      public Builder clearPercentDamageChange() {
         
-        flatPhysicalDamageChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float percentPhysicalDamageChange_ ;
-      /**
-       * <code>float percent_physical_damage_change = 10;</code>
-       * @return The percentPhysicalDamageChange.
-       */
-      public float getPercentPhysicalDamageChange() {
-        return percentPhysicalDamageChange_;
-      }
-      /**
-       * <code>float percent_physical_damage_change = 10;</code>
-       * @param value The percentPhysicalDamageChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPercentPhysicalDamageChange(float value) {
-        
-        percentPhysicalDamageChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>float percent_physical_damage_change = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPercentPhysicalDamageChange() {
-        
-        percentPhysicalDamageChange_ = 0F;
+        percentDamageChange_ = 0D;
         onChanged();
         return this;
       }
 
-      private int flatMagicDefenseChange_ ;
+      private int flatDefenseChange_ ;
       /**
-       * <code>int32 flat_magic_defense_change = 11;</code>
-       * @return The flatMagicDefenseChange.
+       * <code>int32 flat_defense_change = 9;</code>
+       * @return The flatDefenseChange.
        */
-      public int getFlatMagicDefenseChange() {
-        return flatMagicDefenseChange_;
+      public int getFlatDefenseChange() {
+        return flatDefenseChange_;
       }
       /**
-       * <code>int32 flat_magic_defense_change = 11;</code>
-       * @param value The flatMagicDefenseChange to set.
+       * <code>int32 flat_defense_change = 9;</code>
+       * @param value The flatDefenseChange to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatMagicDefenseChange(int value) {
+      public Builder setFlatDefenseChange(int value) {
         
-        flatMagicDefenseChange_ = value;
+        flatDefenseChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_magic_defense_change = 11;</code>
+       * <code>int32 flat_defense_change = 9;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatMagicDefenseChange() {
+      public Builder clearFlatDefenseChange() {
         
-        flatMagicDefenseChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float percentMagicDefenseChange_ ;
-      /**
-       * <code>float percent_magic_defense_change = 12;</code>
-       * @return The percentMagicDefenseChange.
-       */
-      public float getPercentMagicDefenseChange() {
-        return percentMagicDefenseChange_;
-      }
-      /**
-       * <code>float percent_magic_defense_change = 12;</code>
-       * @param value The percentMagicDefenseChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPercentMagicDefenseChange(float value) {
-        
-        percentMagicDefenseChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>float percent_magic_defense_change = 12;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPercentMagicDefenseChange() {
-        
-        percentMagicDefenseChange_ = 0F;
+        flatDefenseChange_ = 0;
         onChanged();
         return this;
       }
 
-      private int flatPhysicalDefenseChange_ ;
+      private double percentDefenseChange_ ;
       /**
-       * <code>int32 flat_physical_defense_change = 13;</code>
-       * @return The flatPhysicalDefenseChange.
+       * <code>double percent_defense_change = 10;</code>
+       * @return The percentDefenseChange.
        */
-      public int getFlatPhysicalDefenseChange() {
-        return flatPhysicalDefenseChange_;
+      public double getPercentDefenseChange() {
+        return percentDefenseChange_;
       }
       /**
-       * <code>int32 flat_physical_defense_change = 13;</code>
-       * @param value The flatPhysicalDefenseChange to set.
+       * <code>double percent_defense_change = 10;</code>
+       * @param value The percentDefenseChange to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatPhysicalDefenseChange(int value) {
+      public Builder setPercentDefenseChange(double value) {
         
-        flatPhysicalDefenseChange_ = value;
+        percentDefenseChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_physical_defense_change = 13;</code>
+       * <code>double percent_defense_change = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatPhysicalDefenseChange() {
+      public Builder clearPercentDefenseChange() {
         
-        flatPhysicalDefenseChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float percentPhysicalDefenseChange_ ;
-      /**
-       * <code>float percent_physical_defense_change = 14;</code>
-       * @return The percentPhysicalDefenseChange.
-       */
-      public float getPercentPhysicalDefenseChange() {
-        return percentPhysicalDefenseChange_;
-      }
-      /**
-       * <code>float percent_physical_defense_change = 14;</code>
-       * @param value The percentPhysicalDefenseChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPercentPhysicalDefenseChange(float value) {
-        
-        percentPhysicalDefenseChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>float percent_physical_defense_change = 14;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPercentPhysicalDefenseChange() {
-        
-        percentPhysicalDefenseChange_ = 0F;
+        percentDefenseChange_ = 0D;
         onChanged();
         return this;
       }
 
       private int flatRegenPerTurn_ ;
       /**
-       * <code>int32 flat_regen_per_turn = 15;</code>
+       * <code>int32 flat_regen_per_turn = 11;</code>
        * @return The flatRegenPerTurn.
        */
       public int getFlatRegenPerTurn() {
         return flatRegenPerTurn_;
       }
       /**
-       * <code>int32 flat_regen_per_turn = 15;</code>
+       * <code>int32 flat_regen_per_turn = 11;</code>
        * @param value The flatRegenPerTurn to set.
        * @return This builder for chaining.
        */
@@ -7134,7 +6790,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>int32 flat_regen_per_turn = 15;</code>
+       * <code>int32 flat_regen_per_turn = 11;</code>
        * @return This builder for chaining.
        */
       public Builder clearFlatRegenPerTurn() {
@@ -7216,16 +6872,16 @@ public final class ItemProtos {
     mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
-     * <code>int32 flat_magical_damage_per_turn = 2;</code>
-     * @return The flatMagicalDamagePerTurn.
+     * <code>int32 flat_damage_per_turn = 2;</code>
+     * @return The flatDamagePerTurn.
      */
-    int getFlatMagicalDamagePerTurn();
+    int getFlatDamagePerTurn();
 
     /**
-     * <code>int32 flat_physical_damage_per_turn = 3;</code>
-     * @return The flatPhysicalDamagePerTurn.
+     * <code>double percent_damage_per_turn = 3;</code>
+     * @return The percentDamagePerTurn.
      */
-    int getFlatPhysicalDamagePerTurn();
+    double getPercentDamagePerTurn();
 
     /**
      * <code>int32 flat_regen_per_turn = 4;</code>
@@ -7234,10 +6890,10 @@ public final class ItemProtos {
     int getFlatRegenPerTurn();
 
     /**
-     * <code>int32 duration = 5;</code>
-     * @return The duration.
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
      */
-    int getDuration();
+    int getTurnsLeft();
   }
   /**
    * Protobuf type {@code item.TempStatusModifier}
@@ -7299,12 +6955,12 @@ public final class ItemProtos {
             }
             case 16: {
 
-              flatMagicalDamagePerTurn_ = input.readInt32();
+              flatDamagePerTurn_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 25: {
 
-              flatPhysicalDamagePerTurn_ = input.readInt32();
+              percentDamagePerTurn_ = input.readDouble();
               break;
             }
             case 32: {
@@ -7314,7 +6970,7 @@ public final class ItemProtos {
             }
             case 40: {
 
-              duration_ = input.readInt32();
+              turnsLeft_ = input.readInt32();
               break;
             }
             default: {
@@ -7372,24 +7028,24 @@ public final class ItemProtos {
       return getStats();
     }
 
-    public static final int FLAT_MAGICAL_DAMAGE_PER_TURN_FIELD_NUMBER = 2;
-    private int flatMagicalDamagePerTurn_;
+    public static final int FLAT_DAMAGE_PER_TURN_FIELD_NUMBER = 2;
+    private int flatDamagePerTurn_;
     /**
-     * <code>int32 flat_magical_damage_per_turn = 2;</code>
-     * @return The flatMagicalDamagePerTurn.
+     * <code>int32 flat_damage_per_turn = 2;</code>
+     * @return The flatDamagePerTurn.
      */
-    public int getFlatMagicalDamagePerTurn() {
-      return flatMagicalDamagePerTurn_;
+    public int getFlatDamagePerTurn() {
+      return flatDamagePerTurn_;
     }
 
-    public static final int FLAT_PHYSICAL_DAMAGE_PER_TURN_FIELD_NUMBER = 3;
-    private int flatPhysicalDamagePerTurn_;
+    public static final int PERCENT_DAMAGE_PER_TURN_FIELD_NUMBER = 3;
+    private double percentDamagePerTurn_;
     /**
-     * <code>int32 flat_physical_damage_per_turn = 3;</code>
-     * @return The flatPhysicalDamagePerTurn.
+     * <code>double percent_damage_per_turn = 3;</code>
+     * @return The percentDamagePerTurn.
      */
-    public int getFlatPhysicalDamagePerTurn() {
-      return flatPhysicalDamagePerTurn_;
+    public double getPercentDamagePerTurn() {
+      return percentDamagePerTurn_;
     }
 
     public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 4;
@@ -7402,14 +7058,14 @@ public final class ItemProtos {
       return flatRegenPerTurn_;
     }
 
-    public static final int DURATION_FIELD_NUMBER = 5;
-    private int duration_;
+    public static final int TURNS_LEFT_FIELD_NUMBER = 5;
+    private int turnsLeft_;
     /**
-     * <code>int32 duration = 5;</code>
-     * @return The duration.
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
      */
-    public int getDuration() {
-      return duration_;
+    public int getTurnsLeft() {
+      return turnsLeft_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7429,17 +7085,17 @@ public final class ItemProtos {
       if (stats_ != null) {
         output.writeMessage(1, getStats());
       }
-      if (flatMagicalDamagePerTurn_ != 0) {
-        output.writeInt32(2, flatMagicalDamagePerTurn_);
+      if (flatDamagePerTurn_ != 0) {
+        output.writeInt32(2, flatDamagePerTurn_);
       }
-      if (flatPhysicalDamagePerTurn_ != 0) {
-        output.writeInt32(3, flatPhysicalDamagePerTurn_);
+      if (percentDamagePerTurn_ != 0D) {
+        output.writeDouble(3, percentDamagePerTurn_);
       }
       if (flatRegenPerTurn_ != 0) {
         output.writeInt32(4, flatRegenPerTurn_);
       }
-      if (duration_ != 0) {
-        output.writeInt32(5, duration_);
+      if (turnsLeft_ != 0) {
+        output.writeInt32(5, turnsLeft_);
       }
       unknownFields.writeTo(output);
     }
@@ -7454,21 +7110,21 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStats());
       }
-      if (flatMagicalDamagePerTurn_ != 0) {
+      if (flatDamagePerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, flatMagicalDamagePerTurn_);
+          .computeInt32Size(2, flatDamagePerTurn_);
       }
-      if (flatPhysicalDamagePerTurn_ != 0) {
+      if (percentDamagePerTurn_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, flatPhysicalDamagePerTurn_);
+          .computeDoubleSize(3, percentDamagePerTurn_);
       }
       if (flatRegenPerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, flatRegenPerTurn_);
       }
-      if (duration_ != 0) {
+      if (turnsLeft_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, duration_);
+          .computeInt32Size(5, turnsLeft_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7490,14 +7146,15 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (getFlatMagicalDamagePerTurn()
-          != other.getFlatMagicalDamagePerTurn()) return false;
-      if (getFlatPhysicalDamagePerTurn()
-          != other.getFlatPhysicalDamagePerTurn()) return false;
+      if (getFlatDamagePerTurn()
+          != other.getFlatDamagePerTurn()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDamagePerTurn())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDamagePerTurn())) return false;
       if (getFlatRegenPerTurn()
           != other.getFlatRegenPerTurn()) return false;
-      if (getDuration()
-          != other.getDuration()) return false;
+      if (getTurnsLeft()
+          != other.getTurnsLeft()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7513,14 +7170,15 @@ public final class ItemProtos {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
         hash = (53 * hash) + getStats().hashCode();
       }
-      hash = (37 * hash) + FLAT_MAGICAL_DAMAGE_PER_TURN_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatMagicalDamagePerTurn();
-      hash = (37 * hash) + FLAT_PHYSICAL_DAMAGE_PER_TURN_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatPhysicalDamagePerTurn();
+      hash = (37 * hash) + FLAT_DAMAGE_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDamagePerTurn();
+      hash = (37 * hash) + PERCENT_DAMAGE_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDamagePerTurn()));
       hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
       hash = (53 * hash) + getFlatRegenPerTurn();
-      hash = (37 * hash) + DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getDuration();
+      hash = (37 * hash) + TURNS_LEFT_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsLeft();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7660,13 +7318,13 @@ public final class ItemProtos {
           stats_ = null;
           statsBuilder_ = null;
         }
-        flatMagicalDamagePerTurn_ = 0;
+        flatDamagePerTurn_ = 0;
 
-        flatPhysicalDamagePerTurn_ = 0;
+        percentDamagePerTurn_ = 0D;
 
         flatRegenPerTurn_ = 0;
 
-        duration_ = 0;
+        turnsLeft_ = 0;
 
         return this;
       }
@@ -7699,10 +7357,10 @@ public final class ItemProtos {
         } else {
           result.stats_ = statsBuilder_.build();
         }
-        result.flatMagicalDamagePerTurn_ = flatMagicalDamagePerTurn_;
-        result.flatPhysicalDamagePerTurn_ = flatPhysicalDamagePerTurn_;
+        result.flatDamagePerTurn_ = flatDamagePerTurn_;
+        result.percentDamagePerTurn_ = percentDamagePerTurn_;
         result.flatRegenPerTurn_ = flatRegenPerTurn_;
-        result.duration_ = duration_;
+        result.turnsLeft_ = turnsLeft_;
         onBuilt();
         return result;
       }
@@ -7754,17 +7412,17 @@ public final class ItemProtos {
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
-        if (other.getFlatMagicalDamagePerTurn() != 0) {
-          setFlatMagicalDamagePerTurn(other.getFlatMagicalDamagePerTurn());
+        if (other.getFlatDamagePerTurn() != 0) {
+          setFlatDamagePerTurn(other.getFlatDamagePerTurn());
         }
-        if (other.getFlatPhysicalDamagePerTurn() != 0) {
-          setFlatPhysicalDamagePerTurn(other.getFlatPhysicalDamagePerTurn());
+        if (other.getPercentDamagePerTurn() != 0D) {
+          setPercentDamagePerTurn(other.getPercentDamagePerTurn());
         }
         if (other.getFlatRegenPerTurn() != 0) {
           setFlatRegenPerTurn(other.getFlatRegenPerTurn());
         }
-        if (other.getDuration() != 0) {
-          setDuration(other.getDuration());
+        if (other.getTurnsLeft() != 0) {
+          setTurnsLeft(other.getTurnsLeft());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7914,62 +7572,62 @@ public final class ItemProtos {
         return statsBuilder_;
       }
 
-      private int flatMagicalDamagePerTurn_ ;
+      private int flatDamagePerTurn_ ;
       /**
-       * <code>int32 flat_magical_damage_per_turn = 2;</code>
-       * @return The flatMagicalDamagePerTurn.
+       * <code>int32 flat_damage_per_turn = 2;</code>
+       * @return The flatDamagePerTurn.
        */
-      public int getFlatMagicalDamagePerTurn() {
-        return flatMagicalDamagePerTurn_;
+      public int getFlatDamagePerTurn() {
+        return flatDamagePerTurn_;
       }
       /**
-       * <code>int32 flat_magical_damage_per_turn = 2;</code>
-       * @param value The flatMagicalDamagePerTurn to set.
+       * <code>int32 flat_damage_per_turn = 2;</code>
+       * @param value The flatDamagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatMagicalDamagePerTurn(int value) {
+      public Builder setFlatDamagePerTurn(int value) {
         
-        flatMagicalDamagePerTurn_ = value;
+        flatDamagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_magical_damage_per_turn = 2;</code>
+       * <code>int32 flat_damage_per_turn = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatMagicalDamagePerTurn() {
+      public Builder clearFlatDamagePerTurn() {
         
-        flatMagicalDamagePerTurn_ = 0;
+        flatDamagePerTurn_ = 0;
         onChanged();
         return this;
       }
 
-      private int flatPhysicalDamagePerTurn_ ;
+      private double percentDamagePerTurn_ ;
       /**
-       * <code>int32 flat_physical_damage_per_turn = 3;</code>
-       * @return The flatPhysicalDamagePerTurn.
+       * <code>double percent_damage_per_turn = 3;</code>
+       * @return The percentDamagePerTurn.
        */
-      public int getFlatPhysicalDamagePerTurn() {
-        return flatPhysicalDamagePerTurn_;
+      public double getPercentDamagePerTurn() {
+        return percentDamagePerTurn_;
       }
       /**
-       * <code>int32 flat_physical_damage_per_turn = 3;</code>
-       * @param value The flatPhysicalDamagePerTurn to set.
+       * <code>double percent_damage_per_turn = 3;</code>
+       * @param value The percentDamagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatPhysicalDamagePerTurn(int value) {
+      public Builder setPercentDamagePerTurn(double value) {
         
-        flatPhysicalDamagePerTurn_ = value;
+        percentDamagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_physical_damage_per_turn = 3;</code>
+       * <code>double percent_damage_per_turn = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatPhysicalDamagePerTurn() {
+      public Builder clearPercentDamagePerTurn() {
         
-        flatPhysicalDamagePerTurn_ = 0;
+        percentDamagePerTurn_ = 0D;
         onChanged();
         return this;
       }
@@ -8004,32 +7662,32 @@ public final class ItemProtos {
         return this;
       }
 
-      private int duration_ ;
+      private int turnsLeft_ ;
       /**
-       * <code>int32 duration = 5;</code>
-       * @return The duration.
+       * <code>int32 turns_left = 5;</code>
+       * @return The turnsLeft.
        */
-      public int getDuration() {
-        return duration_;
+      public int getTurnsLeft() {
+        return turnsLeft_;
       }
       /**
-       * <code>int32 duration = 5;</code>
-       * @param value The duration to set.
+       * <code>int32 turns_left = 5;</code>
+       * @param value The turnsLeft to set.
        * @return This builder for chaining.
        */
-      public Builder setDuration(int value) {
+      public Builder setTurnsLeft(int value) {
         
-        duration_ = value;
+        turnsLeft_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 duration = 5;</code>
+       * <code>int32 turns_left = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDuration() {
+      public Builder clearTurnsLeft() {
         
-        duration_ = 0;
+        turnsLeft_ = 0;
         onChanged();
         return this;
       }
@@ -8146,33 +7804,27 @@ public final class ItemProtos {
       "\001(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030" +
       "\002 \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022" +
       "\010\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item" +
-      ".StatusModifier\"\263\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
+      ".StatusModifier\"\224\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
       "\0132\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\025" +
-      "\n\rsplash_radius\030\003 \001(\005\022\024\n\014magic_damage\030\004 " +
-      "\001(\005\022\027\n\017physical_damage\030\005 \001(\005\022/\n\ron_hit_e" +
-      "ffect\030\006 \001(\0132\030.item.TempStatusModifier\"F\n" +
-      "\nConsumable\022(\n\006effect\030\001 \001(\0132\030.item.TempS" +
-      "tatusModifier\022\016\n\006stacks\030\002 \001(\005\"\220\004\n\016Status" +
-      "Modifier\022\031\n\021flat_speed_change\030\001 \001(\005\022\034\n\024p" +
-      "ercent_speed_change\030\002 \001(\002\022\032\n\022flat_health" +
-      "_change\030\003 \001(\005\022\035\n\025percent_health_change\030\004" +
-      " \001(\002\022\036\n\026flat_experience_change\030\005 \001(\005\022!\n\031" +
-      "percent_experience_change\030\006 \001(\002\022 \n\030flat_" +
-      "magic_damage_change\030\007 \001(\005\022#\n\033percent_mag" +
-      "ic_damage_change\030\010 \001(\002\022#\n\033flat_physical_" +
-      "damage_change\030\t \001(\005\022&\n\036percent_physical_" +
-      "damage_change\030\n \001(\002\022!\n\031flat_magic_defens" +
-      "e_change\030\013 \001(\005\022$\n\034percent_magic_defense_" +
-      "change\030\014 \001(\002\022$\n\034flat_physical_defense_ch" +
-      "ange\030\r \001(\005\022\'\n\037percent_physical_defense_c" +
-      "hange\030\016 \001(\002\022\033\n\023flat_regen_per_turn\030\017 \001(\005" +
-      "\"\265\001\n\022TempStatusModifier\022#\n\005stats\030\001 \001(\0132\024" +
-      ".item.StatusModifier\022$\n\034flat_magical_dam" +
-      "age_per_turn\030\002 \001(\005\022%\n\035flat_physical_dama" +
-      "ge_per_turn\030\003 \001(\005\022\033\n\023flat_regen_per_turn" +
-      "\030\004 \001(\005\022\020\n\010duration\030\005 \001(\005B;\n\034mech.mania.e" +
-      "ngine.game.itemsB\nItemProtos\252\002\016MM26.IO.M" +
-      "odelsb\006proto3"
+      "\n\rsplash_radius\030\003 \001(\005\022\016\n\006damage\030\004 \001(\005\022/\n" +
+      "\ron_hit_effect\030\005 \001(\0132\030.item.TempStatusMo" +
+      "difier\"F\n\nConsumable\022(\n\006effect\030\001 \001(\0132\030.i" +
+      "tem.TempStatusModifier\022\016\n\006stacks\030\002 \001(\005\"\334" +
+      "\002\n\016StatusModifier\022\031\n\021flat_speed_change\030\001" +
+      " \001(\005\022\034\n\024percent_speed_change\030\002 \001(\001\022\032\n\022fl" +
+      "at_health_change\030\003 \001(\005\022\035\n\025percent_health" +
+      "_change\030\004 \001(\001\022\036\n\026flat_experience_change\030" +
+      "\005 \001(\005\022!\n\031percent_experience_change\030\006 \001(\001" +
+      "\022\032\n\022flat_damage_change\030\007 \001(\005\022\035\n\025percent_" +
+      "damage_change\030\010 \001(\001\022\033\n\023flat_defense_chan" +
+      "ge\030\t \001(\005\022\036\n\026percent_defense_change\030\n \001(\001" +
+      "\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\251\001\n\022TempSt" +
+      "atusModifier\022#\n\005stats\030\001 \001(\0132\024.item.Statu" +
+      "sModifier\022\034\n\024flat_damage_per_turn\030\002 \001(\005\022" +
+      "\037\n\027percent_damage_per_turn\030\003 \001(\001\022\033\n\023flat" +
+      "_regen_per_turn\030\004 \001(\005\022\022\n\nturns_left\030\005 \001(" +
+      "\005B;\n\034mech.mania.engine.game.itemsB\nItemP" +
+      "rotos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -8207,7 +7859,7 @@ public final class ItemProtos {
     internal_static_item_Weapon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Weapon_descriptor,
-        new java.lang.String[] { "Stats", "Range", "SplashRadius", "MagicDamage", "PhysicalDamage", "OnHitEffect", });
+        new java.lang.String[] { "Stats", "Range", "SplashRadius", "Damage", "OnHitEffect", });
     internal_static_item_Consumable_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_item_Consumable_fieldAccessorTable = new
@@ -8219,13 +7871,13 @@ public final class ItemProtos {
     internal_static_item_StatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_StatusModifier_descriptor,
-        new java.lang.String[] { "FlatSpeedChange", "PercentSpeedChange", "FlatHealthChange", "PercentHealthChange", "FlatExperienceChange", "PercentExperienceChange", "FlatMagicDamageChange", "PercentMagicDamageChange", "FlatPhysicalDamageChange", "PercentPhysicalDamageChange", "FlatMagicDefenseChange", "PercentMagicDefenseChange", "FlatPhysicalDefenseChange", "PercentPhysicalDefenseChange", "FlatRegenPerTurn", });
+        new java.lang.String[] { "FlatSpeedChange", "PercentSpeedChange", "FlatHealthChange", "PercentHealthChange", "FlatExperienceChange", "PercentExperienceChange", "FlatDamageChange", "PercentDamageChange", "FlatDefenseChange", "PercentDefenseChange", "FlatRegenPerTurn", });
     internal_static_item_TempStatusModifier_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_item_TempStatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_TempStatusModifier_descriptor,
-        new java.lang.String[] { "Stats", "FlatMagicalDamagePerTurn", "FlatPhysicalDamagePerTurn", "FlatRegenPerTurn", "Duration", });
+        new java.lang.String[] { "Stats", "FlatDamagePerTurn", "PercentDamagePerTurn", "FlatRegenPerTurn", "TurnsLeft", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

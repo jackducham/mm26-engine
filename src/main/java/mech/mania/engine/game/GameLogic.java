@@ -9,16 +9,11 @@ import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterDecision;
 
-import mech.mania.engine.game.items.Item;
-import mech.mania.engine.game.items.TempStatusModifier;
-import mech.mania.engine.game.items.Weapon;
+import mech.mania.engine.game.items.*;
 
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * A class to execute the game logic.
@@ -32,8 +27,73 @@ public class GameLogic {
      */
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         gameState.stateChange.clearChanges();
+        // ========== NOTES & TODOS ========== \\
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
+
+
+        // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
+        Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
+        for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
+            if(!gameState.getPlayer(entry.getKey()).isDead()) {
+                CharacterDecision newDecision = new CharacterDecision(entry.getValue());
+                cDecisions.put(entry.getKey(), newDecision);
+            }
+
+        }
+
+
+        // ========== SORT DECISIONS ========== \\
+        Map<String, CharacterDecision> inventoryActions = new HashMap<String, CharacterDecision>();
+        Map<String, CharacterDecision> attackActions = new HashMap<String, CharacterDecision>();
+        Map<String, CharacterDecision> movementActions = new HashMap<String, CharacterDecision>();
+
+        for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
+            if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
+                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
+                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
+                inventoryActions.put(entry.getKey(), entry.getValue());
+
+            } else if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.ATTACK) {
+                attackActions.put(entry.getKey(), entry.getValue());
+
+            } else {
+                movementActions.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+
+        // ========== HANDLE INVENTORY ACTIONS ========== \\
+        for (Map.Entry<String, CharacterDecision> entry : inventoryActions.entrySet()) {
+            processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
+        }
+
+
+        // ========== HANDLE ATTACK ACTIONS ========== \\
+        for (Map.Entry<String, CharacterDecision> entry : attackActions.entrySet()) {
+            processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
+        }
+
+
+        // ========== HANDLE MOVEMENT ACTIONS ========== \\
+        for (Map.Entry<String, CharacterDecision> entry : movementActions.entrySet()) {
+            processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
+        }
+
+
+        // ========== UPDATE PLAYER FUNCTIONS ========== \\
+        //updateCharacter handles clearing active effects, setting status to dead/alive,
+        // respawning, and distributing rewards
+        List<Player> players = gameState.getAllPlayers();
+        List<Monster> monsters = gameState.getAllMonsters();
+
+        for (Player player: players) {
+            player.updateCharacter(gameState);
+        }
+        for (Monster monster: monsters) {
+            monster.updateCharacter(gameState);
+        }
+
         return gameState;
     }
 
@@ -45,7 +105,7 @@ public class GameLogic {
         int index = decision.getIndex();
         switch (decision.getDecision()) {
             case ATTACK:
-                addAttackEffectToCharacters(gameState, character, actionPosition);
+                processAttack(gameState, character, actionPosition);
                 break;
             case MOVE:
                 moveCharacter(gameState, character, actionPosition);
@@ -189,7 +249,7 @@ public class GameLogic {
 
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
-                Position position = new Position(x, y);
+                Position position = new Position(x, y, attackCoordinate.getBoardID());
                 if (calculateManhattanDistance(position, attackCoordinate) <= radius && validatePosition(gameState, position)) {
                     affectedPositions.put(position, 1);
                 }
@@ -201,19 +261,18 @@ public class GameLogic {
 
     /**
      * Applies Weapon's onHitEffect to the TempStatusModifier of all characters within the range of the attackCoordinate
+     * @param gameState current gameState
      * @param attacker character doing the attacking
      * @param attackCoordinate coordinate to attack
-     * @param gameState current gamestate
      */
-    public static void addAttackEffectToCharacters(GameState gameState, Character attacker, Position attackCoordinate) {
+    public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
         Board board = gameState.getBoard(attackCoordinate.getBoardID());
-        TempStatusModifier onHitEffect = attacker.getWeapon().getOnHitEffect();
         List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
         List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         // Character gave invalid attack position
-        if (affectedPositions.isEmpty()) {
+        if (affectedPositions == null || affectedPositions.isEmpty()) {
             return;
         }
 
@@ -223,7 +282,7 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                player.addEffect(onHitEffect);
+                player.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
             }
         }
 
@@ -233,7 +292,7 @@ public class GameLogic {
             }
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                monster.addEffect(onHitEffect);
+                monster.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
             }
         }
 

@@ -343,6 +343,18 @@ public final class CharacterProtos {
      */
     com.google.protobuf.ByteString
         getNameBytes();
+
+    /**
+     * <code>int32 base_attack = 14;</code>
+     * @return The baseAttack.
+     */
+    int getBaseAttack();
+
+    /**
+     * <code>int32 base_defense = 15;</code>
+     * @return The baseDefense.
+     */
+    int getBaseDefense();
   }
   /**
    * Protobuf type {@code character.Character}
@@ -492,6 +504,16 @@ public final class CharacterProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
+              break;
+            }
+            case 112: {
+
+              baseAttack_ = input.readInt32();
+              break;
+            }
+            case 120: {
+
+              baseDefense_ = input.readInt32();
               break;
             }
             default: {
@@ -843,6 +865,26 @@ public final class CharacterProtos {
       }
     }
 
+    public static final int BASE_ATTACK_FIELD_NUMBER = 14;
+    private int baseAttack_;
+    /**
+     * <code>int32 base_attack = 14;</code>
+     * @return The baseAttack.
+     */
+    public int getBaseAttack() {
+      return baseAttack_;
+    }
+
+    public static final int BASE_DEFENSE_FIELD_NUMBER = 15;
+    private int baseDefense_;
+    /**
+     * <code>int32 base_defense = 15;</code>
+     * @return The baseDefense.
+     */
+    public int getBaseDefense() {
+      return baseDefense_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -898,6 +940,12 @@ public final class CharacterProtos {
       }
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 13, name_);
+      }
+      if (baseAttack_ != 0) {
+        output.writeInt32(14, baseAttack_);
+      }
+      if (baseDefense_ != 0) {
+        output.writeInt32(15, baseDefense_);
       }
       unknownFields.writeTo(output);
     }
@@ -965,6 +1013,14 @@ public final class CharacterProtos {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, name_);
       }
+      if (baseAttack_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, baseAttack_);
+      }
+      if (baseDefense_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, baseDefense_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1015,6 +1071,10 @@ public final class CharacterProtos {
           != other.getTicksSinceDeath()) return false;
       if (!getName()
           .equals(other.getName())) return false;
+      if (getBaseAttack()
+          != other.getBaseAttack()) return false;
+      if (getBaseDefense()
+          != other.getBaseDefense()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1063,6 +1123,10 @@ public final class CharacterProtos {
       hash = (53 * hash) + getTicksSinceDeath();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + BASE_ATTACK_FIELD_NUMBER;
+      hash = (53 * hash) + getBaseAttack();
+      hash = (37 * hash) + BASE_DEFENSE_FIELD_NUMBER;
+      hash = (53 * hash) + getBaseDefense();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1260,6 +1324,10 @@ public final class CharacterProtos {
 
         name_ = "";
 
+        baseAttack_ = 0;
+
+        baseDefense_ = 0;
+
         return this;
       }
 
@@ -1321,6 +1389,8 @@ public final class CharacterProtos {
         result.isDead_ = isDead_;
         result.ticksSinceDeath_ = ticksSinceDeath_;
         result.name_ = name_;
+        result.baseAttack_ = baseAttack_;
+        result.baseDefense_ = baseDefense_;
         onBuilt();
         return result;
       }
@@ -1430,6 +1500,12 @@ public final class CharacterProtos {
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
+        }
+        if (other.getBaseAttack() != 0) {
+          setBaseAttack(other.getBaseAttack());
+        }
+        if (other.getBaseDefense() != 0) {
+          setBaseDefense(other.getBaseDefense());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2491,6 +2567,66 @@ public final class CharacterProtos {
   checkByteStringIsUtf8(value);
         
         name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int baseAttack_ ;
+      /**
+       * <code>int32 base_attack = 14;</code>
+       * @return The baseAttack.
+       */
+      public int getBaseAttack() {
+        return baseAttack_;
+      }
+      /**
+       * <code>int32 base_attack = 14;</code>
+       * @param value The baseAttack to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBaseAttack(int value) {
+        
+        baseAttack_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 base_attack = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBaseAttack() {
+        
+        baseAttack_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int baseDefense_ ;
+      /**
+       * <code>int32 base_defense = 15;</code>
+       * @return The baseDefense.
+       */
+      public int getBaseDefense() {
+        return baseDefense_;
+      }
+      /**
+       * <code>int32 base_defense = 15;</code>
+       * @param value The baseDefense to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBaseDefense(int value) {
+        
+        baseDefense_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 base_defense = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBaseDefense() {
+        
+        baseDefense_ = 0;
         onChanged();
         return this;
       }
@@ -5860,7 +5996,7 @@ public final class CharacterProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017character.proto\022\tcharacter\032\nitem.proto" +
-      "\"\330\003\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
+      "\"\203\004\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
       "\n\017base_max_health\030\002 \001(\005\022\022\n\nexperience\030\003 " +
       "\001(\005\022\r\n\005level\030\004 \001(\005\022\022\n\nbase_speed\030\005 \001(\005\022%" +
       "\n\010position\030\006 \001(\0132\023.character.Position\022(\n" +
@@ -5870,20 +6006,21 @@ public final class CharacterProtos {
       "L\n\025tagged_players_damage\030\n \003(\0132-.charact" +
       "er.Character.TaggedPlayersDamageEntry\022\017\n" +
       "\007is_dead\030\013 \001(\010\022\031\n\021ticks_since_death\030\014 \001(" +
-      "\005\022\014\n\004name\030\r \001(\t\032:\n\030TaggedPlayersDamageEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M\n\007M" +
-      "onster\022\'\n\tcharacter\030\001 \001(\0132\024.character.Ch" +
-      "aracter\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001\n\006P" +
-      "layer\022\'\n\tcharacter\030\001 \001(\0132\024.character.Cha" +
-      "racter\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clothe" +
-      "s\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\0132\013." +
-      "item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item.Ite" +
-      "m\"2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001" +
-      "(\005\022\t\n\001y\030\003 \001(\005*[\n\014DecisionType\022\010\n\004NONE\020\000\022" +
-      "\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DRO" +
-      "P\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BE\n!mech.mania" +
-      ".engine.game.charactersB\017CharacterProtos" +
-      "\252\002\016MM26.IO.Modelsb\006proto3"
+      "\005\022\014\n\004name\030\r \001(\t\022\023\n\013base_attack\030\016 \001(\005\022\024\n\014" +
+      "base_defense\030\017 \001(\005\032:\n\030TaggedPlayersDamag" +
+      "eEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M" +
+      "\n\007Monster\022\'\n\tcharacter\030\001 \001(\0132\024.character" +
+      ".Character\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001" +
+      "\n\006Player\022\'\n\tcharacter\030\001 \001(\0132\024.character." +
+      "Character\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clo" +
+      "thes\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\013" +
+      "2\013.item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item." +
+      "Item\"2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030" +
+      "\002 \001(\005\022\t\n\001y\030\003 \001(\005*[\n\014DecisionType\022\010\n\004NONE" +
+      "\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004" +
+      "DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BE\n!mech.ma" +
+      "nia.engine.game.charactersB\017CharacterPro" +
+      "tos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5895,7 +6032,7 @@ public final class CharacterProtos {
     internal_static_character_Character_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Character_descriptor,
-        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffects", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", });
+        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffects", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", "BaseAttack", "BaseDefense", });
     internal_static_character_Character_TaggedPlayersDamageEntry_descriptor =
       internal_static_character_Character_descriptor.getNestedTypes().get(0);
     internal_static_character_Character_TaggedPlayersDamageEntry_fieldAccessorTable = new

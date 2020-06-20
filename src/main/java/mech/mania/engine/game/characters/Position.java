@@ -5,9 +5,10 @@ public class Position {
     private int y;
     private String board_id;
 
-    public Position(int x, int y) {
+    public Position(int x, int y, String board_id) {
         this.x = x;
         this.y = y;
+        this.board_id = board_id;
     }
 
     public Position(CharacterProtos.Position positionProto) {
@@ -23,6 +24,14 @@ public class Position {
         positionBuilder.setBoardId(board_id);
 
         return positionBuilder.build();
+    }
+
+    public boolean equals(Position other) {
+        if(this.x != other.x || this.y != other.y || this.board_id != other.board_id) {
+            return false;
+        }
+
+        return true;
     }
 
     public int getX() {
