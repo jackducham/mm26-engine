@@ -120,10 +120,7 @@ public class GameStateController {
      * @return VisualizerTurn from the given GameState
      */
     public static VisualizerChange constructVisualizerChange() {
-        GameState gameState = getCurrentGameState();
-        // TODO: construct VisualizerTurn
-        return VisualizerChange.newBuilder()
-                .build();
+        return getCurrentGameState().stateChange.buildProtoClass();
     }
 
     /**
