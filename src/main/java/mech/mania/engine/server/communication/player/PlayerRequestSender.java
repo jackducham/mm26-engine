@@ -52,7 +52,7 @@ public class PlayerRequestSender {
                 http.setRequestMethod("POST");
                 http.setDoOutput(true);
 
-                PlayerTurn turn = GameStateController.constructPlayerTurn(playerName);
+                PlayerTurn turn = GameStateController.constructPlayerTurn();
                 turn.writeTo(http.getOutputStream());
 
                 decision = PlayerDecision.parseFrom(http.getInputStream());
