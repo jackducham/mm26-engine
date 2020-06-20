@@ -120,23 +120,17 @@ public class GameStateController {
      * @return VisualizerTurn from the given GameState
      */
     public static VisualizerChange constructVisualizerChange() {
-        GameState gameState = getCurrentGameState();
-        // TODO: construct VisualizerTurn
-        return VisualizerChange.newBuilder()
-                .build();
+        return getCurrentGameState().stateChange.buildProtoClass();
     }
 
     /**
      * Given a gameState, use its internal state to create a PlayerTurn to send
      * to players
-     * @param playerName name of the player to get the playerTurn for
      * @return PlayerTurn from the given GameState
      */
-    public static PlayerTurn constructPlayerTurn(String playerName) {
+    public static PlayerTurn constructPlayerTurn() {
         // TODO: construct PlayerTurn by looking up information specific for this player
-        return PlayerTurn.newBuilder()
-                .setPlayerName(playerName)
-                .build();
+        return PlayerTurn.newBuilder().setGameState(getCurrentGameState().buildProtoClass()).build();
     }
 
     /**

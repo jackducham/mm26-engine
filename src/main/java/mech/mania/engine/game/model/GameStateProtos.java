@@ -25,11 +25,11 @@ public final class GameStateProtos {
     long getStateId();
 
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
     int getBoardNamesCount();
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
     boolean containsBoardNames(
         java.lang.String key);
@@ -40,30 +40,30 @@ public final class GameStateProtos {
     java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
     getBoardNames();
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
     java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board>
     getBoardNamesMap();
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
     mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrDefault(
         java.lang.String key,
         mech.mania.engine.game.board.BoardProtos.Board defaultValue);
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
     mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrThrow(
         java.lang.String key);
 
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
     int getPlayerNamesCount();
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
     boolean containsPlayerNames(
         java.lang.String key);
@@ -74,30 +74,30 @@ public final class GameStateProtos {
     java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
     getPlayerNames();
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
     java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player>
     getPlayerNamesMap();
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
     mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrDefault(
         java.lang.String key,
         mech.mania.engine.game.characters.CharacterProtos.Player defaultValue);
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
     mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrThrow(
         java.lang.String key);
 
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
     int getMonsterNamesCount();
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
     boolean containsMonsterNames(
         java.lang.String key);
@@ -108,19 +108,19 @@ public final class GameStateProtos {
     java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
     getMonsterNames();
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
     java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster>
     getMonsterNamesMap();
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
     mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrDefault(
         java.lang.String key,
         mech.mania.engine.game.characters.CharacterProtos.Monster defaultValue);
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
     mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrThrow(
@@ -274,7 +274,7 @@ public final class GameStateProtos {
       return stateId_;
     }
 
-    public static final int BOARDNAMES_FIELD_NUMBER = 2;
+    public static final int BOARD_NAMES_FIELD_NUMBER = 2;
     private static final class BoardNamesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> defaultEntry =
@@ -301,7 +301,7 @@ public final class GameStateProtos {
       return internalGetBoardNames().getMap().size();
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
     public boolean containsBoardNames(
@@ -317,14 +317,14 @@ public final class GameStateProtos {
       return getBoardNamesMap();
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
     public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> getBoardNamesMap() {
       return internalGetBoardNames().getMap();
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
     public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrDefault(
@@ -336,7 +336,7 @@ public final class GameStateProtos {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
     public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrThrow(
@@ -350,7 +350,7 @@ public final class GameStateProtos {
       return map.get(key);
     }
 
-    public static final int PLAYERNAMES_FIELD_NUMBER = 3;
+    public static final int PLAYER_NAMES_FIELD_NUMBER = 3;
     private static final class PlayerNamesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> defaultEntry =
@@ -377,7 +377,7 @@ public final class GameStateProtos {
       return internalGetPlayerNames().getMap().size();
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
     public boolean containsPlayerNames(
@@ -393,14 +393,14 @@ public final class GameStateProtos {
       return getPlayerNamesMap();
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
     public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> getPlayerNamesMap() {
       return internalGetPlayerNames().getMap();
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
     public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrDefault(
@@ -412,7 +412,7 @@ public final class GameStateProtos {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
     public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrThrow(
@@ -426,7 +426,7 @@ public final class GameStateProtos {
       return map.get(key);
     }
 
-    public static final int MONSTERNAMES_FIELD_NUMBER = 4;
+    public static final int MONSTER_NAMES_FIELD_NUMBER = 4;
     private static final class MonsterNamesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> defaultEntry =
@@ -453,7 +453,7 @@ public final class GameStateProtos {
       return internalGetMonsterNames().getMap().size();
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
     public boolean containsMonsterNames(
@@ -469,14 +469,14 @@ public final class GameStateProtos {
       return getMonsterNamesMap();
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
     public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> getMonsterNamesMap() {
       return internalGetMonsterNames().getMap();
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
     public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrDefault(
@@ -488,7 +488,7 @@ public final class GameStateProtos {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
     public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrThrow(
@@ -618,15 +618,15 @@ public final class GameStateProtos {
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStateId());
       if (!internalGetBoardNames().getMap().isEmpty()) {
-        hash = (37 * hash) + BOARDNAMES_FIELD_NUMBER;
+        hash = (37 * hash) + BOARD_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetBoardNames().hashCode();
       }
       if (!internalGetPlayerNames().getMap().isEmpty()) {
-        hash = (37 * hash) + PLAYERNAMES_FIELD_NUMBER;
+        hash = (37 * hash) + PLAYER_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetPlayerNames().hashCode();
       }
       if (!internalGetMonsterNames().getMap().isEmpty()) {
-        hash = (37 * hash) + MONSTERNAMES_FIELD_NUMBER;
+        hash = (37 * hash) + MONSTER_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetMonsterNames().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -975,7 +975,7 @@ public final class GameStateProtos {
         return internalGetBoardNames().getMap().size();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public boolean containsBoardNames(
@@ -991,14 +991,14 @@ public final class GameStateProtos {
         return getBoardNamesMap();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public java.util.Map<java.lang.String, mech.mania.engine.game.board.BoardProtos.Board> getBoardNamesMap() {
         return internalGetBoardNames().getMap();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrDefault(
@@ -1010,7 +1010,7 @@ public final class GameStateProtos {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public mech.mania.engine.game.board.BoardProtos.Board getBoardNamesOrThrow(
@@ -1030,7 +1030,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public Builder removeBoardNames(
@@ -1049,7 +1049,7 @@ public final class GameStateProtos {
         return internalGetMutableBoardNames().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
       public Builder putBoardNames(
           java.lang.String key,
@@ -1061,7 +1061,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public Builder putAllBoardNames(
@@ -1098,7 +1098,7 @@ public final class GameStateProtos {
         return internalGetPlayerNames().getMap().size();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public boolean containsPlayerNames(
@@ -1114,14 +1114,14 @@ public final class GameStateProtos {
         return getPlayerNamesMap();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Player> getPlayerNamesMap() {
         return internalGetPlayerNames().getMap();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrDefault(
@@ -1133,7 +1133,7 @@ public final class GameStateProtos {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public mech.mania.engine.game.characters.CharacterProtos.Player getPlayerNamesOrThrow(
@@ -1153,7 +1153,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public Builder removePlayerNames(
@@ -1172,7 +1172,7 @@ public final class GameStateProtos {
         return internalGetMutablePlayerNames().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
       public Builder putPlayerNames(
           java.lang.String key,
@@ -1184,7 +1184,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public Builder putAllPlayerNames(
@@ -1221,7 +1221,7 @@ public final class GameStateProtos {
         return internalGetMonsterNames().getMap().size();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public boolean containsMonsterNames(
@@ -1237,14 +1237,14 @@ public final class GameStateProtos {
         return getMonsterNamesMap();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public java.util.Map<java.lang.String, mech.mania.engine.game.characters.CharacterProtos.Monster> getMonsterNamesMap() {
         return internalGetMonsterNames().getMap();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrDefault(
@@ -1256,7 +1256,7 @@ public final class GameStateProtos {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public mech.mania.engine.game.characters.CharacterProtos.Monster getMonsterNamesOrThrow(
@@ -1276,7 +1276,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public Builder removeMonsterNames(
@@ -1295,7 +1295,7 @@ public final class GameStateProtos {
         return internalGetMutableMonsterNames().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
       public Builder putMonsterNames(
           java.lang.String key,
@@ -1307,7 +1307,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public Builder putAllMonsterNames(
@@ -1891,20 +1891,20 @@ public final class GameStateProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\020game_state.proto\022\ngame_state\032\013board.pr" +
-      "oto\032\017character.proto\"\245\003\n\tGameState\022\020\n\010st" +
-      "ate_id\030\001 \001(\003\0229\n\nboardNames\030\002 \003(\0132%.game_" +
-      "state.GameState.BoardNamesEntry\022;\n\013playe" +
-      "rNames\030\003 \003(\0132&.game_state.GameState.Play" +
-      "erNamesEntry\022=\n\014monsterNames\030\004 \003(\0132\'.gam" +
-      "e_state.GameState.MonsterNamesEntry\032?\n\017B" +
-      "oardNamesEntry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030\002 \001" +
-      "(\0132\014.board.Board:\0028\001\032E\n\020PlayerNamesEntry" +
-      "\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 \001(\0132\021.character" +
-      ".Player:\0028\001\032G\n\021MonsterNamesEntry\022\013\n\003key\030" +
-      "\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.character.Monster" +
-      ":\0028\001\"\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003B@\n" +
-      "\034mech.mania.engine.game.modelB\017GameState" +
-      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
+      "oto\032\017character.proto\"\250\003\n\tGameState\022\020\n\010st" +
+      "ate_id\030\001 \001(\003\022:\n\013board_names\030\002 \003(\0132%.game" +
+      "_state.GameState.BoardNamesEntry\022<\n\014play" +
+      "er_names\030\003 \003(\0132&.game_state.GameState.Pl" +
+      "ayerNamesEntry\022>\n\rmonster_names\030\004 \003(\0132\'." +
+      "game_state.GameState.MonsterNamesEntry\032?" +
+      "\n\017BoardNamesEntry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030" +
+      "\002 \001(\0132\014.board.Board:\0028\001\032E\n\020PlayerNamesEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 \001(\0132\021.charac" +
+      "ter.Player:\0028\001\032G\n\021MonsterNamesEntry\022\013\n\003k" +
+      "ey\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.character.Mons" +
+      "ter:\0028\001\"\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003" +
+      "B@\n\034mech.mania.engine.game.modelB\017GameSt" +
+      "ateProtos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

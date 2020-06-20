@@ -4,8 +4,10 @@ import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.BoardProtos;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterProtos;
-import mech.mania.engine.game.characters.*;
+import mech.mania.engine.game.characters.Monster;
+import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.model.GameStateProtos;
+import mech.mania.engine.game.model.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,19 +21,21 @@ public class GameState {
     private Map<String, Board> boardNames;
     private Map<String, Player> playerNames;
     private Map<String, Monster> monsterNames;
-
-    public Board getPvpBoard() {
-        return boardNames.get("pvp");
-    }
+    public VisualizerChange stateChange;
 
     public GameState() {
         turnNumber = 0;
         boardNames = new HashMap<>();
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
+        stateChange = new VisualizerChange();
     }
 
-    public Board getBoard(String boardId){
+    public Board getPvpBoard() {
+        return boardNames.get("pvp");
+    }
+
+    public Board getBoard(String boardId) {
         if (boardNames.containsKey(boardId)) {
             return boardNames.get(boardId);
         }

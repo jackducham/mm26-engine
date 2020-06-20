@@ -26,6 +26,7 @@ public class GameLogic {
      * @return the resulting {@link GameState}.
      */
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
+        gameState.stateChange.clearChanges();
         // ========== NOTES & TODOS ========== \\
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
@@ -125,6 +126,8 @@ public class GameLogic {
                 pickUpItem(gameState, player, decision.getIndex());
                 break;
         }
+        gameState.stateChange.updatePlayer(character, decision, null, false, false);
+
     }
 
     /**
@@ -143,6 +146,7 @@ public class GameLogic {
             return new ArrayList<>();
         }
         character.setPosition(targetPosition);
+        gameState.stateChange.updatePlayer(character, null, path, false, false);
         return path;
     }
 
