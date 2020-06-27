@@ -33,7 +33,6 @@ public class PlayerRequestSender {
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
         ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
-
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
