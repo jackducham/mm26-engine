@@ -119,8 +119,8 @@
 				</execution>
 			</executions>
 			<configuration>
-				<source>1.8</source>
-				<target>1.8</target>
+				<source>9</source>
+				<target>9</target>
 			</configuration>
 		</plugin>
 		<plugin>
@@ -130,7 +130,7 @@
 				<archive>
 					<manifest>
 						<addClasspath>true</addClasspath>
-						<mainClass>mech.mania.engine.Main</mainClass>
+						<mainClass>mech.mania.engine.entrypoints.MainOld</mainClass>
 					</manifest>
 				</archive>
 			</configuration>
