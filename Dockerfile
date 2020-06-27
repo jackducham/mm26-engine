@@ -19,5 +19,5 @@ COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 ENTRYPOINT ["java","-cp","app:app/lib/*","mech.mania.engine.Server"]
 
-# docker build -t mm26/java-sp .
-# # docker run mm26/java-sp:latest
+# docker build -t mm26/engine .
+# docker run mm26/engine:latest
