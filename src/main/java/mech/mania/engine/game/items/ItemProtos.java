@@ -4000,17 +4000,23 @@ public final class ItemProtos {
     int getSplashRadius();
 
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>int32 damage = 4;</code>
+     * @return The damage.
+     */
+    int getDamage();
+
+    /**
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return Whether the onHitEffect field is set.
      */
     boolean hasOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return The onHitEffect.
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      */
     mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder();
   }
@@ -4082,7 +4088,12 @@ public final class ItemProtos {
               splashRadius_ = input.readInt32();
               break;
             }
-            case 34: {
+            case 32: {
+
+              damage_ = input.readInt32();
+              break;
+            }
+            case 42: {
               mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder subBuilder = null;
               if (onHitEffect_ != null) {
                 subBuilder = onHitEffect_.toBuilder();
@@ -4170,24 +4181,34 @@ public final class ItemProtos {
       return splashRadius_;
     }
 
-    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 4;
+    public static final int DAMAGE_FIELD_NUMBER = 4;
+    private int damage_;
+    /**
+     * <code>int32 damage = 4;</code>
+     * @return The damage.
+     */
+    public int getDamage() {
+      return damage_;
+    }
+
+    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 5;
     private mech.mania.engine.game.items.ItemProtos.TempStatusModifier onHitEffect_;
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return Whether the onHitEffect field is set.
      */
     public boolean hasOnHitEffect() {
       return onHitEffect_ != null;
     }
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return The onHitEffect.
      */
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
       return onHitEffect_ == null ? mech.mania.engine.game.items.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
     }
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      */
     public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
       return getOnHitEffect();
@@ -4216,8 +4237,11 @@ public final class ItemProtos {
       if (splashRadius_ != 0) {
         output.writeInt32(3, splashRadius_);
       }
+      if (damage_ != 0) {
+        output.writeInt32(4, damage_);
+      }
       if (onHitEffect_ != null) {
-        output.writeMessage(4, getOnHitEffect());
+        output.writeMessage(5, getOnHitEffect());
       }
       unknownFields.writeTo(output);
     }
@@ -4240,9 +4264,13 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, splashRadius_);
       }
+      if (damage_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, damage_);
+      }
       if (onHitEffect_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getOnHitEffect());
+          .computeMessageSize(5, getOnHitEffect());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4268,6 +4296,8 @@ public final class ItemProtos {
           != other.getRange()) return false;
       if (getSplashRadius()
           != other.getSplashRadius()) return false;
+      if (getDamage()
+          != other.getDamage()) return false;
       if (hasOnHitEffect() != other.hasOnHitEffect()) return false;
       if (hasOnHitEffect()) {
         if (!getOnHitEffect()
@@ -4292,6 +4322,8 @@ public final class ItemProtos {
       hash = (53 * hash) + getRange();
       hash = (37 * hash) + SPLASH_RADIUS_FIELD_NUMBER;
       hash = (53 * hash) + getSplashRadius();
+      hash = (37 * hash) + DAMAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getDamage();
       if (hasOnHitEffect()) {
         hash = (37 * hash) + ON_HIT_EFFECT_FIELD_NUMBER;
         hash = (53 * hash) + getOnHitEffect().hashCode();
@@ -4439,6 +4471,8 @@ public final class ItemProtos {
 
         splashRadius_ = 0;
 
+        damage_ = 0;
+
         if (onHitEffectBuilder_ == null) {
           onHitEffect_ = null;
         } else {
@@ -4478,6 +4512,7 @@ public final class ItemProtos {
         }
         result.range_ = range_;
         result.splashRadius_ = splashRadius_;
+        result.damage_ = damage_;
         if (onHitEffectBuilder_ == null) {
           result.onHitEffect_ = onHitEffect_;
         } else {
@@ -4539,6 +4574,9 @@ public final class ItemProtos {
         }
         if (other.getSplashRadius() != 0) {
           setSplashRadius(other.getSplashRadius());
+        }
+        if (other.getDamage() != 0) {
+          setDamage(other.getDamage());
         }
         if (other.hasOnHitEffect()) {
           mergeOnHitEffect(other.getOnHitEffect());
@@ -4751,18 +4789,48 @@ public final class ItemProtos {
         return this;
       }
 
+      private int damage_ ;
+      /**
+       * <code>int32 damage = 4;</code>
+       * @return The damage.
+       */
+      public int getDamage() {
+        return damage_;
+      }
+      /**
+       * <code>int32 damage = 4;</code>
+       * @param value The damage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDamage(int value) {
+        
+        damage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 damage = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDamage() {
+        
+        damage_ = 0;
+        onChanged();
+        return this;
+      }
+
       private mech.mania.engine.game.items.ItemProtos.TempStatusModifier onHitEffect_;
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> onHitEffectBuilder_;
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        * @return Whether the onHitEffect field is set.
        */
       public boolean hasOnHitEffect() {
         return onHitEffectBuilder_ != null || onHitEffect_ != null;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        * @return The onHitEffect.
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier getOnHitEffect() {
@@ -4773,7 +4841,7 @@ public final class ItemProtos {
         }
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder setOnHitEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
@@ -4789,7 +4857,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder setOnHitEffect(
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder builderForValue) {
@@ -4803,7 +4871,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder mergeOnHitEffect(mech.mania.engine.game.items.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
@@ -4821,7 +4889,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder clearOnHitEffect() {
         if (onHitEffectBuilder_ == null) {
@@ -4835,7 +4903,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder getOnHitEffectBuilder() {
         
@@ -4843,7 +4911,7 @@ public final class ItemProtos {
         return getOnHitEffectFieldBuilder().getBuilder();
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
         if (onHitEffectBuilder_ != null) {
@@ -4854,7 +4922,7 @@ public final class ItemProtos {
         }
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           mech.mania.engine.game.items.ItemProtos.TempStatusModifier, mech.mania.engine.game.items.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.game.items.ItemProtos.TempStatusModifierOrBuilder> 
@@ -5613,46 +5681,70 @@ public final class ItemProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 speed_change = 1;</code>
-     * @return The speedChange.
+     * <code>int32 flat_speed_change = 1;</code>
+     * @return The flatSpeedChange.
      */
-    int getSpeedChange();
+    int getFlatSpeedChange();
 
     /**
-     * <code>int32 health_change = 2;</code>
-     * @return The healthChange.
+     * <code>double percent_speed_change = 2;</code>
+     * @return The percentSpeedChange.
      */
-    int getHealthChange();
+    double getPercentSpeedChange();
 
     /**
-     * <code>int32 experience_change = 3;</code>
-     * @return The experienceChange.
+     * <code>int32 flat_health_change = 3;</code>
+     * @return The flatHealthChange.
      */
-    int getExperienceChange();
+    int getFlatHealthChange();
 
     /**
-     * <code>int32 magic_damage_change = 4;</code>
-     * @return The magicDamageChange.
+     * <code>double percent_health_change = 4;</code>
+     * @return The percentHealthChange.
      */
-    int getMagicDamageChange();
+    double getPercentHealthChange();
 
     /**
-     * <code>int32 physical_damage_change = 5;</code>
-     * @return The physicalDamageChange.
+     * <code>int32 flat_experience_change = 5;</code>
+     * @return The flatExperienceChange.
      */
-    int getPhysicalDamageChange();
+    int getFlatExperienceChange();
 
     /**
-     * <code>int32 magic_defense_change = 6;</code>
-     * @return The magicDefenseChange.
+     * <code>double percent_experience_change = 6;</code>
+     * @return The percentExperienceChange.
      */
-    int getMagicDefenseChange();
+    double getPercentExperienceChange();
 
     /**
-     * <code>int32 physical_defense_change = 7;</code>
-     * @return The physicalDefenseChange.
+     * <code>int32 flat_damage_change = 7;</code>
+     * @return The flatDamageChange.
      */
-    int getPhysicalDefenseChange();
+    int getFlatDamageChange();
+
+    /**
+     * <code>double percent_damage_change = 8;</code>
+     * @return The percentDamageChange.
+     */
+    double getPercentDamageChange();
+
+    /**
+     * <code>int32 flat_defense_change = 9;</code>
+     * @return The flatDefenseChange.
+     */
+    int getFlatDefenseChange();
+
+    /**
+     * <code>double percent_defense_change = 10;</code>
+     * @return The percentDefenseChange.
+     */
+    double getPercentDefenseChange();
+
+    /**
+     * <code>int32 flat_regen_per_turn = 11;</code>
+     * @return The flatRegenPerTurn.
+     */
+    int getFlatRegenPerTurn();
   }
   /**
    * Protobuf type {@code item.StatusModifier}
@@ -5701,37 +5793,57 @@ public final class ItemProtos {
               break;
             case 8: {
 
-              speedChange_ = input.readInt32();
+              flatSpeedChange_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 17: {
 
-              healthChange_ = input.readInt32();
+              percentSpeedChange_ = input.readDouble();
               break;
             }
             case 24: {
 
-              experienceChange_ = input.readInt32();
+              flatHealthChange_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 33: {
 
-              magicDamageChange_ = input.readInt32();
+              percentHealthChange_ = input.readDouble();
               break;
             }
             case 40: {
 
-              physicalDamageChange_ = input.readInt32();
+              flatExperienceChange_ = input.readInt32();
               break;
             }
-            case 48: {
+            case 49: {
 
-              magicDefenseChange_ = input.readInt32();
+              percentExperienceChange_ = input.readDouble();
               break;
             }
             case 56: {
 
-              physicalDefenseChange_ = input.readInt32();
+              flatDamageChange_ = input.readInt32();
+              break;
+            }
+            case 65: {
+
+              percentDamageChange_ = input.readDouble();
+              break;
+            }
+            case 72: {
+
+              flatDefenseChange_ = input.readInt32();
+              break;
+            }
+            case 81: {
+
+              percentDefenseChange_ = input.readDouble();
+              break;
+            }
+            case 88: {
+
+              flatRegenPerTurn_ = input.readInt32();
               break;
             }
             default: {
@@ -5766,74 +5878,114 @@ public final class ItemProtos {
               mech.mania.engine.game.items.ItemProtos.StatusModifier.class, mech.mania.engine.game.items.ItemProtos.StatusModifier.Builder.class);
     }
 
-    public static final int SPEED_CHANGE_FIELD_NUMBER = 1;
-    private int speedChange_;
+    public static final int FLAT_SPEED_CHANGE_FIELD_NUMBER = 1;
+    private int flatSpeedChange_;
     /**
-     * <code>int32 speed_change = 1;</code>
-     * @return The speedChange.
+     * <code>int32 flat_speed_change = 1;</code>
+     * @return The flatSpeedChange.
      */
-    public int getSpeedChange() {
-      return speedChange_;
+    public int getFlatSpeedChange() {
+      return flatSpeedChange_;
     }
 
-    public static final int HEALTH_CHANGE_FIELD_NUMBER = 2;
-    private int healthChange_;
+    public static final int PERCENT_SPEED_CHANGE_FIELD_NUMBER = 2;
+    private double percentSpeedChange_;
     /**
-     * <code>int32 health_change = 2;</code>
-     * @return The healthChange.
+     * <code>double percent_speed_change = 2;</code>
+     * @return The percentSpeedChange.
      */
-    public int getHealthChange() {
-      return healthChange_;
+    public double getPercentSpeedChange() {
+      return percentSpeedChange_;
     }
 
-    public static final int EXPERIENCE_CHANGE_FIELD_NUMBER = 3;
-    private int experienceChange_;
+    public static final int FLAT_HEALTH_CHANGE_FIELD_NUMBER = 3;
+    private int flatHealthChange_;
     /**
-     * <code>int32 experience_change = 3;</code>
-     * @return The experienceChange.
+     * <code>int32 flat_health_change = 3;</code>
+     * @return The flatHealthChange.
      */
-    public int getExperienceChange() {
-      return experienceChange_;
+    public int getFlatHealthChange() {
+      return flatHealthChange_;
     }
 
-    public static final int MAGIC_DAMAGE_CHANGE_FIELD_NUMBER = 4;
-    private int magicDamageChange_;
+    public static final int PERCENT_HEALTH_CHANGE_FIELD_NUMBER = 4;
+    private double percentHealthChange_;
     /**
-     * <code>int32 magic_damage_change = 4;</code>
-     * @return The magicDamageChange.
+     * <code>double percent_health_change = 4;</code>
+     * @return The percentHealthChange.
      */
-    public int getMagicDamageChange() {
-      return magicDamageChange_;
+    public double getPercentHealthChange() {
+      return percentHealthChange_;
     }
 
-    public static final int PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER = 5;
-    private int physicalDamageChange_;
+    public static final int FLAT_EXPERIENCE_CHANGE_FIELD_NUMBER = 5;
+    private int flatExperienceChange_;
     /**
-     * <code>int32 physical_damage_change = 5;</code>
-     * @return The physicalDamageChange.
+     * <code>int32 flat_experience_change = 5;</code>
+     * @return The flatExperienceChange.
      */
-    public int getPhysicalDamageChange() {
-      return physicalDamageChange_;
+    public int getFlatExperienceChange() {
+      return flatExperienceChange_;
     }
 
-    public static final int MAGIC_DEFENSE_CHANGE_FIELD_NUMBER = 6;
-    private int magicDefenseChange_;
+    public static final int PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER = 6;
+    private double percentExperienceChange_;
     /**
-     * <code>int32 magic_defense_change = 6;</code>
-     * @return The magicDefenseChange.
+     * <code>double percent_experience_change = 6;</code>
+     * @return The percentExperienceChange.
      */
-    public int getMagicDefenseChange() {
-      return magicDefenseChange_;
+    public double getPercentExperienceChange() {
+      return percentExperienceChange_;
     }
 
-    public static final int PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER = 7;
-    private int physicalDefenseChange_;
+    public static final int FLAT_DAMAGE_CHANGE_FIELD_NUMBER = 7;
+    private int flatDamageChange_;
     /**
-     * <code>int32 physical_defense_change = 7;</code>
-     * @return The physicalDefenseChange.
+     * <code>int32 flat_damage_change = 7;</code>
+     * @return The flatDamageChange.
      */
-    public int getPhysicalDefenseChange() {
-      return physicalDefenseChange_;
+    public int getFlatDamageChange() {
+      return flatDamageChange_;
+    }
+
+    public static final int PERCENT_DAMAGE_CHANGE_FIELD_NUMBER = 8;
+    private double percentDamageChange_;
+    /**
+     * <code>double percent_damage_change = 8;</code>
+     * @return The percentDamageChange.
+     */
+    public double getPercentDamageChange() {
+      return percentDamageChange_;
+    }
+
+    public static final int FLAT_DEFENSE_CHANGE_FIELD_NUMBER = 9;
+    private int flatDefenseChange_;
+    /**
+     * <code>int32 flat_defense_change = 9;</code>
+     * @return The flatDefenseChange.
+     */
+    public int getFlatDefenseChange() {
+      return flatDefenseChange_;
+    }
+
+    public static final int PERCENT_DEFENSE_CHANGE_FIELD_NUMBER = 10;
+    private double percentDefenseChange_;
+    /**
+     * <code>double percent_defense_change = 10;</code>
+     * @return The percentDefenseChange.
+     */
+    public double getPercentDefenseChange() {
+      return percentDefenseChange_;
+    }
+
+    public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 11;
+    private int flatRegenPerTurn_;
+    /**
+     * <code>int32 flat_regen_per_turn = 11;</code>
+     * @return The flatRegenPerTurn.
+     */
+    public int getFlatRegenPerTurn() {
+      return flatRegenPerTurn_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5850,26 +6002,38 @@ public final class ItemProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (speedChange_ != 0) {
-        output.writeInt32(1, speedChange_);
+      if (flatSpeedChange_ != 0) {
+        output.writeInt32(1, flatSpeedChange_);
       }
-      if (healthChange_ != 0) {
-        output.writeInt32(2, healthChange_);
+      if (percentSpeedChange_ != 0D) {
+        output.writeDouble(2, percentSpeedChange_);
       }
-      if (experienceChange_ != 0) {
-        output.writeInt32(3, experienceChange_);
+      if (flatHealthChange_ != 0) {
+        output.writeInt32(3, flatHealthChange_);
       }
-      if (magicDamageChange_ != 0) {
-        output.writeInt32(4, magicDamageChange_);
+      if (percentHealthChange_ != 0D) {
+        output.writeDouble(4, percentHealthChange_);
       }
-      if (physicalDamageChange_ != 0) {
-        output.writeInt32(5, physicalDamageChange_);
+      if (flatExperienceChange_ != 0) {
+        output.writeInt32(5, flatExperienceChange_);
       }
-      if (magicDefenseChange_ != 0) {
-        output.writeInt32(6, magicDefenseChange_);
+      if (percentExperienceChange_ != 0D) {
+        output.writeDouble(6, percentExperienceChange_);
       }
-      if (physicalDefenseChange_ != 0) {
-        output.writeInt32(7, physicalDefenseChange_);
+      if (flatDamageChange_ != 0) {
+        output.writeInt32(7, flatDamageChange_);
+      }
+      if (percentDamageChange_ != 0D) {
+        output.writeDouble(8, percentDamageChange_);
+      }
+      if (flatDefenseChange_ != 0) {
+        output.writeInt32(9, flatDefenseChange_);
+      }
+      if (percentDefenseChange_ != 0D) {
+        output.writeDouble(10, percentDefenseChange_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        output.writeInt32(11, flatRegenPerTurn_);
       }
       unknownFields.writeTo(output);
     }
@@ -5880,33 +6044,49 @@ public final class ItemProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (speedChange_ != 0) {
+      if (flatSpeedChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, speedChange_);
+          .computeInt32Size(1, flatSpeedChange_);
       }
-      if (healthChange_ != 0) {
+      if (percentSpeedChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, healthChange_);
+          .computeDoubleSize(2, percentSpeedChange_);
       }
-      if (experienceChange_ != 0) {
+      if (flatHealthChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, experienceChange_);
+          .computeInt32Size(3, flatHealthChange_);
       }
-      if (magicDamageChange_ != 0) {
+      if (percentHealthChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, magicDamageChange_);
+          .computeDoubleSize(4, percentHealthChange_);
       }
-      if (physicalDamageChange_ != 0) {
+      if (flatExperienceChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, physicalDamageChange_);
+          .computeInt32Size(5, flatExperienceChange_);
       }
-      if (magicDefenseChange_ != 0) {
+      if (percentExperienceChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, magicDefenseChange_);
+          .computeDoubleSize(6, percentExperienceChange_);
       }
-      if (physicalDefenseChange_ != 0) {
+      if (flatDamageChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, physicalDefenseChange_);
+          .computeInt32Size(7, flatDamageChange_);
+      }
+      if (percentDamageChange_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, percentDamageChange_);
+      }
+      if (flatDefenseChange_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, flatDefenseChange_);
+      }
+      if (percentDefenseChange_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, percentDefenseChange_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, flatRegenPerTurn_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5923,20 +6103,33 @@ public final class ItemProtos {
       }
       mech.mania.engine.game.items.ItemProtos.StatusModifier other = (mech.mania.engine.game.items.ItemProtos.StatusModifier) obj;
 
-      if (getSpeedChange()
-          != other.getSpeedChange()) return false;
-      if (getHealthChange()
-          != other.getHealthChange()) return false;
-      if (getExperienceChange()
-          != other.getExperienceChange()) return false;
-      if (getMagicDamageChange()
-          != other.getMagicDamageChange()) return false;
-      if (getPhysicalDamageChange()
-          != other.getPhysicalDamageChange()) return false;
-      if (getMagicDefenseChange()
-          != other.getMagicDefenseChange()) return false;
-      if (getPhysicalDefenseChange()
-          != other.getPhysicalDefenseChange()) return false;
+      if (getFlatSpeedChange()
+          != other.getFlatSpeedChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentSpeedChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentSpeedChange())) return false;
+      if (getFlatHealthChange()
+          != other.getFlatHealthChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentHealthChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentHealthChange())) return false;
+      if (getFlatExperienceChange()
+          != other.getFlatExperienceChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentExperienceChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentExperienceChange())) return false;
+      if (getFlatDamageChange()
+          != other.getFlatDamageChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDamageChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDamageChange())) return false;
+      if (getFlatDefenseChange()
+          != other.getFlatDefenseChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDefenseChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDefenseChange())) return false;
+      if (getFlatRegenPerTurn()
+          != other.getFlatRegenPerTurn()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5948,20 +6141,33 @@ public final class ItemProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SPEED_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getSpeedChange();
-      hash = (37 * hash) + HEALTH_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getHealthChange();
-      hash = (37 * hash) + EXPERIENCE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getExperienceChange();
-      hash = (37 * hash) + MAGIC_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMagicDamageChange();
-      hash = (37 * hash) + PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getPhysicalDamageChange();
-      hash = (37 * hash) + MAGIC_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMagicDefenseChange();
-      hash = (37 * hash) + PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getPhysicalDefenseChange();
+      hash = (37 * hash) + FLAT_SPEED_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatSpeedChange();
+      hash = (37 * hash) + PERCENT_SPEED_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentSpeedChange()));
+      hash = (37 * hash) + FLAT_HEALTH_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatHealthChange();
+      hash = (37 * hash) + PERCENT_HEALTH_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentHealthChange()));
+      hash = (37 * hash) + FLAT_EXPERIENCE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatExperienceChange();
+      hash = (37 * hash) + PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentExperienceChange()));
+      hash = (37 * hash) + FLAT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDamageChange();
+      hash = (37 * hash) + PERCENT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDamageChange()));
+      hash = (37 * hash) + FLAT_DEFENSE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDefenseChange();
+      hash = (37 * hash) + PERCENT_DEFENSE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDefenseChange()));
+      hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatRegenPerTurn();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6095,19 +6301,27 @@ public final class ItemProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        speedChange_ = 0;
+        flatSpeedChange_ = 0;
 
-        healthChange_ = 0;
+        percentSpeedChange_ = 0D;
 
-        experienceChange_ = 0;
+        flatHealthChange_ = 0;
 
-        magicDamageChange_ = 0;
+        percentHealthChange_ = 0D;
 
-        physicalDamageChange_ = 0;
+        flatExperienceChange_ = 0;
 
-        magicDefenseChange_ = 0;
+        percentExperienceChange_ = 0D;
 
-        physicalDefenseChange_ = 0;
+        flatDamageChange_ = 0;
+
+        percentDamageChange_ = 0D;
+
+        flatDefenseChange_ = 0;
+
+        percentDefenseChange_ = 0D;
+
+        flatRegenPerTurn_ = 0;
 
         return this;
       }
@@ -6135,13 +6349,17 @@ public final class ItemProtos {
       @java.lang.Override
       public mech.mania.engine.game.items.ItemProtos.StatusModifier buildPartial() {
         mech.mania.engine.game.items.ItemProtos.StatusModifier result = new mech.mania.engine.game.items.ItemProtos.StatusModifier(this);
-        result.speedChange_ = speedChange_;
-        result.healthChange_ = healthChange_;
-        result.experienceChange_ = experienceChange_;
-        result.magicDamageChange_ = magicDamageChange_;
-        result.physicalDamageChange_ = physicalDamageChange_;
-        result.magicDefenseChange_ = magicDefenseChange_;
-        result.physicalDefenseChange_ = physicalDefenseChange_;
+        result.flatSpeedChange_ = flatSpeedChange_;
+        result.percentSpeedChange_ = percentSpeedChange_;
+        result.flatHealthChange_ = flatHealthChange_;
+        result.percentHealthChange_ = percentHealthChange_;
+        result.flatExperienceChange_ = flatExperienceChange_;
+        result.percentExperienceChange_ = percentExperienceChange_;
+        result.flatDamageChange_ = flatDamageChange_;
+        result.percentDamageChange_ = percentDamageChange_;
+        result.flatDefenseChange_ = flatDefenseChange_;
+        result.percentDefenseChange_ = percentDefenseChange_;
+        result.flatRegenPerTurn_ = flatRegenPerTurn_;
         onBuilt();
         return result;
       }
@@ -6190,26 +6408,38 @@ public final class ItemProtos {
 
       public Builder mergeFrom(mech.mania.engine.game.items.ItemProtos.StatusModifier other) {
         if (other == mech.mania.engine.game.items.ItemProtos.StatusModifier.getDefaultInstance()) return this;
-        if (other.getSpeedChange() != 0) {
-          setSpeedChange(other.getSpeedChange());
+        if (other.getFlatSpeedChange() != 0) {
+          setFlatSpeedChange(other.getFlatSpeedChange());
         }
-        if (other.getHealthChange() != 0) {
-          setHealthChange(other.getHealthChange());
+        if (other.getPercentSpeedChange() != 0D) {
+          setPercentSpeedChange(other.getPercentSpeedChange());
         }
-        if (other.getExperienceChange() != 0) {
-          setExperienceChange(other.getExperienceChange());
+        if (other.getFlatHealthChange() != 0) {
+          setFlatHealthChange(other.getFlatHealthChange());
         }
-        if (other.getMagicDamageChange() != 0) {
-          setMagicDamageChange(other.getMagicDamageChange());
+        if (other.getPercentHealthChange() != 0D) {
+          setPercentHealthChange(other.getPercentHealthChange());
         }
-        if (other.getPhysicalDamageChange() != 0) {
-          setPhysicalDamageChange(other.getPhysicalDamageChange());
+        if (other.getFlatExperienceChange() != 0) {
+          setFlatExperienceChange(other.getFlatExperienceChange());
         }
-        if (other.getMagicDefenseChange() != 0) {
-          setMagicDefenseChange(other.getMagicDefenseChange());
+        if (other.getPercentExperienceChange() != 0D) {
+          setPercentExperienceChange(other.getPercentExperienceChange());
         }
-        if (other.getPhysicalDefenseChange() != 0) {
-          setPhysicalDefenseChange(other.getPhysicalDefenseChange());
+        if (other.getFlatDamageChange() != 0) {
+          setFlatDamageChange(other.getFlatDamageChange());
+        }
+        if (other.getPercentDamageChange() != 0D) {
+          setPercentDamageChange(other.getPercentDamageChange());
+        }
+        if (other.getFlatDefenseChange() != 0) {
+          setFlatDefenseChange(other.getFlatDefenseChange());
+        }
+        if (other.getPercentDefenseChange() != 0D) {
+          setPercentDefenseChange(other.getPercentDefenseChange());
+        }
+        if (other.getFlatRegenPerTurn() != 0) {
+          setFlatRegenPerTurn(other.getFlatRegenPerTurn());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6240,212 +6470,332 @@ public final class ItemProtos {
         return this;
       }
 
-      private int speedChange_ ;
+      private int flatSpeedChange_ ;
       /**
-       * <code>int32 speed_change = 1;</code>
-       * @return The speedChange.
+       * <code>int32 flat_speed_change = 1;</code>
+       * @return The flatSpeedChange.
        */
-      public int getSpeedChange() {
-        return speedChange_;
+      public int getFlatSpeedChange() {
+        return flatSpeedChange_;
       }
       /**
-       * <code>int32 speed_change = 1;</code>
-       * @param value The speedChange to set.
+       * <code>int32 flat_speed_change = 1;</code>
+       * @param value The flatSpeedChange to set.
        * @return This builder for chaining.
        */
-      public Builder setSpeedChange(int value) {
+      public Builder setFlatSpeedChange(int value) {
         
-        speedChange_ = value;
+        flatSpeedChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 speed_change = 1;</code>
+       * <code>int32 flat_speed_change = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSpeedChange() {
+      public Builder clearFlatSpeedChange() {
         
-        speedChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int healthChange_ ;
-      /**
-       * <code>int32 health_change = 2;</code>
-       * @return The healthChange.
-       */
-      public int getHealthChange() {
-        return healthChange_;
-      }
-      /**
-       * <code>int32 health_change = 2;</code>
-       * @param value The healthChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setHealthChange(int value) {
-        
-        healthChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 health_change = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearHealthChange() {
-        
-        healthChange_ = 0;
+        flatSpeedChange_ = 0;
         onChanged();
         return this;
       }
 
-      private int experienceChange_ ;
+      private double percentSpeedChange_ ;
       /**
-       * <code>int32 experience_change = 3;</code>
-       * @return The experienceChange.
+       * <code>double percent_speed_change = 2;</code>
+       * @return The percentSpeedChange.
        */
-      public int getExperienceChange() {
-        return experienceChange_;
+      public double getPercentSpeedChange() {
+        return percentSpeedChange_;
       }
       /**
-       * <code>int32 experience_change = 3;</code>
-       * @param value The experienceChange to set.
+       * <code>double percent_speed_change = 2;</code>
+       * @param value The percentSpeedChange to set.
        * @return This builder for chaining.
        */
-      public Builder setExperienceChange(int value) {
+      public Builder setPercentSpeedChange(double value) {
         
-        experienceChange_ = value;
+        percentSpeedChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 experience_change = 3;</code>
+       * <code>double percent_speed_change = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearExperienceChange() {
+      public Builder clearPercentSpeedChange() {
         
-        experienceChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int magicDamageChange_ ;
-      /**
-       * <code>int32 magic_damage_change = 4;</code>
-       * @return The magicDamageChange.
-       */
-      public int getMagicDamageChange() {
-        return magicDamageChange_;
-      }
-      /**
-       * <code>int32 magic_damage_change = 4;</code>
-       * @param value The magicDamageChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMagicDamageChange(int value) {
-        
-        magicDamageChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 magic_damage_change = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMagicDamageChange() {
-        
-        magicDamageChange_ = 0;
+        percentSpeedChange_ = 0D;
         onChanged();
         return this;
       }
 
-      private int physicalDamageChange_ ;
+      private int flatHealthChange_ ;
       /**
-       * <code>int32 physical_damage_change = 5;</code>
-       * @return The physicalDamageChange.
+       * <code>int32 flat_health_change = 3;</code>
+       * @return The flatHealthChange.
        */
-      public int getPhysicalDamageChange() {
-        return physicalDamageChange_;
+      public int getFlatHealthChange() {
+        return flatHealthChange_;
       }
       /**
-       * <code>int32 physical_damage_change = 5;</code>
-       * @param value The physicalDamageChange to set.
+       * <code>int32 flat_health_change = 3;</code>
+       * @param value The flatHealthChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPhysicalDamageChange(int value) {
+      public Builder setFlatHealthChange(int value) {
         
-        physicalDamageChange_ = value;
+        flatHealthChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 physical_damage_change = 5;</code>
+       * <code>int32 flat_health_change = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearPhysicalDamageChange() {
+      public Builder clearFlatHealthChange() {
         
-        physicalDamageChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int magicDefenseChange_ ;
-      /**
-       * <code>int32 magic_defense_change = 6;</code>
-       * @return The magicDefenseChange.
-       */
-      public int getMagicDefenseChange() {
-        return magicDefenseChange_;
-      }
-      /**
-       * <code>int32 magic_defense_change = 6;</code>
-       * @param value The magicDefenseChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMagicDefenseChange(int value) {
-        
-        magicDefenseChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 magic_defense_change = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMagicDefenseChange() {
-        
-        magicDefenseChange_ = 0;
+        flatHealthChange_ = 0;
         onChanged();
         return this;
       }
 
-      private int physicalDefenseChange_ ;
+      private double percentHealthChange_ ;
       /**
-       * <code>int32 physical_defense_change = 7;</code>
-       * @return The physicalDefenseChange.
+       * <code>double percent_health_change = 4;</code>
+       * @return The percentHealthChange.
        */
-      public int getPhysicalDefenseChange() {
-        return physicalDefenseChange_;
+      public double getPercentHealthChange() {
+        return percentHealthChange_;
       }
       /**
-       * <code>int32 physical_defense_change = 7;</code>
-       * @param value The physicalDefenseChange to set.
+       * <code>double percent_health_change = 4;</code>
+       * @param value The percentHealthChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPhysicalDefenseChange(int value) {
+      public Builder setPercentHealthChange(double value) {
         
-        physicalDefenseChange_ = value;
+        percentHealthChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 physical_defense_change = 7;</code>
+       * <code>double percent_health_change = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearPhysicalDefenseChange() {
+      public Builder clearPercentHealthChange() {
         
-        physicalDefenseChange_ = 0;
+        percentHealthChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatExperienceChange_ ;
+      /**
+       * <code>int32 flat_experience_change = 5;</code>
+       * @return The flatExperienceChange.
+       */
+      public int getFlatExperienceChange() {
+        return flatExperienceChange_;
+      }
+      /**
+       * <code>int32 flat_experience_change = 5;</code>
+       * @param value The flatExperienceChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatExperienceChange(int value) {
+        
+        flatExperienceChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_experience_change = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatExperienceChange() {
+        
+        flatExperienceChange_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double percentExperienceChange_ ;
+      /**
+       * <code>double percent_experience_change = 6;</code>
+       * @return The percentExperienceChange.
+       */
+      public double getPercentExperienceChange() {
+        return percentExperienceChange_;
+      }
+      /**
+       * <code>double percent_experience_change = 6;</code>
+       * @param value The percentExperienceChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPercentExperienceChange(double value) {
+        
+        percentExperienceChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double percent_experience_change = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPercentExperienceChange() {
+        
+        percentExperienceChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatDamageChange_ ;
+      /**
+       * <code>int32 flat_damage_change = 7;</code>
+       * @return The flatDamageChange.
+       */
+      public int getFlatDamageChange() {
+        return flatDamageChange_;
+      }
+      /**
+       * <code>int32 flat_damage_change = 7;</code>
+       * @param value The flatDamageChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatDamageChange(int value) {
+        
+        flatDamageChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_damage_change = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatDamageChange() {
+        
+        flatDamageChange_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double percentDamageChange_ ;
+      /**
+       * <code>double percent_damage_change = 8;</code>
+       * @return The percentDamageChange.
+       */
+      public double getPercentDamageChange() {
+        return percentDamageChange_;
+      }
+      /**
+       * <code>double percent_damage_change = 8;</code>
+       * @param value The percentDamageChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPercentDamageChange(double value) {
+        
+        percentDamageChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double percent_damage_change = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPercentDamageChange() {
+        
+        percentDamageChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatDefenseChange_ ;
+      /**
+       * <code>int32 flat_defense_change = 9;</code>
+       * @return The flatDefenseChange.
+       */
+      public int getFlatDefenseChange() {
+        return flatDefenseChange_;
+      }
+      /**
+       * <code>int32 flat_defense_change = 9;</code>
+       * @param value The flatDefenseChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatDefenseChange(int value) {
+        
+        flatDefenseChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_defense_change = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatDefenseChange() {
+        
+        flatDefenseChange_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double percentDefenseChange_ ;
+      /**
+       * <code>double percent_defense_change = 10;</code>
+       * @return The percentDefenseChange.
+       */
+      public double getPercentDefenseChange() {
+        return percentDefenseChange_;
+      }
+      /**
+       * <code>double percent_defense_change = 10;</code>
+       * @param value The percentDefenseChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPercentDefenseChange(double value) {
+        
+        percentDefenseChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double percent_defense_change = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPercentDefenseChange() {
+        
+        percentDefenseChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatRegenPerTurn_ ;
+      /**
+       * <code>int32 flat_regen_per_turn = 11;</code>
+       * @return The flatRegenPerTurn.
+       */
+      public int getFlatRegenPerTurn() {
+        return flatRegenPerTurn_;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 11;</code>
+       * @param value The flatRegenPerTurn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatRegenPerTurn(int value) {
+        
+        flatRegenPerTurn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatRegenPerTurn() {
+        
+        flatRegenPerTurn_ = 0;
         onChanged();
         return this;
       }
@@ -6522,16 +6872,28 @@ public final class ItemProtos {
     mech.mania.engine.game.items.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
-     * <code>int32 damage_per_turn = 2;</code>
-     * @return The damagePerTurn.
+     * <code>int32 flat_damage_per_turn = 2;</code>
+     * @return The flatDamagePerTurn.
      */
-    int getDamagePerTurn();
+    int getFlatDamagePerTurn();
 
     /**
-     * <code>int32 duration = 3;</code>
-     * @return The duration.
+     * <code>double percent_damage_per_turn = 3;</code>
+     * @return The percentDamagePerTurn.
      */
-    int getDuration();
+    double getPercentDamagePerTurn();
+
+    /**
+     * <code>int32 flat_regen_per_turn = 4;</code>
+     * @return The flatRegenPerTurn.
+     */
+    int getFlatRegenPerTurn();
+
+    /**
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
+     */
+    int getTurnsLeft();
   }
   /**
    * Protobuf type {@code item.TempStatusModifier}
@@ -6593,12 +6955,22 @@ public final class ItemProtos {
             }
             case 16: {
 
-              damagePerTurn_ = input.readInt32();
+              flatDamagePerTurn_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 25: {
 
-              duration_ = input.readInt32();
+              percentDamagePerTurn_ = input.readDouble();
+              break;
+            }
+            case 32: {
+
+              flatRegenPerTurn_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              turnsLeft_ = input.readInt32();
               break;
             }
             default: {
@@ -6656,24 +7028,44 @@ public final class ItemProtos {
       return getStats();
     }
 
-    public static final int DAMAGE_PER_TURN_FIELD_NUMBER = 2;
-    private int damagePerTurn_;
+    public static final int FLAT_DAMAGE_PER_TURN_FIELD_NUMBER = 2;
+    private int flatDamagePerTurn_;
     /**
-     * <code>int32 damage_per_turn = 2;</code>
-     * @return The damagePerTurn.
+     * <code>int32 flat_damage_per_turn = 2;</code>
+     * @return The flatDamagePerTurn.
      */
-    public int getDamagePerTurn() {
-      return damagePerTurn_;
+    public int getFlatDamagePerTurn() {
+      return flatDamagePerTurn_;
     }
 
-    public static final int DURATION_FIELD_NUMBER = 3;
-    private int duration_;
+    public static final int PERCENT_DAMAGE_PER_TURN_FIELD_NUMBER = 3;
+    private double percentDamagePerTurn_;
     /**
-     * <code>int32 duration = 3;</code>
-     * @return The duration.
+     * <code>double percent_damage_per_turn = 3;</code>
+     * @return The percentDamagePerTurn.
      */
-    public int getDuration() {
-      return duration_;
+    public double getPercentDamagePerTurn() {
+      return percentDamagePerTurn_;
+    }
+
+    public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 4;
+    private int flatRegenPerTurn_;
+    /**
+     * <code>int32 flat_regen_per_turn = 4;</code>
+     * @return The flatRegenPerTurn.
+     */
+    public int getFlatRegenPerTurn() {
+      return flatRegenPerTurn_;
+    }
+
+    public static final int TURNS_LEFT_FIELD_NUMBER = 5;
+    private int turnsLeft_;
+    /**
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
+     */
+    public int getTurnsLeft() {
+      return turnsLeft_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6693,11 +7085,17 @@ public final class ItemProtos {
       if (stats_ != null) {
         output.writeMessage(1, getStats());
       }
-      if (damagePerTurn_ != 0) {
-        output.writeInt32(2, damagePerTurn_);
+      if (flatDamagePerTurn_ != 0) {
+        output.writeInt32(2, flatDamagePerTurn_);
       }
-      if (duration_ != 0) {
-        output.writeInt32(3, duration_);
+      if (percentDamagePerTurn_ != 0D) {
+        output.writeDouble(3, percentDamagePerTurn_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        output.writeInt32(4, flatRegenPerTurn_);
+      }
+      if (turnsLeft_ != 0) {
+        output.writeInt32(5, turnsLeft_);
       }
       unknownFields.writeTo(output);
     }
@@ -6712,13 +7110,21 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStats());
       }
-      if (damagePerTurn_ != 0) {
+      if (flatDamagePerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, damagePerTurn_);
+          .computeInt32Size(2, flatDamagePerTurn_);
       }
-      if (duration_ != 0) {
+      if (percentDamagePerTurn_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, duration_);
+          .computeDoubleSize(3, percentDamagePerTurn_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, flatRegenPerTurn_);
+      }
+      if (turnsLeft_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, turnsLeft_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6740,10 +7146,15 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (getDamagePerTurn()
-          != other.getDamagePerTurn()) return false;
-      if (getDuration()
-          != other.getDuration()) return false;
+      if (getFlatDamagePerTurn()
+          != other.getFlatDamagePerTurn()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDamagePerTurn())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDamagePerTurn())) return false;
+      if (getFlatRegenPerTurn()
+          != other.getFlatRegenPerTurn()) return false;
+      if (getTurnsLeft()
+          != other.getTurnsLeft()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6759,10 +7170,15 @@ public final class ItemProtos {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
         hash = (53 * hash) + getStats().hashCode();
       }
-      hash = (37 * hash) + DAMAGE_PER_TURN_FIELD_NUMBER;
-      hash = (53 * hash) + getDamagePerTurn();
-      hash = (37 * hash) + DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getDuration();
+      hash = (37 * hash) + FLAT_DAMAGE_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDamagePerTurn();
+      hash = (37 * hash) + PERCENT_DAMAGE_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDamagePerTurn()));
+      hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatRegenPerTurn();
+      hash = (37 * hash) + TURNS_LEFT_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsLeft();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6902,9 +7318,13 @@ public final class ItemProtos {
           stats_ = null;
           statsBuilder_ = null;
         }
-        damagePerTurn_ = 0;
+        flatDamagePerTurn_ = 0;
 
-        duration_ = 0;
+        percentDamagePerTurn_ = 0D;
+
+        flatRegenPerTurn_ = 0;
+
+        turnsLeft_ = 0;
 
         return this;
       }
@@ -6937,8 +7357,10 @@ public final class ItemProtos {
         } else {
           result.stats_ = statsBuilder_.build();
         }
-        result.damagePerTurn_ = damagePerTurn_;
-        result.duration_ = duration_;
+        result.flatDamagePerTurn_ = flatDamagePerTurn_;
+        result.percentDamagePerTurn_ = percentDamagePerTurn_;
+        result.flatRegenPerTurn_ = flatRegenPerTurn_;
+        result.turnsLeft_ = turnsLeft_;
         onBuilt();
         return result;
       }
@@ -6990,11 +7412,17 @@ public final class ItemProtos {
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
-        if (other.getDamagePerTurn() != 0) {
-          setDamagePerTurn(other.getDamagePerTurn());
+        if (other.getFlatDamagePerTurn() != 0) {
+          setFlatDamagePerTurn(other.getFlatDamagePerTurn());
         }
-        if (other.getDuration() != 0) {
-          setDuration(other.getDuration());
+        if (other.getPercentDamagePerTurn() != 0D) {
+          setPercentDamagePerTurn(other.getPercentDamagePerTurn());
+        }
+        if (other.getFlatRegenPerTurn() != 0) {
+          setFlatRegenPerTurn(other.getFlatRegenPerTurn());
+        }
+        if (other.getTurnsLeft() != 0) {
+          setTurnsLeft(other.getTurnsLeft());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7144,62 +7572,122 @@ public final class ItemProtos {
         return statsBuilder_;
       }
 
-      private int damagePerTurn_ ;
+      private int flatDamagePerTurn_ ;
       /**
-       * <code>int32 damage_per_turn = 2;</code>
-       * @return The damagePerTurn.
+       * <code>int32 flat_damage_per_turn = 2;</code>
+       * @return The flatDamagePerTurn.
        */
-      public int getDamagePerTurn() {
-        return damagePerTurn_;
+      public int getFlatDamagePerTurn() {
+        return flatDamagePerTurn_;
       }
       /**
-       * <code>int32 damage_per_turn = 2;</code>
-       * @param value The damagePerTurn to set.
+       * <code>int32 flat_damage_per_turn = 2;</code>
+       * @param value The flatDamagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setDamagePerTurn(int value) {
+      public Builder setFlatDamagePerTurn(int value) {
         
-        damagePerTurn_ = value;
+        flatDamagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 damage_per_turn = 2;</code>
+       * <code>int32 flat_damage_per_turn = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDamagePerTurn() {
+      public Builder clearFlatDamagePerTurn() {
         
-        damagePerTurn_ = 0;
+        flatDamagePerTurn_ = 0;
         onChanged();
         return this;
       }
 
-      private int duration_ ;
+      private double percentDamagePerTurn_ ;
       /**
-       * <code>int32 duration = 3;</code>
-       * @return The duration.
+       * <code>double percent_damage_per_turn = 3;</code>
+       * @return The percentDamagePerTurn.
        */
-      public int getDuration() {
-        return duration_;
+      public double getPercentDamagePerTurn() {
+        return percentDamagePerTurn_;
       }
       /**
-       * <code>int32 duration = 3;</code>
-       * @param value The duration to set.
+       * <code>double percent_damage_per_turn = 3;</code>
+       * @param value The percentDamagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setDuration(int value) {
+      public Builder setPercentDamagePerTurn(double value) {
         
-        duration_ = value;
+        percentDamagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 duration = 3;</code>
+       * <code>double percent_damage_per_turn = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDuration() {
+      public Builder clearPercentDamagePerTurn() {
         
-        duration_ = 0;
+        percentDamagePerTurn_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatRegenPerTurn_ ;
+      /**
+       * <code>int32 flat_regen_per_turn = 4;</code>
+       * @return The flatRegenPerTurn.
+       */
+      public int getFlatRegenPerTurn() {
+        return flatRegenPerTurn_;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 4;</code>
+       * @param value The flatRegenPerTurn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatRegenPerTurn(int value) {
+        
+        flatRegenPerTurn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatRegenPerTurn() {
+        
+        flatRegenPerTurn_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int turnsLeft_ ;
+      /**
+       * <code>int32 turns_left = 5;</code>
+       * @return The turnsLeft.
+       */
+      public int getTurnsLeft() {
+        return turnsLeft_;
+      }
+      /**
+       * <code>int32 turns_left = 5;</code>
+       * @param value The turnsLeft to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsLeft(int value) {
+        
+        turnsLeft_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_left = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsLeft() {
+        
+        turnsLeft_ = 0;
         onChanged();
         return this;
       }
@@ -7316,22 +7804,27 @@ public final class ItemProtos {
       "\001(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030" +
       "\002 \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022" +
       "\010\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item" +
-      ".StatusModifier\"\204\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
+      ".StatusModifier\"\224\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
       "\0132\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\025" +
-      "\n\rsplash_radius\030\003 \001(\005\022/\n\ron_hit_effect\030\004" +
-      " \001(\0132\030.item.TempStatusModifier\"F\n\nConsum" +
-      "able\022(\n\006effect\030\001 \001(\0132\030.item.TempStatusMo" +
-      "difier\022\016\n\006stacks\030\002 \001(\005\"\324\001\n\016StatusModifie" +
-      "r\022\024\n\014speed_change\030\001 \001(\005\022\025\n\rhealth_change" +
-      "\030\002 \001(\005\022\031\n\021experience_change\030\003 \001(\005\022\033\n\023mag" +
-      "ic_damage_change\030\004 \001(\005\022\036\n\026physical_damag" +
-      "e_change\030\005 \001(\005\022\034\n\024magic_defense_change\030\006" +
-      " \001(\005\022\037\n\027physical_defense_change\030\007 \001(\005\"d\n" +
-      "\022TempStatusModifier\022#\n\005stats\030\001 \001(\0132\024.ite" +
-      "m.StatusModifier\022\027\n\017damage_per_turn\030\002 \001(" +
-      "\005\022\020\n\010duration\030\003 \001(\005B;\n\034mech.mania.engine" +
-      ".game.itemsB\nItemProtos\252\002\016MM26.IO.Models" +
-      "b\006proto3"
+      "\n\rsplash_radius\030\003 \001(\005\022\016\n\006damage\030\004 \001(\005\022/\n" +
+      "\ron_hit_effect\030\005 \001(\0132\030.item.TempStatusMo" +
+      "difier\"F\n\nConsumable\022(\n\006effect\030\001 \001(\0132\030.i" +
+      "tem.TempStatusModifier\022\016\n\006stacks\030\002 \001(\005\"\334" +
+      "\002\n\016StatusModifier\022\031\n\021flat_speed_change\030\001" +
+      " \001(\005\022\034\n\024percent_speed_change\030\002 \001(\001\022\032\n\022fl" +
+      "at_health_change\030\003 \001(\005\022\035\n\025percent_health" +
+      "_change\030\004 \001(\001\022\036\n\026flat_experience_change\030" +
+      "\005 \001(\005\022!\n\031percent_experience_change\030\006 \001(\001" +
+      "\022\032\n\022flat_damage_change\030\007 \001(\005\022\035\n\025percent_" +
+      "damage_change\030\010 \001(\001\022\033\n\023flat_defense_chan" +
+      "ge\030\t \001(\005\022\036\n\026percent_defense_change\030\n \001(\001" +
+      "\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\251\001\n\022TempSt" +
+      "atusModifier\022#\n\005stats\030\001 \001(\0132\024.item.Statu" +
+      "sModifier\022\034\n\024flat_damage_per_turn\030\002 \001(\005\022" +
+      "\037\n\027percent_damage_per_turn\030\003 \001(\001\022\033\n\023flat" +
+      "_regen_per_turn\030\004 \001(\005\022\022\n\nturns_left\030\005 \001(" +
+      "\005B;\n\034mech.mania.engine.game.itemsB\nItemP" +
+      "rotos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7366,7 +7859,7 @@ public final class ItemProtos {
     internal_static_item_Weapon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Weapon_descriptor,
-        new java.lang.String[] { "Stats", "Range", "SplashRadius", "OnHitEffect", });
+        new java.lang.String[] { "Stats", "Range", "SplashRadius", "Damage", "OnHitEffect", });
     internal_static_item_Consumable_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_item_Consumable_fieldAccessorTable = new
@@ -7378,13 +7871,13 @@ public final class ItemProtos {
     internal_static_item_StatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_StatusModifier_descriptor,
-        new java.lang.String[] { "SpeedChange", "HealthChange", "ExperienceChange", "MagicDamageChange", "PhysicalDamageChange", "MagicDefenseChange", "PhysicalDefenseChange", });
+        new java.lang.String[] { "FlatSpeedChange", "PercentSpeedChange", "FlatHealthChange", "PercentHealthChange", "FlatExperienceChange", "PercentExperienceChange", "FlatDamageChange", "PercentDamageChange", "FlatDefenseChange", "PercentDefenseChange", "FlatRegenPerTurn", });
     internal_static_item_TempStatusModifier_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_item_TempStatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_TempStatusModifier_descriptor,
-        new java.lang.String[] { "Stats", "DamagePerTurn", "Duration", });
+        new java.lang.String[] { "Stats", "FlatDamagePerTurn", "PercentDamagePerTurn", "FlatRegenPerTurn", "TurnsLeft", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

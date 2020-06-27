@@ -119,8 +119,8 @@
 				</execution>
 			</executions>
 			<configuration>
-				<source>1.8</source>
-				<target>1.8</target>
+				<source>8</source>
+				<target>8</target>
 			</configuration>
 		</plugin>
 		<plugin>

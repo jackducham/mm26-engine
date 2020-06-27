@@ -1384,8 +1384,9 @@ public final class InfraProtos {
       "\n\013infra.proto\022\005infra\"5\n\013InfraPlayer\022\023\n\013p" +
       "layer_name\030\001 \001(\t\022\021\n\tplayer_ip\030\002 \001(\t\".\n\013I" +
       "nfraStatus\022\016\n\006status\030\001 \001(\005\022\017\n\007message\030\002 " +
-      "\001(\tBA\n2mech.mania.engine.server.communic" +
-      "ation.infra.modelB\013InfraProtosb\006proto3"
+      "\001(\tBR\n2mech.mania.engine.server.communic" +
+      "ation.infra.modelB\013InfraProtos\252\002\016MM26.IO" +
+      ".Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
