@@ -10,6 +10,6 @@ public class EndGame extends EventHandler {
 
     @Override
     public void handle(Event event) {
-
+        uow.setGameOver(true);
     }
 }

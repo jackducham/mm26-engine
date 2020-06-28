@@ -1,8 +1,8 @@
 package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.board.Board;
-import mech.mania.engine.domain.game.board.BoardProtos;
-import mech.mania.engine.domain.game.characters.CharacterProtos;
+import mech.mania.engine.domain.model.BoardProtos;
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.model.GameStateProtos;
 

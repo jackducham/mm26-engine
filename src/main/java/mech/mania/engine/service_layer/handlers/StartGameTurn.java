@@ -1,28 +1,49 @@
 package mech.mania.engine.service_layer.handlers;
 
-import mech.mania.engine.domain.messages.Command;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.logging.Logger;
+
+import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.AbstractUnitOfWork;
 
 public class StartGameTurn extends CommandHandler {
+
+    private static final Logger LOGGER = Logger.getLogger( StartGameTurn.class.getName() );
+
     public StartGameTurn(AbstractUnitOfWork uow) {
         super(uow);
     }
 
-    int turn = 0;
-    GameState gameState = new GameState();
-
     @Override
     public void handle(Command command) {
-        turn = ((CommandStartTurn) command).getTurn();
-        // TODO: figure out how to loop turns
-        // need to exit this function before the messages are executed
 
-        // print turn
-        uow.addNewMessage(new CommandStoreGameState(gameState));
-        uow.addNewMessage(new CommandSendPlayerRequests());
+        if (uow.getGameOver()) {
+            System.out.println("game is over");
+            return;
+        }
+
+        // get arguments from command object
+        int turn = ((CommandStartGameTurn) command).getTurn();
+        int millisBetweenTurns = ((CommandStartGameTurn) command).getMillisBetweenTurns();
+
+        LOGGER.info(String.format("Turn %s", turn));
+
+        uow.setTurn(turn);
+
+        Instant turnStartTime = Instant.now();
+
+        // these three abstractions aren't completely necessary, but allows for
+        // asynchronous operations if necessary
+        uow.addNewMessage(new CommandStoreGameState(turn, uow.getGameState()));
+        uow.addNewMessage(new CommandSendPlayerRequestsAndUpdateGameState());
         uow.addNewMessage(new CommandSendVisualizerChange());
 
-        turn++;
-        uow.addNewMessage(new CommandStartTurn(turn));
+        // have the next turn start after waiting millisBetweenTurns
+        // after this turn began (make sure time between turns is
+        // actually as advertised)
+        Instant nextTurnStart = turnStartTime.plusMillis(millisBetweenTurns);
+        uow.addNewMessage(new CommandWaitUntilTime(nextTurnStart));
+        uow.addNewMessage(new CommandStartGameTurn(turn + 1));
     }
 }

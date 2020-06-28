@@ -1,5 +1,7 @@
 package mech.mania.engine.domain.game.items;
 
+import mech.mania.engine.domain.model.ItemProtos;
+
 public class Shoes extends Wearable {
     public Shoes(StatusModifier stats) {
         super(stats);

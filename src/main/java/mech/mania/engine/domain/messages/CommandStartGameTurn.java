@@ -7,6 +7,7 @@ public class CommandStartGameTurn implements Command {
     private int turn;
 
     public CommandStartGameTurn(int turn, int millisBetweenTurns) {
+        this.turn = turn;
         this.millisBetweenTurns = millisBetweenTurns;
     }
 

@@ -1,5 +1,7 @@
 package mech.mania.engine.domain.game.characters;
 
+import mech.mania.engine.domain.model.CharacterProtos;
+
 public class Position {
     private int x;
     private int y;

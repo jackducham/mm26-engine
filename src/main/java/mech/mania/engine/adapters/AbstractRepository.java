@@ -9,24 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 
-public interface Database {
+public interface AbstractRepository {
 
-    enum PlayerExistence {
-        PLAYER_EXISTS,
-        PLAYER_DOES_NOT_EXIST
-    }
-
-    GameState getCurrentGameState();
     int storeGameState(final int turn, final GameState gameState);
 
-    int getCurrentTurnNum();
-    int updateCurrentTurnNum(int turn);
-
-    Map<String, PlayerInfo> getPlayerInfoMap();
-    PlayerExistence updatePlayerInfoMap(String playerName, String playerIp);
-
-//    List<Message> getEvents();
-
+    int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange);
 
     void reset();
 }

@@ -1,5 +1,7 @@
 package mech.mania.engine.domain.game.items;
 
+import mech.mania.engine.domain.model.ItemProtos;
+
 public class Weapon extends Wearable {
     protected int range = 0;
     protected int splashRadius = 0;

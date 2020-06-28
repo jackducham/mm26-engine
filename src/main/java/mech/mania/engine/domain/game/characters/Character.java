@@ -8,6 +8,7 @@ import java.util.Map;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.model.CharacterProtos;
 
 import java.util.List;
 

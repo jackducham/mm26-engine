@@ -6,6 +6,8 @@ import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
 
 import mech.mania.engine.domain.game.GameLogic;
+import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.ItemProtos;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,8 @@
 package mech.mania.engine.domain.game.characters;
 
 import mech.mania.engine.domain.game.items.*;
+import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.ItemProtos;
 
 
 public class Player extends Character {

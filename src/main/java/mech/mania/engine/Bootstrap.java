@@ -1,18 +1,22 @@
 package mech.mania.engine;
 
+import mech.mania.engine.adapters.RepositoryAws;
 import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.handlers.*;
 import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWork;
 import mech.mania.engine.service_layer.MessageBus;
 import mech.mania.engine.service_layer.handlers.CommandHandler;
 import mech.mania.engine.service_layer.handlers.EventHandler;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Bootstrap {
     public static MessageBus bootstrap() {
-        return bootstrap();
+        return bootstrap(new UnitOfWork(new RepositoryAws()));
     }
 
     public static MessageBus bootstrap(AbstractUnitOfWork uow) {
@@ -20,21 +24,21 @@ public class Bootstrap {
 
         // inject dependencies
         // events can happen asynchronously
-        Map<Class<? extends Event>, List<EventHandler>> eventHandlers = Map.of(
-                EventReceivePlayerDecision.class,   List.of(new StorePlayerDecision(uow)),
-                EventNewPlayer.class,               List.of(new UpdatePlayer(uow)),
-                EventEndGame.class,                 List.of(new EndGame(uow))
-        );
+        Map<Class<? extends Event>, List<EventHandler>> eventHandlers = new HashMap<>();
+        eventHandlers.put(EventReceivePlayerDecision.class, Arrays.asList(new StorePlayerDecision(uow)));
+        eventHandlers.put(EventNewPlayer.class,             Arrays.asList(new UpdatePlayer(uow)));
+        eventHandlers.put(EventEndGame.class,               Arrays.asList(new EndGame(uow)));
+
         // commands must happen synchronously
-        Map<Class<? extends Command>, CommandHandler> commandHandlers = Map.of(
-                CommandStartGameLoop.class,         new StartGameLoop(uow),
-                CommandStartInfraServer.class,      new StartInfraServer(uow),
-                CommandStartVisualizerServer.class, new StartVisualizerServer(uow),
-                CommandStoreGameState.class,        new StoreGameState(uow),
-                CommandSendPlayerRequests.class,    new SendPlayerRequests(uow),
-                CommandUpdateGameState.class,       new UpdateGameState(uow),
-                CommandSendVisualizerChange.class,  new SendVisualizerChange(uow)
-        );
+        Map<Class<? extends Command>, CommandHandler> commandHandlers = new HashMap<>();
+        commandHandlers.put(CommandStartGameTurn.class,                         new StartGameTurn(uow));
+        commandHandlers.put(CommandStartInfraServer.class,                      new StartInfraServer(uow));
+        commandHandlers.put(CommandStartVisualizerServer.class,                 new StartVisualizerServer(uow));
+        commandHandlers.put(CommandStoreGameState.class,                        new StoreGameState(uow));
+        commandHandlers.put(CommandSendPlayerRequestsAndUpdateGameState.class,  new SendPlayerRequestsAndUpdateGameState(uow));
+        commandHandlers.put(CommandUpdateGameState.class,                       new UpdateGameState(uow));
+        commandHandlers.put(CommandSendVisualizerChange.class,                  new SendVisualizerChange(uow));
+        commandHandlers.put(CommandWaitUntilTime.class,                         new WaitUntilTime(uow));
 
         return new MessageBus(uow, eventHandlers, commandHandlers);
     }

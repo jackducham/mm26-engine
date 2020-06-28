@@ -1,22 +1,29 @@
-package mech.mania.engine.domain.communication.infra;
+package mech.mania.engine.service_layer;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import mech.mania.engine.entrypoints.MainOld;
-import mech.mania.engine.service_layer.GameStateController;
+import mech.mania.engine.domain.messages.EventEndGame;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus;
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer;
 
+import javax.annotation.Resource;
 import java.util.logging.Logger;
 
 /**
  * A class to execute the game loop and other structural procedures.
  */
+@SpringBootApplication
 @RequestMapping("/infra")
 @RestController
+@ComponentScan("mech.mania.engine.entrypoints")
 public class InfraRESTHandler {
+    private final Logger LOGGER = Logger.getLogger( getClass().getName() );
 
-    private static final Logger LOGGER = Logger.getLogger( InfraRESTHandler.class.getName() );
+    @Resource
+    private MessageBus bus;
 
     /**
      * Method to handle GET requests to the /health endpoint to check that the server is running correctly.
@@ -37,7 +44,7 @@ public class InfraRESTHandler {
      */
     @GetMapping("/endgame")
     public @ResponseBody byte[] endgame() {
-        // bus.handle(new EventEndGame());
+        bus.handle(new EventEndGame());
         LOGGER.info("Received game over signal");
         return InfraStatus.newBuilder()
                 .setStatus(200)
@@ -61,14 +68,16 @@ public class InfraRESTHandler {
             String name = playerInfo.getPlayerName();
             String ip = playerInfo.getPlayerIp();
 
-            switch (GameStateController.addPlayerIp(name, ip)) {
-                case PLAYER_DOES_NOT_EXIST:
-                    message = "Successfully added new player";
-                    break;
-                case PLAYER_EXISTS:
-                    message = "Successfully updated already existing player";
-                    break;
-            }
+            message = "Successfully added new player";
+            // TODO: fix
+//            switch (uow.addPlayerIp(name, ip)) {
+//                case PLAYER_DOES_NOT_EXIST:
+//                    message = "Successfully added new player";
+//                    break;
+//                case PLAYER_EXISTS:
+//                    message = "Successfully updated already existing player";
+//                    break;
+//            }
 
             LOGGER.fine(String.format("Received request from infra to connect with player \"%s\" @ %s", name, ip));
 

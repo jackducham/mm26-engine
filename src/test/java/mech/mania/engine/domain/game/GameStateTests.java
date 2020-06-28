@@ -1,16 +1,15 @@
 package mech.mania.engine.domain.game;
 
-import mech.mania.engine.service_layer.GameStateController;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 import org.junit.After;
 import org.junit.Before;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class GameStateTest {
+public class GameStateTests {
 
     private GameState gameState;
-    private GameStateController controller;
+//    private GameStateController controller;
 
     /**
      * Setup before tests
@@ -18,8 +17,9 @@ public class GameStateTest {
     @Before
     public void setup() {
         gameState = new GameState();
-        controller = new GameStateController();
+//        controller = new GameStateController();
     }
+
 
     /**
      * Cleanup after tests
@@ -27,20 +27,6 @@ public class GameStateTest {
     @After
     public void cleanup() {
     }
-
-//    /**
-//     * Test to check if gameOver can be achieved
-//     */
-//    @Test
-//    public void gameOverCondition() {
-//        PlayerDecisionProtos.PlayerDecision decision = createDecisionsFromCommands(new String[]{
-//                "move north 5",
-//                "move east 3"
-//        });
-//
-//        gameState = GameLogic.doTurn(gameState, List.of(decision));
-//        assertTrue(controller.isGameOver(gameState));
-//    }
 
 
     /**

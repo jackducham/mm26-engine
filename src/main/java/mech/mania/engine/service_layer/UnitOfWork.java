@@ -1,21 +1,21 @@
 package mech.mania.engine.service_layer;
 
+import mech.mania.engine.adapters.AbstractRepository;
 import mech.mania.engine.domain.messages.Message;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Logger;
 
-public class UnitOfWork implements AbstractUnitOfWork {
+public class UnitOfWork extends AbstractUnitOfWork {
 
-    Queue<Message> messages = new LinkedList<>();
+    private static final Logger LOGGER = Logger.getLogger( UnitOfWork.class.getName() );
 
-    @Override
-    public void addNewMessage(Message message) {
-        messages.add(message);
+    public UnitOfWork(final AbstractRepository repository) {
+        super(repository);
     }
 
     @Override
-    public List<Message> collectNewMessages() {
-        return messages;
+    public void addNewMessage(Message message) {
+        LOGGER.fine("addNewMessage");
+        super.addNewMessage(message);
     }
 }

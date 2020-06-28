@@ -8,7 +8,9 @@ import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
-import mech.mania.engine.entrypoints.MainOld
+import mech.mania.engine.entrypoints.Main
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
@@ -29,7 +31,7 @@ import kotlin.test.assertTrue
 class ServerIntegrationTests {
 
     /** Port to launch the Game server on */
-    private val port = 8080
+    private val port = 9000
 
     /** URL that visualizer will connect to */
     private var VISUALIZER_URL: String = "ws://localhost:$port/visualizer"
@@ -44,21 +46,22 @@ class ServerIntegrationTests {
     /**
      * Set up the testing environment by initializing variables and starting the game server.
      */
+    @Before
     fun setup() {
         // start game server
         val args: Array<String> = arrayOf("$port")
-        MainOld.setup(args)
 
         // launch the actual game in another thread
         // so the test doesn't wait for the server to close before starting
         GlobalScope.launch {
-            MainOld.runGame()
+            Main.main(args)
         }
     }
 
     /**
      * Clean up afterwards by sending a HTTP GET request to /infra/endgame.
      */
+    @After
     fun cleanup() {
         // end game server - send HTTP request to server
         // https://stackoverflow.com/questions/46177133/http-request-in-kotlin
@@ -72,7 +75,6 @@ class ServerIntegrationTests {
             // if the server has already closed, then ignore
             LOGGER.info("Server has already closed")
         }
-        MainOld.resetState()
     }
 
     /**
@@ -159,11 +161,10 @@ class ServerIntegrationTests {
         val numberOfPlayers = arrayOf(1000, 2000)
         val numberOfTurns = arrayOf(10)
 
-        val TIME_PER_TURN = 1000
+        val timePerTurn = 1000
 
         numberOfPlayers.forEach { players ->
             numberOfTurns.forEach { turns ->
-                setup()
                 // wait for an actual object to end the test
                 val latch = CountDownLatch(turns * players)
 
@@ -177,8 +178,7 @@ class ServerIntegrationTests {
                     latch.countDown()
                 })
 
-                assertTrue(latch.await((turns * TIME_PER_TURN).toLong(), TimeUnit.SECONDS), "Latch final value: ${latch.count}")
-                cleanup()
+                assertTrue(latch.await((turns * timePerTurn).toLong(), TimeUnit.SECONDS), "Latch final value: ${latch.count}")
             }
         }
     }

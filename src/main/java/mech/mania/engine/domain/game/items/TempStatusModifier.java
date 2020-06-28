@@ -1,5 +1,7 @@
 package mech.mania.engine.domain.game.items;
 
+import mech.mania.engine.domain.model.ItemProtos;
+
 public class TempStatusModifier extends StatusModifier {
     private int duration;
     private int damagePerTurn;               // Concept: poison type of damage that effects player over time

@@ -6,7 +6,10 @@ import mech.mania.engine.service_layer.handlers.CommandHandler;
 import mech.mania.engine.domain.messages.Event;
 import mech.mania.engine.service_layer.handlers.EventHandler;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.logging.Logger;
 
 public class MessageBus {
@@ -29,6 +32,7 @@ public class MessageBus {
         messageQueue.add(newMessage);
         while (!messageQueue.isEmpty()) {
             Message message = messageQueue.poll();
+            System.out.println(String.format("handling %s", message.getClass().toString()));
             if (message instanceof Event) {
                 handleEvent((Event) message);
             } else if (message instanceof Command) {

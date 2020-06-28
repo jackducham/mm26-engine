@@ -46,7 +46,7 @@ public final class PlayerProtos {
      * <code>.character.Position targetPosition = 2;</code>
      * @return The targetPosition.
      */
-    mech.mania.engine.domain.game.characters.CharacterProtos.Position getTargetPosition();
+    CharacterProtos.Position getTargetPosition();
     /**
      * <pre>
      * For MOVE, ATTACK
@@ -54,7 +54,7 @@ public final class PlayerProtos {
      *
      * <code>.character.Position targetPosition = 2;</code>
      */
-    mech.mania.engine.domain.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder();
+    CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder();
 
     /**
      * <pre>
@@ -123,11 +123,11 @@ public final class PlayerProtos {
               break;
             }
             case 18: {
-              mech.mania.engine.domain.game.characters.CharacterProtos.Position.Builder subBuilder = null;
+              CharacterProtos.Position.Builder subBuilder = null;
               if (targetPosition_ != null) {
                 subBuilder = targetPosition_.toBuilder();
               }
-              targetPosition_ = input.readMessage(mech.mania.engine.domain.game.characters.CharacterProtos.Position.parser(), extensionRegistry);
+              targetPosition_ = input.readMessage(CharacterProtos.Position.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(targetPosition_);
                 targetPosition_ = subBuilder.buildPartial();
@@ -341,7 +341,7 @@ public final class PlayerProtos {
     }
 
     public static final int TARGETPOSITION_FIELD_NUMBER = 2;
-    private mech.mania.engine.domain.game.characters.CharacterProtos.Position targetPosition_;
+    private CharacterProtos.Position targetPosition_;
     /**
      * <pre>
      * For MOVE, ATTACK
@@ -361,8 +361,8 @@ public final class PlayerProtos {
      * <code>.character.Position targetPosition = 2;</code>
      * @return The targetPosition.
      */
-    public mech.mania.engine.domain.game.characters.CharacterProtos.Position getTargetPosition() {
-      return targetPosition_ == null ? mech.mania.engine.domain.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+    public CharacterProtos.Position getTargetPosition() {
+      return targetPosition_ == null ? CharacterProtos.Position.getDefaultInstance() : targetPosition_;
     }
     /**
      * <pre>
@@ -371,7 +371,7 @@ public final class PlayerProtos {
      *
      * <code>.character.Position targetPosition = 2;</code>
      */
-    public mech.mania.engine.domain.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+    public CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
       return getTargetPosition();
     }
 
@@ -793,9 +793,9 @@ public final class PlayerProtos {
         return this;
       }
 
-      private mech.mania.engine.domain.game.characters.CharacterProtos.Position targetPosition_;
+      private CharacterProtos.Position targetPosition_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.game.characters.CharacterProtos.Position, mech.mania.engine.domain.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.domain.game.characters.CharacterProtos.PositionOrBuilder> targetPositionBuilder_;
+          CharacterProtos.Position, CharacterProtos.Position.Builder, CharacterProtos.PositionOrBuilder> targetPositionBuilder_;
       /**
        * <pre>
        * For MOVE, ATTACK
@@ -815,9 +815,9 @@ public final class PlayerProtos {
        * <code>.character.Position targetPosition = 2;</code>
        * @return The targetPosition.
        */
-      public mech.mania.engine.domain.game.characters.CharacterProtos.Position getTargetPosition() {
+      public CharacterProtos.Position getTargetPosition() {
         if (targetPositionBuilder_ == null) {
-          return targetPosition_ == null ? mech.mania.engine.domain.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+          return targetPosition_ == null ? CharacterProtos.Position.getDefaultInstance() : targetPosition_;
         } else {
           return targetPositionBuilder_.getMessage();
         }
@@ -829,7 +829,7 @@ public final class PlayerProtos {
        *
        * <code>.character.Position targetPosition = 2;</code>
        */
-      public Builder setTargetPosition(mech.mania.engine.domain.game.characters.CharacterProtos.Position value) {
+      public Builder setTargetPosition(CharacterProtos.Position value) {
         if (targetPositionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -850,7 +850,7 @@ public final class PlayerProtos {
        * <code>.character.Position targetPosition = 2;</code>
        */
       public Builder setTargetPosition(
-          mech.mania.engine.domain.game.characters.CharacterProtos.Position.Builder builderForValue) {
+          CharacterProtos.Position.Builder builderForValue) {
         if (targetPositionBuilder_ == null) {
           targetPosition_ = builderForValue.build();
           onChanged();
@@ -867,11 +867,11 @@ public final class PlayerProtos {
        *
        * <code>.character.Position targetPosition = 2;</code>
        */
-      public Builder mergeTargetPosition(mech.mania.engine.domain.game.characters.CharacterProtos.Position value) {
+      public Builder mergeTargetPosition(CharacterProtos.Position value) {
         if (targetPositionBuilder_ == null) {
           if (targetPosition_ != null) {
             targetPosition_ =
-              mech.mania.engine.domain.game.characters.CharacterProtos.Position.newBuilder(targetPosition_).mergeFrom(value).buildPartial();
+              CharacterProtos.Position.newBuilder(targetPosition_).mergeFrom(value).buildPartial();
           } else {
             targetPosition_ = value;
           }
@@ -907,7 +907,7 @@ public final class PlayerProtos {
        *
        * <code>.character.Position targetPosition = 2;</code>
        */
-      public mech.mania.engine.domain.game.characters.CharacterProtos.Position.Builder getTargetPositionBuilder() {
+      public CharacterProtos.Position.Builder getTargetPositionBuilder() {
         
         onChanged();
         return getTargetPositionFieldBuilder().getBuilder();
@@ -919,12 +919,12 @@ public final class PlayerProtos {
        *
        * <code>.character.Position targetPosition = 2;</code>
        */
-      public mech.mania.engine.domain.game.characters.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+      public CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
         if (targetPositionBuilder_ != null) {
           return targetPositionBuilder_.getMessageOrBuilder();
         } else {
           return targetPosition_ == null ?
-              mech.mania.engine.domain.game.characters.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+              CharacterProtos.Position.getDefaultInstance() : targetPosition_;
         }
       }
       /**
@@ -935,11 +935,11 @@ public final class PlayerProtos {
        * <code>.character.Position targetPosition = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.game.characters.CharacterProtos.Position, mech.mania.engine.domain.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.domain.game.characters.CharacterProtos.PositionOrBuilder>
+          CharacterProtos.Position, CharacterProtos.Position.Builder, CharacterProtos.PositionOrBuilder>
           getTargetPositionFieldBuilder() {
         if (targetPositionBuilder_ == null) {
           targetPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.domain.game.characters.CharacterProtos.Position, mech.mania.engine.domain.game.characters.CharacterProtos.Position.Builder, mech.mania.engine.domain.game.characters.CharacterProtos.PositionOrBuilder>(
+              CharacterProtos.Position, CharacterProtos.Position.Builder, CharacterProtos.PositionOrBuilder>(
                   getTargetPosition(),
                   getParentForChildren(),
                   isClean());
@@ -1723,7 +1723,7 @@ public final class PlayerProtos {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           GameStateProtos.getDescriptor(),
-          mech.mania.engine.domain.game.characters.CharacterProtos.getDescriptor(),
+          CharacterProtos.getDescriptor(),
         });
     internal_static_player_communication_PlayerDecision_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -1738,7 +1738,7 @@ public final class PlayerProtos {
         internal_static_player_communication_PlayerTurn_descriptor,
         new java.lang.String[] { "PlayerName", });
     GameStateProtos.getDescriptor();
-    mech.mania.engine.domain.game.characters.CharacterProtos.getDescriptor();
+    CharacterProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
