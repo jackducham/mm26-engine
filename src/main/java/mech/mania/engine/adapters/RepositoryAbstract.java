@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public interface AbstractRepository {
+public interface RepositoryAbstract {
 
     int storeGameState(final int turn, final GameState gameState);
 

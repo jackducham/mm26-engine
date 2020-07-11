@@ -6,7 +6,7 @@ import mech.mania.engine.domain.model.VisualizerProtos.VisualizerChange;
 /**
  * Uses AWS to store GameStates
  */
-public class RepositoryAws implements AbstractRepository {
+public class RepositoryAws implements RepositoryAbstract {
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
         return 0;

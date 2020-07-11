@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 /**
  * Use regular data structures to store data (for now).
  */
-public class RepositoryFake implements AbstractRepository {
+public class RepositoryFake implements RepositoryAbstract {
 
     private static final Logger LOGGER = Logger.getLogger( RepositoryFake.class.getName() );
 

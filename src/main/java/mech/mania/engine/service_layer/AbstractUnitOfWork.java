@@ -1,6 +1,6 @@
 package mech.mania.engine.service_layer;
 
-import mech.mania.engine.adapters.AbstractRepository;
+import mech.mania.engine.adapters.RepositoryAbstract;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Message;
 import mech.mania.engine.domain.model.PlayerInfo;
@@ -17,7 +17,7 @@ public abstract class AbstractUnitOfWork {
 
     private static final Logger LOGGER = Logger.getLogger( AbstractUnitOfWork.class.getName() );
     private final Queue<Message> messages = new LinkedList<>();
-    private final AbstractRepository repository;
+    private final RepositoryAbstract repository;
     private final Map<String, PlayerInfo> currentPlayerInfoMap = new ConcurrentHashMap<>();
     private GameState gameState;
     private int turn;
@@ -28,14 +28,14 @@ public abstract class AbstractUnitOfWork {
     /**
      * Constructor that sets an AbstractRepository
      */
-    public AbstractUnitOfWork(AbstractRepository repository) {
+    public AbstractUnitOfWork(RepositoryAbstract repository) {
         this.repository = repository;
     }
 
     /**
      * Get the repository in order to use repository actions
      */
-    public AbstractRepository getRepository() {
+    public RepositoryAbstract getRepository() {
         return repository;
     }
 
