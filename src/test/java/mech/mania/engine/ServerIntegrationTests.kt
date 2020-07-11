@@ -31,7 +31,7 @@ import kotlin.test.assertTrue
 class ServerIntegrationTests {
 
     /** Port to launch the Game server on */
-    private val port = 9000
+    private val port = 9000  // match infraPort from config.properties
 
     /** URL that visualizer will connect to */
     private var VISUALIZER_URL: String = "ws://localhost:$port/visualizer"
@@ -56,6 +56,8 @@ class ServerIntegrationTests {
         GlobalScope.launch {
             Main.main(args)
         }
+
+        Thread.sleep(5000)
     }
 
     /**
@@ -135,6 +137,7 @@ class ServerIntegrationTests {
                 doOutput = true
                 setRequestProperty("Content-Type", "application/octet-stream")
 
+                // this isn't working?
                 InfraPlayer.newBuilder()
                         .setPlayerIp(playerAddrs[i])
                         .setPlayerName(playerNames[i])
@@ -158,7 +161,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val numberOfPlayers = arrayOf(1000, 2000)
+        val numberOfPlayers = arrayOf(500)
         val numberOfTurns = arrayOf(10)
 
         val timePerTurn = 1000
@@ -178,7 +181,7 @@ class ServerIntegrationTests {
                     latch.countDown()
                 })
 
-                assertTrue(latch.await((turns * timePerTurn).toLong(), TimeUnit.SECONDS), "Latch final value: ${latch.count}")
+                assertTrue(latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS), "Latch final value: ${latch.count}")
             }
         }
     }

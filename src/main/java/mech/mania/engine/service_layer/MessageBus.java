@@ -65,4 +65,8 @@ public class MessageBus {
             throw e;
         }
     }
+
+    public AbstractUnitOfWork getUow() {
+        return uow;
+    }
 }

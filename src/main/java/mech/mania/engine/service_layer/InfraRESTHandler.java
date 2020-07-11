@@ -31,6 +31,7 @@ public class InfraRESTHandler {
      */
     @GetMapping("/health")
     public @ResponseBody byte[] health() {
+
         return InfraStatus.newBuilder()
                 .setStatus(200)
                 .setMessage("Alive.")
@@ -69,15 +70,11 @@ public class InfraRESTHandler {
             String ip = playerInfo.getPlayerIp();
 
             message = "Successfully added new player";
-            // TODO: fix
-//            switch (uow.addPlayerIp(name, ip)) {
-//                case PLAYER_DOES_NOT_EXIST:
-//                    message = "Successfully added new player";
-//                    break;
-//                case PLAYER_EXISTS:
-//                    message = "Successfully updated already existing player";
-//                    break;
-//            }
+            if (bus.getUow().updatePlayerInfoMap(name, ip)) {
+                message = "Successfully added new player";
+            } else {
+                message = "Successfully updated already existing player";
+            }
 
             LOGGER.fine(String.format("Received request from infra to connect with player \"%s\" @ %s", name, ip));
 

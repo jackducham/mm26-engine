@@ -23,7 +23,9 @@ public class WaitUntilTime extends CommandHandler {
         // sleep this thread until time
         try {
             Instant now = Instant.now();
-            Thread.sleep(MILLIS.between(now, waitUntil));
+            long waitTime = MILLIS.between(now, waitUntil);
+            if (waitTime < 0) waitTime = 0;
+            Thread.sleep(waitTime);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
