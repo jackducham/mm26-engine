@@ -10,6 +10,33 @@ public class Player extends Character {
     private Shoes shoes;
     private Item[] inventory;
 
+    private static int BASE_SPEED = 5;
+    private static int BASE_MAX_HEALTH = 20;
+    private static int BASE_ATTACK = 0;
+    private static int BASE_DEFENSE = 0;
+
+    /**
+     * Standard Constructor which uses default static values for speed, hp, atk, and def.
+     * @param name Player's name
+     * @param spawnPoint Player's spawn point
+     */
+    public Player(String name, Position spawnPoint) {
+        super(name, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 0, spawnPoint, null);
+        hat = null;
+        clothes = null;
+        shoes = null;
+        inventory = new Item[INVENTORY_SIZE];
+    }
+
+    /**
+     * Custom Constructor for use during testing.
+     * @param name Player's name
+     * @param baseSpeed custom base speed value
+     * @param baseMaxHealth custom base health value
+     * @param baseAttack custom base attack value
+     * @param baseDefense custom base defense value
+     * @param spawnPoint Player's spawn point
+     */
     public Player(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                   Position spawnPoint) {
         super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, 0, spawnPoint, null);
