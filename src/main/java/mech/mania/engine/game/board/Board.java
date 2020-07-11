@@ -28,6 +28,11 @@ public class Board {
 
     }
 
+    public Board(int dimension) {
+        grid = new Tile[dimension][dimension];
+        portals = new ArrayList<>();
+    }
+
     public BoardProtos.Board buildProtoClass() {
         BoardProtos.Board.Builder boardBuilder = BoardProtos.Board.newBuilder();
 

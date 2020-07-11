@@ -13,10 +13,7 @@ import mech.mania.engine.game.items.*;
 
 import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * A class to execute the game logic.
@@ -33,7 +30,11 @@ public class GameLogic {
         // ========== NOTES & TODOS ========== \\
         // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
-
+        for (String playerName : decisions.keySet()) {
+            if (!gameState.getAllPlayers().containsKey(playerName)) {
+                gameState.addNewPlayer(playerName);
+            }
+        }
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
@@ -87,8 +88,8 @@ public class GameLogic {
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
         // respawning, and distributing rewards
-        List<Player> players = gameState.getAllPlayers();
-        List<Monster> monsters = gameState.getAllMonsters();
+        Collection<Player> players = gameState.getAllPlayers().values();
+        Collection<Monster> monsters = gameState.getAllMonsters().values();
 
         for (Player player: players) {
             player.updateCharacter(gameState);
