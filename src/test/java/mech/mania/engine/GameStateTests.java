@@ -1,10 +1,13 @@
 package mech.mania.engine;
 
 import mech.mania.engine.game.GameState;
+import mech.mania.engine.game.characters.CharacterProtos;
+import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.server.api.GameStateController;
-import mech.mania.engine.server.communication.player.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.server.communication.player.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.UUID;
 
@@ -45,6 +48,29 @@ public class GameStateTests {
 //        assertTrue(controller.isGameOver(gameState));
 //    }
 
+    /**
+     * Test to see how tests work
+     */
+    @Test
+    public void movePlayer(){
+        // Add player1
+        gameState.addNewPlayer("player1");
+        assertTrue(gameState.getPlayer("player1") != null);
+
+        // Check that player1 is at 0, 0 on their board
+        Position initPos = new Position(0, 0, "player1");
+        assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
+
+        // Move player1 to 1, 0
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
+
+        CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
+        newPos.setX(1).setY(0).setBoardId("player1");
+        decision.setTargetPosition(newPos.build());
+
+        // @TODO: execute decision and check if movement happened
+    }
 
     /**
      * Helper function that creates a custom PlayerDecision from custom commands
@@ -52,8 +78,8 @@ public class GameStateTests {
      * @param commands String[] of commands to use
      * @return PlayerDecision object
      */
-    private PlayerDecision createDecisionsFromCommands(String[] commands) {
-        PlayerDecision.Builder decision = PlayerDecision.newBuilder();
+    private PlayerProtos.PlayerDecision createDecisionsFromCommands(String[] commands) {
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
 
         // TODO: create more commands for convenience
         for (String command : commands) {

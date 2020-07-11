@@ -2,9 +2,9 @@ package mech.mania.engine.game.board;
 
 
 import mech.mania.engine.game.characters.Position;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Board {
     private Tile[][] grid;
@@ -28,6 +28,10 @@ public class Board {
 
     }
 
+    /**
+     * Board constructor used in testing to create small boards
+     * @param dimension
+     */
     public Board(int dimension) {
         grid = new Tile[dimension][dimension];
         portals = new ArrayList<>();

@@ -27,6 +27,8 @@ public class GameState {
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
         stateChange = new VisualizerChange();
+
+        // @TODO: Create pvp board
     }
 
     public Board getPvpBoard() {
@@ -144,7 +146,7 @@ public class GameState {
 
     public void addNewPlayer(String playerName) {
         // TODO specify board dimensions
-        boardNames.put(playerName, new Board(0));
+        boardNames.put(playerName, new Board(2));
         //TODO specify spawn point location on each board
         playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
     }
