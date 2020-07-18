@@ -2,6 +2,7 @@ package mech.mania.engine;
 
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
+
 import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.server.api.GameStateController;
@@ -9,11 +10,8 @@ import mech.mania.engine.server.communication.player.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
+import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class GameStateTests {
@@ -90,6 +88,8 @@ public class GameStateTests {
         assertTrue(finalPos.equals(expectedPos));
     }
 
+
+
     /**
      * Helper function that creates a custom PlayerDecision from custom commands
      *
@@ -110,4 +110,19 @@ public class GameStateTests {
 
         return decision.build();
     }
+
+    @Test
+    public void manhattanDistanceTests() {
+        Position x0y0 = new Position(0, 0, "id");
+        Position x10y10 = new Position(10, 10, "id");
+        Position x5y10 = new Position(5, 10, "id");
+        Position x5y11 = new Position(5, 11, "id");
+        assertEquals(20, GameLogic.calculateManhattanDistance(x0y0, x10y10));
+        assertEquals(15, GameLogic.calculateManhattanDistance(x0y0, x5y10));
+        assertEquals(16, GameLogic.calculateManhattanDistance(x0y0, x5y11));
+        assertEquals(0, GameLogic.calculateManhattanDistance(x10y10, x10y10));
+        assertEquals(5, GameLogic.calculateManhattanDistance(x5y10, x10y10));
+        assertEquals(1, GameLogic.calculateManhattanDistance(x5y10, x5y11));
+    }
+
 }

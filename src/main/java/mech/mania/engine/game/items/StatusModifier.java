@@ -40,7 +40,9 @@ public class StatusModifier {
     // regenPerTurn is a flat amount of HP added to the current HP every turn.
 
 
-    public StatusModifier(int speedChange, double percentSpeedChange, int healthChange, double percentHealthChange, int experienceChange, double percentExperienceChange, int attackChange, double percentAttackChange, int defenseChange, double percentDefenseChange, int regenPerTurn) {
+    public StatusModifier(int speedChange, double percentSpeedChange, int healthChange, double percentHealthChange,
+                          int experienceChange, double percentExperienceChange, int attackChange, double percentAttackChange,
+                          int defenseChange, double percentDefenseChange, int regenPerTurn) {
         this.flatSpeedChange = speedChange;
         this.percentSpeedChange = percentSpeedChange;
         this.flatHealthChange = healthChange;
@@ -52,20 +54,6 @@ public class StatusModifier {
         this.flatDefenseChange = defenseChange;
         this.percentDefenseChange = percentDefenseChange;
         this.flatRegenPerTurn = regenPerTurn;
-    }
-
-    public StatusModifier() {
-        this.flatSpeedChange = 0;
-        this.percentSpeedChange = 0;
-        this.flatHealthChange = 0;
-        this.percentHealthChange = 0;
-        this.flatExperienceChange = 0;
-        this.percentExperienceChange = 0;
-        this.flatAttackChange = 0;
-        this.percentAttackChange = 0;
-        this.flatDefenseChange = 0;
-        this.percentDefenseChange = 0;
-        this.flatRegenPerTurn = 0;
     }
 
     public StatusModifier(ItemProtos.StatusModifier statusModifierProto) {
