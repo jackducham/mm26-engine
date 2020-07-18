@@ -396,7 +396,7 @@ public class GameLogic {
      * @return Manhattan Distance between pos1 and pos2
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
+        return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
     }
 
     /**
