@@ -150,4 +150,11 @@ public class GameState {
         //TODO specify spawn point location on each board
         playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
     }
+
+    public void addNewMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
+        Monster monster = Monster.CreateDefaultMonster(speedFactor, maxHealthFactor, attackFactor, defenseFactor, experienceFactor, rangeFactor, splashFactor, numberOfDrops, spawnPoint);
+        monsterNames.put(monster.getName(), monster);
+    }
+
+
 }
