@@ -14,7 +14,8 @@ import java.util.UUID;
 import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class GameStateTests {
+/** This contains tests for any overall board tests or helper functions */
+public class GameLogicTests {
 
     private GameState gameState;
     private GameStateController controller;
