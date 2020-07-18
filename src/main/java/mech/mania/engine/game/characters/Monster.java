@@ -13,12 +13,16 @@ import java.util.List;
 public class Monster extends Character {
     private List<Item> drops;
 
+
+    // --------Constructors-------- //
     public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                    int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
         super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
         this.drops = drops;
     }
 
+
+    // --------Proto Stuff-------- //
     // @TODO: Update CharacterProtos
     public Monster(CharacterProtos.Monster monsterProto) {
         super(
@@ -76,6 +80,9 @@ public class Monster extends Character {
         return monsterBuilder.build();
     }
 
+
+
+    // --------Monster Decisions-------- //
     private Position findPositionToMove(GameState gameState, Position destination) {
         List<Position> path = GameLogic.findPath(gameState, this.position, destination);
         Position toMove;
@@ -119,6 +126,75 @@ public class Monster extends Character {
         }
         return null;
     }
+
+
+    // --------Static Monster Creators-------- //
+    //TODO: this function (and static count variable) should be copied and modified for each monster in the game.
+    public static int DefaultMonsterQuantity = 0;
+    public static Monster CreateDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
+
+        /*
+        Default stats and their scaling factors:
+        These stats are used to create a monster with slightly randomized stats based on random double inputs which should range between -1 and 1.
+        The random values aren't directly calculated so as to allow the creation of a "standard" monster by inputting 0 for all factors,
+        or to set a certain "difficulty" of monster by inputting other values such as 0.5, 1,  or even other ints like 2 or 3.
+         */
+        int baseSpeed = 5;
+        int baseSpeedSpread = 1;
+
+        int baseMaxHealth = 20;
+        int baseMaxHealthSpread = 3;
+
+        int baseAttack = 5;
+        int baseAttackSpread = 1;
+
+        int baseDefense = 2;
+        int baseDefenseSpread = 1;
+
+        int experience = 10;
+        int experienceSpread = 2;
+
+        int range = 3;
+        int rangeSpread = 0;
+
+        int splash = 0;
+        int splashSpread = 0;
+
+        /*
+        TODO: add Item drop generation
+        My current plan is to have an item generator specific to this monster which will generate a number of items
+        equal to the numberOfDrops argument and add them to the list of drops. Everything in this list will then be
+        dropped upon the monster dieing.
+         */
+
+        List<Item> drops = new ArrayList<Item>();
+        /*
+        //here is where we will generate and add items:
+
+        for(int i = 0; i < numberOfDrops; ++i) {
+            //generate item and add it to the list
+        }
+
+        */
+
+
+        StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, defaultOnHit);
+
+        Monster newMonster = new Monster("DefaultMonster" + DefaultMonsterQuantity,
+                baseSpeed + (int)speedFactor*baseSpeedSpread,
+                baseMaxHealth + (int)maxHealthFactor*baseMaxHealthSpread,
+                baseAttack + (int)attackFactor*baseAttackSpread,
+                baseDefense + (int)defenseFactor*baseDefenseSpread,
+                experience + (int)experienceFactor*experienceSpread,
+                spawnPoint,  defaultWeapon, drops);
+
+        ++DefaultMonsterQuantity;
+        return newMonster;
+    }
+
+
 
     @Override
     public void distributeRewards(GameState gameState) {
