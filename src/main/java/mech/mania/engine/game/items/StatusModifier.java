@@ -236,5 +236,4 @@ public class StatusModifier {
         this.flatRegenPerTurn += flatRegenPerTurn;
     }
 
-
 }

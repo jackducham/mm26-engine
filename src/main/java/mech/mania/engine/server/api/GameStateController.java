@@ -11,7 +11,6 @@ import mech.mania.engine.server.communication.visualizer.model.VisualizerProtos.
 import mech.mania.engine.server.dao.DatabaseFake;
 import mech.mania.engine.server.dao.Database;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -120,23 +119,17 @@ public class GameStateController {
      * @return VisualizerTurn from the given GameState
      */
     public static VisualizerChange constructVisualizerChange() {
-        GameState gameState = getCurrentGameState();
-        // TODO: construct VisualizerTurn
-        return VisualizerChange.newBuilder()
-                .build();
+        return getCurrentGameState().stateChange.buildProtoClass();
     }
 
     /**
      * Given a gameState, use its internal state to create a PlayerTurn to send
      * to players
-     * @param playerName name of the player to get the playerTurn for
      * @return PlayerTurn from the given GameState
      */
-    public static PlayerTurn constructPlayerTurn(String playerName) {
+    public static PlayerTurn constructPlayerTurn() {
         // TODO: construct PlayerTurn by looking up information specific for this player
-        return PlayerTurn.newBuilder()
-                .setPlayerName(playerName)
-                .build();
+        return PlayerTurn.newBuilder().setGameState(getCurrentGameState().buildProtoClass()).build();
     }
 
     /**

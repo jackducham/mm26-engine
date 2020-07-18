@@ -33,7 +33,6 @@ public class PlayerRequestSender {
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
         ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
-
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
@@ -52,7 +51,7 @@ public class PlayerRequestSender {
                 http.setRequestMethod("POST");
                 http.setDoOutput(true);
 
-                PlayerTurn turn = GameStateController.constructPlayerTurn(playerName);
+                PlayerTurn turn = GameStateController.constructPlayerTurn();
                 turn.writeTo(http.getOutputStream());
 
                 decision = PlayerDecision.parseFrom(http.getInputStream());

@@ -2,10 +2,10 @@ package mech.mania.engine.game;
 
 import mech.mania.engine.game.board.Board;
 import mech.mania.engine.game.board.BoardProtos;
-import mech.mania.engine.game.characters.Character;
-import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.*;
+import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.model.GameStateProtos;
+import mech.mania.engine.game.model.VisualizerChange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,19 +19,23 @@ public class GameState {
     private Map<String, Board> boardNames;
     private Map<String, Player> playerNames;
     private Map<String, Monster> monsterNames;
-
-    public Board getPvpBoard() {
-        return boardNames.get("pvp");
-    }
+    public VisualizerChange stateChange;
 
     public GameState() {
         turnNumber = 0;
         boardNames = new HashMap<>();
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
+        stateChange = new VisualizerChange();
+
+        // @TODO: Create pvp board
     }
 
-    public Board getBoard(String boardId){
+    public Board getPvpBoard() {
+        return boardNames.get("pvp");
+    }
+
+    public Board getBoard(String boardId) {
         if (boardNames.containsKey(boardId)) {
             return boardNames.get(boardId);
         }
@@ -57,20 +61,12 @@ public class GameState {
         return null;
     }
 
-    public List<Player> getAllPlayers() {
-        List<Player> players = new ArrayList<Player>();
-        for(Player player: playerNames.values()) {
-            players.add(player);
-        }
-        return players;
+    public Map<String, Player> getAllPlayers() {
+        return playerNames;
     }
 
-    public List<Monster> getAllMonsters() {
-        List<Monster> monsters = new ArrayList<Monster>();
-        for(Monster monster: monsterNames.values()) {
-            monsters.add(monster);
-        }
-        return monsters;
+    public Map<String, Monster> getAllMonsters() {
+        return monsterNames;
     }
 
     public Monster getMonster(String monsterId) {
@@ -146,5 +142,12 @@ public class GameState {
             Player newPlayer = new Player(allPlayers.get(playerName));
             playerNames.put(newPlayer.getName(), newPlayer);
         }
+    }
+
+    public void addNewPlayer(String playerName) {
+        // TODO specify board dimensions
+        boardNames.put(playerName, new Board(2));
+        //TODO specify spawn point location on each board
+        playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
     }
 }

@@ -26,10 +26,17 @@ public class GameLogic {
      * @return the resulting {@link GameState}.
      */
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
+        gameState.stateChange.clearChanges();
         // ========== NOTES & TODOS ========== \\
-        // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
+        // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
+        // Search decisions map for new players. For each new player, create Player object and a private Board
+        for (String playerName : decisions.keySet()) {
+            if (!gameState.getAllPlayers().containsKey(playerName)) {
+                gameState.addNewPlayer(playerName);
+            }
+        }
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
@@ -83,8 +90,8 @@ public class GameLogic {
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
         // respawning, and distributing rewards
-        List<Player> players = gameState.getAllPlayers();
-        List<Monster> monsters = gameState.getAllMonsters();
+        Collection<Player> players = gameState.getAllPlayers().values();
+        Collection<Monster> monsters = gameState.getAllMonsters().values();
 
         for (Player player: players) {
             player.updateCharacter(gameState);
@@ -125,6 +132,8 @@ public class GameLogic {
                 pickUpItem(gameState, player, decision.getIndex());
                 break;
         }
+        gameState.stateChange.updatePlayer(character, decision, null, false, false);
+
     }
 
     /**
@@ -143,6 +152,7 @@ public class GameLogic {
             return new ArrayList<>();
         }
         character.setPosition(targetPosition);
+        gameState.stateChange.updatePlayer(character, null, path, false, false);
         return path;
     }
 
