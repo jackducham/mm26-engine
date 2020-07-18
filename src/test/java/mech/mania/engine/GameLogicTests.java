@@ -14,7 +14,8 @@ import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class GameStateTests {
+/** This contains tests for any overall board tests or helper functions */
+public class GameLogicTests {
 
     private GameState gameState;
     private GameStateController controller;
@@ -63,32 +64,6 @@ public class GameStateTests {
         Position initPos = new Position(0, 0, "player1");
         assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
     }
-
-    /**
-     * Tests MOVE decision (moves player from 0, 0 to 1, 0)
-     */
-    @Test
-    public void movePlayer(){
-        // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
-        decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
-
-        CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
-        newPos.setX(1).setY(0).setBoardId("player1");
-        decision.setTargetPosition(newPos.build());
-
-        // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
-        decisionMap.put("player1", decision.build());
-        GameLogic.doTurn(gameState, decisionMap);
-
-        // Check that player has been moved
-        Position finalPos = gameState.getPlayer("player1").getPosition();
-        Position expectedPos = new Position(1, 0, "player1");
-        assertTrue(finalPos.equals(expectedPos));
-    }
-
-
 
     /**
      * Helper function that creates a custom PlayerDecision from custom commands
