@@ -3,10 +3,11 @@ package mech.mania.engine.service_layer;
 import mech.mania.engine.adapters.RepositoryAbstract;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Message;
-import mech.mania.engine.domain.model.PlayerInfo;
+import mech.mania.engine.domain.model.PlayerConnectInfo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -18,7 +19,8 @@ public abstract class UnitOfWorkAbstract {
     private static final Logger LOGGER = Logger.getLogger( UnitOfWorkAbstract.class.getName() );
     private final Queue<Message> messages = new LinkedList<>();
     private final RepositoryAbstract repository;
-    private final Map<String, PlayerInfo> currentPlayerInfoMap = new ConcurrentHashMap<>();
+    private final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
+    // private final Map<String, PlayerStatistics> statisticsMap = new HashMap<>();
     private GameState gameState;
     private int turn;
     private ConfigurableApplicationContext infraCtx;
@@ -88,8 +90,8 @@ public abstract class UnitOfWorkAbstract {
     /**
      * Get the PlayerInfoMap object
      */
-    public Map<String, PlayerInfo> getPlayerInfoMap() {
-        return currentPlayerInfoMap;
+    public Map<String, PlayerConnectInfo> getPlayerConnectInfoMap() {
+        return connectInfoMap;
     }
 
     /**
@@ -97,15 +99,13 @@ public abstract class UnitOfWorkAbstract {
      * (true if player existed, false if player did not exist and new
      * player was added)
      */
-    public boolean updatePlayerInfoMap(String playerName, String playerIp) {
-        Map<String, PlayerInfo> playerInfoMap = getPlayerInfoMap();
-
-        if (playerInfoMap.containsKey(playerName)) {
-            playerInfoMap.put(playerName, new PlayerInfo(playerIp, playerInfoMap.get(playerName).getTurnJoined()));
+    public boolean updatePlayerConnectInfoMap(String playerName, String playerIp) {
+        if (connectInfoMap.containsKey(playerName)) {
+            connectInfoMap.put(playerName, new PlayerConnectInfo(playerIp));
             return true;
         }
 
-        playerInfoMap.put(playerName, new PlayerInfo(playerIp, getTurn()));
+        connectInfoMap.put(playerName, new PlayerConnectInfo(playerIp));
         return false;
     }
 

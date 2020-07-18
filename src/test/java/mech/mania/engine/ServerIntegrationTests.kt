@@ -9,6 +9,8 @@ import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.entrypoints.Main
+import mech.mania.engine.service_layer.InfraRESTHandler
+import mech.mania.engine.service_layer.VisualizerWebSocket
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -27,7 +29,7 @@ import kotlin.test.assertTrue
  */
 
 @RunWith(SpringJUnit4ClassRunner::class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = [InfraRESTHandler::class, VisualizerWebSocket::class])
 class ServerIntegrationTests {
 
     /** Port to launch the Game server on */

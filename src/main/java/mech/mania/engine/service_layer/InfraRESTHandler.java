@@ -2,7 +2,6 @@ package mech.mania.engine.service_layer;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.domain.messages.EventEndGame;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
@@ -70,7 +69,7 @@ public class InfraRESTHandler {
             String ip = playerInfo.getPlayerIp();
 
             message = "Successfully added new player";
-            if (bus.getUow().updatePlayerInfoMap(name, ip)) {
+            if (bus.getUow().updatePlayerConnectInfoMap(name, ip)) {
                 message = "Successfully added new player";
             } else {
                 message = "Successfully updated already existing player";

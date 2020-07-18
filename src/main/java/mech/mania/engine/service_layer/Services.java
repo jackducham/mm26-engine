@@ -3,7 +3,7 @@ package mech.mania.engine.service_layer;
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.model.PlayerInfo;
+import mech.mania.engine.domain.model.PlayerConnectInfo;
 import mech.mania.engine.domain.model.PlayerProtos.*;
 import mech.mania.engine.domain.model.VisualizerProtos.*;
 
@@ -45,7 +45,7 @@ public class Services {
      * (containing a PlayerInfoMap) and return the successful requests.
      */
     public static Map<String, PlayerDecision> getSuccessfulPlayerDecisions(UnitOfWorkAbstract uow) {
-        Map<String, PlayerInfo> playerInfoMap = uow.getPlayerInfoMap();
+        Map<String, PlayerConnectInfo> playerInfoMap = uow.getPlayerConnectInfoMap();
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
             return new HashMap<>();
