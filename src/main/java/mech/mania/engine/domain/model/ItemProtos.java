@@ -37,11 +37,11 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 2;</code>
      * @return The stats.
      */
-    ItemProtos.StatusModifier getStats();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats();
     /**
      * <code>.item.StatusModifier stats = 2;</code>
      */
-    ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
      * <code>.item.Clothes clothes = 3;</code>
@@ -52,11 +52,11 @@ public final class ItemProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return The clothes.
      */
-    ItemProtos.Clothes getClothes();
+    mech.mania.engine.domain.model.ItemProtos.Clothes getClothes();
     /**
      * <code>.item.Clothes clothes = 3;</code>
      */
-    ItemProtos.ClothesOrBuilder getClothesOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder getClothesOrBuilder();
 
     /**
      * <code>.item.Hat hat = 4;</code>
@@ -67,11 +67,11 @@ public final class ItemProtos {
      * <code>.item.Hat hat = 4;</code>
      * @return The hat.
      */
-    ItemProtos.Hat getHat();
+    mech.mania.engine.domain.model.ItemProtos.Hat getHat();
     /**
      * <code>.item.Hat hat = 4;</code>
      */
-    ItemProtos.HatOrBuilder getHatOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.HatOrBuilder getHatOrBuilder();
 
     /**
      * <code>.item.Shoes shoes = 5;</code>
@@ -82,11 +82,11 @@ public final class ItemProtos {
      * <code>.item.Shoes shoes = 5;</code>
      * @return The shoes.
      */
-    ItemProtos.Shoes getShoes();
+    mech.mania.engine.domain.model.ItemProtos.Shoes getShoes();
     /**
      * <code>.item.Shoes shoes = 5;</code>
      */
-    ItemProtos.ShoesOrBuilder getShoesOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder getShoesOrBuilder();
 
     /**
      * <code>.item.Weapon weapon = 6;</code>
@@ -97,11 +97,11 @@ public final class ItemProtos {
      * <code>.item.Weapon weapon = 6;</code>
      * @return The weapon.
      */
-    ItemProtos.Weapon getWeapon();
+    mech.mania.engine.domain.model.ItemProtos.Weapon getWeapon();
     /**
      * <code>.item.Weapon weapon = 6;</code>
      */
-    ItemProtos.WeaponOrBuilder getWeaponOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder getWeaponOrBuilder();
 
     /**
      * <code>.item.Consumable consumable = 7;</code>
@@ -112,18 +112,18 @@ public final class ItemProtos {
      * <code>.item.Consumable consumable = 7;</code>
      * @return The consumable.
      */
-    ItemProtos.Consumable getConsumable();
+    mech.mania.engine.domain.model.ItemProtos.Consumable getConsumable();
     /**
      * <code>.item.Consumable consumable = 7;</code>
      */
-    ItemProtos.ConsumableOrBuilder getConsumableOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder();
 
-    public ItemProtos.Item.ItemCase getItemCase();
+    public mech.mania.engine.domain.model.ItemProtos.Item.ItemCase getItemCase();
   }
   /**
    * Protobuf type {@code item.Item}
    */
-  public  static final class Item extends
+  public static final class Item extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Item)
       ItemOrBuilder {
@@ -171,11 +171,11 @@ public final class ItemProtos {
               break;
             }
             case 18: {
-              ItemProtos.StatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
               }
-              stats_ = input.readMessage(ItemProtos.StatusModifier.parser(), extensionRegistry);
+              stats_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.StatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(stats_);
                 stats_ = subBuilder.buildPartial();
@@ -184,70 +184,70 @@ public final class ItemProtos {
               break;
             }
             case 26: {
-              ItemProtos.Clothes.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.Clothes.Builder subBuilder = null;
               if (itemCase_ == 3) {
-                subBuilder = ((ItemProtos.Clothes) item_).toBuilder();
+                subBuilder = ((mech.mania.engine.domain.model.ItemProtos.Clothes) item_).toBuilder();
               }
               item_ =
-                  input.readMessage(ItemProtos.Clothes.parser(), extensionRegistry);
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Clothes.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((ItemProtos.Clothes) item_);
+                subBuilder.mergeFrom((mech.mania.engine.domain.model.ItemProtos.Clothes) item_);
                 item_ = subBuilder.buildPartial();
               }
               itemCase_ = 3;
               break;
             }
             case 34: {
-              ItemProtos.Hat.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.Hat.Builder subBuilder = null;
               if (itemCase_ == 4) {
-                subBuilder = ((ItemProtos.Hat) item_).toBuilder();
+                subBuilder = ((mech.mania.engine.domain.model.ItemProtos.Hat) item_).toBuilder();
               }
               item_ =
-                  input.readMessage(ItemProtos.Hat.parser(), extensionRegistry);
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Hat.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((ItemProtos.Hat) item_);
+                subBuilder.mergeFrom((mech.mania.engine.domain.model.ItemProtos.Hat) item_);
                 item_ = subBuilder.buildPartial();
               }
               itemCase_ = 4;
               break;
             }
             case 42: {
-              ItemProtos.Shoes.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.Shoes.Builder subBuilder = null;
               if (itemCase_ == 5) {
-                subBuilder = ((ItemProtos.Shoes) item_).toBuilder();
+                subBuilder = ((mech.mania.engine.domain.model.ItemProtos.Shoes) item_).toBuilder();
               }
               item_ =
-                  input.readMessage(ItemProtos.Shoes.parser(), extensionRegistry);
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Shoes.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((ItemProtos.Shoes) item_);
+                subBuilder.mergeFrom((mech.mania.engine.domain.model.ItemProtos.Shoes) item_);
                 item_ = subBuilder.buildPartial();
               }
               itemCase_ = 5;
               break;
             }
             case 50: {
-              ItemProtos.Weapon.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.Weapon.Builder subBuilder = null;
               if (itemCase_ == 6) {
-                subBuilder = ((ItemProtos.Weapon) item_).toBuilder();
+                subBuilder = ((mech.mania.engine.domain.model.ItemProtos.Weapon) item_).toBuilder();
               }
               item_ =
-                  input.readMessage(ItemProtos.Weapon.parser(), extensionRegistry);
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Weapon.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((ItemProtos.Weapon) item_);
+                subBuilder.mergeFrom((mech.mania.engine.domain.model.ItemProtos.Weapon) item_);
                 item_ = subBuilder.buildPartial();
               }
               itemCase_ = 6;
               break;
             }
             case 58: {
-              ItemProtos.Consumable.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.Consumable.Builder subBuilder = null;
               if (itemCase_ == 7) {
-                subBuilder = ((ItemProtos.Consumable) item_).toBuilder();
+                subBuilder = ((mech.mania.engine.domain.model.ItemProtos.Consumable) item_).toBuilder();
               }
               item_ =
-                  input.readMessage(ItemProtos.Consumable.parser(), extensionRegistry);
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Consumable.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((ItemProtos.Consumable) item_);
+                subBuilder.mergeFrom((mech.mania.engine.domain.model.ItemProtos.Consumable) item_);
                 item_ = subBuilder.buildPartial();
               }
               itemCase_ = 7;
@@ -274,15 +274,15 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_Item_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Item_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_Item_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Item_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.Item.class, ItemProtos.Item.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.Item.class, mech.mania.engine.domain.model.ItemProtos.Item.Builder.class);
     }
 
     private int itemCase_ = 0;
@@ -342,16 +342,18 @@ public final class ItemProtos {
      * <code>int32 max_stack = 1;</code>
      * @return The maxStack.
      */
+    @java.lang.Override
     public int getMaxStack() {
       return maxStack_;
     }
 
     public static final int STATS_FIELD_NUMBER = 2;
-    private ItemProtos.StatusModifier stats_;
+    private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
     /**
      * <code>.item.StatusModifier stats = 2;</code>
      * @return Whether the stats field is set.
      */
+    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -359,13 +361,15 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 2;</code>
      * @return The stats.
      */
-    public ItemProtos.StatusModifier getStats() {
-      return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
+      return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 2;</code>
      */
-    public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
 
@@ -374,6 +378,7 @@ public final class ItemProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return Whether the clothes field is set.
      */
+    @java.lang.Override
     public boolean hasClothes() {
       return itemCase_ == 3;
     }
@@ -381,20 +386,22 @@ public final class ItemProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return The clothes.
      */
-    public ItemProtos.Clothes getClothes() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Clothes getClothes() {
       if (itemCase_ == 3) {
-         return (ItemProtos.Clothes) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Clothes) item_;
       }
-      return ItemProtos.Clothes.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
     }
     /**
      * <code>.item.Clothes clothes = 3;</code>
      */
-    public ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
       if (itemCase_ == 3) {
-         return (ItemProtos.Clothes) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Clothes) item_;
       }
-      return ItemProtos.Clothes.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
     }
 
     public static final int HAT_FIELD_NUMBER = 4;
@@ -402,6 +409,7 @@ public final class ItemProtos {
      * <code>.item.Hat hat = 4;</code>
      * @return Whether the hat field is set.
      */
+    @java.lang.Override
     public boolean hasHat() {
       return itemCase_ == 4;
     }
@@ -409,20 +417,22 @@ public final class ItemProtos {
      * <code>.item.Hat hat = 4;</code>
      * @return The hat.
      */
-    public ItemProtos.Hat getHat() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Hat getHat() {
       if (itemCase_ == 4) {
-         return (ItemProtos.Hat) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Hat) item_;
       }
-      return ItemProtos.Hat.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
     }
     /**
      * <code>.item.Hat hat = 4;</code>
      */
-    public ItemProtos.HatOrBuilder getHatOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.HatOrBuilder getHatOrBuilder() {
       if (itemCase_ == 4) {
-         return (ItemProtos.Hat) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Hat) item_;
       }
-      return ItemProtos.Hat.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
     }
 
     public static final int SHOES_FIELD_NUMBER = 5;
@@ -430,6 +440,7 @@ public final class ItemProtos {
      * <code>.item.Shoes shoes = 5;</code>
      * @return Whether the shoes field is set.
      */
+    @java.lang.Override
     public boolean hasShoes() {
       return itemCase_ == 5;
     }
@@ -437,20 +448,22 @@ public final class ItemProtos {
      * <code>.item.Shoes shoes = 5;</code>
      * @return The shoes.
      */
-    public ItemProtos.Shoes getShoes() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Shoes getShoes() {
       if (itemCase_ == 5) {
-         return (ItemProtos.Shoes) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Shoes) item_;
       }
-      return ItemProtos.Shoes.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
     }
     /**
      * <code>.item.Shoes shoes = 5;</code>
      */
-    public ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
       if (itemCase_ == 5) {
-         return (ItemProtos.Shoes) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Shoes) item_;
       }
-      return ItemProtos.Shoes.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
     }
 
     public static final int WEAPON_FIELD_NUMBER = 6;
@@ -458,6 +471,7 @@ public final class ItemProtos {
      * <code>.item.Weapon weapon = 6;</code>
      * @return Whether the weapon field is set.
      */
+    @java.lang.Override
     public boolean hasWeapon() {
       return itemCase_ == 6;
     }
@@ -465,20 +479,22 @@ public final class ItemProtos {
      * <code>.item.Weapon weapon = 6;</code>
      * @return The weapon.
      */
-    public ItemProtos.Weapon getWeapon() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Weapon getWeapon() {
       if (itemCase_ == 6) {
-         return (ItemProtos.Weapon) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Weapon) item_;
       }
-      return ItemProtos.Weapon.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
     }
     /**
      * <code>.item.Weapon weapon = 6;</code>
      */
-    public ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
       if (itemCase_ == 6) {
-         return (ItemProtos.Weapon) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Weapon) item_;
       }
-      return ItemProtos.Weapon.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
     }
 
     public static final int CONSUMABLE_FIELD_NUMBER = 7;
@@ -486,6 +502,7 @@ public final class ItemProtos {
      * <code>.item.Consumable consumable = 7;</code>
      * @return Whether the consumable field is set.
      */
+    @java.lang.Override
     public boolean hasConsumable() {
       return itemCase_ == 7;
     }
@@ -493,20 +510,22 @@ public final class ItemProtos {
      * <code>.item.Consumable consumable = 7;</code>
      * @return The consumable.
      */
-    public ItemProtos.Consumable getConsumable() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Consumable getConsumable() {
       if (itemCase_ == 7) {
-         return (ItemProtos.Consumable) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Consumable) item_;
       }
-      return ItemProtos.Consumable.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
     }
     /**
      * <code>.item.Consumable consumable = 7;</code>
      */
-    public ItemProtos.ConsumableOrBuilder getConsumableOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder() {
       if (itemCase_ == 7) {
-         return (ItemProtos.Consumable) item_;
+         return (mech.mania.engine.domain.model.ItemProtos.Consumable) item_;
       }
-      return ItemProtos.Consumable.getDefaultInstance();
+      return mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -530,19 +549,19 @@ public final class ItemProtos {
         output.writeMessage(2, getStats());
       }
       if (itemCase_ == 3) {
-        output.writeMessage(3, (ItemProtos.Clothes) item_);
+        output.writeMessage(3, (mech.mania.engine.domain.model.ItemProtos.Clothes) item_);
       }
       if (itemCase_ == 4) {
-        output.writeMessage(4, (ItemProtos.Hat) item_);
+        output.writeMessage(4, (mech.mania.engine.domain.model.ItemProtos.Hat) item_);
       }
       if (itemCase_ == 5) {
-        output.writeMessage(5, (ItemProtos.Shoes) item_);
+        output.writeMessage(5, (mech.mania.engine.domain.model.ItemProtos.Shoes) item_);
       }
       if (itemCase_ == 6) {
-        output.writeMessage(6, (ItemProtos.Weapon) item_);
+        output.writeMessage(6, (mech.mania.engine.domain.model.ItemProtos.Weapon) item_);
       }
       if (itemCase_ == 7) {
-        output.writeMessage(7, (ItemProtos.Consumable) item_);
+        output.writeMessage(7, (mech.mania.engine.domain.model.ItemProtos.Consumable) item_);
       }
       unknownFields.writeTo(output);
     }
@@ -563,23 +582,23 @@ public final class ItemProtos {
       }
       if (itemCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (ItemProtos.Clothes) item_);
+          .computeMessageSize(3, (mech.mania.engine.domain.model.ItemProtos.Clothes) item_);
       }
       if (itemCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (ItemProtos.Hat) item_);
+          .computeMessageSize(4, (mech.mania.engine.domain.model.ItemProtos.Hat) item_);
       }
       if (itemCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (ItemProtos.Shoes) item_);
+          .computeMessageSize(5, (mech.mania.engine.domain.model.ItemProtos.Shoes) item_);
       }
       if (itemCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (ItemProtos.Weapon) item_);
+          .computeMessageSize(6, (mech.mania.engine.domain.model.ItemProtos.Weapon) item_);
       }
       if (itemCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (ItemProtos.Consumable) item_);
+          .computeMessageSize(7, (mech.mania.engine.domain.model.ItemProtos.Consumable) item_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -591,10 +610,10 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.Item)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.Item)) {
         return super.equals(obj);
       }
-      ItemProtos.Item other = (ItemProtos.Item) obj;
+      mech.mania.engine.domain.model.ItemProtos.Item other = (mech.mania.engine.domain.model.ItemProtos.Item) obj;
 
       if (getMaxStack()
           != other.getMaxStack()) return false;
@@ -674,69 +693,69 @@ public final class ItemProtos {
       return hash;
     }
 
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Item parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Item parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Item parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.Item parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Item parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Item parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -749,7 +768,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.Item prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.Item prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -770,18 +789,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.Item)
-        ItemProtos.ItemOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_Item_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Item_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_Item_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Item_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.Item.class, ItemProtos.Item.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.Item.class, mech.mania.engine.domain.model.ItemProtos.Item.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.Item.newBuilder()
@@ -818,17 +837,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_Item_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Item_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.Item getDefaultInstanceForType() {
-        return ItemProtos.Item.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.Item getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.Item build() {
-        ItemProtos.Item result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.Item build() {
+        mech.mania.engine.domain.model.ItemProtos.Item result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -836,8 +855,8 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.Item buildPartial() {
-        ItemProtos.Item result = new ItemProtos.Item(this);
+      public mech.mania.engine.domain.model.ItemProtos.Item buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.Item result = new mech.mania.engine.domain.model.ItemProtos.Item(this);
         result.maxStack_ = maxStack_;
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
@@ -918,16 +937,16 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.Item) {
-          return mergeFrom((ItemProtos.Item)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.Item) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.Item)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.Item other) {
-        if (other == ItemProtos.Item.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.Item other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance()) return this;
         if (other.getMaxStack() != 0) {
           setMaxStack(other.getMaxStack());
         }
@@ -974,11 +993,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.Item parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.Item parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.Item) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.Item) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1012,6 +1031,7 @@ public final class ItemProtos {
        * <code>int32 max_stack = 1;</code>
        * @return The maxStack.
        */
+      @java.lang.Override
       public int getMaxStack() {
         return maxStack_;
       }
@@ -1045,9 +1065,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.StatusModifier stats_;
+      private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> statsBuilder_;
       /**
        * <code>.item.StatusModifier stats = 2;</code>
        * @return Whether the stats field is set.
@@ -1059,9 +1079,9 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 2;</code>
        * @return The stats.
        */
-      public ItemProtos.StatusModifier getStats() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+          return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         } else {
           return statsBuilder_.getMessage();
         }
@@ -1069,7 +1089,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 2;</code>
        */
-      public Builder setStats(ItemProtos.StatusModifier value) {
+      public Builder setStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1086,7 +1106,7 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 2;</code>
        */
       public Builder setStats(
-          ItemProtos.StatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder builderForValue) {
         if (statsBuilder_ == null) {
           stats_ = builderForValue.build();
           onChanged();
@@ -1099,11 +1119,11 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 2;</code>
        */
-      public Builder mergeStats(ItemProtos.StatusModifier value) {
+      public Builder mergeStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (stats_ != null) {
             stats_ =
-              ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
           } else {
             stats_ = value;
           }
@@ -1131,7 +1151,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 2;</code>
        */
-      public ItemProtos.StatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder getStatsBuilder() {
         
         onChanged();
         return getStatsFieldBuilder().getBuilder();
@@ -1139,23 +1159,23 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 2;</code>
        */
-      public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
           return stats_ == null ?
-              ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         }
       }
       /**
        * <code>.item.StatusModifier stats = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder>(
                   getStats(),
                   getParentForChildren(),
                   isClean());
@@ -1165,11 +1185,12 @@ public final class ItemProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Clothes, ItemProtos.Clothes.Builder, ItemProtos.ClothesOrBuilder> clothesBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.Clothes, mech.mania.engine.domain.model.ItemProtos.Clothes.Builder, mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder> clothesBuilder_;
       /**
        * <code>.item.Clothes clothes = 3;</code>
        * @return Whether the clothes field is set.
        */
+      @java.lang.Override
       public boolean hasClothes() {
         return itemCase_ == 3;
       }
@@ -1177,23 +1198,24 @@ public final class ItemProtos {
        * <code>.item.Clothes clothes = 3;</code>
        * @return The clothes.
        */
-      public ItemProtos.Clothes getClothes() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.Clothes getClothes() {
         if (clothesBuilder_ == null) {
           if (itemCase_ == 3) {
-            return (ItemProtos.Clothes) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Clothes) item_;
           }
-          return ItemProtos.Clothes.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
         } else {
           if (itemCase_ == 3) {
             return clothesBuilder_.getMessage();
           }
-          return ItemProtos.Clothes.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Clothes clothes = 3;</code>
        */
-      public Builder setClothes(ItemProtos.Clothes value) {
+      public Builder setClothes(mech.mania.engine.domain.model.ItemProtos.Clothes value) {
         if (clothesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1210,7 +1232,7 @@ public final class ItemProtos {
        * <code>.item.Clothes clothes = 3;</code>
        */
       public Builder setClothes(
-          ItemProtos.Clothes.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.Clothes.Builder builderForValue) {
         if (clothesBuilder_ == null) {
           item_ = builderForValue.build();
           onChanged();
@@ -1223,11 +1245,11 @@ public final class ItemProtos {
       /**
        * <code>.item.Clothes clothes = 3;</code>
        */
-      public Builder mergeClothes(ItemProtos.Clothes value) {
+      public Builder mergeClothes(mech.mania.engine.domain.model.ItemProtos.Clothes value) {
         if (clothesBuilder_ == null) {
           if (itemCase_ == 3 &&
-              item_ != ItemProtos.Clothes.getDefaultInstance()) {
-            item_ = ItemProtos.Clothes.newBuilder((ItemProtos.Clothes) item_)
+              item_ != mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance()) {
+            item_ = mech.mania.engine.domain.model.ItemProtos.Clothes.newBuilder((mech.mania.engine.domain.model.ItemProtos.Clothes) item_)
                 .mergeFrom(value).buildPartial();
           } else {
             item_ = value;
@@ -1264,35 +1286,36 @@ public final class ItemProtos {
       /**
        * <code>.item.Clothes clothes = 3;</code>
        */
-      public ItemProtos.Clothes.Builder getClothesBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.Clothes.Builder getClothesBuilder() {
         return getClothesFieldBuilder().getBuilder();
       }
       /**
        * <code>.item.Clothes clothes = 3;</code>
        */
-      public ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
         if ((itemCase_ == 3) && (clothesBuilder_ != null)) {
           return clothesBuilder_.getMessageOrBuilder();
         } else {
           if (itemCase_ == 3) {
-            return (ItemProtos.Clothes) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Clothes) item_;
           }
-          return ItemProtos.Clothes.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Clothes clothes = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Clothes, ItemProtos.Clothes.Builder, ItemProtos.ClothesOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.Clothes, mech.mania.engine.domain.model.ItemProtos.Clothes.Builder, mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder> 
           getClothesFieldBuilder() {
         if (clothesBuilder_ == null) {
           if (!(itemCase_ == 3)) {
-            item_ = ItemProtos.Clothes.getDefaultInstance();
+            item_ = mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
           }
           clothesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.Clothes, ItemProtos.Clothes.Builder, ItemProtos.ClothesOrBuilder>(
-                  (ItemProtos.Clothes) item_,
+              mech.mania.engine.domain.model.ItemProtos.Clothes, mech.mania.engine.domain.model.ItemProtos.Clothes.Builder, mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder>(
+                  (mech.mania.engine.domain.model.ItemProtos.Clothes) item_,
                   getParentForChildren(),
                   isClean());
           item_ = null;
@@ -1303,11 +1326,12 @@ public final class ItemProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Hat, ItemProtos.Hat.Builder, ItemProtos.HatOrBuilder> hatBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.Hat, mech.mania.engine.domain.model.ItemProtos.Hat.Builder, mech.mania.engine.domain.model.ItemProtos.HatOrBuilder> hatBuilder_;
       /**
        * <code>.item.Hat hat = 4;</code>
        * @return Whether the hat field is set.
        */
+      @java.lang.Override
       public boolean hasHat() {
         return itemCase_ == 4;
       }
@@ -1315,23 +1339,24 @@ public final class ItemProtos {
        * <code>.item.Hat hat = 4;</code>
        * @return The hat.
        */
-      public ItemProtos.Hat getHat() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.Hat getHat() {
         if (hatBuilder_ == null) {
           if (itemCase_ == 4) {
-            return (ItemProtos.Hat) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Hat) item_;
           }
-          return ItemProtos.Hat.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
         } else {
           if (itemCase_ == 4) {
             return hatBuilder_.getMessage();
           }
-          return ItemProtos.Hat.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Hat hat = 4;</code>
        */
-      public Builder setHat(ItemProtos.Hat value) {
+      public Builder setHat(mech.mania.engine.domain.model.ItemProtos.Hat value) {
         if (hatBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1348,7 +1373,7 @@ public final class ItemProtos {
        * <code>.item.Hat hat = 4;</code>
        */
       public Builder setHat(
-          ItemProtos.Hat.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.Hat.Builder builderForValue) {
         if (hatBuilder_ == null) {
           item_ = builderForValue.build();
           onChanged();
@@ -1361,11 +1386,11 @@ public final class ItemProtos {
       /**
        * <code>.item.Hat hat = 4;</code>
        */
-      public Builder mergeHat(ItemProtos.Hat value) {
+      public Builder mergeHat(mech.mania.engine.domain.model.ItemProtos.Hat value) {
         if (hatBuilder_ == null) {
           if (itemCase_ == 4 &&
-              item_ != ItemProtos.Hat.getDefaultInstance()) {
-            item_ = ItemProtos.Hat.newBuilder((ItemProtos.Hat) item_)
+              item_ != mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance()) {
+            item_ = mech.mania.engine.domain.model.ItemProtos.Hat.newBuilder((mech.mania.engine.domain.model.ItemProtos.Hat) item_)
                 .mergeFrom(value).buildPartial();
           } else {
             item_ = value;
@@ -1402,35 +1427,36 @@ public final class ItemProtos {
       /**
        * <code>.item.Hat hat = 4;</code>
        */
-      public ItemProtos.Hat.Builder getHatBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.Hat.Builder getHatBuilder() {
         return getHatFieldBuilder().getBuilder();
       }
       /**
        * <code>.item.Hat hat = 4;</code>
        */
-      public ItemProtos.HatOrBuilder getHatOrBuilder() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.HatOrBuilder getHatOrBuilder() {
         if ((itemCase_ == 4) && (hatBuilder_ != null)) {
           return hatBuilder_.getMessageOrBuilder();
         } else {
           if (itemCase_ == 4) {
-            return (ItemProtos.Hat) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Hat) item_;
           }
-          return ItemProtos.Hat.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Hat hat = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Hat, ItemProtos.Hat.Builder, ItemProtos.HatOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.Hat, mech.mania.engine.domain.model.ItemProtos.Hat.Builder, mech.mania.engine.domain.model.ItemProtos.HatOrBuilder> 
           getHatFieldBuilder() {
         if (hatBuilder_ == null) {
           if (!(itemCase_ == 4)) {
-            item_ = ItemProtos.Hat.getDefaultInstance();
+            item_ = mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
           }
           hatBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.Hat, ItemProtos.Hat.Builder, ItemProtos.HatOrBuilder>(
-                  (ItemProtos.Hat) item_,
+              mech.mania.engine.domain.model.ItemProtos.Hat, mech.mania.engine.domain.model.ItemProtos.Hat.Builder, mech.mania.engine.domain.model.ItemProtos.HatOrBuilder>(
+                  (mech.mania.engine.domain.model.ItemProtos.Hat) item_,
                   getParentForChildren(),
                   isClean());
           item_ = null;
@@ -1441,11 +1467,12 @@ public final class ItemProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Shoes, ItemProtos.Shoes.Builder, ItemProtos.ShoesOrBuilder> shoesBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.Shoes, mech.mania.engine.domain.model.ItemProtos.Shoes.Builder, mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder> shoesBuilder_;
       /**
        * <code>.item.Shoes shoes = 5;</code>
        * @return Whether the shoes field is set.
        */
+      @java.lang.Override
       public boolean hasShoes() {
         return itemCase_ == 5;
       }
@@ -1453,23 +1480,24 @@ public final class ItemProtos {
        * <code>.item.Shoes shoes = 5;</code>
        * @return The shoes.
        */
-      public ItemProtos.Shoes getShoes() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.Shoes getShoes() {
         if (shoesBuilder_ == null) {
           if (itemCase_ == 5) {
-            return (ItemProtos.Shoes) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Shoes) item_;
           }
-          return ItemProtos.Shoes.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
         } else {
           if (itemCase_ == 5) {
             return shoesBuilder_.getMessage();
           }
-          return ItemProtos.Shoes.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Shoes shoes = 5;</code>
        */
-      public Builder setShoes(ItemProtos.Shoes value) {
+      public Builder setShoes(mech.mania.engine.domain.model.ItemProtos.Shoes value) {
         if (shoesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1486,7 +1514,7 @@ public final class ItemProtos {
        * <code>.item.Shoes shoes = 5;</code>
        */
       public Builder setShoes(
-          ItemProtos.Shoes.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.Shoes.Builder builderForValue) {
         if (shoesBuilder_ == null) {
           item_ = builderForValue.build();
           onChanged();
@@ -1499,11 +1527,11 @@ public final class ItemProtos {
       /**
        * <code>.item.Shoes shoes = 5;</code>
        */
-      public Builder mergeShoes(ItemProtos.Shoes value) {
+      public Builder mergeShoes(mech.mania.engine.domain.model.ItemProtos.Shoes value) {
         if (shoesBuilder_ == null) {
           if (itemCase_ == 5 &&
-              item_ != ItemProtos.Shoes.getDefaultInstance()) {
-            item_ = ItemProtos.Shoes.newBuilder((ItemProtos.Shoes) item_)
+              item_ != mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance()) {
+            item_ = mech.mania.engine.domain.model.ItemProtos.Shoes.newBuilder((mech.mania.engine.domain.model.ItemProtos.Shoes) item_)
                 .mergeFrom(value).buildPartial();
           } else {
             item_ = value;
@@ -1540,35 +1568,36 @@ public final class ItemProtos {
       /**
        * <code>.item.Shoes shoes = 5;</code>
        */
-      public ItemProtos.Shoes.Builder getShoesBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.Shoes.Builder getShoesBuilder() {
         return getShoesFieldBuilder().getBuilder();
       }
       /**
        * <code>.item.Shoes shoes = 5;</code>
        */
-      public ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
         if ((itemCase_ == 5) && (shoesBuilder_ != null)) {
           return shoesBuilder_.getMessageOrBuilder();
         } else {
           if (itemCase_ == 5) {
-            return (ItemProtos.Shoes) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Shoes) item_;
           }
-          return ItemProtos.Shoes.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Shoes shoes = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Shoes, ItemProtos.Shoes.Builder, ItemProtos.ShoesOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.Shoes, mech.mania.engine.domain.model.ItemProtos.Shoes.Builder, mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder> 
           getShoesFieldBuilder() {
         if (shoesBuilder_ == null) {
           if (!(itemCase_ == 5)) {
-            item_ = ItemProtos.Shoes.getDefaultInstance();
+            item_ = mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
           }
           shoesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.Shoes, ItemProtos.Shoes.Builder, ItemProtos.ShoesOrBuilder>(
-                  (ItemProtos.Shoes) item_,
+              mech.mania.engine.domain.model.ItemProtos.Shoes, mech.mania.engine.domain.model.ItemProtos.Shoes.Builder, mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder>(
+                  (mech.mania.engine.domain.model.ItemProtos.Shoes) item_,
                   getParentForChildren(),
                   isClean());
           item_ = null;
@@ -1579,11 +1608,12 @@ public final class ItemProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Weapon, ItemProtos.Weapon.Builder, ItemProtos.WeaponOrBuilder> weaponBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.Weapon, mech.mania.engine.domain.model.ItemProtos.Weapon.Builder, mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder> weaponBuilder_;
       /**
        * <code>.item.Weapon weapon = 6;</code>
        * @return Whether the weapon field is set.
        */
+      @java.lang.Override
       public boolean hasWeapon() {
         return itemCase_ == 6;
       }
@@ -1591,23 +1621,24 @@ public final class ItemProtos {
        * <code>.item.Weapon weapon = 6;</code>
        * @return The weapon.
        */
-      public ItemProtos.Weapon getWeapon() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.Weapon getWeapon() {
         if (weaponBuilder_ == null) {
           if (itemCase_ == 6) {
-            return (ItemProtos.Weapon) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Weapon) item_;
           }
-          return ItemProtos.Weapon.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
         } else {
           if (itemCase_ == 6) {
             return weaponBuilder_.getMessage();
           }
-          return ItemProtos.Weapon.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Weapon weapon = 6;</code>
        */
-      public Builder setWeapon(ItemProtos.Weapon value) {
+      public Builder setWeapon(mech.mania.engine.domain.model.ItemProtos.Weapon value) {
         if (weaponBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1624,7 +1655,7 @@ public final class ItemProtos {
        * <code>.item.Weapon weapon = 6;</code>
        */
       public Builder setWeapon(
-          ItemProtos.Weapon.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.Weapon.Builder builderForValue) {
         if (weaponBuilder_ == null) {
           item_ = builderForValue.build();
           onChanged();
@@ -1637,11 +1668,11 @@ public final class ItemProtos {
       /**
        * <code>.item.Weapon weapon = 6;</code>
        */
-      public Builder mergeWeapon(ItemProtos.Weapon value) {
+      public Builder mergeWeapon(mech.mania.engine.domain.model.ItemProtos.Weapon value) {
         if (weaponBuilder_ == null) {
           if (itemCase_ == 6 &&
-              item_ != ItemProtos.Weapon.getDefaultInstance()) {
-            item_ = ItemProtos.Weapon.newBuilder((ItemProtos.Weapon) item_)
+              item_ != mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance()) {
+            item_ = mech.mania.engine.domain.model.ItemProtos.Weapon.newBuilder((mech.mania.engine.domain.model.ItemProtos.Weapon) item_)
                 .mergeFrom(value).buildPartial();
           } else {
             item_ = value;
@@ -1678,35 +1709,36 @@ public final class ItemProtos {
       /**
        * <code>.item.Weapon weapon = 6;</code>
        */
-      public ItemProtos.Weapon.Builder getWeaponBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.Weapon.Builder getWeaponBuilder() {
         return getWeaponFieldBuilder().getBuilder();
       }
       /**
        * <code>.item.Weapon weapon = 6;</code>
        */
-      public ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
         if ((itemCase_ == 6) && (weaponBuilder_ != null)) {
           return weaponBuilder_.getMessageOrBuilder();
         } else {
           if (itemCase_ == 6) {
-            return (ItemProtos.Weapon) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Weapon) item_;
           }
-          return ItemProtos.Weapon.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Weapon weapon = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Weapon, ItemProtos.Weapon.Builder, ItemProtos.WeaponOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.Weapon, mech.mania.engine.domain.model.ItemProtos.Weapon.Builder, mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder> 
           getWeaponFieldBuilder() {
         if (weaponBuilder_ == null) {
           if (!(itemCase_ == 6)) {
-            item_ = ItemProtos.Weapon.getDefaultInstance();
+            item_ = mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
           }
           weaponBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.Weapon, ItemProtos.Weapon.Builder, ItemProtos.WeaponOrBuilder>(
-                  (ItemProtos.Weapon) item_,
+              mech.mania.engine.domain.model.ItemProtos.Weapon, mech.mania.engine.domain.model.ItemProtos.Weapon.Builder, mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder>(
+                  (mech.mania.engine.domain.model.ItemProtos.Weapon) item_,
                   getParentForChildren(),
                   isClean());
           item_ = null;
@@ -1717,11 +1749,12 @@ public final class ItemProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Consumable, ItemProtos.Consumable.Builder, ItemProtos.ConsumableOrBuilder> consumableBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.Consumable, mech.mania.engine.domain.model.ItemProtos.Consumable.Builder, mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder> consumableBuilder_;
       /**
        * <code>.item.Consumable consumable = 7;</code>
        * @return Whether the consumable field is set.
        */
+      @java.lang.Override
       public boolean hasConsumable() {
         return itemCase_ == 7;
       }
@@ -1729,23 +1762,24 @@ public final class ItemProtos {
        * <code>.item.Consumable consumable = 7;</code>
        * @return The consumable.
        */
-      public ItemProtos.Consumable getConsumable() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.Consumable getConsumable() {
         if (consumableBuilder_ == null) {
           if (itemCase_ == 7) {
-            return (ItemProtos.Consumable) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Consumable) item_;
           }
-          return ItemProtos.Consumable.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
         } else {
           if (itemCase_ == 7) {
             return consumableBuilder_.getMessage();
           }
-          return ItemProtos.Consumable.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Consumable consumable = 7;</code>
        */
-      public Builder setConsumable(ItemProtos.Consumable value) {
+      public Builder setConsumable(mech.mania.engine.domain.model.ItemProtos.Consumable value) {
         if (consumableBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1762,7 +1796,7 @@ public final class ItemProtos {
        * <code>.item.Consumable consumable = 7;</code>
        */
       public Builder setConsumable(
-          ItemProtos.Consumable.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.Consumable.Builder builderForValue) {
         if (consumableBuilder_ == null) {
           item_ = builderForValue.build();
           onChanged();
@@ -1775,11 +1809,11 @@ public final class ItemProtos {
       /**
        * <code>.item.Consumable consumable = 7;</code>
        */
-      public Builder mergeConsumable(ItemProtos.Consumable value) {
+      public Builder mergeConsumable(mech.mania.engine.domain.model.ItemProtos.Consumable value) {
         if (consumableBuilder_ == null) {
           if (itemCase_ == 7 &&
-              item_ != ItemProtos.Consumable.getDefaultInstance()) {
-            item_ = ItemProtos.Consumable.newBuilder((ItemProtos.Consumable) item_)
+              item_ != mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance()) {
+            item_ = mech.mania.engine.domain.model.ItemProtos.Consumable.newBuilder((mech.mania.engine.domain.model.ItemProtos.Consumable) item_)
                 .mergeFrom(value).buildPartial();
           } else {
             item_ = value;
@@ -1816,35 +1850,36 @@ public final class ItemProtos {
       /**
        * <code>.item.Consumable consumable = 7;</code>
        */
-      public ItemProtos.Consumable.Builder getConsumableBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.Consumable.Builder getConsumableBuilder() {
         return getConsumableFieldBuilder().getBuilder();
       }
       /**
        * <code>.item.Consumable consumable = 7;</code>
        */
-      public ItemProtos.ConsumableOrBuilder getConsumableOrBuilder() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder() {
         if ((itemCase_ == 7) && (consumableBuilder_ != null)) {
           return consumableBuilder_.getMessageOrBuilder();
         } else {
           if (itemCase_ == 7) {
-            return (ItemProtos.Consumable) item_;
+            return (mech.mania.engine.domain.model.ItemProtos.Consumable) item_;
           }
-          return ItemProtos.Consumable.getDefaultInstance();
+          return mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
         }
       }
       /**
        * <code>.item.Consumable consumable = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.Consumable, ItemProtos.Consumable.Builder, ItemProtos.ConsumableOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.Consumable, mech.mania.engine.domain.model.ItemProtos.Consumable.Builder, mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder> 
           getConsumableFieldBuilder() {
         if (consumableBuilder_ == null) {
           if (!(itemCase_ == 7)) {
-            item_ = ItemProtos.Consumable.getDefaultInstance();
+            item_ = mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
           }
           consumableBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.Consumable, ItemProtos.Consumable.Builder, ItemProtos.ConsumableOrBuilder>(
-                  (ItemProtos.Consumable) item_,
+              mech.mania.engine.domain.model.ItemProtos.Consumable, mech.mania.engine.domain.model.ItemProtos.Consumable.Builder, mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder>(
+                  (mech.mania.engine.domain.model.ItemProtos.Consumable) item_,
                   getParentForChildren(),
                   isClean());
           item_ = null;
@@ -1870,12 +1905,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.Item)
-    private static final ItemProtos.Item DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.Item DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.Item();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.Item();
     }
 
-    public static ItemProtos.Item getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.Item getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1900,7 +1935,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.Item getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.Item getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1919,16 +1954,16 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    ItemProtos.StatusModifier getStats();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats();
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
   }
   /**
    * Protobuf type {@code item.Clothes}
    */
-  public  static final class Clothes extends
+  public static final class Clothes extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Clothes)
       ClothesOrBuilder {
@@ -1971,11 +2006,11 @@ public final class ItemProtos {
               done = true;
               break;
             case 10: {
-              ItemProtos.StatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
               }
-              stats_ = input.readMessage(ItemProtos.StatusModifier.parser(), extensionRegistry);
+              stats_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.StatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(stats_);
                 stats_ = subBuilder.buildPartial();
@@ -2004,23 +2039,24 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_Clothes_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Clothes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_Clothes_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Clothes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.Clothes.class, ItemProtos.Clothes.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.Clothes.class, mech.mania.engine.domain.model.ItemProtos.Clothes.Builder.class);
     }
 
     public static final int STATS_FIELD_NUMBER = 1;
-    private ItemProtos.StatusModifier stats_;
+    private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
+    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -2028,13 +2064,15 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    public ItemProtos.StatusModifier getStats() {
-      return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
+      return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
 
@@ -2078,10 +2116,10 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.Clothes)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.Clothes)) {
         return super.equals(obj);
       }
-      ItemProtos.Clothes other = (ItemProtos.Clothes) obj;
+      mech.mania.engine.domain.model.ItemProtos.Clothes other = (mech.mania.engine.domain.model.ItemProtos.Clothes) obj;
 
       if (hasStats() != other.hasStats()) return false;
       if (hasStats()) {
@@ -2108,69 +2146,69 @@ public final class ItemProtos {
       return hash;
     }
 
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Clothes parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Clothes parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Clothes parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.Clothes parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Clothes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2183,7 +2221,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.Clothes prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.Clothes prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2204,18 +2242,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.Clothes)
-        ItemProtos.ClothesOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_Clothes_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Clothes_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_Clothes_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Clothes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.Clothes.class, ItemProtos.Clothes.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.Clothes.class, mech.mania.engine.domain.model.ItemProtos.Clothes.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.Clothes.newBuilder()
@@ -2248,17 +2286,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_Clothes_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Clothes_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.Clothes getDefaultInstanceForType() {
-        return ItemProtos.Clothes.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.Clothes getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.Clothes build() {
-        ItemProtos.Clothes result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.Clothes build() {
+        mech.mania.engine.domain.model.ItemProtos.Clothes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2266,8 +2304,8 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.Clothes buildPartial() {
-        ItemProtos.Clothes result = new ItemProtos.Clothes(this);
+      public mech.mania.engine.domain.model.ItemProtos.Clothes buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.Clothes result = new mech.mania.engine.domain.model.ItemProtos.Clothes(this);
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
@@ -2311,16 +2349,16 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.Clothes) {
-          return mergeFrom((ItemProtos.Clothes)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.Clothes) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.Clothes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.Clothes other) {
-        if (other == ItemProtos.Clothes.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.Clothes other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance()) return this;
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
@@ -2339,11 +2377,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.Clothes parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.Clothes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.Clothes) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.Clothes) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2353,9 +2391,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.StatusModifier stats_;
+      private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> statsBuilder_;
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        * @return Whether the stats field is set.
@@ -2367,9 +2405,9 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        * @return The stats.
        */
-      public ItemProtos.StatusModifier getStats() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+          return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         } else {
           return statsBuilder_.getMessage();
         }
@@ -2377,7 +2415,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder setStats(ItemProtos.StatusModifier value) {
+      public Builder setStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2394,7 +2432,7 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        */
       public Builder setStats(
-          ItemProtos.StatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder builderForValue) {
         if (statsBuilder_ == null) {
           stats_ = builderForValue.build();
           onChanged();
@@ -2407,11 +2445,11 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder mergeStats(ItemProtos.StatusModifier value) {
+      public Builder mergeStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (stats_ != null) {
             stats_ =
-              ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
           } else {
             stats_ = value;
           }
@@ -2439,7 +2477,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder getStatsBuilder() {
         
         onChanged();
         return getStatsFieldBuilder().getBuilder();
@@ -2447,23 +2485,23 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
           return stats_ == null ?
-              ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         }
       }
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder>(
                   getStats(),
                   getParentForChildren(),
                   isClean());
@@ -2488,12 +2526,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.Clothes)
-    private static final ItemProtos.Clothes DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.Clothes DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.Clothes();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.Clothes();
     }
 
-    public static ItemProtos.Clothes getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.Clothes getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2518,7 +2556,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.Clothes getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.Clothes getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2537,11 +2575,11 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    ItemProtos.StatusModifier getStats();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats();
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
      * <code>.item.Hat.HatEffect hat_effect = 2;</code>
@@ -2552,12 +2590,12 @@ public final class ItemProtos {
      * <code>.item.Hat.HatEffect hat_effect = 2;</code>
      * @return The hatEffect.
      */
-    ItemProtos.Hat.HatEffect getHatEffect();
+    mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect getHatEffect();
   }
   /**
    * Protobuf type {@code item.Hat}
    */
-  public  static final class Hat extends
+  public static final class Hat extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Hat)
       HatOrBuilder {
@@ -2601,11 +2639,11 @@ public final class ItemProtos {
               done = true;
               break;
             case 10: {
-              ItemProtos.StatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
               }
-              stats_ = input.readMessage(ItemProtos.StatusModifier.parser(), extensionRegistry);
+              stats_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.StatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(stats_);
                 stats_ = subBuilder.buildPartial();
@@ -2640,15 +2678,15 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_Hat_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Hat_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_Hat_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Hat_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.Hat.class, ItemProtos.Hat.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.Hat.class, mech.mania.engine.domain.model.ItemProtos.Hat.Builder.class);
     }
 
     /**
@@ -2720,6 +2758,10 @@ public final class ItemProtos {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -2728,7 +2770,7 @@ public final class ItemProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return ItemProtos.Hat.getDescriptor().getEnumTypes().get(0);
+        return mech.mania.engine.domain.model.ItemProtos.Hat.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final HatEffect[] VALUES = values();
@@ -2755,11 +2797,12 @@ public final class ItemProtos {
     }
 
     public static final int STATS_FIELD_NUMBER = 1;
-    private ItemProtos.StatusModifier stats_;
+    private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
+    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -2767,13 +2810,15 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    public ItemProtos.StatusModifier getStats() {
-      return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
+      return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
 
@@ -2783,17 +2828,17 @@ public final class ItemProtos {
      * <code>.item.Hat.HatEffect hat_effect = 2;</code>
      * @return The enum numeric value on the wire for hatEffect.
      */
-    public int getHatEffectValue() {
+    @java.lang.Override public int getHatEffectValue() {
       return hatEffect_;
     }
     /**
      * <code>.item.Hat.HatEffect hat_effect = 2;</code>
      * @return The hatEffect.
      */
-    public ItemProtos.Hat.HatEffect getHatEffect() {
+    @java.lang.Override public mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect getHatEffect() {
       @SuppressWarnings("deprecation")
-      ItemProtos.Hat.HatEffect result = ItemProtos.Hat.HatEffect.valueOf(hatEffect_);
-      return result == null ? ItemProtos.Hat.HatEffect.UNRECOGNIZED : result;
+      mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect result = mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect.valueOf(hatEffect_);
+      return result == null ? mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2813,7 +2858,7 @@ public final class ItemProtos {
       if (stats_ != null) {
         output.writeMessage(1, getStats());
       }
-      if (hatEffect_ != ItemProtos.Hat.HatEffect.TEST.getNumber()) {
+      if (hatEffect_ != mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect.TEST.getNumber()) {
         output.writeEnum(2, hatEffect_);
       }
       unknownFields.writeTo(output);
@@ -2829,7 +2874,7 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStats());
       }
-      if (hatEffect_ != ItemProtos.Hat.HatEffect.TEST.getNumber()) {
+      if (hatEffect_ != mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect.TEST.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, hatEffect_);
       }
@@ -2843,10 +2888,10 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.Hat)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.Hat)) {
         return super.equals(obj);
       }
-      ItemProtos.Hat other = (ItemProtos.Hat) obj;
+      mech.mania.engine.domain.model.ItemProtos.Hat other = (mech.mania.engine.domain.model.ItemProtos.Hat) obj;
 
       if (hasStats() != other.hasStats()) return false;
       if (hasStats()) {
@@ -2876,69 +2921,69 @@ public final class ItemProtos {
       return hash;
     }
 
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Hat parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Hat parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Hat parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.Hat parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Hat parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Hat parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2951,7 +2996,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.Hat prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.Hat prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2972,18 +3017,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.Hat)
-        ItemProtos.HatOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.HatOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_Hat_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Hat_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_Hat_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Hat_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.Hat.class, ItemProtos.Hat.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.Hat.class, mech.mania.engine.domain.model.ItemProtos.Hat.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.Hat.newBuilder()
@@ -3018,17 +3063,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_Hat_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Hat_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.Hat getDefaultInstanceForType() {
-        return ItemProtos.Hat.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.Hat getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.Hat build() {
-        ItemProtos.Hat result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.Hat build() {
+        mech.mania.engine.domain.model.ItemProtos.Hat result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3036,8 +3081,8 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.Hat buildPartial() {
-        ItemProtos.Hat result = new ItemProtos.Hat(this);
+      public mech.mania.engine.domain.model.ItemProtos.Hat buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.Hat result = new mech.mania.engine.domain.model.ItemProtos.Hat(this);
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
@@ -3082,16 +3127,16 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.Hat) {
-          return mergeFrom((ItemProtos.Hat)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.Hat) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.Hat)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.Hat other) {
-        if (other == ItemProtos.Hat.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.Hat other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance()) return this;
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
@@ -3113,11 +3158,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.Hat parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.Hat parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.Hat) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.Hat) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3127,9 +3172,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.StatusModifier stats_;
+      private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> statsBuilder_;
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        * @return Whether the stats field is set.
@@ -3141,9 +3186,9 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        * @return The stats.
        */
-      public ItemProtos.StatusModifier getStats() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+          return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         } else {
           return statsBuilder_.getMessage();
         }
@@ -3151,7 +3196,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder setStats(ItemProtos.StatusModifier value) {
+      public Builder setStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3168,7 +3213,7 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        */
       public Builder setStats(
-          ItemProtos.StatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder builderForValue) {
         if (statsBuilder_ == null) {
           stats_ = builderForValue.build();
           onChanged();
@@ -3181,11 +3226,11 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder mergeStats(ItemProtos.StatusModifier value) {
+      public Builder mergeStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (stats_ != null) {
             stats_ =
-              ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
           } else {
             stats_ = value;
           }
@@ -3213,7 +3258,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder getStatsBuilder() {
         
         onChanged();
         return getStatsFieldBuilder().getBuilder();
@@ -3221,23 +3266,23 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
           return stats_ == null ?
-              ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         }
       }
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder>(
                   getStats(),
                   getParentForChildren(),
                   isClean());
@@ -3251,7 +3296,7 @@ public final class ItemProtos {
        * <code>.item.Hat.HatEffect hat_effect = 2;</code>
        * @return The enum numeric value on the wire for hatEffect.
        */
-      public int getHatEffectValue() {
+      @java.lang.Override public int getHatEffectValue() {
         return hatEffect_;
       }
       /**
@@ -3260,6 +3305,7 @@ public final class ItemProtos {
        * @return This builder for chaining.
        */
       public Builder setHatEffectValue(int value) {
+        
         hatEffect_ = value;
         onChanged();
         return this;
@@ -3268,17 +3314,18 @@ public final class ItemProtos {
        * <code>.item.Hat.HatEffect hat_effect = 2;</code>
        * @return The hatEffect.
        */
-      public ItemProtos.Hat.HatEffect getHatEffect() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect getHatEffect() {
         @SuppressWarnings("deprecation")
-        ItemProtos.Hat.HatEffect result = ItemProtos.Hat.HatEffect.valueOf(hatEffect_);
-        return result == null ? ItemProtos.Hat.HatEffect.UNRECOGNIZED : result;
+        mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect result = mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect.valueOf(hatEffect_);
+        return result == null ? mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect.UNRECOGNIZED : result;
       }
       /**
        * <code>.item.Hat.HatEffect hat_effect = 2;</code>
        * @param value The hatEffect to set.
        * @return This builder for chaining.
        */
-      public Builder setHatEffect(ItemProtos.Hat.HatEffect value) {
+      public Builder setHatEffect(mech.mania.engine.domain.model.ItemProtos.Hat.HatEffect value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -3314,12 +3361,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.Hat)
-    private static final ItemProtos.Hat DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.Hat DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.Hat();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.Hat();
     }
 
-    public static ItemProtos.Hat getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.Hat getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3344,7 +3391,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.Hat getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.Hat getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3363,16 +3410,16 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    ItemProtos.StatusModifier getStats();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats();
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
   }
   /**
    * Protobuf type {@code item.Shoes}
    */
-  public  static final class Shoes extends
+  public static final class Shoes extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Shoes)
       ShoesOrBuilder {
@@ -3415,11 +3462,11 @@ public final class ItemProtos {
               done = true;
               break;
             case 10: {
-              ItemProtos.StatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
               }
-              stats_ = input.readMessage(ItemProtos.StatusModifier.parser(), extensionRegistry);
+              stats_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.StatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(stats_);
                 stats_ = subBuilder.buildPartial();
@@ -3448,23 +3495,24 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_Shoes_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Shoes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_Shoes_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Shoes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.Shoes.class, ItemProtos.Shoes.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.Shoes.class, mech.mania.engine.domain.model.ItemProtos.Shoes.Builder.class);
     }
 
     public static final int STATS_FIELD_NUMBER = 1;
-    private ItemProtos.StatusModifier stats_;
+    private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
+    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -3472,13 +3520,15 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    public ItemProtos.StatusModifier getStats() {
-      return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
+      return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
 
@@ -3522,10 +3572,10 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.Shoes)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.Shoes)) {
         return super.equals(obj);
       }
-      ItemProtos.Shoes other = (ItemProtos.Shoes) obj;
+      mech.mania.engine.domain.model.ItemProtos.Shoes other = (mech.mania.engine.domain.model.ItemProtos.Shoes) obj;
 
       if (hasStats() != other.hasStats()) return false;
       if (hasStats()) {
@@ -3552,69 +3602,69 @@ public final class ItemProtos {
       return hash;
     }
 
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Shoes parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Shoes parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Shoes parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.Shoes parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Shoes parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3627,7 +3677,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.Shoes prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.Shoes prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3648,18 +3698,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.Shoes)
-        ItemProtos.ShoesOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_Shoes_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Shoes_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_Shoes_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Shoes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.Shoes.class, ItemProtos.Shoes.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.Shoes.class, mech.mania.engine.domain.model.ItemProtos.Shoes.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.Shoes.newBuilder()
@@ -3692,17 +3742,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_Shoes_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Shoes_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.Shoes getDefaultInstanceForType() {
-        return ItemProtos.Shoes.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.Shoes getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.Shoes build() {
-        ItemProtos.Shoes result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.Shoes build() {
+        mech.mania.engine.domain.model.ItemProtos.Shoes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3710,8 +3760,8 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.Shoes buildPartial() {
-        ItemProtos.Shoes result = new ItemProtos.Shoes(this);
+      public mech.mania.engine.domain.model.ItemProtos.Shoes buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.Shoes result = new mech.mania.engine.domain.model.ItemProtos.Shoes(this);
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
@@ -3755,16 +3805,16 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.Shoes) {
-          return mergeFrom((ItemProtos.Shoes)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.Shoes) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.Shoes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.Shoes other) {
-        if (other == ItemProtos.Shoes.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.Shoes other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance()) return this;
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
@@ -3783,11 +3833,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.Shoes parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.Shoes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.Shoes) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.Shoes) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3797,9 +3847,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.StatusModifier stats_;
+      private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> statsBuilder_;
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        * @return Whether the stats field is set.
@@ -3811,9 +3861,9 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        * @return The stats.
        */
-      public ItemProtos.StatusModifier getStats() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+          return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         } else {
           return statsBuilder_.getMessage();
         }
@@ -3821,7 +3871,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder setStats(ItemProtos.StatusModifier value) {
+      public Builder setStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3838,7 +3888,7 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        */
       public Builder setStats(
-          ItemProtos.StatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder builderForValue) {
         if (statsBuilder_ == null) {
           stats_ = builderForValue.build();
           onChanged();
@@ -3851,11 +3901,11 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder mergeStats(ItemProtos.StatusModifier value) {
+      public Builder mergeStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (stats_ != null) {
             stats_ =
-              ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
           } else {
             stats_ = value;
           }
@@ -3883,7 +3933,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder getStatsBuilder() {
         
         onChanged();
         return getStatsFieldBuilder().getBuilder();
@@ -3891,23 +3941,23 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
           return stats_ == null ?
-              ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         }
       }
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder>(
                   getStats(),
                   getParentForChildren(),
                   isClean());
@@ -3932,12 +3982,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.Shoes)
-    private static final ItemProtos.Shoes DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.Shoes DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.Shoes();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.Shoes();
     }
 
-    public static ItemProtos.Shoes getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.Shoes getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3962,7 +4012,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.Shoes getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.Shoes getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3981,11 +4031,11 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    ItemProtos.StatusModifier getStats();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats();
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
      * <code>int32 range = 2;</code>
@@ -4000,24 +4050,30 @@ public final class ItemProtos {
     int getSplashRadius();
 
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>int32 damage = 4;</code>
+     * @return The damage.
+     */
+    int getDamage();
+
+    /**
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return Whether the onHitEffect field is set.
      */
     boolean hasOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return The onHitEffect.
      */
-    ItemProtos.TempStatusModifier getOnHitEffect();
+    mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getOnHitEffect();
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      */
-    ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder();
   }
   /**
    * Protobuf type {@code item.Weapon}
    */
-  public  static final class Weapon extends
+  public static final class Weapon extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Weapon)
       WeaponOrBuilder {
@@ -4060,11 +4116,11 @@ public final class ItemProtos {
               done = true;
               break;
             case 10: {
-              ItemProtos.StatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
               }
-              stats_ = input.readMessage(ItemProtos.StatusModifier.parser(), extensionRegistry);
+              stats_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.StatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(stats_);
                 stats_ = subBuilder.buildPartial();
@@ -4082,12 +4138,17 @@ public final class ItemProtos {
               splashRadius_ = input.readInt32();
               break;
             }
-            case 34: {
-              ItemProtos.TempStatusModifier.Builder subBuilder = null;
+            case 32: {
+
+              damage_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder subBuilder = null;
               if (onHitEffect_ != null) {
                 subBuilder = onHitEffect_.toBuilder();
               }
-              onHitEffect_ = input.readMessage(ItemProtos.TempStatusModifier.parser(), extensionRegistry);
+              onHitEffect_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(onHitEffect_);
                 onHitEffect_ = subBuilder.buildPartial();
@@ -4116,23 +4177,24 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_Weapon_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Weapon_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_Weapon_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Weapon_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.Weapon.class, ItemProtos.Weapon.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.Weapon.class, mech.mania.engine.domain.model.ItemProtos.Weapon.Builder.class);
     }
 
     public static final int STATS_FIELD_NUMBER = 1;
-    private ItemProtos.StatusModifier stats_;
+    private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
+    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -4140,13 +4202,15 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    public ItemProtos.StatusModifier getStats() {
-      return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
+      return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
 
@@ -4156,6 +4220,7 @@ public final class ItemProtos {
      * <code>int32 range = 2;</code>
      * @return The range.
      */
+    @java.lang.Override
     public int getRange() {
       return range_;
     }
@@ -4166,30 +4231,45 @@ public final class ItemProtos {
      * <code>int32 splash_radius = 3;</code>
      * @return The splashRadius.
      */
+    @java.lang.Override
     public int getSplashRadius() {
       return splashRadius_;
     }
 
-    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 4;
-    private ItemProtos.TempStatusModifier onHitEffect_;
+    public static final int DAMAGE_FIELD_NUMBER = 4;
+    private int damage_;
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>int32 damage = 4;</code>
+     * @return The damage.
+     */
+    @java.lang.Override
+    public int getDamage() {
+      return damage_;
+    }
+
+    public static final int ON_HIT_EFFECT_FIELD_NUMBER = 5;
+    private mech.mania.engine.domain.model.ItemProtos.TempStatusModifier onHitEffect_;
+    /**
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return Whether the onHitEffect field is set.
      */
+    @java.lang.Override
     public boolean hasOnHitEffect() {
       return onHitEffect_ != null;
     }
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      * @return The onHitEffect.
      */
-    public ItemProtos.TempStatusModifier getOnHitEffect() {
-      return onHitEffect_ == null ? ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getOnHitEffect() {
+      return onHitEffect_ == null ? mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
     }
     /**
-     * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+     * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
      */
-    public ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
       return getOnHitEffect();
     }
 
@@ -4216,8 +4296,11 @@ public final class ItemProtos {
       if (splashRadius_ != 0) {
         output.writeInt32(3, splashRadius_);
       }
+      if (damage_ != 0) {
+        output.writeInt32(4, damage_);
+      }
       if (onHitEffect_ != null) {
-        output.writeMessage(4, getOnHitEffect());
+        output.writeMessage(5, getOnHitEffect());
       }
       unknownFields.writeTo(output);
     }
@@ -4240,9 +4323,13 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, splashRadius_);
       }
+      if (damage_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, damage_);
+      }
       if (onHitEffect_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getOnHitEffect());
+          .computeMessageSize(5, getOnHitEffect());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4254,10 +4341,10 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.Weapon)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.Weapon)) {
         return super.equals(obj);
       }
-      ItemProtos.Weapon other = (ItemProtos.Weapon) obj;
+      mech.mania.engine.domain.model.ItemProtos.Weapon other = (mech.mania.engine.domain.model.ItemProtos.Weapon) obj;
 
       if (hasStats() != other.hasStats()) return false;
       if (hasStats()) {
@@ -4268,6 +4355,8 @@ public final class ItemProtos {
           != other.getRange()) return false;
       if (getSplashRadius()
           != other.getSplashRadius()) return false;
+      if (getDamage()
+          != other.getDamage()) return false;
       if (hasOnHitEffect() != other.hasOnHitEffect()) return false;
       if (hasOnHitEffect()) {
         if (!getOnHitEffect()
@@ -4292,6 +4381,8 @@ public final class ItemProtos {
       hash = (53 * hash) + getRange();
       hash = (37 * hash) + SPLASH_RADIUS_FIELD_NUMBER;
       hash = (53 * hash) + getSplashRadius();
+      hash = (37 * hash) + DAMAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getDamage();
       if (hasOnHitEffect()) {
         hash = (37 * hash) + ON_HIT_EFFECT_FIELD_NUMBER;
         hash = (53 * hash) + getOnHitEffect().hashCode();
@@ -4301,69 +4392,69 @@ public final class ItemProtos {
       return hash;
     }
 
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Weapon parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Weapon parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Weapon parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.Weapon parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Weapon parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4376,7 +4467,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.Weapon prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.Weapon prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4397,18 +4488,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.Weapon)
-        ItemProtos.WeaponOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_Weapon_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Weapon_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_Weapon_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Weapon_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.Weapon.class, ItemProtos.Weapon.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.Weapon.class, mech.mania.engine.domain.model.ItemProtos.Weapon.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.Weapon.newBuilder()
@@ -4439,6 +4530,8 @@ public final class ItemProtos {
 
         splashRadius_ = 0;
 
+        damage_ = 0;
+
         if (onHitEffectBuilder_ == null) {
           onHitEffect_ = null;
         } else {
@@ -4451,17 +4544,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_Weapon_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Weapon_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.Weapon getDefaultInstanceForType() {
-        return ItemProtos.Weapon.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.Weapon getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.Weapon build() {
-        ItemProtos.Weapon result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.Weapon build() {
+        mech.mania.engine.domain.model.ItemProtos.Weapon result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4469,8 +4562,8 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.Weapon buildPartial() {
-        ItemProtos.Weapon result = new ItemProtos.Weapon(this);
+      public mech.mania.engine.domain.model.ItemProtos.Weapon buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.Weapon result = new mech.mania.engine.domain.model.ItemProtos.Weapon(this);
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
@@ -4478,6 +4571,7 @@ public final class ItemProtos {
         }
         result.range_ = range_;
         result.splashRadius_ = splashRadius_;
+        result.damage_ = damage_;
         if (onHitEffectBuilder_ == null) {
           result.onHitEffect_ = onHitEffect_;
         } else {
@@ -4521,16 +4615,16 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.Weapon) {
-          return mergeFrom((ItemProtos.Weapon)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.Weapon) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.Weapon)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.Weapon other) {
-        if (other == ItemProtos.Weapon.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.Weapon other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance()) return this;
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
@@ -4539,6 +4633,9 @@ public final class ItemProtos {
         }
         if (other.getSplashRadius() != 0) {
           setSplashRadius(other.getSplashRadius());
+        }
+        if (other.getDamage() != 0) {
+          setDamage(other.getDamage());
         }
         if (other.hasOnHitEffect()) {
           mergeOnHitEffect(other.getOnHitEffect());
@@ -4558,11 +4655,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.Weapon parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.Weapon parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.Weapon) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.Weapon) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4572,9 +4669,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.StatusModifier stats_;
+      private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> statsBuilder_;
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        * @return Whether the stats field is set.
@@ -4586,9 +4683,9 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        * @return The stats.
        */
-      public ItemProtos.StatusModifier getStats() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+          return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         } else {
           return statsBuilder_.getMessage();
         }
@@ -4596,7 +4693,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder setStats(ItemProtos.StatusModifier value) {
+      public Builder setStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4613,7 +4710,7 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        */
       public Builder setStats(
-          ItemProtos.StatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder builderForValue) {
         if (statsBuilder_ == null) {
           stats_ = builderForValue.build();
           onChanged();
@@ -4626,11 +4723,11 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder mergeStats(ItemProtos.StatusModifier value) {
+      public Builder mergeStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (stats_ != null) {
             stats_ =
-              ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
           } else {
             stats_ = value;
           }
@@ -4658,7 +4755,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder getStatsBuilder() {
         
         onChanged();
         return getStatsFieldBuilder().getBuilder();
@@ -4666,23 +4763,23 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
           return stats_ == null ?
-              ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         }
       }
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder>(
                   getStats(),
                   getParentForChildren(),
                   isClean());
@@ -4696,6 +4793,7 @@ public final class ItemProtos {
        * <code>int32 range = 2;</code>
        * @return The range.
        */
+      @java.lang.Override
       public int getRange() {
         return range_;
       }
@@ -4726,6 +4824,7 @@ public final class ItemProtos {
        * <code>int32 splash_radius = 3;</code>
        * @return The splashRadius.
        */
+      @java.lang.Override
       public int getSplashRadius() {
         return splashRadius_;
       }
@@ -4751,31 +4850,62 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.TempStatusModifier onHitEffect_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.TempStatusModifier, ItemProtos.TempStatusModifier.Builder, ItemProtos.TempStatusModifierOrBuilder> onHitEffectBuilder_;
+      private int damage_ ;
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>int32 damage = 4;</code>
+       * @return The damage.
+       */
+      @java.lang.Override
+      public int getDamage() {
+        return damage_;
+      }
+      /**
+       * <code>int32 damage = 4;</code>
+       * @param value The damage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDamage(int value) {
+        
+        damage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 damage = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDamage() {
+        
+        damage_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.ItemProtos.TempStatusModifier onHitEffect_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> onHitEffectBuilder_;
+      /**
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        * @return Whether the onHitEffect field is set.
        */
       public boolean hasOnHitEffect() {
         return onHitEffectBuilder_ != null || onHitEffect_ != null;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        * @return The onHitEffect.
        */
-      public ItemProtos.TempStatusModifier getOnHitEffect() {
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getOnHitEffect() {
         if (onHitEffectBuilder_ == null) {
-          return onHitEffect_ == null ? ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
+          return onHitEffect_ == null ? mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
         } else {
           return onHitEffectBuilder_.getMessage();
         }
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
-      public Builder setOnHitEffect(ItemProtos.TempStatusModifier value) {
+      public Builder setOnHitEffect(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4789,10 +4919,10 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder setOnHitEffect(
-          ItemProtos.TempStatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder builderForValue) {
         if (onHitEffectBuilder_ == null) {
           onHitEffect_ = builderForValue.build();
           onChanged();
@@ -4803,13 +4933,13 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
-      public Builder mergeOnHitEffect(ItemProtos.TempStatusModifier value) {
+      public Builder mergeOnHitEffect(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
         if (onHitEffectBuilder_ == null) {
           if (onHitEffect_ != null) {
             onHitEffect_ =
-              ItemProtos.TempStatusModifier.newBuilder(onHitEffect_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.newBuilder(onHitEffect_).mergeFrom(value).buildPartial();
           } else {
             onHitEffect_ = value;
           }
@@ -4821,7 +4951,7 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       public Builder clearOnHitEffect() {
         if (onHitEffectBuilder_ == null) {
@@ -4835,33 +4965,33 @@ public final class ItemProtos {
         return this;
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
-      public ItemProtos.TempStatusModifier.Builder getOnHitEffectBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder getOnHitEffectBuilder() {
         
         onChanged();
         return getOnHitEffectFieldBuilder().getBuilder();
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
-      public ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getOnHitEffectOrBuilder() {
         if (onHitEffectBuilder_ != null) {
           return onHitEffectBuilder_.getMessageOrBuilder();
         } else {
           return onHitEffect_ == null ?
-              ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance() : onHitEffect_;
         }
       }
       /**
-       * <code>.item.TempStatusModifier on_hit_effect = 4;</code>
+       * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.TempStatusModifier, ItemProtos.TempStatusModifier.Builder, ItemProtos.TempStatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
           getOnHitEffectFieldBuilder() {
         if (onHitEffectBuilder_ == null) {
           onHitEffectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.TempStatusModifier, ItemProtos.TempStatusModifier.Builder, ItemProtos.TempStatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder>(
                   getOnHitEffect(),
                   getParentForChildren(),
                   isClean());
@@ -4886,12 +5016,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.Weapon)
-    private static final ItemProtos.Weapon DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.Weapon DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.Weapon();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.Weapon();
     }
 
-    public static ItemProtos.Weapon getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.Weapon getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4916,7 +5046,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.Weapon getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.Weapon getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4935,11 +5065,11 @@ public final class ItemProtos {
      * <code>.item.TempStatusModifier effect = 1;</code>
      * @return The effect.
      */
-    ItemProtos.TempStatusModifier getEffect();
+    mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getEffect();
     /**
      * <code>.item.TempStatusModifier effect = 1;</code>
      */
-    ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder();
 
     /**
      * <code>int32 stacks = 2;</code>
@@ -4950,7 +5080,7 @@ public final class ItemProtos {
   /**
    * Protobuf type {@code item.Consumable}
    */
-  public  static final class Consumable extends
+  public static final class Consumable extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.Consumable)
       ConsumableOrBuilder {
@@ -4993,11 +5123,11 @@ public final class ItemProtos {
               done = true;
               break;
             case 10: {
-              ItemProtos.TempStatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder subBuilder = null;
               if (effect_ != null) {
                 subBuilder = effect_.toBuilder();
               }
-              effect_ = input.readMessage(ItemProtos.TempStatusModifier.parser(), extensionRegistry);
+              effect_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(effect_);
                 effect_ = subBuilder.buildPartial();
@@ -5031,23 +5161,24 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_Consumable_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Consumable_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_Consumable_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Consumable_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.Consumable.class, ItemProtos.Consumable.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.Consumable.class, mech.mania.engine.domain.model.ItemProtos.Consumable.Builder.class);
     }
 
     public static final int EFFECT_FIELD_NUMBER = 1;
-    private ItemProtos.TempStatusModifier effect_;
+    private mech.mania.engine.domain.model.ItemProtos.TempStatusModifier effect_;
     /**
      * <code>.item.TempStatusModifier effect = 1;</code>
      * @return Whether the effect field is set.
      */
+    @java.lang.Override
     public boolean hasEffect() {
       return effect_ != null;
     }
@@ -5055,13 +5186,15 @@ public final class ItemProtos {
      * <code>.item.TempStatusModifier effect = 1;</code>
      * @return The effect.
      */
-    public ItemProtos.TempStatusModifier getEffect() {
-      return effect_ == null ? ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getEffect() {
+      return effect_ == null ? mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
     }
     /**
      * <code>.item.TempStatusModifier effect = 1;</code>
      */
-    public ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
       return getEffect();
     }
 
@@ -5071,6 +5204,7 @@ public final class ItemProtos {
      * <code>int32 stacks = 2;</code>
      * @return The stacks.
      */
+    @java.lang.Override
     public int getStacks() {
       return stacks_;
     }
@@ -5122,10 +5256,10 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.Consumable)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.Consumable)) {
         return super.equals(obj);
       }
-      ItemProtos.Consumable other = (ItemProtos.Consumable) obj;
+      mech.mania.engine.domain.model.ItemProtos.Consumable other = (mech.mania.engine.domain.model.ItemProtos.Consumable) obj;
 
       if (hasEffect() != other.hasEffect()) return false;
       if (hasEffect()) {
@@ -5156,69 +5290,69 @@ public final class ItemProtos {
       return hash;
     }
 
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Consumable parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.Consumable parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Consumable parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.Consumable parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.Consumable parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5231,7 +5365,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.Consumable prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.Consumable prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5252,18 +5386,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.Consumable)
-        ItemProtos.ConsumableOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_Consumable_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Consumable_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_Consumable_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Consumable_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.Consumable.class, ItemProtos.Consumable.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.Consumable.class, mech.mania.engine.domain.model.ItemProtos.Consumable.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.Consumable.newBuilder()
@@ -5298,17 +5432,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_Consumable_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_Consumable_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.Consumable getDefaultInstanceForType() {
-        return ItemProtos.Consumable.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.Consumable getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.Consumable build() {
-        ItemProtos.Consumable result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.Consumable build() {
+        mech.mania.engine.domain.model.ItemProtos.Consumable result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5316,8 +5450,8 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.Consumable buildPartial() {
-        ItemProtos.Consumable result = new ItemProtos.Consumable(this);
+      public mech.mania.engine.domain.model.ItemProtos.Consumable buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.Consumable result = new mech.mania.engine.domain.model.ItemProtos.Consumable(this);
         if (effectBuilder_ == null) {
           result.effect_ = effect_;
         } else {
@@ -5362,16 +5496,16 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.Consumable) {
-          return mergeFrom((ItemProtos.Consumable)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.Consumable) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.Consumable)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.Consumable other) {
-        if (other == ItemProtos.Consumable.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.Consumable other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.Consumable.getDefaultInstance()) return this;
         if (other.hasEffect()) {
           mergeEffect(other.getEffect());
         }
@@ -5393,11 +5527,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.Consumable parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.Consumable parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.Consumable) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.Consumable) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5407,9 +5541,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.TempStatusModifier effect_;
+      private mech.mania.engine.domain.model.ItemProtos.TempStatusModifier effect_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.TempStatusModifier, ItemProtos.TempStatusModifier.Builder, ItemProtos.TempStatusModifierOrBuilder> effectBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> effectBuilder_;
       /**
        * <code>.item.TempStatusModifier effect = 1;</code>
        * @return Whether the effect field is set.
@@ -5421,9 +5555,9 @@ public final class ItemProtos {
        * <code>.item.TempStatusModifier effect = 1;</code>
        * @return The effect.
        */
-      public ItemProtos.TempStatusModifier getEffect() {
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getEffect() {
         if (effectBuilder_ == null) {
-          return effect_ == null ? ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
+          return effect_ == null ? mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
         } else {
           return effectBuilder_.getMessage();
         }
@@ -5431,7 +5565,7 @@ public final class ItemProtos {
       /**
        * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public Builder setEffect(ItemProtos.TempStatusModifier value) {
+      public Builder setEffect(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
         if (effectBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5448,7 +5582,7 @@ public final class ItemProtos {
        * <code>.item.TempStatusModifier effect = 1;</code>
        */
       public Builder setEffect(
-          ItemProtos.TempStatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder builderForValue) {
         if (effectBuilder_ == null) {
           effect_ = builderForValue.build();
           onChanged();
@@ -5461,11 +5595,11 @@ public final class ItemProtos {
       /**
        * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public Builder mergeEffect(ItemProtos.TempStatusModifier value) {
+      public Builder mergeEffect(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
         if (effectBuilder_ == null) {
           if (effect_ != null) {
             effect_ =
-              ItemProtos.TempStatusModifier.newBuilder(effect_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.newBuilder(effect_).mergeFrom(value).buildPartial();
           } else {
             effect_ = value;
           }
@@ -5493,7 +5627,7 @@ public final class ItemProtos {
       /**
        * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public ItemProtos.TempStatusModifier.Builder getEffectBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder getEffectBuilder() {
         
         onChanged();
         return getEffectFieldBuilder().getBuilder();
@@ -5501,23 +5635,23 @@ public final class ItemProtos {
       /**
        * <code>.item.TempStatusModifier effect = 1;</code>
        */
-      public ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getEffectOrBuilder() {
         if (effectBuilder_ != null) {
           return effectBuilder_.getMessageOrBuilder();
         } else {
           return effect_ == null ?
-              ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance() : effect_;
         }
       }
       /**
        * <code>.item.TempStatusModifier effect = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.TempStatusModifier, ItemProtos.TempStatusModifier.Builder, ItemProtos.TempStatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
           getEffectFieldBuilder() {
         if (effectBuilder_ == null) {
           effectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.TempStatusModifier, ItemProtos.TempStatusModifier.Builder, ItemProtos.TempStatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder>(
                   getEffect(),
                   getParentForChildren(),
                   isClean());
@@ -5531,6 +5665,7 @@ public final class ItemProtos {
        * <code>int32 stacks = 2;</code>
        * @return The stacks.
        */
+      @java.lang.Override
       public int getStacks() {
         return stacks_;
       }
@@ -5572,12 +5707,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.Consumable)
-    private static final ItemProtos.Consumable DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.Consumable DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.Consumable();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.Consumable();
     }
 
-    public static ItemProtos.Consumable getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.Consumable getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5602,7 +5737,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.Consumable getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.Consumable getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5613,51 +5748,75 @@ public final class ItemProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 speed_change = 1;</code>
-     * @return The speedChange.
+     * <code>int32 flat_speed_change = 1;</code>
+     * @return The flatSpeedChange.
      */
-    int getSpeedChange();
+    int getFlatSpeedChange();
 
     /**
-     * <code>int32 health_change = 2;</code>
-     * @return The healthChange.
+     * <code>double percent_speed_change = 2;</code>
+     * @return The percentSpeedChange.
      */
-    int getHealthChange();
+    double getPercentSpeedChange();
 
     /**
-     * <code>int32 experience_change = 3;</code>
-     * @return The experienceChange.
+     * <code>int32 flat_health_change = 3;</code>
+     * @return The flatHealthChange.
      */
-    int getExperienceChange();
+    int getFlatHealthChange();
 
     /**
-     * <code>int32 magic_damage_change = 4;</code>
-     * @return The magicDamageChange.
+     * <code>double percent_health_change = 4;</code>
+     * @return The percentHealthChange.
      */
-    int getMagicDamageChange();
+    double getPercentHealthChange();
 
     /**
-     * <code>int32 physical_damage_change = 5;</code>
-     * @return The physicalDamageChange.
+     * <code>int32 flat_experience_change = 5;</code>
+     * @return The flatExperienceChange.
      */
-    int getPhysicalDamageChange();
+    int getFlatExperienceChange();
 
     /**
-     * <code>int32 magic_defense_change = 6;</code>
-     * @return The magicDefenseChange.
+     * <code>double percent_experience_change = 6;</code>
+     * @return The percentExperienceChange.
      */
-    int getMagicDefenseChange();
+    double getPercentExperienceChange();
 
     /**
-     * <code>int32 physical_defense_change = 7;</code>
-     * @return The physicalDefenseChange.
+     * <code>int32 flat_damage_change = 7;</code>
+     * @return The flatDamageChange.
      */
-    int getPhysicalDefenseChange();
+    int getFlatDamageChange();
+
+    /**
+     * <code>double percent_damage_change = 8;</code>
+     * @return The percentDamageChange.
+     */
+    double getPercentDamageChange();
+
+    /**
+     * <code>int32 flat_defense_change = 9;</code>
+     * @return The flatDefenseChange.
+     */
+    int getFlatDefenseChange();
+
+    /**
+     * <code>double percent_defense_change = 10;</code>
+     * @return The percentDefenseChange.
+     */
+    double getPercentDefenseChange();
+
+    /**
+     * <code>int32 flat_regen_per_turn = 11;</code>
+     * @return The flatRegenPerTurn.
+     */
+    int getFlatRegenPerTurn();
   }
   /**
    * Protobuf type {@code item.StatusModifier}
    */
-  public  static final class StatusModifier extends
+  public static final class StatusModifier extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.StatusModifier)
       StatusModifierOrBuilder {
@@ -5701,37 +5860,57 @@ public final class ItemProtos {
               break;
             case 8: {
 
-              speedChange_ = input.readInt32();
+              flatSpeedChange_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 17: {
 
-              healthChange_ = input.readInt32();
+              percentSpeedChange_ = input.readDouble();
               break;
             }
             case 24: {
 
-              experienceChange_ = input.readInt32();
+              flatHealthChange_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 33: {
 
-              magicDamageChange_ = input.readInt32();
+              percentHealthChange_ = input.readDouble();
               break;
             }
             case 40: {
 
-              physicalDamageChange_ = input.readInt32();
+              flatExperienceChange_ = input.readInt32();
               break;
             }
-            case 48: {
+            case 49: {
 
-              magicDefenseChange_ = input.readInt32();
+              percentExperienceChange_ = input.readDouble();
               break;
             }
             case 56: {
 
-              physicalDefenseChange_ = input.readInt32();
+              flatDamageChange_ = input.readInt32();
+              break;
+            }
+            case 65: {
+
+              percentDamageChange_ = input.readDouble();
+              break;
+            }
+            case 72: {
+
+              flatDefenseChange_ = input.readInt32();
+              break;
+            }
+            case 81: {
+
+              percentDefenseChange_ = input.readDouble();
+              break;
+            }
+            case 88: {
+
+              flatRegenPerTurn_ = input.readInt32();
               break;
             }
             default: {
@@ -5755,85 +5934,136 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_StatusModifier_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_StatusModifier_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_StatusModifier_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_StatusModifier_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.StatusModifier.class, ItemProtos.StatusModifier.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.class, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder.class);
     }
 
-    public static final int SPEED_CHANGE_FIELD_NUMBER = 1;
-    private int speedChange_;
+    public static final int FLAT_SPEED_CHANGE_FIELD_NUMBER = 1;
+    private int flatSpeedChange_;
     /**
-     * <code>int32 speed_change = 1;</code>
-     * @return The speedChange.
+     * <code>int32 flat_speed_change = 1;</code>
+     * @return The flatSpeedChange.
      */
-    public int getSpeedChange() {
-      return speedChange_;
+    @java.lang.Override
+    public int getFlatSpeedChange() {
+      return flatSpeedChange_;
     }
 
-    public static final int HEALTH_CHANGE_FIELD_NUMBER = 2;
-    private int healthChange_;
+    public static final int PERCENT_SPEED_CHANGE_FIELD_NUMBER = 2;
+    private double percentSpeedChange_;
     /**
-     * <code>int32 health_change = 2;</code>
-     * @return The healthChange.
+     * <code>double percent_speed_change = 2;</code>
+     * @return The percentSpeedChange.
      */
-    public int getHealthChange() {
-      return healthChange_;
+    @java.lang.Override
+    public double getPercentSpeedChange() {
+      return percentSpeedChange_;
     }
 
-    public static final int EXPERIENCE_CHANGE_FIELD_NUMBER = 3;
-    private int experienceChange_;
+    public static final int FLAT_HEALTH_CHANGE_FIELD_NUMBER = 3;
+    private int flatHealthChange_;
     /**
-     * <code>int32 experience_change = 3;</code>
-     * @return The experienceChange.
+     * <code>int32 flat_health_change = 3;</code>
+     * @return The flatHealthChange.
      */
-    public int getExperienceChange() {
-      return experienceChange_;
+    @java.lang.Override
+    public int getFlatHealthChange() {
+      return flatHealthChange_;
     }
 
-    public static final int MAGIC_DAMAGE_CHANGE_FIELD_NUMBER = 4;
-    private int magicDamageChange_;
+    public static final int PERCENT_HEALTH_CHANGE_FIELD_NUMBER = 4;
+    private double percentHealthChange_;
     /**
-     * <code>int32 magic_damage_change = 4;</code>
-     * @return The magicDamageChange.
+     * <code>double percent_health_change = 4;</code>
+     * @return The percentHealthChange.
      */
-    public int getMagicDamageChange() {
-      return magicDamageChange_;
+    @java.lang.Override
+    public double getPercentHealthChange() {
+      return percentHealthChange_;
     }
 
-    public static final int PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER = 5;
-    private int physicalDamageChange_;
+    public static final int FLAT_EXPERIENCE_CHANGE_FIELD_NUMBER = 5;
+    private int flatExperienceChange_;
     /**
-     * <code>int32 physical_damage_change = 5;</code>
-     * @return The physicalDamageChange.
+     * <code>int32 flat_experience_change = 5;</code>
+     * @return The flatExperienceChange.
      */
-    public int getPhysicalDamageChange() {
-      return physicalDamageChange_;
+    @java.lang.Override
+    public int getFlatExperienceChange() {
+      return flatExperienceChange_;
     }
 
-    public static final int MAGIC_DEFENSE_CHANGE_FIELD_NUMBER = 6;
-    private int magicDefenseChange_;
+    public static final int PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER = 6;
+    private double percentExperienceChange_;
     /**
-     * <code>int32 magic_defense_change = 6;</code>
-     * @return The magicDefenseChange.
+     * <code>double percent_experience_change = 6;</code>
+     * @return The percentExperienceChange.
      */
-    public int getMagicDefenseChange() {
-      return magicDefenseChange_;
+    @java.lang.Override
+    public double getPercentExperienceChange() {
+      return percentExperienceChange_;
     }
 
-    public static final int PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER = 7;
-    private int physicalDefenseChange_;
+    public static final int FLAT_DAMAGE_CHANGE_FIELD_NUMBER = 7;
+    private int flatDamageChange_;
     /**
-     * <code>int32 physical_defense_change = 7;</code>
-     * @return The physicalDefenseChange.
+     * <code>int32 flat_damage_change = 7;</code>
+     * @return The flatDamageChange.
      */
-    public int getPhysicalDefenseChange() {
-      return physicalDefenseChange_;
+    @java.lang.Override
+    public int getFlatDamageChange() {
+      return flatDamageChange_;
+    }
+
+    public static final int PERCENT_DAMAGE_CHANGE_FIELD_NUMBER = 8;
+    private double percentDamageChange_;
+    /**
+     * <code>double percent_damage_change = 8;</code>
+     * @return The percentDamageChange.
+     */
+    @java.lang.Override
+    public double getPercentDamageChange() {
+      return percentDamageChange_;
+    }
+
+    public static final int FLAT_DEFENSE_CHANGE_FIELD_NUMBER = 9;
+    private int flatDefenseChange_;
+    /**
+     * <code>int32 flat_defense_change = 9;</code>
+     * @return The flatDefenseChange.
+     */
+    @java.lang.Override
+    public int getFlatDefenseChange() {
+      return flatDefenseChange_;
+    }
+
+    public static final int PERCENT_DEFENSE_CHANGE_FIELD_NUMBER = 10;
+    private double percentDefenseChange_;
+    /**
+     * <code>double percent_defense_change = 10;</code>
+     * @return The percentDefenseChange.
+     */
+    @java.lang.Override
+    public double getPercentDefenseChange() {
+      return percentDefenseChange_;
+    }
+
+    public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 11;
+    private int flatRegenPerTurn_;
+    /**
+     * <code>int32 flat_regen_per_turn = 11;</code>
+     * @return The flatRegenPerTurn.
+     */
+    @java.lang.Override
+    public int getFlatRegenPerTurn() {
+      return flatRegenPerTurn_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5850,26 +6080,38 @@ public final class ItemProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (speedChange_ != 0) {
-        output.writeInt32(1, speedChange_);
+      if (flatSpeedChange_ != 0) {
+        output.writeInt32(1, flatSpeedChange_);
       }
-      if (healthChange_ != 0) {
-        output.writeInt32(2, healthChange_);
+      if (percentSpeedChange_ != 0D) {
+        output.writeDouble(2, percentSpeedChange_);
       }
-      if (experienceChange_ != 0) {
-        output.writeInt32(3, experienceChange_);
+      if (flatHealthChange_ != 0) {
+        output.writeInt32(3, flatHealthChange_);
       }
-      if (magicDamageChange_ != 0) {
-        output.writeInt32(4, magicDamageChange_);
+      if (percentHealthChange_ != 0D) {
+        output.writeDouble(4, percentHealthChange_);
       }
-      if (physicalDamageChange_ != 0) {
-        output.writeInt32(5, physicalDamageChange_);
+      if (flatExperienceChange_ != 0) {
+        output.writeInt32(5, flatExperienceChange_);
       }
-      if (magicDefenseChange_ != 0) {
-        output.writeInt32(6, magicDefenseChange_);
+      if (percentExperienceChange_ != 0D) {
+        output.writeDouble(6, percentExperienceChange_);
       }
-      if (physicalDefenseChange_ != 0) {
-        output.writeInt32(7, physicalDefenseChange_);
+      if (flatDamageChange_ != 0) {
+        output.writeInt32(7, flatDamageChange_);
+      }
+      if (percentDamageChange_ != 0D) {
+        output.writeDouble(8, percentDamageChange_);
+      }
+      if (flatDefenseChange_ != 0) {
+        output.writeInt32(9, flatDefenseChange_);
+      }
+      if (percentDefenseChange_ != 0D) {
+        output.writeDouble(10, percentDefenseChange_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        output.writeInt32(11, flatRegenPerTurn_);
       }
       unknownFields.writeTo(output);
     }
@@ -5880,33 +6122,49 @@ public final class ItemProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (speedChange_ != 0) {
+      if (flatSpeedChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, speedChange_);
+          .computeInt32Size(1, flatSpeedChange_);
       }
-      if (healthChange_ != 0) {
+      if (percentSpeedChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, healthChange_);
+          .computeDoubleSize(2, percentSpeedChange_);
       }
-      if (experienceChange_ != 0) {
+      if (flatHealthChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, experienceChange_);
+          .computeInt32Size(3, flatHealthChange_);
       }
-      if (magicDamageChange_ != 0) {
+      if (percentHealthChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, magicDamageChange_);
+          .computeDoubleSize(4, percentHealthChange_);
       }
-      if (physicalDamageChange_ != 0) {
+      if (flatExperienceChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, physicalDamageChange_);
+          .computeInt32Size(5, flatExperienceChange_);
       }
-      if (magicDefenseChange_ != 0) {
+      if (percentExperienceChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, magicDefenseChange_);
+          .computeDoubleSize(6, percentExperienceChange_);
       }
-      if (physicalDefenseChange_ != 0) {
+      if (flatDamageChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, physicalDefenseChange_);
+          .computeInt32Size(7, flatDamageChange_);
+      }
+      if (percentDamageChange_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, percentDamageChange_);
+      }
+      if (flatDefenseChange_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, flatDefenseChange_);
+      }
+      if (percentDefenseChange_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, percentDefenseChange_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, flatRegenPerTurn_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5918,25 +6176,38 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.StatusModifier)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.StatusModifier)) {
         return super.equals(obj);
       }
-      ItemProtos.StatusModifier other = (ItemProtos.StatusModifier) obj;
+      mech.mania.engine.domain.model.ItemProtos.StatusModifier other = (mech.mania.engine.domain.model.ItemProtos.StatusModifier) obj;
 
-      if (getSpeedChange()
-          != other.getSpeedChange()) return false;
-      if (getHealthChange()
-          != other.getHealthChange()) return false;
-      if (getExperienceChange()
-          != other.getExperienceChange()) return false;
-      if (getMagicDamageChange()
-          != other.getMagicDamageChange()) return false;
-      if (getPhysicalDamageChange()
-          != other.getPhysicalDamageChange()) return false;
-      if (getMagicDefenseChange()
-          != other.getMagicDefenseChange()) return false;
-      if (getPhysicalDefenseChange()
-          != other.getPhysicalDefenseChange()) return false;
+      if (getFlatSpeedChange()
+          != other.getFlatSpeedChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentSpeedChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentSpeedChange())) return false;
+      if (getFlatHealthChange()
+          != other.getFlatHealthChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentHealthChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentHealthChange())) return false;
+      if (getFlatExperienceChange()
+          != other.getFlatExperienceChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentExperienceChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentExperienceChange())) return false;
+      if (getFlatDamageChange()
+          != other.getFlatDamageChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDamageChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDamageChange())) return false;
+      if (getFlatDefenseChange()
+          != other.getFlatDefenseChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDefenseChange())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDefenseChange())) return false;
+      if (getFlatRegenPerTurn()
+          != other.getFlatRegenPerTurn()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5948,88 +6219,101 @@ public final class ItemProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SPEED_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getSpeedChange();
-      hash = (37 * hash) + HEALTH_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getHealthChange();
-      hash = (37 * hash) + EXPERIENCE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getExperienceChange();
-      hash = (37 * hash) + MAGIC_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMagicDamageChange();
-      hash = (37 * hash) + PHYSICAL_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getPhysicalDamageChange();
-      hash = (37 * hash) + MAGIC_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMagicDefenseChange();
-      hash = (37 * hash) + PHYSICAL_DEFENSE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getPhysicalDefenseChange();
+      hash = (37 * hash) + FLAT_SPEED_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatSpeedChange();
+      hash = (37 * hash) + PERCENT_SPEED_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentSpeedChange()));
+      hash = (37 * hash) + FLAT_HEALTH_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatHealthChange();
+      hash = (37 * hash) + PERCENT_HEALTH_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentHealthChange()));
+      hash = (37 * hash) + FLAT_EXPERIENCE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatExperienceChange();
+      hash = (37 * hash) + PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentExperienceChange()));
+      hash = (37 * hash) + FLAT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDamageChange();
+      hash = (37 * hash) + PERCENT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDamageChange()));
+      hash = (37 * hash) + FLAT_DEFENSE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDefenseChange();
+      hash = (37 * hash) + PERCENT_DEFENSE_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDefenseChange()));
+      hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatRegenPerTurn();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.StatusModifier parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.StatusModifier parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.StatusModifier parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.StatusModifier parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.StatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6042,7 +6326,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.StatusModifier prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.StatusModifier prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6063,18 +6347,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.StatusModifier)
-        ItemProtos.StatusModifierOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_StatusModifier_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_StatusModifier_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_StatusModifier_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_StatusModifier_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.StatusModifier.class, ItemProtos.StatusModifier.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.StatusModifier.class, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder()
@@ -6095,19 +6379,27 @@ public final class ItemProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        speedChange_ = 0;
+        flatSpeedChange_ = 0;
 
-        healthChange_ = 0;
+        percentSpeedChange_ = 0D;
 
-        experienceChange_ = 0;
+        flatHealthChange_ = 0;
 
-        magicDamageChange_ = 0;
+        percentHealthChange_ = 0D;
 
-        physicalDamageChange_ = 0;
+        flatExperienceChange_ = 0;
 
-        magicDefenseChange_ = 0;
+        percentExperienceChange_ = 0D;
 
-        physicalDefenseChange_ = 0;
+        flatDamageChange_ = 0;
+
+        percentDamageChange_ = 0D;
+
+        flatDefenseChange_ = 0;
+
+        percentDefenseChange_ = 0D;
+
+        flatRegenPerTurn_ = 0;
 
         return this;
       }
@@ -6115,17 +6407,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_StatusModifier_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_StatusModifier_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.StatusModifier getDefaultInstanceForType() {
-        return ItemProtos.StatusModifier.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.StatusModifier build() {
-        ItemProtos.StatusModifier result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier build() {
+        mech.mania.engine.domain.model.ItemProtos.StatusModifier result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6133,15 +6425,19 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.StatusModifier buildPartial() {
-        ItemProtos.StatusModifier result = new ItemProtos.StatusModifier(this);
-        result.speedChange_ = speedChange_;
-        result.healthChange_ = healthChange_;
-        result.experienceChange_ = experienceChange_;
-        result.magicDamageChange_ = magicDamageChange_;
-        result.physicalDamageChange_ = physicalDamageChange_;
-        result.magicDefenseChange_ = magicDefenseChange_;
-        result.physicalDefenseChange_ = physicalDefenseChange_;
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.StatusModifier result = new mech.mania.engine.domain.model.ItemProtos.StatusModifier(this);
+        result.flatSpeedChange_ = flatSpeedChange_;
+        result.percentSpeedChange_ = percentSpeedChange_;
+        result.flatHealthChange_ = flatHealthChange_;
+        result.percentHealthChange_ = percentHealthChange_;
+        result.flatExperienceChange_ = flatExperienceChange_;
+        result.percentExperienceChange_ = percentExperienceChange_;
+        result.flatDamageChange_ = flatDamageChange_;
+        result.percentDamageChange_ = percentDamageChange_;
+        result.flatDefenseChange_ = flatDefenseChange_;
+        result.percentDefenseChange_ = percentDefenseChange_;
+        result.flatRegenPerTurn_ = flatRegenPerTurn_;
         onBuilt();
         return result;
       }
@@ -6180,36 +6476,48 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.StatusModifier) {
-          return mergeFrom((ItemProtos.StatusModifier)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.StatusModifier) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.StatusModifier)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.StatusModifier other) {
-        if (other == ItemProtos.StatusModifier.getDefaultInstance()) return this;
-        if (other.getSpeedChange() != 0) {
-          setSpeedChange(other.getSpeedChange());
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.StatusModifier other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance()) return this;
+        if (other.getFlatSpeedChange() != 0) {
+          setFlatSpeedChange(other.getFlatSpeedChange());
         }
-        if (other.getHealthChange() != 0) {
-          setHealthChange(other.getHealthChange());
+        if (other.getPercentSpeedChange() != 0D) {
+          setPercentSpeedChange(other.getPercentSpeedChange());
         }
-        if (other.getExperienceChange() != 0) {
-          setExperienceChange(other.getExperienceChange());
+        if (other.getFlatHealthChange() != 0) {
+          setFlatHealthChange(other.getFlatHealthChange());
         }
-        if (other.getMagicDamageChange() != 0) {
-          setMagicDamageChange(other.getMagicDamageChange());
+        if (other.getPercentHealthChange() != 0D) {
+          setPercentHealthChange(other.getPercentHealthChange());
         }
-        if (other.getPhysicalDamageChange() != 0) {
-          setPhysicalDamageChange(other.getPhysicalDamageChange());
+        if (other.getFlatExperienceChange() != 0) {
+          setFlatExperienceChange(other.getFlatExperienceChange());
         }
-        if (other.getMagicDefenseChange() != 0) {
-          setMagicDefenseChange(other.getMagicDefenseChange());
+        if (other.getPercentExperienceChange() != 0D) {
+          setPercentExperienceChange(other.getPercentExperienceChange());
         }
-        if (other.getPhysicalDefenseChange() != 0) {
-          setPhysicalDefenseChange(other.getPhysicalDefenseChange());
+        if (other.getFlatDamageChange() != 0) {
+          setFlatDamageChange(other.getFlatDamageChange());
+        }
+        if (other.getPercentDamageChange() != 0D) {
+          setPercentDamageChange(other.getPercentDamageChange());
+        }
+        if (other.getFlatDefenseChange() != 0) {
+          setFlatDefenseChange(other.getFlatDefenseChange());
+        }
+        if (other.getPercentDefenseChange() != 0D) {
+          setPercentDefenseChange(other.getPercentDefenseChange());
+        }
+        if (other.getFlatRegenPerTurn() != 0) {
+          setFlatRegenPerTurn(other.getFlatRegenPerTurn());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6226,11 +6534,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.StatusModifier parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.StatusModifier parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.StatusModifier) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.StatusModifier) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6240,212 +6548,343 @@ public final class ItemProtos {
         return this;
       }
 
-      private int speedChange_ ;
+      private int flatSpeedChange_ ;
       /**
-       * <code>int32 speed_change = 1;</code>
-       * @return The speedChange.
+       * <code>int32 flat_speed_change = 1;</code>
+       * @return The flatSpeedChange.
        */
-      public int getSpeedChange() {
-        return speedChange_;
+      @java.lang.Override
+      public int getFlatSpeedChange() {
+        return flatSpeedChange_;
       }
       /**
-       * <code>int32 speed_change = 1;</code>
-       * @param value The speedChange to set.
+       * <code>int32 flat_speed_change = 1;</code>
+       * @param value The flatSpeedChange to set.
        * @return This builder for chaining.
        */
-      public Builder setSpeedChange(int value) {
+      public Builder setFlatSpeedChange(int value) {
         
-        speedChange_ = value;
+        flatSpeedChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 speed_change = 1;</code>
+       * <code>int32 flat_speed_change = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSpeedChange() {
+      public Builder clearFlatSpeedChange() {
         
-        speedChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int healthChange_ ;
-      /**
-       * <code>int32 health_change = 2;</code>
-       * @return The healthChange.
-       */
-      public int getHealthChange() {
-        return healthChange_;
-      }
-      /**
-       * <code>int32 health_change = 2;</code>
-       * @param value The healthChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setHealthChange(int value) {
-        
-        healthChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 health_change = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearHealthChange() {
-        
-        healthChange_ = 0;
+        flatSpeedChange_ = 0;
         onChanged();
         return this;
       }
 
-      private int experienceChange_ ;
+      private double percentSpeedChange_ ;
       /**
-       * <code>int32 experience_change = 3;</code>
-       * @return The experienceChange.
+       * <code>double percent_speed_change = 2;</code>
+       * @return The percentSpeedChange.
        */
-      public int getExperienceChange() {
-        return experienceChange_;
+      @java.lang.Override
+      public double getPercentSpeedChange() {
+        return percentSpeedChange_;
       }
       /**
-       * <code>int32 experience_change = 3;</code>
-       * @param value The experienceChange to set.
+       * <code>double percent_speed_change = 2;</code>
+       * @param value The percentSpeedChange to set.
        * @return This builder for chaining.
        */
-      public Builder setExperienceChange(int value) {
+      public Builder setPercentSpeedChange(double value) {
         
-        experienceChange_ = value;
+        percentSpeedChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 experience_change = 3;</code>
+       * <code>double percent_speed_change = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearExperienceChange() {
+      public Builder clearPercentSpeedChange() {
         
-        experienceChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int magicDamageChange_ ;
-      /**
-       * <code>int32 magic_damage_change = 4;</code>
-       * @return The magicDamageChange.
-       */
-      public int getMagicDamageChange() {
-        return magicDamageChange_;
-      }
-      /**
-       * <code>int32 magic_damage_change = 4;</code>
-       * @param value The magicDamageChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMagicDamageChange(int value) {
-        
-        magicDamageChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 magic_damage_change = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMagicDamageChange() {
-        
-        magicDamageChange_ = 0;
+        percentSpeedChange_ = 0D;
         onChanged();
         return this;
       }
 
-      private int physicalDamageChange_ ;
+      private int flatHealthChange_ ;
       /**
-       * <code>int32 physical_damage_change = 5;</code>
-       * @return The physicalDamageChange.
+       * <code>int32 flat_health_change = 3;</code>
+       * @return The flatHealthChange.
        */
-      public int getPhysicalDamageChange() {
-        return physicalDamageChange_;
+      @java.lang.Override
+      public int getFlatHealthChange() {
+        return flatHealthChange_;
       }
       /**
-       * <code>int32 physical_damage_change = 5;</code>
-       * @param value The physicalDamageChange to set.
+       * <code>int32 flat_health_change = 3;</code>
+       * @param value The flatHealthChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPhysicalDamageChange(int value) {
+      public Builder setFlatHealthChange(int value) {
         
-        physicalDamageChange_ = value;
+        flatHealthChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 physical_damage_change = 5;</code>
+       * <code>int32 flat_health_change = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearPhysicalDamageChange() {
+      public Builder clearFlatHealthChange() {
         
-        physicalDamageChange_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int magicDefenseChange_ ;
-      /**
-       * <code>int32 magic_defense_change = 6;</code>
-       * @return The magicDefenseChange.
-       */
-      public int getMagicDefenseChange() {
-        return magicDefenseChange_;
-      }
-      /**
-       * <code>int32 magic_defense_change = 6;</code>
-       * @param value The magicDefenseChange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMagicDefenseChange(int value) {
-        
-        magicDefenseChange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 magic_defense_change = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMagicDefenseChange() {
-        
-        magicDefenseChange_ = 0;
+        flatHealthChange_ = 0;
         onChanged();
         return this;
       }
 
-      private int physicalDefenseChange_ ;
+      private double percentHealthChange_ ;
       /**
-       * <code>int32 physical_defense_change = 7;</code>
-       * @return The physicalDefenseChange.
+       * <code>double percent_health_change = 4;</code>
+       * @return The percentHealthChange.
        */
-      public int getPhysicalDefenseChange() {
-        return physicalDefenseChange_;
+      @java.lang.Override
+      public double getPercentHealthChange() {
+        return percentHealthChange_;
       }
       /**
-       * <code>int32 physical_defense_change = 7;</code>
-       * @param value The physicalDefenseChange to set.
+       * <code>double percent_health_change = 4;</code>
+       * @param value The percentHealthChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPhysicalDefenseChange(int value) {
+      public Builder setPercentHealthChange(double value) {
         
-        physicalDefenseChange_ = value;
+        percentHealthChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 physical_defense_change = 7;</code>
+       * <code>double percent_health_change = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearPhysicalDefenseChange() {
+      public Builder clearPercentHealthChange() {
         
-        physicalDefenseChange_ = 0;
+        percentHealthChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatExperienceChange_ ;
+      /**
+       * <code>int32 flat_experience_change = 5;</code>
+       * @return The flatExperienceChange.
+       */
+      @java.lang.Override
+      public int getFlatExperienceChange() {
+        return flatExperienceChange_;
+      }
+      /**
+       * <code>int32 flat_experience_change = 5;</code>
+       * @param value The flatExperienceChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatExperienceChange(int value) {
+        
+        flatExperienceChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_experience_change = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatExperienceChange() {
+        
+        flatExperienceChange_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double percentExperienceChange_ ;
+      /**
+       * <code>double percent_experience_change = 6;</code>
+       * @return The percentExperienceChange.
+       */
+      @java.lang.Override
+      public double getPercentExperienceChange() {
+        return percentExperienceChange_;
+      }
+      /**
+       * <code>double percent_experience_change = 6;</code>
+       * @param value The percentExperienceChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPercentExperienceChange(double value) {
+        
+        percentExperienceChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double percent_experience_change = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPercentExperienceChange() {
+        
+        percentExperienceChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatDamageChange_ ;
+      /**
+       * <code>int32 flat_damage_change = 7;</code>
+       * @return The flatDamageChange.
+       */
+      @java.lang.Override
+      public int getFlatDamageChange() {
+        return flatDamageChange_;
+      }
+      /**
+       * <code>int32 flat_damage_change = 7;</code>
+       * @param value The flatDamageChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatDamageChange(int value) {
+        
+        flatDamageChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_damage_change = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatDamageChange() {
+        
+        flatDamageChange_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double percentDamageChange_ ;
+      /**
+       * <code>double percent_damage_change = 8;</code>
+       * @return The percentDamageChange.
+       */
+      @java.lang.Override
+      public double getPercentDamageChange() {
+        return percentDamageChange_;
+      }
+      /**
+       * <code>double percent_damage_change = 8;</code>
+       * @param value The percentDamageChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPercentDamageChange(double value) {
+        
+        percentDamageChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double percent_damage_change = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPercentDamageChange() {
+        
+        percentDamageChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatDefenseChange_ ;
+      /**
+       * <code>int32 flat_defense_change = 9;</code>
+       * @return The flatDefenseChange.
+       */
+      @java.lang.Override
+      public int getFlatDefenseChange() {
+        return flatDefenseChange_;
+      }
+      /**
+       * <code>int32 flat_defense_change = 9;</code>
+       * @param value The flatDefenseChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatDefenseChange(int value) {
+        
+        flatDefenseChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_defense_change = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatDefenseChange() {
+        
+        flatDefenseChange_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double percentDefenseChange_ ;
+      /**
+       * <code>double percent_defense_change = 10;</code>
+       * @return The percentDefenseChange.
+       */
+      @java.lang.Override
+      public double getPercentDefenseChange() {
+        return percentDefenseChange_;
+      }
+      /**
+       * <code>double percent_defense_change = 10;</code>
+       * @param value The percentDefenseChange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPercentDefenseChange(double value) {
+        
+        percentDefenseChange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double percent_defense_change = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPercentDefenseChange() {
+        
+        percentDefenseChange_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatRegenPerTurn_ ;
+      /**
+       * <code>int32 flat_regen_per_turn = 11;</code>
+       * @return The flatRegenPerTurn.
+       */
+      @java.lang.Override
+      public int getFlatRegenPerTurn() {
+        return flatRegenPerTurn_;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 11;</code>
+       * @param value The flatRegenPerTurn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatRegenPerTurn(int value) {
+        
+        flatRegenPerTurn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatRegenPerTurn() {
+        
+        flatRegenPerTurn_ = 0;
         onChanged();
         return this;
       }
@@ -6466,12 +6905,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.StatusModifier)
-    private static final ItemProtos.StatusModifier DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.StatusModifier DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.StatusModifier();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.StatusModifier();
     }
 
-    public static ItemProtos.StatusModifier getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.StatusModifier getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6496,7 +6935,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.StatusModifier getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6515,28 +6954,40 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    ItemProtos.StatusModifier getStats();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats();
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
+    mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder();
 
     /**
-     * <code>int32 damage_per_turn = 2;</code>
-     * @return The damagePerTurn.
+     * <code>int32 flat_damage_per_turn = 2;</code>
+     * @return The flatDamagePerTurn.
      */
-    int getDamagePerTurn();
+    int getFlatDamagePerTurn();
 
     /**
-     * <code>int32 duration = 3;</code>
-     * @return The duration.
+     * <code>double percent_damage_per_turn = 3;</code>
+     * @return The percentDamagePerTurn.
      */
-    int getDuration();
+    double getPercentDamagePerTurn();
+
+    /**
+     * <code>int32 flat_regen_per_turn = 4;</code>
+     * @return The flatRegenPerTurn.
+     */
+    int getFlatRegenPerTurn();
+
+    /**
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
+     */
+    int getTurnsLeft();
   }
   /**
    * Protobuf type {@code item.TempStatusModifier}
    */
-  public  static final class TempStatusModifier extends
+  public static final class TempStatusModifier extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:item.TempStatusModifier)
       TempStatusModifierOrBuilder {
@@ -6579,11 +7030,11 @@ public final class ItemProtos {
               done = true;
               break;
             case 10: {
-              ItemProtos.StatusModifier.Builder subBuilder = null;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder subBuilder = null;
               if (stats_ != null) {
                 subBuilder = stats_.toBuilder();
               }
-              stats_ = input.readMessage(ItemProtos.StatusModifier.parser(), extensionRegistry);
+              stats_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.StatusModifier.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(stats_);
                 stats_ = subBuilder.buildPartial();
@@ -6593,12 +7044,22 @@ public final class ItemProtos {
             }
             case 16: {
 
-              damagePerTurn_ = input.readInt32();
+              flatDamagePerTurn_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 25: {
 
-              duration_ = input.readInt32();
+              percentDamagePerTurn_ = input.readDouble();
+              break;
+            }
+            case 32: {
+
+              flatRegenPerTurn_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              turnsLeft_ = input.readInt32();
               break;
             }
             default: {
@@ -6622,23 +7083,24 @@ public final class ItemProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ItemProtos.internal_static_item_TempStatusModifier_descriptor;
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_TempStatusModifier_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ItemProtos.internal_static_item_TempStatusModifier_fieldAccessorTable
+      return mech.mania.engine.domain.model.ItemProtos.internal_static_item_TempStatusModifier_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ItemProtos.TempStatusModifier.class, ItemProtos.TempStatusModifier.Builder.class);
+              mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.class, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder.class);
     }
 
     public static final int STATS_FIELD_NUMBER = 1;
-    private ItemProtos.StatusModifier stats_;
+    private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      * @return Whether the stats field is set.
      */
+    @java.lang.Override
     public boolean hasStats() {
       return stats_ != null;
     }
@@ -6646,34 +7108,60 @@ public final class ItemProtos {
      * <code>.item.StatusModifier stats = 1;</code>
      * @return The stats.
      */
-    public ItemProtos.StatusModifier getStats() {
-      return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
+      return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
     }
     /**
      * <code>.item.StatusModifier stats = 1;</code>
      */
-    public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
       return getStats();
     }
 
-    public static final int DAMAGE_PER_TURN_FIELD_NUMBER = 2;
-    private int damagePerTurn_;
+    public static final int FLAT_DAMAGE_PER_TURN_FIELD_NUMBER = 2;
+    private int flatDamagePerTurn_;
     /**
-     * <code>int32 damage_per_turn = 2;</code>
-     * @return The damagePerTurn.
+     * <code>int32 flat_damage_per_turn = 2;</code>
+     * @return The flatDamagePerTurn.
      */
-    public int getDamagePerTurn() {
-      return damagePerTurn_;
+    @java.lang.Override
+    public int getFlatDamagePerTurn() {
+      return flatDamagePerTurn_;
     }
 
-    public static final int DURATION_FIELD_NUMBER = 3;
-    private int duration_;
+    public static final int PERCENT_DAMAGE_PER_TURN_FIELD_NUMBER = 3;
+    private double percentDamagePerTurn_;
     /**
-     * <code>int32 duration = 3;</code>
-     * @return The duration.
+     * <code>double percent_damage_per_turn = 3;</code>
+     * @return The percentDamagePerTurn.
      */
-    public int getDuration() {
-      return duration_;
+    @java.lang.Override
+    public double getPercentDamagePerTurn() {
+      return percentDamagePerTurn_;
+    }
+
+    public static final int FLAT_REGEN_PER_TURN_FIELD_NUMBER = 4;
+    private int flatRegenPerTurn_;
+    /**
+     * <code>int32 flat_regen_per_turn = 4;</code>
+     * @return The flatRegenPerTurn.
+     */
+    @java.lang.Override
+    public int getFlatRegenPerTurn() {
+      return flatRegenPerTurn_;
+    }
+
+    public static final int TURNS_LEFT_FIELD_NUMBER = 5;
+    private int turnsLeft_;
+    /**
+     * <code>int32 turns_left = 5;</code>
+     * @return The turnsLeft.
+     */
+    @java.lang.Override
+    public int getTurnsLeft() {
+      return turnsLeft_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6693,11 +7181,17 @@ public final class ItemProtos {
       if (stats_ != null) {
         output.writeMessage(1, getStats());
       }
-      if (damagePerTurn_ != 0) {
-        output.writeInt32(2, damagePerTurn_);
+      if (flatDamagePerTurn_ != 0) {
+        output.writeInt32(2, flatDamagePerTurn_);
       }
-      if (duration_ != 0) {
-        output.writeInt32(3, duration_);
+      if (percentDamagePerTurn_ != 0D) {
+        output.writeDouble(3, percentDamagePerTurn_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        output.writeInt32(4, flatRegenPerTurn_);
+      }
+      if (turnsLeft_ != 0) {
+        output.writeInt32(5, turnsLeft_);
       }
       unknownFields.writeTo(output);
     }
@@ -6712,13 +7206,21 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStats());
       }
-      if (damagePerTurn_ != 0) {
+      if (flatDamagePerTurn_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, damagePerTurn_);
+          .computeInt32Size(2, flatDamagePerTurn_);
       }
-      if (duration_ != 0) {
+      if (percentDamagePerTurn_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, duration_);
+          .computeDoubleSize(3, percentDamagePerTurn_);
+      }
+      if (flatRegenPerTurn_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, flatRegenPerTurn_);
+      }
+      if (turnsLeft_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, turnsLeft_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6730,20 +7232,25 @@ public final class ItemProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ItemProtos.TempStatusModifier)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ItemProtos.TempStatusModifier)) {
         return super.equals(obj);
       }
-      ItemProtos.TempStatusModifier other = (ItemProtos.TempStatusModifier) obj;
+      mech.mania.engine.domain.model.ItemProtos.TempStatusModifier other = (mech.mania.engine.domain.model.ItemProtos.TempStatusModifier) obj;
 
       if (hasStats() != other.hasStats()) return false;
       if (hasStats()) {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (getDamagePerTurn()
-          != other.getDamagePerTurn()) return false;
-      if (getDuration()
-          != other.getDuration()) return false;
+      if (getFlatDamagePerTurn()
+          != other.getFlatDamagePerTurn()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentDamagePerTurn())
+          != java.lang.Double.doubleToLongBits(
+              other.getPercentDamagePerTurn())) return false;
+      if (getFlatRegenPerTurn()
+          != other.getFlatRegenPerTurn()) return false;
+      if (getTurnsLeft()
+          != other.getTurnsLeft()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6759,78 +7266,83 @@ public final class ItemProtos {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
         hash = (53 * hash) + getStats().hashCode();
       }
-      hash = (37 * hash) + DAMAGE_PER_TURN_FIELD_NUMBER;
-      hash = (53 * hash) + getDamagePerTurn();
-      hash = (37 * hash) + DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getDuration();
+      hash = (37 * hash) + FLAT_DAMAGE_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatDamagePerTurn();
+      hash = (37 * hash) + PERCENT_DAMAGE_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getPercentDamagePerTurn()));
+      hash = (37 * hash) + FLAT_REGEN_PER_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatRegenPerTurn();
+      hash = (37 * hash) + TURNS_LEFT_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsLeft();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.TempStatusModifier parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ItemProtos.TempStatusModifier parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ItemProtos.TempStatusModifier parseFrom(
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6843,7 +7355,7 @@ public final class ItemProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ItemProtos.TempStatusModifier prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6864,18 +7376,18 @@ public final class ItemProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:item.TempStatusModifier)
-        ItemProtos.TempStatusModifierOrBuilder {
+        mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ItemProtos.internal_static_item_TempStatusModifier_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_TempStatusModifier_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ItemProtos.internal_static_item_TempStatusModifier_fieldAccessorTable
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_TempStatusModifier_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ItemProtos.TempStatusModifier.class, ItemProtos.TempStatusModifier.Builder.class);
+                mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.class, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.newBuilder()
@@ -6902,9 +7414,13 @@ public final class ItemProtos {
           stats_ = null;
           statsBuilder_ = null;
         }
-        damagePerTurn_ = 0;
+        flatDamagePerTurn_ = 0;
 
-        duration_ = 0;
+        percentDamagePerTurn_ = 0D;
+
+        flatRegenPerTurn_ = 0;
+
+        turnsLeft_ = 0;
 
         return this;
       }
@@ -6912,17 +7428,17 @@ public final class ItemProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ItemProtos.internal_static_item_TempStatusModifier_descriptor;
+        return mech.mania.engine.domain.model.ItemProtos.internal_static_item_TempStatusModifier_descriptor;
       }
 
       @java.lang.Override
-      public ItemProtos.TempStatusModifier getDefaultInstanceForType() {
-        return ItemProtos.TempStatusModifier.getDefaultInstance();
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance();
       }
 
       @java.lang.Override
-      public ItemProtos.TempStatusModifier build() {
-        ItemProtos.TempStatusModifier result = buildPartial();
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier build() {
+        mech.mania.engine.domain.model.ItemProtos.TempStatusModifier result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6930,15 +7446,17 @@ public final class ItemProtos {
       }
 
       @java.lang.Override
-      public ItemProtos.TempStatusModifier buildPartial() {
-        ItemProtos.TempStatusModifier result = new ItemProtos.TempStatusModifier(this);
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier buildPartial() {
+        mech.mania.engine.domain.model.ItemProtos.TempStatusModifier result = new mech.mania.engine.domain.model.ItemProtos.TempStatusModifier(this);
         if (statsBuilder_ == null) {
           result.stats_ = stats_;
         } else {
           result.stats_ = statsBuilder_.build();
         }
-        result.damagePerTurn_ = damagePerTurn_;
-        result.duration_ = duration_;
+        result.flatDamagePerTurn_ = flatDamagePerTurn_;
+        result.percentDamagePerTurn_ = percentDamagePerTurn_;
+        result.flatRegenPerTurn_ = flatRegenPerTurn_;
+        result.turnsLeft_ = turnsLeft_;
         onBuilt();
         return result;
       }
@@ -6977,24 +7495,30 @@ public final class ItemProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ItemProtos.TempStatusModifier) {
-          return mergeFrom((ItemProtos.TempStatusModifier)other);
+        if (other instanceof mech.mania.engine.domain.model.ItemProtos.TempStatusModifier) {
+          return mergeFrom((mech.mania.engine.domain.model.ItemProtos.TempStatusModifier)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ItemProtos.TempStatusModifier other) {
-        if (other == ItemProtos.TempStatusModifier.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier other) {
+        if (other == mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance()) return this;
         if (other.hasStats()) {
           mergeStats(other.getStats());
         }
-        if (other.getDamagePerTurn() != 0) {
-          setDamagePerTurn(other.getDamagePerTurn());
+        if (other.getFlatDamagePerTurn() != 0) {
+          setFlatDamagePerTurn(other.getFlatDamagePerTurn());
         }
-        if (other.getDuration() != 0) {
-          setDuration(other.getDuration());
+        if (other.getPercentDamagePerTurn() != 0D) {
+          setPercentDamagePerTurn(other.getPercentDamagePerTurn());
+        }
+        if (other.getFlatRegenPerTurn() != 0) {
+          setFlatRegenPerTurn(other.getFlatRegenPerTurn());
+        }
+        if (other.getTurnsLeft() != 0) {
+          setTurnsLeft(other.getTurnsLeft());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7011,11 +7535,11 @@ public final class ItemProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ItemProtos.TempStatusModifier parsedMessage = null;
+        mech.mania.engine.domain.model.ItemProtos.TempStatusModifier parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ItemProtos.TempStatusModifier) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ItemProtos.TempStatusModifier) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7025,9 +7549,9 @@ public final class ItemProtos {
         return this;
       }
 
-      private ItemProtos.StatusModifier stats_;
+      private mech.mania.engine.domain.model.ItemProtos.StatusModifier stats_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder> statsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> statsBuilder_;
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        * @return Whether the stats field is set.
@@ -7039,9 +7563,9 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        * @return The stats.
        */
-      public ItemProtos.StatusModifier getStats() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier getStats() {
         if (statsBuilder_ == null) {
-          return stats_ == null ? ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+          return stats_ == null ? mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         } else {
           return statsBuilder_.getMessage();
         }
@@ -7049,7 +7573,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder setStats(ItemProtos.StatusModifier value) {
+      public Builder setStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7066,7 +7590,7 @@ public final class ItemProtos {
        * <code>.item.StatusModifier stats = 1;</code>
        */
       public Builder setStats(
-          ItemProtos.StatusModifier.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder builderForValue) {
         if (statsBuilder_ == null) {
           stats_ = builderForValue.build();
           onChanged();
@@ -7079,11 +7603,11 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public Builder mergeStats(ItemProtos.StatusModifier value) {
+      public Builder mergeStats(mech.mania.engine.domain.model.ItemProtos.StatusModifier value) {
         if (statsBuilder_ == null) {
           if (stats_ != null) {
             stats_ =
-              ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.newBuilder(stats_).mergeFrom(value).buildPartial();
           } else {
             stats_ = value;
           }
@@ -7111,7 +7635,7 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifier.Builder getStatsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder getStatsBuilder() {
         
         onChanged();
         return getStatsFieldBuilder().getBuilder();
@@ -7119,23 +7643,23 @@ public final class ItemProtos {
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
-      public ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder getStatsOrBuilder() {
         if (statsBuilder_ != null) {
           return statsBuilder_.getMessageOrBuilder();
         } else {
           return stats_ == null ?
-              ItemProtos.StatusModifier.getDefaultInstance() : stats_;
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier.getDefaultInstance() : stats_;
         }
       }
       /**
        * <code>.item.StatusModifier stats = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder> 
           getStatsFieldBuilder() {
         if (statsBuilder_ == null) {
           statsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              ItemProtos.StatusModifier, ItemProtos.StatusModifier.Builder, ItemProtos.StatusModifierOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.StatusModifier, mech.mania.engine.domain.model.ItemProtos.StatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.StatusModifierOrBuilder>(
                   getStats(),
                   getParentForChildren(),
                   isClean());
@@ -7144,62 +7668,126 @@ public final class ItemProtos {
         return statsBuilder_;
       }
 
-      private int damagePerTurn_ ;
+      private int flatDamagePerTurn_ ;
       /**
-       * <code>int32 damage_per_turn = 2;</code>
-       * @return The damagePerTurn.
+       * <code>int32 flat_damage_per_turn = 2;</code>
+       * @return The flatDamagePerTurn.
        */
-      public int getDamagePerTurn() {
-        return damagePerTurn_;
+      @java.lang.Override
+      public int getFlatDamagePerTurn() {
+        return flatDamagePerTurn_;
       }
       /**
-       * <code>int32 damage_per_turn = 2;</code>
-       * @param value The damagePerTurn to set.
+       * <code>int32 flat_damage_per_turn = 2;</code>
+       * @param value The flatDamagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setDamagePerTurn(int value) {
+      public Builder setFlatDamagePerTurn(int value) {
         
-        damagePerTurn_ = value;
+        flatDamagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 damage_per_turn = 2;</code>
+       * <code>int32 flat_damage_per_turn = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDamagePerTurn() {
+      public Builder clearFlatDamagePerTurn() {
         
-        damagePerTurn_ = 0;
+        flatDamagePerTurn_ = 0;
         onChanged();
         return this;
       }
 
-      private int duration_ ;
+      private double percentDamagePerTurn_ ;
       /**
-       * <code>int32 duration = 3;</code>
-       * @return The duration.
+       * <code>double percent_damage_per_turn = 3;</code>
+       * @return The percentDamagePerTurn.
        */
-      public int getDuration() {
-        return duration_;
+      @java.lang.Override
+      public double getPercentDamagePerTurn() {
+        return percentDamagePerTurn_;
       }
       /**
-       * <code>int32 duration = 3;</code>
-       * @param value The duration to set.
+       * <code>double percent_damage_per_turn = 3;</code>
+       * @param value The percentDamagePerTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setDuration(int value) {
+      public Builder setPercentDamagePerTurn(double value) {
         
-        duration_ = value;
+        percentDamagePerTurn_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 duration = 3;</code>
+       * <code>double percent_damage_per_turn = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDuration() {
+      public Builder clearPercentDamagePerTurn() {
         
-        duration_ = 0;
+        percentDamagePerTurn_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int flatRegenPerTurn_ ;
+      /**
+       * <code>int32 flat_regen_per_turn = 4;</code>
+       * @return The flatRegenPerTurn.
+       */
+      @java.lang.Override
+      public int getFlatRegenPerTurn() {
+        return flatRegenPerTurn_;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 4;</code>
+       * @param value The flatRegenPerTurn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFlatRegenPerTurn(int value) {
+        
+        flatRegenPerTurn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 flat_regen_per_turn = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFlatRegenPerTurn() {
+        
+        flatRegenPerTurn_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int turnsLeft_ ;
+      /**
+       * <code>int32 turns_left = 5;</code>
+       * @return The turnsLeft.
+       */
+      @java.lang.Override
+      public int getTurnsLeft() {
+        return turnsLeft_;
+      }
+      /**
+       * <code>int32 turns_left = 5;</code>
+       * @param value The turnsLeft to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsLeft(int value) {
+        
+        turnsLeft_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_left = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsLeft() {
+        
+        turnsLeft_ = 0;
         onChanged();
         return this;
       }
@@ -7220,12 +7808,12 @@ public final class ItemProtos {
     }
 
     // @@protoc_insertion_point(class_scope:item.TempStatusModifier)
-    private static final ItemProtos.TempStatusModifier DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.ItemProtos.TempStatusModifier DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ItemProtos.TempStatusModifier();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ItemProtos.TempStatusModifier();
     }
 
-    public static ItemProtos.TempStatusModifier getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7250,7 +7838,7 @@ public final class ItemProtos {
     }
 
     @java.lang.Override
-    public ItemProtos.TempStatusModifier getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7316,22 +7904,27 @@ public final class ItemProtos {
       "\001(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030" +
       "\002 \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022" +
       "\010\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item" +
-      ".StatusModifier\"\204\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
+      ".StatusModifier\"\224\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
       "\0132\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\025" +
-      "\n\rsplash_radius\030\003 \001(\005\022/\n\ron_hit_effect\030\004" +
-      " \001(\0132\030.item.TempStatusModifier\"F\n\nConsum" +
-      "able\022(\n\006effect\030\001 \001(\0132\030.item.TempStatusMo" +
-      "difier\022\016\n\006stacks\030\002 \001(\005\"\324\001\n\016StatusModifie" +
-      "r\022\024\n\014speed_change\030\001 \001(\005\022\025\n\rhealth_change" +
-      "\030\002 \001(\005\022\031\n\021experience_change\030\003 \001(\005\022\033\n\023mag" +
-      "ic_damage_change\030\004 \001(\005\022\036\n\026physical_damag" +
-      "e_change\030\005 \001(\005\022\034\n\024magic_defense_change\030\006" +
-      " \001(\005\022\037\n\027physical_defense_change\030\007 \001(\005\"d\n" +
-      "\022TempStatusModifier\022#\n\005stats\030\001 \001(\0132\024.ite" +
-      "m.StatusModifier\022\027\n\017damage_per_turn\030\002 \001(" +
-      "\005\022\020\n\010duration\030\003 \001(\005B;\n\034mech.mania.engine" +
-      ".game.itemsB\nItemProtos\252\002\016MM26.IO.Models" +
-      "b\006proto3"
+      "\n\rsplash_radius\030\003 \001(\005\022\016\n\006damage\030\004 \001(\005\022/\n" +
+      "\ron_hit_effect\030\005 \001(\0132\030.item.TempStatusMo" +
+      "difier\"F\n\nConsumable\022(\n\006effect\030\001 \001(\0132\030.i" +
+      "tem.TempStatusModifier\022\016\n\006stacks\030\002 \001(\005\"\334" +
+      "\002\n\016StatusModifier\022\031\n\021flat_speed_change\030\001" +
+      " \001(\005\022\034\n\024percent_speed_change\030\002 \001(\001\022\032\n\022fl" +
+      "at_health_change\030\003 \001(\005\022\035\n\025percent_health" +
+      "_change\030\004 \001(\001\022\036\n\026flat_experience_change\030" +
+      "\005 \001(\005\022!\n\031percent_experience_change\030\006 \001(\001" +
+      "\022\032\n\022flat_damage_change\030\007 \001(\005\022\035\n\025percent_" +
+      "damage_change\030\010 \001(\001\022\033\n\023flat_defense_chan" +
+      "ge\030\t \001(\005\022\036\n\026percent_defense_change\030\n \001(\001" +
+      "\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\251\001\n\022TempSt" +
+      "atusModifier\022#\n\005stats\030\001 \001(\0132\024.item.Statu" +
+      "sModifier\022\034\n\024flat_damage_per_turn\030\002 \001(\005\022" +
+      "\037\n\027percent_damage_per_turn\030\003 \001(\001\022\033\n\023flat" +
+      "_regen_per_turn\030\004 \001(\005\022\022\n\nturns_left\030\005 \001(" +
+      "\005B=\n\036mech.mania.engine.domain.modelB\nIte" +
+      "mProtos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7366,7 +7959,7 @@ public final class ItemProtos {
     internal_static_item_Weapon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Weapon_descriptor,
-        new java.lang.String[] { "Stats", "Range", "SplashRadius", "OnHitEffect", });
+        new java.lang.String[] { "Stats", "Range", "SplashRadius", "Damage", "OnHitEffect", });
     internal_static_item_Consumable_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_item_Consumable_fieldAccessorTable = new
@@ -7378,13 +7971,13 @@ public final class ItemProtos {
     internal_static_item_StatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_StatusModifier_descriptor,
-        new java.lang.String[] { "SpeedChange", "HealthChange", "ExperienceChange", "MagicDamageChange", "PhysicalDamageChange", "MagicDefenseChange", "PhysicalDefenseChange", });
+        new java.lang.String[] { "FlatSpeedChange", "PercentSpeedChange", "FlatHealthChange", "PercentHealthChange", "FlatExperienceChange", "PercentExperienceChange", "FlatDamageChange", "PercentDamageChange", "FlatDefenseChange", "PercentDefenseChange", "FlatRegenPerTurn", });
     internal_static_item_TempStatusModifier_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_item_TempStatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_TempStatusModifier_descriptor,
-        new java.lang.String[] { "Stats", "DamagePerTurn", "Duration", });
+        new java.lang.String[] { "Stats", "FlatDamagePerTurn", "PercentDamagePerTurn", "FlatRegenPerTurn", "TurnsLeft", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
