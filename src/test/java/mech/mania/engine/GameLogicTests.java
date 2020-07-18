@@ -3,7 +3,9 @@ package mech.mania.engine;
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 
+import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterProtos;
+import mech.mania.engine.game.characters.Player;
 import mech.mania.engine.game.characters.Position;
 import mech.mania.engine.server.api.GameStateController;
 import mech.mania.engine.server.communication.player.model.PlayerProtos;
@@ -13,10 +15,10 @@ import org.junit.Test;
 import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 /** This contains tests for any overall board tests or helper functions */
 public class GameLogicTests {
-
     private GameState gameState;
     private GameStateController controller;
 
@@ -100,4 +102,62 @@ public class GameLogicTests {
         assertEquals(1, GameLogic.calculateManhattanDistance(x5y10, x5y11));
     }
 
+    @Test
+    public void illegalPlayerMovePosition() {
+        Character playerOnBoard = gameState.getPlayer("player1");
+        Position testPosition = new Position(-1, -1, "id");
+        assertEquals(0, GameLogic.moveCharacter(gameState, playerOnBoard, testPosition).size());
+    }
+
+    @Test
+    public void illegalPlayerMoveSpeed() {
+        // TODO ensure that the board size is sufficiently large for this test
+        Character playerOnBoard = gameState.getPlayer("player1");
+        Position testPosition = new Position(30, 30, "id");
+        assertEquals(0, GameLogic.moveCharacter(gameState, playerOnBoard, testPosition).size());
+    }
+
+    @Test
+    public void legalPlayerMove() {
+        //TODO ensure that the board size is sufficiently large for this tesgt
+        //TODO ensure that the player has sufficient base speed for this test
+        Character playerOnBoard = gameState.getPlayer("player1");
+        Position testPosition = new Position(1, 1, "id");
+        assertEquals(2, GameLogic.moveCharacter(gameState, playerOnBoard, testPosition).size());
+    }
+
+    @Test
+    public void illegalPlayerPortalPosition() {
+        //TODO ensure a portal exists at (1, 1)
+        Character playerOnBoard = (mech.mania.engine.game.characters.Character)gameState.getPlayer("player1");
+        assertEquals(playerOnBoard.getPosition(), new Position(0, 0, "id"));
+        assertFalse(GameLogic.canUsePortal(gameState, playerOnBoard));
+    }
+
+    @Test
+    public void illegalPlayerPortalIndex() {
+        //TODO ensure a portal exists at (0, 0) and there is only 1 portal
+        Character playerOnBoard = gameState.getPlayer("player1");
+        assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
+        assertFalse(GameLogic.usePortal(gameState, playerOnBoard, -2));
+        assertFalse(GameLogic.usePortal(gameState, playerOnBoard, 1));
+    }
+
+    @Test
+    public void legalPlayerHomePortal() {
+        //TODO ensure a portal exists at (0, 0) and there is only 1 portal
+        //TODO ensure there is another board to portal to on the PVP board
+        Character playerOnBoard = gameState.getPlayer("player1");
+        assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
+        assertTrue(GameLogic.usePortal(gameState, playerOnBoard, -1));
+    }
+
+    @Test
+    public void legalPlayerPVPPortal() {
+        //TODO ensure a portal exists at (0, 0) and there is only 1 portal
+        //TODO ensure there is another board to portal to on the PVP board
+        Character playerOnBoard = gameState.getPlayer("player1");
+        assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
+        assertTrue(GameLogic.usePortal(gameState, playerOnBoard, 0));
+    }
 }
