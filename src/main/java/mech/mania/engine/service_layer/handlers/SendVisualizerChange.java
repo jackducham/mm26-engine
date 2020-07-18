@@ -2,12 +2,12 @@ package mech.mania.engine.service_layer.handlers;
 
 import mech.mania.engine.domain.messages.Command;
 import mech.mania.engine.domain.model.VisualizerProtos;
-import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 import mech.mania.engine.service_layer.Services;
 import mech.mania.engine.service_layer.VisualizerWebSocket;
 
 public class SendVisualizerChange extends CommandHandler {
-    public SendVisualizerChange(AbstractUnitOfWork uow) {
+    public SendVisualizerChange(UnitOfWorkAbstract uow) {
         super(uow);
     }
 

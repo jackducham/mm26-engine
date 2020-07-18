@@ -14,13 +14,13 @@ import java.util.logging.Logger;
 
 public class MessageBus {
 
-    private final AbstractUnitOfWork uow;
+    private final UnitOfWorkAbstract uow;
     private final Map<Class<? extends Event>, List<EventHandler>> eventHandlers;
     private final Map<Class<? extends Command>, CommandHandler> commandHandlers;
     private final Queue<Message> messageQueue = new LinkedList<>();
     private final Logger logger = Logger.getLogger( getClass().getName() );
 
-    public MessageBus(AbstractUnitOfWork uow,
+    public MessageBus(UnitOfWorkAbstract uow,
                       Map<Class<? extends Event>, List<EventHandler>> eventHandlers,
                       Map<Class<? extends Command>, CommandHandler> commandHandlers) {
         this.uow = uow;
@@ -66,7 +66,7 @@ public class MessageBus {
         }
     }
 
-    public AbstractUnitOfWork getUow() {
+    public UnitOfWorkAbstract getUow() {
         return uow;
     }
 }

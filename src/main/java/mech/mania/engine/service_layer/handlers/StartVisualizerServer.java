@@ -2,7 +2,7 @@ package mech.mania.engine.service_layer.handlers;
 
 import mech.mania.engine.domain.messages.Command;
 import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
-import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 import mech.mania.engine.service_layer.VisualizerWebSocket;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.Collections;
 
 public class StartVisualizerServer extends CommandHandler {
-    public StartVisualizerServer(AbstractUnitOfWork uow) {
+    public StartVisualizerServer(UnitOfWorkAbstract uow) {
         super(uow);
     }
 

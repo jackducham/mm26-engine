@@ -1,11 +1,10 @@
 package mech.mania.engine.service_layer.handlers;
 
-import mech.mania.engine.domain.messages.Command;
 import mech.mania.engine.domain.messages.Event;
-import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 public class StopVisualizerServer extends EventHandler {
-    public StopVisualizerServer(AbstractUnitOfWork uow) {
+    public StopVisualizerServer(UnitOfWorkAbstract uow) {
         super(uow);
     }
 

@@ -3,13 +3,13 @@ package mech.mania.engine.service_layer.handlers;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Command;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
-import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 import mech.mania.engine.service_layer.Services;
 
 import java.util.Map;
 
 public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
-    public SendPlayerRequestsAndUpdateGameState(AbstractUnitOfWork uow) {
+    public SendPlayerRequestsAndUpdateGameState(UnitOfWorkAbstract uow) {
         super(uow);
     }
 

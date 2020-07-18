@@ -3,7 +3,7 @@ package mech.mania.engine;
 import mech.mania.engine.adapters.RepositoryAws;
 import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.handlers.*;
-import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 import mech.mania.engine.service_layer.UnitOfWork;
 import mech.mania.engine.service_layer.MessageBus;
 import mech.mania.engine.service_layer.handlers.CommandHandler;
@@ -19,7 +19,7 @@ public class Bootstrap {
         return bootstrap(new UnitOfWork(new RepositoryAws()));
     }
 
-    public static MessageBus bootstrap(AbstractUnitOfWork uow) {
+    public static MessageBus bootstrap(UnitOfWorkAbstract uow) {
         // start ORM mappers
 
         // inject dependencies

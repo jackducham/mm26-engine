@@ -44,7 +44,7 @@ public class Services {
      * Get player decisions from all players given a UnitOfWork
      * (containing a PlayerInfoMap) and return the successful requests.
      */
-    public static Map<String, PlayerDecision> getSuccessfulPlayerDecisions(AbstractUnitOfWork uow) {
+    public static Map<String, PlayerDecision> getSuccessfulPlayerDecisions(UnitOfWorkAbstract uow) {
         Map<String, PlayerInfo> playerInfoMap = uow.getPlayerInfoMap();
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");

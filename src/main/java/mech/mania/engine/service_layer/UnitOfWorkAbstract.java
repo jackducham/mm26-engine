@@ -13,9 +13,9 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
-public abstract class AbstractUnitOfWork {
+public abstract class UnitOfWorkAbstract {
 
-    private static final Logger LOGGER = Logger.getLogger( AbstractUnitOfWork.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( UnitOfWorkAbstract.class.getName() );
     private final Queue<Message> messages = new LinkedList<>();
     private final RepositoryAbstract repository;
     private final Map<String, PlayerInfo> currentPlayerInfoMap = new ConcurrentHashMap<>();
@@ -28,7 +28,7 @@ public abstract class AbstractUnitOfWork {
     /**
      * Constructor that sets an AbstractRepository
      */
-    public AbstractUnitOfWork(RepositoryAbstract repository) {
+    public UnitOfWorkAbstract(RepositoryAbstract repository) {
         this.repository = repository;
     }
 

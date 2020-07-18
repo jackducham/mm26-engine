@@ -5,7 +5,7 @@ import mech.mania.engine.domain.messages.Message;
 
 import java.util.logging.Logger;
 
-public class UnitOfWork extends AbstractUnitOfWork {
+public class UnitOfWork extends UnitOfWorkAbstract {
 
     private static final Logger LOGGER = Logger.getLogger( UnitOfWork.class.getName() );
 

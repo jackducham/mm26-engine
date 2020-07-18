@@ -1,17 +1,16 @@
 package mech.mania.engine.service_layer.handlers;
 
-import java.time.Duration;
 import java.time.Instant;
 import java.util.logging.Logger;
 
 import mech.mania.engine.domain.messages.*;
-import mech.mania.engine.service_layer.AbstractUnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 public class StartGameTurn extends CommandHandler {
 
     private static final Logger LOGGER = Logger.getLogger( StartGameTurn.class.getName() );
 
-    public StartGameTurn(AbstractUnitOfWork uow) {
+    public StartGameTurn(UnitOfWorkAbstract uow) {
         super(uow);
     }
 
