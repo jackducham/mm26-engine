@@ -37,7 +37,7 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    java.util.List<BoardProtos.Tile>
+    java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile> 
         getGridList();
     /**
      * <pre>
@@ -46,7 +46,7 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    BoardProtos.Tile getGrid(int index);
+    mech.mania.engine.domain.model.BoardProtos.Tile getGrid(int index);
     /**
      * <pre>
      * Protos only have 1D lists (row-major)
@@ -62,7 +62,7 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    java.util.List<? extends BoardProtos.TileOrBuilder>
+    java.util.List<? extends mech.mania.engine.domain.model.BoardProtos.TileOrBuilder> 
         getGridOrBuilderList();
     /**
      * <pre>
@@ -71,18 +71,18 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    BoardProtos.TileOrBuilder getGridOrBuilder(
+    mech.mania.engine.domain.model.BoardProtos.TileOrBuilder getGridOrBuilder(
         int index);
 
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    java.util.List<CharacterProtos.Position>
+    java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
         getPortalsList();
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    CharacterProtos.Position getPortals(int index);
+    mech.mania.engine.domain.model.CharacterProtos.Position getPortals(int index);
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
@@ -90,18 +90,18 @@ public final class BoardProtos {
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    java.util.List<? extends CharacterProtos.PositionOrBuilder>
+    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPortalsOrBuilderList();
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
         int index);
   }
   /**
    * Protobuf type {@code board.Board}
    */
-  public  static final class Board extends
+  public static final class Board extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:board.Board)
       BoardOrBuilder {
@@ -158,20 +158,20 @@ public final class BoardProtos {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                grid_ = new java.util.ArrayList<BoardProtos.Tile>();
+                grid_ = new java.util.ArrayList<mech.mania.engine.domain.model.BoardProtos.Tile>();
                 mutable_bitField0_ |= 0x00000001;
               }
               grid_.add(
-                  input.readMessage(BoardProtos.Tile.parser(), extensionRegistry));
+                  input.readMessage(mech.mania.engine.domain.model.BoardProtos.Tile.parser(), extensionRegistry));
               break;
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                portals_ = new java.util.ArrayList<CharacterProtos.Position>();
+                portals_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
                 mutable_bitField0_ |= 0x00000002;
               }
               portals_.add(
-                  input.readMessage(CharacterProtos.Position.parser(), extensionRegistry));
+                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -201,15 +201,15 @@ public final class BoardProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BoardProtos.internal_static_board_Board_descriptor;
+      return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Board_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BoardProtos.internal_static_board_Board_fieldAccessorTable
+      return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Board_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              BoardProtos.Board.class, BoardProtos.Board.Builder.class);
+              mech.mania.engine.domain.model.BoardProtos.Board.class, mech.mania.engine.domain.model.BoardProtos.Board.Builder.class);
     }
 
     public static final int ROWS_FIELD_NUMBER = 1;
@@ -218,6 +218,7 @@ public final class BoardProtos {
      * <code>int32 rows = 1;</code>
      * @return The rows.
      */
+    @java.lang.Override
     public int getRows() {
       return rows_;
     }
@@ -228,12 +229,13 @@ public final class BoardProtos {
      * <code>int32 columns = 2;</code>
      * @return The columns.
      */
+    @java.lang.Override
     public int getColumns() {
       return columns_;
     }
 
     public static final int GRID_FIELD_NUMBER = 3;
-    private java.util.List<BoardProtos.Tile> grid_;
+    private java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile> grid_;
     /**
      * <pre>
      * Protos only have 1D lists (row-major)
@@ -241,7 +243,8 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    public java.util.List<BoardProtos.Tile> getGridList() {
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile> getGridList() {
       return grid_;
     }
     /**
@@ -251,7 +254,8 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    public java.util.List<? extends BoardProtos.TileOrBuilder>
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.BoardProtos.TileOrBuilder> 
         getGridOrBuilderList() {
       return grid_;
     }
@@ -262,6 +266,7 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
+    @java.lang.Override
     public int getGridCount() {
       return grid_.size();
     }
@@ -272,7 +277,8 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    public BoardProtos.Tile getGrid(int index) {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.BoardProtos.Tile getGrid(int index) {
       return grid_.get(index);
     }
     /**
@@ -282,42 +288,48 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    public BoardProtos.TileOrBuilder getGridOrBuilder(
+    @java.lang.Override
+    public mech.mania.engine.domain.model.BoardProtos.TileOrBuilder getGridOrBuilder(
         int index) {
       return grid_.get(index);
     }
 
     public static final int PORTALS_FIELD_NUMBER = 4;
-    private java.util.List<CharacterProtos.Position> portals_;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> portals_;
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    public java.util.List<CharacterProtos.Position> getPortalsList() {
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPortalsList() {
       return portals_;
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    public java.util.List<? extends CharacterProtos.PositionOrBuilder>
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPortalsOrBuilderList() {
       return portals_;
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
+    @java.lang.Override
     public int getPortalsCount() {
       return portals_.size();
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    public CharacterProtos.Position getPortals(int index) {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPortals(int index) {
       return portals_.get(index);
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    public CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
         int index) {
       return portals_.get(index);
     }
@@ -383,10 +395,10 @@ public final class BoardProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof BoardProtos.Board)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.BoardProtos.Board)) {
         return super.equals(obj);
       }
-      BoardProtos.Board other = (BoardProtos.Board) obj;
+      mech.mania.engine.domain.model.BoardProtos.Board other = (mech.mania.engine.domain.model.BoardProtos.Board) obj;
 
       if (getRows()
           != other.getRows()) return false;
@@ -424,69 +436,69 @@ public final class BoardProtos {
       return hash;
     }
 
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BoardProtos.Board parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BoardProtos.Board parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BoardProtos.Board parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static BoardProtos.Board parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static BoardProtos.Board parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Board parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -499,7 +511,7 @@ public final class BoardProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(BoardProtos.Board prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.BoardProtos.Board prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -520,18 +532,18 @@ public final class BoardProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:board.Board)
-        BoardProtos.BoardOrBuilder {
+        mech.mania.engine.domain.model.BoardProtos.BoardOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BoardProtos.internal_static_board_Board_descriptor;
+        return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Board_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BoardProtos.internal_static_board_Board_fieldAccessorTable
+        return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Board_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                BoardProtos.Board.class, BoardProtos.Board.Builder.class);
+                mech.mania.engine.domain.model.BoardProtos.Board.class, mech.mania.engine.domain.model.BoardProtos.Board.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.BoardProtos.Board.newBuilder()
@@ -576,17 +588,17 @@ public final class BoardProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return BoardProtos.internal_static_board_Board_descriptor;
+        return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Board_descriptor;
       }
 
       @java.lang.Override
-      public BoardProtos.Board getDefaultInstanceForType() {
-        return BoardProtos.Board.getDefaultInstance();
+      public mech.mania.engine.domain.model.BoardProtos.Board getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.BoardProtos.Board.getDefaultInstance();
       }
 
       @java.lang.Override
-      public BoardProtos.Board build() {
-        BoardProtos.Board result = buildPartial();
+      public mech.mania.engine.domain.model.BoardProtos.Board build() {
+        mech.mania.engine.domain.model.BoardProtos.Board result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -594,8 +606,8 @@ public final class BoardProtos {
       }
 
       @java.lang.Override
-      public BoardProtos.Board buildPartial() {
-        BoardProtos.Board result = new BoardProtos.Board(this);
+      public mech.mania.engine.domain.model.BoardProtos.Board buildPartial() {
+        mech.mania.engine.domain.model.BoardProtos.Board result = new mech.mania.engine.domain.model.BoardProtos.Board(this);
         int from_bitField0_ = bitField0_;
         result.rows_ = rows_;
         result.columns_ = columns_;
@@ -655,16 +667,16 @@ public final class BoardProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BoardProtos.Board) {
-          return mergeFrom((BoardProtos.Board)other);
+        if (other instanceof mech.mania.engine.domain.model.BoardProtos.Board) {
+          return mergeFrom((mech.mania.engine.domain.model.BoardProtos.Board)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(BoardProtos.Board other) {
-        if (other == BoardProtos.Board.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.BoardProtos.Board other) {
+        if (other == mech.mania.engine.domain.model.BoardProtos.Board.getDefaultInstance()) return this;
         if (other.getRows() != 0) {
           setRows(other.getRows());
         }
@@ -738,11 +750,11 @@ public final class BoardProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        BoardProtos.Board parsedMessage = null;
+        mech.mania.engine.domain.model.BoardProtos.Board parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (BoardProtos.Board) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.BoardProtos.Board) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -758,6 +770,7 @@ public final class BoardProtos {
        * <code>int32 rows = 1;</code>
        * @return The rows.
        */
+      @java.lang.Override
       public int getRows() {
         return rows_;
       }
@@ -788,6 +801,7 @@ public final class BoardProtos {
        * <code>int32 columns = 2;</code>
        * @return The columns.
        */
+      @java.lang.Override
       public int getColumns() {
         return columns_;
       }
@@ -813,17 +827,17 @@ public final class BoardProtos {
         return this;
       }
 
-      private java.util.List<BoardProtos.Tile> grid_ =
+      private java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile> grid_ =
         java.util.Collections.emptyList();
       private void ensureGridIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          grid_ = new java.util.ArrayList<BoardProtos.Tile>(grid_);
+          grid_ = new java.util.ArrayList<mech.mania.engine.domain.model.BoardProtos.Tile>(grid_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          BoardProtos.Tile, BoardProtos.Tile.Builder, BoardProtos.TileOrBuilder> gridBuilder_;
+          mech.mania.engine.domain.model.BoardProtos.Tile, mech.mania.engine.domain.model.BoardProtos.Tile.Builder, mech.mania.engine.domain.model.BoardProtos.TileOrBuilder> gridBuilder_;
 
       /**
        * <pre>
@@ -832,7 +846,7 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public java.util.List<BoardProtos.Tile> getGridList() {
+      public java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile> getGridList() {
         if (gridBuilder_ == null) {
           return java.util.Collections.unmodifiableList(grid_);
         } else {
@@ -860,7 +874,7 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public BoardProtos.Tile getGrid(int index) {
+      public mech.mania.engine.domain.model.BoardProtos.Tile getGrid(int index) {
         if (gridBuilder_ == null) {
           return grid_.get(index);
         } else {
@@ -875,7 +889,7 @@ public final class BoardProtos {
        * <code>repeated .board.Tile grid = 3;</code>
        */
       public Builder setGrid(
-          int index, BoardProtos.Tile value) {
+          int index, mech.mania.engine.domain.model.BoardProtos.Tile value) {
         if (gridBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -896,7 +910,7 @@ public final class BoardProtos {
        * <code>repeated .board.Tile grid = 3;</code>
        */
       public Builder setGrid(
-          int index, BoardProtos.Tile.Builder builderForValue) {
+          int index, mech.mania.engine.domain.model.BoardProtos.Tile.Builder builderForValue) {
         if (gridBuilder_ == null) {
           ensureGridIsMutable();
           grid_.set(index, builderForValue.build());
@@ -913,7 +927,7 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public Builder addGrid(BoardProtos.Tile value) {
+      public Builder addGrid(mech.mania.engine.domain.model.BoardProtos.Tile value) {
         if (gridBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -934,7 +948,7 @@ public final class BoardProtos {
        * <code>repeated .board.Tile grid = 3;</code>
        */
       public Builder addGrid(
-          int index, BoardProtos.Tile value) {
+          int index, mech.mania.engine.domain.model.BoardProtos.Tile value) {
         if (gridBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -955,7 +969,7 @@ public final class BoardProtos {
        * <code>repeated .board.Tile grid = 3;</code>
        */
       public Builder addGrid(
-          BoardProtos.Tile.Builder builderForValue) {
+          mech.mania.engine.domain.model.BoardProtos.Tile.Builder builderForValue) {
         if (gridBuilder_ == null) {
           ensureGridIsMutable();
           grid_.add(builderForValue.build());
@@ -973,7 +987,7 @@ public final class BoardProtos {
        * <code>repeated .board.Tile grid = 3;</code>
        */
       public Builder addGrid(
-          int index, BoardProtos.Tile.Builder builderForValue) {
+          int index, mech.mania.engine.domain.model.BoardProtos.Tile.Builder builderForValue) {
         if (gridBuilder_ == null) {
           ensureGridIsMutable();
           grid_.add(index, builderForValue.build());
@@ -991,7 +1005,7 @@ public final class BoardProtos {
        * <code>repeated .board.Tile grid = 3;</code>
        */
       public Builder addAllGrid(
-          java.lang.Iterable<? extends BoardProtos.Tile> values) {
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.BoardProtos.Tile> values) {
         if (gridBuilder_ == null) {
           ensureGridIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1043,7 +1057,7 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public BoardProtos.Tile.Builder getGridBuilder(
+      public mech.mania.engine.domain.model.BoardProtos.Tile.Builder getGridBuilder(
           int index) {
         return getGridFieldBuilder().getBuilder(index);
       }
@@ -1054,7 +1068,7 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public BoardProtos.TileOrBuilder getGridOrBuilder(
+      public mech.mania.engine.domain.model.BoardProtos.TileOrBuilder getGridOrBuilder(
           int index) {
         if (gridBuilder_ == null) {
           return grid_.get(index);  } else {
@@ -1068,7 +1082,7 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public java.util.List<? extends BoardProtos.TileOrBuilder>
+      public java.util.List<? extends mech.mania.engine.domain.model.BoardProtos.TileOrBuilder> 
            getGridOrBuilderList() {
         if (gridBuilder_ != null) {
           return gridBuilder_.getMessageOrBuilderList();
@@ -1083,9 +1097,9 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public BoardProtos.Tile.Builder addGridBuilder() {
+      public mech.mania.engine.domain.model.BoardProtos.Tile.Builder addGridBuilder() {
         return getGridFieldBuilder().addBuilder(
-            BoardProtos.Tile.getDefaultInstance());
+            mech.mania.engine.domain.model.BoardProtos.Tile.getDefaultInstance());
       }
       /**
        * <pre>
@@ -1094,10 +1108,10 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public BoardProtos.Tile.Builder addGridBuilder(
+      public mech.mania.engine.domain.model.BoardProtos.Tile.Builder addGridBuilder(
           int index) {
         return getGridFieldBuilder().addBuilder(
-            index, BoardProtos.Tile.getDefaultInstance());
+            index, mech.mania.engine.domain.model.BoardProtos.Tile.getDefaultInstance());
       }
       /**
        * <pre>
@@ -1106,16 +1120,16 @@ public final class BoardProtos {
        *
        * <code>repeated .board.Tile grid = 3;</code>
        */
-      public java.util.List<BoardProtos.Tile.Builder>
+      public java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile.Builder> 
            getGridBuilderList() {
         return getGridFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          BoardProtos.Tile, BoardProtos.Tile.Builder, BoardProtos.TileOrBuilder>
+          mech.mania.engine.domain.model.BoardProtos.Tile, mech.mania.engine.domain.model.BoardProtos.Tile.Builder, mech.mania.engine.domain.model.BoardProtos.TileOrBuilder> 
           getGridFieldBuilder() {
         if (gridBuilder_ == null) {
           gridBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              BoardProtos.Tile, BoardProtos.Tile.Builder, BoardProtos.TileOrBuilder>(
+              mech.mania.engine.domain.model.BoardProtos.Tile, mech.mania.engine.domain.model.BoardProtos.Tile.Builder, mech.mania.engine.domain.model.BoardProtos.TileOrBuilder>(
                   grid_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -1125,22 +1139,22 @@ public final class BoardProtos {
         return gridBuilder_;
       }
 
-      private java.util.List<CharacterProtos.Position> portals_ =
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> portals_ =
         java.util.Collections.emptyList();
       private void ensurePortalsIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          portals_ = new java.util.ArrayList<CharacterProtos.Position>(portals_);
+          portals_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>(portals_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          CharacterProtos.Position, CharacterProtos.Position.Builder, CharacterProtos.PositionOrBuilder> portalsBuilder_;
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> portalsBuilder_;
 
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public java.util.List<CharacterProtos.Position> getPortalsList() {
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPortalsList() {
         if (portalsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(portals_);
         } else {
@@ -1160,7 +1174,7 @@ public final class BoardProtos {
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public CharacterProtos.Position getPortals(int index) {
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPortals(int index) {
         if (portalsBuilder_ == null) {
           return portals_.get(index);
         } else {
@@ -1171,7 +1185,7 @@ public final class BoardProtos {
        * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder setPortals(
-          int index, CharacterProtos.Position value) {
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
         if (portalsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1188,7 +1202,7 @@ public final class BoardProtos {
        * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder setPortals(
-          int index, CharacterProtos.Position.Builder builderForValue) {
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
         if (portalsBuilder_ == null) {
           ensurePortalsIsMutable();
           portals_.set(index, builderForValue.build());
@@ -1201,7 +1215,7 @@ public final class BoardProtos {
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public Builder addPortals(CharacterProtos.Position value) {
+      public Builder addPortals(mech.mania.engine.domain.model.CharacterProtos.Position value) {
         if (portalsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1218,7 +1232,7 @@ public final class BoardProtos {
        * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(
-          int index, CharacterProtos.Position value) {
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
         if (portalsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1235,7 +1249,7 @@ public final class BoardProtos {
        * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(
-          CharacterProtos.Position.Builder builderForValue) {
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
         if (portalsBuilder_ == null) {
           ensurePortalsIsMutable();
           portals_.add(builderForValue.build());
@@ -1249,7 +1263,7 @@ public final class BoardProtos {
        * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addPortals(
-          int index, CharacterProtos.Position.Builder builderForValue) {
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
         if (portalsBuilder_ == null) {
           ensurePortalsIsMutable();
           portals_.add(index, builderForValue.build());
@@ -1263,7 +1277,7 @@ public final class BoardProtos {
        * <code>repeated .character.Position portals = 4;</code>
        */
       public Builder addAllPortals(
-          java.lang.Iterable<? extends CharacterProtos.Position> values) {
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Position> values) {
         if (portalsBuilder_ == null) {
           ensurePortalsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1303,14 +1317,14 @@ public final class BoardProtos {
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public CharacterProtos.Position.Builder getPortalsBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPortalsBuilder(
           int index) {
         return getPortalsFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
           int index) {
         if (portalsBuilder_ == null) {
           return portals_.get(index);  } else {
@@ -1320,7 +1334,7 @@ public final class BoardProtos {
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public java.util.List<? extends CharacterProtos.PositionOrBuilder>
+      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
            getPortalsOrBuilderList() {
         if (portalsBuilder_ != null) {
           return portalsBuilder_.getMessageOrBuilderList();
@@ -1331,31 +1345,31 @@ public final class BoardProtos {
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public CharacterProtos.Position.Builder addPortalsBuilder() {
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addPortalsBuilder() {
         return getPortalsFieldBuilder().addBuilder(
-            CharacterProtos.Position.getDefaultInstance());
+            mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
       }
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public CharacterProtos.Position.Builder addPortalsBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addPortalsBuilder(
           int index) {
         return getPortalsFieldBuilder().addBuilder(
-            index, CharacterProtos.Position.getDefaultInstance());
+            index, mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
       }
       /**
        * <code>repeated .character.Position portals = 4;</code>
        */
-      public java.util.List<CharacterProtos.Position.Builder>
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
            getPortalsBuilderList() {
         return getPortalsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          CharacterProtos.Position, CharacterProtos.Position.Builder, CharacterProtos.PositionOrBuilder>
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
           getPortalsFieldBuilder() {
         if (portalsBuilder_ == null) {
           portalsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              CharacterProtos.Position, CharacterProtos.Position.Builder, CharacterProtos.PositionOrBuilder>(
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
                   portals_,
                   ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
@@ -1381,12 +1395,12 @@ public final class BoardProtos {
     }
 
     // @@protoc_insertion_point(class_scope:board.Board)
-    private static final BoardProtos.Board DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.BoardProtos.Board DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BoardProtos.Board();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.BoardProtos.Board();
     }
 
-    public static BoardProtos.Board getDefaultInstance() {
+    public static mech.mania.engine.domain.model.BoardProtos.Board getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1411,7 +1425,7 @@ public final class BoardProtos {
     }
 
     @java.lang.Override
-    public BoardProtos.Board getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.BoardProtos.Board getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1430,17 +1444,17 @@ public final class BoardProtos {
      * <code>.board.Tile.TileType tile_type = 1;</code>
      * @return The tileType.
      */
-    BoardProtos.Tile.TileType getTileType();
+    mech.mania.engine.domain.model.BoardProtos.Tile.TileType getTileType();
 
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    java.util.List<ItemProtos.Item>
+    java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> 
         getItemsList();
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    ItemProtos.Item getItems(int index);
+    mech.mania.engine.domain.model.ItemProtos.Item getItems(int index);
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
@@ -1448,18 +1462,18 @@ public final class BoardProtos {
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    java.util.List<? extends ItemProtos.ItemOrBuilder>
+    java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getItemsOrBuilderList();
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    ItemProtos.ItemOrBuilder getItemsOrBuilder(
+    mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
         int index);
   }
   /**
    * Protobuf type {@code board.Tile}
    */
-  public  static final class Tile extends
+  public static final class Tile extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:board.Tile)
       TileOrBuilder {
@@ -1512,11 +1526,11 @@ public final class BoardProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                items_ = new java.util.ArrayList<ItemProtos.Item>();
+                items_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>();
                 mutable_bitField0_ |= 0x00000001;
               }
               items_.add(
-                  input.readMessage(ItemProtos.Item.parser(), extensionRegistry));
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Item.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -1543,15 +1557,15 @@ public final class BoardProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BoardProtos.internal_static_board_Tile_descriptor;
+      return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Tile_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BoardProtos.internal_static_board_Tile_fieldAccessorTable
+      return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Tile_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              BoardProtos.Tile.class, BoardProtos.Tile.Builder.class);
+              mech.mania.engine.domain.model.BoardProtos.Tile.class, mech.mania.engine.domain.model.BoardProtos.Tile.Builder.class);
     }
 
     /**
@@ -1642,6 +1656,10 @@ public final class BoardProtos {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -1650,7 +1668,7 @@ public final class BoardProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return BoardProtos.Tile.getDescriptor().getEnumTypes().get(0);
+        return mech.mania.engine.domain.model.BoardProtos.Tile.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final TileType[] VALUES = values();
@@ -1682,50 +1700,55 @@ public final class BoardProtos {
      * <code>.board.Tile.TileType tile_type = 1;</code>
      * @return The enum numeric value on the wire for tileType.
      */
-    public int getTileTypeValue() {
+    @java.lang.Override public int getTileTypeValue() {
       return tileType_;
     }
     /**
      * <code>.board.Tile.TileType tile_type = 1;</code>
      * @return The tileType.
      */
-    public BoardProtos.Tile.TileType getTileType() {
+    @java.lang.Override public mech.mania.engine.domain.model.BoardProtos.Tile.TileType getTileType() {
       @SuppressWarnings("deprecation")
-      BoardProtos.Tile.TileType result = BoardProtos.Tile.TileType.valueOf(tileType_);
-      return result == null ? BoardProtos.Tile.TileType.UNRECOGNIZED : result;
+      mech.mania.engine.domain.model.BoardProtos.Tile.TileType result = mech.mania.engine.domain.model.BoardProtos.Tile.TileType.valueOf(tileType_);
+      return result == null ? mech.mania.engine.domain.model.BoardProtos.Tile.TileType.UNRECOGNIZED : result;
     }
 
     public static final int ITEMS_FIELD_NUMBER = 2;
-    private java.util.List<ItemProtos.Item> items_;
+    private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> items_;
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    public java.util.List<ItemProtos.Item> getItemsList() {
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
       return items_;
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    public java.util.List<? extends ItemProtos.ItemOrBuilder>
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getItemsOrBuilderList() {
       return items_;
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
+    @java.lang.Override
     public int getItemsCount() {
       return items_.size();
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    public ItemProtos.Item getItems(int index) {
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
       return items_.get(index);
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    public ItemProtos.ItemOrBuilder getItemsOrBuilder(
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
         int index) {
       return items_.get(index);
     }
@@ -1744,7 +1767,7 @@ public final class BoardProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (tileType_ != BoardProtos.Tile.TileType.VOID.getNumber()) {
+      if (tileType_ != mech.mania.engine.domain.model.BoardProtos.Tile.TileType.VOID.getNumber()) {
         output.writeEnum(1, tileType_);
       }
       for (int i = 0; i < items_.size(); i++) {
@@ -1759,7 +1782,7 @@ public final class BoardProtos {
       if (size != -1) return size;
 
       size = 0;
-      if (tileType_ != BoardProtos.Tile.TileType.VOID.getNumber()) {
+      if (tileType_ != mech.mania.engine.domain.model.BoardProtos.Tile.TileType.VOID.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, tileType_);
       }
@@ -1777,10 +1800,10 @@ public final class BoardProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof BoardProtos.Tile)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.BoardProtos.Tile)) {
         return super.equals(obj);
       }
-      BoardProtos.Tile other = (BoardProtos.Tile) obj;
+      mech.mania.engine.domain.model.BoardProtos.Tile other = (mech.mania.engine.domain.model.BoardProtos.Tile) obj;
 
       if (tileType_ != other.tileType_) return false;
       if (!getItemsList()
@@ -1807,69 +1830,69 @@ public final class BoardProtos {
       return hash;
     }
 
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BoardProtos.Tile parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static BoardProtos.Tile parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BoardProtos.Tile parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static BoardProtos.Tile parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static BoardProtos.Tile parseFrom(
+    public static mech.mania.engine.domain.model.BoardProtos.Tile parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1882,7 +1905,7 @@ public final class BoardProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(BoardProtos.Tile prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.BoardProtos.Tile prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1903,18 +1926,18 @@ public final class BoardProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:board.Tile)
-        BoardProtos.TileOrBuilder {
+        mech.mania.engine.domain.model.BoardProtos.TileOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BoardProtos.internal_static_board_Tile_descriptor;
+        return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Tile_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BoardProtos.internal_static_board_Tile_fieldAccessorTable
+        return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Tile_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                BoardProtos.Tile.class, BoardProtos.Tile.Builder.class);
+                mech.mania.engine.domain.model.BoardProtos.Tile.class, mech.mania.engine.domain.model.BoardProtos.Tile.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.BoardProtos.Tile.newBuilder()
@@ -1950,17 +1973,17 @@ public final class BoardProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return BoardProtos.internal_static_board_Tile_descriptor;
+        return mech.mania.engine.domain.model.BoardProtos.internal_static_board_Tile_descriptor;
       }
 
       @java.lang.Override
-      public BoardProtos.Tile getDefaultInstanceForType() {
-        return BoardProtos.Tile.getDefaultInstance();
+      public mech.mania.engine.domain.model.BoardProtos.Tile getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.BoardProtos.Tile.getDefaultInstance();
       }
 
       @java.lang.Override
-      public BoardProtos.Tile build() {
-        BoardProtos.Tile result = buildPartial();
+      public mech.mania.engine.domain.model.BoardProtos.Tile build() {
+        mech.mania.engine.domain.model.BoardProtos.Tile result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1968,8 +1991,8 @@ public final class BoardProtos {
       }
 
       @java.lang.Override
-      public BoardProtos.Tile buildPartial() {
-        BoardProtos.Tile result = new BoardProtos.Tile(this);
+      public mech.mania.engine.domain.model.BoardProtos.Tile buildPartial() {
+        mech.mania.engine.domain.model.BoardProtos.Tile result = new mech.mania.engine.domain.model.BoardProtos.Tile(this);
         int from_bitField0_ = bitField0_;
         result.tileType_ = tileType_;
         if (itemsBuilder_ == null) {
@@ -2019,16 +2042,16 @@ public final class BoardProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof BoardProtos.Tile) {
-          return mergeFrom((BoardProtos.Tile)other);
+        if (other instanceof mech.mania.engine.domain.model.BoardProtos.Tile) {
+          return mergeFrom((mech.mania.engine.domain.model.BoardProtos.Tile)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(BoardProtos.Tile other) {
-        if (other == BoardProtos.Tile.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.BoardProtos.Tile other) {
+        if (other == mech.mania.engine.domain.model.BoardProtos.Tile.getDefaultInstance()) return this;
         if (other.tileType_ != 0) {
           setTileTypeValue(other.getTileTypeValue());
         }
@@ -2073,11 +2096,11 @@ public final class BoardProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        BoardProtos.Tile parsedMessage = null;
+        mech.mania.engine.domain.model.BoardProtos.Tile parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (BoardProtos.Tile) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.BoardProtos.Tile) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2093,7 +2116,7 @@ public final class BoardProtos {
        * <code>.board.Tile.TileType tile_type = 1;</code>
        * @return The enum numeric value on the wire for tileType.
        */
-      public int getTileTypeValue() {
+      @java.lang.Override public int getTileTypeValue() {
         return tileType_;
       }
       /**
@@ -2102,6 +2125,7 @@ public final class BoardProtos {
        * @return This builder for chaining.
        */
       public Builder setTileTypeValue(int value) {
+        
         tileType_ = value;
         onChanged();
         return this;
@@ -2110,17 +2134,18 @@ public final class BoardProtos {
        * <code>.board.Tile.TileType tile_type = 1;</code>
        * @return The tileType.
        */
-      public BoardProtos.Tile.TileType getTileType() {
+      @java.lang.Override
+      public mech.mania.engine.domain.model.BoardProtos.Tile.TileType getTileType() {
         @SuppressWarnings("deprecation")
-        BoardProtos.Tile.TileType result = BoardProtos.Tile.TileType.valueOf(tileType_);
-        return result == null ? BoardProtos.Tile.TileType.UNRECOGNIZED : result;
+        mech.mania.engine.domain.model.BoardProtos.Tile.TileType result = mech.mania.engine.domain.model.BoardProtos.Tile.TileType.valueOf(tileType_);
+        return result == null ? mech.mania.engine.domain.model.BoardProtos.Tile.TileType.UNRECOGNIZED : result;
       }
       /**
        * <code>.board.Tile.TileType tile_type = 1;</code>
        * @param value The tileType to set.
        * @return This builder for chaining.
        */
-      public Builder setTileType(BoardProtos.Tile.TileType value) {
+      public Builder setTileType(mech.mania.engine.domain.model.BoardProtos.Tile.TileType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2140,22 +2165,22 @@ public final class BoardProtos {
         return this;
       }
 
-      private java.util.List<ItemProtos.Item> items_ =
+      private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> items_ =
         java.util.Collections.emptyList();
       private void ensureItemsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          items_ = new java.util.ArrayList<ItemProtos.Item>(items_);
+          items_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>(items_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ItemProtos.Item, ItemProtos.Item.Builder, ItemProtos.ItemOrBuilder> itemsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> itemsBuilder_;
 
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public java.util.List<ItemProtos.Item> getItemsList() {
+      public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
         if (itemsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(items_);
         } else {
@@ -2175,7 +2200,7 @@ public final class BoardProtos {
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public ItemProtos.Item getItems(int index) {
+      public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
         if (itemsBuilder_ == null) {
           return items_.get(index);
         } else {
@@ -2186,7 +2211,7 @@ public final class BoardProtos {
        * <code>repeated .item.Item items = 2;</code>
        */
       public Builder setItems(
-          int index, ItemProtos.Item value) {
+          int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
         if (itemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2203,7 +2228,7 @@ public final class BoardProtos {
        * <code>repeated .item.Item items = 2;</code>
        */
       public Builder setItems(
-          int index, ItemProtos.Item.Builder builderForValue) {
+          int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           items_.set(index, builderForValue.build());
@@ -2216,7 +2241,7 @@ public final class BoardProtos {
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public Builder addItems(ItemProtos.Item value) {
+      public Builder addItems(mech.mania.engine.domain.model.ItemProtos.Item value) {
         if (itemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2233,7 +2258,7 @@ public final class BoardProtos {
        * <code>repeated .item.Item items = 2;</code>
        */
       public Builder addItems(
-          int index, ItemProtos.Item value) {
+          int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
         if (itemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2250,7 +2275,7 @@ public final class BoardProtos {
        * <code>repeated .item.Item items = 2;</code>
        */
       public Builder addItems(
-          ItemProtos.Item.Builder builderForValue) {
+          mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           items_.add(builderForValue.build());
@@ -2264,7 +2289,7 @@ public final class BoardProtos {
        * <code>repeated .item.Item items = 2;</code>
        */
       public Builder addItems(
-          int index, ItemProtos.Item.Builder builderForValue) {
+          int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           items_.add(index, builderForValue.build());
@@ -2278,7 +2303,7 @@ public final class BoardProtos {
        * <code>repeated .item.Item items = 2;</code>
        */
       public Builder addAllItems(
-          java.lang.Iterable<? extends ItemProtos.Item> values) {
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.ItemProtos.Item> values) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -2318,14 +2343,14 @@ public final class BoardProtos {
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public ItemProtos.Item.Builder getItemsBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.Item.Builder getItemsBuilder(
           int index) {
         return getItemsFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public ItemProtos.ItemOrBuilder getItemsOrBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
           int index) {
         if (itemsBuilder_ == null) {
           return items_.get(index);  } else {
@@ -2335,7 +2360,7 @@ public final class BoardProtos {
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public java.util.List<? extends ItemProtos.ItemOrBuilder>
+      public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
            getItemsOrBuilderList() {
         if (itemsBuilder_ != null) {
           return itemsBuilder_.getMessageOrBuilderList();
@@ -2346,31 +2371,31 @@ public final class BoardProtos {
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public ItemProtos.Item.Builder addItemsBuilder() {
+      public mech.mania.engine.domain.model.ItemProtos.Item.Builder addItemsBuilder() {
         return getItemsFieldBuilder().addBuilder(
-            ItemProtos.Item.getDefaultInstance());
+            mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
       }
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public ItemProtos.Item.Builder addItemsBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.Item.Builder addItemsBuilder(
           int index) {
         return getItemsFieldBuilder().addBuilder(
-            index, ItemProtos.Item.getDefaultInstance());
+            index, mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
       }
       /**
        * <code>repeated .item.Item items = 2;</code>
        */
-      public java.util.List<ItemProtos.Item.Builder>
+      public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item.Builder> 
            getItemsBuilderList() {
         return getItemsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ItemProtos.Item, ItemProtos.Item.Builder, ItemProtos.ItemOrBuilder>
+          mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
           getItemsFieldBuilder() {
         if (itemsBuilder_ == null) {
           itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              ItemProtos.Item, ItemProtos.Item.Builder, ItemProtos.ItemOrBuilder>(
+              mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder>(
                   items_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -2396,12 +2421,12 @@ public final class BoardProtos {
     }
 
     // @@protoc_insertion_point(class_scope:board.Tile)
-    private static final BoardProtos.Tile DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.BoardProtos.Tile DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new BoardProtos.Tile();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.BoardProtos.Tile();
     }
 
-    public static BoardProtos.Tile getDefaultInstance() {
+    public static mech.mania.engine.domain.model.BoardProtos.Tile getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2426,7 +2451,7 @@ public final class BoardProtos {
     }
 
     @java.lang.Override
-    public BoardProtos.Tile getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.BoardProtos.Tile getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2458,15 +2483,15 @@ public final class BoardProtos {
       "ile\022\'\n\ttile_type\030\001 \001(\0162\024.board.Tile.Tile" +
       "Type\022\031\n\005items\030\002 \003(\0132\n.item.Item\";\n\010TileT" +
       "ype\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n\nIMPASSIBLE\020\002" +
-      "\022\n\n\006PORTAL\020\003B<\n\034mech.mania.engine.game.b" +
-      "oardB\013BoardProtos\252\002\016MM26.IO.Modelsb\006prot" +
-      "o3"
+      "\022\n\n\006PORTAL\020\003B>\n\036mech.mania.engine.domain" +
+      ".modelB\013BoardProtos\252\002\016MM26.IO.Modelsb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          ItemProtos.getDescriptor(),
-          CharacterProtos.getDescriptor(),
+          mech.mania.engine.domain.model.ItemProtos.getDescriptor(),
+          mech.mania.engine.domain.model.CharacterProtos.getDescriptor(),
         });
     internal_static_board_Board_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -2480,8 +2505,8 @@ public final class BoardProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_board_Tile_descriptor,
         new java.lang.String[] { "TileType", "Items", });
-    ItemProtos.getDescriptor();
-    CharacterProtos.getDescriptor();
+    mech.mania.engine.domain.model.ItemProtos.getDescriptor();
+    mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

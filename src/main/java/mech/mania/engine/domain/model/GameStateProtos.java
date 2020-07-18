@@ -25,11 +25,11 @@ public final class GameStateProtos {
     long getStateId();
 
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
     int getBoardNamesCount();
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
     boolean containsBoardNames(
         java.lang.String key);
@@ -37,33 +37,33 @@ public final class GameStateProtos {
      * Use {@link #getBoardNamesMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, BoardProtos.Board>
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
     getBoardNames();
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
-    java.util.Map<java.lang.String, BoardProtos.Board>
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
     getBoardNamesMap();
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
-    BoardProtos.Board getBoardNamesOrDefault(
+    mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrDefault(
         java.lang.String key,
-        BoardProtos.Board defaultValue);
+        mech.mania.engine.domain.model.BoardProtos.Board defaultValue);
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
-    BoardProtos.Board getBoardNamesOrThrow(
+    mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrThrow(
         java.lang.String key);
 
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
     int getPlayerNamesCount();
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
     boolean containsPlayerNames(
         java.lang.String key);
@@ -71,33 +71,33 @@ public final class GameStateProtos {
      * Use {@link #getPlayerNamesMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, CharacterProtos.Player>
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
     getPlayerNames();
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
-    java.util.Map<java.lang.String, CharacterProtos.Player>
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
     getPlayerNamesMap();
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
-    CharacterProtos.Player getPlayerNamesOrDefault(
+    mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrDefault(
         java.lang.String key,
-        CharacterProtos.Player defaultValue);
+        mech.mania.engine.domain.model.CharacterProtos.Player defaultValue);
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
-    CharacterProtos.Player getPlayerNamesOrThrow(
+    mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrThrow(
         java.lang.String key);
 
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
     int getMonsterNamesCount();
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
     boolean containsMonsterNames(
         java.lang.String key);
@@ -105,31 +105,31 @@ public final class GameStateProtos {
      * Use {@link #getMonsterNamesMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, CharacterProtos.Monster>
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
     getMonsterNames();
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
-    java.util.Map<java.lang.String, CharacterProtos.Monster>
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
     getMonsterNamesMap();
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
-    CharacterProtos.Monster getMonsterNamesOrDefault(
+    mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrDefault(
         java.lang.String key,
-        CharacterProtos.Monster defaultValue);
+        mech.mania.engine.domain.model.CharacterProtos.Monster defaultValue);
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
-    CharacterProtos.Monster getMonsterNamesOrThrow(
+    mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrThrow(
         java.lang.String key);
   }
   /**
    * Protobuf type {@code game_state.GameState}
    */
-  public  static final class GameState extends
+  public static final class GameState extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:game_state.GameState)
       GameStateOrBuilder {
@@ -183,7 +183,7 @@ public final class GameStateProtos {
                     BoardNamesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, BoardProtos.Board>
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
               boardNames__ = input.readMessage(
                   BoardNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               boardNames_.getMutableMap().put(
@@ -196,7 +196,7 @@ public final class GameStateProtos {
                     PlayerNamesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
-              com.google.protobuf.MapEntry<java.lang.String, CharacterProtos.Player>
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
               playerNames__ = input.readMessage(
                   PlayerNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               playerNames_.getMutableMap().put(
@@ -209,7 +209,7 @@ public final class GameStateProtos {
                     MonsterNamesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000004;
               }
-              com.google.protobuf.MapEntry<java.lang.String, CharacterProtos.Monster>
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
               monsterNames__ = input.readMessage(
                   MonsterNamesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               monsterNames_.getMutableMap().put(
@@ -237,7 +237,7 @@ public final class GameStateProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameStateProtos.internal_static_game_state_GameState_descriptor;
+      return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -259,9 +259,9 @@ public final class GameStateProtos {
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameStateProtos.internal_static_game_state_GameState_fieldAccessorTable
+      return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameStateProtos.GameState.class, GameStateProtos.GameState.Builder.class);
+              mech.mania.engine.domain.model.GameStateProtos.GameState.class, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder.class);
     }
 
     public static final int STATE_ID_FIELD_NUMBER = 1;
@@ -270,25 +270,26 @@ public final class GameStateProtos {
      * <code>int64 state_id = 1;</code>
      * @return The stateId.
      */
+    @java.lang.Override
     public long getStateId() {
       return stateId_;
     }
 
-    public static final int BOARDNAMES_FIELD_NUMBER = 2;
+    public static final int BOARD_NAMES_FIELD_NUMBER = 2;
     private static final class BoardNamesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, BoardProtos.Board> defaultEntry =
+          java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, BoardProtos.Board>newDefaultInstance(
-                  GameStateProtos.internal_static_game_state_GameState_BoardNamesEntry_descriptor,
+              .<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>newDefaultInstance(
+                  mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_BoardNamesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  BoardProtos.Board.getDefaultInstance());
+                  mech.mania.engine.domain.model.BoardProtos.Board.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, BoardProtos.Board> boardNames_;
-    private com.google.protobuf.MapField<java.lang.String, BoardProtos.Board>
+        java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> boardNames_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
     internalGetBoardNames() {
       if (boardNames_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -301,9 +302,10 @@ public final class GameStateProtos {
       return internalGetBoardNames().getMap().size();
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
+    @java.lang.Override
     public boolean containsBoardNames(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -312,37 +314,41 @@ public final class GameStateProtos {
     /**
      * Use {@link #getBoardNamesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, BoardProtos.Board> getBoardNames() {
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNames() {
       return getBoardNamesMap();
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
+    @java.lang.Override
 
-    public java.util.Map<java.lang.String, BoardProtos.Board> getBoardNamesMap() {
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNamesMap() {
       return internalGetBoardNames().getMap();
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
+    @java.lang.Override
 
-    public BoardProtos.Board getBoardNamesOrDefault(
+    public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrDefault(
         java.lang.String key,
-        BoardProtos.Board defaultValue) {
+        mech.mania.engine.domain.model.BoardProtos.Board defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, BoardProtos.Board> map =
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> map =
           internalGetBoardNames().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+     * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
+    @java.lang.Override
 
-    public BoardProtos.Board getBoardNamesOrThrow(
+    public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, BoardProtos.Board> map =
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> map =
           internalGetBoardNames().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -350,21 +356,21 @@ public final class GameStateProtos {
       return map.get(key);
     }
 
-    public static final int PLAYERNAMES_FIELD_NUMBER = 3;
+    public static final int PLAYER_NAMES_FIELD_NUMBER = 3;
     private static final class PlayerNamesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, CharacterProtos.Player> defaultEntry =
+          java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, CharacterProtos.Player>newDefaultInstance(
-                  GameStateProtos.internal_static_game_state_GameState_PlayerNamesEntry_descriptor,
+              .<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>newDefaultInstance(
+                  mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_PlayerNamesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  CharacterProtos.Player.getDefaultInstance());
+                  mech.mania.engine.domain.model.CharacterProtos.Player.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, CharacterProtos.Player> playerNames_;
-    private com.google.protobuf.MapField<java.lang.String, CharacterProtos.Player>
+        java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> playerNames_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
     internalGetPlayerNames() {
       if (playerNames_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -377,9 +383,10 @@ public final class GameStateProtos {
       return internalGetPlayerNames().getMap().size();
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
+    @java.lang.Override
     public boolean containsPlayerNames(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -388,37 +395,41 @@ public final class GameStateProtos {
     /**
      * Use {@link #getPlayerNamesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, CharacterProtos.Player> getPlayerNames() {
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNames() {
       return getPlayerNamesMap();
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
+    @java.lang.Override
 
-    public java.util.Map<java.lang.String, CharacterProtos.Player> getPlayerNamesMap() {
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNamesMap() {
       return internalGetPlayerNames().getMap();
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
+    @java.lang.Override
 
-    public CharacterProtos.Player getPlayerNamesOrDefault(
+    public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrDefault(
         java.lang.String key,
-        CharacterProtos.Player defaultValue) {
+        mech.mania.engine.domain.model.CharacterProtos.Player defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, CharacterProtos.Player> map =
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> map =
           internalGetPlayerNames().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+     * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
+    @java.lang.Override
 
-    public CharacterProtos.Player getPlayerNamesOrThrow(
+    public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, CharacterProtos.Player> map =
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> map =
           internalGetPlayerNames().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -426,21 +437,21 @@ public final class GameStateProtos {
       return map.get(key);
     }
 
-    public static final int MONSTERNAMES_FIELD_NUMBER = 4;
+    public static final int MONSTER_NAMES_FIELD_NUMBER = 4;
     private static final class MonsterNamesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, CharacterProtos.Monster> defaultEntry =
+          java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, CharacterProtos.Monster>newDefaultInstance(
-                  GameStateProtos.internal_static_game_state_GameState_MonsterNamesEntry_descriptor,
+              .<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>newDefaultInstance(
+                  mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_MonsterNamesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  CharacterProtos.Monster.getDefaultInstance());
+                  mech.mania.engine.domain.model.CharacterProtos.Monster.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, CharacterProtos.Monster> monsterNames_;
-    private com.google.protobuf.MapField<java.lang.String, CharacterProtos.Monster>
+        java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> monsterNames_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
     internalGetMonsterNames() {
       if (monsterNames_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -453,9 +464,10 @@ public final class GameStateProtos {
       return internalGetMonsterNames().getMap().size();
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
+    @java.lang.Override
     public boolean containsMonsterNames(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -464,37 +476,41 @@ public final class GameStateProtos {
     /**
      * Use {@link #getMonsterNamesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, CharacterProtos.Monster> getMonsterNames() {
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNames() {
       return getMonsterNamesMap();
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
+    @java.lang.Override
 
-    public java.util.Map<java.lang.String, CharacterProtos.Monster> getMonsterNamesMap() {
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNamesMap() {
       return internalGetMonsterNames().getMap();
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
+    @java.lang.Override
 
-    public CharacterProtos.Monster getMonsterNamesOrDefault(
+    public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrDefault(
         java.lang.String key,
-        CharacterProtos.Monster defaultValue) {
+        mech.mania.engine.domain.model.CharacterProtos.Monster defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, CharacterProtos.Monster> map =
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> map =
           internalGetMonsterNames().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+     * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
+    @java.lang.Override
 
-    public CharacterProtos.Monster getMonsterNamesOrThrow(
+    public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, CharacterProtos.Monster> map =
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> map =
           internalGetMonsterNames().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -550,9 +566,9 @@ public final class GameStateProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, stateId_);
       }
-      for (java.util.Map.Entry<java.lang.String, BoardProtos.Board> entry
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> entry
            : internalGetBoardNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, BoardProtos.Board>
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
         boardNames__ = BoardNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -560,9 +576,9 @@ public final class GameStateProtos {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(2, boardNames__);
       }
-      for (java.util.Map.Entry<java.lang.String, CharacterProtos.Player> entry
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> entry
            : internalGetPlayerNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, CharacterProtos.Player>
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
         playerNames__ = PlayerNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -570,9 +586,9 @@ public final class GameStateProtos {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(3, playerNames__);
       }
-      for (java.util.Map.Entry<java.lang.String, CharacterProtos.Monster> entry
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> entry
            : internalGetMonsterNames().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, CharacterProtos.Monster>
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
         monsterNames__ = MonsterNamesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -590,10 +606,10 @@ public final class GameStateProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameStateProtos.GameState)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.GameStateProtos.GameState)) {
         return super.equals(obj);
       }
-      GameStateProtos.GameState other = (GameStateProtos.GameState) obj;
+      mech.mania.engine.domain.model.GameStateProtos.GameState other = (mech.mania.engine.domain.model.GameStateProtos.GameState) obj;
 
       if (getStateId()
           != other.getStateId()) return false;
@@ -618,15 +634,15 @@ public final class GameStateProtos {
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getStateId());
       if (!internalGetBoardNames().getMap().isEmpty()) {
-        hash = (37 * hash) + BOARDNAMES_FIELD_NUMBER;
+        hash = (37 * hash) + BOARD_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetBoardNames().hashCode();
       }
       if (!internalGetPlayerNames().getMap().isEmpty()) {
-        hash = (37 * hash) + PLAYERNAMES_FIELD_NUMBER;
+        hash = (37 * hash) + PLAYER_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetPlayerNames().hashCode();
       }
       if (!internalGetMonsterNames().getMap().isEmpty()) {
-        hash = (37 * hash) + MONSTERNAMES_FIELD_NUMBER;
+        hash = (37 * hash) + MONSTER_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetMonsterNames().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -634,69 +650,69 @@ public final class GameStateProtos {
       return hash;
     }
 
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameStateProtos.GameState parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameStateProtos.GameState parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameStateProtos.GameState parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameStateProtos.GameState parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameStateProtos.GameState parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -709,7 +725,7 @@ public final class GameStateProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameStateProtos.GameState prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.GameStateProtos.GameState prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -730,10 +746,10 @@ public final class GameStateProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:game_state.GameState)
-        GameStateProtos.GameStateOrBuilder {
+        mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameStateProtos.internal_static_game_state_GameState_descriptor;
+        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -769,9 +785,9 @@ public final class GameStateProtos {
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameStateProtos.internal_static_game_state_GameState_fieldAccessorTable
+        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameStateProtos.GameState.class, GameStateProtos.GameState.Builder.class);
+                mech.mania.engine.domain.model.GameStateProtos.GameState.class, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder()
@@ -803,17 +819,17 @@ public final class GameStateProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameStateProtos.internal_static_game_state_GameState_descriptor;
+        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_descriptor;
       }
 
       @java.lang.Override
-      public GameStateProtos.GameState getDefaultInstanceForType() {
-        return GameStateProtos.GameState.getDefaultInstance();
+      public mech.mania.engine.domain.model.GameStateProtos.GameState getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameStateProtos.GameState build() {
-        GameStateProtos.GameState result = buildPartial();
+      public mech.mania.engine.domain.model.GameStateProtos.GameState build() {
+        mech.mania.engine.domain.model.GameStateProtos.GameState result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -821,8 +837,8 @@ public final class GameStateProtos {
       }
 
       @java.lang.Override
-      public GameStateProtos.GameState buildPartial() {
-        GameStateProtos.GameState result = new GameStateProtos.GameState(this);
+      public mech.mania.engine.domain.model.GameStateProtos.GameState buildPartial() {
+        mech.mania.engine.domain.model.GameStateProtos.GameState result = new mech.mania.engine.domain.model.GameStateProtos.GameState(this);
         int from_bitField0_ = bitField0_;
         result.stateId_ = stateId_;
         result.boardNames_ = internalGetBoardNames();
@@ -869,16 +885,16 @@ public final class GameStateProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameStateProtos.GameState) {
-          return mergeFrom((GameStateProtos.GameState)other);
+        if (other instanceof mech.mania.engine.domain.model.GameStateProtos.GameState) {
+          return mergeFrom((mech.mania.engine.domain.model.GameStateProtos.GameState)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameStateProtos.GameState other) {
-        if (other == GameStateProtos.GameState.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.GameStateProtos.GameState other) {
+        if (other == mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance()) return this;
         if (other.getStateId() != 0L) {
           setStateId(other.getStateId());
         }
@@ -903,11 +919,11 @@ public final class GameStateProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameStateProtos.GameState parsedMessage = null;
+        mech.mania.engine.domain.model.GameStateProtos.GameState parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameStateProtos.GameState) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.GameStateProtos.GameState) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -923,6 +939,7 @@ public final class GameStateProtos {
        * <code>int64 state_id = 1;</code>
        * @return The stateId.
        */
+      @java.lang.Override
       public long getStateId() {
         return stateId_;
       }
@@ -949,8 +966,8 @@ public final class GameStateProtos {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, BoardProtos.Board> boardNames_;
-      private com.google.protobuf.MapField<java.lang.String, BoardProtos.Board>
+          java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> boardNames_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
       internalGetBoardNames() {
         if (boardNames_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -958,7 +975,7 @@ public final class GameStateProtos {
         }
         return boardNames_;
       }
-      private com.google.protobuf.MapField<java.lang.String, BoardProtos.Board>
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
       internalGetMutableBoardNames() {
         onChanged();;
         if (boardNames_ == null) {
@@ -975,9 +992,10 @@ public final class GameStateProtos {
         return internalGetBoardNames().getMap().size();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
+      @java.lang.Override
       public boolean containsBoardNames(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -986,37 +1004,41 @@ public final class GameStateProtos {
       /**
        * Use {@link #getBoardNamesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, BoardProtos.Board> getBoardNames() {
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNames() {
         return getBoardNamesMap();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
+      @java.lang.Override
 
-      public java.util.Map<java.lang.String, BoardProtos.Board> getBoardNamesMap() {
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNamesMap() {
         return internalGetBoardNames().getMap();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
+      @java.lang.Override
 
-      public BoardProtos.Board getBoardNamesOrDefault(
+      public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrDefault(
           java.lang.String key,
-          BoardProtos.Board defaultValue) {
+          mech.mania.engine.domain.model.BoardProtos.Board defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, BoardProtos.Board> map =
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> map =
             internalGetBoardNames().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
+      @java.lang.Override
 
-      public BoardProtos.Board getBoardNamesOrThrow(
+      public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, BoardProtos.Board> map =
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> map =
             internalGetBoardNames().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -1030,7 +1052,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public Builder removeBoardNames(
@@ -1044,16 +1066,16 @@ public final class GameStateProtos {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, BoardProtos.Board>
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
       getMutableBoardNames() {
         return internalGetMutableBoardNames().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
       public Builder putBoardNames(
           java.lang.String key,
-          BoardProtos.Board value) {
+          mech.mania.engine.domain.model.BoardProtos.Board value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
         internalGetMutableBoardNames().getMutableMap()
@@ -1061,19 +1083,19 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .board.Board&gt; boardNames = 2;</code>
+       * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
       public Builder putAllBoardNames(
-          java.util.Map<java.lang.String, BoardProtos.Board> values) {
+          java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> values) {
         internalGetMutableBoardNames().getMutableMap()
             .putAll(values);
         return this;
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, CharacterProtos.Player> playerNames_;
-      private com.google.protobuf.MapField<java.lang.String, CharacterProtos.Player>
+          java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> playerNames_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
       internalGetPlayerNames() {
         if (playerNames_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -1081,7 +1103,7 @@ public final class GameStateProtos {
         }
         return playerNames_;
       }
-      private com.google.protobuf.MapField<java.lang.String, CharacterProtos.Player>
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
       internalGetMutablePlayerNames() {
         onChanged();;
         if (playerNames_ == null) {
@@ -1098,9 +1120,10 @@ public final class GameStateProtos {
         return internalGetPlayerNames().getMap().size();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
+      @java.lang.Override
       public boolean containsPlayerNames(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1109,37 +1132,41 @@ public final class GameStateProtos {
       /**
        * Use {@link #getPlayerNamesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, CharacterProtos.Player> getPlayerNames() {
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNames() {
         return getPlayerNamesMap();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
+      @java.lang.Override
 
-      public java.util.Map<java.lang.String, CharacterProtos.Player> getPlayerNamesMap() {
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNamesMap() {
         return internalGetPlayerNames().getMap();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
+      @java.lang.Override
 
-      public CharacterProtos.Player getPlayerNamesOrDefault(
+      public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrDefault(
           java.lang.String key,
-          CharacterProtos.Player defaultValue) {
+          mech.mania.engine.domain.model.CharacterProtos.Player defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, CharacterProtos.Player> map =
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> map =
             internalGetPlayerNames().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
+      @java.lang.Override
 
-      public CharacterProtos.Player getPlayerNamesOrThrow(
+      public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, CharacterProtos.Player> map =
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> map =
             internalGetPlayerNames().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -1153,7 +1180,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public Builder removePlayerNames(
@@ -1167,16 +1194,16 @@ public final class GameStateProtos {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, CharacterProtos.Player>
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
       getMutablePlayerNames() {
         return internalGetMutablePlayerNames().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
       public Builder putPlayerNames(
           java.lang.String key,
-          CharacterProtos.Player value) {
+          mech.mania.engine.domain.model.CharacterProtos.Player value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
         internalGetMutablePlayerNames().getMutableMap()
@@ -1184,19 +1211,19 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Player&gt; playerNames = 3;</code>
+       * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
       public Builder putAllPlayerNames(
-          java.util.Map<java.lang.String, CharacterProtos.Player> values) {
+          java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> values) {
         internalGetMutablePlayerNames().getMutableMap()
             .putAll(values);
         return this;
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, CharacterProtos.Monster> monsterNames_;
-      private com.google.protobuf.MapField<java.lang.String, CharacterProtos.Monster>
+          java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> monsterNames_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
       internalGetMonsterNames() {
         if (monsterNames_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -1204,7 +1231,7 @@ public final class GameStateProtos {
         }
         return monsterNames_;
       }
-      private com.google.protobuf.MapField<java.lang.String, CharacterProtos.Monster>
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
       internalGetMutableMonsterNames() {
         onChanged();;
         if (monsterNames_ == null) {
@@ -1221,9 +1248,10 @@ public final class GameStateProtos {
         return internalGetMonsterNames().getMap().size();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
+      @java.lang.Override
       public boolean containsMonsterNames(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1232,37 +1260,41 @@ public final class GameStateProtos {
       /**
        * Use {@link #getMonsterNamesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, CharacterProtos.Monster> getMonsterNames() {
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNames() {
         return getMonsterNamesMap();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
+      @java.lang.Override
 
-      public java.util.Map<java.lang.String, CharacterProtos.Monster> getMonsterNamesMap() {
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNamesMap() {
         return internalGetMonsterNames().getMap();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
+      @java.lang.Override
 
-      public CharacterProtos.Monster getMonsterNamesOrDefault(
+      public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrDefault(
           java.lang.String key,
-          CharacterProtos.Monster defaultValue) {
+          mech.mania.engine.domain.model.CharacterProtos.Monster defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, CharacterProtos.Monster> map =
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> map =
             internalGetMonsterNames().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
+      @java.lang.Override
 
-      public CharacterProtos.Monster getMonsterNamesOrThrow(
+      public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, CharacterProtos.Monster> map =
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> map =
             internalGetMonsterNames().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -1276,7 +1308,7 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public Builder removeMonsterNames(
@@ -1290,16 +1322,16 @@ public final class GameStateProtos {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, CharacterProtos.Monster>
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
       getMutableMonsterNames() {
         return internalGetMutableMonsterNames().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
       public Builder putMonsterNames(
           java.lang.String key,
-          CharacterProtos.Monster value) {
+          mech.mania.engine.domain.model.CharacterProtos.Monster value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
         internalGetMutableMonsterNames().getMutableMap()
@@ -1307,11 +1339,11 @@ public final class GameStateProtos {
         return this;
       }
       /**
-       * <code>map&lt;string, .character.Monster&gt; monsterNames = 4;</code>
+       * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
       public Builder putAllMonsterNames(
-          java.util.Map<java.lang.String, CharacterProtos.Monster> values) {
+          java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> values) {
         internalGetMutableMonsterNames().getMutableMap()
             .putAll(values);
         return this;
@@ -1333,12 +1365,12 @@ public final class GameStateProtos {
     }
 
     // @@protoc_insertion_point(class_scope:game_state.GameState)
-    private static final GameStateProtos.GameState DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.GameStateProtos.GameState DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameStateProtos.GameState();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.GameStateProtos.GameState();
     }
 
-    public static GameStateProtos.GameState getDefaultInstance() {
+    public static mech.mania.engine.domain.model.GameStateProtos.GameState getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1363,7 +1395,7 @@ public final class GameStateProtos {
     }
 
     @java.lang.Override
-    public GameStateProtos.GameState getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.GameStateProtos.GameState getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1382,7 +1414,7 @@ public final class GameStateProtos {
   /**
    * Protobuf type {@code game_state.GameChange}
    */
-  public  static final class GameChange extends
+  public static final class GameChange extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:game_state.GameChange)
       GameChangeOrBuilder {
@@ -1450,15 +1482,15 @@ public final class GameStateProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameStateProtos.internal_static_game_state_GameChange_descriptor;
+      return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameStateProtos.internal_static_game_state_GameChange_fieldAccessorTable
+      return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameStateProtos.GameChange.class, GameStateProtos.GameChange.Builder.class);
+              mech.mania.engine.domain.model.GameStateProtos.GameChange.class, mech.mania.engine.domain.model.GameStateProtos.GameChange.Builder.class);
     }
 
     public static final int CHANGE_ID_FIELD_NUMBER = 1;
@@ -1467,6 +1499,7 @@ public final class GameStateProtos {
      * <code>int64 change_id = 1;</code>
      * @return The changeId.
      */
+    @java.lang.Override
     public long getChangeId() {
       return changeId_;
     }
@@ -1511,10 +1544,10 @@ public final class GameStateProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameStateProtos.GameChange)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.GameStateProtos.GameChange)) {
         return super.equals(obj);
       }
-      GameStateProtos.GameChange other = (GameStateProtos.GameChange) obj;
+      mech.mania.engine.domain.model.GameStateProtos.GameChange other = (mech.mania.engine.domain.model.GameStateProtos.GameChange) obj;
 
       if (getChangeId()
           != other.getChangeId()) return false;
@@ -1537,69 +1570,69 @@ public final class GameStateProtos {
       return hash;
     }
 
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameStateProtos.GameChange parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameStateProtos.GameChange parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameStateProtos.GameChange parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameStateProtos.GameChange parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameStateProtos.GameChange parseFrom(
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1612,7 +1645,7 @@ public final class GameStateProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameStateProtos.GameChange prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.GameStateProtos.GameChange prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1633,18 +1666,18 @@ public final class GameStateProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:game_state.GameChange)
-        GameStateProtos.GameChangeOrBuilder {
+        mech.mania.engine.domain.model.GameStateProtos.GameChangeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameStateProtos.internal_static_game_state_GameChange_descriptor;
+        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameStateProtos.internal_static_game_state_GameChange_fieldAccessorTable
+        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameStateProtos.GameChange.class, GameStateProtos.GameChange.Builder.class);
+                mech.mania.engine.domain.model.GameStateProtos.GameChange.class, mech.mania.engine.domain.model.GameStateProtos.GameChange.Builder.class);
       }
 
       // Construct using mech.mania.engine.domain.model.GameStateProtos.GameChange.newBuilder()
@@ -1673,17 +1706,17 @@ public final class GameStateProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameStateProtos.internal_static_game_state_GameChange_descriptor;
+        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_descriptor;
       }
 
       @java.lang.Override
-      public GameStateProtos.GameChange getDefaultInstanceForType() {
-        return GameStateProtos.GameChange.getDefaultInstance();
+      public mech.mania.engine.domain.model.GameStateProtos.GameChange getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.GameStateProtos.GameChange.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameStateProtos.GameChange build() {
-        GameStateProtos.GameChange result = buildPartial();
+      public mech.mania.engine.domain.model.GameStateProtos.GameChange build() {
+        mech.mania.engine.domain.model.GameStateProtos.GameChange result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1691,8 +1724,8 @@ public final class GameStateProtos {
       }
 
       @java.lang.Override
-      public GameStateProtos.GameChange buildPartial() {
-        GameStateProtos.GameChange result = new GameStateProtos.GameChange(this);
+      public mech.mania.engine.domain.model.GameStateProtos.GameChange buildPartial() {
+        mech.mania.engine.domain.model.GameStateProtos.GameChange result = new mech.mania.engine.domain.model.GameStateProtos.GameChange(this);
         result.changeId_ = changeId_;
         onBuilt();
         return result;
@@ -1732,16 +1765,16 @@ public final class GameStateProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameStateProtos.GameChange) {
-          return mergeFrom((GameStateProtos.GameChange)other);
+        if (other instanceof mech.mania.engine.domain.model.GameStateProtos.GameChange) {
+          return mergeFrom((mech.mania.engine.domain.model.GameStateProtos.GameChange)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameStateProtos.GameChange other) {
-        if (other == GameStateProtos.GameChange.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.GameStateProtos.GameChange other) {
+        if (other == mech.mania.engine.domain.model.GameStateProtos.GameChange.getDefaultInstance()) return this;
         if (other.getChangeId() != 0L) {
           setChangeId(other.getChangeId());
         }
@@ -1760,11 +1793,11 @@ public final class GameStateProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameStateProtos.GameChange parsedMessage = null;
+        mech.mania.engine.domain.model.GameStateProtos.GameChange parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameStateProtos.GameChange) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.GameStateProtos.GameChange) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1779,6 +1812,7 @@ public final class GameStateProtos {
        * <code>int64 change_id = 1;</code>
        * @return The changeId.
        */
+      @java.lang.Override
       public long getChangeId() {
         return changeId_;
       }
@@ -1820,12 +1854,12 @@ public final class GameStateProtos {
     }
 
     // @@protoc_insertion_point(class_scope:game_state.GameChange)
-    private static final GameStateProtos.GameChange DEFAULT_INSTANCE;
+    private static final mech.mania.engine.domain.model.GameStateProtos.GameChange DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameStateProtos.GameChange();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.GameStateProtos.GameChange();
     }
 
-    public static GameStateProtos.GameChange getDefaultInstance() {
+    public static mech.mania.engine.domain.model.GameStateProtos.GameChange getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1850,7 +1884,7 @@ public final class GameStateProtos {
     }
 
     @java.lang.Override
-    public GameStateProtos.GameChange getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.GameStateProtos.GameChange getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1891,26 +1925,26 @@ public final class GameStateProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\020game_state.proto\022\ngame_state\032\013board.pr" +
-      "oto\032\017character.proto\"\245\003\n\tGameState\022\020\n\010st" +
-      "ate_id\030\001 \001(\003\0229\n\nboardNames\030\002 \003(\0132%.game_" +
-      "state.GameState.BoardNamesEntry\022;\n\013playe" +
-      "rNames\030\003 \003(\0132&.game_state.GameState.Play" +
-      "erNamesEntry\022=\n\014monsterNames\030\004 \003(\0132\'.gam" +
-      "e_state.GameState.MonsterNamesEntry\032?\n\017B" +
-      "oardNamesEntry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030\002 \001" +
-      "(\0132\014.board.Board:\0028\001\032E\n\020PlayerNamesEntry" +
-      "\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 \001(\0132\021.character" +
-      ".Player:\0028\001\032G\n\021MonsterNamesEntry\022\013\n\003key\030" +
-      "\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.character.Monster" +
-      ":\0028\001\"\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003B@\n" +
-      "\034mech.mania.engine.game.modelB\017GameState" +
-      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
+      "oto\032\017character.proto\"\250\003\n\tGameState\022\020\n\010st" +
+      "ate_id\030\001 \001(\003\022:\n\013board_names\030\002 \003(\0132%.game" +
+      "_state.GameState.BoardNamesEntry\022<\n\014play" +
+      "er_names\030\003 \003(\0132&.game_state.GameState.Pl" +
+      "ayerNamesEntry\022>\n\rmonster_names\030\004 \003(\0132\'." +
+      "game_state.GameState.MonsterNamesEntry\032?" +
+      "\n\017BoardNamesEntry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030" +
+      "\002 \001(\0132\014.board.Board:\0028\001\032E\n\020PlayerNamesEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 \001(\0132\021.charac" +
+      "ter.Player:\0028\001\032G\n\021MonsterNamesEntry\022\013\n\003k" +
+      "ey\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.character.Mons" +
+      "ter:\0028\001\"\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003" +
+      "BB\n\036mech.mania.engine.domain.modelB\017Game" +
+      "StateProtos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          BoardProtos.getDescriptor(),
-          CharacterProtos.getDescriptor(),
+          mech.mania.engine.domain.model.BoardProtos.getDescriptor(),
+          mech.mania.engine.domain.model.CharacterProtos.getDescriptor(),
         });
     internal_static_game_state_GameState_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -1942,8 +1976,8 @@ public final class GameStateProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_state_GameChange_descriptor,
         new java.lang.String[] { "ChangeId", });
-    BoardProtos.getDescriptor();
-    CharacterProtos.getDescriptor();
+    mech.mania.engine.domain.model.BoardProtos.getDescriptor();
+    mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

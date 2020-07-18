@@ -5,6 +5,8 @@ import mech.mania.engine.domain.model.ItemProtos;
 public class Weapon extends Wearable {
     protected int range = 0;
     protected int splashRadius = 0;
+    protected int damage;
+
     protected TempStatusModifier onHitEffect;
 
     public Weapon(StatusModifier stats, int range, int splashRadius,
@@ -20,6 +22,8 @@ public class Weapon extends Wearable {
         this.range = weaponProto.getRange();
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
+        // TODO: these will compile after proto import
+        this.damage = weaponProto.getDamage();
     }
 
     public ItemProtos.Item buildProtoClassItem() {
@@ -36,6 +40,8 @@ public class Weapon extends Wearable {
         weaponBuilder.setRange(range);
         weaponBuilder.setSplashRadius(splashRadius);
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
+        // TODO: these will compile after proto import
+        weaponBuilder.setDamage(damage);
 
         return weaponBuilder.build();
     }
@@ -50,5 +56,9 @@ public class Weapon extends Wearable {
 
     public TempStatusModifier getOnHitEffect() {
         return onHitEffect;
+    }
+
+    public int getDamage() {
+        return damage;
     }
 }
