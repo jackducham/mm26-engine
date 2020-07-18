@@ -1,5 +1,6 @@
 package mech.mania.engine;
 
+import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.Position;
@@ -9,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import static junit.framework.TestCase.assertTrue;
@@ -25,6 +28,9 @@ public class GameStateTests {
     public void setup() {
         gameState = new GameState();
         controller = new GameStateController();
+
+        // Add player1
+        gameState.addNewPlayer("player1");
     }
 
     /**
@@ -49,18 +55,22 @@ public class GameStateTests {
 //    }
 
     /**
-     * Test to see how tests work
+     * Test initial player addition and spawn location
      */
     @Test
-    public void movePlayer(){
-        // Add player1
-        gameState.addNewPlayer("player1");
+    public void gameInit(){
         assertTrue(gameState.getPlayer("player1") != null);
 
         // Check that player1 is at 0, 0 on their board
         Position initPos = new Position(0, 0, "player1");
         assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
+    }
 
+    /**
+     * Tests MOVE decision (moves player from 0, 0 to 1, 0)
+     */
+    @Test
+    public void movePlayer(){
         // Move player1 to 1, 0
         PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
@@ -69,7 +79,15 @@ public class GameStateTests {
         newPos.setX(1).setY(0).setBoardId("player1");
         decision.setTargetPosition(newPos.build());
 
-        // @TODO: execute decision and check if movement happened
+        // Execute decision
+        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        decisionMap.put("player1", decision.build());
+        GameLogic.doTurn(gameState, decisionMap);
+
+        // Check that player has been moved
+        Position finalPos = gameState.getPlayer("player1").getPosition();
+        Position expectedPos = new Position(1, 0, "player1");
+        assertTrue(finalPos.equals(expectedPos));
     }
 
     /**
