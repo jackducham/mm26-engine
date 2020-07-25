@@ -2,16 +2,16 @@ package mech.mania.engine.domain.messages;
 
 import mech.mania.engine.Config;
 
-public class CommandStartGameTurn implements Command {
+public class CommandStartTurn implements Command {
     private int millisBetweenTurns;
     private int turn;
 
-    public CommandStartGameTurn(int turn, int millisBetweenTurns) {
+    public CommandStartTurn(int turn, int millisBetweenTurns) {
         this.turn = turn;
         this.millisBetweenTurns = millisBetweenTurns;
     }
 
-    public CommandStartGameTurn(int turn) {
+    public CommandStartTurn(int turn) {
         this.turn = turn;
         this.millisBetweenTurns = Config.getMillisBetweenTurns();
     }

@@ -32,7 +32,7 @@ public class MessageBus {
         messageQueue.add(newMessage);
         while (!messageQueue.isEmpty()) {
             Message message = messageQueue.poll();
-            System.out.println(String.format("handling %s", message.getClass().toString()));
+            // logger.info(String.format("handling %s", message.getClass().toString()));
             if (message instanceof Event) {
                 handleEvent((Event) message);
             } else if (message instanceof Command) {

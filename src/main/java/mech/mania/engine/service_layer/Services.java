@@ -98,7 +98,7 @@ public class Services {
             return new AbstractMap.SimpleEntry<>(playerName, decision);
         }).collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
 
-        LOGGER.info(String.format("Sent PlayerTurn to %d players with %d errors.", numPlayers.get(), errors.get()));
+        LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors.", numPlayers.get() - errors.get(), errors.get()));
         return map;
     }
 
