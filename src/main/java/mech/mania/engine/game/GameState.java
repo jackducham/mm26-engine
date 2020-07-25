@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static mech.mania.engine.game.board.Board.createDefaultBoard;
+import static mech.mania.engine.game.board.Board.createHomeBoard;
+
 public class GameState {
     private long turnNumber;
     private Map<String, Board> boardNames;
@@ -21,6 +24,9 @@ public class GameState {
     private Map<String, Monster> monsterNames;
     public VisualizerChange stateChange;
 
+    /**
+     * Sets up a default GameState. Will eventually be expanded to set up the entire pvp board.
+     */
     public GameState() {
         turnNumber = 0;
         boardNames = new HashMap<>();
@@ -31,10 +37,19 @@ public class GameState {
         // @TODO: Create pvp board
     }
 
+    /**
+     * Gets the pvp board.
+     * @return the pvp board
+     */
     public Board getPvpBoard() {
         return boardNames.get("pvp");
     }
 
+    /**
+     * Getter for a specific player's board.
+     * @param boardId id of player whose board is being requested
+     * @return board of the specified player; null if no such player exists
+     */
     public Board getBoard(String boardId) {
         if (boardNames.containsKey(boardId)) {
             return boardNames.get(boardId);
@@ -42,6 +57,11 @@ public class GameState {
         return null;
     }
 
+    /**
+     * Getter for a specific player.
+     * @param playerId
+     * @return
+     */
     public Player getPlayer(String playerId) {
         if (playerNames.containsKey(playerId)) {
             return playerNames.get(playerId);
@@ -144,13 +164,19 @@ public class GameState {
         }
     }
 
+    /**
+     * Adds new players to the game. (not for testing)
+     * @param playerName name of the player being added
+     */
     public void addNewPlayer(String playerName) {
         // TODO specify board dimensions
-        boardNames.put(playerName, new Board(2));
+        boardNames.put(playerName, createHomeBoard(playerName));
         //TODO specify spawn point location on each board
         playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
     }
 
+    //TODO: Possibly depreciated function. Monster set up will be handled by calling the createDefault_____ static
+    // functions in the Monster class, and then adding those monsters to the GameState here.
     public void addNewMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
         Monster monster = Monster.CreateDefaultMonster(speedFactor, maxHealthFactor, attackFactor, defenseFactor, experienceFactor, rangeFactor, splashFactor, numberOfDrops, spawnPoint);
         monsterNames.put(monster.getName(), monster);
