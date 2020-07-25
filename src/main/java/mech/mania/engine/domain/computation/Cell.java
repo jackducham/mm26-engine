@@ -21,4 +21,12 @@ public class Cell{
         this.valid = v;
         parent = null;
     }
+
+    public boolean equals(Cell other){
+        return this.x == other.x && this.y == other.y;
+    }
+
+    public String toString(){
+        return "(" + this.x + ", " + this.y + ")";
+    }
 }
