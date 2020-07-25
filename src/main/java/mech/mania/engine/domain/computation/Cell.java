@@ -1,0 +1,24 @@
+package mech.mania.engine.domain.computation;
+
+public class Cell{
+    public int x, y;
+    public int g, f;
+    public boolean valid;
+    public Cell parent;
+
+    public Cell(int x, int y, int g, int f, boolean v){
+        this.x = x;
+        this.y = y;
+        this.g = g;
+        this.valid = v;
+        parent = null;
+    }
+    public Cell(int x, int y, boolean v){
+        this.x = x;
+        this.y = y;
+        g = Integer.MAX_VALUE;
+        f = Integer.MAX_VALUE;
+        this.valid = v;
+        parent = null;
+    }
+}
