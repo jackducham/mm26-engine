@@ -3,6 +3,7 @@ package mech.mania.engine;
 import mech.mania.engine.game.GameLogic;
 import mech.mania.engine.game.GameState;
 
+import mech.mania.engine.game.board.Tile;
 import mech.mania.engine.game.characters.Character;
 import mech.mania.engine.game.characters.CharacterProtos;
 import mech.mania.engine.game.characters.Player;
@@ -13,9 +14,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.HashMap;
-import static org.junit.Assert.assertEquals;
+import java.util.Objects;
+
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 /** This contains tests for any overall board tests or helper functions */
 public class GameLogicTests {
@@ -159,5 +161,55 @@ public class GameLogicTests {
         Character playerOnBoard = gameState.getPlayer("player1");
         assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
         assertTrue(GameLogic.usePortal(gameState, playerOnBoard, 0));
+    }
+
+    @Test
+    public void nullInvalidTile() {
+        // TODO ensure there is a board that matches this requirement
+        assertNull(GameLogic.getTileAtPosition(gameState, new Position(3, 3, "id")));
+    }
+
+    @Test
+    public void validTileAtPosition() {
+        // TODO ensure there is a board that matches this requirement
+        assertEquals(
+                    Tile.TileType.BLANK,
+                    Objects.requireNonNull(
+                                            GameLogic.getTileAtPosition(
+                                                                        gameState,
+                                                                        new Position(0, 0, "id")
+                                            )).getType()
+                    );
+        assertEquals(
+                Tile.TileType.IMPASSIBLE,
+                Objects.requireNonNull(
+                        GameLogic.getTileAtPosition(
+                                gameState,
+                                new Position(1, 0, "id")
+                        )).getType()
+        );
+        assertEquals(
+                Tile.TileType.PORTAL,
+                Objects.requireNonNull(
+                        GameLogic.getTileAtPosition(
+                                gameState,
+                                new Position(0, 1, "id")
+                        )).getType()
+        );
+    }
+
+    @Test
+    public void voidTileAtPosition() {
+        // TODO ensure there is a board that matches this requirement
+        assertNull(GameLogic.getTileAtPosition(gameState, new Position(1, 1, "id")));
+    }
+
+    @Test
+    public void invalidateOutOfBoundsPosition() {
+        // TODO ensure there is a board that matches these requirements
+        assertFalse(GameLogic.validatePosition(gameState, new Position(-1, 0, "id")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(0, -1, "id")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(5, 0, "id")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(0, 5, "id")));
     }
 }
