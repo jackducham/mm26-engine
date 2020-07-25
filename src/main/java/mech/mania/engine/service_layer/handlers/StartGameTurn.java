@@ -19,6 +19,10 @@ public class StartGameTurn extends CommandHandler {
 
         if (uow.getGameOver()) {
             System.out.println("game is over");
+
+            // Game was ended last turn, so shut down servers
+            uow.addNewMessage(new CommandStopInfraServer());
+            uow.addNewMessage(new CommandStopVisualizerServer());
             return;
         }
 
