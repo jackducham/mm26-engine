@@ -40,6 +40,11 @@ public class Board {
      */
     private Board(int xdim, int ydim) {
         grid = new Tile[xdim][ydim];
+        for(int i = 0; i < xdim; ++i) {
+            for(int j = 0; j < ydim; ++j) {
+                grid[i][j] = new Tile();
+            }
+        }
         portals = new ArrayList<>();
     }
 
@@ -56,7 +61,9 @@ public class Board {
 
         if(createPortals) {
             defaultBoard.portals.add(new Position(0, 0, id));
-            defaultBoard.portals.add(new Position(xdim - 1, ydim - 1, id));
+            if(xdim > 1 && ydim > 1) {
+                defaultBoard.portals.add(new Position(xdim - 1, ydim - 1, id));
+            }
         }
 
         return defaultBoard;

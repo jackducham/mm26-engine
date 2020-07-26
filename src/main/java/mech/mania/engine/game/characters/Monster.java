@@ -131,7 +131,7 @@ public class Monster extends Character {
     // --------Static Monster Creators-------- //
     //TODO: this function (and static count variable) should be copied and modified for each monster in the game.
     public static int DefaultMonsterQuantity = 0;
-    public static Monster CreateDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
+    public static Monster createDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
 
         /*
         Default stats and their scaling factors:
