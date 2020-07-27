@@ -61,7 +61,7 @@ public class Hat extends Wearable {
      * @return a default Hat object
      */
     public static Hat createDefaultHat() {
-        StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0);
+        StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0.2, 0, 0, 0, 0, 0, 0, 0);
         Hat defaultHat = new Hat(defaultStatusModifier, null);
         return defaultHat;
     }
