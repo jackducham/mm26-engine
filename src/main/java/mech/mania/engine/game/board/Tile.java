@@ -12,11 +12,18 @@ public class Tile {
     }
     private TileType type;
 
+    /**
+     * Constructs a default Tile of type BLANK.
+     */
     public Tile() {
         items = new ArrayList<>();
         type = TileType.BLANK;
     }
 
+    /**
+     * Creates a Tile based on a Protocol Buffer.
+     * @param tileProto the protocol buffer being copied
+     */
     public Tile(BoardProtos.Tile tileProto) {
         items = new ArrayList<>(tileProto.getItemsCount());
         for (int i = 0; i < tileProto.getItemsCount(); i++) {
@@ -55,6 +62,10 @@ public class Tile {
         }
     }
 
+    /**
+     * Creates a Protocol Buffer based on the Tile this function is called on.
+     * @return a completed protocol buffer
+     */
     public BoardProtos.Tile buildProtoClass() {
         BoardProtos.Tile.Builder tileBuilder = BoardProtos.Tile.newBuilder();
         switch (type) {
@@ -90,22 +101,42 @@ public class Tile {
         return tileBuilder.build();
     }
 
+    /**
+     * Getter for the list of Items on a Tile instance.
+     * @return the list of all Items on the Tile
+     */
     public List<Item> getItems() {
         return items;
     }
 
+    /**
+     * Getter for the type of a Tile instance.
+     * @return the type of the Tile
+     */
     public TileType getType() {
         return type;
     }
 
+    /**
+     * Setter for the type of a Tile instance.
+     * @param type the type the tile will be set to
+     */
     public void setType(TileType type) {
         this.type = type;
     }
 
+    /**
+     * Adds an Item to the list of Items on a Tile instance.
+     * @param item the Item to be added
+     */
     public void addItem(Item item) {
         items.add(item);
     }
 
+    /**
+     * Removes the Item at a given index in the list of Items on a Tile instance.
+     * @param index the index of the Item to be removed
+     */
     public void removeItem(int index) {
         items.remove(index);
     }

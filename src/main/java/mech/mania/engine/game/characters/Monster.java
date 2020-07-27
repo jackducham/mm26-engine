@@ -15,6 +15,19 @@ public class Monster extends Character {
 
 
     // --------Constructors-------- //
+
+    /**
+     * Creates a Monster with the given stats.
+     * @param name the monster's name
+     * @param baseSpeed the monster's base movement speed
+     * @param baseMaxHealth the monster's base maximum health
+     * @param baseAttack the monster's base attack damage
+     * @param baseDefense the monster's base defense
+     * @param experience the monster's base exp to be awarded on kill
+     * @param spawnPoint the monster's spawn point, and the point it will leash back to
+     * @param weapon the monster's weapon (used to apply on-hit effects)
+     * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
+     */
     public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                    int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
         super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
@@ -24,6 +37,11 @@ public class Monster extends Character {
 
     // --------Proto Stuff-------- //
     // @TODO: Update CharacterProtos
+
+    /**
+     * Creates a Monster object from a given Protocol Buffer.
+     * @param monsterProto the protocol buffer being copied
+     */
     public Monster(CharacterProtos.Monster monsterProto) {
         super(
                 monsterProto.getCharacter().getName(),
@@ -58,6 +76,10 @@ public class Monster extends Character {
         }
     }
 
+    /**
+     * Creates a Protocol Buffer from the Monster object this function is called on.
+     * @return a protocol buffer representing the Monster object
+     */
     public CharacterProtos.Monster buildProtoClassMonster() {
         CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
         CharacterProtos.Monster.Builder monsterBuilder = CharacterProtos.Monster.newBuilder();
@@ -83,6 +105,14 @@ public class Monster extends Character {
 
 
     // --------Monster Decisions-------- //
+
+    /**
+     * Takes an input of a target position and returns the position to which the Monster should move on its next turn
+     * in order to arrive at the target position in the shortest time.
+     * @param gameState the current Game State
+     * @param destination the position the monster wants to end up at
+     * @return the position the Monster should move to
+     */
     private Position findPositionToMove(GameState gameState, Position destination) {
         List<Position> path = GameLogic.findPath(gameState, this.position, destination);
         Position toMove;
@@ -94,6 +124,12 @@ public class Monster extends Character {
         return toMove;
     }
 
+    /**
+     * Calculates what the Monster should do on its next turn and passes this information to one of several helper
+     * functions which generate and pass back a decision object.
+     * @param gameState the current game state
+     * @return the Monster's next decision
+     */
     public CharacterDecision makeDecision(GameState gameState) {
         if (taggedPlayersDamage.isEmpty()) {
             return moveToStartDecision(gameState);
@@ -118,6 +154,12 @@ public class Monster extends Character {
         }
     }
 
+    /**
+     * A helper function which generates a decision object when a Monster leashes: i.e. the Monster strays too far
+     * from it spawn location or has no player left to chase.
+     * @param gameState the current game state
+     * @return the Monster's leash decision
+     */
     public CharacterDecision moveToStartDecision(GameState gameState) {
         // @TODO: Can update if statement to Position .equals() method
         if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
@@ -131,6 +173,26 @@ public class Monster extends Character {
     // --------Static Monster Creators-------- //
     //TODO: this function (and static count variable) should be copied and modified for each monster in the game.
     public static int DefaultMonsterQuantity = 0;
+
+    /**
+     * [only for use in testing]
+     * Creates a "default" Monster. This function contains default values for the Monster it creates. The inputs should
+     * be values between -1 and 1 which apply a (relatively) small modifier to the base stats of the Monster.
+     * This allows some variation between each Monster of a given type and may not be used given the nature of the AI
+     * competition. This feature could be modified to produce a range of difficulties for each Monster type instead.
+     * [only for use in testing]
+     * @param speedFactor slightly modifies the Monster's base speed
+     * @param maxHealthFactor slightly modifies the Monster's base maximum health
+     * @param attackFactor slightly modifies the Monster's base attack damage
+     * @param defenseFactor slightly modifies the Monster's base defense
+     * @param experienceFactor slightly modifies the Monster's base experience awarded upon kill
+     * @param rangeFactor slightly modifies the Monster's base attack range
+     * @param splashFactor slightly modifies the Monster's base splash damage size
+     * @param numberOfDrops the number of Items this Monster instance will drop. (This function contains the full drop
+     *                      list and will pick a number of Items from that list based on this input)
+     * @param spawnPoint the Monster's spawn point
+     * @return
+     */
     public static Monster createDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
 
         /*
@@ -195,7 +257,10 @@ public class Monster extends Character {
     }
 
 
-
+    /**
+     * Gives experience to player who participated in killing this monster.
+     * @param gameState the current game state
+     */
     @Override
     public void distributeRewards(GameState gameState) {
         super.distributeRewards(gameState);

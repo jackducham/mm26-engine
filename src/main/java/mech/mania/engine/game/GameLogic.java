@@ -103,6 +103,12 @@ public class GameLogic {
         return gameState;
     }
 
+    /**
+     * Passes individual decisions to the appropriate decision handler based on type.
+     * @param gameState the current game state (used to check the conditions of the game state, and to manipulate items)
+     * @param character the character whose decision is being processed
+     * @param decision the decision being processed
+     */
     public static void processDecision(GameState gameState, Character character, CharacterDecision decision) {
         if (decision == null) {
             return;
