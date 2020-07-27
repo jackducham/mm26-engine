@@ -159,11 +159,12 @@ public class GameState {
         GameState defaultGameState = new GameState();
         //adds a 30x30 pvp board with hard coded obstacles
         defaultGameState.boardNames.put("pvp", createDefaultBoard(30, 30, false, "pvp"));
+        Tile[][] tempGrid = defaultGameState.getPvpBoard().getGrid();
         for(int i = 1; i < 29; ++i) {
-            defaultGameState.getPvpBoard().getGrid()[i][10].setType(Tile.TileType.IMPASSIBLE);
+            tempGrid[i][10].setType(Tile.TileType.IMPASSIBLE);
         }
         for(int i = 1; i < 29; ++i) {
-            defaultGameState.getPvpBoard().getGrid()[i][20].setType(Tile.TileType.IMPASSIBLE);
+            tempGrid[i][20].setType(Tile.TileType.IMPASSIBLE);
         }
 
         //adds two portals to the pvp board
