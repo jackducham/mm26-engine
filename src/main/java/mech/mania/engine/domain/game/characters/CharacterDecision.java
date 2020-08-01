@@ -43,6 +43,9 @@ public class CharacterDecision {
                 decision = decisionTypes.PORTAL;
                 break;
         }
+
+        actionPosition = new Position(playerProto.getTargetPosition());
+        index = playerProto.getIndex();
     }
 
     public decisionTypes getDecision() {
