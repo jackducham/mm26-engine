@@ -17,10 +17,7 @@ import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * A class to execute the game logic.
@@ -35,9 +32,15 @@ public class GameLogic {
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
         gameState.stateChange.clearChanges();
         // ========== NOTES & TODOS ========== \\
-        // TODO: update GameState using List<PlayerDecision>
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
+        // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
+        // Search decisions map for new players. For each new player, create Player object and a private Board
+        for (String playerName : decisions.keySet()) {
+            if (!gameState.getAllPlayers().containsKey(playerName)) {
+                gameState.addNewPlayer(playerName);
+            }
+        }
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
@@ -91,8 +94,8 @@ public class GameLogic {
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
         // respawning, and distributing rewards
-        List<Player> players = gameState.getAllPlayers();
-        List<Monster> monsters = gameState.getAllMonsters();
+        Collection<Player> players = gameState.getAllPlayers().values();
+        Collection<Monster> monsters = gameState.getAllMonsters().values();
 
         for (Player player: players) {
             player.updateCharacter(gameState);
@@ -104,37 +107,55 @@ public class GameLogic {
         return gameState;
     }
 
+    /**
+     * Passes individual decisions to the appropriate decision handler based on type.
+     * @param gameState the current game state (used to check the conditions of the game state, and to manipulate items)
+     * @param character the character whose decision is being processed
+     * @param decision the decision being processed
+     */
     public static void processDecision(GameState gameState, Character character, CharacterDecision decision) {
-        if (decision == null) {
-            return;
-        }
+        // Check for invalid protos
+        if (decision == null) return;
+
         Position actionPosition = decision.getActionPosition();
         int index = decision.getIndex();
+
         switch (decision.getDecision()) {
             case ATTACK:
+                // Check for invalid protos
+                if(character == null || actionPosition == null) return;
                 processAttack(gameState, character, actionPosition);
                 break;
             case MOVE:
+                // Check for invalid protos
+                if(character == null || actionPosition == null) return;
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 usePortal(gameState, character, index);
                 break;
             case EQUIP:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 Player player = (Player) character;
                 player.equipItem(index);
                 break;
             case DROP:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 player = (Player) character;
                 dropItem(gameState, player, index);
                 break;
             case PICKUP:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 player = (Player) character;
-                pickUpItem(gameState, player, decision.getIndex());
+                pickUpItem(gameState, player, index);
                 break;
         }
         gameState.stateChange.updatePlayer(character, decision, null, false, false);
-
     }
 
     /**
@@ -396,6 +417,6 @@ public class GameLogic {
      * @return Manhattan Distance between pos1 and pos2
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
+        return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
     }
 }

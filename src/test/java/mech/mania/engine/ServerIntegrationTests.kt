@@ -11,9 +11,7 @@ import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.entrypoints.Main
 import mech.mania.engine.service_layer.InfraRESTHandler
 import mech.mania.engine.service_layer.VisualizerWebSocket
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
+import org.junit.*
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
@@ -74,10 +72,9 @@ class ServerIntegrationTests {
             val bytes = url.readBytes()
             val statusObj = InfraStatus.parseFrom(bytes)
             LOGGER.info("Response upon sending endgame signal: ${statusObj.message}")
-            Thread.sleep(5000)
         } catch (e: Exception) {
             // if the server has already closed, then ignore
-            LOGGER.info("Server has already closed")
+            LOGGER.info("Exception in closing the server: ${e.message}")
         }
     }
 
@@ -163,28 +160,24 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val numberOfPlayers = arrayOf(500)
-        val numberOfTurns = arrayOf(10)
+        val players = 500
+        val turns = 10
 
-        val timePerTurn = 1000
+        val timePerTurn = 2000  // check config.properties
 
-        numberOfPlayers.forEach { players ->
-            numberOfTurns.forEach { turns ->
-                // wait for an actual object to end the test
-                val latch = CountDownLatch(turns * players)
+        // wait for an actual object to end the test
+        val latch = CountDownLatch(turns * players)
 
-                connectNPlayers(players, {
-                    PlayerDecision.newBuilder()
-                            .setDecisionTypeValue(1)
-                            .build()
-                }, {
-                    // pass
-                }, {
-                    latch.countDown()
-                })
+        connectNPlayers(players, {
+            PlayerDecision.newBuilder()
+                    .setDecisionTypeValue(1)
+                    .build()
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
 
-                assertTrue(latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS), "Latch final value: ${latch.count}")
-            }
-        }
+        assertTrue(latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS), "Latch final value: ${latch.count}")
     }
 }

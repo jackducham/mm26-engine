@@ -17,7 +17,7 @@ public class Config {
             if (inputStream != null) {
                 properties.load(inputStream);
             } else {
-                throw new FileNotFoundException("property file '" + configFileName + "' not found in the classpath");
+                throw new FileNotFoundException("Property file '" + configFileName + "' not found in the classpath");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,5 +45,9 @@ public class Config {
 
     public static String getVisualizerPort() {
         return properties.getProperty("visualizerPort");
+    }
+
+    public static int getNumTurns() {
+        return Integer.parseInt(properties.getProperty("numTurns"));
     }
 }

@@ -2,6 +2,8 @@ package mech.mania.engine.service_layer;
 
 import mech.mania.engine.adapters.RepositoryAbstract;
 import mech.mania.engine.domain.messages.Message;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.logging.Logger;
 
@@ -17,5 +19,15 @@ public class UnitOfWork extends UnitOfWorkAbstract {
     public void addNewMessage(Message message) {
         LOGGER.fine("addNewMessage");
         super.addNewMessage(message);
+    }
+
+    @Override
+    public void stopInfraServer() {
+        SpringApplication.exit(infraCtx, () -> 0);
+    }
+
+    @Override
+    public void stopVisualizerServer() {
+        SpringApplication.exit(visualizerCtx, () -> 0);
     }
 }

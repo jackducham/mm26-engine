@@ -9,6 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>mech.mania</groupId>
+    <packaging>jar</packaging>
     <artifactId>MM26GameEngine</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MM26GameEngine</name>
@@ -123,7 +124,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>mech.mania.engine.Main</mainClass>
+                            <mainClass>mech.mania.engine.entrypoints.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -131,4 +132,3 @@
         </plugins>
     </build>
 </project>
-

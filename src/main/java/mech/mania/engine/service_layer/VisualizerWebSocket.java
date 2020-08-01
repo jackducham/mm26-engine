@@ -50,14 +50,14 @@ public class VisualizerWebSocket {
         public static void sendChange(VisualizerProtos.VisualizerChange change) {
             BinaryMessage message = new BinaryMessage(change.toByteArray());
             if (session == null) {
-                LOGGER.info("No endpoint to send to");
+                LOGGER.info("No visualizer endpoint to send to");
                 return;
             }
 
             try {
                 session.sendMessage(message);
             } catch (IOException e) {
-                LOGGER.warning("An IOException occurred when sending turn to endpoint. Error message:\n" +
+                LOGGER.warning("An IOException occurred when sending turn to visualizer endpoint. Error message:\n" +
                         e.getMessage());
             }
         }

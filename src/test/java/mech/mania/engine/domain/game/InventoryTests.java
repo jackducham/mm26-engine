@@ -7,9 +7,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-public class GameStateTests {
+/** This contains tests for decisions related to inventory */
+public class InventoryTests {
 
     private GameState gameState;
 
@@ -21,17 +23,12 @@ public class GameStateTests {
         gameState = new GameState();
     }
 
-
     /**
      * Cleanup after tests
      */
     @After
     public void cleanup() {
+
     }
 
-
-    @Test
-    public void testHello() {
-        UnitOfWorkAbstract uow = new UnitOfWorkFake();
-    }
 }

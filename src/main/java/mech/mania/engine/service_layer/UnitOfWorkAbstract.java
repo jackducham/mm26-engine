@@ -16,16 +16,16 @@ import java.util.logging.Logger;
 
 public abstract class UnitOfWorkAbstract {
 
-    private static final Logger LOGGER = Logger.getLogger( UnitOfWorkAbstract.class.getName() );
-    private final Queue<Message> messages = new LinkedList<>();
-    private final RepositoryAbstract repository;
-    private final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
+    protected static final Logger LOGGER = Logger.getLogger( UnitOfWorkAbstract.class.getName() );
+    protected final Queue<Message> messages = new LinkedList<>();
+    protected final RepositoryAbstract repository;
+    protected final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
     // private final Map<String, PlayerStatistics> statisticsMap = new HashMap<>();
-    private GameState gameState;
-    private int turn;
-    private ConfigurableApplicationContext infraCtx;
-    private ConfigurableApplicationContext visualizerCtx;
-    private boolean gameOver;
+    protected GameState gameState;
+    protected int turn;
+    protected ConfigurableApplicationContext infraCtx;
+    protected ConfigurableApplicationContext visualizerCtx;
+    protected boolean gameOver;
 
     /**
      * Constructor that sets an AbstractRepository
@@ -120,9 +120,7 @@ public abstract class UnitOfWorkAbstract {
     /**
      * Use the saved ConfigurableApplicationContext to stop the InfraRESTServer
      */
-    public void stopInfraServer() {
-        SpringApplication.exit(infraCtx, () -> 0);
-    }
+    public abstract void stopInfraServer();
 
     /**
      * Store a ConfigurableApplicationContext object in order to stop the VisualizerWebSocket
@@ -135,9 +133,7 @@ public abstract class UnitOfWorkAbstract {
     /**
      * Use the saved ConfigurableApplicationContext to stop the VisualizerWebSocket
      */
-    public void stopVisualizerServer() {
-        SpringApplication.exit(visualizerCtx, () -> 0);
-    }
+    public abstract void stopVisualizerServer();
 
     /**
      * Sets the game over status for this UoW.
