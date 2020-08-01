@@ -29,11 +29,9 @@ public class GameLogicTests {
      */
     @Before
     public void setup() {
-        gameState = new GameState();
+        gameState = GameState.createDefaultGameState();
         controller = new GameStateController();
 
-        // Add player1
-        gameState.addNewPlayer("player1");
     }
 
     /**
@@ -113,71 +111,63 @@ public class GameLogicTests {
 
     @Test
     public void illegalPlayerMoveSpeed() {
-        // TODO ensure that the board size is sufficiently large for this test
         Character playerOnBoard = gameState.getPlayer("player1");
-        Position testPosition = new Position(30, 30, "id");
+        Position testPosition = new Position(31, 31, "pvp");
         assertEquals(0, GameLogic.moveCharacter(gameState, playerOnBoard, testPosition).size());
     }
 
     @Test
     public void legalPlayerMove() {
-        //TODO ensure that the board size is sufficiently large for this tesgt
-        //TODO ensure that the player has sufficient base speed for this test
         Character playerOnBoard = gameState.getPlayer("player1");
-        Position testPosition = new Position(1, 1, "id");
+        Position testPosition = new Position(1, 3, "pvp");
         assertEquals(2, GameLogic.moveCharacter(gameState, playerOnBoard, testPosition).size());
     }
 
     @Test
     public void illegalPlayerPortalPosition() {
-        //TODO ensure a portal exists at (1, 1)
-        Character playerOnBoard = (mech.mania.engine.game.characters.Character)gameState.getPlayer("player1");
-        assertEquals(playerOnBoard.getPosition(), new Position(0, 0, "id"));
+        Character playerOnBoard = gameState.getPlayer("player1");
+        assertEquals(playerOnBoard.getPosition(), new Position(0, 0, "pvp"));
         assertFalse(GameLogic.canUsePortal(gameState, playerOnBoard));
     }
 
     @Test
     public void illegalPlayerPortalIndex() {
-        //TODO ensure a portal exists at (0, 0) and there is only 1 portal
         Character playerOnBoard = gameState.getPlayer("player1");
+        playerOnBoard.setPosition(new Position(10, 14, "pvp"));
         assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
         assertFalse(GameLogic.usePortal(gameState, playerOnBoard, -2));
-        assertFalse(GameLogic.usePortal(gameState, playerOnBoard, 1));
+        assertFalse(GameLogic.usePortal(gameState, playerOnBoard, 2));
     }
 
     @Test
     public void legalPlayerHomePortal() {
-        //TODO ensure a portal exists at (0, 0) and there is only 1 portal
-        //TODO ensure there is another board to portal to on the PVP board
         Character playerOnBoard = gameState.getPlayer("player1");
+        playerOnBoard.setPosition(new Position(10, 14, "pvp"));
         assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
         assertTrue(GameLogic.usePortal(gameState, playerOnBoard, -1));
     }
 
     @Test
     public void legalPlayerPVPPortal() {
-        //TODO ensure a portal exists at (0, 0) and there is only 1 portal
-        //TODO ensure there is another board to portal to on the PVP board
         Character playerOnBoard = gameState.getPlayer("player1");
+        playerOnBoard.setPosition(new Position(5, 10, "player1"));
         assertTrue(GameLogic.canUsePortal(gameState, playerOnBoard));
         assertTrue(GameLogic.usePortal(gameState, playerOnBoard, 0));
     }
 
     @Test
     public void nullInvalidTile() {
-        // TODO ensure there is a board that matches this requirement
-        assertNull(GameLogic.getTileAtPosition(gameState, new Position(3, 3, "id")));
+        assertNull(GameLogic.getTileAtPosition(gameState, new Position(31, 31, "pvp")));
     }
 
     @Test
     public void validTileAtPosition() {
-        // TODO ensure there is a board that matches this requirement
         assertEquals(
                     Tile.TileType.BLANK,
                     Objects.requireNonNull(
                                             GameLogic.getTileAtPosition(
                                                                         gameState,
-                                                                        new Position(0, 0, "id")
+                                                                        new Position(0, 0, "pvp")
                                             )).getType()
                     );
         assertEquals(
@@ -185,7 +175,7 @@ public class GameLogicTests {
                 Objects.requireNonNull(
                         GameLogic.getTileAtPosition(
                                 gameState,
-                                new Position(1, 0, "id")
+                                new Position(1, 20, "pvp")
                         )).getType()
         );
         assertEquals(
@@ -193,7 +183,7 @@ public class GameLogicTests {
                 Objects.requireNonNull(
                         GameLogic.getTileAtPosition(
                                 gameState,
-                                new Position(0, 1, "id")
+                                new Position(0, 1, "pvp")
                         )).getType()
         );
     }
@@ -201,15 +191,14 @@ public class GameLogicTests {
     @Test
     public void voidTileAtPosition() {
         // TODO ensure there is a board that matches this requirement
-        assertNull(GameLogic.getTileAtPosition(gameState, new Position(1, 1, "id")));
+        assertNull(GameLogic.getTileAtPosition(gameState, new Position(1, 1, "pvp")));
     }
 
     @Test
     public void invalidateOutOfBoundsPosition() {
-        // TODO ensure there is a board that matches these requirements
-        assertFalse(GameLogic.validatePosition(gameState, new Position(-1, 0, "id")));
-        assertFalse(GameLogic.validatePosition(gameState, new Position(0, -1, "id")));
-        assertFalse(GameLogic.validatePosition(gameState, new Position(5, 0, "id")));
-        assertFalse(GameLogic.validatePosition(gameState, new Position(0, 5, "id")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(-1, 0, "pvp")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(0, -1, "pvp")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(31, 0, "pvp")));
+        assertFalse(GameLogic.validatePosition(gameState, new Position(0, 31, "pvp")));
     }
 }
