@@ -24,6 +24,14 @@ public class Weapon extends Wearable {
         this.damage = weaponProto.getDamage();
     }
 
+    public static Weapon createDefaultWeapon() {
+        StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0);
+        TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Weapon defaultWeapon = new Weapon(defaultStatusModifier, 1, 0, defaultTempStatusModifier);
+
+        return defaultWeapon;
+    }
+
     public ItemProtos.Item buildProtoClassItem() {
         ItemProtos.Weapon protoWeaponClass = buildProtoClassWeapon();
         ItemProtos.Item.Builder itemBuilder = ItemProtos.Item.newBuilder();
