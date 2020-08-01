@@ -15,6 +15,8 @@ import mech.mania.engine.domain.game.items.Weapon;
 
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -140,19 +142,18 @@ public class GameLogic {
      * @param gameState current gameState
      * @param character player to be moved
      * @param targetPosition position the player should be moved to
-     * @return A list of position which make up the path used to reach the target
      */
-    public static List<Position> moveCharacter(GameState gameState, Character character, Position targetPosition) {
-        if (!validatePosition(gameState, targetPosition)) {
-            return new ArrayList<>();
-        }
-        List<Position> path = findPath(gameState, character.getPosition(), targetPosition); //Default return value might be empty, or might be of size one
-        if(path.size() > character.getSpeed()) {
-            return new ArrayList<>();
-        }
+    public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) return;
+
+        // Get shortest path length from current to target position (returns empty list for impossible target)
+        List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
+
+        // If path would be greater than speed allows, act as if impossible target was chosen and don't move
+        if(path.size() > character.getSpeed()) return;
+
         character.setPosition(targetPosition);
         gameState.stateChange.updatePlayer(character, null, path, false, false);
-        return path;
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -396,17 +397,5 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getY()) + Math.abs(pos1.getY() - pos2.getY());
-    }
-
-    /**
-     * Provides a list of positions from a start position to and end position.
-     * @param gameState current gameState
-     * @param start position at beginning of desired path
-     * @param end position at end of desired path
-     * @return a List of positions along the path
-     */
-    public static List<Position> findPath(GameState gameState, Position start, Position end) {
-        return new ArrayList<Position>();
-        // @TODO: Call the computation.PathFinder function instead
     }
 }
