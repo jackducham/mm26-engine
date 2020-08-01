@@ -1,4 +1,4 @@
-package mech.mania.engine.domain.computation;
+package mech.mania.engine.domain.game.pathfinding;
 
 import java.util.Comparator;
 

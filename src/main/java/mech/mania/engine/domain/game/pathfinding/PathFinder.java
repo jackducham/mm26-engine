@@ -1,10 +1,9 @@
-package mech.mania.engine.domain.computation;
+package mech.mania.engine.domain.game.pathfinding;
 
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Position;
 
-import javax.annotation.Priority;
 import java.util.*;
 
 public class PathFinder {
