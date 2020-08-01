@@ -74,7 +74,6 @@ public abstract class Character {
         this.taggedPlayersDamage = new HashMap<>();
     }
 
-    // @TODO: CharacterProtos need to be updated
     public CharacterProtos.Character buildProtoClassCharacter() {
         CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
 
@@ -91,7 +90,10 @@ public abstract class Character {
 
         characterBuilder.setPosition(position.buildProtoClass());
         characterBuilder.setSpawnPoint(spawnPoint.buildProtoClass());
-        characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
+
+        if(weapon != null) {
+            characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
+        }
 
         for (int i = 0; i < activeAttackers.size(); i++) {
 //            characterBuilder.setCurrentAttackers(i, currentAttackers.get(i).buildProtoClassTemp());

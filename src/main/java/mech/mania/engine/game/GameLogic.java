@@ -110,36 +110,48 @@ public class GameLogic {
      * @param decision the decision being processed
      */
     public static void processDecision(GameState gameState, Character character, CharacterDecision decision) {
-        if (decision == null) {
-            return;
-        }
+        // Check for invalid protos
+        if (decision == null) return;
+
         Position actionPosition = decision.getActionPosition();
         int index = decision.getIndex();
+
         switch (decision.getDecision()) {
             case ATTACK:
+                // Check for invalid protos
+                if(character == null || actionPosition == null) return;
                 processAttack(gameState, character, actionPosition);
                 break;
             case MOVE:
+                // Check for invalid protos
+                if(character == null || actionPosition == null) return;
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 usePortal(gameState, character, index);
                 break;
             case EQUIP:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 Player player = (Player) character;
                 player.equipItem(index);
                 break;
             case DROP:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 player = (Player) character;
                 dropItem(gameState, player, index);
                 break;
             case PICKUP:
+                // Check for invalid protos
+                if(character == null || index < 0) return;
                 player = (Player) character;
-                pickUpItem(gameState, player, decision.getIndex());
+                pickUpItem(gameState, player, index);
                 break;
         }
         gameState.stateChange.updatePlayer(character, decision, null, false, false);
-
     }
 
     /**
