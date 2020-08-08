@@ -1,6 +1,6 @@
 package mech.mania.engine.service_layer.handlers;
 
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -20,9 +20,8 @@ import java.util.Map;
 public class SendPlayerStats extends EventHandler {
 
     // TODO: get from environment variables
-    String bucketName = "";
-    String key = "";
-    String region = "";
+    String bucketName = "mechmania2020";
+    String region = "us-east-1";
 
     public SendPlayerStats(UnitOfWorkAbstract uow) {
         super(uow);
@@ -31,11 +30,12 @@ public class SendPlayerStats extends EventHandler {
     @Override
     public void handle(Event event) {
         Map<String, Player> playersMap = uow.getGameState().getAllPlayers();
-        List<CharacterProtos.PlayerStats> playerStats = new ArrayList<>();
+        List<CharacterProtos.PlayerStats> playerStatsMultiple = new ArrayList<>();
         for (Map.Entry<String, Player> entry : playersMap.entrySet()) {
-            playerStats.add(entry.getValue().getPlayerStats());
+            playerStatsMultiple.add(entry.getValue().getPlayerStats());
         }
-        sendToAws(playerStats);
+        String key = "";
+        sendToAws(key, playerStatsMultiple);
     }
 
     /**
@@ -43,9 +43,9 @@ public class SendPlayerStats extends EventHandler {
      * AWS bucket specified by this.bucket, this.key, and this.region
      * @param playerStats List of PlayerStats to send
      */
-    private void sendToAws(List<CharacterProtos.PlayerStats> playerStats) {
+    private void sendToAws(String key, List<CharacterProtos.PlayerStats> playerStats) {
         AmazonS3 s3 = AmazonS3ClientBuilder.standard()
-                .withCredentials(new ProfileCredentialsProvider())
+                .withCredentials(new EnvironmentVariableCredentialsProvider())
                 .withRegion(region)
                 .build();
 
