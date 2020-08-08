@@ -160,7 +160,7 @@ public final class CharacterProtos {
 
     private final int value;
 
-    private DecisionType(int value) {
+    DecisionType(int value) {
       this.value = value;
     }
 
@@ -745,7 +745,7 @@ public final class CharacterProtos {
       static final com.google.protobuf.MapEntry<
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+              .newDefaultInstance(
                   mech.mania.engine.domain.model.CharacterProtos.internal_static_character_Character_TaggedPlayersDamageEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
@@ -1109,8 +1109,7 @@ public final class CharacterProtos {
           != other.getBaseAttack()) return false;
       if (getBaseDefense()
           != other.getBaseDefense()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2335,7 +2334,7 @@ public final class CharacterProtos {
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
       internalGetMutableTaggedPlayersDamage() {
-        onChanged();;
+        onChanged();
         if (taggedPlayersDamage_ == null) {
           taggedPlayersDamage_ = com.google.protobuf.MapField.newMapField(
               TaggedPlayersDamageDefaultEntryHolder.defaultEntry);
@@ -3003,8 +3002,7 @@ public final class CharacterProtos {
       }
       if (!getDropsList()
           .equals(other.getDropsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4197,8 +4195,7 @@ public final class CharacterProtos {
       }
       if (!getInventoryList()
           .equals(other.getInventoryList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -5332,6 +5329,1053 @@ public final class CharacterProtos {
 
   }
 
+  public interface PlayerStatsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:character.PlayerStats)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 level = 1;</code>
+     * @return The level.
+     */
+    int getLevel();
+
+    /**
+     * <code>int32 experience = 2;</code>
+     * @return The experience.
+     */
+    int getExperience();
+
+    /**
+     * <code>int32 monsters_slain = 3;</code>
+     * @return The monstersSlain.
+     */
+    int getMonstersSlain();
+
+    /**
+     * <code>int32 attack = 4;</code>
+     * @return The attack.
+     */
+    int getAttack();
+
+    /**
+     * <code>int32 defense = 5;</code>
+     * @return The defense.
+     */
+    int getDefense();
+
+    /**
+     * <code>int32 current_health = 6;</code>
+     * @return The currentHealth.
+     */
+    int getCurrentHealth();
+
+    /**
+     * <code>int32 max_health = 7;</code>
+     * @return The maxHealth.
+     */
+    int getMaxHealth();
+
+    /**
+     * <code>int32 death_count = 8;</code>
+     * @return The deathCount.
+     */
+    int getDeathCount();
+
+    /**
+     * <code>int32 turns_since_joined = 9;</code>
+     * @return The turnsSinceJoined.
+     */
+    int getTurnsSinceJoined();
+  }
+  /**
+   * Protobuf type {@code character.PlayerStats}
+   */
+  public static final class PlayerStats extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:character.PlayerStats)
+      PlayerStatsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PlayerStats.newBuilder() to construct.
+    private PlayerStats(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PlayerStats() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PlayerStats();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PlayerStats(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              level_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              experience_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              monstersSlain_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              attack_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              defense_ = input.readInt32();
+              break;
+            }
+            case 48: {
+
+              currentHealth_ = input.readInt32();
+              break;
+            }
+            case 56: {
+
+              maxHealth_ = input.readInt32();
+              break;
+            }
+            case 64: {
+
+              deathCount_ = input.readInt32();
+              break;
+            }
+            case 72: {
+
+              turnsSinceJoined_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStats_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStats_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.CharacterProtos.PlayerStats.class, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder.class);
+    }
+
+    public static final int LEVEL_FIELD_NUMBER = 1;
+    private int level_;
+    /**
+     * <code>int32 level = 1;</code>
+     * @return The level.
+     */
+    @java.lang.Override
+    public int getLevel() {
+      return level_;
+    }
+
+    public static final int EXPERIENCE_FIELD_NUMBER = 2;
+    private int experience_;
+    /**
+     * <code>int32 experience = 2;</code>
+     * @return The experience.
+     */
+    @java.lang.Override
+    public int getExperience() {
+      return experience_;
+    }
+
+    public static final int MONSTERS_SLAIN_FIELD_NUMBER = 3;
+    private int monstersSlain_;
+    /**
+     * <code>int32 monsters_slain = 3;</code>
+     * @return The monstersSlain.
+     */
+    @java.lang.Override
+    public int getMonstersSlain() {
+      return monstersSlain_;
+    }
+
+    public static final int ATTACK_FIELD_NUMBER = 4;
+    private int attack_;
+    /**
+     * <code>int32 attack = 4;</code>
+     * @return The attack.
+     */
+    @java.lang.Override
+    public int getAttack() {
+      return attack_;
+    }
+
+    public static final int DEFENSE_FIELD_NUMBER = 5;
+    private int defense_;
+    /**
+     * <code>int32 defense = 5;</code>
+     * @return The defense.
+     */
+    @java.lang.Override
+    public int getDefense() {
+      return defense_;
+    }
+
+    public static final int CURRENT_HEALTH_FIELD_NUMBER = 6;
+    private int currentHealth_;
+    /**
+     * <code>int32 current_health = 6;</code>
+     * @return The currentHealth.
+     */
+    @java.lang.Override
+    public int getCurrentHealth() {
+      return currentHealth_;
+    }
+
+    public static final int MAX_HEALTH_FIELD_NUMBER = 7;
+    private int maxHealth_;
+    /**
+     * <code>int32 max_health = 7;</code>
+     * @return The maxHealth.
+     */
+    @java.lang.Override
+    public int getMaxHealth() {
+      return maxHealth_;
+    }
+
+    public static final int DEATH_COUNT_FIELD_NUMBER = 8;
+    private int deathCount_;
+    /**
+     * <code>int32 death_count = 8;</code>
+     * @return The deathCount.
+     */
+    @java.lang.Override
+    public int getDeathCount() {
+      return deathCount_;
+    }
+
+    public static final int TURNS_SINCE_JOINED_FIELD_NUMBER = 9;
+    private int turnsSinceJoined_;
+    /**
+     * <code>int32 turns_since_joined = 9;</code>
+     * @return The turnsSinceJoined.
+     */
+    @java.lang.Override
+    public int getTurnsSinceJoined() {
+      return turnsSinceJoined_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (level_ != 0) {
+        output.writeInt32(1, level_);
+      }
+      if (experience_ != 0) {
+        output.writeInt32(2, experience_);
+      }
+      if (monstersSlain_ != 0) {
+        output.writeInt32(3, monstersSlain_);
+      }
+      if (attack_ != 0) {
+        output.writeInt32(4, attack_);
+      }
+      if (defense_ != 0) {
+        output.writeInt32(5, defense_);
+      }
+      if (currentHealth_ != 0) {
+        output.writeInt32(6, currentHealth_);
+      }
+      if (maxHealth_ != 0) {
+        output.writeInt32(7, maxHealth_);
+      }
+      if (deathCount_ != 0) {
+        output.writeInt32(8, deathCount_);
+      }
+      if (turnsSinceJoined_ != 0) {
+        output.writeInt32(9, turnsSinceJoined_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (level_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, level_);
+      }
+      if (experience_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, experience_);
+      }
+      if (monstersSlain_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, monstersSlain_);
+      }
+      if (attack_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, attack_);
+      }
+      if (defense_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, defense_);
+      }
+      if (currentHealth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, currentHealth_);
+      }
+      if (maxHealth_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, maxHealth_);
+      }
+      if (deathCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, deathCount_);
+      }
+      if (turnsSinceJoined_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, turnsSinceJoined_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.CharacterProtos.PlayerStats)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.CharacterProtos.PlayerStats other = (mech.mania.engine.domain.model.CharacterProtos.PlayerStats) obj;
+
+      if (getLevel()
+          != other.getLevel()) return false;
+      if (getExperience()
+          != other.getExperience()) return false;
+      if (getMonstersSlain()
+          != other.getMonstersSlain()) return false;
+      if (getAttack()
+          != other.getAttack()) return false;
+      if (getDefense()
+          != other.getDefense()) return false;
+      if (getCurrentHealth()
+          != other.getCurrentHealth()) return false;
+      if (getMaxHealth()
+          != other.getMaxHealth()) return false;
+      if (getDeathCount()
+          != other.getDeathCount()) return false;
+      if (getTurnsSinceJoined()
+          != other.getTurnsSinceJoined()) return false;
+      return unknownFields.equals(other.unknownFields);
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getLevel();
+      hash = (37 * hash) + EXPERIENCE_FIELD_NUMBER;
+      hash = (53 * hash) + getExperience();
+      hash = (37 * hash) + MONSTERS_SLAIN_FIELD_NUMBER;
+      hash = (53 * hash) + getMonstersSlain();
+      hash = (37 * hash) + ATTACK_FIELD_NUMBER;
+      hash = (53 * hash) + getAttack();
+      hash = (37 * hash) + DEFENSE_FIELD_NUMBER;
+      hash = (53 * hash) + getDefense();
+      hash = (37 * hash) + CURRENT_HEALTH_FIELD_NUMBER;
+      hash = (53 * hash) + getCurrentHealth();
+      hash = (37 * hash) + MAX_HEALTH_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxHealth();
+      hash = (37 * hash) + DEATH_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getDeathCount();
+      hash = (37 * hash) + TURNS_SINCE_JOINED_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsSinceJoined();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.CharacterProtos.PlayerStats prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code character.PlayerStats}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:character.PlayerStats)
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStats_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStats_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.CharacterProtos.PlayerStats.class, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.CharacterProtos.PlayerStats.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        level_ = 0;
+
+        experience_ = 0;
+
+        monstersSlain_ = 0;
+
+        attack_ = 0;
+
+        defense_ = 0;
+
+        currentHealth_ = 0;
+
+        maxHealth_ = 0;
+
+        deathCount_ = 0;
+
+        turnsSinceJoined_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStats_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats build() {
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStats result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats buildPartial() {
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStats result = new mech.mania.engine.domain.model.CharacterProtos.PlayerStats(this);
+        result.level_ = level_;
+        result.experience_ = experience_;
+        result.monstersSlain_ = monstersSlain_;
+        result.attack_ = attack_;
+        result.defense_ = defense_;
+        result.currentHealth_ = currentHealth_;
+        result.maxHealth_ = maxHealth_;
+        result.deathCount_ = deathCount_;
+        result.turnsSinceJoined_ = turnsSinceJoined_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.CharacterProtos.PlayerStats) {
+          return mergeFrom((mech.mania.engine.domain.model.CharacterProtos.PlayerStats)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.CharacterProtos.PlayerStats other) {
+        if (other == mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance()) return this;
+        if (other.getLevel() != 0) {
+          setLevel(other.getLevel());
+        }
+        if (other.getExperience() != 0) {
+          setExperience(other.getExperience());
+        }
+        if (other.getMonstersSlain() != 0) {
+          setMonstersSlain(other.getMonstersSlain());
+        }
+        if (other.getAttack() != 0) {
+          setAttack(other.getAttack());
+        }
+        if (other.getDefense() != 0) {
+          setDefense(other.getDefense());
+        }
+        if (other.getCurrentHealth() != 0) {
+          setCurrentHealth(other.getCurrentHealth());
+        }
+        if (other.getMaxHealth() != 0) {
+          setMaxHealth(other.getMaxHealth());
+        }
+        if (other.getDeathCount() != 0) {
+          setDeathCount(other.getDeathCount());
+        }
+        if (other.getTurnsSinceJoined() != 0) {
+          setTurnsSinceJoined(other.getTurnsSinceJoined());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStats parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.CharacterProtos.PlayerStats) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int level_ ;
+      /**
+       * <code>int32 level = 1;</code>
+       * @return The level.
+       */
+      @java.lang.Override
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>int32 level = 1;</code>
+       * @param value The level to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLevel(int value) {
+        
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 level = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLevel() {
+        
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int experience_ ;
+      /**
+       * <code>int32 experience = 2;</code>
+       * @return The experience.
+       */
+      @java.lang.Override
+      public int getExperience() {
+        return experience_;
+      }
+      /**
+       * <code>int32 experience = 2;</code>
+       * @param value The experience to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExperience(int value) {
+        
+        experience_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 experience = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearExperience() {
+        
+        experience_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int monstersSlain_ ;
+      /**
+       * <code>int32 monsters_slain = 3;</code>
+       * @return The monstersSlain.
+       */
+      @java.lang.Override
+      public int getMonstersSlain() {
+        return monstersSlain_;
+      }
+      /**
+       * <code>int32 monsters_slain = 3;</code>
+       * @param value The monstersSlain to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMonstersSlain(int value) {
+        
+        monstersSlain_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 monsters_slain = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMonstersSlain() {
+        
+        monstersSlain_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int attack_ ;
+      /**
+       * <code>int32 attack = 4;</code>
+       * @return The attack.
+       */
+      @java.lang.Override
+      public int getAttack() {
+        return attack_;
+      }
+      /**
+       * <code>int32 attack = 4;</code>
+       * @param value The attack to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAttack(int value) {
+        
+        attack_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 attack = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAttack() {
+        
+        attack_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int defense_ ;
+      /**
+       * <code>int32 defense = 5;</code>
+       * @return The defense.
+       */
+      @java.lang.Override
+      public int getDefense() {
+        return defense_;
+      }
+      /**
+       * <code>int32 defense = 5;</code>
+       * @param value The defense to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDefense(int value) {
+        
+        defense_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 defense = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDefense() {
+        
+        defense_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int currentHealth_ ;
+      /**
+       * <code>int32 current_health = 6;</code>
+       * @return The currentHealth.
+       */
+      @java.lang.Override
+      public int getCurrentHealth() {
+        return currentHealth_;
+      }
+      /**
+       * <code>int32 current_health = 6;</code>
+       * @param value The currentHealth to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCurrentHealth(int value) {
+        
+        currentHealth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 current_health = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCurrentHealth() {
+        
+        currentHealth_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxHealth_ ;
+      /**
+       * <code>int32 max_health = 7;</code>
+       * @return The maxHealth.
+       */
+      @java.lang.Override
+      public int getMaxHealth() {
+        return maxHealth_;
+      }
+      /**
+       * <code>int32 max_health = 7;</code>
+       * @param value The maxHealth to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxHealth(int value) {
+        
+        maxHealth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 max_health = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxHealth() {
+        
+        maxHealth_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int deathCount_ ;
+      /**
+       * <code>int32 death_count = 8;</code>
+       * @return The deathCount.
+       */
+      @java.lang.Override
+      public int getDeathCount() {
+        return deathCount_;
+      }
+      /**
+       * <code>int32 death_count = 8;</code>
+       * @param value The deathCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeathCount(int value) {
+        
+        deathCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 death_count = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeathCount() {
+        
+        deathCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int turnsSinceJoined_ ;
+      /**
+       * <code>int32 turns_since_joined = 9;</code>
+       * @return The turnsSinceJoined.
+       */
+      @java.lang.Override
+      public int getTurnsSinceJoined() {
+        return turnsSinceJoined_;
+      }
+      /**
+       * <code>int32 turns_since_joined = 9;</code>
+       * @param value The turnsSinceJoined to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsSinceJoined(int value) {
+        
+        turnsSinceJoined_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_since_joined = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsSinceJoined() {
+        
+        turnsSinceJoined_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:character.PlayerStats)
+    }
+
+    // @@protoc_insertion_point(class_scope:character.PlayerStats)
+    private static final mech.mania.engine.domain.model.CharacterProtos.PlayerStats DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.CharacterProtos.PlayerStats();
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStats getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PlayerStats>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerStats>() {
+      @java.lang.Override
+      public PlayerStats parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PlayerStats(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PlayerStats> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PlayerStats> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface PositionOrBuilder extends
       // @@protoc_insertion_point(interface_extends:character.Position)
       com.google.protobuf.MessageOrBuilder {
@@ -5578,8 +6622,7 @@ public final class CharacterProtos {
           != other.getX()) return false;
       if (getY()
           != other.getY()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -6061,6 +7104,11 @@ public final class CharacterProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_character_Player_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_character_PlayerStats_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_character_PlayerStats_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_character_Position_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -6088,18 +7136,23 @@ public final class CharacterProtos {
       "\005\022\014\n\004name\030\r \001(\t\022\023\n\013base_attack\030\016 \001(\005\022\024\n\014" +
       "base_defense\030\017 \001(\005\032:\n\030TaggedPlayersDamag" +
       "eEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M" +
-      "\n\007Monster\022\'\n\tcharacter\030\001 \001(\0132\024.character" +
+              "\n\007Monster\022'\n\tcharacter\030\001 \001(\0132\024.character" +
       ".Character\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001" +
-      "\n\006Player\022\'\n\tcharacter\030\001 \001(\0132\024.character." +
+              "\n\006Player\022'\n\tcharacter\030\001 \001(\0132\024.character." +
       "Character\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clo" +
       "thes\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\013" +
       "2\013.item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item." +
-      "Item\"2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030" +
-      "\002 \001(\005\022\t\n\001y\030\003 \001(\005*[\n\014DecisionType\022\010\n\004NONE" +
-      "\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004" +
-      "DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036mech.ma" +
-      "nia.engine.domain.modelB\017CharacterProtos" +
-      "\252\002\016MM26.IO.Modelsb\006proto3"
+      "Item\"\306\001\n\013PlayerStats\022\r\n\005level\030\001 \001(\005\022\022\n\ne" +
+      "xperience\030\002 \001(\005\022\026\n\016monsters_slain\030\003 \001(\005\022" +
+      "\016\n\006attack\030\004 \001(\005\022\017\n\007defense\030\005 \001(\005\022\026\n\016curr" +
+      "ent_health\030\006 \001(\005\022\022\n\nmax_health\030\007 \001(\005\022\023\n\013" +
+      "death_count\030\010 \001(\005\022\032\n\022turns_since_joined\030" +
+      "\t \001(\005\"2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x" +
+      "\030\002 \001(\005\022\t\n\001y\030\003 \001(\005*[\n\014DecisionType\022\010\n\004NON" +
+      "E\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n" +
+      "\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036mech.m" +
+      "ania.engine.domain.modelB\017CharacterProto" +
+      "s\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6130,8 +7183,14 @@ public final class CharacterProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Player_descriptor,
         new java.lang.String[] { "Character", "Hat", "Clothes", "Shoes", "Inventory", });
-    internal_static_character_Position_descriptor =
+    internal_static_character_PlayerStats_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_character_PlayerStats_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_character_PlayerStats_descriptor,
+        new java.lang.String[] { "Level", "Experience", "MonstersSlain", "Attack", "Defense", "CurrentHealth", "MaxHealth", "DeathCount", "TurnsSinceJoined", });
+    internal_static_character_Position_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_character_Position_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Position_descriptor,

@@ -457,41 +457,44 @@ public class Player extends Character {
     }
 
     /**
-     *
-     * @return
+     * Gets all of the necessary player stats for sending to Infra
+     * See https://github.com/jackducham/mm26-engine/issues/107
+     * @return PlayerStats protobuf object representing all of the player stats to send to Infra
      */
-    public PlayerStats getPlayerStats() {
-        return PlayerStats.getBuilder()
-                .setLevel()
-                .setXp()
+    public CharacterProtos.PlayerStats getPlayerStats() {
+        // TODO: find these values and set them
+        return CharacterProtos.PlayerStats.newBuilder()
+                .setLevel(0)
+                .setExperience(0)
                 .setMonstersSlain(playerStats.getMonstersSlain())
-                .setAttack()
-                .setDefense()
-                .setHealth()
-                .setMaxHealth()
+                .setAttack(0)
+                .setDefense(0)
+                .setCurrentHealth(currentHealth)
+                .setMaxHealth(baseMaxHealth)  // this can change right?
                 .setDeathCount(playerStats.getDeathCount())
-                .setTurnsSinceJoin(playerStats.getTurnsSinceJoin())
+                .setTurnsSinceJoined(playerStats.getTurnsSinceJoined())
                 .build();
     }
 
     /**
-     *
+     * Class of <b>extra</b> attributes that are required for infra's player
+     * stat calculation
      */
     static class Stats {
         private int monstersSlain;
         private int deathCount;
-        private int turnsSinceJoin;
+        private int turnsSinceJoined;
 
         public void incrementMonstersSlain() {
-
+            monstersSlain++;
         }
 
         public void incrementDeathCount() {
-
+            deathCount++;
         }
 
-        public void incrementTurnsSinceJoin() {
-
+        public void incrementTurnsSinceJoined() {
+            turnsSinceJoined++;
         }
 
         public int getMonstersSlain() {
@@ -502,8 +505,8 @@ public class Player extends Character {
             return deathCount;
         }
 
-        public int getTurnsSinceJoin() {
-            return turnsSinceJoin;
+        public int getTurnsSinceJoined() {
+            return turnsSinceJoined;
         }
     }
 
