@@ -11,6 +11,7 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
+    private Stats playerStats;
 
     private static int BASE_SPEED = 5;
     private static int BASE_MAX_HEALTH = 20;
@@ -454,4 +455,56 @@ public class Player extends Character {
         }
         return -1;
     }
+
+    /**
+     *
+     * @return
+     */
+    public PlayerStats getPlayerStats() {
+        return PlayerStats.getBuilder()
+                .setLevel()
+                .setXp()
+                .setMonstersSlain(playerStats.getMonstersSlain())
+                .setAttack()
+                .setDefense()
+                .setHealth()
+                .setMaxHealth()
+                .setDeathCount(playerStats.getDeathCount())
+                .setTurnsSinceJoin(playerStats.getTurnsSinceJoin())
+                .build();
+    }
+
+    /**
+     *
+     */
+    static class Stats {
+        private int monstersSlain;
+        private int deathCount;
+        private int turnsSinceJoin;
+
+        public void incrementMonstersSlain() {
+
+        }
+
+        public void incrementDeathCount() {
+
+        }
+
+        public void incrementTurnsSinceJoin() {
+
+        }
+
+        public int getMonstersSlain() {
+            return monstersSlain;
+        }
+
+        public int getDeathCount() {
+            return deathCount;
+        }
+
+        public int getTurnsSinceJoin() {
+            return turnsSinceJoin;
+        }
+    }
+
 }
