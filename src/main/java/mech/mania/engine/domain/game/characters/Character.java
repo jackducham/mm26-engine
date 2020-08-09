@@ -254,7 +254,7 @@ public abstract class Character {
 
     public int getSpeed() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatSpeedChange();
             percentChange += effect.getPercentSpeedChange();
@@ -266,7 +266,7 @@ public abstract class Character {
 
     public int getMaxHealth() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatHealthChange();
             percentChange += effect.getPercentHealthChange();
@@ -277,7 +277,7 @@ public abstract class Character {
 
     public int getExperience() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatExperienceChange();
             percentChange += effect.getPercentExperienceChange();
@@ -288,7 +288,7 @@ public abstract class Character {
 
     public int getAttack() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatAttackChange();
             percentChange += effect.getPercentAttackChange();
@@ -299,7 +299,7 @@ public abstract class Character {
 
     public int getDefense() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatDefenseChange();
             percentChange += effect.getPercentDefenseChange();

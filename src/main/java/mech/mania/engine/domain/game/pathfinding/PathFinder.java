@@ -20,11 +20,10 @@ public class PathFinder {
         // Case if start == end
         // Return empty list
         if (!start.getBoardID().equals(end.getBoardID()) || start.equals(end)) {
-            return new ArrayList<Position>();
+            return new ArrayList<>();
         }
 
         // Otherwise use A* path finding to find a path
-        // This will break if getBoardID returns an ID that does not exist cause it'll be null
         Tile[][] tileGrid = gameState.getBoard(start.getBoardID()).getGrid();
         final int WIDTH = tileGrid.length;
         final int HEIGHT = tileGrid[0].length;
@@ -40,7 +39,7 @@ public class PathFinder {
             }
         }
 
-        Cell endCell = grid[end.getY()][end.getY()];
+        Cell endCell = grid[end.getX()][end.getY()];
         Cell startCell = grid[start.getX()][start.getY()];
 
         // Call path finding with A* classes

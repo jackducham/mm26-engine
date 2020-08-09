@@ -30,24 +30,6 @@ public class Player extends Character {
         inventory = new Item[INVENTORY_SIZE];
     }
 
-    /**
-     * Custom Constructor for use during testing.
-     * @param name Player's name
-     * @param baseSpeed custom base speed value
-     * @param baseMaxHealth custom base health value
-     * @param baseAttack custom base attack value
-     * @param baseDefense custom base defense value
-     * @param spawnPoint Player's spawn point
-     */
-    public Player(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                  Position spawnPoint) {
-        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, 0, spawnPoint, null);
-        hat = null;
-        clothes = null;
-        shoes = null;
-        inventory = new Item[INVENTORY_SIZE];
-    }
-
     public Player(CharacterProtos.Player playerProto) {
         super(
                 playerProto.getCharacter().getName(),

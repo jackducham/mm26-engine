@@ -170,6 +170,9 @@ public class GameLogic {
         // Get shortest path length from current to target position (returns empty list for impossible target)
         List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
 
+        // If path is empty (i.e. target is unreachable), don't move
+        if(path.size() == 0) return;
+
         // If path would be greater than speed allows, act as if impossible target was chosen and don't move
         if(path.size() > character.getSpeed()) return;
 

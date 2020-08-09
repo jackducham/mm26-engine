@@ -44,12 +44,15 @@ public class MovementTests {
      */
     @Test
     public void movePlayer(){
+        final int final_x = 1;
+        final int final_y = 0;
+
         // Move player1 to 1, 0
         PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
-        newPos.setX(1).setY(0).setBoardId("player1");
+        newPos.setX(final_x).setY(final_y).setBoardId("player1");
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
@@ -60,7 +63,7 @@ public class MovementTests {
         // Check that player has been moved
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
-        Position expectedPos = new Position(1, 0, "player1");
+        Position expectedPos = new Position(final_x, final_y, "player1");
         assertTrue(finalPos.equals(expectedPos));
     }
 
