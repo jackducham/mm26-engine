@@ -12,10 +12,10 @@ public class Player extends Character {
     private Shoes shoes;
     private Item[] inventory;
 
-    private static int BASE_SPEED = 5;
-    private static int BASE_MAX_HEALTH = 20;
-    private static int BASE_ATTACK = 0;
-    private static int BASE_DEFENSE = 0;
+    private static final int BASE_SPEED = 5;
+    private static final int BASE_MAX_HEALTH = 20;
+    private static final int BASE_ATTACK = 0;
+    private static final int BASE_DEFENSE = 0;
 
     /**
      * Standard Constructor which uses default static values for speed, hp, atk, and def.
