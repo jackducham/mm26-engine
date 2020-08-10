@@ -43,7 +43,7 @@ public class MovementTests {
      * Tests MOVE decision (moves player from 0, 0 to 1, 0)
      */
     @Test
-    public void movePlayer(){
+    public void movePlayerToAdjacentEastPosition(){
         final int final_x = 1;
         final int final_y = 0;
 
@@ -66,5 +66,7 @@ public class MovementTests {
         Position expectedPos = new Position(final_x, final_y, "player1");
         assertTrue(finalPos.equals(expectedPos));
     }
+
+    // TODO: Add more tests!
 
 }
