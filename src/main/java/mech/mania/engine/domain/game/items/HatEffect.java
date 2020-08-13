@@ -9,7 +9,9 @@ public enum HatEffect {
         but with a doubled duration.
 
        IMPLEMENTATION:
-        NOT YET IMPLEMENTED
+        Player.java -> useConsumable(Consumable, int) -> This function now checks for this hat effect. If this hat
+        effect is detected, the function doubles the turnsLeft variable within the TempStatusModifier before it applies
+        it to the Player.
      */
 
     SHOE_BOOST,

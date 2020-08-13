@@ -57,6 +57,10 @@ public class TempStatusModifier extends StatusModifier {
         return turnsLeft;
     }
 
+    public void setTurnsLeft(int newTurnsLeft) {
+        this.turnsLeft = newTurnsLeft;
+    }
+
     public int getDamagePerTurn() {
         return damagePerTurn;
     }

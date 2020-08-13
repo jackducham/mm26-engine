@@ -433,7 +433,15 @@ public class Player extends Character {
      */
     private boolean useConsumable(Consumable consumableToConsume, int index) {
         int stacks = consumableToConsume.getStacks();
-        applyEffect(consumableToConsume.getEffect());
+        TempStatusModifier effect = consumableToConsume.getEffect();
+
+        //checks for LINGERING_POTIONS hat effect and doubles the duration if detected.
+        if(this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
+            effect.setTurnsLeft(2 * effect.getTurnsLeft());
+        }
+        applyEffect(effect);
+
+        //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {
             inventory[index] = null;
         } else {
