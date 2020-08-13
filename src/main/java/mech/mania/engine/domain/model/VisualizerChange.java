@@ -89,8 +89,10 @@ public class VisualizerChange {
                     builder.setDecisionType(CharacterProtos.DecisionType.NONE);
             }
 
-            for (Position position : path) {
-                builder.addPath(position.buildProtoClass());
+            if(path != null){
+                for (Position position : path) {
+                    builder.addPath(position.buildProtoClass());
+                }
             }
 
             return builder.build();

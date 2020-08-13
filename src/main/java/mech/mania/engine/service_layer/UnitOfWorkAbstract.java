@@ -21,11 +21,11 @@ public abstract class UnitOfWorkAbstract {
     protected final RepositoryAbstract repository;
     protected final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
     // private final Map<String, PlayerStatistics> statisticsMap = new HashMap<>();
-    protected GameState gameState;
-    protected int turn;
+    protected GameState gameState = new GameState();
+    protected int turn = 0;
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;
-    protected boolean gameOver;
+    protected boolean gameOver = false;
 
     /**
      * Constructor that sets an AbstractRepository

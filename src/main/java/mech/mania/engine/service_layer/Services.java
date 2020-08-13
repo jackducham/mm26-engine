@@ -2,6 +2,7 @@ package mech.mania.engine.service_layer;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
+import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.model.PlayerConnectInfo;
 import mech.mania.engine.domain.model.PlayerProtos.*;
@@ -34,8 +35,8 @@ public class Services {
      * @return PlayerTurn a playerTurn specific for a player
      */
     public static PlayerTurn constructPlayerTurn(GameState gameState, String playerName) {
-        // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
+                .setGameState(gameState.buildProtoClass())
                 .setPlayerName(playerName)
                 .build();
     }
@@ -95,8 +96,10 @@ public class Services {
                 http.disconnect();
             }
             numPlayers.getAndIncrement();
+
             return new AbstractMap.SimpleEntry<>(playerName, decision);
-        }).collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
+        }).filter(entry -> entry.getValue() != null)
+                .collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
 
         LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors.", numPlayers.get() - errors.get(), errors.get()));
         return map;
@@ -107,8 +110,7 @@ public class Services {
      * PlayerDecision objects from playerDecisionMap
      */
     public static GameState updateGameState(GameState currentGameState, Map<String, PlayerDecision> playerDecisionMap) {
-        // TODO: copy over GameLogic.doTurn()
-        return new GameState();
+        return GameLogic.doTurn(currentGameState, playerDecisionMap);
     }
 
     /**
@@ -116,8 +118,6 @@ public class Services {
      * has changed in relevant terms to the Visualizer team
      */
     public static VisualizerChange constructVisualizerChange(GameState gameState) {
-        // TODO: construct VisualizerTurn
-        return VisualizerChange.newBuilder()
-                .build();
+        return gameState.stateChange.buildProtoClass();
     }
 }
