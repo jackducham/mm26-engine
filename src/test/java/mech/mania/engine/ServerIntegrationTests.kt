@@ -95,45 +95,55 @@ class ServerIntegrationTests {
         val playerAddrs: ArrayList<String> = ArrayList()
 
         for (i in 0 until n) {
-            // find a free port
-            var socket: ServerSocket?
-            try {
-                socket = ServerSocket(0)
-                socket.close()
-            } catch (e: Exception) {
-                LOGGER.warning("No more free ports found: " + e.message)
-                return
-            }
+            var validPort = false
+            while (!validPort) {
+                try {
+                    // find a free port
+                    var socket: ServerSocket?
+                    try {
+                        socket = ServerSocket(0)
+                        socket.close()
+                    } catch (e: Exception) {
+                        LOGGER.warning("No more free ports found: " + e.message)
+                        return
+                    }
 
-            val randomPort: Int = socket.localPort
+                    val randomPort: Int = socket.localPort
 
-            HttpServer.create(InetSocketAddress(randomPort), 0).apply {
-                createContext("/server") { exchange: HttpExchange ->
-                    exchange.responseHeaders["Content-Type"] = "application/octet-stream"
+                    HttpServer.create(InetSocketAddress(randomPort), 0).apply {
+                        createContext("/server") { exchange: HttpExchange ->
+                            exchange.responseHeaders["Content-Type"] = "application/octet-stream"
 
-                    // read in input from server
-                    // once the turn is parsed, use that turn to call a passed in function
-                    val turn = PlayerTurn.parseFrom(exchange.requestBody)
-                    onReceive(turn)
+                            // read in input from server
+                            // once the turn is parsed, use that turn to call a passed in function
+                            val turn = PlayerTurn.parseFrom(exchange.requestBody)
+                            onReceive(turn)
 
-                    // calculate what to do with turn
-                    val decision: PlayerDecision = f(turn)
-                    val size: Long = decision.toByteArray().size.toLong()
+                            // calculate what to do with turn
+                            val decision: PlayerDecision = f(turn)
+                            val size: Long = decision.toByteArray().size.toLong()
 
-                    // send back response
-                    exchange.sendResponseHeaders(200, size)
-                    decision.writeTo(exchange.responseBody)
-                    onSend(decision)
+                            // send back response
+                            exchange.sendResponseHeaders(200, size)
+                            decision.writeTo(exchange.responseBody)
+                            onSend(decision)
+                        }
+                        start()
+                    }
+                    validPort = true
+
+                    val playerName = java.util.UUID.randomUUID().toString()
+                    val playerAddr = "http://localhost:$randomPort/server"
+                    LOGGER.fine("Creating player \"$playerName\" with IP address $playerAddr")
+
+                    playerNames.add(playerName)
+                    playerAddrs.add(playerAddr)
+
+                } catch (e: Exception) {
+                    // invalid port
+                    validPort = false
                 }
-                start()
             }
-
-            val playerName = java.util.UUID.randomUUID().toString()
-            val playerAddr = "http://localhost:$randomPort/server"
-            LOGGER.fine("Creating player \"$playerName\" with IP address $playerAddr")
-
-            playerNames.add(playerName)
-            playerAddrs.add(playerAddr)
         }
 
         for (i in 0 until n) {
@@ -166,7 +176,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 1000
+        val players = 500
         val turns = 10
 
         val timePerTurn = 2000  // check config.properties

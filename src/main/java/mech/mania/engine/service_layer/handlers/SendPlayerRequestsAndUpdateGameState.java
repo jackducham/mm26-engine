@@ -1,6 +1,5 @@
 package mech.mania.engine.service_layer.handlers;
 
-import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Command;
@@ -12,12 +11,12 @@ import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -49,8 +48,9 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
 
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
-        ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
+        ConcurrentMap<Class<? extends Exception>, Integer> exceptions = new ConcurrentHashMap<>();
 
+        ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
             URL url;
             PlayerDecision decision = null;
             HttpURLConnection http = null;
@@ -75,17 +75,17 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 turn.writeTo(http.getOutputStream());
 
                 decision = PlayerDecision.parseFrom(http.getInputStream());
-            } catch (InvalidProtocolBufferException e) {
-                LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
-                        playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
-                errors.getAndIncrement();
-            } catch (ProtocolException e) {
-                LOGGER.warning(String.format("ProtocolException: could not connect to player \"%s\" at url %s: %s",
-                        playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
-                errors.getAndIncrement();
             } catch (IOException e) {
-                LOGGER.warning(String.format("IOException: could not connect to player \"%s\" at url %s: %s",
-                        playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+                synchronized (exceptions) {
+                    int numExceptions = exceptions.getOrDefault(e.getClass(), 0);
+                    exceptions.put(e.getClass(), numExceptions + 1);
+                    if (numExceptions > 6) {
+                    } else if (numExceptions > 5) {
+                        LOGGER.info("Not printing any more exceptions of type " + e.getClass().getName());
+                    } else {
+                        LOGGER.info(String.format("%s from player '%s' @ %s: %s", e.getClass().getName(), playerName, playerInfo.getValue().getIpAddr(), e.getLocalizedMessage()));
+                    }
+                }
                 errors.getAndIncrement();
             } finally {
                 http.disconnect();
@@ -96,7 +96,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 .filter(entry -> entry.getKey() != null && entry.getValue() != null)
                 .collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
 
-        LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors.", numPlayers.get() - errors.get(), errors.get()));
+        LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors: %s.", numPlayers.get() - errors.get(), errors.get(), exceptions));
         return map;
     }
 }
