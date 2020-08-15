@@ -128,8 +128,8 @@ public abstract class Character {
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
     public double calculateActualDamage(String attacker, Weapon weapon, int attackerATK) {
-        double attackDamage = weapon.getDamage() * (0.25 * attackerATK / 100);
-        double minDamage = weapon.getDamage() * 0.20;
+        double attackDamage = weapon.getAttack() * (0.25 * attackerATK / 100);
+        double minDamage = weapon.getAttack() * 0.20;
 
         double actualDamage = max(minDamage, attackDamage - getDefense());
 
