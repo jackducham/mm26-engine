@@ -11,6 +11,7 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
+    private Stats playerStats;
 
     private static int BASE_SPEED = 5;
     private static int BASE_MAX_HEALTH = 20;
@@ -454,4 +455,59 @@ public class Player extends Character {
         }
         return -1;
     }
+
+    /**
+     * Gets all of the necessary player stats for sending to Infra
+     * See https://github.com/jackducham/mm26-engine/issues/107
+     * @return PlayerStats protobuf object representing all of the player stats to send to Infra
+     */
+    public CharacterProtos.PlayerStats getPlayerStats() {
+        // TODO: find these values and set them
+        return CharacterProtos.PlayerStats.newBuilder()
+                .setLevel(0)
+                .setExperience(0)
+                .setMonstersSlain(playerStats.getMonstersSlain())
+                .setAttack(0)
+                .setDefense(0)
+                .setCurrentHealth(currentHealth)
+                .setMaxHealth(baseMaxHealth)  // this can change right?
+                .setDeathCount(playerStats.getDeathCount())
+                .setTurnsSinceJoined(playerStats.getTurnsSinceJoined())
+                .build();
+    }
+
+    /**
+     * Class of <b>extra</b> attributes that are required for infra's player
+     * stat calculation
+     */
+    static class Stats {
+        private int monstersSlain;
+        private int deathCount;
+        private int turnsSinceJoined;
+
+        public void incrementMonstersSlain() {
+            monstersSlain++;
+        }
+
+        public void incrementDeathCount() {
+            deathCount++;
+        }
+
+        public void incrementTurnsSinceJoined() {
+            turnsSinceJoined++;
+        }
+
+        public int getMonstersSlain() {
+            return monstersSlain;
+        }
+
+        public int getDeathCount() {
+            return deathCount;
+        }
+
+        public int getTurnsSinceJoined() {
+            return turnsSinceJoined;
+        }
+    }
+
 }

@@ -2,12 +2,10 @@ package mech.mania.engine;
 
 import mech.mania.engine.adapters.RepositoryAws;
 import mech.mania.engine.domain.messages.*;
-import mech.mania.engine.service_layer.handlers.*;
-import mech.mania.engine.service_layer.UnitOfWorkAbstract;
-import mech.mania.engine.service_layer.UnitOfWork;
 import mech.mania.engine.service_layer.MessageBus;
-import mech.mania.engine.service_layer.handlers.CommandHandler;
-import mech.mania.engine.service_layer.handlers.EventHandler;
+import mech.mania.engine.service_layer.UnitOfWork;
+import mech.mania.engine.service_layer.UnitOfWorkAbstract;
+import mech.mania.engine.service_layer.handlers.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,10 +26,11 @@ public class Bootstrap {
         eventHandlers.put(EventReceivePlayerDecision.class,       Arrays.asList(new StorePlayerDecision(uow)));
         eventHandlers.put(EventNewPlayer.class,                   Arrays.asList(new UpdatePlayer(uow)));
         eventHandlers.put(EventEndGame.class,                     Arrays.asList(new EndGame(uow)));
+        eventHandlers.put(EventSendPlayerStats.class,             Arrays.asList(new SendPlayerStats(uow)));
 
         // commands must happen synchronously
         Map<Class<? extends Command>, CommandHandler> commandHandlers = new HashMap<>();
-        commandHandlers.put(CommandStartTurn.class,                         new StartTurn(uow));
+        commandHandlers.put(CommandStartTurn.class,                             new StartTurn(uow));
         commandHandlers.put(CommandStartInfraServer.class,                      new StartInfraServer(uow));
         commandHandlers.put(CommandStopInfraServer.class,                       new StopInfraServer(uow));
         commandHandlers.put(CommandStartVisualizerServer.class,                 new StartVisualizerServer(uow));
