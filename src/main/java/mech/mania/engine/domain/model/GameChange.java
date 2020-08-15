@@ -9,12 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VisualizerChange {
+public class GameChange {
     private List<String> newPlayerNames;
     private Map<String, CharacterChange> characterChanges;
     private Map<String, Character> allCharacters;
 
-    public VisualizerChange() {
+    public GameChange() {
         characterChanges = new HashMap<>();
         allCharacters = new HashMap<>();
         newPlayerNames = new ArrayList<>();
@@ -97,8 +97,8 @@ public class VisualizerChange {
         }
     }
 
-    public VisualizerProtos.VisualizerChange buildProtoClass() {
-        VisualizerProtos.VisualizerChange.Builder builder = VisualizerProtos.VisualizerChange.newBuilder();
+    public VisualizerProtos.GameChange buildProtoClass() {
+        VisualizerProtos.GameChange.Builder builder = VisualizerProtos.GameChange.newBuilder();
         builder.addAllNewPlayerNames(newPlayerNames);
 
         for (String name : characterChanges.keySet()) {

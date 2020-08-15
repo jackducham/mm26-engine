@@ -14,7 +14,7 @@ public class SendVisualizerChange extends CommandHandler {
     @Override
     public void handle(Command command) {
 
-        VisualizerProtos.VisualizerChange visualizerChange = Services.constructVisualizerChange(uow.getGameState());
+        VisualizerProtos.GameChange visualizerChange = Services.constructVisualizerChange(uow.getGameState());
 
         // sending VisualizerChange via websocket
         VisualizerWebSocket.VisualizerBinaryWebSocketHandler.sendChange(visualizerChange);

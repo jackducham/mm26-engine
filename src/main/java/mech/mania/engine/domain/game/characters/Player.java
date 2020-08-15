@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
+import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
@@ -13,10 +14,10 @@ public class Player extends Character {
     private Item[] inventory;
     private Stats playerStats;
 
-    private static int BASE_SPEED = 5;
-    private static int BASE_MAX_HEALTH = 20;
-    private static int BASE_ATTACK = 0;
-    private static int BASE_DEFENSE = 0;
+    private static final int BASE_SPEED = 5;
+    private static final int BASE_MAX_HEALTH = 20;
+    private static final int BASE_ATTACK = 0;
+    private static final int BASE_DEFENSE = 0;
 
     /**
      * Standard Constructor which uses default static values for speed, hp, atk, and def.
@@ -25,24 +26,6 @@ public class Player extends Character {
      */
     public Player(String name, Position spawnPoint) {
         super(name, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 0, spawnPoint, null);
-        hat = null;
-        clothes = null;
-        shoes = null;
-        inventory = new Item[INVENTORY_SIZE];
-    }
-
-    /**
-     * Custom Constructor for use during testing.
-     * @param name Player's name
-     * @param baseSpeed custom base speed value
-     * @param baseMaxHealth custom base health value
-     * @param baseAttack custom base attack value
-     * @param baseDefense custom base defense value
-     * @param spawnPoint Player's spawn point
-     */
-    public Player(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                  Position spawnPoint) {
-        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, 0, spawnPoint, null);
         hat = null;
         clothes = null;
         shoes = null;
@@ -147,6 +130,39 @@ public class Player extends Character {
             return;
         }
         inventory[index] = item;
+    }
+
+    /**
+     * Applies active effects and updates the death state
+     * This should be called once a turn
+     * This overload also applies the regen from wearables (because players have wearables, but monsters do not)
+     */
+    @Override
+    public void updateCharacter(GameState gameState) {
+        updateActiveEffects();
+        applyWearableRegen();
+        updateDeathState(gameState);
+    }
+
+    /**
+     * Applies the regeneration from wearable items to a player's health. Can only be called once per turn.
+     */
+    private void applyWearableRegen() {
+        int regenFromWearables = 0;
+        if(hat != null) {
+            regenFromWearables += hat.getStats().getFlatRegenPerTurn();
+        }
+        if(clothes != null) {
+            regenFromWearables += clothes.getStats().getFlatRegenPerTurn();
+        }
+        if(shoes != null) {
+            regenFromWearables += shoes.getStats().getFlatRegenPerTurn();
+        }
+        if(weapon != null) {
+            regenFromWearables += weapon.getStats().getFlatRegenPerTurn();
+        }
+
+        updateCurrentHealth(regenFromWearables);
     }
 
     @Override
@@ -336,7 +352,7 @@ public class Player extends Character {
             return false;
         }
         activeEffects.add(effect);
-        activeAttackers.add(""); // add empty String to keep index matching
+        activeEffectsSources.add(""); // add empty String to keep index matching
         return true;
     }
 

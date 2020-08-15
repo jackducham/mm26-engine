@@ -3,9 +3,8 @@ package mech.mania.engine.service_layer;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn;
-import mech.mania.engine.domain.model.VisualizerChange;
-import mech.mania.engine.domain.model.VisualizerProtos.CharacterChange;
-import mech.mania.engine.domain.model.VisualizerProtos.GameChange;
+import mech.mania.engine.domain.model.GameChange;
+import mech.mania.engine.domain.model.VisualizerProtos;
 
 import java.util.Map;
 import java.util.logging.Logger;
@@ -24,9 +23,9 @@ public class Services {
      * @return PlayerTurn a playerTurn specific for a player
      */
     public static PlayerTurn constructPlayerTurn(GameState gameState, String playerName) {
-        // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
-                .setGameState(gameState)
+                .setGameState(gameState.buildProtoClass())
+                .setPlayerName(playerName)
                 .build();
     }
 
@@ -43,13 +42,13 @@ public class Services {
      * Returns a VisualizerChange object that denotes how the gameState
      * has changed in relevant terms to the Visualizer team
      */
-    public static VisualizerChange constructVisualizerChange(GameState gameState) {
-        // TODO: construct VisualizerTurn
-        CharacterChange characterChange = CharacterChange.newBuilder()
+    public static VisualizerProtos.GameChange constructVisualizerChange(GameState gameState) {
+        // TODO: construct VisualizerTurn (GameChange)
+        VisualizerProtos.CharacterChange characterChange = VisualizerProtos.CharacterChange.newBuilder()
                 .build();
-        GameChange gameChange = GameChange.newBuilder()
+        VisualizerProtos.GameChange gameChange = VisualizerProtos.GameChange.newBuilder()
                 .build();
-        return VisualizerChange.newBuilder()
+        return VisualizerProtos.GameChange.newBuilder()
                 .build();
     }
 }

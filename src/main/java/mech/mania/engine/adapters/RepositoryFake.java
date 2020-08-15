@@ -1,7 +1,7 @@
 package mech.mania.engine.adapters;
 
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.model.VisualizerProtos.VisualizerChange;
+import mech.mania.engine.domain.model.VisualizerProtos;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -14,7 +14,7 @@ public class RepositoryFake implements RepositoryAbstract {
     private static final Logger LOGGER = Logger.getLogger( RepositoryFake.class.getName() );
 
     private final Map<Integer, GameState> gameStates = new HashMap<>();
-    private final Map<Integer, VisualizerChange> visualizerChanges = new HashMap<>();
+    private final Map<Integer, VisualizerProtos.GameChange> visualizerChanges = new HashMap<>();
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
@@ -25,7 +25,7 @@ public class RepositoryFake implements RepositoryAbstract {
     }
 
     @Override
-    public int storeVisualizerChange(final int turn, final VisualizerChange visualizerChange) {
+    public int storeVisualizerChange(final int turn, final VisualizerProtos.GameChange visualizerChange) {
         LOGGER.fine("Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerChange.toString());
         visualizerChanges.put(turn, visualizerChange);
         LOGGER.fine(visualizerChanges.size() + " VisualizerTurns stored currently");

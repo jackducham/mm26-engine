@@ -64,14 +64,14 @@ public class StatusModifier {
         this.flatHealthChange = statusModifierProto.getFlatHealthChange();
         this.flatExperienceChange = statusModifierProto.getFlatExperienceChange();
 
-        this.flatAttackChange = statusModifierProto.getFlatDamageChange();
+        this.flatAttackChange = statusModifierProto.getFlatAttackChange();
         this.flatDefenseChange = statusModifierProto.getFlatDefenseChange();
 
         this.percentSpeedChange = statusModifierProto.getPercentSpeedChange();
         this.percentHealthChange = statusModifierProto.getPercentHealthChange();
         this.percentExperienceChange = statusModifierProto.getPercentExperienceChange();
 
-        this.percentAttackChange = statusModifierProto.getPercentDamageChange();
+        this.percentAttackChange = statusModifierProto.getPercentAttackChange();
         this.percentDefenseChange = statusModifierProto.getPercentDefenseChange();
     }
 
@@ -84,8 +84,8 @@ public class StatusModifier {
         statusModifierBuilder.setPercentHealthChange(percentHealthChange);
         statusModifierBuilder.setFlatExperienceChange(flatExperienceChange);
         statusModifierBuilder.setPercentExperienceChange(percentExperienceChange);
-        statusModifierBuilder.setFlatDamageChange(flatAttackChange);
-        statusModifierBuilder.setPercentDamageChange(percentAttackChange);
+        statusModifierBuilder.setFlatAttackChange(flatAttackChange);
+        statusModifierBuilder.setPercentAttackChange(percentAttackChange);
         statusModifierBuilder.setFlatDefenseChange(flatDefenseChange);
         statusModifierBuilder.setPercentDefenseChange(percentDefenseChange);
 
