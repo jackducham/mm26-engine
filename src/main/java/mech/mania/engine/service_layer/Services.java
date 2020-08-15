@@ -62,7 +62,7 @@ public class Services {
             String playerName = playerInfo.getKey();
             try {
                 // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
-                url = new URL(playerInfo.getValue().getIpAddr());
+                url = new URL("http://" + playerInfo.getValue().getIpAddr());
                 URLConnection con = url.openConnection();
                 http = (HttpURLConnection) con;
             } catch (IOException e) {
