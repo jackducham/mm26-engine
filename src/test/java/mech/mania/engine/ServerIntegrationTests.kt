@@ -160,7 +160,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 500
+        val players = 100
         val turns = 10
 
         val timePerTurn = 2000  // check config.properties

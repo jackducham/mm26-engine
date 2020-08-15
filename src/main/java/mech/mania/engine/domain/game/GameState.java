@@ -4,6 +4,9 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
+import mech.mania.engine.domain.game.items.Clothes;
+import mech.mania.engine.domain.game.items.Shoes;
+import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.game.characters.*;
@@ -180,6 +183,7 @@ public class GameState {
         defaultGameState.getPlayer("player1").setPosition(new Position(0, 4, "pvp"));
         defaultGameState.addNewPlayer("player2");
         defaultGameState.getPlayer("player2").setPosition(new Position(0, 24, "pvp"));
+
 
         //adds a single monster to the pvp board.
         //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster
