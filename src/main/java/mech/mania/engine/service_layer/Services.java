@@ -98,7 +98,7 @@ public class Services {
             numPlayers.getAndIncrement();
 
             return new AbstractMap.SimpleEntry<>(playerName, decision);
-        }).filter(entry -> entry.getValue() != null)
+        }).filter(entry -> entry.getKey() != null && entry.getValue() != null)
                 .collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
 
         LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors.", numPlayers.get() - errors.get(), errors.get()));
