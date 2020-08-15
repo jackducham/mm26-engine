@@ -169,9 +169,11 @@ public class GameState {
             tempGrid[i][20].setType(Tile.TileType.IMPASSIBLE);
         }
 
+        tempGrid[29][29].setType(Tile.TileType.VOID);
+
         //adds two portals to the pvp board
-        defaultGameState.getPvpBoard().getPortals().add(new Position(10, 14, "pvp"));
-        defaultGameState.getPvpBoard().getPortals().add(new Position(14, 1, "pvp"));
+        defaultGameState.getPvpBoard().addPortal(new Position(10, 14, "pvp"));
+        defaultGameState.getPvpBoard().addPortal(new Position(14, 1, "pvp"));
 
         //adds two players and moves them onto the pvp board
         defaultGameState.addNewPlayer("player1");

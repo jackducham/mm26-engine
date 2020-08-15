@@ -193,7 +193,7 @@ public class GameLogic {
 
         //checks the portals on the player's current board
         for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
-            if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
+            if(player.getPosition().equals(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i))) {
                 return true;
             }
         }

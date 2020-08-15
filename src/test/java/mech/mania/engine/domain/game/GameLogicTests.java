@@ -42,7 +42,7 @@ public class GameLogicTests {
         assertNotNull(gameState.getPlayer("player1"));
 
         // Check that player1 is at 0, 0 on their board
-        Position initPos = new Position(0, 0, "player1");
+        Position initPos = new Position(0, 4, "pvp");
         assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
     }
 
@@ -84,7 +84,7 @@ public class GameLogicTests {
     @Test
     public void illegalPlayerPortalPosition() {
         Character playerOnBoard = gameState.getPlayer("player1");
-        assertEquals(playerOnBoard.getPosition(), new Position(0, 0, "pvp"));
+        assertTrue(playerOnBoard.getPosition().equals(new Position(0, 4, "pvp")));
         assertFalse(GameLogic.canUsePortal(gameState, playerOnBoard));
     }
 
@@ -141,15 +141,14 @@ public class GameLogicTests {
                 Objects.requireNonNull(
                         GameLogic.getTileAtPosition(
                                 gameState,
-                                new Position(0, 1, "pvp")
+                                new Position(10, 14, "pvp")
                         )).getType()
         );
     }
 
     @Test
     public void voidTileAtPosition() {
-        // TODO ensure there is a board that matches this requirement
-        assertNull(GameLogic.getTileAtPosition(gameState, new Position(1, 1, "pvp")));
+        assertNull(GameLogic.getTileAtPosition(gameState, new Position(29, 29, "pvp")));
     }
 
     @Test
