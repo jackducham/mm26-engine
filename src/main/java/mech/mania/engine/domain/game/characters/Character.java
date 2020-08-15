@@ -175,7 +175,12 @@ public abstract class Character {
             } else {
                 // applies change to currentHealth of Character
                 // this can ONLY be called once per turn for correct calculations
+                // this also applies the raw damage intentionally
                 applyDamage(activeAttackers.get(i), effect.getDamagePerTurn());
+                /* This function intentionally does not apply healing effects. That is handled by getCurrentHealth
+                   which is called every turn when checking for the death state of players. That function also checks
+                   for players exceeding their maximum health.
+                 */
             }
             effect.updateTurnsLeft();
             i++;
@@ -316,8 +321,8 @@ public abstract class Character {
         return min(health, getMaxHealth());
     }
 
-    public void updateCurrentHealth(int currentHealth) {
-        this.currentHealth += currentHealth;
+    public void updateCurrentHealth(int healthChange) {
+        this.currentHealth += healthChange;
     }
 
     public int getLevel() {
