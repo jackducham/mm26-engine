@@ -123,7 +123,7 @@ class ServerIntegrationTests {
             }
 
             val playerName = java.util.UUID.randomUUID().toString()
-            val playerAddr = "http://localhost:$randomPort/server"
+            val playerAddr = "localhost:$randomPort/server"
             LOGGER.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
             playerNames.add(playerName)

@@ -61,19 +61,19 @@ public class Monster extends Character {
             ItemProtos.Item protoItem = monsterProto.getDrops(i);
             switch(protoItem.getItemCase()) {
                 case CLOTHES:
-                    drops.set(i, new Clothes(protoItem.getClothes()));
+                    drops.add(i, new Clothes(protoItem.getClothes()));
                     break;
                 case HAT:
-                    drops.set(i, new Hat(protoItem.getHat()));
+                    drops.add(i, new Hat(protoItem.getHat()));
                     break;
                 case SHOES:
-                    drops.set(i, new Shoes(protoItem.getShoes()));
+                    drops.add(i, new Shoes(protoItem.getShoes()));
                     break;
                 case WEAPON:
-                    drops.set(i, new Weapon(protoItem.getWeapon()));
+                    drops.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    drops.set(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    drops.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
             }
         }
     }

@@ -32,19 +32,19 @@ public class Tile {
             ItemProtos.Item protoItem = tileProto.getItems(i);
             switch(protoItem.getItemCase()) {
                 case CLOTHES:
-                    items.set(i, new Clothes(protoItem.getClothes()));
+                    items.add(i, new Clothes(protoItem.getClothes()));
                     break;
                 case HAT:
-                    items.set(i, new Hat(protoItem.getHat()));
+                    items.add(i, new Hat(protoItem.getHat()));
                     break;
                 case SHOES:
-                    items.set(i, new Shoes(protoItem.getShoes()));
+                    items.add(i, new Shoes(protoItem.getShoes()));
                     break;
                 case WEAPON:
-                    items.set(i, new Weapon(protoItem.getWeapon()));
+                    items.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    items.set(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    items.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
             }
         }
 
