@@ -462,15 +462,14 @@ public class Player extends Character {
      * @return PlayerStats protobuf object representing all of the player stats to send to Infra
      */
     public CharacterProtos.PlayerStats getPlayerStats() {
-        // TODO: find these values and set them
         return CharacterProtos.PlayerStats.newBuilder()
-                .setLevel(0)
-                .setExperience(0)
+                .setLevel(this.getLevel())
+                .setExperience(this.getExperience())
+                .setAttack(this.getAttack())
+                .setDefense(this.getDefense())
+                .setCurrentHealth(this.getCurrentHealth())
+                .setMaxHealth(this.getMaxHealth())
                 .setMonstersSlain(playerStats.getMonstersSlain())
-                .setAttack(0)
-                .setDefense(0)
-                .setCurrentHealth(currentHealth)
-                .setMaxHealth(baseMaxHealth)  // this can change right?
                 .setDeathCount(playerStats.getDeathCount())
                 .setTurnsSinceJoined(playerStats.getTurnsSinceJoined())
                 .build();
