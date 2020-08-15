@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
+import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
@@ -146,6 +147,39 @@ public class Player extends Character {
             return;
         }
         inventory[index] = item;
+    }
+
+    /**
+     * Applies active effects and updates the death state
+     * This should be called once a turn
+     * This overload also applies the regen from wearables (because players have wearables, but monsters do not)
+     */
+    @Override
+    public void updateCharacter(GameState gameState) {
+        updateActiveEffects();
+        applyWearableRegen();
+        updateDeathState(gameState);
+    }
+
+    /**
+     * Applies the regeneration from wearable items to a player's health. Can only be called once per turn.
+     */
+    private void applyWearableRegen() {
+        int regenFromWearables = 0;
+        if(hat != null) {
+            regenFromWearables += hat.getStats().getFlatRegenPerTurn();
+        }
+        if(clothes != null) {
+            regenFromWearables += clothes.getStats().getFlatRegenPerTurn();
+        }
+        if(shoes != null) {
+            regenFromWearables += shoes.getStats().getFlatRegenPerTurn();
+        }
+        if(weapon != null) {
+            regenFromWearables += weapon.getStats().getFlatRegenPerTurn();
+        }
+
+        updateCurrentHealth(regenFromWearables);
     }
 
     @Override
@@ -335,7 +369,7 @@ public class Player extends Character {
             return false;
         }
         activeEffects.add(effect);
-        activeAttackers.add(""); // add empty String to keep index matching
+        activeEffectsSources.add(""); // add empty String to keep index matching
         return true;
     }
 
