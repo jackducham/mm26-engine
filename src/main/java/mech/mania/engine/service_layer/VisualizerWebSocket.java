@@ -1,8 +1,6 @@
 package mech.mania.engine.service_layer;
 
-import mech.mania.engine.Config;
 import mech.mania.engine.domain.model.VisualizerProtos;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +45,7 @@ public class VisualizerWebSocket {
          * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
          * @param change the VisualizerTurn to send
          */
-        public static void sendChange(VisualizerProtos.VisualizerChange change) {
+        public static void sendChange(VisualizerProtos.GameChange change) {
             BinaryMessage message = new BinaryMessage(change.toByteArray());
             if (session == null) {
                 LOGGER.info("No visualizer endpoint to send to");

@@ -4,21 +4,27 @@ import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
+import mech.mania.engine.domain.model.InfraProtos.InfraStatus
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn
-import mech.mania.engine.domain.model.InfraProtos.InfraStatus
-import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.entrypoints.Main
 import mech.mania.engine.service_layer.InfraRESTHandler
 import mech.mania.engine.service_layer.VisualizerWebSocket
-import org.junit.*
+import org.junit.After
+import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import java.net.*
-import java.util.concurrent.*
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeoutException
 import java.util.logging.Logger
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 
 /*
@@ -160,7 +166,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 500
+        val players = 1000
         val turns = 10
 
         val timePerTurn = 2000  // check config.properties
@@ -178,6 +184,11 @@ class ServerIntegrationTests {
             latch.countDown()
         })
 
-        assertTrue(latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS), "Latch final value: ${latch.count}")
+        try {
+            val result: Boolean = latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS)
+            assertTrue(result, "Test failed: latch final value: ${latch.count}; perhaps the number of players could be lowered?")
+        } catch (e: NullPointerException) {
+            fail("Test failed with exception: $e")
+        }
     }
 }
