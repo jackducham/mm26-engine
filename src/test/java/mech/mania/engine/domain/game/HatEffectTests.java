@@ -26,14 +26,7 @@ public class HatEffectTests {
 
         // Add player1
         gameState.addNewPlayer("player1");
-        Player player1 = gameState.getPlayer("player1");
-        player1.setInventory(1, new Hat(new StatusModifier(0,
-                0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0),
-                HatEffect.LINGERING_POTIONS));
-        player1.equipItem(1);
-        player1.setInventory(2, Consumable.createDefaultConsumable());
-        player1.applyDamage("player2", 15);
+
     }
 
     /**
@@ -49,6 +42,18 @@ public class HatEffectTests {
      */
     @Test
     public void usePotion(){
+        // gives player1 a hat, equips it, and give them a potion.
+        Player player1 = gameState.getPlayer("player1");
+        player1.setInventory(1, new Hat(new StatusModifier(0,
+                0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0),
+                HatEffect.LINGERING_POTIONS));
+        player1.equipItem(1);
+        player1.setInventory(2, Consumable.createDefaultConsumable());
+        player1.applyDamage("player2", 15);
+
+
+
         // Check that the player starts with 5 hp
         int currentHP = gameState.getPlayer("player1").getCurrentHealth();
         System.out.println("Current HP: " + currentHP);
