@@ -344,7 +344,7 @@ public class GameLogic {
         if (tile == null) {
             return false;
         }
-        if (index < 0 || index > tile.getItems().size()) {
+        if (index < 0 || index >= tile.getItems().size()) {
             return false;
         }
         int playerInventoryIndex = player.getFreeInventoryIndex();

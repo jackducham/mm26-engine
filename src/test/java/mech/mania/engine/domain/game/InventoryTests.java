@@ -11,6 +11,7 @@ import mech.mania.engine.domain.game.items.Shoes;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +30,9 @@ import static org.junit.Assert.*;
 public class InventoryTests {
     private GameState gameState;
     Tile p1Tile;
+    Player p1;
     Weapon defaultWeapon = Weapon.createDefaultWeapon();
+    Weapon strongerWeapon = Weapon.createStrongerDefaultWeapon();
     Clothes defaultClothes = Clothes.createDefaultClothes();
     Shoes defaultShoes = Shoes.createDefaultShoes();
 
@@ -43,6 +46,8 @@ public class InventoryTests {
         p1Tile.addItem(defaultWeapon);
         p1Tile.addItem(defaultClothes);
         p1Tile.addItem(defaultShoes);
+        p1Tile.addItem(strongerWeapon);
+        p1 = gameState.getPlayer("player1");
     }
 
     /**
@@ -57,7 +62,14 @@ public class InventoryTests {
      */
     @Test
     public void gameInit(){
-
+        assertEquals(4, p1Tile.getItems().size());
+        for (Item item : p1.getInventory()) {
+            assertNull(item);
+        }
+        assertNull(p1.getShoes());
+        assertNull(p1.getWeapon());
+        assertNull(p1.getHat());
+        assertNull(p1.getClothes());
     }
 
     public void pickupItem(int index) {
@@ -91,9 +103,11 @@ public class InventoryTests {
     }
 
     @Test
-    public void pickupInvalidItemIndex() {
+    public void pickupInvalidIndices() {
         pickupItem(-1);
         pickupItem(4);
+        pickupItem(8);
+        pickupItem(300);
         assertNull(gameState.getPlayer("player1").getInventory()[0]);
     }
 
@@ -105,14 +119,13 @@ public class InventoryTests {
         for (Item item: tileItems) {
             assertNotEquals(defaultWeapon, item);
         }
-        assertEquals(2, tileItems.size());
+        assertEquals(3, tileItems.size());
     }
 
     @Test
     public void equipWeaponValid() {
         pickupItem(0);
         equipItem(0);
-        Player p1 = gameState.getPlayer("player1");
         assertEquals(defaultWeapon, p1.getWeapon());
     }
 
@@ -120,7 +133,6 @@ public class InventoryTests {
     public void equipClothesValid() {
         pickupItem(1);
         equipItem(0);
-        Player p1 = gameState.getPlayer("player1");
         assertEquals(defaultClothes, p1.getClothes());
     }
 
@@ -128,18 +140,66 @@ public class InventoryTests {
     public void equipShoesValid() {
         pickupItem(2);
         equipItem(0);
-        Player p1 = gameState.getPlayer("player1");
         assertEquals(defaultShoes, p1.getShoes());
     }
 
     @Test
-    public void equipItemInvalid() {
+    public void equipNullItem() {
         equipItem(0);
-        Player p1 = gameState.getPlayer("player1");
         assertNull(p1.getShoes());
         assertNull(p1.getWeapon());
         assertNull(p1.getHat());
         assertNull(p1.getClothes());
     }
 
+    @Test
+    public void equipInvalidIndices() {
+        equipItem(-1);
+        equipItem(16);
+        equipItem(300);
+        assertNull(p1.getShoes());
+        assertNull(p1.getWeapon());
+        assertNull(p1.getHat());
+        assertNull(p1.getClothes());
+    }
+
+    @Test
+    public void equipFromMultipleItems() {
+        pickupItem(0);
+        pickupItem(0);
+        pickupItem(0);
+        pickupItem(0);
+        assertEquals(0, p1Tile.getItems().size());
+
+        equipItem(0);
+        assertEquals(defaultWeapon, p1.getWeapon());
+        equipItem(1); // fails here
+        assertEquals(defaultClothes, p1.getClothes());
+    }
+
+    @Test
+    public void replaceWeapon() {
+        // pick up first weapon - should be in inventory, decrease tile items
+        pickupItem(0);
+        assertEquals(defaultWeapon, p1.getInventory()[0]);
+        assertEquals(3, p1Tile.getItems().size());
+        assertNull(p1.getWeapon());
+
+        // equip weapon - should empty inventory, and weapon should be equipped
+        equipItem(0);
+        assertNull(p1.getInventory()[0]);
+        assertEquals(defaultWeapon, p1.getWeapon());
+
+        // pick up stronger weapon - should be in inventory, decrease tile items, and old weapon should still be equipped
+        pickupItem(2); // fails here
+        assertEquals(strongerWeapon, p1.getInventory()[0]);
+        assertEquals(2, p1Tile.getItems().size());
+        assertEquals(defaultWeapon, p1.getWeapon());
+
+        // equip stronger weapon - should switch out default and stronger weapon
+        equipItem(0);
+        assertEquals(defaultWeapon, p1.getInventory()[0]);
+        assertEquals(strongerWeapon, p1.getWeapon());
+        assertEquals(2, p1Tile.getItems().size());
+    }
 }

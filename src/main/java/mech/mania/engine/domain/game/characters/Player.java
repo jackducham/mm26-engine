@@ -365,6 +365,9 @@ public class Player extends Character {
      */
     public boolean equipItem(int index) {
         Item itemToEquip;
+        if (index < 0 || index >= INVENTORY_SIZE) {
+            return false;
+        }
         if (inventory[index] != null) {
             itemToEquip = inventory[index];
         } else {
