@@ -72,8 +72,9 @@ public class InventoryTests {
         assertNull(p1.getClothes());
     }
 
+    // ============================= DECISION FUNCTIONS ========================================
     public void pickupItem(int index) {
-        // pick up weapon from tile
+        // pick up item from tile
         PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.PICKUP);
         decision.setIndex(index);
@@ -85,7 +86,7 @@ public class InventoryTests {
     }
 
     public void equipItem(int index) {
-        // pick up weapon from tile
+        // equip item from inventory
         PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.EQUIP);
         decision.setIndex(index);
@@ -96,10 +97,24 @@ public class InventoryTests {
         GameLogic.doTurn(gameState, decisionMap);
     }
 
+    public void dropItem(int index) {
+        // drop item from inventory
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        decision.setDecisionType(CharacterProtos.DecisionType.DROP);
+        decision.setIndex(index);
+
+        // Execute decision
+        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        decisionMap.put("player1", decision.build());
+        GameLogic.doTurn(gameState, decisionMap);
+    }
+
+    // ============================= PICKUP TESTS ========================================
     @Test
     public void pickupValidItemIndex() {
         pickupItem(0);
         assertEquals(defaultWeapon, gameState.getPlayer("player1").getInventory()[0]);
+        assertEquals(3, p1Tile.getItems().size());
     }
 
     @Test
@@ -109,6 +124,7 @@ public class InventoryTests {
         pickupItem(8);
         pickupItem(300);
         assertNull(gameState.getPlayer("player1").getInventory()[0]);
+        assertEquals(4, p1Tile.getItems().size());
     }
 
     @Test
@@ -122,6 +138,21 @@ public class InventoryTests {
         assertEquals(3, tileItems.size());
     }
 
+    @Test
+    public void pickupMultipleItems() {
+        // index is always 0 because items shift forward when picked up
+        pickupItem(0);
+        pickupItem(0);
+        pickupItem(0);
+        pickupItem(0);
+        assertEquals(0, p1Tile.getItems().size());
+
+        for (int i = 0; i < 4; i++) {
+            assertNotNull(p1.getInventory()[i]);
+        }
+    }
+
+    // ============================= EQUIP FUNCTIONS ========================================
     @Test
     public void equipWeaponValid() {
         pickupItem(0);
@@ -178,7 +209,7 @@ public class InventoryTests {
     }
 
     @Test
-    public void replaceWeapon() {
+    public void replaceValidWeapon() {
         // pick up first weapon - should be in inventory, decrease tile items
         pickupItem(0);
         assertEquals(defaultWeapon, p1.getInventory()[0]);
@@ -201,5 +232,32 @@ public class InventoryTests {
         assertEquals(defaultWeapon, p1.getInventory()[0]);
         assertEquals(strongerWeapon, p1.getWeapon());
         assertEquals(2, p1Tile.getItems().size());
+    }
+
+    @Test
+    public void replaceInvalidWeapon() {
+        // pick up first weapon - should be in inventory, decrease tile items
+        pickupItem(0);
+        equipItem(0);
+
+        // shouldn't change anything
+        equipItem(0);
+        equipItem(-1);
+        assertNull(p1.getInventory()[0]);
+        assertEquals(defaultWeapon, p1.getWeapon());
+    }
+
+    @Test
+    public void pickupMultipleItemsAndEquip() {
+        // pick up first weapon - should be in inventory, decrease tile items
+        pickupItem(0);
+        pickupItem(0);
+        pickupItem(0);
+        pickupItem(0);
+
+        equipItem(0);
+        equipItem(1); // fails here
+        assertEquals(defaultWeapon, p1.getWeapon());
+        assertEquals(defaultClothes, p1.getClothes());
     }
 }
