@@ -226,6 +226,8 @@ public class Monster extends Character {
         int splash = 0;
         int splashSpread = 0;
 
+        int damage = 0;
+
         /*
         TODO: add Item drop generation
         My current plan is to have an item generator specific to this monster which will generate a number of items
@@ -246,7 +248,7 @@ public class Monster extends Character {
 
         StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, defaultOnHit);
+        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, damage, defaultOnHit);
 
         Monster newMonster = new Monster("DefaultMonster" + DefaultMonsterQuantity,
                 baseSpeed + (int)speedFactor*baseSpeedSpread,
