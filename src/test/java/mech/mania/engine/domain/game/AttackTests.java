@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
-/** This contains tests for any overall board tests or helper functions */
+/** This contains tests for any attack actions */
 public class AttackTests {
     private GameState gameState;
 
