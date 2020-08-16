@@ -34,24 +34,16 @@ public final class PlayerProtos {
     mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
 
     /**
-     * <code>string test1 = 2;</code>
-     * @return The test1.
+     * <code>string player_name = 2;</code>
+     * @return The playerName.
      */
-    java.lang.String getTest1();
+    java.lang.String getPlayerName();
     /**
-     * <code>string test1 = 2;</code>
-     * @return The bytes for test1.
+     * <code>string player_name = 2;</code>
+     * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
-        getTest1Bytes();
-
-    /**
-     * <code>int32 test2 = 3;</code>
-     * @return The test2.
-     */
-    int getTest2();
-
-    mech.mania.engine.domain.model.PlayerProtos.PlayerTurn.TestCase getTestCase();
+        getPlayerNameBytes();
   }
   /**
    * <pre>
@@ -60,7 +52,7 @@ public final class PlayerProtos {
    *
    * Protobuf type {@code player_communication.PlayerTurn}
    */
-  public static final class PlayerTurn extends
+  public  static final class PlayerTurn extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.PlayerTurn)
       PlayerTurnOrBuilder {
@@ -70,6 +62,7 @@ public final class PlayerProtos {
       super(builder);
     }
     private PlayerTurn() {
+      playerName_ = "";
     }
 
     @java.lang.Override
@@ -117,13 +110,8 @@ public final class PlayerProtos {
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
-              testCase_ = 2;
-              test_ = s;
-              break;
-            }
-            case 24: {
-              testCase_ = 3;
-              test_ = input.readInt32();
+
+              playerName_ = s;
               break;
             }
             default: {
@@ -158,54 +146,12 @@ public final class PlayerProtos {
               mech.mania.engine.domain.model.PlayerProtos.PlayerTurn.class, mech.mania.engine.domain.model.PlayerProtos.PlayerTurn.Builder.class);
     }
 
-    private int testCase_ = 0;
-    private java.lang.Object test_;
-    public enum TestCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      TEST1(2),
-      TEST2(3),
-      TEST_NOT_SET(0);
-      private final int value;
-      TestCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static TestCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static TestCase forNumber(int value) {
-        switch (value) {
-          case 2: return TEST1;
-          case 3: return TEST2;
-          case 0: return TEST_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    }
-
-    public TestCase
-    getTestCase() {
-      return TestCase.forNumber(
-          testCase_);
-    }
-
     public static final int GAME_STATE_FIELD_NUMBER = 1;
     private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
     /**
      * <code>.game_state.GameState game_state = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -213,74 +159,50 @@ public final class PlayerProtos {
      * <code>.game_state.GameState game_state = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game_state.GameState game_state = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
 
-    public static final int TEST1_FIELD_NUMBER = 2;
+    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object playerName_;
     /**
-     * <code>string test1 = 2;</code>
-     * @return The test1.
+     * <code>string player_name = 2;</code>
+     * @return The playerName.
      */
-    public java.lang.String getTest1() {
-      java.lang.Object ref = "";
-      if (testCase_ == 2) {
-        ref = test_;
-      }
+    public java.lang.String getPlayerName() {
+      java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (testCase_ == 2) {
-          test_ = s;
-        }
+        playerName_ = s;
         return s;
       }
     }
     /**
-     * <code>string test1 = 2;</code>
-     * @return The bytes for test1.
+     * <code>string player_name = 2;</code>
+     * @return The bytes for playerName.
      */
     public com.google.protobuf.ByteString
-        getTest1Bytes() {
-      java.lang.Object ref = "";
-      if (testCase_ == 2) {
-        ref = test_;
-      }
+        getPlayerNameBytes() {
+      java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (testCase_ == 2) {
-          test_ = b;
-        }
+        playerName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int TEST2_FIELD_NUMBER = 3;
-    /**
-     * <code>int32 test2 = 3;</code>
-     * @return The test2.
-     */
-    @java.lang.Override
-    public int getTest2() {
-      if (testCase_ == 3) {
-        return (java.lang.Integer) test_;
-      }
-      return 0;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -300,12 +222,8 @@ public final class PlayerProtos {
       if (gameState_ != null) {
         output.writeMessage(1, getGameState());
       }
-      if (testCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, test_);
-      }
-      if (testCase_ == 3) {
-        output.writeInt32(
-            3, (Integer) test_);
+      if (!getPlayerNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -320,13 +238,8 @@ public final class PlayerProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getGameState());
       }
-      if (testCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, test_);
-      }
-      if (testCase_ == 3) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(
-              3, (Integer) test_);
+      if (!getPlayerNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -348,20 +261,10 @@ public final class PlayerProtos {
         if (!getGameState()
             .equals(other.getGameState())) return false;
       }
-      if (!getTestCase().equals(other.getTestCase())) return false;
-      switch (testCase_) {
-        case 2:
-          if (!getTest1()
-              .equals(other.getTest1())) return false;
-          break;
-        case 3:
-          if (getTest2()
-              != other.getTest2()) return false;
-          break;
-        case 0:
-        default:
-      }
-      return unknownFields.equals(other.unknownFields);
+      if (!getPlayerName()
+          .equals(other.getPlayerName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -375,18 +278,8 @@ public final class PlayerProtos {
         hash = (37 * hash) + GAME_STATE_FIELD_NUMBER;
         hash = (53 * hash) + getGameState().hashCode();
       }
-      switch (testCase_) {
-        case 2:
-          hash = (37 * hash) + TEST1_FIELD_NUMBER;
-          hash = (53 * hash) + getTest1().hashCode();
-          break;
-        case 3:
-          hash = (37 * hash) + TEST2_FIELD_NUMBER;
-          hash = (53 * hash) + getTest2();
-          break;
-        case 0:
-        default:
-      }
+      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -530,8 +423,8 @@ public final class PlayerProtos {
           gameState_ = null;
           gameStateBuilder_ = null;
         }
-        testCase_ = 0;
-        test_ = null;
+        playerName_ = "";
+
         return this;
       }
 
@@ -563,13 +456,7 @@ public final class PlayerProtos {
         } else {
           result.gameState_ = gameStateBuilder_.build();
         }
-        if (testCase_ == 2) {
-          result.test_ = test_;
-        }
-        if (testCase_ == 3) {
-          result.test_ = test_;
-        }
-        result.testCase_ = testCase_;
+        result.playerName_ = playerName_;
         onBuilt();
         return result;
       }
@@ -621,20 +508,9 @@ public final class PlayerProtos {
         if (other.hasGameState()) {
           mergeGameState(other.getGameState());
         }
-        switch (other.getTestCase()) {
-          case TEST1: {
-            testCase_ = 2;
-            test_ = other.test_;
-            onChanged();
-            break;
-          }
-          case TEST2: {
-            setTest2(other.getTest2());
-            break;
-          }
-          case TEST_NOT_SET: {
-            break;
-          }
+        if (!other.getPlayerName().isEmpty()) {
+          playerName_ = other.playerName_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -664,21 +540,6 @@ public final class PlayerProtos {
         }
         return this;
       }
-      private int testCase_ = 0;
-      private java.lang.Object test_;
-      public TestCase
-          getTestCase() {
-        return TestCase.forNumber(
-            testCase_);
-      }
-
-      public Builder clearTest() {
-        testCase_ = 0;
-        test_ = null;
-        onChanged();
-        return this;
-      }
-
 
       private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -799,126 +660,79 @@ public final class PlayerProtos {
         return gameStateBuilder_;
       }
 
+      private java.lang.Object playerName_ = "";
       /**
-       * <code>string test1 = 2;</code>
-       * @return The test1.
+       * <code>string player_name = 2;</code>
+       * @return The playerName.
        */
-      @java.lang.Override
-      public java.lang.String getTest1() {
-        java.lang.Object ref = "";
-        if (testCase_ == 2) {
-          ref = test_;
-        }
+      public java.lang.String getPlayerName() {
+        java.lang.Object ref = playerName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (testCase_ == 2) {
-            test_ = s;
-          }
+          playerName_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string test1 = 2;</code>
-       * @return The bytes for test1.
+       * <code>string player_name = 2;</code>
+       * @return The bytes for playerName.
        */
-      @java.lang.Override
       public com.google.protobuf.ByteString
-          getTest1Bytes() {
-        java.lang.Object ref = "";
-        if (testCase_ == 2) {
-          ref = test_;
-        }
+          getPlayerNameBytes() {
+        java.lang.Object ref = playerName_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (testCase_ == 2) {
-            test_ = b;
-          }
+          playerName_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string test1 = 2;</code>
-       * @param value The test1 to set.
+       * <code>string player_name = 2;</code>
+       * @param value The playerName to set.
        * @return This builder for chaining.
        */
-      public Builder setTest1(
+      public Builder setPlayerName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  testCase_ = 2;
-        test_ = value;
+  
+        playerName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string test1 = 2;</code>
+       * <code>string player_name = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTest1() {
-        if (testCase_ == 2) {
-          testCase_ = 0;
-          test_ = null;
-          onChanged();
-        }
+      public Builder clearPlayerName() {
+        
+        playerName_ = getDefaultInstance().getPlayerName();
+        onChanged();
         return this;
       }
       /**
-       * <code>string test1 = 2;</code>
-       * @param value The bytes for test1 to set.
+       * <code>string player_name = 2;</code>
+       * @param value The bytes for playerName to set.
        * @return This builder for chaining.
        */
-      public Builder setTest1Bytes(
+      public Builder setPlayerNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        testCase_ = 2;
-        test_ = value;
+        
+        playerName_ = value;
         onChanged();
-        return this;
-      }
-
-      /**
-       * <code>int32 test2 = 3;</code>
-       * @return The test2.
-       */
-      public int getTest2() {
-        if (testCase_ == 3) {
-          return (java.lang.Integer) test_;
-        }
-        return 0;
-      }
-      /**
-       * <code>int32 test2 = 3;</code>
-       * @param value The test2 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTest2(int value) {
-        testCase_ = 3;
-        test_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 test2 = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTest2() {
-        if (testCase_ == 3) {
-          testCase_ = 0;
-          test_ = null;
-          onChanged();
-        }
         return this;
       }
       @java.lang.Override
@@ -1033,7 +847,7 @@ public final class PlayerProtos {
    *
    * Protobuf type {@code player_communication.PlayerDecision}
    */
-  public static final class PlayerDecision extends
+  public  static final class PlayerDecision extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.PlayerDecision)
       PlayerDecisionOrBuilder {
@@ -1138,14 +952,14 @@ public final class PlayerProtos {
      * <code>.character.DecisionType decision_type = 1;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
-    @java.lang.Override public int getDecisionTypeValue() {
+    public int getDecisionTypeValue() {
       return decisionType_;
     }
     /**
      * <code>.character.DecisionType decision_type = 1;</code>
      * @return The decisionType.
      */
-    @java.lang.Override public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
+    public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
       @SuppressWarnings("deprecation")
       mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
       return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
@@ -1161,7 +975,6 @@ public final class PlayerProtos {
      * <code>.character.Position target_position = 2;</code>
      * @return Whether the targetPosition field is set.
      */
-    @java.lang.Override
     public boolean hasTargetPosition() {
       return targetPosition_ != null;
     }
@@ -1173,7 +986,6 @@ public final class PlayerProtos {
      * <code>.character.Position target_position = 2;</code>
      * @return The targetPosition.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition() {
       return targetPosition_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
     }
@@ -1184,7 +996,6 @@ public final class PlayerProtos {
      *
      * <code>.character.Position target_position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
       return getTargetPosition();
     }
@@ -1199,7 +1010,6 @@ public final class PlayerProtos {
      * <code>int32 index = 3;</code>
      * @return The index.
      */
-    @java.lang.Override
     public int getIndex() {
       return index_;
     }
@@ -1271,7 +1081,8 @@ public final class PlayerProtos {
       }
       if (getIndex()
           != other.getIndex()) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1560,7 +1371,7 @@ public final class PlayerProtos {
        * <code>.character.DecisionType decision_type = 1;</code>
        * @return The enum numeric value on the wire for decisionType.
        */
-      @java.lang.Override public int getDecisionTypeValue() {
+      public int getDecisionTypeValue() {
         return decisionType_;
       }
       /**
@@ -1569,7 +1380,6 @@ public final class PlayerProtos {
        * @return This builder for chaining.
        */
       public Builder setDecisionTypeValue(int value) {
-        
         decisionType_ = value;
         onChanged();
         return this;
@@ -1578,7 +1388,6 @@ public final class PlayerProtos {
        * <code>.character.DecisionType decision_type = 1;</code>
        * @return The decisionType.
        */
-      @java.lang.Override
       public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
         @SuppressWarnings("deprecation")
         mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
@@ -1773,7 +1582,6 @@ public final class PlayerProtos {
        * <code>int32 index = 3;</code>
        * @return The index.
        */
-      @java.lang.Override
       public int getIndex() {
         return index_;
       }
@@ -1879,15 +1687,14 @@ public final class PlayerProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\014player.proto\022\024player_communication\032\020ga" +
-      "me_state.proto\032\017character.proto\"a\n\nPlaye" +
+      "me_state.proto\032\017character.proto\"L\n\nPlaye" +
       "rTurn\022)\n\ngame_state\030\001 \001(\0132\025.game_state.G" +
-      "ameState\022\017\n\005test1\030\002 \001(\tH\000\022\017\n\005test2\030\003 \001(\005" +
-      "H\000B\006\n\004test\"}\n\016PlayerDecision\022.\n\rdecision" +
-      "_type\030\001 \001(\0162\027.character.DecisionType\022,\n\017" +
-      "target_position\030\002 \001(\0132\023.character.Positi" +
-      "on\022\r\n\005index\030\003 \001(\005B?\n\036mech.mania.engine.d" +
-      "omain.modelB\014PlayerProtos\252\002\016MM26.IO.Mode" +
-      "lsb\006proto3"
+      "ameState\022\023\n\013player_name\030\002 \001(\t\"}\n\016PlayerD" +
+      "ecision\022.\n\rdecision_type\030\001 \001(\0162\027.charact" +
+      "er.DecisionType\022,\n\017target_position\030\002 \001(\013" +
+      "2\023.character.Position\022\r\n\005index\030\003 \001(\005B?\n\036" +
+      "mech.mania.engine.domain.modelB\014PlayerPr" +
+      "otos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1900,7 +1707,7 @@ public final class PlayerProtos {
     internal_static_player_communication_PlayerTurn_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_PlayerTurn_descriptor,
-        new java.lang.String[] { "GameState", "Test1", "Test2", "Test", });
+        new java.lang.String[] { "GameState", "PlayerName", });
     internal_static_player_communication_PlayerDecision_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_player_communication_PlayerDecision_fieldAccessorTable = new

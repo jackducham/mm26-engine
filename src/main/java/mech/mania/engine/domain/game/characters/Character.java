@@ -37,7 +37,7 @@ public abstract class Character {
 
     /** Attack/damage parameters */
     protected Weapon weapon;
-    List<String> activeAttackers;
+    List<String> activeEffectsSources;
 
     // list of TempStatusModifiers for each Weapon, maps to String in currentAttackers
     List<TempStatusModifier> activeEffects;
@@ -67,7 +67,7 @@ public abstract class Character {
         this.spawnPoint = spawnPoint;
 
         this.weapon = weapon;
-        this.activeAttackers = new ArrayList<>();
+        this.activeEffectsSources = new ArrayList<>();
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
     }
@@ -93,7 +93,7 @@ public abstract class Character {
             characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
         }
 
-        for (int i = 0; i < activeAttackers.size(); i++) {
+        for (int i = 0; i < activeEffectsSources.size(); i++) {
 //            characterBuilder.setCurrentAttackers(i, currentAttackers.get(i).buildProtoClassTemp());
         }
 
@@ -114,7 +114,7 @@ public abstract class Character {
      */
     public void hitByWeapon(String attacker, Weapon weapon, int attackerATK) {
         if (weapon.getOnHitEffect() != null) {
-            activeAttackers.add(attacker);
+            activeEffectsSources.add(attacker);
             activeEffects.add(weapon.getOnHitEffect());
         }
         int actualDamage = (int) calculateActualDamage(attacker, weapon, attackerATK);
@@ -128,8 +128,8 @@ public abstract class Character {
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
     public double calculateActualDamage(String attacker, Weapon weapon, int attackerATK) {
-        double attackDamage = weapon.getDamage() * (0.25 * attackerATK / 100);
-        double minDamage = weapon.getDamage() * 0.20;
+        double attackDamage = weapon.getAttack() * (0.25 * attackerATK / 100);
+        double minDamage = weapon.getAttack() * 0.20;
 
         double actualDamage = max(minDamage, attackDamage - getDefense());
 
@@ -171,11 +171,13 @@ public abstract class Character {
             TempStatusModifier effect = itr.next();
             if (effect.getTurnsLeft() <= 0) { // remove inactive effects
                 itr.remove();
-                activeAttackers.remove(i);
+                activeEffectsSources.remove(i);
             } else {
                 // applies change to currentHealth of Character
                 // this can ONLY be called once per turn for correct calculations
-                applyDamage(activeAttackers.get(i), effect.getDamagePerTurn());
+                // this also applies the raw damage intentionally
+                applyDamage(activeEffectsSources.get(i), effect.getDamagePerTurn());
+                updateCurrentHealth(effect.getFlatRegenPerTurn());
             }
             effect.updateTurnsLeft();
             i++;
@@ -207,7 +209,7 @@ public abstract class Character {
         position = spawnPoint;
         currentHealth = getMaxHealth();
         ticksSinceDeath = -1;
-        activeAttackers.clear();
+        activeEffectsSources.clear();
         activeEffects.clear();
         taggedPlayersDamage.clear();
         isDead = false;
@@ -254,7 +256,7 @@ public abstract class Character {
 
     public int getSpeed() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatSpeedChange();
             percentChange += effect.getPercentSpeedChange();
@@ -266,7 +268,7 @@ public abstract class Character {
 
     public int getMaxHealth() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatHealthChange();
             percentChange += effect.getPercentHealthChange();
@@ -277,7 +279,7 @@ public abstract class Character {
 
     public int getExperience() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatExperienceChange();
             percentChange += effect.getPercentExperienceChange();
@@ -288,7 +290,7 @@ public abstract class Character {
 
     public int getAttack() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatAttackChange();
             percentChange += effect.getPercentAttackChange();
@@ -299,7 +301,7 @@ public abstract class Character {
 
     public int getDefense() {
         int flatChange = 0;
-        double percentChange = 0;
+        double percentChange = 1;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatDefenseChange();
             percentChange += effect.getPercentDefenseChange();
@@ -309,15 +311,15 @@ public abstract class Character {
     }
 
     public int getCurrentHealth() {
-        int health = currentHealth;
-        for (TempStatusModifier effect: activeEffects) {
-            health += effect.getFlatRegenPerTurn();
-        }
-        return min(health, getMaxHealth());
+        return currentHealth;
     }
 
-    public void updateCurrentHealth(int currentHealth) {
-        this.currentHealth += currentHealth;
+    public void updateCurrentHealth(int healthChange) {
+        this.currentHealth += healthChange;
+
+        if(currentHealth > this.getMaxHealth()) {
+            this.currentHealth = this.getMaxHealth();
+        }
     }
 
     public int getLevel() {

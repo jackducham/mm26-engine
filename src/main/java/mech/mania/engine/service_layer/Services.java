@@ -22,9 +22,9 @@ public class Services {
      * @return PlayerTurn a playerTurn specific for a player
      */
     public static PlayerTurn constructPlayerTurn(GameState gameState, String playerName) {
-        // TODO: construct PlayerTurn by looking up information specific for this player
         return PlayerTurn.newBuilder()
                 .setGameState(gameState.buildProtoClass())
+                .setPlayerName(playerName)
                 .build();
     }
 
