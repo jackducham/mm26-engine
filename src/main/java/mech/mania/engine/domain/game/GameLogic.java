@@ -49,7 +49,6 @@ public class GameLogic {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 cDecisions.put(entry.getKey(), newDecision);
             }
-
         }
 
 

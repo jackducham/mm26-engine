@@ -317,9 +317,7 @@ public abstract class Character {
     public void updateCurrentHealth(int healthChange) {
         this.currentHealth += healthChange;
 
-        if(currentHealth > this.getMaxHealth()) {
-            this.currentHealth = this.getMaxHealth();
-        }
+        this.currentHealth = min(this.currentHealth, this.getMaxHealth());
     }
 
     public int getLevel() {

@@ -204,7 +204,7 @@ public class InventoryTests {
 
         equipItem(0);
         assertEquals(defaultWeapon, p1.getWeapon());
-        equipItem(1); // fails here
+        equipItem(1);
         assertEquals(defaultClothes, p1.getClothes());
     }
 
@@ -222,7 +222,7 @@ public class InventoryTests {
         assertEquals(defaultWeapon, p1.getWeapon());
 
         // pick up stronger weapon - should be in inventory, decrease tile items, and old weapon should still be equipped
-        pickupItem(2); // fails here
+        pickupItem(2);
         assertEquals(strongerWeapon, p1.getInventory()[0]);
         assertEquals(2, p1Tile.getItems().size());
         assertEquals(defaultWeapon, p1.getWeapon());
