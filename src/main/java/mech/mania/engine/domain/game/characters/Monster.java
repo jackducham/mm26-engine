@@ -226,7 +226,7 @@ public class Monster extends Character {
         int splash = 0;
         int splashSpread = 0;
 
-        int damage = 0;
+        int attack = 1;
 
         /*
         TODO: add Item drop generation
@@ -248,7 +248,7 @@ public class Monster extends Character {
 
         StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, damage, defaultOnHit);
+        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, attack, defaultOnHit);
 
         Monster newMonster = new Monster("DefaultMonster" + DefaultMonsterQuantity,
                 baseSpeed + (int)speedFactor*baseSpeedSpread,
