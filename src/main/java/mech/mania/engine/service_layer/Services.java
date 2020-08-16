@@ -3,7 +3,8 @@ package mech.mania.engine.service_layer;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn;
-import mech.mania.engine.domain.model.VisualizerProtos.GameChange;
+import mech.mania.engine.domain.model.GameChange;
+import mech.mania.engine.domain.model.VisualizerProtos;
 
 import java.util.Map;
 import java.util.logging.Logger;
@@ -41,8 +42,9 @@ public class Services {
      * Returns a VisualizerChange object that denotes how the gameState
      * has changed in relevant terms to the Visualizer team
      */
-    public static GameChange constructVisualizerChange(GameState gameState) {
-        // TODO: construct VisualizerTurn
-        return GameChange.newBuilder().build();
+    public static VisualizerProtos.GameChange constructVisualizerChange(GameState gameState) {
+        // TODO: construct VisualizerTurn (GameChange)
+        return VisualizerProtos.GameChange.newBuilder()
+                .build();
     }
 }

@@ -8,7 +8,7 @@ import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.model.GameStateProtos;
-import mech.mania.engine.domain.model.VisualizerChange;
+import mech.mania.engine.domain.model.GameChange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class GameState {
     private Map<String, Board> boardNames;
     private Map<String, Player> playerNames;
     private Map<String, Monster> monsterNames;
-    public VisualizerChange stateChange;
+    public GameChange stateChange;
 
     /**
      * Sets up a default GameState. Will eventually be expanded to set up the entire pvp board.
@@ -35,7 +35,7 @@ public class GameState {
         boardNames = new HashMap<>();
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
-        stateChange = new VisualizerChange();
+        stateChange = new GameChange();
 
         // @TODO: Create pvp board
     }

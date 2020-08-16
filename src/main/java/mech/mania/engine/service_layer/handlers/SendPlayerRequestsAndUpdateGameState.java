@@ -1,5 +1,6 @@
 package mech.mania.engine.service_layer.handlers;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Command;
@@ -11,25 +12,27 @@ import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
     public SendPlayerRequestsAndUpdateGameState(UnitOfWorkAbstract uow) {
         super(uow);
     }
+    private static final Logger LOGGER = Logger.getLogger(SendPlayerRequestsAndUpdateGameState.class.getName());
 
     @Override
     public void handle(Command command) {
-        Map<String, PlayerDecision> playerDecisionMap =
-            getSuccessfulPlayerDecisions(uow);
+        Map<String, PlayerDecision> playerDecisionMap = getSuccessfulPlayerDecisions(uow);
         GameState updatedGameState =
             Services.updateGameState(uow.getGameState(), playerDecisionMap);
         uow.setGameState(updatedGameState);
@@ -48,6 +51,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
 
         AtomicInteger errors = new AtomicInteger();
         AtomicInteger numPlayers = new AtomicInteger();
+
         ConcurrentMap<Class<? extends Exception>, Integer> exceptions = new ConcurrentHashMap<>();
 
         ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
@@ -75,6 +79,14 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 turn.writeTo(http.getOutputStream());
 
                 decision = PlayerDecision.parseFrom(http.getInputStream());
+            } catch (InvalidProtocolBufferException e) {
+                LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
+                        playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+                errors.getAndIncrement();
+            } catch (ProtocolException e) {
+                LOGGER.warning(String.format("ProtocolException: could not connect to player \"%s\" at url %s: %s",
+                        playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
+                errors.getAndIncrement();
             } catch (IOException e) {
                 synchronized (exceptions) {
                     int numExceptions = exceptions.getOrDefault(e.getClass(), 0);

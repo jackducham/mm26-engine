@@ -1,7 +1,7 @@
 package mech.mania.engine.adapters;
 
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.model.VisualizerProtos.GameChange;
+import mech.mania.engine.domain.model.VisualizerProtos;
 
 /**
  * Uses AWS to store GameStates
@@ -13,7 +13,7 @@ public class RepositoryAws implements RepositoryAbstract {
     }
 
     @Override
-    public int storeVisualizerChange(final int turn, final GameChange visualizerChange) {
+    public int storeVisualizerChange(final int turn, final VisualizerProtos.GameChange visualizerChange) {
         return 0;
     }
 

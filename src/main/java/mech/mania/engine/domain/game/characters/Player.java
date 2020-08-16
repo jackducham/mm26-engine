@@ -12,6 +12,7 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
+    private Stats playerStats;
 
     private static final int BASE_SPEED = 5;
     private static final int BASE_MAX_HEALTH = 20;
@@ -470,4 +471,58 @@ public class Player extends Character {
         }
         return -1;
     }
+
+    /**
+     * Gets all of the necessary player stats for sending to Infra
+     * See https://github.com/jackducham/mm26-engine/issues/107
+     * @return PlayerStats protobuf object representing all of the player stats to send to Infra
+     */
+    public CharacterProtos.PlayerStats getPlayerStats() {
+        return CharacterProtos.PlayerStats.newBuilder()
+                .setLevel(this.getLevel())
+                .setExperience(this.getExperience())
+                .setAttack(this.getAttack())
+                .setDefense(this.getDefense())
+                .setCurrentHealth(this.getCurrentHealth())
+                .setMaxHealth(this.getMaxHealth())
+                .setMonstersSlain(playerStats.getMonstersSlain())
+                .setDeathCount(playerStats.getDeathCount())
+                .setTurnsSinceJoined(playerStats.getTurnsSinceJoined())
+                .build();
+    }
+
+    /**
+     * Class of <b>extra</b> attributes that are required for infra's player
+     * stat calculation
+     */
+    static class Stats {
+        private int monstersSlain;
+        private int deathCount;
+        private int turnsSinceJoined;
+
+        public void incrementMonstersSlain() {
+            monstersSlain++;
+        }
+
+        public void incrementDeathCount() {
+            deathCount++;
+        }
+
+        public void incrementTurnsSinceJoined() {
+            turnsSinceJoined++;
+        }
+
+        public int getMonstersSlain() {
+            return monstersSlain;
+        }
+
+        public int getDeathCount() {
+            return deathCount;
+        }
+
+        public int getTurnsSinceJoined() {
+            return turnsSinceJoined;
+        }
+    }
+
 }
