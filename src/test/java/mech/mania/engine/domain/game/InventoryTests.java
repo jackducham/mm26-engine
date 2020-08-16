@@ -119,6 +119,7 @@ public class InventoryTests {
     // ============================= PICKUP TESTS ======================================== //
     @Test
     public void pickupValidItemIndex() {
+        assertEquals(0, p1.getFreeInventoryIndex());
         pickupItem(0);
         assertEquals(defaultWeapon, gameState.getPlayer("player1").getInventory()[0]);
         assertEquals(3, p1Tile.getItems().size());
@@ -153,6 +154,7 @@ public class InventoryTests {
         for (int i = 0; i < 4; i++) {
             assertNotNull(p1.getInventory()[i]);
         }
+        assertEquals(4, p1.getFreeInventoryIndex());
     }
 
     @Test
@@ -184,6 +186,13 @@ public class InventoryTests {
         for (Item item : p1.getInventory()) {
             assertNotEquals(testClothes, item);
         }
+    }
+
+    @Test
+    public void freeIndexInMiddle() {
+        pickupAllItems();
+        dropItem(2);
+        assertEquals(2, p1.getFreeInventoryIndex());
     }
 
     // ============================= EQUIP FUNCTIONS ======================================== //
