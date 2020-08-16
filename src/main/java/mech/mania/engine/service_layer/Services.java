@@ -44,10 +44,6 @@ public class Services {
      */
     public static VisualizerProtos.GameChange constructVisualizerChange(GameState gameState) {
         // TODO: construct VisualizerTurn (GameChange)
-        VisualizerProtos.CharacterChange characterChange = VisualizerProtos.CharacterChange.newBuilder()
-                .build();
-        VisualizerProtos.GameChange gameChange = VisualizerProtos.GameChange.newBuilder()
-                .build();
         return VisualizerProtos.GameChange.newBuilder()
                 .build();
     }

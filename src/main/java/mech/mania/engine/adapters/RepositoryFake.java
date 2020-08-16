@@ -3,7 +3,8 @@ package mech.mania.engine.adapters;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.model.VisualizerProtos;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**

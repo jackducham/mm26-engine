@@ -1,8 +1,8 @@
 package mech.mania.engine.domain.model;
 
 import mech.mania.engine.domain.game.characters.Character;
-import mech.mania.engine.domain.game.characters.*;
-
+import mech.mania.engine.domain.game.characters.CharacterDecision;
+import mech.mania.engine.domain.game.characters.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,8 +89,10 @@ public class GameChange {
                     builder.setDecisionType(CharacterProtos.DecisionType.NONE);
             }
 
-            for (Position position : path) {
-                builder.addPath(position.buildProtoClass());
+            if(path != null){
+                for (Position position : path) {
+                    builder.addPath(position.buildProtoClass());
+                }
             }
 
             return builder.build();

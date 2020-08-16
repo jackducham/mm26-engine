@@ -1,8 +1,6 @@
 package mech.mania.engine.service_layer;
 
-import mech.mania.engine.Config;
 import mech.mania.engine.domain.model.VisualizerProtos;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
