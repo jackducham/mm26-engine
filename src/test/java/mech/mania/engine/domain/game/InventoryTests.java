@@ -72,7 +72,7 @@ public class InventoryTests {
         assertNull(p1.getClothes());
     }
 
-    // ============================= DECISION FUNCTIONS ========================================
+    // ============================= DECISION FUNCTIONS ======================================== //
     public void pickupItem(int index) {
         // pick up item from tile
         PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
@@ -109,7 +109,14 @@ public class InventoryTests {
         GameLogic.doTurn(gameState, decisionMap);
     }
 
-    // ============================= PICKUP TESTS ========================================
+    public void pickupAllItems() {
+        // index is always 0 because items shift forward when picked up
+        while (p1Tile.getItems().size() > 0) {
+            pickupItem(0);
+        }
+    }
+
+    // ============================= PICKUP TESTS ======================================== //
     @Test
     public void pickupValidItemIndex() {
         pickupItem(0);
@@ -140,11 +147,7 @@ public class InventoryTests {
 
     @Test
     public void pickupMultipleItems() {
-        // index is always 0 because items shift forward when picked up
-        pickupItem(0);
-        pickupItem(0);
-        pickupItem(0);
-        pickupItem(0);
+        pickupAllItems();
         assertEquals(0, p1Tile.getItems().size());
 
         for (int i = 0; i < 4; i++) {
@@ -152,7 +155,38 @@ public class InventoryTests {
         }
     }
 
-    // ============================= EQUIP FUNCTIONS ========================================
+    @Test
+    public void pickupInventoryFull() {
+        int size = p1.getInventorySize();
+        for (int i = 0; i < size - 4; i++) {
+            p1Tile.addItem(Weapon.createDefaultWeapon());
+        }
+        Clothes testClothes = Clothes.createDefaultClothes();
+        p1Tile.addItem(testClothes);
+
+        // tile contains 17 items
+        assertEquals(size + 1, p1Tile.getItems().size());
+
+        // pick up 16 items, filling the inventory
+        for (int i = 0; i < size; i++) {
+            pickupItem(0);
+        }
+
+        // check that inventory is full
+        for (Item item : p1.getInventory()) {
+            assertNotNull(item);
+        }
+
+        assertEquals(-1, p1.getFreeInventoryIndex());
+        pickupItem(0);
+
+        // check that inventory doesn't contain overflow item
+        for (Item item : p1.getInventory()) {
+            assertNotEquals(testClothes, item);
+        }
+    }
+
+    // ============================= EQUIP FUNCTIONS ======================================== //
     @Test
     public void equipWeaponValid() {
         pickupItem(0);
@@ -196,10 +230,7 @@ public class InventoryTests {
 
     @Test
     public void equipFromMultipleItems() {
-        pickupItem(0);
-        pickupItem(0);
-        pickupItem(0);
-        pickupItem(0);
+        pickupAllItems();
         assertEquals(0, p1Tile.getItems().size());
 
         equipItem(0);
@@ -249,15 +280,56 @@ public class InventoryTests {
 
     @Test
     public void pickupMultipleItemsAndEquip() {
-        // pick up first weapon - should be in inventory, decrease tile items
-        pickupItem(0);
-        pickupItem(0);
-        pickupItem(0);
-        pickupItem(0);
-
+        pickupAllItems();
         equipItem(0);
         equipItem(1); // fails here
         assertEquals(defaultWeapon, p1.getWeapon());
         assertEquals(defaultClothes, p1.getClothes());
+    }
+
+    // ============================= DROP FUNCTIONS ======================================== //
+    @Test
+    public void dropValidItem() {
+        pickupAllItems();
+        dropItem(0);
+        assertEquals(defaultWeapon, p1Tile.getItems().get(0));
+        assertNull(p1.getInventory()[0]);
+        for (int i = 1; i < 4; i++) {
+            assertNotNull(p1.getInventory()[i]);
+        }
+    }
+
+    @Test
+    public void dropInvalidIndex() {
+        pickupAllItems();
+        dropItem(-1);
+        dropItem(16);
+        dropItem(300);
+        for (int i = 0; i < 4; i++) {
+            assertNotNull(p1.getInventory()[i]);
+        }
+        assertEquals(0, p1Tile.getItems().size());
+    }
+
+    @Test
+    public void dropItemAgain() {
+        pickupAllItems();
+        dropItem(0);
+        dropItem(0);
+        assertNull(p1.getInventory()[0]);
+        for (int i = 1; i < 4; i++) {
+            assertNotNull(p1.getInventory()[i]);
+        }
+        assertEquals(1, p1Tile.getItems().size());
+    }
+
+    @Test
+    public void dropNullItem() {
+        pickupAllItems();
+        dropItem(5);
+        for (int i = 0; i < 4; i++) {
+            assertNotNull(p1.getInventory()[i]);
+        }
+        assertEquals(0, p1Tile.getItems().size());
     }
 }

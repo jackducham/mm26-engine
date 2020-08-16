@@ -366,14 +366,17 @@ public class GameLogic {
      */
     public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
-        if (index < 0 || index > player.getInventorySize()) {
+        if (index < 0 || index >= player.getInventorySize()) {
             return false;
         }
-        if (player.getInventory()[index] != null) {
-            Item item = player.getInventory()[index];
-            player.setInventory(index, null);
-            currentTile.addItem(item);
+
+        if (player.getInventory()[index] == null) {
+            return false;
         }
+
+        Item item = player.getInventory()[index];
+        player.setInventory(index, null);
+        currentTile.addItem(item);
         return true;
     }
 
