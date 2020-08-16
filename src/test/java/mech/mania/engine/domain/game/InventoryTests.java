@@ -26,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
-/** This contains tests for any inventory actions */
+/** This contains tests for decisions related to inventory */
 public class InventoryTests {
     private GameState gameState;
     Tile p1Tile;
