@@ -25,10 +25,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        // Take infra port as first arg
+        String infraPort = Config.getInfraPort();
+        if(args.length > 0) infraPort = args[0];
+
+        // Take visualizer port as second arg
+        String visPort = Config.getVisualizerPort();
+        if(args.length > 1) visPort = args[1];
 
         // start servers
-        bus.handle(new CommandStartInfraServer(Config.getInfraPort()));
-        bus.handle(new CommandStartVisualizerServer(Config.getVisualizerPort()));
+        bus.handle(new CommandStartInfraServer(infraPort));
+        bus.handle(new CommandStartVisualizerServer(visPort));
 
         int numTurns = Config.getNumTurns();
         for (int turn = 1; !bus.getUow().getGameOver(); turn++) {

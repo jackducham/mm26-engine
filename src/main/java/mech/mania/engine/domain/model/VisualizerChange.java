@@ -1,8 +1,8 @@
 package mech.mania.engine.domain.model;
 
 import mech.mania.engine.domain.game.characters.Character;
-import mech.mania.engine.domain.game.characters.*;
-
+import mech.mania.engine.domain.game.characters.CharacterDecision;
+import mech.mania.engine.domain.game.characters.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,16 +89,18 @@ public class VisualizerChange {
                     builder.setDecisionType(CharacterProtos.DecisionType.NONE);
             }
 
-            for (Position position : path) {
-                builder.addPath(position.buildProtoClass());
+            if(path != null){
+                for (Position position : path) {
+                    builder.addPath(position.buildProtoClass());
+                }
             }
 
             return builder.build();
         }
     }
 
-    public VisualizerProtos.VisualizerChange buildProtoClass() {
-        VisualizerProtos.VisualizerChange.Builder builder = VisualizerProtos.VisualizerChange.newBuilder();
+    public VisualizerProtos.GameChange buildProtoClass() {
+        VisualizerProtos.GameChange.Builder builder = VisualizerProtos.GameChange.newBuilder();
         builder.addAllNewPlayerNames(newPlayerNames);
 
         for (String name : characterChanges.keySet()) {
