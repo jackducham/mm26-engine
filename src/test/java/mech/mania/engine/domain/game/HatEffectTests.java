@@ -122,4 +122,36 @@ public class HatEffectTests {
         // tests to see that the player's speed is 15 (base of 5 plus 2 * 5 from default shoes)
         assertEquals(15, p1.getSpeed());
     }
+
+    @Test
+    public void WeaponBoostEffect() {
+        // gives player1 a hat and equips it.
+        Player player1 = gameState.getPlayer("player1");
+        player1.setInventory(1, new Hat(new StatusModifier(0,
+                1, 0, 1, 0, 1,
+                0, 1, 0, 1, 0),
+                HatEffect.WEAPON_BOOST));
+        player1.setInventory(2, Weapon.createStrongerDefaultWeapon());
+        player1.equipItem(1);
+        player1.equipItem(2);
+
+        // tests to see that the player's speed is 15 (base of 0 plus 5 + 5 * 0.5 from stronger default weapon)
+        assertEquals(7, p1.getAttack());
+    }
+
+    @Test
+    public void ClothesBoostEffect() {
+        // gives player1 a hat and equips it.
+        Player player1 = gameState.getPlayer("player1");
+        player1.setInventory(1, new Hat(new StatusModifier(0,
+                1, 0, 1, 0, 1,
+                0, 1, 0, 1, 0),
+                HatEffect.CLOTHES_BOOST));
+        player1.setInventory(2, Clothes.createDefaultClothes());
+        player1.equipItem(1);
+        player1.equipItem(2);
+
+        // tests to see that the player's speed is 15 (base of 0 plus 2 * 8 from default clothes)
+        assertEquals(16, p1.getDefense());
+    }
 }

@@ -16,28 +16,26 @@ public enum HatEffect {
 
     SHOES_BOOST,
     /* EFFECT:
-        This hat effect causes doubles the flat speed modifier of the wearer's shoes.
+        This hat effect applies the flat speed bonus from the wearer's shoes a second time.
 
        IMPLEMENTATION:
-        NOT YET IMPLEMENTED
+        Player.java -> getSpeed() -> if this hat effect is detected, it adds the flat speed bonus on the shoes a second time.
      */
 
     CLOTHES_BOOST,
     /* EFFECT:
-        This hat effect multiplies the flat defense bonus of the wearer's clothes by a
-        factor of 1.5.
+        This hat effect applies the flat defense bonus of the wearer's clothes a second time.
 
        IMPLEMENTATION:
-        NOT YET IMPLEMENTED
+        Player.java -> getDefense() -> if this hat effect is detected, it adds the flat defense bonus on the clothes a second time.
      */
 
     WEAPON_BOOST,
     /* EFFECT:
-        This hat effect multiplies the flat damage bonus of the wearer's weapon by a
-        factor of 1.25.
+        This hat effect applies the flat damage bonus of the wearer's weapon a second time at half value.
 
        IMPLEMENTATION:
-        NOT YET IMPLEMENTED
+        Player.java -> getAttack() -> if this hat effect is detected, it adds the flat defense bonus on the weapon a second time (Multiplying by 0.5 first).
      */
 
     EXTRA_PICKUP_RANGE,

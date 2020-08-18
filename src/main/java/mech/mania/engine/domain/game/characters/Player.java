@@ -289,6 +289,9 @@ public class Player extends Character {
         }
         if (weapon != null) {
             attack += weapon.getStats().getFlatAttackChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.WEAPON_BOOST)) {
+                attack += (weapon.getStats().getFlatAttackChange() * 0.5);
+            }
         }
 
         // Add percent effects
@@ -318,6 +321,9 @@ public class Player extends Character {
         }
         if (clothes != null) {
             defense += clothes.getStats().getFlatDefenseChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.CLOTHES_BOOST)) {
+                defense += clothes.getStats().getFlatDefenseChange();
+            }
         }
         if (shoes != null) {
             defense += shoes.getStats().getFlatDefenseChange();

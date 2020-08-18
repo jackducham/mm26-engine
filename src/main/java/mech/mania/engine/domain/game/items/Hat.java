@@ -64,8 +64,8 @@ public class Hat extends Wearable {
      */
     public static Hat createDefaultHat() {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 1, 0,
-                1.2, 0, 0, 0, 0,
-                0, 0, 0);
+                1.2, 0, 1, 0, 1,
+                0, 1, 0);
         Hat defaultHat = new Hat(defaultStatusModifier, null);
         return defaultHat;
     }
