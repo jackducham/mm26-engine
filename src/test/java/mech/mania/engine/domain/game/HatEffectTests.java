@@ -12,21 +12,20 @@ import org.junit.Test;
 import java.util.HashMap;
 
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.assertEquals;
 
 public class HatEffectTests {
 
     private GameState gameState;
+    private Player p1;
 
     /**
      * Setup before tests
      */
     @Before
     public void setup() {
-        gameState = new GameState();
-
-        // Add player1
-        gameState.addNewPlayer("player1");
-
+        gameState = GameState.createDefaultGameState();
+        p1 = gameState.getPlayer("player1");
     }
 
     /**
@@ -57,7 +56,7 @@ public class HatEffectTests {
         // Check that the player starts with 5 hp
         int currentHP = gameState.getPlayer("player1").getCurrentHealth();
         System.out.println("Current HP: " + currentHP);
-        assertTrue(currentHP == 5);
+        assertEquals(5, currentHP);
 
         // Create a decision to use the potion
         PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
@@ -75,6 +74,6 @@ public class HatEffectTests {
         // Check that the player now has 7 HP
         currentHP = gameState.getPlayer("player1").getCurrentHealth();
         System.out.println("Current HP: " + currentHP);
-        assertTrue(currentHP == 7);
+        assertEquals(7, currentHP);
     }
 }
