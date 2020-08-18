@@ -49,7 +49,7 @@ public class Shoes extends Wearable {
      * @return a default Shoes object
      */
     public static Shoes createDefaultShoes() {
-        StatusModifier defaultStatusModifier = new StatusModifier(5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        StatusModifier defaultStatusModifier = new StatusModifier(5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Shoes defaultShoes = new Shoes(defaultStatusModifier);
         return defaultShoes;
     }

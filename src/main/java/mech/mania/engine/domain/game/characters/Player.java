@@ -178,6 +178,9 @@ public class Player extends Character {
         }
         if (shoes != null) {
             speed += shoes.getStats().getFlatSpeedChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.SHOES_BOOST)) {
+                speed += shoes.getStats().getFlatSpeedChange();
+            }
         }
         if (weapon != null) {
             speed += weapon.getStats().getFlatSpeedChange();

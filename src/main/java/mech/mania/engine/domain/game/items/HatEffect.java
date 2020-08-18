@@ -14,7 +14,7 @@ public enum HatEffect {
         it to the Player.
      */
 
-    SHOE_BOOST,
+    SHOES_BOOST,
     /* EFFECT:
         This hat effect causes doubles the flat speed modifier of the wearer's shoes.
 

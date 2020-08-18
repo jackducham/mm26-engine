@@ -1,7 +1,6 @@
 package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.characters.Player;
-import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.PlayerProtos;
@@ -37,7 +36,7 @@ public class HatEffectTests {
     }
 
     /**
-     * Tests MOVE decision (moves player from 0, 0 to 1, 0)
+     * Tests LINGERING_POTIONS hat effect
      */
     @Test
     public void lingeringPotionsEffect(){
@@ -106,5 +105,21 @@ public class HatEffectTests {
         currentHP = gameState.getPlayer("player1").getCurrentHealth();
         System.out.println("Current HP: " + currentHP + "/" + gameState.getPlayer("player1").getMaxHealth());
         assertEquals(20, currentHP);
+    }
+
+    @Test
+    public void ShoesBoostEffect() {
+        // gives player1 a hat and equips it.
+        Player player1 = gameState.getPlayer("player1");
+        player1.setInventory(1, new Hat(new StatusModifier(0,
+                1, 0, 1, 0, 0,
+                0, 0, 0, 0, 0),
+                HatEffect.SHOES_BOOST));
+        player1.setInventory(2, Shoes.createDefaultShoes());
+        player1.equipItem(1);
+        player1.equipItem(2);
+
+        // tests to see that the player's speed is 15 (base of 5 plus 2 * 5 from default shoes)
+        assertEquals(15, p1.getSpeed());
     }
 }
