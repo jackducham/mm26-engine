@@ -52,7 +52,10 @@ public enum HatEffect {
         three copies of the weapons on hit effect.
 
        IMPLEMENTATION:
-        NOT YET IMPLEMENTED
+        GameLogic.java -> processAttack(GameState gameState, Character attacker, Position attackCoordinate) ->
+        if this function detects the TRIPLED_ON_HIT effect on the attacker's hat, it creates a copy of the attacker's
+        weapon which has an attack (NOT attack change within the stats) of 0, and hits the target with that weapon three
+        times.
      */
 
     FULL_EXP

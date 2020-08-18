@@ -1,6 +1,7 @@
 package mech.mania.engine.domain.game.items;
 
 import mech.mania.engine.domain.model.ItemProtos;
+import org.graalvm.compiler.lir.LIRInstruction;
 
 public class TempStatusModifier extends StatusModifier {
     private int turnsLeft;
@@ -17,6 +18,12 @@ public class TempStatusModifier extends StatusModifier {
                 flatAttackChange, percentAttackChange, flatDefenseChange, percentDefenseChange, flatRegenPerTurn);
         this.turnsLeft = duration;
         this.damagePerTurn = damagePerTurn;
+    }
+
+    public TempStatusModifier(TempStatusModifier other) {
+        super(other);
+        this.turnsLeft = other.turnsLeft;
+        this.damagePerTurn = other.damagePerTurn;
     }
 
     // @TODO: Update ItemProtos
