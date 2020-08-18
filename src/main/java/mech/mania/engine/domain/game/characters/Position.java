@@ -28,14 +28,6 @@ public class Position {
         return positionBuilder.build();
     }
 
-    public boolean equals(Position other) {
-        if(this.x != other.x || this.y != other.y || this.board_id != other.board_id) {
-            return false;
-        }
-
-        return true;
-    }
-
     public int getX() {
         return x;
     }
@@ -58,5 +50,10 @@ public class Position {
 
     public void setBoardID(String board_id) {
         this.board_id = board_id;
+    }
+
+    public boolean equals(Position other) {
+        return this.board_id.equals(other.board_id)
+                && this.x == other.x && this.y == other.y;
     }
 }

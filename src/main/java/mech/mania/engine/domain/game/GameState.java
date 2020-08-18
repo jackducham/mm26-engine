@@ -4,11 +4,14 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
+import mech.mania.engine.domain.game.items.Clothes;
+import mech.mania.engine.domain.game.items.Shoes;
+import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.model.GameStateProtos;
-import mech.mania.engine.domain.model.VisualizerChange;
+import mech.mania.engine.domain.model.GameChange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +28,7 @@ public class GameState {
     private Map<String, Board> boardNames;
     private Map<String, Player> playerNames;
     private Map<String, Monster> monsterNames;
-    public VisualizerChange stateChange;
+    public GameChange stateChange;
 
     /**
      * Sets up a default GameState. Will eventually be expanded to set up the entire pvp board.
@@ -35,7 +38,7 @@ public class GameState {
         boardNames = new HashMap<>();
         playerNames = new HashMap<>();
         monsterNames = new HashMap<>();
-        stateChange = new VisualizerChange();
+        stateChange = new GameChange();
 
         // @TODO: Create pvp board
     }
@@ -169,15 +172,18 @@ public class GameState {
             tempGrid[i][20].setType(Tile.TileType.IMPASSIBLE);
         }
 
+        tempGrid[29][29].setType(Tile.TileType.VOID);
+
         //adds two portals to the pvp board
-        defaultGameState.getPvpBoard().getPortals().add(new Position(10, 14, "pvp"));
-        defaultGameState.getPvpBoard().getPortals().add(new Position(14, 1, "pvp"));
+        defaultGameState.getPvpBoard().addPortal(new Position(10, 14, "pvp"));
+        defaultGameState.getPvpBoard().addPortal(new Position(14, 1, "pvp"));
 
         //adds two players and moves them onto the pvp board
         defaultGameState.addNewPlayer("player1");
         defaultGameState.getPlayer("player1").setPosition(new Position(0, 4, "pvp"));
         defaultGameState.addNewPlayer("player2");
         defaultGameState.getPlayer("player2").setPosition(new Position(0, 24, "pvp"));
+
 
         //adds a single monster to the pvp board.
         //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster

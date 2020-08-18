@@ -28,8 +28,8 @@ public class TempStatusModifier extends StatusModifier {
                 tempStatusModifierProto.getStats().getPercentHealthChange(),
                 tempStatusModifierProto.getStats().getFlatExperienceChange(),
                 tempStatusModifierProto.getStats().getPercentExperienceChange(),
-                tempStatusModifierProto.getStats().getFlatDamageChange(),
-                tempStatusModifierProto.getStats().getPercentDamageChange(),
+                tempStatusModifierProto.getStats().getFlatAttackChange(),
+                tempStatusModifierProto.getStats().getPercentAttackChange(),
                 tempStatusModifierProto.getStats().getFlatDefenseChange(),
                 tempStatusModifierProto.getStats().getPercentDefenseChange(),
                 tempStatusModifierProto.getStats().getFlatRegenPerTurn()

@@ -12,6 +12,8 @@ import mech.mania.engine.domain.model.ItemProtos;
 import java.util.ArrayList;
 import java.util.List;
 
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
+
 public class Monster extends Character {
     private List<Item> drops;
 
@@ -116,7 +118,7 @@ public class Monster extends Character {
      * @return the position the Monster should move to
      */
     private Position findPositionToMove(GameState gameState, Position destination) {
-        List<Position> path = GameLogic.findPath(gameState, this.position, destination);
+        List<Position> path = findPath(gameState, this.position, destination);
         Position toMove;
         if (path.size() < getSpeed()) {
             toMove = path.get(path.size() - 1);
@@ -224,6 +226,8 @@ public class Monster extends Character {
         int splash = 0;
         int splashSpread = 0;
 
+        int attack = 1;
+
         /*
         TODO: add Item drop generation
         My current plan is to have an item generator specific to this monster which will generate a number of items
@@ -244,7 +248,7 @@ public class Monster extends Character {
 
         StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, defaultOnHit);
+        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, attack, defaultOnHit);
 
         Monster newMonster = new Monster("DefaultMonster" + DefaultMonsterQuantity,
                 baseSpeed + (int)speedFactor*baseSpeedSpread,

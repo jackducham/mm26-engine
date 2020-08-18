@@ -68,11 +68,10 @@ public class InfraRESTHandler {
             String name = playerInfo.getPlayerName();
             String ip = playerInfo.getPlayerIp();
 
-            message = "Successfully added new player";
             if (bus.getUow().updatePlayerConnectInfoMap(name, ip)) {
-                message = "Successfully added new player";
-            } else {
                 message = "Successfully updated already existing player";
+            } else {
+                message = "Successfully added new player";
             }
 
             LOGGER.fine(String.format("Received request from infra to connect with player \"%s\" @ %s", name, ip));
