@@ -1,7 +1,6 @@
 package mech.mania.engine.domain.game.items;
 
 import mech.mania.engine.domain.model.ItemProtos;
-import org.graalvm.compiler.lir.LIRInstruction;
 
 public class TempStatusModifier extends StatusModifier {
     private int turnsLeft;
