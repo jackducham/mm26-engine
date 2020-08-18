@@ -78,8 +78,8 @@ public class Consumable extends Item {
      */
     public static Consumable createDefaultConsumable() {
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0,
-        0, 1,
-        0, 1,
+        0, 0,
+        0, 0,
         0, 1,
         0, 0.5,
         2, 5, 0);

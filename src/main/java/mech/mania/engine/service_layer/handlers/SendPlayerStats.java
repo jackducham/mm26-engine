@@ -38,6 +38,7 @@ public class SendPlayerStats extends EventHandler {
         sendToAws(key, playerStatsMultiple);
     }
 
+
     /**
      * Converts a List of PlayerStats objects to an InputStream and sends it to an
      * AWS bucket specified by this.bucket, this.key, and this.region
