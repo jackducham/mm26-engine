@@ -139,6 +139,11 @@ public class Player extends Character {
      */
     @Override
     public void updateCharacter(GameState gameState) {
+        if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
+            TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
+            hatStats.setTurnsLeft(10);
+            applyEffect(hatStats);
+        }
         updateActiveEffects();
         applyWearableRegen();
         updateDeathState(gameState);

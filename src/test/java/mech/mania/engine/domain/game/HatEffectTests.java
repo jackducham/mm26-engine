@@ -188,7 +188,7 @@ public class HatEffectTests {
 
         // player2 starts with 20 health and gets hit with three effects, each causing 5 damage per turn, leaving 5 hp.
         //assertEquals(0, p1.getAttack());
-        assertEquals(20, p2.getCurrentHealth());
+        assertEquals(5, p2.getCurrentHealth());
 
         PlayerProtos.PlayerDecision.Builder emptyDecision = PlayerProtos.PlayerDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
@@ -198,6 +198,6 @@ public class HatEffectTests {
         GameLogic.doTurn(gameState, emptyDecisionMap);
 
         // player2 starts with 20 health and gets hit with three effects, each causing 5 damage per turn, leaving 5 hp.
-        assertEquals(5, p2.getCurrentHealth());
+        assertEquals(-10, p2.getCurrentHealth());
     }
 }

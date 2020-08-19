@@ -38,14 +38,6 @@ public enum HatEffect {
         Player.java -> getAttack() -> if this hat effect is detected, it adds the flat defense bonus on the weapon a second time (Multiplying by 0.5 first).
      */
 
-    EXTRA_PICKUP_RANGE,
-    /* EFFECT:
-        This hat effect increases the range at which the wearer can pickup items from the ground.
-
-       IMPLEMENTATION:
-        NOT YET IMPLEMENTED
-     */
-
     TRIPLED_ON_HIT,
     /* EFFECT:
         This hat effect causes attacks made by the wearer to deal no regular damage but they apply
@@ -58,12 +50,22 @@ public enum HatEffect {
         times.
      */
 
+    STACKING_BONUS,
+    /* EFFECT:
+        This hat effect adds a long lasting TSM to the wearer every turn which has the same stats as the hat this effect
+        is on. The end effect is that the longer that hat is worn, the bigger the stat bonus, up to the duration of the
+        TSM. When taking the hat off, the stats are slowly lost, one stack at a time, as they all wear off.
+
+       IMPLEMENTATION:
+        Player.java -> updateCharacter -> If this hat effect is detected, the updateCharacter function copies the SM of
+        the wearer's hat into a TSM with a duration of 10 and a damage per turn of 0, and then applies the effect.
+     */
+
     FULL_EXP
     /* EFFECT:
-        This hat effect causes the wearer to receive the the full amount of kill xp from any
-        monster they damage instead of their regular portion of it. This effect doesn't affect the
-        amount of xp that any other character receive, nor does it apply to xp awarded for player
-        kills.
+        This hat effect causes the wearer to receive an amount of experience equal to the largest reward given to any
+        other player. This effect doesn't affect the amount of xp that any other characters receive, nor does it apply
+        to xp awarded for player kills.
 
        IMPLEMENTATION:
         NOT YET IMPLEMENTED

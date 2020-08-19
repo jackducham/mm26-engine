@@ -25,6 +25,12 @@ public class TempStatusModifier extends StatusModifier {
         this.damagePerTurn = other.damagePerTurn;
     }
 
+    public TempStatusModifier(StatusModifier other) {
+        super(other);
+        this.turnsLeft = 1;
+        this.damagePerTurn = 0;
+    }
+
     // @TODO: Update ItemProtos
     public TempStatusModifier(ItemProtos.TempStatusModifier tempStatusModifierProto) {
         super(
