@@ -244,7 +244,9 @@ public abstract class Character {
             Integer damage = mapElement.getValue();
 
             Player player = gameState.getPlayer(attackerName);
-            if (player != null) { // attacker is Monster
+
+            // Don't reward if tagged character is Monster or is self
+            if (player != null && player != this) {
                 player.addExperience(damage);
             }
         }
