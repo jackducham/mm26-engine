@@ -131,8 +131,11 @@ public abstract class Character {
         if(effect == null || sourcePlayer == null) {
             return false;
         }
+
+        // activeEffects and activeEffectsSources are parallel lists
         activeEffects.add(effect);
-        activeEffectsSources.add(sourcePlayer); // add empty String to keep index matching
+        activeEffectsSources.add(sourcePlayer);
+
         return true;
     }
 
