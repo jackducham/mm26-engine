@@ -114,15 +114,31 @@ public abstract class Character {
      */
     public void hitByWeapon(String attacker, Weapon weapon, int attackerATK) {
         if (weapon.getOnHitEffect() != null) {
-            activeEffectsSources.add(attacker);
-            activeEffects.add(weapon.getOnHitEffect());
+            applyEffect(weapon.getOnHitEffect(), attacker);
         }
         int actualDamage = (int) calculateActualDamage(attacker, weapon, attackerATK);
         applyDamage(attacker, actualDamage);
     }
 
     /**
+     * Adds a new temporary status modifier to the Player's list of modifiers.
+     *
+     * @param effect the status which will be added to the Player's list
+     * @param sourcePlayer the name of the source player
+     * @return true if successful
+     */
+    public boolean applyEffect(TempStatusModifier effect, String sourcePlayer) {
+        if(effect == null || sourcePlayer == null) {
+            return false;
+        }
+        activeEffects.add(effect);
+        activeEffectsSources.add(sourcePlayer); // add empty String to keep index matching
+        return true;
+    }
+
+    /**
      * This function calculates the damage that the attacker does to the victim
+     * Formula from: https://github.com/jackducham/mm26-design/wiki/Your-Character
      * @param attacker name of the attacking player
      * @param weapon weapon the player attacked with
      * @param attackerATK the ATK of the attacker for calculating true attack damage
@@ -220,13 +236,13 @@ public abstract class Character {
      * @param gameState
      */
     protected void distributeRewards(GameState gameState) {
-        for (Map.Entry mapElement : taggedPlayersDamage.entrySet()) {
-            String attackerName = (String) mapElement.getKey();
-            Integer damage = (Integer) mapElement.getValue();
+        for (Map.Entry<String, Integer> mapElement : taggedPlayersDamage.entrySet()) {
+            String attackerName = mapElement.getKey();
+            Integer damage = mapElement.getValue();
 
             Player player = gameState.getPlayer(attackerName);
             if (player != null) { // attacker is Monster
-                player.experience += damage;
+                player.addExperience(damage);
             }
         }
     }
@@ -248,7 +264,9 @@ public abstract class Character {
     }
 
 
-    // ============================= GETTERS AND SETTERS ================================================================== //
+    // ============================= GETTERS AND SETTERS ============================= //
+    // For all getters: percent modifiers are de-buffs in (-1, 0) and buffs in (0, inf)
+    // So actual = (base + flat) * (1 + percent) and all modifiers can be added together
 
     public String getName() {
         return name;
@@ -256,67 +274,79 @@ public abstract class Character {
 
     public int getSpeed() {
         int flatChange = 0;
-        double percentChange = 1;
+        double percentChange = 0;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatSpeedChange();
             percentChange += effect.getPercentSpeedChange();
         }
 
-        double speed = (baseSpeed + flatChange) * percentChange;
-        return (int) speed;
+        // Make sure stat can't be negative
+        flatChange = max(-baseSpeed, flatChange);
+        percentChange = max(-1, percentChange);
+
+        double speed = (baseSpeed + flatChange) * (1 + percentChange);
+        return max(1, (int) speed); // speed can't be below 1
     }
 
     public int getMaxHealth() {
         int flatChange = 0;
-        double percentChange = 1;
+        double percentChange = 0;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatHealthChange();
             percentChange += effect.getPercentHealthChange();
         }
-        double maxHealth = (baseMaxHealth + flatChange) * percentChange;
-        return (int) maxHealth;
+
+        // Make sure stat can't be negative
+        flatChange = max(-baseMaxHealth, flatChange);
+        percentChange = max(-1, percentChange);
+
+        double maxHealth = (baseMaxHealth + flatChange) * (1 + percentChange);
+        return max(1, (int) maxHealth); // maxHealth can't be below 1
     }
 
     public int getExperience() {
-        int flatChange = 0;
-        double percentChange = 1;
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatExperienceChange();
-            percentChange += effect.getPercentExperienceChange();
-        }
-        double xp = (experience + flatChange) * percentChange;
-        return (int) xp;
+        return experience;
     }
 
     public int getAttack() {
         int flatChange = 0;
-        double percentChange = 1;
+        double percentChange = 0;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatAttackChange();
             percentChange += effect.getPercentAttackChange();
         }
-        double attack = (baseAttack + flatChange) * percentChange;
-        return (int) attack;
+
+        // Make sure stat can't be negative
+        flatChange = max(-baseAttack, flatChange);
+        percentChange = max(-1, percentChange);
+
+        double attack = (baseAttack + flatChange) * (1 + percentChange);
+        return max(1, (int) attack); // attack can't be below 1
     }
 
     public int getDefense() {
         int flatChange = 0;
-        double percentChange = 1;
+        double percentChange = 0;
         for (TempStatusModifier effect: activeEffects) {
             flatChange += effect.getFlatDefenseChange();
             percentChange += effect.getPercentDefenseChange();
         }
-        double defense = (baseDefense + flatChange) * percentChange;
+
+        // Make sure stat can't be negative
+        flatChange = max(-baseDefense, flatChange);
+        percentChange = max(-1, percentChange);
+
+        double defense = (baseDefense + flatChange) * (1 + percentChange);
         return (int) defense;
     }
 
     public int getCurrentHealth() {
+        currentHealth = min(currentHealth, getMaxHealth());
         return currentHealth;
     }
 
     public void updateCurrentHealth(int healthChange) {
         this.currentHealth += healthChange;
-
         this.currentHealth = min(this.currentHealth, this.getMaxHealth());
     }
 
