@@ -1,14 +1,21 @@
 package mech.mania.engine.adapters;
 
 import mech.mania.engine.domain.game.GameState;
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.VisualizerProtos;
+
+import java.util.logging.Logger;
 
 
 public interface RepositoryAbstract {
 
+    Logger LOGGER = Logger.getLogger("Repository");
+
     int storeGameState(final int turn, final GameState gameState);
 
-    int storeVisualizerChange(final int turn, final VisualizerProtos.GameChange visualizerChange);
+    int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange);
+
+    int storePlayerStatsBundle(final int turn, final CharacterProtos.PlayerStatsBundle playerStatsBundle);
 
     void reset();
 }

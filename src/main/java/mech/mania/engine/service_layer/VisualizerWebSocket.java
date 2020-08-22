@@ -15,7 +15,12 @@ import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 import javax.annotation.Resource;
+import javax.websocket.ContainerProvider;
+import javax.websocket.DeploymentException;
+import javax.websocket.WebSocketContainer;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 @SpringBootApplication
@@ -58,6 +63,15 @@ public class VisualizerWebSocket {
                 LOGGER.warning("An IOException occurred when sending turn to visualizer endpoint. Error message:\n" +
                         e.getMessage());
             }
+        }
+
+        /**
+         * Have this server connect to a URL to attempt to start a connection.
+         * @param url String url to connect to
+         */
+        public static void connectToUrl(String url) throws URISyntaxException, IOException, DeploymentException {
+            WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+            container.connectToServer(new VisualizerBinaryWebSocketHandler(), new URI(url));
         }
 
         @Override

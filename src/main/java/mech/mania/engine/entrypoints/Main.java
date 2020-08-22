@@ -5,6 +5,7 @@ import mech.mania.engine.Config;
 import mech.mania.engine.domain.messages.CommandStartInfraServer;
 import mech.mania.engine.domain.messages.CommandStartTurn;
 import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
+import mech.mania.engine.domain.messages.EventSendHistoryObjects;
 import mech.mania.engine.service_layer.MessageBus;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -26,24 +27,25 @@ public class Main {
 
     public static void main(String[] args) {
         // Take infra port as first arg
-        String infraPort = Config.getInfraPort();
+        String infraPort = Config.getProperty("infraPort");
         if(args.length > 0) infraPort = args[0];
 
         // Take visualizer port as second arg
-        String visPort = Config.getVisualizerPort();
+        String visPort = Config.getProperty("visualizerPort");
         if(args.length > 1) visPort = args[1];
 
         // start servers
         bus.handle(new CommandStartInfraServer(infraPort));
         bus.handle(new CommandStartVisualizerServer(visPort));
 
-        int numTurns = Config.getNumTurns();
-        for (int turn = 1; !bus.getUow().getGameOver(); turn++) {
+        int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
+        for (int turn = 1; turn < numTurns && !bus.getUow().getGameOver(); turn++) {
 
             Instant turnStartTime = Instant.now();
-            Instant nextTurnStart = turnStartTime.plusMillis(Config.getMillisBetweenTurns());
+            Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));
 
             bus.handle(new CommandStartTurn(turn));
+            bus.handle(new EventSendHistoryObjects());
 
             // have the next turn start after waiting millisBetweenTurns
             // after this turn began (make sure time between turns is

@@ -40,13 +40,13 @@ class ServerIntegrationTests {
     private val port = 9000  // match infraPort from config.properties
 
     /** URL that visualizer will connect to */
-    private var VISUALIZER_URL: String = "ws://localhost:$port/visualizer"
+    private var visualizerUrl: String = "ws://localhost:$port/visualizer"
 
     /** URL that infra will send new/reconnect player messages to */
-    private var INFRA_NEW_URL: String = "http://localhost:$port/infra/player/new"
-    private var INFRA_RECONNECT_URL: String = "http://localhost:$port/infra/player/reconnect"
+    private var infraNewUrl: String = "http://localhost:$port/infra/player/new"
+    private var infraReconnectUrl: String = "http://localhost:$port/infra/player/reconnect"
 
-    private var LOGGER = Logger.getLogger(ServerIntegrationTests::class.toString())
+    private var logger = Logger.getLogger(ServerIntegrationTests::class.toString())
 
 
     /**
@@ -77,10 +77,10 @@ class ServerIntegrationTests {
         try {
             val bytes = url.readBytes()
             val statusObj = InfraStatus.parseFrom(bytes)
-            LOGGER.info("Response upon sending endgame signal: ${statusObj.message}")
+            logger.info("Response upon sending endgame signal: ${statusObj.message}")
         } catch (e: Exception) {
             // if the server has already closed, then ignore
-            LOGGER.info("Exception in closing the server: ${e.message}")
+            logger.info("Exception in closing the server: ${e.message}")
         }
     }
 
@@ -104,7 +104,7 @@ class ServerIntegrationTests {
                         socket = ServerSocket(0)
                         socket.close()
                     } catch (e: Exception) {
-                        LOGGER.warning("No more free ports found: " + e.message)
+                        logger.warning("No more free ports found: " + e.message)
                         return
                     }
 
@@ -134,7 +134,7 @@ class ServerIntegrationTests {
 
                     val playerName = java.util.UUID.randomUUID().toString()
                     val playerAddr = "http://localhost:$randomPort/server"
-                    LOGGER.fine("Creating player \"$playerName\" with IP address $playerAddr")
+                    logger.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
                     playerNames.add(playerName)
                     playerAddrs.add(playerAddr)
@@ -147,7 +147,7 @@ class ServerIntegrationTests {
         }
 
         for (i in 0 until n) {
-            with (URL(INFRA_NEW_URL).openConnection() as HttpURLConnection) {
+            with (URL(infraNewUrl).openConnection() as HttpURLConnection) {
                 requestMethod = "POST"
                 doOutput = true
                 setRequestProperty("Content-Type", "application/octet-stream")

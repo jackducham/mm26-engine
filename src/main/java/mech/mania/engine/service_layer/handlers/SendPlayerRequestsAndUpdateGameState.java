@@ -72,7 +72,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
             try {
                 http.setRequestMethod("POST");
                 http.setDoOutput(true);
-                http.setConnectTimeout(Config.getMillisBetweenTurns());
+                http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")));
 
                 PlayerProtos.PlayerTurn turn =
                         Services.constructPlayerTurn(uow.getGameState(), playerName);

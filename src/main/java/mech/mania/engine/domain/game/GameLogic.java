@@ -6,6 +6,7 @@ import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
 import java.util.Collection;
@@ -19,6 +20,15 @@ import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
  * A class to execute the game logic.
  */
 public class GameLogic {
+    /**
+     * Returns a VisualizerChange object that denotes how the gameState
+     * has changed in relevant terms to the Visualizer team
+     */
+    public static GameChange constructGameChange(GameState gameState) {
+        // TODO: construct VisualizerTurn (GameChange)
+        return new GameChange();
+    }
+
     /**
      * Executes the logic of one turn given a starting {@link GameState} and a list of {@link PlayerDecision}s.
      * @param gameState The initial game state.
