@@ -7,6 +7,7 @@ import mech.mania.engine.domain.messages.CommandStartTurn;
 import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
 import mech.mania.engine.domain.messages.EventSendHistoryObjects;
 import mech.mania.engine.service_layer.MessageBus;
+import mech.mania.engine.service_layer.UnitOfWorkFake;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -19,7 +20,9 @@ import static java.time.temporal.ChronoUnit.MILLIS;
 public class Main {
 
     // default bootstrap argument is DatabaseAws (see Bootstrap.java)
-    public static MessageBus bus = Bootstrap.bootstrap();
+    // public static MessageBus bus = Bootstrap.bootstrap();
+    // use this line of code if no AWS credentials
+    public static MessageBus bus = Bootstrap.bootstrap(new UnitOfWorkFake());
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
@@ -52,7 +55,10 @@ public class Main {
 
             // have the next turn start after waiting millisBetweenTurns
             // after this turn began (make sure time between turns is
-            // actually as advertised)
+            // actually as advertised); assumes that turns will take less than
+            // time mentioned. can't do anything about turns taking longer
+            // because we can't guarantee that the game state is properly
+            // updated.
             try {
                 Instant now = Instant.now();
                 long waitTime = MILLIS.between(now, nextTurnStart);
