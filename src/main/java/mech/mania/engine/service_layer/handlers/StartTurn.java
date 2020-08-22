@@ -15,19 +15,14 @@ public class StartTurn extends CommandHandler {
 
     @Override
     public void handle(Command command) {
-
         if (uow.getGameOver()) {
             System.out.println("game is over");
 
-            // Game was ended last turn, so shut down servers
-            uow.addNewMessage(new CommandStopInfraServer());
-            uow.addNewMessage(new CommandStopVisualizerServer());
+            // Game was ended last turn so don't add more commands.
             return;
         }
-
         // get arguments from command object
         int turn = ((CommandStartTurn) command).getTurn();
-
         LOGGER.info(String.format("Turn %s", turn));
 
         uow.setTurn(turn);

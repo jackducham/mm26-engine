@@ -2,9 +2,7 @@ package mech.mania.engine.entrypoints;
 
 import mech.mania.engine.Bootstrap;
 import mech.mania.engine.Config;
-import mech.mania.engine.domain.messages.CommandStartInfraServer;
-import mech.mania.engine.domain.messages.CommandStartTurn;
-import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
+import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.MessageBus;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +37,6 @@ public class Main {
 
         int numTurns = Config.getNumTurns();
         for (int turn = 1; !bus.getUow().getGameOver(); turn++) {
-
             Instant turnStartTime = Instant.now();
             Instant nextTurnStart = turnStartTime.plusMillis(Config.getMillisBetweenTurns());
 
@@ -57,5 +54,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+        bus.handle(new CommandStopInfraServer());
+        bus.handle(new CommandStopVisualizerServer());
     }
 }
