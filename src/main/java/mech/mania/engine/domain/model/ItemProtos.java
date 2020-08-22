@@ -118,7 +118,7 @@ public final class ItemProtos {
      */
     mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder();
 
-    public mech.mania.engine.domain.model.ItemProtos.Item.ItemCase getItemCase();
+    mech.mania.engine.domain.model.ItemProtos.Item.ItemCase getItemCase();
   }
   /**
    * Protobuf type {@code item.Item}
@@ -297,7 +297,7 @@ public final class ItemProtos {
       CONSUMABLE(7),
       ITEM_NOT_SET(0);
       private final int value;
-      private ItemCase(int value) {
+      ItemCase(int value) {
         this.value = value;
       }
       /**
@@ -324,7 +324,7 @@ public final class ItemProtos {
       public int getNumber() {
         return this.value;
       }
-    };
+    }
 
     public ItemCase
     getItemCase() {
@@ -647,8 +647,7 @@ public final class ItemProtos {
         case 0:
         default:
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1321,7 +1320,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 3;
-        onChanged();;
+        onChanged();
         return clothesBuilder_;
       }
 
@@ -1462,7 +1461,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 4;
-        onChanged();;
+        onChanged();
         return hatBuilder_;
       }
 
@@ -1603,7 +1602,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 5;
-        onChanged();;
+        onChanged();
         return shoesBuilder_;
       }
 
@@ -1744,7 +1743,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 6;
-        onChanged();;
+        onChanged();
         return weaponBuilder_;
       }
 
@@ -1885,7 +1884,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 7;
-        onChanged();;
+        onChanged();
         return consumableBuilder_;
       }
       @java.lang.Override
@@ -2126,8 +2125,7 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2789,7 +2787,7 @@ public final class ItemProtos {
 
       private final int value;
 
-      private HatEffect(int value) {
+      HatEffect(int value) {
         this.value = value;
       }
 
@@ -2899,8 +2897,7 @@ public final class ItemProtos {
             .equals(other.getStats())) return false;
       }
       if (hatEffect_ != other.hatEffect_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -3582,8 +3579,7 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4050,10 +4046,10 @@ public final class ItemProtos {
     int getSplashRadius();
 
     /**
-     * <code>int32 damage = 4;</code>
-     * @return The damage.
+     * <code>int32 attack = 4;</code>
+     * @return The attack.
      */
-    int getDamage();
+    int getAttack();
 
     /**
      * <code>.item.TempStatusModifier on_hit_effect = 5;</code>
@@ -4140,7 +4136,7 @@ public final class ItemProtos {
             }
             case 32: {
 
-              damage_ = input.readInt32();
+              attack_ = input.readInt32();
               break;
             }
             case 42: {
@@ -4236,15 +4232,15 @@ public final class ItemProtos {
       return splashRadius_;
     }
 
-    public static final int DAMAGE_FIELD_NUMBER = 4;
-    private int damage_;
+    public static final int ATTACK_FIELD_NUMBER = 4;
+    private int attack_;
     /**
-     * <code>int32 damage = 4;</code>
-     * @return The damage.
+     * <code>int32 attack = 4;</code>
+     * @return The attack.
      */
     @java.lang.Override
-    public int getDamage() {
-      return damage_;
+    public int getAttack() {
+      return attack_;
     }
 
     public static final int ON_HIT_EFFECT_FIELD_NUMBER = 5;
@@ -4296,8 +4292,8 @@ public final class ItemProtos {
       if (splashRadius_ != 0) {
         output.writeInt32(3, splashRadius_);
       }
-      if (damage_ != 0) {
-        output.writeInt32(4, damage_);
+      if (attack_ != 0) {
+        output.writeInt32(4, attack_);
       }
       if (onHitEffect_ != null) {
         output.writeMessage(5, getOnHitEffect());
@@ -4323,9 +4319,9 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, splashRadius_);
       }
-      if (damage_ != 0) {
+      if (attack_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, damage_);
+          .computeInt32Size(4, attack_);
       }
       if (onHitEffect_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -4355,15 +4351,14 @@ public final class ItemProtos {
           != other.getRange()) return false;
       if (getSplashRadius()
           != other.getSplashRadius()) return false;
-      if (getDamage()
-          != other.getDamage()) return false;
+      if (getAttack()
+          != other.getAttack()) return false;
       if (hasOnHitEffect() != other.hasOnHitEffect()) return false;
       if (hasOnHitEffect()) {
         if (!getOnHitEffect()
             .equals(other.getOnHitEffect())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4381,8 +4376,8 @@ public final class ItemProtos {
       hash = (53 * hash) + getRange();
       hash = (37 * hash) + SPLASH_RADIUS_FIELD_NUMBER;
       hash = (53 * hash) + getSplashRadius();
-      hash = (37 * hash) + DAMAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getDamage();
+      hash = (37 * hash) + ATTACK_FIELD_NUMBER;
+      hash = (53 * hash) + getAttack();
       if (hasOnHitEffect()) {
         hash = (37 * hash) + ON_HIT_EFFECT_FIELD_NUMBER;
         hash = (53 * hash) + getOnHitEffect().hashCode();
@@ -4530,7 +4525,7 @@ public final class ItemProtos {
 
         splashRadius_ = 0;
 
-        damage_ = 0;
+        attack_ = 0;
 
         if (onHitEffectBuilder_ == null) {
           onHitEffect_ = null;
@@ -4571,7 +4566,7 @@ public final class ItemProtos {
         }
         result.range_ = range_;
         result.splashRadius_ = splashRadius_;
-        result.damage_ = damage_;
+        result.attack_ = attack_;
         if (onHitEffectBuilder_ == null) {
           result.onHitEffect_ = onHitEffect_;
         } else {
@@ -4634,8 +4629,8 @@ public final class ItemProtos {
         if (other.getSplashRadius() != 0) {
           setSplashRadius(other.getSplashRadius());
         }
-        if (other.getDamage() != 0) {
-          setDamage(other.getDamage());
+        if (other.getAttack() != 0) {
+          setAttack(other.getAttack());
         }
         if (other.hasOnHitEffect()) {
           mergeOnHitEffect(other.getOnHitEffect());
@@ -4850,33 +4845,33 @@ public final class ItemProtos {
         return this;
       }
 
-      private int damage_ ;
+      private int attack_ ;
       /**
-       * <code>int32 damage = 4;</code>
-       * @return The damage.
+       * <code>int32 attack = 4;</code>
+       * @return The attack.
        */
       @java.lang.Override
-      public int getDamage() {
-        return damage_;
+      public int getAttack() {
+        return attack_;
       }
       /**
-       * <code>int32 damage = 4;</code>
-       * @param value The damage to set.
+       * <code>int32 attack = 4;</code>
+       * @param value The attack to set.
        * @return This builder for chaining.
        */
-      public Builder setDamage(int value) {
+      public Builder setAttack(int value) {
         
-        damage_ = value;
+        attack_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 damage = 4;</code>
+       * <code>int32 attack = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDamage() {
+      public Builder clearAttack() {
         
-        damage_ = 0;
+        attack_ = 0;
         onChanged();
         return this;
       }
@@ -5268,8 +5263,7 @@ public final class ItemProtos {
       }
       if (getStacks()
           != other.getStacks()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -5784,16 +5778,16 @@ public final class ItemProtos {
     double getPercentExperienceChange();
 
     /**
-     * <code>int32 flat_damage_change = 7;</code>
-     * @return The flatDamageChange.
+     * <code>int32 flat_attack_change = 7;</code>
+     * @return The flatAttackChange.
      */
-    int getFlatDamageChange();
+    int getFlatAttackChange();
 
     /**
-     * <code>double percent_damage_change = 8;</code>
-     * @return The percentDamageChange.
+     * <code>double percent_attack_change = 8;</code>
+     * @return The percentAttackChange.
      */
-    double getPercentDamageChange();
+    double getPercentAttackChange();
 
     /**
      * <code>int32 flat_defense_change = 9;</code>
@@ -5890,12 +5884,12 @@ public final class ItemProtos {
             }
             case 56: {
 
-              flatDamageChange_ = input.readInt32();
+              flatAttackChange_ = input.readInt32();
               break;
             }
             case 65: {
 
-              percentDamageChange_ = input.readDouble();
+              percentAttackChange_ = input.readDouble();
               break;
             }
             case 72: {
@@ -6011,26 +6005,26 @@ public final class ItemProtos {
       return percentExperienceChange_;
     }
 
-    public static final int FLAT_DAMAGE_CHANGE_FIELD_NUMBER = 7;
-    private int flatDamageChange_;
+    public static final int FLAT_ATTACK_CHANGE_FIELD_NUMBER = 7;
+    private int flatAttackChange_;
     /**
-     * <code>int32 flat_damage_change = 7;</code>
-     * @return The flatDamageChange.
+     * <code>int32 flat_attack_change = 7;</code>
+     * @return The flatAttackChange.
      */
     @java.lang.Override
-    public int getFlatDamageChange() {
-      return flatDamageChange_;
+    public int getFlatAttackChange() {
+      return flatAttackChange_;
     }
 
-    public static final int PERCENT_DAMAGE_CHANGE_FIELD_NUMBER = 8;
-    private double percentDamageChange_;
+    public static final int PERCENT_ATTACK_CHANGE_FIELD_NUMBER = 8;
+    private double percentAttackChange_;
     /**
-     * <code>double percent_damage_change = 8;</code>
-     * @return The percentDamageChange.
+     * <code>double percent_attack_change = 8;</code>
+     * @return The percentAttackChange.
      */
     @java.lang.Override
-    public double getPercentDamageChange() {
-      return percentDamageChange_;
+    public double getPercentAttackChange() {
+      return percentAttackChange_;
     }
 
     public static final int FLAT_DEFENSE_CHANGE_FIELD_NUMBER = 9;
@@ -6098,11 +6092,11 @@ public final class ItemProtos {
       if (percentExperienceChange_ != 0D) {
         output.writeDouble(6, percentExperienceChange_);
       }
-      if (flatDamageChange_ != 0) {
-        output.writeInt32(7, flatDamageChange_);
+      if (flatAttackChange_ != 0) {
+        output.writeInt32(7, flatAttackChange_);
       }
-      if (percentDamageChange_ != 0D) {
-        output.writeDouble(8, percentDamageChange_);
+      if (percentAttackChange_ != 0D) {
+        output.writeDouble(8, percentAttackChange_);
       }
       if (flatDefenseChange_ != 0) {
         output.writeInt32(9, flatDefenseChange_);
@@ -6146,13 +6140,13 @@ public final class ItemProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(6, percentExperienceChange_);
       }
-      if (flatDamageChange_ != 0) {
+      if (flatAttackChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, flatDamageChange_);
+          .computeInt32Size(7, flatAttackChange_);
       }
-      if (percentDamageChange_ != 0D) {
+      if (percentAttackChange_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, percentDamageChange_);
+          .computeDoubleSize(8, percentAttackChange_);
       }
       if (flatDefenseChange_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -6196,11 +6190,11 @@ public final class ItemProtos {
       if (java.lang.Double.doubleToLongBits(getPercentExperienceChange())
           != java.lang.Double.doubleToLongBits(
               other.getPercentExperienceChange())) return false;
-      if (getFlatDamageChange()
-          != other.getFlatDamageChange()) return false;
-      if (java.lang.Double.doubleToLongBits(getPercentDamageChange())
+      if (getFlatAttackChange()
+          != other.getFlatAttackChange()) return false;
+      if (java.lang.Double.doubleToLongBits(getPercentAttackChange())
           != java.lang.Double.doubleToLongBits(
-              other.getPercentDamageChange())) return false;
+              other.getPercentAttackChange())) return false;
       if (getFlatDefenseChange()
           != other.getFlatDefenseChange()) return false;
       if (java.lang.Double.doubleToLongBits(getPercentDefenseChange())
@@ -6208,8 +6202,7 @@ public final class ItemProtos {
               other.getPercentDefenseChange())) return false;
       if (getFlatRegenPerTurn()
           != other.getFlatRegenPerTurn()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -6234,11 +6227,11 @@ public final class ItemProtos {
       hash = (37 * hash) + PERCENT_EXPERIENCE_CHANGE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getPercentExperienceChange()));
-      hash = (37 * hash) + FLAT_DAMAGE_CHANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getFlatDamageChange();
-      hash = (37 * hash) + PERCENT_DAMAGE_CHANGE_FIELD_NUMBER;
+      hash = (37 * hash) + FLAT_ATTACK_CHANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getFlatAttackChange();
+      hash = (37 * hash) + PERCENT_ATTACK_CHANGE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getPercentDamageChange()));
+          java.lang.Double.doubleToLongBits(getPercentAttackChange()));
       hash = (37 * hash) + FLAT_DEFENSE_CHANGE_FIELD_NUMBER;
       hash = (53 * hash) + getFlatDefenseChange();
       hash = (37 * hash) + PERCENT_DEFENSE_CHANGE_FIELD_NUMBER;
@@ -6391,9 +6384,9 @@ public final class ItemProtos {
 
         percentExperienceChange_ = 0D;
 
-        flatDamageChange_ = 0;
+        flatAttackChange_ = 0;
 
-        percentDamageChange_ = 0D;
+        percentAttackChange_ = 0D;
 
         flatDefenseChange_ = 0;
 
@@ -6433,8 +6426,8 @@ public final class ItemProtos {
         result.percentHealthChange_ = percentHealthChange_;
         result.flatExperienceChange_ = flatExperienceChange_;
         result.percentExperienceChange_ = percentExperienceChange_;
-        result.flatDamageChange_ = flatDamageChange_;
-        result.percentDamageChange_ = percentDamageChange_;
+        result.flatAttackChange_ = flatAttackChange_;
+        result.percentAttackChange_ = percentAttackChange_;
         result.flatDefenseChange_ = flatDefenseChange_;
         result.percentDefenseChange_ = percentDefenseChange_;
         result.flatRegenPerTurn_ = flatRegenPerTurn_;
@@ -6504,11 +6497,11 @@ public final class ItemProtos {
         if (other.getPercentExperienceChange() != 0D) {
           setPercentExperienceChange(other.getPercentExperienceChange());
         }
-        if (other.getFlatDamageChange() != 0) {
-          setFlatDamageChange(other.getFlatDamageChange());
+        if (other.getFlatAttackChange() != 0) {
+          setFlatAttackChange(other.getFlatAttackChange());
         }
-        if (other.getPercentDamageChange() != 0D) {
-          setPercentDamageChange(other.getPercentDamageChange());
+        if (other.getPercentAttackChange() != 0D) {
+          setPercentAttackChange(other.getPercentAttackChange());
         }
         if (other.getFlatDefenseChange() != 0) {
           setFlatDefenseChange(other.getFlatDefenseChange());
@@ -6734,64 +6727,64 @@ public final class ItemProtos {
         return this;
       }
 
-      private int flatDamageChange_ ;
+      private int flatAttackChange_ ;
       /**
-       * <code>int32 flat_damage_change = 7;</code>
-       * @return The flatDamageChange.
+       * <code>int32 flat_attack_change = 7;</code>
+       * @return The flatAttackChange.
        */
       @java.lang.Override
-      public int getFlatDamageChange() {
-        return flatDamageChange_;
+      public int getFlatAttackChange() {
+        return flatAttackChange_;
       }
       /**
-       * <code>int32 flat_damage_change = 7;</code>
-       * @param value The flatDamageChange to set.
+       * <code>int32 flat_attack_change = 7;</code>
+       * @param value The flatAttackChange to set.
        * @return This builder for chaining.
        */
-      public Builder setFlatDamageChange(int value) {
+      public Builder setFlatAttackChange(int value) {
         
-        flatDamageChange_ = value;
+        flatAttackChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 flat_damage_change = 7;</code>
+       * <code>int32 flat_attack_change = 7;</code>
        * @return This builder for chaining.
        */
-      public Builder clearFlatDamageChange() {
+      public Builder clearFlatAttackChange() {
         
-        flatDamageChange_ = 0;
+        flatAttackChange_ = 0;
         onChanged();
         return this;
       }
 
-      private double percentDamageChange_ ;
+      private double percentAttackChange_ ;
       /**
-       * <code>double percent_damage_change = 8;</code>
-       * @return The percentDamageChange.
+       * <code>double percent_attack_change = 8;</code>
+       * @return The percentAttackChange.
        */
       @java.lang.Override
-      public double getPercentDamageChange() {
-        return percentDamageChange_;
+      public double getPercentAttackChange() {
+        return percentAttackChange_;
       }
       /**
-       * <code>double percent_damage_change = 8;</code>
-       * @param value The percentDamageChange to set.
+       * <code>double percent_attack_change = 8;</code>
+       * @param value The percentAttackChange to set.
        * @return This builder for chaining.
        */
-      public Builder setPercentDamageChange(double value) {
+      public Builder setPercentAttackChange(double value) {
         
-        percentDamageChange_ = value;
+        percentAttackChange_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double percent_damage_change = 8;</code>
+       * <code>double percent_attack_change = 8;</code>
        * @return This builder for chaining.
        */
-      public Builder clearPercentDamageChange() {
+      public Builder clearPercentAttackChange() {
         
-        percentDamageChange_ = 0D;
+        percentAttackChange_ = 0D;
         onChanged();
         return this;
       }
@@ -7251,8 +7244,7 @@ public final class ItemProtos {
           != other.getFlatRegenPerTurn()) return false;
       if (getTurnsLeft()
           != other.getTurnsLeft()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -7901,12 +7893,12 @@ public final class ItemProtos {
       "ponH\000\022&\n\nconsumable\030\007 \001(\0132\020.item.Consuma" +
       "bleH\000B\006\n\004item\".\n\007Clothes\022#\n\005stats\030\001 \001(\0132" +
       "\024.item.StatusModifier\"j\n\003Hat\022#\n\005stats\030\001 " +
-      "\001(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030" +
+              "\001(\0132\024.item.StatusModifier\022'\n\nhat_effect\030" +
       "\002 \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022" +
       "\010\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item" +
       ".StatusModifier\"\224\001\n\006Weapon\022#\n\005stats\030\001 \001(" +
       "\0132\024.item.StatusModifier\022\r\n\005range\030\002 \001(\005\022\025" +
-      "\n\rsplash_radius\030\003 \001(\005\022\016\n\006damage\030\004 \001(\005\022/\n" +
+      "\n\rsplash_radius\030\003 \001(\005\022\016\n\006attack\030\004 \001(\005\022/\n" +
       "\ron_hit_effect\030\005 \001(\0132\030.item.TempStatusMo" +
       "difier\"F\n\nConsumable\022(\n\006effect\030\001 \001(\0132\030.i" +
       "tem.TempStatusModifier\022\016\n\006stacks\030\002 \001(\005\"\334" +
@@ -7915,8 +7907,8 @@ public final class ItemProtos {
       "at_health_change\030\003 \001(\005\022\035\n\025percent_health" +
       "_change\030\004 \001(\001\022\036\n\026flat_experience_change\030" +
       "\005 \001(\005\022!\n\031percent_experience_change\030\006 \001(\001" +
-      "\022\032\n\022flat_damage_change\030\007 \001(\005\022\035\n\025percent_" +
-      "damage_change\030\010 \001(\001\022\033\n\023flat_defense_chan" +
+      "\022\032\n\022flat_attack_change\030\007 \001(\005\022\035\n\025percent_" +
+      "attack_change\030\010 \001(\001\022\033\n\023flat_defense_chan" +
       "ge\030\t \001(\005\022\036\n\026percent_defense_change\030\n \001(\001" +
       "\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\251\001\n\022TempSt" +
       "atusModifier\022#\n\005stats\030\001 \001(\0132\024.item.Statu" +
@@ -7959,7 +7951,7 @@ public final class ItemProtos {
     internal_static_item_Weapon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Weapon_descriptor,
-        new java.lang.String[] { "Stats", "Range", "SplashRadius", "Damage", "OnHitEffect", });
+        new java.lang.String[] { "Stats", "Range", "SplashRadius", "Attack", "OnHitEffect", });
     internal_static_item_Consumable_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_item_Consumable_fieldAccessorTable = new
@@ -7971,7 +7963,7 @@ public final class ItemProtos {
     internal_static_item_StatusModifier_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_StatusModifier_descriptor,
-        new java.lang.String[] { "FlatSpeedChange", "PercentSpeedChange", "FlatHealthChange", "PercentHealthChange", "FlatExperienceChange", "PercentExperienceChange", "FlatDamageChange", "PercentDamageChange", "FlatDefenseChange", "PercentDefenseChange", "FlatRegenPerTurn", });
+        new java.lang.String[] { "FlatSpeedChange", "PercentSpeedChange", "FlatHealthChange", "PercentHealthChange", "FlatExperienceChange", "PercentExperienceChange", "FlatAttackChange", "PercentAttackChange", "FlatDefenseChange", "PercentDefenseChange", "FlatRegenPerTurn", });
     internal_static_item_TempStatusModifier_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_item_TempStatusModifier_fieldAccessorTable = new

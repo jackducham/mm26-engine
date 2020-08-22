@@ -1,18 +1,11 @@
 package mech.mania.engine.domain.game;
 
-import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
-import mech.mania.engine.service_layer.UnitOfWorkAbstract;
-import mech.mania.engine.service_layer.UnitOfWorkFake;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-
 /** This contains tests for decisions related to attacks */
 public class AttackTests {
-
     private GameState gameState;
 
     /**
@@ -20,7 +13,7 @@ public class AttackTests {
      */
     @Before
     public void setup() {
-        gameState = new GameState();
+        gameState = GameState.createDefaultGameState();
     }
 
     /**
@@ -31,4 +24,11 @@ public class AttackTests {
 
     }
 
+    /**
+     * Test initial player addition and spawn location
+     */
+    @Test
+    public void gameInit() {
+
+    }
 }

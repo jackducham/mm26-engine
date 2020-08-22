@@ -2,20 +2,18 @@ package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
-
-import mech.mania.engine.domain.game.characters.Monster;
-import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Character;
-import mech.mania.engine.domain.game.characters.CharacterDecision;
-
+import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.game.items.Item;
-import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
-
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 /**
  * A class to execute the game logic.
@@ -47,7 +45,6 @@ public class GameLogic {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 cDecisions.put(entry.getKey(), newDecision);
             }
-
         }
 
 
@@ -58,8 +55,8 @@ public class GameLogic {
 
         for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
-                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
-                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
+                    || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
+                    || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
                 inventoryActions.put(entry.getKey(), entry.getValue());
 
             } else if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.ATTACK) {
@@ -161,19 +158,21 @@ public class GameLogic {
      * @param gameState current gameState
      * @param character player to be moved
      * @param targetPosition position the player should be moved to
-     * @return A list of position which make up the path used to reach the target
      */
-    public static List<Position> moveCharacter(GameState gameState, Character character, Position targetPosition) {
-        if (!validatePosition(gameState, targetPosition)) {
-            return new ArrayList<>();
-        }
-        List<Position> path = findPath(gameState, character.getPosition(), targetPosition); //Default return value might be empty, or might be of size one
-        if(path.size() > character.getSpeed()) {
-            return new ArrayList<>();
-        }
+    public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) return;
+
+        // Get shortest path length from current to target position (returns empty list for impossible target)
+        List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
+
+        // If path is empty (i.e. target is unreachable), don't move
+        if(path.size() == 0) return;
+
+        // If path would be greater than speed allows, act as if impossible target was chosen and don't move
+        if(path.size() > character.getSpeed()) return;
+
         character.setPosition(targetPosition);
         gameState.stateChange.updatePlayer(character, null, path, false, false);
-        return path;
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -189,7 +188,7 @@ public class GameLogic {
 
         //checks the portals on the player's current board
         for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
-            if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
+            if(player.getPosition().equals(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i))) {
                 return true;
             }
         }
@@ -245,11 +244,7 @@ public class GameLogic {
             return false;
         }
 
-        if (calculateManhattanDistance(character.getPosition(), attackCoordinate) > playerWeapon.getRange()) {
-            return false;
-        }
-
-        return true;
+        return calculateManhattanDistance(character.getPosition(), attackCoordinate) <= playerWeapon.getRange();
     }
 
     /**
@@ -340,7 +335,7 @@ public class GameLogic {
         if (tile == null) {
             return false;
         }
-        if (index < 0 || index > tile.getItems().size()) {
+        if (index < 0 || index >= tile.getItems().size()) {
             return false;
         }
         int playerInventoryIndex = player.getFreeInventoryIndex();
@@ -363,14 +358,17 @@ public class GameLogic {
      */
     public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
-        if (index < 0 || index > player.getInventorySize()) {
+        if (index < 0 || index >= player.getInventorySize()) {
             return false;
         }
-        if (player.getInventory()[index] != null) {
-            Item item = player.getInventory()[index];
-            player.setInventory(index, null);
-            currentTile.addItem(item);
+
+        if (player.getInventory()[index] == null) {
+            return false;
         }
+
+        Item item = player.getInventory()[index];
+        player.setInventory(index, null);
+        currentTile.addItem(item);
         return true;
     }
 
@@ -417,16 +415,5 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
-    }
-
-    /**
-     * Provides a list of positions from a start position to and end position.
-     * @param gameState current gameState
-     * @param start position at beginning of desired path
-     * @param end position at end of desired path
-     * @return a List of positions along the path
-     */
-    public static List<Position> findPath(GameState gameState, Position start, Position end) {
-        return new ArrayList<Position>();
     }
 }

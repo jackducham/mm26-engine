@@ -4,8 +4,8 @@ package mech.mania.engine.domain.game.board;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.model.BoardProtos;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
     private Tile[][] grid;
@@ -119,4 +119,8 @@ public class Board {
         return portals;
     }
 
+    public void addPortal(Position position) {
+        portals.add(position);
+        grid[position.getX()][position.getY()].setType(Tile.TileType.PORTAL);
+    }
 }
