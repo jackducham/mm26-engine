@@ -25,35 +25,38 @@ public class RepositoryAws implements RepositoryAbstract {
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
-        try {
-            sendToAws(String.format("engine/GameState/%06d", turn), gameState.buildProtoClass());
-            return 0;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return 1;
-        }
+        new Thread(() -> {
+            try {
+                sendToAws(String.format("engine/GameState/%06d", turn), gameState.buildProtoClass());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        return 0;
     }
 
     @Override
     public int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange) {
-        try {
-            sendToAws(String.format("engine/GameChange/%06d", turn), gameChange);
-            return 0;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return 1;
-        }
+        new Thread(() -> {
+            try {
+                sendToAws(String.format("engine/GameChange/%06d", turn), gameChange);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        return 0;
     }
 
     @Override
     public int storePlayerStatsBundle(final int turn, final CharacterProtos.PlayerStatsBundle playerStatsBundle) {
-        try {
-            sendToAws(String.format("engine/PlayerStatsBundle/%06d", turn), playerStatsBundle);
-            return 0;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return 1;
-        }
+        new Thread(() -> {
+            try {
+                sendToAws(String.format("engine/PlayerStatsBundle/%06d", turn), playerStatsBundle);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        return 0;
     }
 
     @Override
@@ -76,6 +79,7 @@ public class RepositoryAws implements RepositoryAbstract {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
             protobufObj.writeTo(outputStream);
+            outputStream.close();
         } catch (IOException e) {
             LOGGER.warning(String.format("Failed in sendToAws for %s: %s", protobufObj.getClass(), e.getMessage()));
             throw e;
@@ -85,7 +89,7 @@ public class RepositoryAws implements RepositoryAbstract {
         // https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/ObjectMetadata.html
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentType("application/octet-stream");
-        metadata.setContentLength(protobufObj.getSerializedSize());
+        metadata.setContentLength(protobufObj.toByteArray().length);
         metadata.setContentEncoding("UTF-8");
 
         s3.putObject(bucketName, key, inputStream, metadata);

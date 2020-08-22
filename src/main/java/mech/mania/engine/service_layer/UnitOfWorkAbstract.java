@@ -22,11 +22,12 @@ public abstract class UnitOfWorkAbstract {
 
     protected final Queue<Message> messages = new LinkedList<>();
     protected final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
-    protected GameState gameState = new GameState();
-    protected VisualizerProtos.GameChange gameChange = new GameChange().buildProtoClass();
     protected String visualizerConnectUrl = "";
     protected int turn = 0;
     protected boolean gameOver = false;
+
+    protected GameState gameState = new GameState();
+    protected VisualizerProtos.GameChange gameChange = new GameChange().buildProtoClass();
 
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;

@@ -2,12 +2,12 @@ package mech.mania.engine.service_layer.handlers;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
+import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Command;
 import mech.mania.engine.domain.model.PlayerConnectInfo;
 import mech.mania.engine.domain.model.PlayerProtos;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
-import mech.mania.engine.service_layer.Services;
 import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 import java.io.IOException;
@@ -33,8 +33,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
     @Override
     public void handle(Command command) {
         Map<String, PlayerDecision> playerDecisionMap = getSuccessfulPlayerDecisions(uow);
-        GameState updatedGameState =
-            Services.updateGameState(uow.getGameState(), playerDecisionMap);
+        GameState updatedGameState = GameLogic.doTurn(uow.getGameState(), playerDecisionMap);
         uow.setGameState(updatedGameState);
     }
 
@@ -74,8 +73,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 http.setDoOutput(true);
                 http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")));
 
-                PlayerProtos.PlayerTurn turn =
-                        Services.constructPlayerTurn(uow.getGameState(), playerName);
+                PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(uow.getGameState(), playerName);
                 turn.writeTo(http.getOutputStream());
 
                 decision = PlayerDecision.parseFrom(http.getInputStream());

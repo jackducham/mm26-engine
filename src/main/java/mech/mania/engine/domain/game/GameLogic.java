@@ -7,6 +7,7 @@ import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.GameChange;
+import mech.mania.engine.domain.model.PlayerProtos;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
 import java.util.Collection;
@@ -28,6 +29,21 @@ public class GameLogic {
         // TODO: construct VisualizerTurn (GameChange)
         return new GameChange();
     }
+
+
+    /**
+     * Constructs a PlayerTurn for a specific player using a
+     * GameState and a specific player's name
+     * @return PlayerTurn a playerTurn specific for a player
+     */
+    public static PlayerProtos.PlayerTurn constructPlayerTurn(GameState gameState, String playerName) {
+        // TODO: construct player turn
+        return PlayerProtos.PlayerTurn.newBuilder()
+                .setGameState(gameState.buildProtoClass())
+                .setPlayerName(playerName)
+                .build();
+    }
+
 
     /**
      * Executes the logic of one turn given a starting {@link GameState} and a list of {@link PlayerDecision}s.
