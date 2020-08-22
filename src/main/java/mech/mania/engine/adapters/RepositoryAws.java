@@ -26,7 +26,7 @@ public class RepositoryAws implements RepositoryAbstract {
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
         try {
-            sendToAws(String.format("engine_%06d_GameState", turn), gameState.buildProtoClass());
+            sendToAws(String.format("engine/GameState/%06d", turn), gameState.buildProtoClass());
             return 0;
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,7 +37,7 @@ public class RepositoryAws implements RepositoryAbstract {
     @Override
     public int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange) {
         try {
-            sendToAws(String.format("engine_%06d_GameChange", turn), gameChange);
+            sendToAws(String.format("engine/GameChange/%06d", turn), gameChange);
             return 0;
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,7 +48,7 @@ public class RepositoryAws implements RepositoryAbstract {
     @Override
     public int storePlayerStatsBundle(final int turn, final CharacterProtos.PlayerStatsBundle playerStatsBundle) {
         try {
-            sendToAws(String.format("engine_%06d_PlayerStatsBundle", turn), playerStatsBundle);
+            sendToAws(String.format("engine/PlayerStatsBundle/%06d", turn), playerStatsBundle);
             return 0;
         } catch (IOException e) {
             e.printStackTrace();
