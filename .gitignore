@@ -1,9 +1,12 @@
 HELP.md
 !target/*.jar
 target/
+lib/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+**.icloud
+**\ 2.*
 
 ### STS ###
 .apt_generated

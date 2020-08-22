@@ -39,7 +39,7 @@ public class Main {
         bus.handle(new CommandStartVisualizerServer(visPort));
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
-        for (int turn = 1; turn < numTurns && !bus.getUow().getGameOver(); turn++) {
+        for (int turn = 1; (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
 
             Instant turnStartTime = Instant.now();
             Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));
