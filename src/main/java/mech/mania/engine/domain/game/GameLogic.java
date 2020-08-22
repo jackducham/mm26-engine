@@ -26,8 +26,7 @@ public class GameLogic {
      * has changed in relevant terms to the Visualizer team
      */
     public static GameChange constructGameChange(GameState gameState) {
-        // TODO: construct VisualizerTurn (GameChange)
-        return new GameChange();
+        return gameState.stateChange;
     }
 
 
@@ -37,7 +36,6 @@ public class GameLogic {
      * @return PlayerTurn a playerTurn specific for a player
      */
     public static PlayerProtos.PlayerTurn constructPlayerTurn(GameState gameState, String playerName) {
-        // TODO: construct player turn
         return PlayerProtos.PlayerTurn.newBuilder()
                 .setGameState(gameState.buildProtoClass())
                 .setPlayerName(playerName)

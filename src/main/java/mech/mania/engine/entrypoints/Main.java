@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.time.Instant;
+import java.util.logging.Logger;
 
 import static java.time.temporal.ChronoUnit.MILLIS;
 
@@ -19,6 +20,8 @@ public class Main {
 
     // default bootstrap argument is DatabaseAws (see Bootstrap.java)
     public static MessageBus bus = Bootstrap.bootstrap();
+
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     @Bean
     public MessageBus bus() {
@@ -53,7 +56,10 @@ public class Main {
             try {
                 Instant now = Instant.now();
                 long waitTime = MILLIS.between(now, nextTurnStart);
-                if (waitTime < 0) waitTime = 0;
+                if (waitTime < 0) {
+                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") + " ms (" + (-waitTime) + " ms too long).");
+                    waitTime = 0;
+                }
                 Thread.sleep(waitTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
