@@ -200,4 +200,65 @@ public class HatEffectTests {
         // player2 starts with 20 health and gets hit with three effects, each causing 5 damage per turn, leaving 5 hp.
         assertEquals(-10, p2.getCurrentHealth());
     }
+
+    /* This test will fail until merged with the corrected stat equations.
+
+    @Test
+    public void stackingBonusEffect() {
+        // gives player1 a hat.
+        p1.setInventory(1, new Hat(new StatusModifier(1,
+                1, 0, 1, 0, 1,
+                0, 1, 0, 1, 0),
+                HatEffect.STACKING_BONUS));
+        p1.equipItem(1);
+
+        //base speed of 5 plus 1 from the hat.
+        assertEquals(6, p1.getSpeed());
+
+        PlayerProtos.PlayerDecision.Builder emptyDecision = PlayerProtos.PlayerDecision.newBuilder();
+        emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
+        HashMap<String, PlayerProtos.PlayerDecision> emptyDecisionMap = new HashMap<>();
+        emptyDecisionMap.put("player1", emptyDecision.build());
+        emptyDecisionMap.put("player2", emptyDecision.build());
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        //base speed of 5 plus 1 from the hat plus one TSM.
+        assertEquals(7, p1.getSpeed());
+
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        //base speed of 5 plus one from the hat plus 6 TSMs.
+        assertEquals(12, p1.getSpeed());
+
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        GameLogic.doTurn(gameState, emptyDecisionMap);
+        //base speed of 5 plus one from hat plus 10 TSMs. (We've added more than 10, but the durations on the earliest
+        // have begun to run out. This leaves us with a number of TSMs equal to the duration.
+        assertEquals(16, p1.getSpeed());
+
+
+    }
+     */
+
+    /*
+    //TODO: implement this test based on attack tests (once attack tests are implemented)
+    @Test
+    public void fullExpEffect() {
+        // gives player1 a hat.
+        p1.setInventory(1, new Hat(new StatusModifier(1,
+                1, 0, 1, 0, 1,
+                0, 1, 0, 1, 0),
+                HatEffect.FULL_EXP));
+        p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
+        p1.equipItem(1);
+        p1.equipItem(2);
+
+    }
+     */
 }

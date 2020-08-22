@@ -68,6 +68,7 @@ public enum HatEffect {
         to xp awarded for player kills.
 
        IMPLEMENTATION:
-        NOT YET IMPLEMENTED
+        Monster.java -> distributeRewards -> This function keeps track of players with hats with this effect, and once
+        it has given out all other exp awards, give those players the largest amount that was given out to other players.
      */
 }
