@@ -181,13 +181,12 @@ public abstract class Character {
      * It also calculates and applies the permanent damage per turn done by each weapon
      */
     public void updateActiveEffects() {
-        int i = 0;
-        Iterator<TempStatusModifier> itr = activeEffects.iterator();
-        while (itr.hasNext()) {
-            TempStatusModifier effect = itr.next();
+        for(int i = 0; i < activeEffects.size(); i++){
+            TempStatusModifier effect = activeEffects.get(i);
             if (effect.getTurnsLeft() <= 0) { // remove inactive effects
-                itr.remove();
+                activeEffects.remove(i);
                 activeEffectsSources.remove(i);
+                i--; // Don't skip next effect on removal!
             } else {
                 // applies change to currentHealth of Character
                 // this can ONLY be called once per turn for correct calculations
@@ -196,7 +195,6 @@ public abstract class Character {
                 updateCurrentHealth(effect.getFlatRegenPerTurn());
             }
             effect.updateTurnsLeft();
-            i++;
         }
     }
 

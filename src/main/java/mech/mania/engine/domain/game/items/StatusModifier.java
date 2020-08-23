@@ -58,6 +58,20 @@ public class StatusModifier {
         this.flatRegenPerTurn = regenPerTurn;
     }
 
+    public StatusModifier(StatusModifier other) {
+        this.flatSpeedChange = other.flatSpeedChange;
+        this.percentSpeedChange = other.percentSpeedChange;
+        this.flatHealthChange = other.flatHealthChange;
+        this.percentHealthChange = other.percentHealthChange;
+        this.flatExperienceChange = other.flatExperienceChange;
+        this.percentExperienceChange = other.percentExperienceChange;
+        this.flatAttackChange = other.flatAttackChange;
+        this.percentAttackChange = other.percentAttackChange;
+        this.flatDefenseChange = other.flatDefenseChange;
+        this.percentDefenseChange = other.percentDefenseChange;
+        this.flatRegenPerTurn = other.flatRegenPerTurn;
+    }
+
     public StatusModifier(ItemProtos.StatusModifier statusModifierProto) {
         this.flatRegenPerTurn = statusModifierProto.getFlatRegenPerTurn();
         this.flatSpeedChange = statusModifierProto.getFlatSpeedChange();

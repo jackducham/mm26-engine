@@ -10,6 +10,7 @@ import mech.mania.engine.domain.model.ItemProtos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
@@ -272,5 +273,13 @@ public class Monster extends Character {
         Board current = gameState.getBoard(position.getBoardID());
         Tile currentTile = current.getGrid()[position.getX()][position.getY()];
         currentTile.getItems().addAll(drops);
+
+        //iterates through every player still on the taggedPlayersDamage map.
+        for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
+            Player currentPlayer = gameState.getPlayer(entry.getKey());
+            if(currentPlayer != null) {
+                currentPlayer.addExperience(this.getExperience());
+            }
+        }
     }
 }

@@ -141,6 +141,11 @@ public class Player extends Character {
      */
     @Override
     public void updateCharacter(GameState gameState) {
+        if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
+            TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
+            hatStats.setTurnsLeft(10);
+            applyEffect(hatStats, this.getName());
+        }
         updateActiveEffects();
         applyWearableRegen();
         updateDeathState(gameState);
@@ -181,6 +186,9 @@ public class Player extends Character {
         }
         if (shoes != null) {
             flatChange += shoes.getStats().getFlatSpeedChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.SHOES_BOOST)) {
+                flatChange += shoes.getStats().getFlatSpeedChange();
+            }
         }
         if (weapon != null) {
             flatChange += weapon.getStats().getFlatSpeedChange();
@@ -278,6 +286,9 @@ public class Player extends Character {
         }
         if (weapon != null) {
             flatChange += weapon.getStats().getFlatAttackChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.WEAPON_BOOST)) {
+                flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
+            }
         }
 
         // Add percent wearable effects
@@ -319,6 +330,9 @@ public class Player extends Character {
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatDefenseChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.CLOTHES_BOOST)) {
+                flatChange += clothes.getStats().getFlatDefenseChange();
+            }
         }
         if (shoes != null) {
             flatChange += shoes.getStats().getFlatDefenseChange();
@@ -500,7 +514,15 @@ public class Player extends Character {
      */
     private boolean useConsumable(Consumable consumableToConsume, int index) {
         int stacks = consumableToConsume.getStacks();
-        applyEffect(consumableToConsume.getEffect(), this.getName());
+        TempStatusModifier effect = consumableToConsume.getEffect();
+
+        //checks for LINGERING_POTIONS hat effect and doubles the duration if detected.
+        if(this.hat != null && this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
+            effect.setTurnsLeft(2 * effect.getTurnsLeft());
+        }
+        applyEffect(effect, this.getName());
+
+        //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {
             inventory[index] = null;
         } else {
