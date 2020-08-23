@@ -19,7 +19,18 @@ public class TempStatusModifier extends StatusModifier {
         this.damagePerTurn = damagePerTurn;
     }
 
-    // @TODO: Update ItemProtos
+    public TempStatusModifier(TempStatusModifier other) {
+        super(other);
+        this.turnsLeft = other.turnsLeft;
+        this.damagePerTurn = other.damagePerTurn;
+    }
+
+    public TempStatusModifier(StatusModifier other) {
+        super(other);
+        this.turnsLeft = 1;
+        this.damagePerTurn = 0;
+    }
+
     public TempStatusModifier(ItemProtos.TempStatusModifier tempStatusModifierProto) {
         super(
                 tempStatusModifierProto.getStats().getFlatSpeedChange(),
@@ -55,6 +66,10 @@ public class TempStatusModifier extends StatusModifier {
 
     public int getTurnsLeft() {
         return turnsLeft;
+    }
+
+    public void setTurnsLeft(int newTurnsLeft) {
+        this.turnsLeft = newTurnsLeft;
     }
 
     public int getDamagePerTurn() {

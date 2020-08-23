@@ -5,7 +5,7 @@ import mech.mania.engine.domain.model.PlayerProtos;
 
 public class CharacterDecision {
     public enum decisionTypes {
-        MOVE, ATTACK, EQUIP, DROP, PICKUP, PORTAL
+        NONE, MOVE, ATTACK, EQUIP, DROP, PICKUP, PORTAL
     }
     private decisionTypes decision;
     private Position actionPosition;
@@ -25,6 +25,9 @@ public class CharacterDecision {
 
     public CharacterDecision(PlayerProtos.PlayerDecision playerProto) {
         switch(playerProto.getDecisionType()) {
+            case NONE:
+                decision = decisionTypes.NONE;
+                break;
             case MOVE:
                 decision = decisionTypes.MOVE;
                 break;
@@ -52,6 +55,9 @@ public class CharacterDecision {
     public PlayerProtos.PlayerDecision buildProtoClassCharacterDecision(){
         PlayerProtos.PlayerDecision.Builder decisionBuilder = PlayerProtos.PlayerDecision.newBuilder();
         switch(this.decision) {
+            case NONE:
+                decisionBuilder.setDecisionType(CharacterProtos.DecisionType.NONE);
+                break;
             case MOVE:
                 decisionBuilder.setDecisionType(CharacterProtos.DecisionType.MOVE);
                 break;

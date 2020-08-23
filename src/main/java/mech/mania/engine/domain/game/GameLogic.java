@@ -9,10 +9,9 @@ import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.CharacterDecision;
 
-import mech.mania.engine.domain.game.items.Item;
-import mech.mania.engine.domain.game.items.TempStatusModifier;
-import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.game.items.*;
 
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
@@ -45,7 +44,9 @@ public class GameLogic {
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
         for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
-            if(!gameState.getPlayer(entry.getKey()).isDead()) {
+            // Remove decision from dead players and NONE decisions
+            if(!gameState.getPlayer(entry.getKey()).isDead()
+                    && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 cDecisions.put(entry.getKey(), newDecision);
             }
@@ -273,8 +274,8 @@ public class GameLogic {
         int centerX = attackCoordinate.getX();
         int centerY = attackCoordinate.getY();
 
-        int xMin = ((centerX - radius) < 0) ? 0 : (centerX - radius);
-        int yMin = ((centerY - radius) < 0) ? 0 : (centerY - radius);
+        int xMin = Math.max((centerX - radius), 0);
+        int yMin = Math.max((centerY - radius), 0);
 
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
@@ -311,7 +312,20 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                player.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
+                Weapon attackerWeapon = attacker.getWeapon();
+                // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
+                if(attacker instanceof Player && ((Player) attacker).getHat() != null
+                        && ((Player) attacker).getHat().getHatEffect().equals(HatEffect.TRIPLED_ON_HIT)) {
+                    Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
+                            attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
+                            new TempStatusModifier(attackerWeapon.getOnHitEffect()));
+                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                } else {
+                    player.hitByWeapon(attacker.getName(), attackerWeapon, attacker.getAttack());
+
+                }
             }
         }
 
