@@ -67,6 +67,7 @@ public class GameLogic {
         for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
             // Remove decision from dead players and NONE decisions
             if(!gameState.getPlayer(entry.getKey()).isDead()
+                    && entry.getValue() != null
                     && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 cDecisions.put(entry.getKey(), newDecision);

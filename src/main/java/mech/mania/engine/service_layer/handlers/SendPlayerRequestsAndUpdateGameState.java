@@ -15,14 +15,10 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
     public SendPlayerRequestsAndUpdateGameState(UnitOfWorkAbstract uow) {
@@ -102,7 +98,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                         } else if (numExceptions > 5) {
                             LOGGER.info("Not printing any more exceptions of type " + e.getClass().getName());
                         } else {
-                            LOGGER.info(String.format("%s from player '%s' @ %s: %s", e.getClass().getName(), playerName, playerInfo.getValue().getIpAddr(), e.getLocalizedMessage()));
+                            LOGGER.info(String.format("%s from player '%s' @ %s: %s", e.getClass().getName(), playerName, playerInfo.getValue().getIpAddr(), e.getMessage()));
                         }
                     }
                     errors.getAndIncrement();
@@ -118,73 +114,16 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         List<Future<Map.Entry<String, PlayerDecision>>> results;
         Map<String, PlayerDecision> map = new HashMap<>();
         try {
-            Instant now = Instant.now();
             results = pool.invokeAll(tasks);
-            LOGGER.info("Time taken for invokeAll: " + (now.until(Instant.now(), ChronoUnit.MILLIS)));
 
-            now = Instant.now();
             for (Future<Map.Entry<String, PlayerDecision>> future : results) {
                 Map.Entry<String, PlayerDecision> result = future.get();
                 map.put(result.getKey(), result.getValue());
             }
-            LOGGER.info("Time taken for appending to map: " + (now.until(Instant.now(), ChronoUnit.MILLIS)));
 
         } catch (InterruptedException | ExecutionException e) {
             LOGGER.warning(String.format("Exception encountered while getting PlayerDecisions (returning no valid decisions): %s", e.getMessage()));
         }
-
-        // ConcurrentMap<String, PlayerDecision> map = playerInfoMap.entrySet().parallelStream().map(playerInfo -> {
-        //     URL url;
-        //     PlayerDecision decision = null;
-        //     HttpURLConnection http = null;
-        //     String playerName = playerInfo.getKey();
-        //     try {
-        //         // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
-        //         url = new URL(playerInfo.getValue().getIpAddr());
-        //         URLConnection con = url.openConnection();
-        //         http = (HttpURLConnection) con;
-        //     } catch (IOException e) {
-        //         LOGGER.warning(String.format("MalformedURLException: could not connect to player \"%s\" at url %s: %s",
-        //                 playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
-        //     }
-        //     assert http != null;
-        //     try {
-        //         http.setRequestMethod("POST");
-        //         http.setDoOutput(true);
-        //         http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")));
-
-        //         PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(uow.getGameState(), playerName);
-        //         turn.writeTo(http.getOutputStream());
-
-        //         decision = PlayerDecision.parseFrom(http.getInputStream());
-        //     } catch (InvalidProtocolBufferException e) {
-        //         LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
-        //                 playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
-        //         errors.getAndIncrement();
-        //     } catch (ProtocolException e) {
-        //         LOGGER.warning(String.format("ProtocolException: could not connect to player \"%s\" at url %s: %s",
-        //                 playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
-        //         errors.getAndIncrement();
-        //     } catch (IOException e) {
-        //         synchronized (exceptions) {
-        //             int numExceptions = exceptions.getOrDefault(e.getClass(), 0);
-        //             exceptions.put(e.getClass(), numExceptions + 1);
-        //             if (numExceptions > 6) {
-        //             } else if (numExceptions > 5) {
-        //                 LOGGER.info("Not printing any more exceptions of type " + e.getClass().getName());
-        //             } else {
-        //                 LOGGER.info(String.format("%s from player '%s' @ %s: %s", e.getClass().getName(), playerName, playerInfo.getValue().getIpAddr(), e.getLocalizedMessage()));
-        //             }
-        //         }
-        //         errors.getAndIncrement();
-        //     } finally {
-        //         http.disconnect();
-        //     }
-        //     numPlayers.getAndIncrement();
-        //     return new AbstractMap.SimpleEntry<>(playerName, decision);
-        // })
-        //         .filter(entry -> entry.getKey() != null && entry.getValue() != null)
-        //         .collect(Collectors.toConcurrentMap(entry -> (String) entry.getKey(), entry -> (PlayerDecision) entry.getValue()));
 
         LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors: %s.", numPlayers.get() - errors.get(), errors.get(), exceptions));
         return map;

@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import mech.mania.engine.domain.model.CharacterProtos
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
@@ -176,7 +177,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 2500
+        val players = 500
         val turns = 20
 
         val timePerTurn = 2000  // check config.properties
@@ -186,7 +187,8 @@ class ServerIntegrationTests {
 
         connectNPlayers(players, {
             PlayerDecision.newBuilder()
-                    .setDecisionTypeValue(1)
+                    .setDecisionType(CharacterProtos.DecisionType.NONE)
+                    .setIndex(-1) // Protobufs don't serialize if set to default value (and NONE = 0) so we need this
                     .build()
         }, {
             // pass
