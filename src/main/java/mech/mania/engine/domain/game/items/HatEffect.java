@@ -48,7 +48,7 @@ public enum HatEffect {
         times.
      */
 
-    STACKING_BONUS,
+    STACKING_BONUS
     /* EFFECT:
         This hat effect adds a long lasting TSM to the wearer every turn which has the same stats as the hat this effect
         is on. The end effect is that the longer that hat is worn, the bigger the stat bonus, up to the duration of the
@@ -57,16 +57,5 @@ public enum HatEffect {
        IMPLEMENTATION:
         Player.java -> updateCharacter -> If this hat effect is detected, the updateCharacter function copies the SM of
         the wearer's hat into a TSM with a duration of 10 and a damage per turn of 0, and then applies the effect.
-     */
-
-    FULL_EXP
-    /* EFFECT:
-        This hat effect causes the wearer to receive an amount of experience equal to the largest reward given to any
-        other player. This effect doesn't affect the amount of xp that any other characters receive, nor does it apply
-        to xp awarded for player kills.
-
-       IMPLEMENTATION:
-        Monster.java -> distributeRewards -> This function keeps track of players with hats with this effect, and once
-        it has given out all other exp awards, give those players the largest amount that was given out to other players.
      */
 }

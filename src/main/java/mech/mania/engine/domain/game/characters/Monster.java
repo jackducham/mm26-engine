@@ -275,34 +275,12 @@ public class Monster extends Character {
         Tile currentTile = current.getGrid()[position.getX()][position.getY()];
         currentTile.getItems().addAll(drops);
 
-        //keeps track of players that should receive special exp amounts based on the hat effect FULL_EXP.
-        List<Player> playersWithExpHat = new ArrayList<>();
-        //keeps track of the largest exp award given out.
-        int largestExpReward = 0;
-
         //iterates through every player still on the taggedPlayersDamage map.
         for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
             Player currentPlayer = gameState.getPlayer(entry.getKey());
-            //if the current player has the special hat, put them on the list, otherwise give them an exp award.
-            if(currentPlayer.getHat() != null && currentPlayer.getHat().getHatEffect().equals(HatEffect.FULL_EXP)) {
-                playersWithExpHat.add(currentPlayer);
-            } else {
-                //EXP award is distributed by finding the fraction of the damage this player did to the monster out of
-                // its maximum HP, and multiplying that by the base EXP value of the monster
-                int currentAward = this.experience * (entry.getValue()/this.getMaxHealth());
-                currentPlayer.experience += currentAward;
-                if(currentAward > largestExpReward) {
-                    largestExpReward = currentAward;
-                }
+            if(currentPlayer != null) {
+                currentPlayer.addExperience(this.getExperience());
             }
         }
-
-        //Now every player with the hat receives the largest award that was given out.
-        if(!playersWithExpHat.isEmpty()) {
-            for(Player player : playersWithExpHat) {
-                player.experience += largestExpReward;
-            }
-        }
-
     }
 }

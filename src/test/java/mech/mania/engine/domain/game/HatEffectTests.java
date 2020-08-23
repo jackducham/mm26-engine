@@ -240,20 +240,4 @@ public class HatEffectTests {
         // have begun to run out. This leaves us with a number of TSMs equal to the duration.
         assertEquals(16, p1.getSpeed());
     }
-
-    /*
-    //TODO: implement this test based on attack tests (once attack tests are implemented)
-    @Test
-    public void fullExpEffect() {
-        // gives player1 a hat.
-        p1.setInventory(1, new Hat(new StatusModifier(1,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0),
-                HatEffect.FULL_EXP));
-        p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
-        p1.equipItem(1);
-        p1.equipItem(2);
-
-    }
-     */
 }
