@@ -145,7 +145,7 @@ public class Player extends Character {
         if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
-            applyEffect(hatStats);
+            applyEffect(hatStats, this.getName());
         }
         updateActiveEffects();
         applyWearableRegen();
@@ -287,6 +287,9 @@ public class Player extends Character {
         }
         if (weapon != null) {
             flatChange += weapon.getStats().getFlatAttackChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.WEAPON_BOOST)) {
+                flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
+            }
         }
 
         // Add percent wearable effects
@@ -328,15 +331,15 @@ public class Player extends Character {
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatDefenseChange();
+            if(hat != null && hat.getHatEffect().equals(HatEffect.CLOTHES_BOOST)) {
+                flatChange += clothes.getStats().getFlatDefenseChange();
+            }
         }
         if (shoes != null) {
             flatChange += shoes.getStats().getFlatDefenseChange();
         }
         if (weapon != null) {
-            flatChange += weapon.getStats().getFlatAttackChange();
-            if(hat != null && hat.getHatEffect().equals(HatEffect.WEAPON_BOOST)) {
-                flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
-            }
+            flatChange += weapon.getStats().getFlatDefenseChange();
         }
 
         // Add percent wearable effects
@@ -380,10 +383,7 @@ public class Player extends Character {
             flatChange += hat.getStats().getFlatExperienceChange();
         }
         if (clothes != null) {
-            flatChange += clothes.getStats().getFlatDefenseChange();
-            if(hat != null && hat.getHatEffect().equals(HatEffect.CLOTHES_BOOST)) {
-                flatChange += clothes.getStats().getFlatDefenseChange();
-            }
+            flatChange += clothes.getStats().getFlatExperienceChange();
         }
         if (shoes != null) {
             flatChange += shoes.getStats().getFlatExperienceChange();

@@ -80,7 +80,7 @@ public class Consumable extends Item {
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0,
         0, 0,
         0, 0,
-        0, 1,
+        0, 0,
         0, 0.5,
         2, 5, 0);
         Consumable defaultConsumable = new Consumable(5, defaultTempStatusModifier);

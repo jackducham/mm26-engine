@@ -47,7 +47,7 @@ public class HatEffectTests {
     public void lingeringPotionsEffect(){
         // gives player1 a hat, equips it, and gives them a potion.
         p1.setInventory(1, new Hat(new StatusModifier(0,
-                0, 0, 1, 0, 0,
+                0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 HatEffect.LINGERING_POTIONS));
         p1.equipItem(1);
@@ -115,7 +115,7 @@ public class HatEffectTests {
     public void ShoesBoostEffect() {
         // gives player1 a hat and equips it.
         p1.setInventory(1, new Hat(new StatusModifier(0,
-                1, 0, 1, 0, 0,
+                0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 HatEffect.SHOES_BOOST));
         p1.setInventory(2, Shoes.createDefaultShoes());
@@ -130,14 +130,14 @@ public class HatEffectTests {
     public void WeaponBoostEffect() {
         // gives player1 a hat and equips it.
         p1.setInventory(1, new Hat(new StatusModifier(0,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0),
+                0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0),
                 HatEffect.WEAPON_BOOST));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
 
-        // tests to see that the player's speed is 15 (base of 0 plus 5 + 5 * 0.5 from stronger default weapon)
+        // tests to see that the player's attack is 7 (base of 0 plus 5 + 5*0.5 from stronger default weapon)
         assertEquals(7, p1.getAttack());
     }
 
@@ -145,14 +145,14 @@ public class HatEffectTests {
     public void ClothesBoostEffect() {
         // gives player1 a hat and equips it.
         p1.setInventory(1, new Hat(new StatusModifier(0,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0),
+                0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0),
                 HatEffect.CLOTHES_BOOST));
         p1.setInventory(2, Clothes.createDefaultClothes());
         p1.equipItem(1);
         p1.equipItem(2);
 
-        // tests to see that the player's speed is 15 (base of 0 plus 2 * 8 from default clothes)
+        // tests to see that the player's speed is 16 (base of 0 plus 2 * 8 from default clothes)
         assertEquals(16, p1.getDefense());
     }
 
@@ -160,8 +160,8 @@ public class HatEffectTests {
     public void TripledOnHitEffect() {
         // gives player1 a hat and weapon.
         p1.setInventory(1, new Hat(new StatusModifier(0,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0),
+                0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0),
                 HatEffect.TRIPLED_ON_HIT));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
@@ -201,14 +201,12 @@ public class HatEffectTests {
         assertEquals(-10, p2.getCurrentHealth());
     }
 
-    /* This test will fail until merged with the corrected stat equations.
-
     @Test
     public void stackingBonusEffect() {
         // gives player1 a hat.
         p1.setInventory(1, new Hat(new StatusModifier(1,
-                1, 0, 1, 0, 1,
-                0, 1, 0, 1, 0),
+                0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0),
                 HatEffect.STACKING_BONUS));
         p1.equipItem(1);
 
@@ -241,10 +239,7 @@ public class HatEffectTests {
         //base speed of 5 plus one from hat plus 10 TSMs. (We've added more than 10, but the durations on the earliest
         // have begun to run out. This leaves us with a number of TSMs equal to the duration.
         assertEquals(16, p1.getSpeed());
-
-
     }
-     */
 
     /*
     //TODO: implement this test based on attack tests (once attack tests are implemented)

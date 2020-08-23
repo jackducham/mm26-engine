@@ -31,7 +31,6 @@ public class TempStatusModifier extends StatusModifier {
         this.damagePerTurn = 0;
     }
 
-    // @TODO: Update ItemProtos
     public TempStatusModifier(ItemProtos.TempStatusModifier tempStatusModifierProto) {
         super(
                 tempStatusModifierProto.getStats().getFlatSpeedChange(),

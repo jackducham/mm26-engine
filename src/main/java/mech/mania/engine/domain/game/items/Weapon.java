@@ -27,16 +27,16 @@ public class Weapon extends Wearable {
     }
 
     public static Weapon createDefaultWeapon() {
-        StatusModifier defaultStatusModifier = new StatusModifier(0, 1, 0, 1, 0, 1, 5, 1, 0, 1, 0);
-        TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0);
+        StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0);
+        TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Weapon defaultWeapon = new Weapon(defaultStatusModifier, 1, 0, 1, defaultTempStatusModifier);
 
         return defaultWeapon;
     }
 
     public static Weapon createStrongerDefaultWeapon() {
-        StatusModifier defaultStatusModifier = new StatusModifier(0, 1, 0, 1, 0, 1, 5, 1, 0, 1, 0);
-        TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 10, 5);
+        StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0);
+        TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5);
         Weapon defaultWeapon = new Weapon(defaultStatusModifier, 10, 5, 10, defaultTempStatusModifier);
 
         return defaultWeapon;
@@ -56,7 +56,6 @@ public class Weapon extends Wearable {
         weaponBuilder.setRange(range);
         weaponBuilder.setSplashRadius(splashRadius);
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
-        // TODO: these will compile after proto import
         weaponBuilder.setAttack(attack);
 
         return weaponBuilder.build();

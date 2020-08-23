@@ -1,8 +1,6 @@
 package mech.mania.engine.domain.game.items;
 
 public enum HatEffect {
-    //TODO: List hat effects and define implementation in Player methods
-
     LINGERING_POTIONS,
     /* EFFECT:
         This hat effect causes any consumable the wearer uses to apply the same TempStatusModifier,
