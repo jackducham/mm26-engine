@@ -9,11 +9,12 @@ import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.CharacterDecision;
 
-import mech.mania.engine.domain.game.items.Item;
-import mech.mania.engine.domain.game.items.TempStatusModifier;
-import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.game.items.*;
 
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
+
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 import java.util.*;
 
@@ -43,11 +44,12 @@ public class GameLogic {
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
         for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
-            if(!gameState.getPlayer(entry.getKey()).isDead()) {
+            // Remove decision from dead players and NONE decisions
+            if(!gameState.getPlayer(entry.getKey()).isDead()
+                    && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 cDecisions.put(entry.getKey(), newDecision);
             }
-
         }
 
 
@@ -58,8 +60,8 @@ public class GameLogic {
 
         for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
-                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
-                || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
+                    || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
+                    || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
                 inventoryActions.put(entry.getKey(), entry.getValue());
 
             } else if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.ATTACK) {
@@ -161,19 +163,21 @@ public class GameLogic {
      * @param gameState current gameState
      * @param character player to be moved
      * @param targetPosition position the player should be moved to
-     * @return A list of position which make up the path used to reach the target
      */
-    public static List<Position> moveCharacter(GameState gameState, Character character, Position targetPosition) {
-        if (!validatePosition(gameState, targetPosition)) {
-            return new ArrayList<>();
-        }
-        List<Position> path = findPath(gameState, character.getPosition(), targetPosition); //Default return value might be empty, or might be of size one
-        if(path.size() > character.getSpeed()) {
-            return new ArrayList<>();
-        }
+    public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) return;
+
+        // Get shortest path length from current to target position (returns empty list for impossible target)
+        List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
+
+        // If path is empty (i.e. target is unreachable), don't move
+        if(path.size() == 0) return;
+
+        // If path would be greater than speed allows, act as if impossible target was chosen and don't move
+        if(path.size() > character.getSpeed()) return;
+
         character.setPosition(targetPosition);
         gameState.stateChange.updatePlayer(character, null, path, false, false);
-        return path;
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -189,7 +193,7 @@ public class GameLogic {
 
         //checks the portals on the player's current board
         for(int i = 0; i < gameState.getBoard(player.getPosition().getBoardID()).getPortals().size(); i++) {
-            if(player.getPosition() == gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i)) {
+            if(player.getPosition().equals(gameState.getBoard(player.getPosition().getBoardID()).getPortals().get(i))) {
                 return true;
             }
         }
@@ -270,8 +274,8 @@ public class GameLogic {
         int centerX = attackCoordinate.getX();
         int centerY = attackCoordinate.getY();
 
-        int xMin = ((centerX - radius) < 0) ? 0 : (centerX - radius);
-        int yMin = ((centerY - radius) < 0) ? 0 : (centerY - radius);
+        int xMin = Math.max((centerX - radius), 0);
+        int yMin = Math.max((centerY - radius), 0);
 
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
@@ -308,7 +312,20 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                player.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
+                Weapon attackerWeapon = attacker.getWeapon();
+                // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
+                if(attacker instanceof Player && ((Player) attacker).getHat() != null
+                        && ((Player) attacker).getHat().getHatEffect().equals(HatEffect.TRIPLED_ON_HIT)) {
+                    Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
+                            attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
+                            new TempStatusModifier(attackerWeapon.getOnHitEffect()));
+                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                } else {
+                    player.hitByWeapon(attacker.getName(), attackerWeapon, attacker.getAttack());
+
+                }
             }
         }
 
@@ -340,7 +357,7 @@ public class GameLogic {
         if (tile == null) {
             return false;
         }
-        if (index < 0 || index > tile.getItems().size()) {
+        if (index < 0 || index >= tile.getItems().size()) {
             return false;
         }
         int playerInventoryIndex = player.getFreeInventoryIndex();
@@ -363,14 +380,17 @@ public class GameLogic {
      */
     public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
-        if (index < 0 || index > player.getInventorySize()) {
+        if (index < 0 || index >= player.getInventorySize()) {
             return false;
         }
-        if (player.getInventory()[index] != null) {
-            Item item = player.getInventory()[index];
-            player.setInventory(index, null);
-            currentTile.addItem(item);
+
+        if (player.getInventory()[index] == null) {
+            return false;
         }
+
+        Item item = player.getInventory()[index];
+        player.setInventory(index, null);
+        currentTile.addItem(item);
         return true;
     }
 
@@ -417,16 +437,5 @@ public class GameLogic {
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
-    }
-
-    /**
-     * Provides a list of positions from a start position to and end position.
-     * @param gameState current gameState
-     * @param start position at beginning of desired path
-     * @param end position at end of desired path
-     * @return a List of positions along the path
-     */
-    public static List<Position> findPath(GameState gameState, Position start, Position end) {
-        return new ArrayList<Position>();
     }
 }

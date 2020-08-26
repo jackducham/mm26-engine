@@ -2,6 +2,8 @@ package mech.mania.engine.domain.game.characters;
 
 import mech.mania.engine.domain.model.CharacterProtos;
 
+import java.util.Objects;
+
 public class Position {
     private int x;
     private int y;
@@ -28,14 +30,6 @@ public class Position {
         return positionBuilder.build();
     }
 
-    public boolean equals(Position other) {
-        if(this.x != other.x || this.y != other.y || this.board_id != other.board_id) {
-            return false;
-        }
-
-        return true;
-    }
-
     public int getX() {
         return x;
     }
@@ -58,5 +52,20 @@ public class Position {
 
     public void setBoardID(String board_id) {
         this.board_id = board_id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x &&
+                y == position.y &&
+                Objects.equals(board_id, position.board_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, board_id);
     }
 }

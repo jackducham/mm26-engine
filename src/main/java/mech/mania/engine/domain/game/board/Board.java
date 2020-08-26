@@ -119,4 +119,8 @@ public class Board {
         return portals;
     }
 
+    public void addPortal(Position position) {
+        portals.add(position);
+        grid[position.getX()][position.getY()].setType(Tile.TileType.PORTAL);
+    }
 }

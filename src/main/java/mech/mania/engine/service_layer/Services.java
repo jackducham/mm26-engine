@@ -2,11 +2,12 @@ package mech.mania.engine.service_layer;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
-import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.model.PlayerConnectInfo;
-import mech.mania.engine.domain.model.PlayerProtos.*;
-import mech.mania.engine.domain.model.VisualizerProtos.*;
+import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
+import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn;
+import mech.mania.engine.domain.model.GameChange;
+import mech.mania.engine.domain.model.VisualizerProtos;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -110,14 +111,17 @@ public class Services {
      * PlayerDecision objects from playerDecisionMap
      */
     public static GameState updateGameState(GameState currentGameState, Map<String, PlayerDecision> playerDecisionMap) {
-        return GameLogic.doTurn(currentGameState, playerDecisionMap);
+        // TODO: copy over GameLogic.doTurn()
+        return new GameState();
     }
 
     /**
      * Returns a VisualizerChange object that denotes how the gameState
      * has changed in relevant terms to the Visualizer team
      */
-    public static VisualizerChange constructVisualizerChange(GameState gameState) {
-        return gameState.stateChange.buildProtoClass();
+    public static VisualizerProtos.GameChange constructVisualizerChange(GameState gameState) {
+        // TODO: construct VisualizerTurn (GameChange)
+        return VisualizerProtos.GameChange.newBuilder()
+                .build();
     }
 }
