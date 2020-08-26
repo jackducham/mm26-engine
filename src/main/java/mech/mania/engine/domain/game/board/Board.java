@@ -28,7 +28,7 @@ public class Board {
 
         portals = new ArrayList<>(board.getPortalsCount());
         for (int i = 0; i < board.getPortalsCount(); i++) {
-            portals.set(i, new Position(board.getPortals(i)));
+            portals.add(i, new Position(board.getPortals(i)));
         }
 
     }
