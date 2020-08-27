@@ -38,7 +38,7 @@ import kotlin.test.fail
 class ServerIntegrationTests {
 
     /** Port to launch the Game server on */
-    private val port = 9000  // match infraPort from config.properties
+    private val port = Config.getProperty("infraPort")  // match infraPort from config.properties
 
     /** URL that visualizer will connect to */
     private var visualizerUrl: String = "ws://localhost:$port/visualizer"
@@ -55,8 +55,8 @@ class ServerIntegrationTests {
      */
     @Before
     fun setup() {
-        // start game server
-        val args: Array<String> = arrayOf("$port")
+        // start game server with AWS turned off
+        val args: Array<String> = arrayOf("false", port)
 
         // launch the actual game in another thread
         // so the test doesn't wait for the server to close before starting
@@ -113,8 +113,6 @@ class ServerIntegrationTests {
 
                     HttpServer.create(InetSocketAddress(randomPort), 0).apply {
                         createContext("/server") { exchange: HttpExchange ->
-                            exchange.responseHeaders["Content-Type"] = "application/octet-stream"
-
                             // read in input from server
                             // once the turn is parsed, use that turn to call a passed in function
                             val turn = PlayerTurn.parseFrom(exchange.requestBody)
@@ -177,7 +175,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 500
+        val players = 400
         val turns = 20
 
         val timePerTurn = 2000  // check config.properties
@@ -187,8 +185,7 @@ class ServerIntegrationTests {
 
         connectNPlayers(players, {
             PlayerDecision.newBuilder()
-                    .setDecisionType(CharacterProtos.DecisionType.NONE)
-                    .setIndex(-1) // Protobufs don't serialize if set to default value (and NONE = 0) so we need this
+                    .setDecisionType(CharacterProtos.DecisionType.ATTACK)
                     .build()
         }, {
             // pass

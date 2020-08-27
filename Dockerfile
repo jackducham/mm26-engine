@@ -8,7 +8,7 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-RUN mvn install -DskipTests
+RUN mvn install
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM openjdk:8-jdk-alpine

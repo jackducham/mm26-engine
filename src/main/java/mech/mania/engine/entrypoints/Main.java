@@ -22,7 +22,8 @@ public class Main {
     // default bootstrap argument is DatabaseAws (see Bootstrap.java)
     // public static MessageBus bus = Bootstrap.bootstrap();
     // use this line of code if no AWS credentials
-    public static MessageBus bus = Bootstrap.bootstrap(new UnitOfWorkFake());
+    // public static MessageBus bus = Bootstrap.bootstrap(new UnitOfWorkFake());
+    public static MessageBus bus = Bootstrap.bootstrap();
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
@@ -32,13 +33,32 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        if (args.length == 0) {
+            System.out.println(String.format("Please enter at least enableInfra argument (boolean)." +
+                    "There are three arguments available (in order specified) (defaults are located in src/main/resources/config.properties):\nenableInfra (bool), infraPort " +
+                    "(int; default: %s), visualizerPort (int; default: %s)",
+                    Config.getProperty("infraPort"),
+                    Config.getProperty("visualizerPort")));
+            return;
+        }
+        String enableInfra = args[0];
+
+        try {
+            if (!Boolean.parseBoolean(enableInfra)) {
+                bus = Bootstrap.bootstrap(new UnitOfWorkFake());
+            }
+        } catch(Exception e) {
+            System.out.println(String.format("Unable to parse boolean enableInfra '%s'", enableInfra));
+        }
+
         // Take infra port as first arg
         String infraPort = Config.getProperty("infraPort");
-        if(args.length > 0) infraPort = args[0];
+        if(args.length > 1) infraPort = args[1];
 
         // Take visualizer port as second arg
         String visPort = Config.getProperty("visualizerPort");
-        if(args.length > 1) visPort = args[1];
+        if(args.length > 2) visPort = args[2];
 
         // start servers
         bus.handle(new CommandStartInfraServer(infraPort));

@@ -118,7 +118,9 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
 
             for (Future<Map.Entry<String, PlayerDecision>> future : results) {
                 Map.Entry<String, PlayerDecision> result = future.get();
-                map.put(result.getKey(), result.getValue());
+                if (result.getValue() != null) {
+                    map.put(result.getKey(), result.getValue());
+                }
             }
 
         } catch (InterruptedException | ExecutionException e) {
