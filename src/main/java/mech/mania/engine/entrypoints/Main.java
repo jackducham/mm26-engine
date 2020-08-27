@@ -8,6 +8,10 @@ import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
 import mech.mania.engine.domain.messages.EventSendHistoryObjects;
 import mech.mania.engine.service_layer.MessageBus;
 import mech.mania.engine.service_layer.UnitOfWorkFake;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -33,36 +37,41 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        // Configure commandline options for this program
+        Options options = new Options();
+        options.addOption("ei", "enableInfra", false,
+                "This flag tells the engine to run in infra mode and attempt to connect to AWS.");
+        options.addOption("ip", "infraPort", true,
+                "The port number for the /infra endpoints.");
+        options.addOption("vp", "visualizerPort", true,
+                "The port number for the visualizer websocket.");
 
-        if (args.length == 0) {
-            System.out.println(String.format("Please enter at least enableInfra argument (boolean)." +
-                    "There are three arguments available (in order specified) (defaults are located in src/main/resources/config.properties):\nenableInfra (bool), infraPort " +
-                    "(int; default: %s), visualizerPort (int; default: %s)",
-                    Config.getProperty("infraPort"),
-                    Config.getProperty("visualizerPort")));
+        // Get current options
+        CommandLine cmd;
+        try {
+            cmd = new DefaultParser().parse(options, args);
+        } catch(ParseException e){
+            System.err.println("Error in parsing command line options: " + e.getMessage());
             return;
         }
-        String enableInfra = args[0];
 
-        try {
-            if (!Boolean.parseBoolean(enableInfra)) {
-                bus = Bootstrap.bootstrap(new UnitOfWorkFake());
-            }
-        } catch(Exception e) {
-            System.out.println(String.format("Unable to parse boolean enableInfra '%s'", enableInfra));
+        // Default to false unless set by command line args
+        boolean enableInfra = cmd.hasOption("enableInfra");
+
+        // Default to ports in Config, but command line args can override
+        String infraPort = cmd.hasOption("infraPort") ?
+                cmd.getOptionValue("infraPort") : Config.getProperty("infraPort");
+        String visualizerPort = cmd.hasOption("visualizerPort") ?
+                cmd.getOptionValue("visualizerPort") : Config.getProperty("visualizerPort");
+
+        if(!enableInfra){
+            // Don't connect to AWS if infra is not enabled
+            bus = Bootstrap.bootstrap(new UnitOfWorkFake());
         }
 
-        // Take infra port as first arg
-        String infraPort = Config.getProperty("infraPort");
-        if(args.length > 1) infraPort = args[1];
-
-        // Take visualizer port as second arg
-        String visPort = Config.getProperty("visualizerPort");
-        if(args.length > 2) visPort = args[2];
-
-        // start servers
+        // Start servers
         bus.handle(new CommandStartInfraServer(infraPort));
-        bus.handle(new CommandStartVisualizerServer(visPort));
+        bus.handle(new CommandStartVisualizerServer(visualizerPort));
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
         for (int turn = 1; (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
