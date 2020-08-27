@@ -1,9 +1,9 @@
 package mech.mania.engine.service_layer;
 
-import mech.mania.engine.domain.messages.Message;
 import mech.mania.engine.domain.messages.Command;
-import mech.mania.engine.service_layer.handlers.CommandHandler;
 import mech.mania.engine.domain.messages.Event;
+import mech.mania.engine.domain.messages.Message;
+import mech.mania.engine.service_layer.handlers.CommandHandler;
 import mech.mania.engine.service_layer.handlers.EventHandler;
 
 import java.util.LinkedList;
@@ -33,12 +33,15 @@ public class MessageBus {
         while (!messageQueue.isEmpty()) {
             Message message = messageQueue.poll();
             // logger.info(String.format("handling %s", message.getClass().toString()));
-            if (message instanceof Event) {
-                handleEvent((Event) message);
-            } else if (message instanceof Command) {
-                handleCommand((Command) message);
-            } else {
-                throw new IllegalArgumentException(message + " is not an event or a command");
+
+            try {
+                if (message instanceof Event) {
+                    handleEvent((Event) message);
+                } else if (message instanceof Command) {
+                    handleCommand((Command) message);
+                }
+            } catch (Exception e) {
+                logger.warning(String.format("Exception while handling event %s", message));
             }
         }
     }
@@ -49,8 +52,7 @@ public class MessageBus {
                 handler.handle(event);
                 messageQueue.addAll(uow.collectNewMessages());
             } catch (Exception e) {
-                logger.warning(String.format("Exception while handling event %s", event));
-                throw e;
+                logger.warning(String.format("Exception while handling event %s: %s", event, e.getMessage()));
             }
         }
     }
@@ -61,7 +63,7 @@ public class MessageBus {
             handler.handle(command);
             messageQueue.addAll(uow.collectNewMessages());
         } catch (Exception e) {
-            logger.warning(String.format("Exception while handling command %s", command));
+            logger.warning(String.format("Exception while handling command %s: %s", command, e.getMessage()));
             throw e;
         }
     }

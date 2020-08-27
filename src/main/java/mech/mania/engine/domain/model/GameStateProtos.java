@@ -280,7 +280,7 @@ public final class GameStateProtos {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>newDefaultInstance(
+              .newDefaultInstance(
                   mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_BoardNamesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
@@ -361,7 +361,7 @@ public final class GameStateProtos {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>newDefaultInstance(
+              .newDefaultInstance(
                   mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_PlayerNamesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
@@ -442,7 +442,7 @@ public final class GameStateProtos {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>newDefaultInstance(
+              .newDefaultInstance(
                   mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameState_MonsterNamesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
@@ -619,8 +619,7 @@ public final class GameStateProtos {
           other.internalGetPlayerNames())) return false;
       if (!internalGetMonsterNames().equals(
           other.internalGetMonsterNames())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -977,7 +976,7 @@ public final class GameStateProtos {
       }
       private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board>
       internalGetMutableBoardNames() {
-        onChanged();;
+        onChanged();
         if (boardNames_ == null) {
           boardNames_ = com.google.protobuf.MapField.newMapField(
               BoardNamesDefaultEntryHolder.defaultEntry);
@@ -1105,7 +1104,7 @@ public final class GameStateProtos {
       }
       private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player>
       internalGetMutablePlayerNames() {
-        onChanged();;
+        onChanged();
         if (playerNames_ == null) {
           playerNames_ = com.google.protobuf.MapField.newMapField(
               PlayerNamesDefaultEntryHolder.defaultEntry);
@@ -1233,7 +1232,7 @@ public final class GameStateProtos {
       }
       private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster>
       internalGetMutableMonsterNames() {
-        onChanged();;
+        onChanged();
         if (monsterNames_ == null) {
           monsterNames_ = com.google.protobuf.MapField.newMapField(
               MonsterNamesDefaultEntryHolder.defaultEntry);
@@ -1401,495 +1400,6 @@ public final class GameStateProtos {
 
   }
 
-  public interface GameChangeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:game_state.GameChange)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int64 change_id = 1;</code>
-     * @return The changeId.
-     */
-    long getChangeId();
-  }
-  /**
-   * Protobuf type {@code game_state.GameChange}
-   */
-  public static final class GameChange extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:game_state.GameChange)
-      GameChangeOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GameChange.newBuilder() to construct.
-    private GameChange(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GameChange() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GameChange();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GameChange(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              changeId_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.GameStateProtos.GameChange.class, mech.mania.engine.domain.model.GameStateProtos.GameChange.Builder.class);
-    }
-
-    public static final int CHANGE_ID_FIELD_NUMBER = 1;
-    private long changeId_;
-    /**
-     * <code>int64 change_id = 1;</code>
-     * @return The changeId.
-     */
-    @java.lang.Override
-    public long getChangeId() {
-      return changeId_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (changeId_ != 0L) {
-        output.writeInt64(1, changeId_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (changeId_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, changeId_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof mech.mania.engine.domain.model.GameStateProtos.GameChange)) {
-        return super.equals(obj);
-      }
-      mech.mania.engine.domain.model.GameStateProtos.GameChange other = (mech.mania.engine.domain.model.GameStateProtos.GameChange) obj;
-
-      if (getChangeId()
-          != other.getChangeId()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CHANGE_ID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getChangeId());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(mech.mania.engine.domain.model.GameStateProtos.GameChange prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code game_state.GameChange}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:game_state.GameChange)
-        mech.mania.engine.domain.model.GameStateProtos.GameChangeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.GameStateProtos.GameChange.class, mech.mania.engine.domain.model.GameStateProtos.GameChange.Builder.class);
-      }
-
-      // Construct using mech.mania.engine.domain.model.GameStateProtos.GameChange.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        changeId_ = 0L;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return mech.mania.engine.domain.model.GameStateProtos.internal_static_game_state_GameChange_descriptor;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.GameStateProtos.GameChange getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.GameStateProtos.GameChange.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.GameStateProtos.GameChange build() {
-        mech.mania.engine.domain.model.GameStateProtos.GameChange result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.GameStateProtos.GameChange buildPartial() {
-        mech.mania.engine.domain.model.GameStateProtos.GameChange result = new mech.mania.engine.domain.model.GameStateProtos.GameChange(this);
-        result.changeId_ = changeId_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.GameStateProtos.GameChange) {
-          return mergeFrom((mech.mania.engine.domain.model.GameStateProtos.GameChange)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(mech.mania.engine.domain.model.GameStateProtos.GameChange other) {
-        if (other == mech.mania.engine.domain.model.GameStateProtos.GameChange.getDefaultInstance()) return this;
-        if (other.getChangeId() != 0L) {
-          setChangeId(other.getChangeId());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        mech.mania.engine.domain.model.GameStateProtos.GameChange parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.GameStateProtos.GameChange) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private long changeId_ ;
-      /**
-       * <code>int64 change_id = 1;</code>
-       * @return The changeId.
-       */
-      @java.lang.Override
-      public long getChangeId() {
-        return changeId_;
-      }
-      /**
-       * <code>int64 change_id = 1;</code>
-       * @param value The changeId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChangeId(long value) {
-        
-        changeId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 change_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChangeId() {
-        
-        changeId_ = 0L;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:game_state.GameChange)
-    }
-
-    // @@protoc_insertion_point(class_scope:game_state.GameChange)
-    private static final mech.mania.engine.domain.model.GameStateProtos.GameChange DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.GameStateProtos.GameChange();
-    }
-
-    public static mech.mania.engine.domain.model.GameStateProtos.GameChange getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GameChange>
-        PARSER = new com.google.protobuf.AbstractParser<GameChange>() {
-      @java.lang.Override
-      public GameChange parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GameChange(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GameChange> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GameChange> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public mech.mania.engine.domain.model.GameStateProtos.GameChange getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_state_GameState_descriptor;
   private static final 
@@ -1910,11 +1420,6 @@ public final class GameStateProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_state_GameState_MonsterNamesEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_state_GameChange_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_state_GameChange_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1929,16 +1434,16 @@ public final class GameStateProtos {
       "ate_id\030\001 \001(\003\022:\n\013board_names\030\002 \003(\0132%.game" +
       "_state.GameState.BoardNamesEntry\022<\n\014play" +
       "er_names\030\003 \003(\0132&.game_state.GameState.Pl" +
-      "ayerNamesEntry\022>\n\rmonster_names\030\004 \003(\0132\'." +
+              "ayerNamesEntry\022>\n\rmonster_names\030\004 \003(\0132'." +
       "game_state.GameState.MonsterNamesEntry\032?" +
       "\n\017BoardNamesEntry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030" +
       "\002 \001(\0132\014.board.Board:\0028\001\032E\n\020PlayerNamesEn" +
       "try\022\013\n\003key\030\001 \001(\t\022 \n\005value\030\002 \001(\0132\021.charac" +
       "ter.Player:\0028\001\032G\n\021MonsterNamesEntry\022\013\n\003k" +
       "ey\030\001 \001(\t\022!\n\005value\030\002 \001(\0132\022.character.Mons" +
-      "ter:\0028\001\"\037\n\nGameChange\022\021\n\tchange_id\030\001 \001(\003" +
-      "BB\n\036mech.mania.engine.domain.modelB\017Game" +
-      "StateProtos\252\002\016MM26.IO.Modelsb\006proto3"
+      "ter:\0028\001BB\n\036mech.mania.engine.domain.mode" +
+      "lB\017GameStateProtos\252\002\016MM26.IO.Modelsb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1970,12 +1475,6 @@ public final class GameStateProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_state_GameState_MonsterNamesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_game_state_GameChange_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_game_state_GameChange_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_state_GameChange_descriptor,
-        new java.lang.String[] { "ChangeId", });
     mech.mania.engine.domain.model.BoardProtos.getDescriptor();
     mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
   }

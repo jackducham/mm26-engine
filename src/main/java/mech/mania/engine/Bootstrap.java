@@ -26,7 +26,7 @@ public class Bootstrap {
         eventHandlers.put(EventReceivePlayerDecision.class,       Arrays.asList(new StorePlayerDecision(uow)));
         eventHandlers.put(EventNewPlayer.class,                   Arrays.asList(new UpdatePlayer(uow)));
         eventHandlers.put(EventEndGame.class,                     Arrays.asList(new EndGame(uow)));
-        eventHandlers.put(EventSendPlayerStats.class,             Arrays.asList(new SendPlayerStats(uow)));
+        eventHandlers.put(EventSendHistoryObjects.class,          Arrays.asList(new StoreHistoryObjects(uow)));
 
         // commands must happen synchronously
         Map<Class<? extends Command>, CommandHandler> commandHandlers = new HashMap<>();

@@ -13,7 +13,7 @@ public class CommandStartTurn implements Command {
 
     public CommandStartTurn(int turn) {
         this.turn = turn;
-        this.millisBetweenTurns = Config.getMillisBetweenTurns();
+        this.millisBetweenTurns = Integer.parseInt(Config.getProperty("millisBetweenTurns"));
     }
 
     public int getTurn() {

@@ -5,7 +5,6 @@ import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
 
-import static java.lang.Math.exp;
 import static java.lang.Math.max;
 
 
@@ -15,7 +14,7 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Item[] inventory;
-    private Stats playerStats;
+    private Stats playerStats = new Stats();
 
     private static final int BASE_SPEED = 5;
     private static final int BASE_MAX_HEALTH = 20;
