@@ -38,7 +38,7 @@ public class Board {
      * @param xdim size of board's x dimension
      * @param ydim size of board's y dimension
      */
-    private Board(int xdim, int ydim) {
+    public Board(int xdim, int ydim) {
         grid = new Tile[xdim][ydim];
         for(int i = 0; i < xdim; ++i) {
             for(int j = 0; j < ydim; ++j) {
