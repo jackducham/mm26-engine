@@ -27,8 +27,8 @@ public class RepositoryAws implements RepositoryAbstract {
     public int storeGameState(final int turn, final GameState gameState) {
         new Thread(() -> {
             try {
-                String serverName = System.getProperty("ENGINE_NAME", "unnamed");
-                sendToAws(String.format("engine/%s/GameState/%06d", serverName, turn), gameState.buildProtoClass());
+                String serverName = System.getenv("ENGINE_NAME");
+                sendToAws(String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn), gameState.buildProtoClass());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -40,8 +40,8 @@ public class RepositoryAws implements RepositoryAbstract {
     public int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange) {
         new Thread(() -> {
             try {
-                String serverName = System.getProperty("ENGINE_NAME", "unnamed");
-                sendToAws(String.format("engine/%s/GameChange/%06d", serverName, turn), gameChange);
+                String serverName = System.getenv("ENGINE_NAME");
+                sendToAws(String.format("engine/%s/GameChange/%06d", serverName == null ? "unnamed" : serverName, turn), gameChange);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -53,8 +53,8 @@ public class RepositoryAws implements RepositoryAbstract {
     public int storePlayerStatsBundle(final int turn, final CharacterProtos.PlayerStatsBundle playerStatsBundle) {
         new Thread(() -> {
             try {
-                String serverName = System.getProperty("ENGINE_NAME", "unnamed");
-                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d", serverName, turn), playerStatsBundle);
+                String serverName = System.getenv("ENGINE_NAME");
+                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn), playerStatsBundle);
             } catch (IOException e) {
                 e.printStackTrace();
             }
