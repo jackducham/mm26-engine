@@ -117,5 +117,6 @@ public class Main {
 
         bus.handle(new CommandStopInfraServer());
         bus.handle(new CommandStopVisualizerServer());
+        bus.handle(new CommandStopAPIServer());
     }
 }

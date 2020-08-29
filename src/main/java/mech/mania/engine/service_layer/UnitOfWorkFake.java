@@ -23,4 +23,9 @@ public class UnitOfWorkFake extends UnitOfWorkAbstract {
         LOGGER.info("Stopping visualizer server");
         visualizerCtx.close();
     }
+
+    @Override
+    public void stopAPIServer() {
+        LOGGER.info("Stopping API server");
+    }
 }

@@ -184,6 +184,19 @@ public abstract class UnitOfWorkAbstract {
     public abstract void stopVisualizerServer();
 
     /**
+     * Store a ConfigurableApplicationContext object in order to stop the API server WebSocket
+     * @param ctx
+     */
+    public void storeAPICtx(ConfigurableApplicationContext ctx) {
+        this.APICtx = ctx;
+    }
+
+    /**
+     * Use the saved ConfigurableApplicationContext to stop the API server WebSocket
+     */
+    public abstract void stopAPIServer();
+
+    /**
      * Sets the game over status for this UoW.
      * @param gameOver
      */

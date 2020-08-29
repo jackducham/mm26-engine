@@ -68,4 +68,10 @@ public class Position {
     public int hashCode() {
         return Objects.hash(x, y, board_id);
     }
+
+    public double distance(Position other) {
+        double x = (double) Math.abs(this.x - other.getX());
+        double y = (double) Math.abs(this.y - other.getY());
+        return Math.hypot(x, y);
+    }
 }
