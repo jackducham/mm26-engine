@@ -21,15 +21,15 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.ktor/ktor-client-websocket -->
         <dependency>
             <groupId>io.ktor</groupId>
-            <artifactId>ktor-server-test-host</artifactId>
+            <artifactId>ktor-client-websocket</artifactId>
             <version>1.0.0</version>
-            <scope>testCompile</scope>
         </dependency>
         <dependency>
             <groupId>io.ktor</groupId>
-            <artifactId>ktor-websockets</artifactId>
+            <artifactId>ktor-client-cio</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>

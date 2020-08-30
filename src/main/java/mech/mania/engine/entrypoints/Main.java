@@ -2,10 +2,7 @@ package mech.mania.engine.entrypoints;
 
 import mech.mania.engine.Bootstrap;
 import mech.mania.engine.Config;
-import mech.mania.engine.domain.messages.CommandStartInfraServer;
-import mech.mania.engine.domain.messages.CommandStartTurn;
-import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
-import mech.mania.engine.domain.messages.EventSendHistoryObjects;
+import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.MessageBus;
 import mech.mania.engine.service_layer.UnitOfWorkFake;
 import org.apache.commons.cli.CommandLine;
@@ -92,7 +89,8 @@ public class Main {
                 Instant now = Instant.now();
                 long waitTime = MILLIS.between(now, nextTurnStart);
                 if (waitTime < 0) {
-                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") + " ms (" + (-waitTime) + " ms too long).");
+                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") +
+                            " ms (" + (-waitTime) + " ms too long).");
                     waitTime = 0;
                 }
                 Thread.sleep(waitTime);
@@ -100,5 +98,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+        bus.handle(new CommandStopInfraServer());
+        bus.handle(new CommandStopVisualizerServer());
     }
 }

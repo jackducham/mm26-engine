@@ -1,14 +1,21 @@
 package mech.mania.engine
 
+import com.google.protobuf.InvalidProtocolBufferException
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
+import io.ktor.client.*
+import io.ktor.client.features.websocket.*
+import io.ktor.http.*
+import io.ktor.http.cio.websocket.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import mech.mania.engine.domain.model.CharacterProtos
+import mech.mania.engine.domain.model.GameStateProtos
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn
+import mech.mania.engine.domain.model.VisualizerProtos
 import mech.mania.engine.entrypoints.Main
 import mech.mania.engine.service_layer.InfraRESTHandler
 import mech.mania.engine.service_layer.VisualizerWebSocket
@@ -38,14 +45,15 @@ import kotlin.test.fail
 class ServerIntegrationTests {
 
     /** Port to launch the Game server on */
-    private val port = Config.getProperty("infraPort")  // match infraPort from config.properties
+    private val infraPort = Config.getProperty("infraPort")  // match infraPort from config.properties
+    private val visualizerPort = Config.getProperty("visualizerPort") // match visualizerPort from config.properties
 
     /** URL that visualizer will connect to */
-    private var visualizerUrl: String = "ws://localhost:$port/visualizer"
+    private var visualizerUrl: String = "ws://localhost:$visualizerPort/visualizer"
 
     /** URL that infra will send new/reconnect player messages to */
-    private var infraNewUrl: String = "http://localhost:$port/infra/player/new"
-    private var infraReconnectUrl: String = "http://localhost:$port/infra/player/reconnect"
+    private var infraNewUrl: String = "http://localhost:$infraPort/infra/player/new"
+    private var infraReconnectUrl: String = "http://localhost:$infraPort/infra/player/reconnect"
 
     private var logger = Logger.getLogger(ServerIntegrationTests::class.toString())
 
@@ -55,8 +63,9 @@ class ServerIntegrationTests {
      */
     @Before
     fun setup() {
-        // start game server with AWS turned off
-        val args: Array<String> = arrayOf("false", port)
+        // start game server with AWS turned off (without --enableInfra flag)
+        //  and with default ports (from config.properties)
+        val args: Array<String> = arrayOf("--infraPort", infraPort, "--visualizerPort", visualizerPort)
 
         // launch the actual game in another thread
         // so the test doesn't wait for the server to close before starting
@@ -74,7 +83,7 @@ class ServerIntegrationTests {
     fun cleanup() {
         // end game server - send HTTP request to server
         // https://stackoverflow.com/questions/46177133/http-request-in-kotlin
-        val url = URL("http://localhost:$port/infra/endgame")
+        val url = URL("http://localhost:$infraPort/infra/endgame")
         try {
             val bytes = url.readBytes()
             val statusObj = InfraStatus.parseFrom(bytes)
@@ -83,6 +92,9 @@ class ServerIntegrationTests {
             // if the server has already closed, then ignore
             logger.info("Exception in closing the server: ${e.message}")
         }
+
+        // Wait for server to truly shut down
+        Thread.sleep(5000);
     }
 
     /**
@@ -178,7 +190,7 @@ class ServerIntegrationTests {
         val players = 400
         val turns = 20
 
-        val timePerTurn = 2000  // check config.properties
+        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns"))
 
         // wait for an actual object to end the test
         val latch = CountDownLatch(turns * players)
@@ -199,5 +211,60 @@ class ServerIntegrationTests {
         } catch (e: NullPointerException) {
             fail("Test failed with exception: $e")
         }
+    }
+
+    @Test
+    fun testVisualizer(){
+        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+        val turns = 1
+        val latch = CountDownLatch(turns)
+
+        // Create WebSocket client
+        val client = HttpClient {
+            install(WebSockets)
+        }
+
+        GlobalScope.launch {
+            client.ws(
+                    method = HttpMethod.Get,
+                    host = "127.0.0.1",
+                    port = Integer.parseInt(visualizerPort),
+                    path = "/visualizer"
+            ) {
+                // Receive first frame
+                when (val frame = incoming.receive()) {
+                    is Frame.Binary -> {
+                        try {
+                            val gameState = GameStateProtos.GameState.parseFrom(frame.readBytes())
+                            logger.info("Received GameState for turn " + gameState.stateId)
+
+                        }
+                        catch(e: InvalidProtocolBufferException){
+                            fail("Expected GameState but encountered exception: $e")
+                        }
+                    }
+                }
+
+                // Receive subsequent frames
+                repeat(turns) {
+                    when (val frame = incoming.receive()) {
+                        is Frame.Binary -> {
+                            try{
+                                val gameChange = VisualizerProtos.GameChange.parseFrom(frame.readBytes())
+                                logger.info("Received GameChange with " +
+                                        gameChange.characterStatChangesCount + " changes")
+                            }
+                            catch(e: InvalidProtocolBufferException){
+                                fail("Expected GameChange but encountered exception: $e")
+                            }
+                        }
+                    }
+                    latch.countDown()
+                }
+            }
+        }
+
+        val result: Boolean = latch.await(turns * timePerTurn, TimeUnit.MILLISECONDS)
+        assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is 1, try re-running test.")
     }
 }

@@ -1,7 +1,13 @@
 package mech.mania.engine.service_layer;
 
 import mech.mania.engine.domain.model.VisualizerProtos;
+import mech.mania.engine.entrypoints.Main;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -14,13 +20,9 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
-import javax.annotation.Resource;
-import javax.websocket.ContainerProvider;
-import javax.websocket.DeploymentException;
-import javax.websocket.WebSocketContainer;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
 @SpringBootApplication
@@ -28,82 +30,81 @@ import java.util.logging.Logger;
 @EnableWebSocket
 @ComponentScan("mech.mania.engine.entrypoints")
 public class VisualizerWebSocket {
-
-    @Resource
-    private MessageBus bus;
-
     @Component
     public static class VisualizerWebSocketConfig implements WebSocketConfigurer {
         @Override
         public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
             registry.addHandler(new VisualizerBinaryWebSocketHandler(), "/visualizer")
-                    .addInterceptors(new HttpSessionHandshakeInterceptor()); //TODO: set correct endpoint
+                    .addInterceptors(new HttpSessionHandshakeInterceptor());
         }
     }
 
     @Component
-    public static class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler {
+    public static class VisualizerBinaryWebSocketHandler extends BinaryWebSocketHandler implements ApplicationContextAware {
         private static final Logger LOGGER = Logger.getLogger( VisualizerBinaryWebSocketHandler.class.getName() );
-        private static WebSocketSession session;
+
+        private static ApplicationContext context;
+
+        private static List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
+
+        @Override
+        @Autowired
+        public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
+            context = applicationContext;
+        }
+
+        @Override
+        public void afterConnectionEstablished(@NotNull WebSocketSession newSession) {
+            sessions.add(newSession); // Add to list of connections
+            LOGGER.info("New WebSocket connection established (id = " + newSession.getId() + ")");
+
+            // Send initial game state on new connection
+            MessageBus bus = context.getBean(Main.class).bus();
+            BinaryMessage message = new BinaryMessage(bus.getUow().getGameState().buildProtoClass().toByteArray());
+
+            try {
+                newSession.sendMessage(message);
+            } catch (IOException e) {
+                LOGGER.warning("An IOException occurred when sending game state to visualizer (id = " +
+                        newSession.getId() + "). Error message:\n" + e);
+            }
+        }
 
         /**
          * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
          * @param change the VisualizerTurn to send
          */
-        public static void sendChange(VisualizerProtos.GameChange change) {
+        public void sendChange(VisualizerProtos.GameChange change) {
             BinaryMessage message = new BinaryMessage(change.toByteArray());
-            if (session == null) {
-                LOGGER.info("No visualizer endpoint to send to");
+
+            if (sessions.isEmpty()) {
+                LOGGER.info("No open visualizer connections to send to");
                 return;
             }
 
-            try {
-                session.sendMessage(message);
-            } catch (IOException e) {
-                LOGGER.warning("An IOException occurred when sending turn to visualizer endpoint. Error message:\n" +
-                        e.getMessage());
+            // Send to all open connections
+            int successfulSends = 0;
+            for(WebSocketSession session : sessions) {
+                try {
+                    session.sendMessage(message);
+                    successfulSends++;
+                } catch (IOException e) {
+                    LOGGER.warning("An IOException occurred when sending turn to visualizer (id = " +
+                            session.getId() + "). Error message:\n" + e.getMessage());
+                }
             }
-        }
 
-        /**
-         * Have this server connect to a URL to attempt to start a connection.
-         * @param url String url to connect to
-         */
-        public static void connectToUrl(String url) throws URISyntaxException, IOException, DeploymentException {
-            WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-            container.connectToServer(new VisualizerBinaryWebSocketHandler(), new URI(url));
+            LOGGER.info("Sent GameChange to " + successfulSends + " visualizer instances");
         }
 
         @Override
-        public void handleBinaryMessage(WebSocketSession session, BinaryMessage message) {
+        public void handleBinaryMessage(@NotNull WebSocketSession session, @NotNull BinaryMessage message) {
             // TODO: Handle binary message - Visualizer shouldn't really send us any messages
         }
 
         @Override
-        public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
-            // TODO: cleanup after connection closed
-        }
-
-        public static void destroy() {
-            LOGGER.info("Closing endpoint with Visualizer");
-            if (session == null) {
-                return;
-            }
-
-            try {
-                session.close(new CloseStatus(1001, "Game ended."));
-                session = null;
-            } catch (IOException e) {
-                LOGGER.warning("An IOException occurred when closing endpoint. Error message:\n" +
-                        e.getMessage());
-            }
-        }
-
-        @Override
-        public void afterConnectionEstablished(WebSocketSession newSession) {
-            session = newSession;
-            LOGGER.info("New WebSocket connection established");
-            // TODO: Send initial game state on new connection
+        public void afterConnectionClosed(@NotNull WebSocketSession session, @NotNull CloseStatus status) {
+            sessions.remove(session);
         }
     }
 }

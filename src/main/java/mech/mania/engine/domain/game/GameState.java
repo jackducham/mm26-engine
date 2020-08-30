@@ -155,6 +155,10 @@ public class GameState {
                 .collect(Collectors.toList());
     }
 
+    public void setTurnNumber(long turnNumber) {
+        this.turnNumber = turnNumber;
+    }
+
     /**
      * Creates a GameState object for use with a variety of tests.
      * @return a custom GameState
@@ -278,6 +282,4 @@ public class GameState {
         Monster monster = Monster.createDefaultMonster(speedFactor, maxHealthFactor, attackFactor, defenseFactor, experienceFactor, rangeFactor, splashFactor, numberOfDrops, spawnPoint);
         monsterNames.put(monster.getName(), monster);
     }
-
-
 }

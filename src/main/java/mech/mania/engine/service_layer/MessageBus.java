@@ -52,7 +52,7 @@ public class MessageBus {
                 handler.handle(event);
                 messageQueue.addAll(uow.collectNewMessages());
             } catch (Exception e) {
-                logger.warning(String.format("Exception while handling event %s: %s", event, e.getMessage()));
+                logger.warning(String.format("Exception while handling event %s: %s", event, e));
             }
         }
     }
@@ -63,7 +63,7 @@ public class MessageBus {
             handler.handle(command);
             messageQueue.addAll(uow.collectNewMessages());
         } catch (Exception e) {
-            logger.warning(String.format("Exception while handling command %s: %s", command, e.getMessage()));
+            logger.warning(String.format("Exception while handling command %s: %s", command, e));
             throw e;
         }
     }

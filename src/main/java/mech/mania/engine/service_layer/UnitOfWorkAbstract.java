@@ -159,6 +159,14 @@ public abstract class UnitOfWorkAbstract {
     }
 
     /**
+     * Get visualizer context to be able to send out GameChanges
+     * @return The application context of the visualizer websocket
+     */
+    public ConfigurableApplicationContext getVisualizerCtx() {
+        return visualizerCtx;
+    }
+
+    /**
      * Use the saved ConfigurableApplicationContext to stop the VisualizerWebSocket
      */
     public abstract void stopVisualizerServer();
