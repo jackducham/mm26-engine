@@ -27,7 +27,8 @@ public class RepositoryAws implements RepositoryAbstract {
     public int storeGameState(final int turn, final GameState gameState) {
         new Thread(() -> {
             try {
-                sendToAws(String.format("engine/GameState/%06d", turn), gameState.buildProtoClass());
+                String serverName = System.getenv("ENGINE_NAME");
+                sendToAws(String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn), gameState.buildProtoClass());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -39,7 +40,8 @@ public class RepositoryAws implements RepositoryAbstract {
     public int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange) {
         new Thread(() -> {
             try {
-                sendToAws(String.format("engine/GameChange/%06d", turn), gameChange);
+                String serverName = System.getenv("ENGINE_NAME");
+                sendToAws(String.format("engine/%s/GameChange/%06d", serverName == null ? "unnamed" : serverName, turn), gameChange);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -51,7 +53,8 @@ public class RepositoryAws implements RepositoryAbstract {
     public int storePlayerStatsBundle(final int turn, final CharacterProtos.PlayerStatsBundle playerStatsBundle) {
         new Thread(() -> {
             try {
-                sendToAws(String.format("engine/PlayerStatsBundle/%06d", turn), playerStatsBundle);
+                String serverName = System.getenv("ENGINE_NAME");
+                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn), playerStatsBundle);
             } catch (IOException e) {
                 e.printStackTrace();
             }
