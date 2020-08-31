@@ -213,21 +213,23 @@ class ServerIntegrationTests {
         }
     }
 
-    @Test
-    fun testVisualizer(){
-        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
-        val turns = 1
-        val latch = CountDownLatch(turns)
-
+    /**
+     * Helper function which creates a visualizer instance
+     * @param duration: The number of turns (GameChanges) this visualizer should process
+     * @param onGameState: A function to call on receipt of a GameState
+     * @param onGameChange: A function to call on receipt of a GameChange
+     */
+    fun createVisualizer(duration: Int,
+                         onGameState: (gameState: GameStateProtos.GameState) -> Unit,
+                         onGameChange: (gameChange: VisualizerProtos.GameChange) -> Unit) {
         // Create WebSocket client
         val client = HttpClient {
             install(WebSockets)
         }
-
         GlobalScope.launch {
             client.ws(
                     method = HttpMethod.Get,
-                    host = "127.0.0.1",
+                    host = "localhost",
                     port = Integer.parseInt(visualizerPort),
                     path = "/visualizer"
             ) {
@@ -236,8 +238,8 @@ class ServerIntegrationTests {
                     is Frame.Binary -> {
                         try {
                             val gameState = GameStateProtos.GameState.parseFrom(frame.readBytes())
-                            logger.info("Received GameState for turn " + gameState.stateId)
-
+                            //logger.info("Received GameState for turn " + gameState.stateId)
+                            onGameState(gameState)
                         }
                         catch(e: InvalidProtocolBufferException){
                             fail("Expected GameState but encountered exception: $e")
@@ -246,25 +248,83 @@ class ServerIntegrationTests {
                 }
 
                 // Receive subsequent frames
-                repeat(turns) {
+                repeat(duration) {
                     when (val frame = incoming.receive()) {
                         is Frame.Binary -> {
                             try{
                                 val gameChange = VisualizerProtos.GameChange.parseFrom(frame.readBytes())
-                                logger.info("Received GameChange with " +
-                                        gameChange.characterStatChangesCount + " changes")
+//                                logger.info("Received GameChange with " +
+//                                        gameChange.characterStatChangesCount + " changes")
+                                onGameChange(gameChange)
                             }
                             catch(e: InvalidProtocolBufferException){
                                 fail("Expected GameChange but encountered exception: $e")
                             }
                         }
                     }
-                    latch.countDown()
                 }
             }
         }
 
-        val result: Boolean = latch.await(turns * timePerTurn, TimeUnit.MILLISECONDS)
+    }
+
+    @Test
+    fun testBasicVisualizerConnection(){
+        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+        val turns = 1
+        val latch = CountDownLatch(turns)
+
+        // Create WebSocket client
+        createVisualizer(turns, {}, {latch.countDown()})
+
+        // Wait for 1 extra turn in case connection happens between turns
+        val result: Boolean = latch.await((turns+1) * timePerTurn, TimeUnit.MILLISECONDS)
         assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is 1, try re-running test.")
+    }
+
+    @Test
+    fun testMultipleVisualizerConnections(){
+        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+        val turns = 10
+        val visualizers = 400
+        val latch = CountDownLatch(turns * visualizers)
+
+        // Create WebSocket client
+        for(visualizer in 1..visualizers) {
+            createVisualizer(turns, {}, { latch.countDown() })
+        }
+
+        // Wait for 1 extra turn in case connection happens between turns
+        val result: Boolean = latch.await((turns + 1) * timePerTurn, TimeUnit.MILLISECONDS)
+        assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is $visualizers, try re-running test.")
+    }
+
+    @Test
+    fun testMultipleVisualizerConnectionsWithPlayers(){
+        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+        val turns = 10
+        val players = 400
+        val visualizers = 400
+        val latch = CountDownLatch(turns * (visualizers + players))
+
+        connectNPlayers(players, {
+            PlayerDecision.newBuilder()
+                    .setDecisionType(CharacterProtos.DecisionType.ATTACK)
+                    .build()
+        }, {
+            // pass
+        }, {
+            latch.countDown()
+        })
+
+        // Create WebSocket client
+        for(visualizer in 1..visualizers) {
+            createVisualizer(turns, {}, { latch.countDown() })
+        }
+
+        // Wait for 1 extra turn in case connection happens between turns
+        val result: Boolean = latch.await((turns + 1) * timePerTurn, TimeUnit.MILLISECONDS)
+        assertTrue(result, "Test failed: latch final value: ${latch.count}; " +
+                "If value is ${visualizers + players}, try re-running test.")
     }
 }

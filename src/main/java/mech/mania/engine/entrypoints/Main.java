@@ -98,6 +98,10 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
+        /* TODO: Logs only show the first of these two commands (switching the order switches which one shows up).
+            Worth looking into what might cause that. */
+
         bus.handle(new CommandStopInfraServer());
         bus.handle(new CommandStopVisualizerServer());
     }
