@@ -3,6 +3,8 @@ package mech.mania.engine.service_layer;
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.game.enemies.FindEnemiesInRange;
+import mech.mania.engine.domain.game.enemies.FindMonsters;
 import mech.mania.engine.domain.model.CharacterProtos;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +13,7 @@ import mech.mania.engine.domain.model.InfraProtos.InfraStatus;
 import mech.mania.engine.domain.model.ApiProtos;
 import mech.mania.engine.domain.game.pathfinding.PathFinder;
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.game.characters.Player;
+import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.enemies.FindEnemies;
 
 import javax.annotation.Resource;
@@ -102,6 +104,70 @@ public class APIRESTHandler {
             // log that error occurred
             LOGGER.warning("InvalidProtocolBufferException on /findEnemies request from player: " + e.getMessage());
             return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        }
+    }
+
+    @GetMapping("/findMonsters")
+    public byte[] getMonsters(@RequestBody byte[] payload) {
+        try {
+            ApiProtos.APIFindMonstersRequest requestInfo = ApiProtos.APIFindMonstersRequest.parseFrom(payload);
+            GameState gameState = new GameState(requestInfo.getGameState());
+            String player_name = requestInfo.getPlayerName();
+
+            List<Monster> monsters = FindMonsters.findMonsters(gameState, player_name);
+
+            ApiProtos.APIFindMonstersResponse.Builder responseBuilder = ApiProtos.APIFindMonstersResponse.newBuilder();
+            List<CharacterProtos.Monster> protoMonsters = new ArrayList<>();
+            for (Monster monster : monsters) {
+                protoMonsters.add(monster.buildProtoClassMonster());
+            }
+            responseBuilder.addAllMonsters(protoMonsters);
+            LOGGER.fine(String.format("Successfully processed ApiFindMonstersRequest."));
+
+            return responseBuilder.build().toByteArray();
+
+        } catch (InvalidProtocolBufferException e) {
+            // log that error occurred
+            LOGGER.warning("InvalidProtocolBufferException on /findMonsters request from player: " + e.getMessage());
+            return ApiProtos.APIFindMonstersResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        }
+    }
+
+    @GetMapping("/findEnemiesInRange")
+    public byte[] getEnemiesInRange(@RequestBody byte[] payload) {
+        try {
+            ApiProtos.APIFindEnemiesInRangeRequest requestInfo = ApiProtos.APIFindEnemiesInRangeRequest.parseFrom(payload);
+            GameState gameState = new GameState(requestInfo.getGameState());
+            String player_name = requestInfo.getPlayerName();
+
+            List<Character> enemies = FindEnemiesInRange.findEnemiesInRange(gameState, player_name);
+
+            ApiProtos.APIFindEnemiesInRangeResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesInRangeResponse.newBuilder();
+            List<CharacterProtos.Character> protoEnemies = new ArrayList<>();
+            for (Character enemy : enemies) {
+                protoEnemies.add(enemy.buildProtoClassCharacter());
+            }
+            responseBuilder.addAllEnemies(protoEnemies);
+            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesRequest."));
+
+            return responseBuilder.build().toByteArray();
+
+        } catch (InvalidProtocolBufferException e) {
+            // log that error occurred
+            LOGGER.warning("InvalidProtocolBufferException on /findEnemiesInRange request from player: " + e.getMessage());
+            return ApiProtos.APIFindEnemiesInRangeResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
