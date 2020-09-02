@@ -138,15 +138,10 @@ public class Monster extends Character {
         if (taggedPlayersDamage.isEmpty()) {
             return moveToStartDecision(gameState);
         } else {
-            String highestDamagePlayer = getPlayerWithMostDamage();
-            Player player = gameState.getPlayer(highestDamagePlayer);
+            String highestDamageCharacter = getCharacterWithMostDamage();
+            Character target = gameState.getCharacter(highestDamageCharacter);
 
-            // @TODO: Minor bug - if highestDamagePlayer is a Monster, Monster will move to start
-            if (player == null) {
-                return moveToStartDecision(gameState);
-            }
-
-            Position toAttack = player.position;
+            Position toAttack = target.position;
 
             int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
             if (manhattanDistance <= weapon.getRange()) {
@@ -165,12 +160,11 @@ public class Monster extends Character {
      * @return the Monster's leash decision
      */
     public CharacterDecision moveToStartDecision(GameState gameState) {
-        // @TODO: Can update if statement to Position .equals() method
-        if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
+        if (!position.equals(spawnPoint)) {
             Position toMove = findPositionToMove(gameState, spawnPoint);
             return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
         }
-        return null;
+        return new CharacterDecision(CharacterDecision.decisionTypes.NONE, position, -1);
     }
 
 

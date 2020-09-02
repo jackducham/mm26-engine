@@ -4,6 +4,7 @@ import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -144,7 +145,7 @@ public abstract class Character {
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
     public double calculateActualDamage(String attacker, Weapon weapon, int attackerATK) {
-        double attackDamage = weapon.getAttack() * (0.25 * attackerATK / 100);
+        double attackDamage = weapon.getAttack() * (0.25 + (double)attackerATK / 100);
         double minDamage = weapon.getAttack() * 0.20;
 
         double actualDamage = max(minDamage, attackDamage - getDefense());
@@ -250,17 +251,17 @@ public abstract class Character {
     /**
      * @return name of the Character with most damage done to Character
      */
-    protected String getPlayerWithMostDamage() {
-        String highestDamagePlayer = null;
+    protected String getCharacterWithMostDamage() {
+        String highestDamageCharacter = null;
         int highestDamage = -1;
-        for (String playerName : taggedPlayersDamage.keySet()) {
-            if (taggedPlayersDamage.get(playerName) > highestDamage) {
-                highestDamagePlayer = playerName;
-                highestDamage = taggedPlayersDamage.get(playerName);
+        for (String name : taggedPlayersDamage.keySet()) {
+            if (taggedPlayersDamage.get(name) > highestDamage) {
+                highestDamageCharacter = name;
+                highestDamage = taggedPlayersDamage.get(name);
             }
         }
 
-        return highestDamagePlayer;
+        return highestDamageCharacter;
     }
 
 
