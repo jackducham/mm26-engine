@@ -72,6 +72,7 @@ public class RepositoryAws implements RepositoryAbstract {
         String serverName = System.getenv("ENGINE_NAME");
         String key = String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn);
 
+        // https://docs.aws.amazon.com/AmazonS3/latest/dev/RetrievingObjectUsingJava.html
         try {
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                     .withRegion(region)
