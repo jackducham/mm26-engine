@@ -11,6 +11,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.google.protobuf.MessageLite;
 import mech.mania.engine.Config;
 import mech.mania.engine.domain.game.GameState;
+import mech.mania.engine.domain.messages.Message;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameStateProtos;
 import mech.mania.engine.domain.model.VisualizerProtos;
@@ -19,6 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * Uses AWS to store GameStates
@@ -70,40 +72,28 @@ public class RepositoryAws implements RepositoryAbstract {
     @Override
     public GameState getGameState(int turn) {
         String serverName = System.getenv("ENGINE_NAME");
-        String key = String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn);
+        String gameStateKey = String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn);
+        String playerStatsKey = String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn);
+        MessageLite gameStateProto = GameStateProtos.GameState.getDefaultInstance();
 
-        // https://docs.aws.amazon.com/AmazonS3/latest/dev/RetrievingObjectUsingJava.html
-        try {
-            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-                    .withRegion(region)
-                    .withCredentials(new EnvironmentVariableCredentialsProvider())
-                    .build();
+        // Get GameState from AWS
+        gameStateProto = getFromAws(gameStateKey, gameStateProto);
 
-            // Get an object
-            S3Object gameStateS3Object = s3Client.getObject(new GetObjectRequest(bucketName, key));
+        GameState gameState = new GameState((GameStateProtos.GameState)gameStateProto);
 
-            GameStateProtos.GameState gameStateProto =
-                    GameStateProtos.GameState.parseFrom(gameStateS3Object.getObjectContent());
+        // Also restore PlayerStats
+        MessageLite playerStatsBundleProto = CharacterProtos.PlayerStatsBundle.getDefaultInstance();
 
-            // Close connection
-            gameStateS3Object.close();
+        // Get PlayerStatsBundle from AWS
+        playerStatsBundleProto = getFromAws(playerStatsKey, playerStatsBundleProto);
 
-            return new GameState(gameStateProto);
-
-        } catch(IOException e){
-          LOGGER.warning("IOException when getting game state from AWS: " + e);
-          return null;
-        } catch (AmazonServiceException e) {
-            // The call was transmitted successfully, but Amazon S3 couldn't process
-            // it, so it returned an error response.
-            LOGGER.warning("Unable to process S3 request when getting game state from AWS: " + e);
-            return null;
-        } catch (SdkClientException e) {
-            // Amazon S3 couldn't be contacted for a response, or the client
-            // couldn't parse the response from Amazon S3.
-            LOGGER.warning("Failed to connect to S3 when getting game state from AWS: " + e);
-            return null;
+        // Restore PlayerStats
+        for(Map.Entry<String, CharacterProtos.PlayerStats> entry :
+                ((CharacterProtos.PlayerStatsBundle)playerStatsBundleProto).getStatsMap().entrySet()){
+            gameState.getPlayer(entry.getKey()).setPlayerStats(entry.getValue());
         }
+
+        return gameState;
     }
 
     @Override
@@ -140,5 +130,39 @@ public class RepositoryAws implements RepositoryAbstract {
         metadata.setContentEncoding("UTF-8");
 
         s3.putObject(bucketName, key, inputStream, metadata);
+    }
+
+    public MessageLite getFromAws(String key, MessageLite messageLite) {
+        // https://docs.aws.amazon.com/AmazonS3/latest/dev/RetrievingObjectUsingJava.html
+        try {
+            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                    .withRegion(region)
+                    .withCredentials(new EnvironmentVariableCredentialsProvider())
+                    .build();
+
+            // Get an object
+            S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, key));
+
+            messageLite.getParserForType().parseFrom(s3Object.getObjectContent());
+
+            // Close connection
+            s3Object.close();
+
+            return messageLite;
+
+        } catch(IOException e){
+            LOGGER.warning("IOException when getting game state from AWS: " + e);
+            return null;
+        } catch (AmazonServiceException e) {
+            // The call was transmitted successfully, but Amazon S3 couldn't process
+            // it, so it returned an error response.
+            LOGGER.warning("Unable to process S3 request when getting game state from AWS: " + e);
+            return null;
+        } catch (SdkClientException e) {
+            // Amazon S3 couldn't be contacted for a response, or the client
+            // couldn't parse the response from Amazon S3.
+            LOGGER.warning("Failed to connect to S3 when getting game state from AWS: " + e);
+            return null;
+        }
     }
 }
