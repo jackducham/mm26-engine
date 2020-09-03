@@ -62,6 +62,16 @@ public abstract class UnitOfWorkAbstract {
     }
 
     /**
+     * Use the repository to restore game state
+     * @param turn turn to restore from
+     */
+    public void restoreTurn(int turn){
+        GameState startState = repository.getGameState(turn);
+        this.setTurn(turn);
+        this.setGameState(startState);
+    }
+
+    /**
      * Add a new message to execute after this function finishes
      */
     public void addNewMessage(Message message) {
