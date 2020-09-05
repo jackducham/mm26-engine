@@ -18,14 +18,14 @@ public class utils {
         for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
             String otherName = entry.getKey();
             Player other = entry.getValue();
-            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName)) {
+            if (other.getPosition().getBoardID().equals(player.getPosition().getBoardID()) && !otherName.equals(playerName)) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<Double, Character>(player.getPosition().distance(other.getPosition()), (Character) other));
             }
         }
         for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
             String otherName = entry.getKey();
             Monster other = entry.getValue();
-            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName)) {
+            if (other.getPosition().getBoardID().equals(player.getPosition().getBoardID())) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<Double, Character>(player.getPosition().distance(other.getPosition()), (Character) other));
             }
         }
