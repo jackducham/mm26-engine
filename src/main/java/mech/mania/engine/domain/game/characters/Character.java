@@ -1,10 +1,10 @@
 package mech.mania.engine.domain.game.characters;
 
+import kotlin.Triple;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public abstract class Character {
-    private String name;
+    private final String name;
 
     /** Character's base stats */
     protected final int baseSpeed;
@@ -35,10 +35,9 @@ public abstract class Character {
 
     /** Attack/damage parameters */
     protected Weapon weapon;
-    List<String> activeEffectsSources;
 
-    // list of TempStatusModifiers for each Weapon, maps to String in currentAttackers
-    List<TempStatusModifier> activeEffects;
+    // List of active status effects, their source Character, and an isPlayer flag
+    List<Triple<TempStatusModifier, String, Boolean>> activeEffects;
 
     // map of attackers to amount of actual damage done
     protected Map<String, Integer> taggedPlayersDamage;
@@ -65,7 +64,6 @@ public abstract class Character {
         this.spawnPoint = spawnPoint;
 
         this.weapon = weapon;
-        this.activeEffectsSources = new ArrayList<>();
         this.activeEffects = new ArrayList<>();
         this.taggedPlayersDamage = new HashMap<>();
     }
@@ -91,12 +89,9 @@ public abstract class Character {
             characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
         }
 
-        for (int i = 0; i < activeEffectsSources.size(); i++) {
-//            characterBuilder.setCurrentAttackers(i, currentAttackers.get(i).buildProtoClassTemp());
-        }
-
+        // TODO: Update proto to be able to store full triple
         for (int i = 0; i < activeEffects.size(); i++) {
-            characterBuilder.setActiveEffects(i, activeEffects.get(i).buildProtoClassTemp());
+            characterBuilder.setActiveEffects(i, activeEffects.get(i).getFirst().buildProtoClassTemp());
         }
 
         characterBuilder.putAllTaggedPlayersDamage(taggedPlayersDamage);
@@ -110,12 +105,12 @@ public abstract class Character {
      * @param weapon weapon the player attacked with
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
-    public void hitByWeapon(String attacker, Weapon weapon, int attackerATK) {
+    public void hitByWeapon(String attacker, boolean isPlayer, Weapon weapon, int attackerATK) {
         if (weapon.getOnHitEffect() != null) {
-            applyEffect(weapon.getOnHitEffect(), attacker);
+            applyEffect(weapon.getOnHitEffect(), attacker, isPlayer);
         }
-        int actualDamage = (int) calculateActualDamage(attacker, weapon, attackerATK);
-        applyDamage(attacker, actualDamage);
+        int actualDamage = (int) calculateActualDamage(weapon, attackerATK);
+        applyDamage(attacker, isPlayer, actualDamage);
     }
 
     /**
@@ -125,14 +120,13 @@ public abstract class Character {
      * @param sourcePlayer the name of the source player
      * @return true if successful
      */
-    public boolean applyEffect(TempStatusModifier effect, String sourcePlayer) {
+    public boolean applyEffect(TempStatusModifier effect, String sourcePlayer, boolean isPlayer) {
         if(effect == null || sourcePlayer == null) {
             return false;
         }
 
         // activeEffects and activeEffectsSources are parallel lists
-        activeEffects.add(effect);
-        activeEffectsSources.add(sourcePlayer);
+        activeEffects.add(new Triple<>(effect, sourcePlayer, isPlayer));
 
         return true;
     }
@@ -140,17 +134,14 @@ public abstract class Character {
     /**
      * This function calculates the damage that the attacker does to the victim
      * Formula from: https://github.com/jackducham/mm26-design/wiki/Your-Character
-     * @param attacker name of the attacking player
      * @param weapon weapon the player attacked with
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
-    public double calculateActualDamage(String attacker, Weapon weapon, int attackerATK) {
+    public double calculateActualDamage(Weapon weapon, int attackerATK) {
         double attackDamage = weapon.getAttack() * (0.25 + (double)attackerATK / 100);
         double minDamage = weapon.getAttack() * 0.20;
 
-        double actualDamage = max(minDamage, attackDamage - getDefense());
-
-        return actualDamage;
+        return max(minDamage, attackDamage - getDefense());
     }
 
     /**
@@ -158,7 +149,7 @@ public abstract class Character {
      * @param attacker Character name of attacker
      * @param actualDamage calculated damage done to health
      */
-    public void applyDamage(String attacker, int actualDamage) {
+    public void applyDamage(String attacker, boolean isPlayer, int actualDamage) {
         if (taggedPlayersDamage.containsKey(attacker)) {
             taggedPlayersDamage.put(attacker, taggedPlayersDamage.get(attacker) + actualDamage);
         } else {
@@ -183,16 +174,18 @@ public abstract class Character {
      */
     public void updateActiveEffects() {
         for(int i = 0; i < activeEffects.size(); i++){
-            TempStatusModifier effect = activeEffects.get(i);
+            TempStatusModifier effect = activeEffects.get(i).getFirst();
+            String source = activeEffects.get(i).getSecond();
+            Boolean isPlayer = activeEffects.get(i).getThird();
+
             if (effect.getTurnsLeft() <= 0) { // remove inactive effects
                 activeEffects.remove(i);
-                activeEffectsSources.remove(i);
                 i--; // Don't skip next effect on removal!
             } else {
                 // applies change to currentHealth of Character
                 // this can ONLY be called once per turn for correct calculations
                 // this also applies the raw damage intentionally
-                applyDamage(activeEffectsSources.get(i), effect.getDamagePerTurn());
+                applyDamage(source, isPlayer, effect.getDamagePerTurn());
                 updateCurrentHealth(effect.getFlatRegenPerTurn());
             }
             effect.updateTurnsLeft();
@@ -224,7 +217,6 @@ public abstract class Character {
         position = spawnPoint;
         currentHealth = getMaxHealth();
         ticksSinceDeath = -1;
-        activeEffectsSources.clear();
         activeEffects.clear();
         taggedPlayersDamage.clear();
         isDead = false;
@@ -232,7 +224,7 @@ public abstract class Character {
 
     /**
      * After Character dies, give actualDamage XP points to attacking Player
-     * @param gameState
+     * @param gameState The current gameState
      */
     protected void distributeRewards(GameState gameState) {
         for (Map.Entry<String, Integer> mapElement : taggedPlayersDamage.entrySet()) {
@@ -249,19 +241,19 @@ public abstract class Character {
     }
 
     /**
-     * @return name of the Character with most damage done to Character
+     * @return name of the Player (NOT Monster) with most damage done to this Character
      */
-    protected String getCharacterWithMostDamage() {
-        String highestDamageCharacter = null;
+    protected String getPlayerWithMostDamage() {
+        String highestDamagePlayer = null;
         int highestDamage = -1;
         for (String name : taggedPlayersDamage.keySet()) {
             if (taggedPlayersDamage.get(name) > highestDamage) {
-                highestDamageCharacter = name;
+                highestDamagePlayer = name;
                 highestDamage = taggedPlayersDamage.get(name);
             }
         }
 
-        return highestDamageCharacter;
+        return highestDamagePlayer;
     }
 
 
@@ -276,9 +268,9 @@ public abstract class Character {
     public int getSpeed() {
         int flatChange = 0;
         double percentChange = 0;
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatSpeedChange();
-            percentChange += effect.getPercentSpeedChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatSpeedChange();
+            percentChange += effect.getFirst().getPercentSpeedChange();
         }
 
         // Make sure stat can't be negative
@@ -292,9 +284,9 @@ public abstract class Character {
     public int getMaxHealth() {
         int flatChange = 0;
         double percentChange = 0;
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatHealthChange();
-            percentChange += effect.getPercentHealthChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatHealthChange();
+            percentChange += effect.getFirst().getPercentHealthChange();
         }
 
         // Make sure stat can't be negative
@@ -312,9 +304,9 @@ public abstract class Character {
     public int getAttack() {
         int flatChange = 0;
         double percentChange = 0;
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatAttackChange();
-            percentChange += effect.getPercentAttackChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatAttackChange();
+            percentChange += effect.getFirst().getPercentAttackChange();
         }
 
         // Make sure stat can't be negative
@@ -328,9 +320,9 @@ public abstract class Character {
     public int getDefense() {
         int flatChange = 0;
         double percentChange = 0;
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatDefenseChange();
-            percentChange += effect.getPercentDefenseChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatDefenseChange();
+            percentChange += effect.getFirst().getPercentDefenseChange();
         }
 
         // Make sure stat can't be negative

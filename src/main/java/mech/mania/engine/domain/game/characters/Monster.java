@@ -15,7 +15,7 @@ import java.util.Map;
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
-    private List<Item> drops;
+    private final List<Item> drops;
 
 
     // --------Constructors-------- //
@@ -138,8 +138,13 @@ public class Monster extends Character {
         if (taggedPlayersDamage.isEmpty()) {
             return moveToStartDecision(gameState);
         } else {
-            String highestDamageCharacter = getCharacterWithMostDamage();
-            Character target = gameState.getCharacter(highestDamageCharacter);
+            String highestDamageCharacter = getPlayerWithMostDamage();
+            Player target = gameState.getPlayer(highestDamageCharacter);
+
+            // Check that this player still exists
+            if(target == null){
+                return moveToStartDecision(gameState);
+            }
 
             Position toAttack = target.position;
 

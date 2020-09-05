@@ -54,7 +54,7 @@ public class HatEffectTests {
         p1.setInventory(2, Consumable.createDefaultConsumable());
 
         // deals 15 damage to the player.
-        p1.applyDamage("player2", 15);
+        p1.applyDamage("player2", true, 15);
 
 
         // Check that the player starts with 5 hp

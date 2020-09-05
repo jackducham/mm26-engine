@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
+import kotlin.Triple;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
@@ -144,7 +145,7 @@ public class Player extends Character {
         if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
-            applyEffect(hatStats, this.getName());
+            applyEffect(hatStats, this.getName(), true);
         }
         updateActiveEffects();
         applyWearableRegen();
@@ -209,9 +210,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatSpeedChange();
-            percentChange += effect.getPercentSpeedChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatSpeedChange();
+            percentChange += effect.getFirst().getPercentSpeedChange();
         }
 
         // Make sure stat can't be negative
@@ -256,9 +257,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatHealthChange();
-            percentChange += effect.getPercentHealthChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatHealthChange();
+            percentChange += effect.getFirst().getPercentHealthChange();
         }
 
         // Make sure stat can't be negative
@@ -306,9 +307,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatAttackChange();
-            percentChange += effect.getPercentAttackChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatAttackChange();
+            percentChange += effect.getFirst().getPercentAttackChange();
         }
 
         // Make sure stat can't be negative
@@ -356,9 +357,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatDefenseChange();
-            percentChange += effect.getPercentDefenseChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatDefenseChange();
+            percentChange += effect.getFirst().getPercentDefenseChange();
         }
 
         // Make sure stat can't be negative
@@ -406,9 +407,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatExperienceChange();
-            percentChange += effect.getPercentExperienceChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatExperienceChange();
+            percentChange += effect.getFirst().getPercentExperienceChange();
         }
 
         // Make sure stat can't be negative
@@ -520,7 +521,7 @@ public class Player extends Character {
         if(this.hat != null && this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
-        applyEffect(effect, this.getName());
+        applyEffect(effect, this.getName(), true);
 
         //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {

@@ -17,10 +17,17 @@ import static org.junit.Assert.*;
 public class MonsterTests {
 
     private GameState gameState;
+    private Monster monster;
 
     @Before
     public void setup(){
         gameState = new GameState();
+
+        // Add default monster which spawns at (0, 0)
+        //  use high attackFactor to make sure monster deals damage to monster
+        monster = Monster.createDefaultMonster(0, 0, 100, 0,
+                0, 0,0, 0, new Position(0, 0, "pvp"));
+        gameState.addNewMonster(monster);
     }
 
     @After
@@ -30,12 +37,6 @@ public class MonsterTests {
 
     @Test
     public void testMonsterReturnToSpawn(){
-        // Add default monster which spawns at (0, 0)
-        Monster monster = Monster.createDefaultMonster(0, 0, 0, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
-
-        gameState.addNewMonster(monster);
-
         // Move monster to (0, 1)
         monster.setPosition(new Position(0, 1, "pvp"));
 
@@ -52,12 +53,6 @@ public class MonsterTests {
 
     @Test
     public void testMonsterReturnToSpawnLongDistance(){
-        // Add default monster which spawns at (0, 0)
-        Monster monster = Monster.createDefaultMonster(0, 0, 0, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
-
-        gameState.addNewMonster(monster);
-
         // Move monster to (0, speed+1)
         monster.setPosition(new Position(0, monster.getSpeed()+1, "pvp"));
 
@@ -79,19 +74,13 @@ public class MonsterTests {
 
     @Test
     public void testMonsterTargetingOnePlayer(){
-        // Add default monster which spawns at (0, 0)
-        //  use high attackFactor to make sure monster deals damage to monster
-        Monster monster = Monster.createDefaultMonster(0, 0, 100, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
-        gameState.addNewMonster(monster);
-
         // Add new player at (0, 1)
         gameState.addNewPlayer("player1");
         Player player1 = gameState.getPlayer("player1");
         player1.setPosition(new Position(0, 1, "pvp"));
 
         // Add Player1 to monster's aggro table
-        monster.applyDamage("player1", 1);
+        monster.applyDamage("player1", true, 1);
 
         // Assert that Monster wants to attack player1
         assertEquals(monster.makeDecision(gameState).getDecision(), CharacterDecision.decisionTypes.ATTACK);
@@ -108,12 +97,6 @@ public class MonsterTests {
 
     @Test
     public void testMonsterTargetingMultiplePlayers(){
-        // Add default monster which spawns at (0, 0)
-        //  use high attackFactor to make sure monster deals damage to monster
-        Monster monster = Monster.createDefaultMonster(0, 0, 100, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
-        gameState.addNewMonster(monster);
-
         // Add new player at (0, 1)
         gameState.addNewPlayer("player1");
         Player player1 = gameState.getPlayer("player1");
@@ -125,10 +108,10 @@ public class MonsterTests {
         player2.setPosition(new Position(1, 0, "pvp"));
 
         // Add Player1 to monster's aggro table
-        monster.applyDamage("player1", 1);
+        monster.applyDamage("player1", true,1);
 
         // Add Player2 to monster's aggro table with more damage
-        monster.applyDamage("player2", 2);
+        monster.applyDamage("player2", true,2);
 
         // Assert that Monster wants to attack player2
         assertEquals(monster.makeDecision(gameState).getDecision(), CharacterDecision.decisionTypes.ATTACK);
@@ -152,19 +135,13 @@ public class MonsterTests {
 
     @Test
     public void testMonsterMovingTowardOnePlayer(){
-        // Add default monster which spawns at (0, 0)
-        //  use high attackFactor to make sure monster deals damage to monster
-        Monster monster = Monster.createDefaultMonster(0, 0, 100, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
-        gameState.addNewMonster(monster);
-
         // Add new player at (0, range+1)
         gameState.addNewPlayer("player1");
         Player player1 = gameState.getPlayer("player1");
         player1.setPosition(new Position(0, monster.getWeapon().getRange()+1, "pvp"));
 
         // Add Player1 to monster's aggro table
-        monster.applyDamage("player1", 1);
+        monster.applyDamage("player1", true,1);
 
         // Assert that Monster wants to move towards player1
         assertEquals(monster.makeDecision(gameState).getDecision(), CharacterDecision.decisionTypes.MOVE);
@@ -184,19 +161,13 @@ public class MonsterTests {
 
     @Test
     public void testMonsterMovingTowardOnePlayerOverAnother(){
-        // Add default monster which spawns at (0, 0)
-        //  use high attackFactor to make sure monster deals damage to monster
-        Monster monster = Monster.createDefaultMonster(0, 0, 100, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
-        gameState.addNewMonster(monster);
-
         // Add new player at (0, range+1)
         gameState.addNewPlayer("player1");
         Player player1 = gameState.getPlayer("player1");
         player1.setPosition(new Position(0, monster.getWeapon().getRange()+1, "pvp"));
 
         // Add Player1 to monster's aggro table
-        monster.applyDamage("player1", 1);
+        monster.applyDamage("player1", true,1);
 
         // Add another player at (range + 1, 0)
         gameState.addNewPlayer("player2");
@@ -204,7 +175,7 @@ public class MonsterTests {
         player2.setPosition(new Position(monster.getWeapon().getRange()+1, 0, "pvp"));
 
         // Add Player2 to monster's aggro table above player1
-        monster.applyDamage("player2", 2);
+        monster.applyDamage("player2", true,2);
 
         // Assert that Monster wants to move towards player2
         assertEquals(CharacterDecision.decisionTypes.MOVE, monster.makeDecision(gameState).getDecision());
