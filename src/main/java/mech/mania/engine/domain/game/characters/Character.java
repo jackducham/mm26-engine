@@ -205,6 +205,7 @@ public abstract class Character {
     /**
      * This updates both the Character experience and level with the formula
      *      exp_to_level = 100 * level
+     * Experience should NEVER be negative
      */
     public void updateLevel() {
         int expToNextLevel = 100 * level;
