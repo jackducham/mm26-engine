@@ -342,7 +342,6 @@ public class GameLogic {
                     player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
                 } else {
                     player.hitByWeapon(attacker.getName(), attackerWeapon, attacker.getAttack());
-
                 }
             }
         }

@@ -7,6 +7,7 @@ import mech.mania.engine.domain.model.CharacterProtos;
 
 import java.util.*;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -21,7 +22,8 @@ public abstract class Character {
 
     /** Character's ongoing stats */
     protected int currentHealth;
-    protected int experience;
+    protected int experience; // experience gained on that level
+    protected int level;
 
     /** Death parameters */
     private static final int reviveTicks = 1;
@@ -46,7 +48,7 @@ public abstract class Character {
      * Constructor for Characters
      */
     public Character(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                     int experience, Position spawnPoint, Weapon weapon) {
+                     int level, Position spawnPoint, Weapon weapon) {
         this.name = name;
 
         this.baseSpeed = baseSpeed;
@@ -55,7 +57,8 @@ public abstract class Character {
         this.baseDefense = baseDefense;
 
         this.currentHealth = baseMaxHealth;
-        this.experience = experience;
+        this.experience = 0;
+        this.level = level;
 
         this.ticksSinceDeath = -1;
         this.isDead = false;
@@ -168,11 +171,12 @@ public abstract class Character {
     }
 
     /**
-     * Applies active effects and updates the death state
+     * Applies active effects and updates the Character level and death state
      * This should be called once a turn
      */
     public void updateCharacter(GameState gameState) {
         updateActiveEffects();
+        updateLevel();
         updateDeathState(gameState);
     }
 
@@ -195,6 +199,19 @@ public abstract class Character {
                 updateCurrentHealth(effect.getFlatRegenPerTurn());
             }
             effect.updateTurnsLeft();
+        }
+    }
+
+    /**
+     * This updates both the Character experience and level with the formula
+     *      exp_to_level = 100 * level
+     */
+    public void updateLevel() {
+        int expToNextLevel = 100 * level;
+        while (experience >= expToNextLevel) {
+            experience -= expToNextLevel;
+            level++;
+            expToNextLevel = 100 * level;
         }
     }
 
@@ -236,14 +253,19 @@ public abstract class Character {
     protected void distributeRewards(GameState gameState) {
         for (Map.Entry<String, Integer> mapElement : taggedPlayersDamage.entrySet()) {
             String attackerName = mapElement.getKey();
-            Integer damage = mapElement.getValue();
 
-            Player player = gameState.getPlayer(attackerName);
+            Player attackingPlayer = gameState.getPlayer(attackerName);
 
-            // Don't reward if tagged character is Monster or is self
-            if (player != null && player != this) {
-                player.addExperience(damage);
+            // if attacker is Monster or self, don't give rewards
+            if (attackingPlayer == null || attackingPlayer == this) {
+                continue;
             }
+
+            int attackingPlayerLevel = attackingPlayer.getLevel();
+            int levelDiff = abs(attackingPlayerLevel  - this.getLevel());
+            double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + levelDiff);
+            int expGain = 10 * this.getLevel() * (int) expMultiplier;
+            attackingPlayer.addExperience(expGain);
         }
     }
 
@@ -351,7 +373,7 @@ public abstract class Character {
     }
 
     public int getLevel() {
-        return getExperience() % 10; // @TODO: Replace with actual level equation
+        return level;
     }
 
     public boolean isDead() {

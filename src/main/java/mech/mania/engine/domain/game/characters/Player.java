@@ -27,7 +27,7 @@ public class Player extends Character {
      * @param spawnPoint Player's spawn point
      */
     public Player(String name, Position spawnPoint) {
-        super(name, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 0, spawnPoint, null);
+        super(name, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, null);
         hat = null;
         clothes = null;
         shoes = null;
@@ -148,6 +148,7 @@ public class Player extends Character {
         }
         updateActiveEffects();
         applyWearableRegen();
+        updateLevel();
         updateDeathState(gameState);
     }
 
