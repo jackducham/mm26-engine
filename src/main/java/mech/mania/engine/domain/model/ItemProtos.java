@@ -118,7 +118,7 @@ public final class ItemProtos {
      */
     mech.mania.engine.domain.model.ItemProtos.ConsumableOrBuilder getConsumableOrBuilder();
 
-    public mech.mania.engine.domain.model.ItemProtos.Item.ItemCase getItemCase();
+    mech.mania.engine.domain.model.ItemProtos.Item.ItemCase getItemCase();
   }
   /**
    * Protobuf type {@code item.Item}
@@ -297,7 +297,7 @@ public final class ItemProtos {
       CONSUMABLE(7),
       ITEM_NOT_SET(0);
       private final int value;
-      private ItemCase(int value) {
+      ItemCase(int value) {
         this.value = value;
       }
       /**
@@ -324,7 +324,7 @@ public final class ItemProtos {
       public int getNumber() {
         return this.value;
       }
-    };
+    }
 
     public ItemCase
     getItemCase() {
@@ -647,8 +647,7 @@ public final class ItemProtos {
         case 0:
         default:
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1321,7 +1320,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 3;
-        onChanged();;
+        onChanged();
         return clothesBuilder_;
       }
 
@@ -1462,7 +1461,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 4;
-        onChanged();;
+        onChanged();
         return hatBuilder_;
       }
 
@@ -1603,7 +1602,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 5;
-        onChanged();;
+        onChanged();
         return shoesBuilder_;
       }
 
@@ -1744,7 +1743,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 6;
-        onChanged();;
+        onChanged();
         return weaponBuilder_;
       }
 
@@ -1885,7 +1884,7 @@ public final class ItemProtos {
           item_ = null;
         }
         itemCase_ = 7;
-        onChanged();;
+        onChanged();
         return consumableBuilder_;
       }
       @java.lang.Override
@@ -2126,8 +2125,7 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -2789,7 +2787,7 @@ public final class ItemProtos {
 
       private final int value;
 
-      private HatEffect(int value) {
+      HatEffect(int value) {
         this.value = value;
       }
 
@@ -2899,8 +2897,7 @@ public final class ItemProtos {
             .equals(other.getStats())) return false;
       }
       if (hatEffect_ != other.hatEffect_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -3582,8 +3579,7 @@ public final class ItemProtos {
         if (!getStats()
             .equals(other.getStats())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -4362,8 +4358,7 @@ public final class ItemProtos {
         if (!getOnHitEffect()
             .equals(other.getOnHitEffect())) return false;
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -5268,8 +5263,7 @@ public final class ItemProtos {
       }
       if (getStacks()
           != other.getStacks()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -6208,8 +6202,7 @@ public final class ItemProtos {
               other.getPercentDefenseChange())) return false;
       if (getFlatRegenPerTurn()
           != other.getFlatRegenPerTurn()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -7251,8 +7244,7 @@ public final class ItemProtos {
           != other.getFlatRegenPerTurn()) return false;
       if (getTurnsLeft()
           != other.getTurnsLeft()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -7901,7 +7893,7 @@ public final class ItemProtos {
       "ponH\000\022&\n\nconsumable\030\007 \001(\0132\020.item.Consuma" +
       "bleH\000B\006\n\004item\".\n\007Clothes\022#\n\005stats\030\001 \001(\0132" +
       "\024.item.StatusModifier\"j\n\003Hat\022#\n\005stats\030\001 " +
-      "\001(\0132\024.item.StatusModifier\022\'\n\nhat_effect\030" +
+              "\001(\0132\024.item.StatusModifier\022'\n\nhat_effect\030" +
       "\002 \001(\0162\023.item.Hat.HatEffect\"\025\n\tHatEffect\022" +
       "\010\n\004TEST\020\000\",\n\005Shoes\022#\n\005stats\030\001 \001(\0132\024.item" +
       ".StatusModifier\"\224\001\n\006Weapon\022#\n\005stats\030\001 \001(" +

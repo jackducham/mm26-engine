@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import mech.mania.engine.domain.model.CharacterProtos
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
@@ -37,16 +38,16 @@ import kotlin.test.fail
 class ServerIntegrationTests {
 
     /** Port to launch the Game server on */
-    private val port = 9000  // match infraPort from config.properties
+    private val port = Config.getProperty("infraPort")  // match infraPort from config.properties
 
     /** URL that visualizer will connect to */
-    private var VISUALIZER_URL: String = "ws://localhost:$port/visualizer"
+    private var visualizerUrl: String = "ws://localhost:$port/visualizer"
 
     /** URL that infra will send new/reconnect player messages to */
-    private var INFRA_NEW_URL: String = "http://localhost:$port/infra/player/new"
-    private var INFRA_RECONNECT_URL: String = "http://localhost:$port/infra/player/reconnect"
+    private var infraNewUrl: String = "http://localhost:$port/infra/player/new"
+    private var infraReconnectUrl: String = "http://localhost:$port/infra/player/reconnect"
 
-    private var LOGGER = Logger.getLogger(ServerIntegrationTests::class.toString())
+    private var logger = Logger.getLogger(ServerIntegrationTests::class.toString())
 
 
     /**
@@ -54,8 +55,8 @@ class ServerIntegrationTests {
      */
     @Before
     fun setup() {
-        // start game server
-        val args: Array<String> = arrayOf("$port")
+        // start game server with AWS turned off
+        val args: Array<String> = arrayOf("false", port)
 
         // launch the actual game in another thread
         // so the test doesn't wait for the server to close before starting
@@ -77,10 +78,10 @@ class ServerIntegrationTests {
         try {
             val bytes = url.readBytes()
             val statusObj = InfraStatus.parseFrom(bytes)
-            LOGGER.info("Response upon sending endgame signal: ${statusObj.message}")
+            logger.info("Response upon sending endgame signal: ${statusObj.message}")
         } catch (e: Exception) {
             // if the server has already closed, then ignore
-            LOGGER.info("Exception in closing the server: ${e.message}")
+            logger.info("Exception in closing the server: ${e.message}")
         }
     }
 
@@ -104,7 +105,7 @@ class ServerIntegrationTests {
                         socket = ServerSocket(0)
                         socket.close()
                     } catch (e: Exception) {
-                        LOGGER.warning("No more free ports found: " + e.message)
+                        logger.warning("No more free ports found: " + e.message)
                         return
                     }
 
@@ -112,8 +113,6 @@ class ServerIntegrationTests {
 
                     HttpServer.create(InetSocketAddress(randomPort), 0).apply {
                         createContext("/server") { exchange: HttpExchange ->
-                            exchange.responseHeaders["Content-Type"] = "application/octet-stream"
-
                             // read in input from server
                             // once the turn is parsed, use that turn to call a passed in function
                             val turn = PlayerTurn.parseFrom(exchange.requestBody)
@@ -134,7 +133,7 @@ class ServerIntegrationTests {
 
                     val playerName = java.util.UUID.randomUUID().toString()
                     val playerAddr = "http://localhost:$randomPort/server"
-                    LOGGER.fine("Creating player \"$playerName\" with IP address $playerAddr")
+                    logger.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
                     playerNames.add(playerName)
                     playerAddrs.add(playerAddr)
@@ -147,7 +146,7 @@ class ServerIntegrationTests {
         }
 
         for (i in 0 until n) {
-            with (URL(INFRA_NEW_URL).openConnection() as HttpURLConnection) {
+            with (URL(infraNewUrl).openConnection() as HttpURLConnection) {
                 requestMethod = "POST"
                 doOutput = true
                 setRequestProperty("Content-Type", "application/octet-stream")
@@ -176,8 +175,8 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 500
-        val turns = 10
+        val players = 400
+        val turns = 20
 
         val timePerTurn = 2000  // check config.properties
 
@@ -186,7 +185,7 @@ class ServerIntegrationTests {
 
         connectNPlayers(players, {
             PlayerDecision.newBuilder()
-                    .setDecisionTypeValue(1)
+                    .setDecisionType(CharacterProtos.DecisionType.ATTACK)
                     .build()
         }, {
             // pass

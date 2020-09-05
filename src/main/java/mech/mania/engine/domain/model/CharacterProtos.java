@@ -6376,6 +6376,798 @@ public final class CharacterProtos {
 
   }
 
+  public interface PlayerStatsBundleOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:character.PlayerStatsBundle)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> 
+        getStatsList();
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStats(int index);
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    int getStatsCount();
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
+        getStatsOrBuilderList();
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder getStatsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code character.PlayerStatsBundle}
+   */
+  public static final class PlayerStatsBundle extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:character.PlayerStatsBundle)
+      PlayerStatsBundleOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PlayerStatsBundle.newBuilder() to construct.
+    private PlayerStatsBundle(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PlayerStatsBundle() {
+      stats_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PlayerStatsBundle();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PlayerStatsBundle(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                stats_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.PlayerStats>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              stats_.add(
+                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.PlayerStats.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          stats_ = java.util.Collections.unmodifiableList(stats_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.class, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.Builder.class);
+    }
+
+    public static final int STATS_FIELD_NUMBER = 1;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> stats_;
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsList() {
+      return stats_;
+    }
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
+        getStatsOrBuilderList() {
+      return stats_;
+    }
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    @java.lang.Override
+    public int getStatsCount() {
+      return stats_.size();
+    }
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStats(int index) {
+      return stats_.get(index);
+    }
+    /**
+     * <code>repeated .character.PlayerStats stats = 1;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder getStatsOrBuilder(
+        int index) {
+      return stats_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < stats_.size(); i++) {
+        output.writeMessage(1, stats_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < stats_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, stats_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle other = (mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle) obj;
+
+      if (!getStatsList()
+          .equals(other.getStatsList())) return false;
+      return unknownFields.equals(other.unknownFields);
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getStatsCount() > 0) {
+        hash = (37 * hash) + STATS_FIELD_NUMBER;
+        hash = (53 * hash) + getStatsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code character.PlayerStatsBundle}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:character.PlayerStatsBundle)
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundleOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.class, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getStatsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (statsBuilder_ == null) {
+          stats_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          statsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle build() {
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle buildPartial() {
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle result = new mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle(this);
+        int from_bitField0_ = bitField0_;
+        if (statsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            stats_ = java.util.Collections.unmodifiableList(stats_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.stats_ = stats_;
+        } else {
+          result.stats_ = statsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle) {
+          return mergeFrom((mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle other) {
+        if (other == mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.getDefaultInstance()) return this;
+        if (statsBuilder_ == null) {
+          if (!other.stats_.isEmpty()) {
+            if (stats_.isEmpty()) {
+              stats_ = other.stats_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureStatsIsMutable();
+              stats_.addAll(other.stats_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.stats_.isEmpty()) {
+            if (statsBuilder_.isEmpty()) {
+              statsBuilder_.dispose();
+              statsBuilder_ = null;
+              stats_ = other.stats_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              statsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getStatsFieldBuilder() : null;
+            } else {
+              statsBuilder_.addAllMessages(other.stats_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> stats_ =
+        java.util.Collections.emptyList();
+      private void ensureStatsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          stats_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.PlayerStats>(stats_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.PlayerStats, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> statsBuilder_;
+
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsList() {
+        if (statsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(stats_);
+        } else {
+          return statsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public int getStatsCount() {
+        if (statsBuilder_ == null) {
+          return stats_.size();
+        } else {
+          return statsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStats(int index) {
+        if (statsBuilder_ == null) {
+          return stats_.get(index);
+        } else {
+          return statsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder setStats(
+          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
+        if (statsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStatsIsMutable();
+          stats_.set(index, value);
+          onChanged();
+        } else {
+          statsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder setStats(
+          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder builderForValue) {
+        if (statsBuilder_ == null) {
+          ensureStatsIsMutable();
+          stats_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          statsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder addStats(mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
+        if (statsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStatsIsMutable();
+          stats_.add(value);
+          onChanged();
+        } else {
+          statsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder addStats(
+          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
+        if (statsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStatsIsMutable();
+          stats_.add(index, value);
+          onChanged();
+        } else {
+          statsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder addStats(
+          mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder builderForValue) {
+        if (statsBuilder_ == null) {
+          ensureStatsIsMutable();
+          stats_.add(builderForValue.build());
+          onChanged();
+        } else {
+          statsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder addStats(
+          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder builderForValue) {
+        if (statsBuilder_ == null) {
+          ensureStatsIsMutable();
+          stats_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          statsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder addAllStats(
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStats> values) {
+        if (statsBuilder_ == null) {
+          ensureStatsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, stats_);
+          onChanged();
+        } else {
+          statsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder clearStats() {
+        if (statsBuilder_ == null) {
+          stats_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          statsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public Builder removeStats(int index) {
+        if (statsBuilder_ == null) {
+          ensureStatsIsMutable();
+          stats_.remove(index);
+          onChanged();
+        } else {
+          statsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder getStatsBuilder(
+          int index) {
+        return getStatsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder getStatsOrBuilder(
+          int index) {
+        if (statsBuilder_ == null) {
+          return stats_.get(index);  } else {
+          return statsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
+           getStatsOrBuilderList() {
+        if (statsBuilder_ != null) {
+          return statsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(stats_);
+        }
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder addStatsBuilder() {
+        return getStatsFieldBuilder().addBuilder(
+            mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder addStatsBuilder(
+          int index) {
+        return getStatsFieldBuilder().addBuilder(
+            index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .character.PlayerStats stats = 1;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder> 
+           getStatsBuilderList() {
+        return getStatsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.PlayerStats, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
+          getStatsFieldBuilder() {
+        if (statsBuilder_ == null) {
+          statsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.PlayerStats, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder>(
+                  stats_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          stats_ = null;
+        }
+        return statsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:character.PlayerStatsBundle)
+    }
+
+    // @@protoc_insertion_point(class_scope:character.PlayerStatsBundle)
+    private static final mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle();
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PlayerStatsBundle>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerStatsBundle>() {
+      @java.lang.Override
+      public PlayerStatsBundle parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PlayerStatsBundle(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PlayerStatsBundle> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PlayerStatsBundle> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface PositionOrBuilder extends
       // @@protoc_insertion_point(interface_extends:character.Position)
       com.google.protobuf.MessageOrBuilder {
@@ -7109,6 +7901,11 @@ public final class CharacterProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_character_PlayerStats_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_character_PlayerStatsBundle_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_character_PlayerStatsBundle_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_character_Position_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -7147,12 +7944,14 @@ public final class CharacterProtos {
       "\016\n\006attack\030\004 \001(\005\022\017\n\007defense\030\005 \001(\005\022\026\n\016curr" +
       "ent_health\030\006 \001(\005\022\022\n\nmax_health\030\007 \001(\005\022\023\n\013" +
       "death_count\030\010 \001(\005\022\032\n\022turns_since_joined\030" +
-      "\t \001(\005\"2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x" +
-      "\030\002 \001(\005\022\t\n\001y\030\003 \001(\005*[\n\014DecisionType\022\010\n\004NON" +
-      "E\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n" +
-      "\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036mech.m" +
-      "ania.engine.domain.modelB\017CharacterProto" +
-      "s\252\002\016MM26.IO.Modelsb\006proto3"
+      "\t \001(\005\":\n\021PlayerStatsBundle\022%\n\005stats\030\001 \003(" +
+      "\0132\026.character.PlayerStats\"2\n\010Position\022\020\n" +
+      "\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005*[\n" +
+      "\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATT" +
+      "ACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n" +
+      "\n\006PICKUP\020\006BB\n\036mech.mania.engine.domain.m" +
+      "odelB\017CharacterProtos\252\002\016MM26.IO.Modelsb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7189,8 +7988,14 @@ public final class CharacterProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_PlayerStats_descriptor,
         new java.lang.String[] { "Level", "Experience", "MonstersSlain", "Attack", "Defense", "CurrentHealth", "MaxHealth", "DeathCount", "TurnsSinceJoined", });
-    internal_static_character_Position_descriptor =
+    internal_static_character_PlayerStatsBundle_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_character_PlayerStatsBundle_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_character_PlayerStatsBundle_descriptor,
+        new java.lang.String[] { "Stats", });
+    internal_static_character_Position_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_character_Position_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Position_descriptor,

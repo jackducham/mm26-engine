@@ -1,6 +1,7 @@
 package mech.mania.engine.adapters;
 
 import mech.mania.engine.domain.game.GameState;
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.VisualizerProtos;
 
 import java.util.HashMap;
@@ -16,6 +17,7 @@ public class RepositoryFake implements RepositoryAbstract {
 
     private final Map<Integer, GameState> gameStates = new HashMap<>();
     private final Map<Integer, VisualizerProtos.GameChange> visualizerChanges = new HashMap<>();
+    private final Map<Integer, CharacterProtos.PlayerStatsBundle> playerStatsBundles = new HashMap<>();
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
@@ -26,15 +28,24 @@ public class RepositoryFake implements RepositoryAbstract {
     }
 
     @Override
-    public int storeVisualizerChange(final int turn, final VisualizerProtos.GameChange visualizerChange) {
-        LOGGER.fine("Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + visualizerChange.toString());
-        visualizerChanges.put(turn, visualizerChange);
+    public int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange) {
+        LOGGER.fine("Logging VisualizerTurn for turn " + turn + ", VisualizerTurn: " + gameChange.toString());
+        visualizerChanges.put(turn, gameChange);
+        LOGGER.fine(visualizerChanges.size() + " VisualizerTurns stored currently");
+        return 0;
+    }
+
+    @Override
+    public int storePlayerStatsBundle(int turn, CharacterProtos.PlayerStatsBundle playerStatsBundle) {
+        LOGGER.fine("Logging PlayerStatsBundles for turn " + turn + ", PlayerStatsBundles: " + playerStatsBundle.toString());
+        playerStatsBundles.put(turn, playerStatsBundle);
         LOGGER.fine(visualizerChanges.size() + " VisualizerTurns stored currently");
         return 0;
     }
 
     @Override
     public void reset() {
+        playerStatsBundles.clear();
         gameStates.clear();
         visualizerChanges.clear();
     }

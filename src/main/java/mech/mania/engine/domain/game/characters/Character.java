@@ -1,17 +1,14 @@
 package mech.mania.engine.domain.game.characters;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
-import java.util.Iterator;
-import java.util.List;
+
+import java.util.*;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public abstract class Character {
     private String name;
@@ -354,7 +351,7 @@ public abstract class Character {
     }
 
     public int getLevel() {
-        return (int) getExperience() % 10; // @TODO: Replace with actual level equation
+        return getExperience() % 10; // @TODO: Replace with actual level equation
     }
 
     public boolean isDead() {

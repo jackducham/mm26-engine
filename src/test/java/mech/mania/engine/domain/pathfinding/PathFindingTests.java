@@ -1,8 +1,5 @@
 package mech.mania.engine.domain.pathfinding;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-
 import mech.mania.engine.domain.game.pathfinding.Cell;
 import mech.mania.engine.domain.game.pathfinding.PathFinder;
 import org.junit.After;
@@ -11,6 +8,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class PathFindingTests {
 

@@ -24,30 +24,7 @@ public class Config {
         }
     }
 
-//    public static String getHost() {
-//        return properties.getProperty("host");
-//    }
-
-//    public static String getAwsHostAndPort() {
-//        // TODO: fill this out
-//        String host = "";
-//        String port = "";
-//        return String.format("https://%s:%s", host, port);
-//    }
-
-    public static int getMillisBetweenTurns() {
-        return Integer.parseInt(properties.getProperty("millisBetweenTurns"));
-    }
-
-    public static String getInfraPort() {
-        return properties.getProperty("infraPort");
-    }
-
-    public static String getVisualizerPort() {
-        return properties.getProperty("visualizerPort");
-    }
-
-    public static int getNumTurns() {
-        return Integer.parseInt(properties.getProperty("numTurns"));
+    public static String getProperty(String propertyName) {
+        return properties.getProperty(propertyName);
     }
 }

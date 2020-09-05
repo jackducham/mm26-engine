@@ -1,29 +1,21 @@
 package mech.mania.engine.domain.game;
 
-import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
-import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Player;
-import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.Clothes;
 import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.Shoes;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-
-import mech.mania.engine.domain.model.PlayerProtos;
 
 import static junit.framework.TestCase.assertNotNull;
-import static org.junit.Assert.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 /** This contains tests for decisions related to inventory */

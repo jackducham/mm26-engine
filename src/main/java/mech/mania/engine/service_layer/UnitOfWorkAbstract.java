@@ -3,11 +3,12 @@ package mech.mania.engine.service_layer;
 import mech.mania.engine.adapters.RepositoryAbstract;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Message;
+import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.PlayerConnectInfo;
-import org.springframework.boot.SpringApplication;
+import mech.mania.engine.domain.model.VisualizerProtos;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -17,15 +18,19 @@ import java.util.logging.Logger;
 public abstract class UnitOfWorkAbstract {
 
     protected static final Logger LOGGER = Logger.getLogger( UnitOfWorkAbstract.class.getName() );
-    protected final Queue<Message> messages = new LinkedList<>();
     protected final RepositoryAbstract repository;
+
+    protected final Queue<Message> messages = new LinkedList<>();
     protected final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
-    // private final Map<String, PlayerStatistics> statisticsMap = new HashMap<>();
-    protected GameState gameState = new GameState();
+    protected String visualizerConnectUrl = "";
     protected int turn = 0;
+    protected boolean gameOver = false;
+
+    protected GameState gameState = new GameState();
+    protected VisualizerProtos.GameChange gameChange = new GameChange().buildProtoClass();
+
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;
-    protected boolean gameOver = false;
 
     /**
      * Constructor that sets an AbstractRepository
@@ -35,10 +40,25 @@ public abstract class UnitOfWorkAbstract {
     }
 
     /**
-     * Get the repository in order to use repository actions
+     * Use the repository to store visualizer changes
+     * @param turn turn for the game state
+     * @param gameChange the game change object
      */
-    public RepositoryAbstract getRepository() {
-        return repository;
+    public void storeGameChange(int turn, VisualizerProtos.GameChange gameChange) {
+        repository.storeGameChange(turn, gameChange);
+    }
+
+    /**
+     * Use the repository to store game states
+     * @param turn turn for the game state
+     * @param gameState game state object
+     */
+    public void storeGameState(int turn, GameState gameState) {
+        repository.storeGameState(turn, gameState);
+    }
+
+    public void storePlayerStatsBundle(int turn, CharacterProtos.PlayerStatsBundle playerStatsBundle) {
+        repository.storePlayerStatsBundle(turn, playerStatsBundle);
     }
 
     /**
@@ -71,6 +91,14 @@ public abstract class UnitOfWorkAbstract {
      */
     public GameState getGameState() {
         return gameState;
+    }
+
+    public void setGameChange(VisualizerProtos.GameChange gameChange) {
+        this.gameChange = gameChange;
+    }
+
+    public VisualizerProtos.GameChange getGameChange() {
+        return gameChange;
     }
 
     /**
@@ -149,5 +177,14 @@ public abstract class UnitOfWorkAbstract {
      */
     public boolean getGameOver() {
         return gameOver;
+    }
+
+    public boolean setVisualizerConnectUrl(String visualizerConnectUrl) {
+        this.visualizerConnectUrl = visualizerConnectUrl;
+        return true;
+    }
+
+    public String getVisualizerConnectUrl() {
+        return visualizerConnectUrl;
     }
 }

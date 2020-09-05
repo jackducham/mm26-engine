@@ -13,7 +13,6 @@ import java.util.Map;
 
 import static java.lang.Math.max;
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 
 /** This contains tests for decisions related to attacks */
 public class StatModifierTests {
