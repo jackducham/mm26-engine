@@ -43,13 +43,16 @@ public class utils {
     public static List<Character> findEnemiesInRange(GameState gameState, String playerName) {
         Player player = gameState.getPlayer(playerName);
         Weapon weapon = player.getWeapon();
+        if (weapon == null) {
+            return new ArrayList<>();
+        }
 
         List<AbstractMap.SimpleEntry<Double, Character>> enemiesDist = new ArrayList<>();
         for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
             String otherName = entry.getKey();
             Player other = entry.getValue();
             Double distance = player.getPosition().distance(other.getPosition());
-            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName) && distance <= (double) weapon.getRange()) {
+            if (other.getPosition().getBoardID().equals(player.getPosition().getBoardID()) && !otherName.equals(playerName) && distance <= (double) weapon.getRange()) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<Double, Character>(distance, (Character) other));
             }
         }
@@ -57,7 +60,7 @@ public class utils {
             String otherName = entry.getKey();
             Monster other = entry.getValue();
             Double distance = player.getPosition().distance(other.getPosition());
-            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName) && distance <= (double) weapon.getRange()) {
+            if (other.getPosition().getBoardID().equals(player.getPosition().getBoardID()) && !otherName.equals(playerName) && distance <= (double) weapon.getRange()) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<Double, Character>(distance, (Character) other));
             }
         }
