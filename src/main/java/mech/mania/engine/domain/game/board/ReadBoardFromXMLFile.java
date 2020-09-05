@@ -11,10 +11,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ReadBoardFromXMLFile {
 
@@ -51,6 +48,12 @@ public class ReadBoardFromXMLFile {
         protected int width;
         protected int height;
         protected int[][] data;
+
+        DataLayer(int width, int height) {
+            this.width = width;
+            this.height = height;
+            data = new int[width][height];
+        }
     }
 
 
@@ -116,6 +119,7 @@ public class ReadBoardFromXMLFile {
 
         int currentLayerIndex = -1;
         boolean bdata = false;
+        StringBuffer dataContentBuffer;
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -123,28 +127,18 @@ public class ReadBoardFromXMLFile {
                 board = new Board(Integer.parseInt(attributes.getValue("width")), Integer.parseInt(attributes.getValue("height")));
             } else if (qName.equalsIgnoreCase("layer")) {
                 currentLayerIndex = Integer.parseInt(attributes.getValue("name"));
-                dataSet.put(currentLayerIndex, new DataLayer());
-                dataSet.get(currentLayerIndex).height = Integer.parseInt(attributes.getValue("height"));
-                dataSet.get(currentLayerIndex).width = Integer.parseInt(attributes.getValue("width"));
+                dataSet.put(currentLayerIndex, new DataLayer( Integer.parseInt(attributes.getValue("width")), Integer.parseInt(attributes.getValue("height")) ));
             } else if (qName.equalsIgnoreCase("data")) {
                 bdata = true;
+                dataContentBuffer = new StringBuffer();
             }
         }
 
         @Override
         public void characters(char ch[], int start, int length) {
-            if (bdata && currentLayerIndex >= 0) {
-                DataLayer currentLayer = dataSet.get(currentLayerIndex);
-                String rawData = new String(ch, start, length); //this is the full set of data in a single string
-                String[] rowData = rawData.split("\n", 0); //splits the data string up into each individual row
 
-                for(int x = 0; x < currentLayer.width; ++x) {//splits each of the rows into individual data points
-                    String[] currentRowData = rowData[x].split(",", 0);
-                    for(int y = 0; y < currentLayer.height; ++y) {//puts each of those data points into the layer
-                        currentLayer.data[x][y] = Integer.parseInt(currentRowData[y]);
-                    }
-                }
-                bdata = false;
+            if (dataContentBuffer != null) {
+                dataContentBuffer.append(new String(ch, start, length));
             }
         }
 
@@ -152,6 +146,23 @@ public class ReadBoardFromXMLFile {
         public void endElement(String uri, String localName, String qName) throws SAXException {
             if(qName.equalsIgnoreCase("layer")) {
                 currentLayerIndex = -1;
+            } else if (bdata && currentLayerIndex >= 0) {
+                DataLayer currentLayer = dataSet.get(currentLayerIndex);
+                String rawData = dataContentBuffer.toString().trim(); //this is the full set of data in a single string
+                //System.out.println("rawData: \n" + rawData);
+                String[] rowData = rawData.split("\n", 0); //splits the data string up into each individual row
+                //System.out.println("rowData[0]: \n" + rowData[0]);
+                //System.out.println("rowData[1]: \n" + rowData[1]);
+                //System.out.println("rowData[29]: \n" + rowData[29]);
+
+                for(int x = 0; x < currentLayer.height; ++x) {//splits each of the rows into individual data points
+                    String[] currentRowData = rowData[x].split(",", 0);
+                    for(int y = 0; y < currentLayer.width; ++y) {//puts each of those data points into the layer
+                        currentLayer.data[y][x] = Integer.parseInt(currentRowData[y]);
+                        //System.out.println("Set (" + y + ", " + x + ") to " + Integer.parseInt(currentRowData[y]));
+                    }
+                }
+                bdata = false;
             }
         }
     }
@@ -182,11 +193,26 @@ public class ReadBoardFromXMLFile {
 
     public void updateBoardAndMonsters(String tileSetFileName, String mapDataFileName, String boardName) {
         loadTileData(tileSetFileName);
+        /*
+        for(int key: tileSet.keySet()) {
+            System.out.println(key);
+        }
+        */
+
         loadBoardData(mapDataFileName);
         for(int x = 0; x < dataSet.get(0).width; ++x) {
             for(int y = 0; y < dataSet.get(0).height; ++y) {
                 //set BLANK or IMPASSIBLE
-                if(tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK && tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK) {
+                if (dataSet.get(0).data[x][y] == 0 || dataSet.get(1).data[x][y] == 0) {
+                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                } else if(tileSet.get(dataSet.get(0).data[x][y]) == null) {
+                    System.out.println("Couldn't Find tile ID " + dataSet.get(0).data[x][y] + " From layer 0");
+                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                } else if (tileSet.get(dataSet.get(1).data[x][y]) == null) {
+                    System.out.println("Couldn't Find tile ID " + dataSet.get(1).data[x][y] + " From layer 1");
+                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                } else if (tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK
+                        && tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK) {
                     board.getGrid()[x][y].setType(Tile.TileType.BLANK);
                 } else {
                     board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
@@ -194,7 +220,7 @@ public class ReadBoardFromXMLFile {
 
                 //Add monsters to the list of monsters.
                 //TODO: this currently passes the monster's level as its xp. I think the monster class needs to have level instead of xp.
-                int monsterIndex = dataSet.get(3).data[x][y];
+                int monsterIndex = dataSet.get(2).data[x][y];
                 if(monsterIndex != 0 && monsterSet.get(monsterIndex) != null) {
                     PseudoMonster toCopy = monsterSet.get(monsterIndex);
                     Monster newMonster = new Monster(toCopy.name, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense,
