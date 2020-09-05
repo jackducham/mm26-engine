@@ -5,7 +5,10 @@ import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -25,7 +28,7 @@ public abstract class Character {
 
     /** Death parameters */
     private static final int reviveTicks = 1;
-    private int ticksSinceDeath;
+    protected int ticksSinceDeath;  // need access in Player to determine whether player just died
     private boolean isDead;
 
     /** Position parameters */
@@ -144,7 +147,7 @@ public abstract class Character {
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
     public double calculateActualDamage(String attacker, Weapon weapon, int attackerATK) {
-        double attackDamage = weapon.getAttack() * (0.25 * attackerATK / 100);
+        double attackDamage = weapon.getAttack() * (0.25 + attackerATK / 100.);
         double minDamage = weapon.getAttack() * 0.20;
 
         double actualDamage = max(minDamage, attackDamage - getDefense());
@@ -183,18 +186,19 @@ public abstract class Character {
     public void updateActiveEffects() {
         for(int i = 0; i < activeEffects.size(); i++){
             TempStatusModifier effect = activeEffects.get(i);
+
+            // applies change to currentHealth of Character
+            // this can ONLY be called once per turn for correct calculations
+            // this also applies the raw damage intentionally
+            applyDamage(activeEffectsSources.get(i), effect.getDamagePerTurn());
+            updateCurrentHealth(effect.getFlatRegenPerTurn());
+            effect.updateTurnsLeft();
+
             if (effect.getTurnsLeft() <= 0) { // remove inactive effects
                 activeEffects.remove(i);
                 activeEffectsSources.remove(i);
                 i--; // Don't skip next effect on removal!
-            } else {
-                // applies change to currentHealth of Character
-                // this can ONLY be called once per turn for correct calculations
-                // this also applies the raw damage intentionally
-                applyDamage(activeEffectsSources.get(i), effect.getDamagePerTurn());
-                updateCurrentHealth(effect.getFlatRegenPerTurn());
             }
-            effect.updateTurnsLeft();
         }
     }
 

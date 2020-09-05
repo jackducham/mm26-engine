@@ -153,6 +153,7 @@ public class Player extends Character {
         updateActiveEffects();
         applyWearableRegen();
         updateDeathState(gameState);
+        playerStats.incrementTurnsSinceJoined();
     }
 
     /**
@@ -571,7 +572,28 @@ public class Player extends Character {
         playerStats = new Stats(statsProto);
     }
 
-                               /**
+    /**
+     * Gets the stats object within this Player to update any extra stats.
+     * @return a Stats object (Player.Stats)
+     */
+    public Stats getExtraStats() {
+        return playerStats;
+    }
+
+    /**
+     * Update death count for the player by overriding updateDeathState and making
+     * sure that the player <b>just</b> died.
+     * @param gameState gameState to call Character.updateDeathState() with
+     */
+    @Override
+    public void updateDeathState(GameState gameState) {
+        super.updateDeathState(gameState);
+        if (ticksSinceDeath == 0) {
+            playerStats.incrementDeathCount();
+        }
+    }
+
+    /**
      * Class of <b>extra</b> attributes that are required for infra's player
      * stat calculation
      */
