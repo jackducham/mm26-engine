@@ -5,7 +5,10 @@ import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -25,7 +28,7 @@ public abstract class Character {
 
     /** Death parameters */
     private static final int reviveTicks = 1;
-    private int ticksSinceDeath;
+    protected int ticksSinceDeath;  // need access in Player to determine whether player just died
     private boolean isDead;
 
     /** Position parameters */
