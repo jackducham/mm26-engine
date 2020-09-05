@@ -34,14 +34,10 @@ public class MessageBus {
             Message message = messageQueue.poll();
             // logger.info(String.format("handling %s", message.getClass().toString()));
 
-            try {
-                if (message instanceof Event) {
-                    handleEvent((Event) message);
-                } else if (message instanceof Command) {
-                    handleCommand((Command) message);
-                }
-            } catch (Exception e) {
-                logger.warning(String.format("Exception while handling event %s", message));
+            if (message instanceof Event) {
+                handleEvent((Event) message);
+            } else if (message instanceof Command) {
+                handleCommand((Command) message);
             }
         }
     }
@@ -52,7 +48,8 @@ public class MessageBus {
                 handler.handle(event);
                 messageQueue.addAll(uow.collectNewMessages());
             } catch (Exception e) {
-                logger.warning(String.format("Exception while handling event %s: %s", event, e.getMessage()));
+                logger.warning(String.format("Exception while handling event %s: %s\n", event, e));
+                e.printStackTrace();
             }
         }
     }
@@ -63,8 +60,8 @@ public class MessageBus {
             handler.handle(command);
             messageQueue.addAll(uow.collectNewMessages());
         } catch (Exception e) {
-            logger.warning(String.format("Exception while handling command %s: %s", command, e.getMessage()));
-            throw e;
+            logger.warning(String.format("Exception while handling command %s: %s\n", command, e));
+            e.printStackTrace();
         }
     }
 

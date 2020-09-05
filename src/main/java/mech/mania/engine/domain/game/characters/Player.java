@@ -134,6 +134,10 @@ public class Player extends Character {
         inventory[index] = item;
     }
 
+    public void setPlayerStats(Stats playerStats) {
+        this.playerStats = playerStats;
+    }
+
     /**
      * Applies active effects and updates the death state
      * This should be called once a turn
@@ -564,6 +568,10 @@ public class Player extends Character {
                 .build();
     }
 
+    public void setPlayerStats(CharacterProtos.PlayerStats statsProto){
+        playerStats = new Stats(statsProto);
+    }
+
     /**
      * Gets the stats object within this Player to update any extra stats.
      * @return a Stats object (Player.Stats)
@@ -593,6 +601,18 @@ public class Player extends Character {
         private int monstersSlain;
         private int deathCount;
         private int turnsSinceJoined;
+
+        public Stats(){
+            monstersSlain = 0;
+            deathCount = 0;
+            turnsSinceJoined = 0;
+        }
+
+        public Stats(CharacterProtos.PlayerStats stats){
+            monstersSlain = stats.getMonstersSlain();
+            deathCount = stats.getDeathCount();
+            turnsSinceJoined = stats.getTurnsSinceJoined();
+        }
 
         public void incrementMonstersSlain() {
             monstersSlain++;
