@@ -150,13 +150,16 @@ public abstract class Character {
      * @param actualDamage calculated damage done to health
      */
     public void applyDamage(String attacker, boolean isPlayer, int actualDamage) {
+        updateCurrentHealth(-actualDamage);
+
+        // Only update taggedPlayersDamage for damage from players
+        if(!isPlayer) return;
+
         if (taggedPlayersDamage.containsKey(attacker)) {
             taggedPlayersDamage.put(attacker, taggedPlayersDamage.get(attacker) + actualDamage);
         } else {
             taggedPlayersDamage.put(attacker, actualDamage);
         }
-
-        updateCurrentHealth(-actualDamage);
     }
 
     /**
