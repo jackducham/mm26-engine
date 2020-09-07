@@ -68,6 +68,41 @@ public abstract class Character {
         this.taggedPlayersDamage = new HashMap<>();
     }
 
+    /**
+     * Constructor for Characters built from protos
+     */
+    public Character(CharacterProtos.Character character) {
+        this.name = character.getName();
+
+        this.baseSpeed = character.getBaseSpeed();
+        this.baseMaxHealth = character.getBaseMaxHealth();
+        this.baseAttack = character.getBaseAttack();
+        this.baseDefense = character.getBaseDefense();
+
+        this.currentHealth = character.getCurrentHealth();
+        this.experience = character.getExperience();
+
+        this.ticksSinceDeath = character.getTicksSinceDeath();
+        this.isDead = character.getIsDead();
+
+        this.position = new Position(character.getPosition());
+        this.spawnPoint = new Position(character.getSpawnPoint());
+
+        this.weapon = new Weapon(character.getWeapon());
+
+        // Build activeEffects triple
+        this.activeEffects = new ArrayList<>();
+        for(int i = 0; i < character.getActiveEffectsTempStatusModifierCount(); i++){
+            activeEffects.add(new Triple<>(
+                    new TempStatusModifier(character.getActiveEffectsTempStatusModifier(i)),
+                    character.getActiveEffectsSource(i),
+                    character.getActiveEffectsIsPlayer(i)
+            ));
+        }
+
+        this.taggedPlayersDamage = character.getTaggedPlayersDamageMap();
+    }
+
     public CharacterProtos.Character buildProtoClassCharacter() {
         CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
 
@@ -89,9 +124,10 @@ public abstract class Character {
             characterBuilder.setWeapon(weapon.buildProtoClassWeapon());
         }
 
-        // TODO: Update proto to be able to store full triple
         for (int i = 0; i < activeEffects.size(); i++) {
-            characterBuilder.setActiveEffects(i, activeEffects.get(i).getFirst().buildProtoClassTemp());
+            characterBuilder.setActiveEffectsTempStatusModifier(i, activeEffects.get(i).getFirst().buildProtoClassTemp());
+            characterBuilder.setActiveEffectsSource(i, activeEffects.get(i).getSecond());
+            characterBuilder.setActiveEffectsIsPlayer(i, activeEffects.get(i).getThird());
         }
 
         characterBuilder.putAllTaggedPlayersDamage(taggedPlayersDamage);

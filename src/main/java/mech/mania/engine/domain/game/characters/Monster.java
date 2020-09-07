@@ -1,5 +1,7 @@
 package mech.mania.engine.domain.game.characters;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import kotlin.Triple;
 import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Board;
@@ -7,6 +9,7 @@ import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
+import org.graalvm.compiler.lir.LIRInstruction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,23 +43,13 @@ public class Monster extends Character {
 
 
     // --------Proto Stuff-------- //
-    // @TODO: Update CharacterProtos
 
     /**
      * Creates a Monster object from a given Protocol Buffer.
      * @param monsterProto the protocol buffer being copied
      */
     public Monster(CharacterProtos.Monster monsterProto) {
-        super(
-                monsterProto.getCharacter().getName(),
-                monsterProto.getCharacter().getBaseSpeed(),
-                monsterProto.getCharacter().getBaseMaxHealth(),
-                monsterProto.getCharacter().getBaseAttack(),
-                monsterProto.getCharacter().getBaseDefense(),
-                monsterProto.getCharacter().getExperience(),
-                new Position(monsterProto.getCharacter().getSpawnPoint()),
-                new Weapon(monsterProto.getCharacter().getWeapon())
-        );
+        super(monsterProto.getCharacter());
 
         drops = new ArrayList<>(monsterProto.getDropsCount());
         for (int i = 0; i < monsterProto.getDropsCount(); i++) {

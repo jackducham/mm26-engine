@@ -36,22 +36,12 @@ public class Player extends Character {
     }
 
     public Player(CharacterProtos.Player playerProto) {
-        super(
-                playerProto.getCharacter().getName(),
-                playerProto.getCharacter().getBaseSpeed(),
-                playerProto.getCharacter().getBaseMaxHealth(),
-                playerProto.getCharacter().getBaseAttack(),
-                playerProto.getCharacter().getBaseDefense(),
-                playerProto.getCharacter().getExperience(),
-                new Position(playerProto.getCharacter().getSpawnPoint()),
-                new Weapon(playerProto.getCharacter().getWeapon())
-        );
+        super(playerProto.getCharacter());
 
         hat = new Hat(playerProto.getHat());
         clothes = new Clothes(playerProto.getClothes());
         shoes = new Shoes(playerProto.getShoes());
         inventory = new Item[INVENTORY_SIZE];
-        taggedPlayersDamage = playerProto.getCharacter().getTaggedPlayersDamageMap();
 
         for (int i = 0; i < playerProto.getInventoryCount(); i++) {
             ItemProtos.Item protoItem = playerProto.getInventory(i);
