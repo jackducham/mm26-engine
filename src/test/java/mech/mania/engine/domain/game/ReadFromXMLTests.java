@@ -2,6 +2,8 @@ package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.ReadBoardFromXMLFile;
+import mech.mania.engine.domain.game.board.Tile;
+import mech.mania.engine.domain.game.board.TileIDNotFoundException;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.model.CharacterProtos;
@@ -28,7 +30,11 @@ public class ReadFromXMLTests {
     @Before
     public void setup() {
         boardReader = new ReadBoardFromXMLFile();
-        boardReader.updateBoardAndMonsters("src/test/java/mech/mania/engine/domain/game/mm26_sample_tileset.tsx", "src/test/java/mech/mania/engine/domain/game/mm26_sample_map.tmx", "loadedBoard");
+        try {
+            boardReader.updateBoardAndMonsters("src/test/java/mech/mania/engine/domain/game/mm26_sample_tileset.tsx", "src/test/java/mech/mania/engine/domain/game/mm26_sample_map.tmx", "loadedBoard");
+        } catch (TileIDNotFoundException e) {
+            System.err.print(e);
+        }
     }
 
     /**
@@ -48,6 +54,8 @@ public class ReadFromXMLTests {
         assertTrue(loadedBoard != null);
         assertEquals(30, loadedBoard.getGrid().length);
         assertEquals(30, loadedBoard.getGrid()[0].length);
+
+        assertEquals(Tile.TileType.BLANK, loadedBoard.getGrid()[2][2].getType());
     }
 
     /**

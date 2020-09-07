@@ -5,6 +5,8 @@ import javax.xml.parsers.SAXParserFactory;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.Item;
+import mech.mania.engine.domain.game.items.StatusModifier;
+import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -203,30 +205,35 @@ public class ReadBoardFromXMLFile {
         for(int x = 0; x < dataSet.get(0).width; ++x) {
             for(int y = 0; y < dataSet.get(0).height; ++y) {
                 //set BLANK or IMPASSIBLE
-                if (dataSet.get(0).data[x][y] == 0 || dataSet.get(1).data[x][y] == 0) {
-                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
-                } else if(tileSet.get(dataSet.get(0).data[x][y]) == null) {
+                if(dataSet.get(0).data[x][y] != 0 && tileSet.get(dataSet.get(0).data[x][y]) == null) {
                     throw new TileIDNotFoundException(
                             "Could not locate tile with ID = " + dataSet.get(0).data[x][y] + " in current dataSet. This tile was requested by Data Layer 0 at Position (" + x + ", " + y + ")");
                     //board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
-                } else if (tileSet.get(dataSet.get(1).data[x][y]) == null) {
+                } else if (dataSet.get(1).data[x][y] != 0 && tileSet.get(dataSet.get(1).data[x][y]) == null) {
                     throw new TileIDNotFoundException(
                             "Could not locate tile with ID = " + dataSet.get(1).data[x][y] + " in current dataSet. This tile was requested by Data Layer 1 at Position (" + x + ", " + y + ")");
                     //board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
-                } else if (tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK
-                        && tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK) {
+                } else if ((dataSet.get(0).data[x][y] == 0 || tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK)
+                        && (dataSet.get(1).data[x][y] == 0 || tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK)) {
                     board.getGrid()[x][y].setType(Tile.TileType.BLANK);
                 } else {
                     board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
                 }
 
                 //Add monsters to the list of monsters.
-                //TODO: this currently passes the monster's level as its xp. I think the monster class needs to have level instead of xp.
+                //TODO: figure out exactly how monster data gets put into monster object. particularly the damage stat vs weapon damage.
                 int monsterIndex = dataSet.get(2).data[x][y];
                 if(monsterIndex != 0 && monsterSet.get(monsterIndex) != null) {
                     PseudoMonster toCopy = monsterSet.get(monsterIndex);
+                    StatusModifier zeroStats = new StatusModifier(0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0);
+                    TempStatusModifier zeroOnHit = new TempStatusModifier(0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0, 0,
+                            0, 0, 0);
                     Monster newMonster = new Monster(toCopy.name, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense,
-                    toCopy.level, new Position(x, y, boardName), null, new ArrayList<Item>());
+                    toCopy.level, new Position(x, y, boardName), new Weapon(zeroStats, 1, 0, 0, zeroOnHit), new ArrayList<Item>());
                     monsterList.add(newMonster);
                 }
 

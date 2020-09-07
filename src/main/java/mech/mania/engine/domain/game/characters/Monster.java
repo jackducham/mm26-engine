@@ -27,14 +27,14 @@ public class Monster extends Character {
      * @param baseMaxHealth the monster's base maximum health
      * @param baseAttack the monster's base attack damage
      * @param baseDefense the monster's base defense
-     * @param experience the monster's base exp to be awarded on kill
+     * @param level the monster's level
      * @param spawnPoint the monster's spawn point, and the point it will leash back to
      * @param weapon the monster's weapon (used to apply on-hit effects)
      * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
      */
     public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                   int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
-        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
+                   int level, Position spawnPoint, Weapon weapon, List<Item> drops) {
+        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
         this.drops = drops;
     }
 
