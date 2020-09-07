@@ -1,9 +1,9 @@
 package mech.mania.engine.service_layer.handlers;
 
-import java.util.logging.Logger;
-
 import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.UnitOfWorkAbstract;
+
+import java.util.logging.Logger;
 
 public class StartTurn extends CommandHandler {
 
@@ -32,5 +32,6 @@ public class StartTurn extends CommandHandler {
         uow.addNewMessage(new CommandStoreGameState(turn, uow.getGameState()));
         uow.addNewMessage(new CommandSendPlayerRequestsAndUpdateGameState());
         uow.addNewMessage(new CommandSendVisualizerChange());
+        uow.addNewMessage(new EventSendHistoryObjects());
     }
 }

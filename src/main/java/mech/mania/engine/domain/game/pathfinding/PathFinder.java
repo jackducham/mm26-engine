@@ -4,7 +4,9 @@ import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Position;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class PathFinder {
     /**

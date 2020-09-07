@@ -2,26 +2,47 @@ package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
-
-import mech.mania.engine.domain.game.characters.Monster;
-import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Character;
-import mech.mania.engine.domain.game.characters.CharacterDecision;
-
+import mech.mania.engine.domain.game.characters.*;
 import mech.mania.engine.domain.game.items.*;
-
 import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.GameChange;
+import mech.mania.engine.domain.model.PlayerProtos;
 import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
-import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import java.util.*;
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 /**
  * A class to execute the game logic.
  */
 public class GameLogic {
+    /**
+     * Returns a VisualizerChange object that denotes how the gameState
+     * has changed in relevant terms to the Visualizer team
+     */
+    public static GameChange constructGameChange(GameState gameState) {
+        return gameState.stateChange;
+    }
+
+
+    /**
+     * Constructs a PlayerTurn for a specific player using a
+     * GameState and a specific player's name
+     * @return PlayerTurn a playerTurn specific for a player
+     */
+    public static PlayerProtos.PlayerTurn constructPlayerTurn(GameState gameState, String playerName) {
+        return PlayerProtos.PlayerTurn.newBuilder()
+                .setGameState(gameState.buildProtoClass())
+                .setPlayerName(playerName)
+                .build();
+    }
+
+
     /**
      * Executes the logic of one turn given a starting {@link GameState} and a list of {@link PlayerDecision}s.
      * @param gameState The initial game state.
@@ -46,6 +67,7 @@ public class GameLogic {
         for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
             // Remove decision from dead players and NONE decisions
             if(!gameState.getPlayer(entry.getKey()).isDead()
+                    && entry.getValue() != null
                     && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 cDecisions.put(entry.getKey(), newDecision);
@@ -249,11 +271,7 @@ public class GameLogic {
             return false;
         }
 
-        if (calculateManhattanDistance(character.getPosition(), attackCoordinate) > playerWeapon.getRange()) {
-            return false;
-        }
-
-        return true;
+        return calculateManhattanDistance(character.getPosition(), attackCoordinate) <= playerWeapon.getRange();
     }
 
     /**
@@ -324,7 +342,6 @@ public class GameLogic {
                     player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
                 } else {
                     player.hitByWeapon(attacker.getName(), attackerWeapon, attacker.getAttack());
-
                 }
             }
         }

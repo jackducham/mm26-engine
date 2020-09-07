@@ -4,14 +4,13 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
-import mech.mania.engine.domain.game.items.Clothes;
-import mech.mania.engine.domain.game.items.Shoes;
-import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.game.characters.Monster;
+import mech.mania.engine.domain.game.characters.Player;
+import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.game.characters.*;
-import mech.mania.engine.domain.model.GameStateProtos;
 import mech.mania.engine.domain.model.GameChange;
+import mech.mania.engine.domain.model.GameStateProtos;
 
 import java.util.ArrayList;
 import java.util.HashMap;

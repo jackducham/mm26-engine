@@ -1,23 +1,20 @@
 package mech.mania.engine.domain.game;
 
-import mech.mania.engine.domain.game.board.Tile;
-import mech.mania.engine.domain.game.characters.Character;
-import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.game.characters.Player;
+import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.Objects;
 
-import mech.mania.engine.domain.model.PlayerProtos;
+import java.util.HashMap;
 
-import static junit.framework.TestCase.assertNotNull;
-import static org.junit.Assert.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 /** This contains tests for decisions related to attacks */
 public class AttackTests {
     private GameState gameState;
+    private Player p1;
 
     /**
      * Setup before tests
@@ -25,6 +22,7 @@ public class AttackTests {
     @Before
     public void setup() {
         gameState = GameState.createDefaultGameState();
+        p1 = gameState.getPlayer("player1");
     }
 
     /**
@@ -42,4 +40,45 @@ public class AttackTests {
     public void gameInit() {
 
     }
+
+    public void doTurn(int index) {
+        // pick up item from tile
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        decision.setDecisionType(CharacterProtos.DecisionType.NONE);
+        decision.setIndex(index);
+
+        // Execute decision
+        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        decisionMap.put("player1", decision.build());
+        GameLogic.doTurn(gameState, decisionMap);
+    }
+
+    @Test
+    public void updateLevel() {
+        p1.addExperience(10);
+        doTurn(0);
+        assertEquals(1, p1.getLevel());
+        assertEquals(10, p1.getExperience());
+
+        p1.addExperience(90);
+        doTurn(0);
+        assertEquals(2, p1.getLevel());
+        assertEquals(0, p1.getExperience());
+
+        p1.addExperience(100);
+        doTurn(0);
+        assertEquals(2, p1.getLevel());
+        assertEquals(100, p1.getExperience());
+
+        p1.addExperience(150);
+        doTurn(0);
+        assertEquals(3, p1.getLevel());
+        assertEquals(50, p1.getExperience());
+
+        p1.addExperience(700);
+        doTurn(0);
+        assertEquals(5, p1.getLevel());
+        assertEquals(50, p1.getExperience());
+    }
+
 }
