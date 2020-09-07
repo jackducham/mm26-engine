@@ -4,7 +4,7 @@
   <export target="../mm26_sample_map.tmx" format="tmx"/>
  </editorsettings>
  <tileset firstgid="1" source="mm26_sample_tileset.tsx"/>
- <layer id="2" name="0" width="30" height="30">
+ <layer id="2" name="0" width="30" height="30" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -72,7 +72,7 @@
 51,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,52,53
 </data>
  </layer>
- <layer id="4" name="2" width="30" height="30">
+ <layer id="4" name="2" width="30" height="30" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
