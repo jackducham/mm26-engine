@@ -191,7 +191,7 @@ public class ReadBoardFromXMLFile {
         }
     }
 
-    public void updateBoardAndMonsters(String tileSetFileName, String mapDataFileName, String boardName) {
+    public void updateBoardAndMonsters(String tileSetFileName, String mapDataFileName, String boardName) throws TileIDNotFoundException {
         loadTileData(tileSetFileName);
         /*
         for(int key: tileSet.keySet()) {
@@ -206,11 +206,13 @@ public class ReadBoardFromXMLFile {
                 if (dataSet.get(0).data[x][y] == 0 || dataSet.get(1).data[x][y] == 0) {
                     board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
                 } else if(tileSet.get(dataSet.get(0).data[x][y]) == null) {
-                    System.out.println("Couldn't Find tile ID " + dataSet.get(0).data[x][y] + " From layer 0");
-                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                    throw new TileIDNotFoundException(
+                            "Could not locate tile with ID = " + dataSet.get(0).data[x][y] + " in current dataSet. This tile was requested by Data Layer 0 at Position (" + x + ", " + y + ")");
+                    //board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
                 } else if (tileSet.get(dataSet.get(1).data[x][y]) == null) {
-                    System.out.println("Couldn't Find tile ID " + dataSet.get(1).data[x][y] + " From layer 1");
-                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                    throw new TileIDNotFoundException(
+                            "Could not locate tile with ID = " + dataSet.get(1).data[x][y] + " in current dataSet. This tile was requested by Data Layer 1 at Position (" + x + ", " + y + ")");
+                    //board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
                 } else if (tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK
                         && tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK) {
                     board.getGrid()[x][y].setType(Tile.TileType.BLANK);
