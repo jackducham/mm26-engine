@@ -44,6 +44,12 @@ public class RepositoryFake implements RepositoryAbstract {
     }
 
     @Override
+    public GameState getGameState(int turn) {
+        LOGGER.warning("Attempting to get stored GameState from fake repository.");
+        return new GameState();
+    }
+
+    @Override
     public void reset() {
         playerStatsBundles.clear();
         gameStates.clear();

@@ -1,5 +1,7 @@
 package mech.mania.engine.domain.game.characters;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import kotlin.Triple;
 import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Board;
@@ -7,6 +9,7 @@ import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
+import org.graalvm.compiler.lir.LIRInstruction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,7 @@ import java.util.Map;
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
-    private List<Item> drops;
+    private final List<Item> drops;
 
 
     // --------Constructors-------- //
@@ -40,23 +43,13 @@ public class Monster extends Character {
 
 
     // --------Proto Stuff-------- //
-    // @TODO: Update CharacterProtos
 
     /**
      * Creates a Monster object from a given Protocol Buffer.
      * @param monsterProto the protocol buffer being copied
      */
     public Monster(CharacterProtos.Monster monsterProto) {
-        super(
-                monsterProto.getCharacter().getName(),
-                monsterProto.getCharacter().getBaseSpeed(),
-                monsterProto.getCharacter().getBaseMaxHealth(),
-                monsterProto.getCharacter().getBaseAttack(),
-                monsterProto.getCharacter().getBaseDefense(),
-                monsterProto.getCharacter().getExperience(),
-                new Position(monsterProto.getCharacter().getSpawnPoint()),
-                new Weapon(monsterProto.getCharacter().getWeapon())
-        );
+        super(monsterProto.getCharacter());
 
         drops = new ArrayList<>(monsterProto.getDropsCount());
         for (int i = 0; i < monsterProto.getDropsCount(); i++) {
@@ -138,15 +131,15 @@ public class Monster extends Character {
         if (taggedPlayersDamage.isEmpty()) {
             return moveToStartDecision(gameState);
         } else {
-            String highestDamagePlayer = getPlayerWithMostDamage();
-            Player player = gameState.getPlayer(highestDamagePlayer);
+            String highestDamageCharacter = getPlayerWithMostDamage();
+            Player target = gameState.getPlayer(highestDamageCharacter);
 
-            // @TODO: Minor bug - if highestDamagePlayer is a Monster, Monster will move to start
-            if (player == null) {
+            // Check that this player still exists
+            if(target == null){
                 return moveToStartDecision(gameState);
             }
 
-            Position toAttack = player.position;
+            Position toAttack = target.position;
 
             int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
             if (manhattanDistance <= weapon.getRange()) {
@@ -165,12 +158,11 @@ public class Monster extends Character {
      * @return the Monster's leash decision
      */
     public CharacterDecision moveToStartDecision(GameState gameState) {
-        // @TODO: Can update if statement to Position .equals() method
-        if (position.getX() != spawnPoint.getX() || position.getY() != spawnPoint.getY()) {
+        if (!position.equals(spawnPoint)) {
             Position toMove = findPositionToMove(gameState, spawnPoint);
             return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
         }
-        return null;
+        return new CharacterDecision(CharacterDecision.decisionTypes.NONE, position, -1);
     }
 
 
@@ -279,6 +271,7 @@ public class Monster extends Character {
             Player currentPlayer = gameState.getPlayer(entry.getKey());
             if(currentPlayer != null) {
                 currentPlayer.addExperience(this.getExperience());
+                currentPlayer.getExtraStats().incrementMonstersSlain();
             }
         }
     }

@@ -73,7 +73,7 @@ public class StatModifierTests {
         int defense = p1.getDefense();
 
         // Add status effect to player1 from player2
-        p1.applyEffect(effect, p2.getName());
+        p1.applyEffect(p2.getName(), true, effect);
 
         // Record expected stats
         int expectedSpeed = (int)((speed + 5) * (1.5));
@@ -125,7 +125,7 @@ public class StatModifierTests {
         int defense = p1.getDefense();
 
         // Add status effect to player1 from player2
-        p1.applyEffect(effect, p2.getName());
+        p1.applyEffect(p2.getName(), true, effect);
 
         // Record expected stats
         int expectedSpeed = max(1, (int)((speed - 1) * (0.5)));

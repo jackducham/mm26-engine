@@ -19,7 +19,7 @@ public class StoreHistoryObjects extends EventHandler {
 
         CharacterProtos.PlayerStatsBundle.Builder playerStatsBundleObjBuilder = CharacterProtos.PlayerStatsBundle.newBuilder();
         for (Map.Entry<String, Player> entry : playersMap.entrySet()) {
-            playerStatsBundleObjBuilder.addStats(entry.getValue().getPlayerStats());
+            playerStatsBundleObjBuilder.putStats(entry.getKey(), entry.getValue().getPlayerStats());
         }
         CharacterProtos.PlayerStatsBundle playerStatsBundleObj = playerStatsBundleObjBuilder.build();
 
