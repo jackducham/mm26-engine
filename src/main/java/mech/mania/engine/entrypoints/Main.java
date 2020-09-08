@@ -26,12 +26,17 @@ public class Main {
     // public static MessageBus bus = Bootstrap.bootstrap(new UnitOfWorkFake());
     public static MessageBus bus = Bootstrap.bootstrap();
 
+    // Represents the presence of the --enableInfra flag (used by Spring services)
+    public static boolean enableInfra;
+
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     @Bean
     public MessageBus bus() {
         return bus;
     }
+
+    public boolean enableInfra(){ return enableInfra; }
 
     public static void main(String[] args) {
         // Configure commandline options for this program
@@ -55,8 +60,8 @@ public class Main {
             return;
         }
 
-        // Default enableInfra to false unless set by command line args
-        boolean enableInfra = cmd.hasOption("enableInfra");
+        // Default to false unless set by command line args
+        enableInfra = cmd.hasOption("enableInfra");
 
         // Default to ports in Config, but command line args can override
         String infraPort = cmd.hasOption("infraPort") ?
