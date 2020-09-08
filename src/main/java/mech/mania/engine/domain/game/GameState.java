@@ -225,6 +225,8 @@ public class GameState {
      * @param gameStateProto Protocol Buffer representing the GameState to be copied
      */
     public GameState(GameStateProtos.GameState gameStateProto) {
+        stateChange = new GameChange();
+
         boardNames = new HashMap<>();
 
         Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNamesMap();

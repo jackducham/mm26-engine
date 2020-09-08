@@ -271,6 +271,7 @@ public class Monster extends Character {
             Player currentPlayer = gameState.getPlayer(entry.getKey());
             if(currentPlayer != null) {
                 currentPlayer.addExperience(this.getExperience());
+                currentPlayer.getExtraStats().incrementMonstersSlain();
             }
         }
     }
