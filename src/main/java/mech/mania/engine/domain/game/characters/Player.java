@@ -135,7 +135,7 @@ public class Player extends Character {
         if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
-            applyEffect(hatStats, this.getName(), true);
+            applyEffect(this.getName(), true, hatStats);
         }
         updateActiveEffects();
         applyWearableRegen();
@@ -511,7 +511,7 @@ public class Player extends Character {
         if(this.hat != null && this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
-        applyEffect(effect, this.getName(), true);
+        applyEffect(this.getName(), true, effect);
 
         //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {

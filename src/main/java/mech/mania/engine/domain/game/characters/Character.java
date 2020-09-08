@@ -143,7 +143,7 @@ public abstract class Character {
      */
     public void hitByWeapon(String attacker, boolean isPlayer, Weapon weapon, int attackerATK) {
         if (weapon.getOnHitEffect() != null) {
-            applyEffect(weapon.getOnHitEffect(), attacker, isPlayer);
+            applyEffect(attacker, isPlayer, weapon.getOnHitEffect());
         }
         int actualDamage = (int) calculateActualDamage(weapon, attackerATK);
         applyDamage(attacker, isPlayer, actualDamage);
@@ -152,11 +152,11 @@ public abstract class Character {
     /**
      * Adds a new temporary status modifier to the Player's list of modifiers.
      *
-     * @param effect the status which will be added to the Player's list
      * @param sourcePlayer the name of the source player
+     * @param effect the status which will be added to the Player's list
      * @return true if successful
      */
-    public boolean applyEffect(TempStatusModifier effect, String sourcePlayer, boolean isPlayer) {
+    public boolean applyEffect(String sourcePlayer, boolean isPlayer, TempStatusModifier effect) {
         if(effect == null || sourcePlayer == null) {
             return false;
         }
