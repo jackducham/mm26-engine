@@ -39,6 +39,7 @@ public class findEnemiesInRangeTest {
         List<Character> enemies = utils.findEnemiesInRange(this.gameState, "player1");
         ArrayList<Position> ans = new ArrayList<>();
         ans.add(new Position(0, 5, "pvp"));
+        assertEquals(enemies.size(), ans.size());
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));
         }
@@ -51,6 +52,7 @@ public class findEnemiesInRangeTest {
         ans.add(new Position(1, 21, "pvp"));
         ans.add(new Position(1, 16, "pvp"));
         ans.add(new Position(0, 14, "pvp"));
+        assertEquals(enemies.size(), ans.size());
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));
         }
