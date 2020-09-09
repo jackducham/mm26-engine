@@ -79,22 +79,29 @@ public class utils {
         Player player = gameState.getPlayer(playerName);
         Weapon weapon = player.getWeapon();
 
-        List<Character> enemies = new ArrayList<>();
+        List<AbstractMap.SimpleEntry<Double, Character>> enemiesDist = new ArrayList<>();
         for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
             String otherName = entry.getKey();
             Player other = entry.getValue();
             Double distance = targetSpot.distance(other.getPosition());
-            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName) && distance <= (double) weapon.getRange()) {
-                enemies.add(other);
+            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName) && distance <= (double) weapon.getSplashRadius()) {
+                enemiesDist.add(new AbstractMap.SimpleEntry<Double, Character>(distance, (Character) other));
             }
         }
         for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
             String otherName = entry.getKey();
             Monster other = entry.getValue();
             Double distance = targetSpot.distance(other.getPosition());
-            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName) && distance <= (double) weapon.getRange()) {
-                enemies.add(other);
+            if (other.getPosition().getBoardID() == player.getPosition().getBoardID() && !otherName.equals(playerName) && distance <= (double) weapon.getSplashRadius()) {
+                enemiesDist.add(new AbstractMap.SimpleEntry<Double, Character>(distance, (Character) other));
             }
+        }
+        Comparator<AbstractMap.SimpleEntry<Double, Character>> compareByDistance = (AbstractMap.SimpleEntry<Double, Character> d1, AbstractMap.SimpleEntry<Double, Character> d2)
+                -> d1.getKey().compareTo( d2.getKey() );
+        Collections.sort(enemiesDist, compareByDistance);
+        List<Character> enemies = new ArrayList<>();
+        for (AbstractMap.SimpleEntry<Double, Character> dist : enemiesDist) {
+            enemies.add(dist.getValue());
         }
         return enemies;
     }

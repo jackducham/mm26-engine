@@ -14,7 +14,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class findEnemiesInRangeTest {
+public class findAllEnemiesHitTest {
     private GameState gameState = GameState.createDefaultGameState();
 
     @Before
@@ -25,6 +25,8 @@ public class findEnemiesInRangeTest {
         gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(0, 14, "pvp"));
         gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(1, 16, "pvp"));
         gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(1, 21, "pvp"));
+        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(0, 25, "pvp"));
+        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(0, 26, "pvp"));
 
         Weapon weapon1 = Weapon.createDefaultWeapon();
         Weapon weapon2 = Weapon.createStrongerDefaultWeapon();
@@ -35,22 +37,32 @@ public class findEnemiesInRangeTest {
     }
 
     @Test
-    public void testFindEnemiesInRangePlayer1() {
-        List<Character> enemies = utils.findEnemiesInRange(this.gameState, "player1");
+    public void testFindAllEnemiesHitPlayer1() {
+        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, "player1", new Position(0, 5, "pvp"));
         ArrayList<Position> ans = new ArrayList<>();
         ans.add(new Position(0, 5, "pvp"));
+        assertEquals(ans.size(), enemies.size());
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));
         }
     }
 
     @Test
-    public void testFindEnemiesInRangePlayer2() {
-        List<Character> enemies = utils.findEnemiesInRange(this.gameState, "player2");
+    public void testFindAllEnemiesHitPlayer1Splash() {
+        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, "player1", new Position(0, 7, "pvp"));
         ArrayList<Position> ans = new ArrayList<>();
+        assertEquals(ans.size(), enemies.size());
+    }
+
+    @Test
+    public void testFindAllEnemiesHitPlayer2Splash() {
+        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, "player2", new Position(0, 25, "pvp"));
+        ArrayList<Position> ans = new ArrayList<>();
+        ans.add(new Position(0, 25, "pvp"));
+        ans.add(new Position(0, 26, "pvp"));
         ans.add(new Position(1, 21, "pvp"));
-        ans.add(new Position(1, 16, "pvp"));
-        ans.add(new Position(0, 14, "pvp"));
+        assertEquals(ans.size(), enemies.size());
+
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));
         }
