@@ -78,6 +78,9 @@ public class utils {
     public static List<Character> findAllEnemiesHit(GameState gameState, String playerName, Position targetSpot) {
         Player player = gameState.getPlayer(playerName);
         Weapon weapon = player.getWeapon();
+        if (weapon == null) {
+            return new ArrayList<>();
+        }
 
         List<AbstractMap.SimpleEntry<Double, Character>> enemiesDist = new ArrayList<>();
         for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
@@ -131,7 +134,12 @@ public class utils {
         List<Character> enemies = findEnemies(gameState, playerName);
         for (Character enemy : enemies) {
             double dist = player.getPosition().distance(enemy.getPosition());
-            if (dist <= enemy.getWeapon().getRange()) {
+            if (enemy.getWeapon() == null) {
+                if (dist == 0) {
+                    return true;
+                }
+            }
+            else if (dist <= enemy.getWeapon().getRange() + enemy.getWeapon().getSplashRadius()) {
                 return true;
             }
         }
