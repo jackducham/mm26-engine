@@ -135,9 +135,7 @@ public class utils {
         for (Character enemy : enemies) {
             double dist = player.getPosition().distance(enemy.getPosition());
             if (enemy.getWeapon() == null) {
-                if (dist == 0) {
-                    return true;
-                }
+                continue;
             }
             else if (dist <= enemy.getWeapon().getRange() + enemy.getWeapon().getSplashRadius()) {
                 return true;
