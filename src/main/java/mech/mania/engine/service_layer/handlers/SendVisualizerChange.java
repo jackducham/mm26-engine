@@ -17,7 +17,8 @@ public class SendVisualizerChange extends CommandHandler {
         GameChange gameChange = GameLogic.constructGameChange(uow.getGameState());
 
         // sending VisualizerChange via websocket
-        VisualizerWebSocket.VisualizerBinaryWebSocketHandler.sendChange(gameChange.buildProtoClass());
+        uow.getVisualizerCtx().getBean(VisualizerWebSocket.VisualizerBinaryWebSocketHandler.class)
+                .sendChange(gameChange.buildProtoClass());
 
         uow.setGameChange(gameChange.buildProtoClass());
     }

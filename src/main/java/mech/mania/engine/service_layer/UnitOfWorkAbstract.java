@@ -49,12 +49,14 @@ public abstract class UnitOfWorkAbstract {
     }
 
     /**
-     * Use the repository to store game states
+     * Use the repository to store game state
+     * Also store game state in Visualizer WebSocket to be sent to new connections
      * @param turn turn for the game state
      * @param gameState game state object
      */
     public void storeGameState(int turn, GameState gameState) {
         repository.storeGameState(turn, gameState);
+        visualizerCtx.getBean(VisualizerWebSocket.VisualizerBinaryWebSocketHandler.class).setLastGameState(gameState);
     }
 
     public void storePlayerStatsBundle(int turn, CharacterProtos.PlayerStatsBundle playerStatsBundle) {
@@ -166,6 +168,14 @@ public abstract class UnitOfWorkAbstract {
      */
     public void storeVisualizerCtx(ConfigurableApplicationContext ctx) {
         this.visualizerCtx = ctx;
+    }
+
+    /**
+     * Get visualizer context to be able to send out GameChanges
+     * @return The application context of the visualizer websocket
+     */
+    public ConfigurableApplicationContext getVisualizerCtx() {
+        return visualizerCtx;
     }
 
     /**

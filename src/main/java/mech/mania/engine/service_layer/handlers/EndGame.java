@@ -10,7 +10,7 @@ public class EndGame extends EventHandler {
 
     @Override
     public void handle(Event event) {
-        // Set game over flag. StartGameTurn will actually end game next turn
+        // Set game over flag. Main will actually end game next turn
         uow.setGameOver(true);
     }
 }

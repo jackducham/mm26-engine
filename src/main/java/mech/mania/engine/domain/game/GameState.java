@@ -156,6 +156,10 @@ public class GameState {
                 .collect(Collectors.toList());
     }
 
+    public void setTurnNumber(long turnNumber) {
+        this.turnNumber = turnNumber;
+    }
+
     /**
      * Creates a GameState object for use with a variety of tests.
      * @return a custom GameState
@@ -267,6 +271,4 @@ public class GameState {
     public void addNewMonster(Monster monster){
         monsterNames.put(monster.getName(), monster);
     }
-
-
 }

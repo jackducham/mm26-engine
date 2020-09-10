@@ -227,6 +227,7 @@ public abstract class Character {
                 // applies change to currentHealth of Character
                 // this can ONLY be called once per turn for correct calculations
                 // this also applies the raw damage intentionally
+                effect.updateTurnsLeft();
                 applyDamage(source, isPlayer, effect.getDamagePerTurn());
                 updateCurrentHealth(effect.getFlatRegenPerTurn());
             }

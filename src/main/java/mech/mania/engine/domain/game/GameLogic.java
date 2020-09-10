@@ -50,9 +50,11 @@ public class GameLogic {
      * @return the resulting {@link GameState}.
      */
     public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
-        gameState.stateChange.clearChanges();
         // ========== NOTES & TODOS ========== \\
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
+
+        // Clear changes for visualizer
+        gameState.stateChange.clearChanges();
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         // Search decisions map for new players. For each new player, create Player object and a private Board

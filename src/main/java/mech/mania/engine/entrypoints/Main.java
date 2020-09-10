@@ -102,7 +102,8 @@ public class Main {
                 Instant now = Instant.now();
                 long waitTime = MILLIS.between(now, nextTurnStart);
                 if (waitTime < 0) {
-                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") + " ms (" + (-waitTime) + " ms too long).");
+                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") +
+                            " ms (" + (-waitTime) + " ms too long).");
                     waitTime = 0;
                 }
                 Thread.sleep(waitTime);
@@ -110,5 +111,11 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
+        /* TODO: Logs only show the first of these two commands (switching the order switches which one shows up).
+            Worth looking into what might cause that. */
+
+        bus.handle(new CommandStopInfraServer());
+        bus.handle(new CommandStopVisualizerServer());
     }
 }
