@@ -17,5 +17,7 @@ public interface RepositoryAbstract {
 
     int storePlayerStatsBundle(final int turn, final CharacterProtos.PlayerStatsBundle playerStatsBundle);
 
+    GameState getGameState(final int turn);
+
     void reset();
 }

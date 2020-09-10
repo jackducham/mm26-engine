@@ -76,11 +76,22 @@ public class GameLogic {
             }
         }
 
+        // ========== CONVERT DECISIONS FROM MONSTERS ========== \\
+        for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
+            if(entry.getValue() == null) continue;
+            CharacterDecision decision = entry.getValue().makeDecision(gameState);
+            // Remove decision from dead monsters and NONE decisions
+            if(!gameState.getMonster(entry.getKey()).isDead()
+                    && decision != null
+                    && decision.getDecision() != CharacterDecision.decisionTypes.NONE) {
+                cDecisions.put(entry.getKey(), decision);
+            }
+        }
 
         // ========== SORT DECISIONS ========== \\
-        Map<String, CharacterDecision> inventoryActions = new HashMap<String, CharacterDecision>();
-        Map<String, CharacterDecision> attackActions = new HashMap<String, CharacterDecision>();
-        Map<String, CharacterDecision> movementActions = new HashMap<String, CharacterDecision>();
+        Map<String, CharacterDecision> inventoryActions = new HashMap<>();
+        Map<String, CharacterDecision> attackActions = new HashMap<>();
+        Map<String, CharacterDecision> movementActions = new HashMap<>();
 
         for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
@@ -321,6 +332,8 @@ public class GameLogic {
         List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
+        Weapon attackerWeapon = attacker.getWeapon();
+
         // Character gave invalid attack position
         if (affectedPositions == null || affectedPositions.isEmpty()) {
             return;
@@ -332,19 +345,23 @@ public class GameLogic {
             }
             Position playerPos = player.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                Weapon attackerWeapon = attacker.getWeapon();
                 // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
                 if(attacker instanceof Player && ((Player) attacker).getHat() != null
                         && ((Player) attacker).getHat().getHatEffect().equals(HatEffect.TRIPLED_ON_HIT)) {
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
                             new TempStatusModifier(attackerWeapon.getOnHitEffect()));
-                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                 } else {
-                    player.hitByWeapon(attacker.getName(), attackerWeapon, attacker.getAttack());
-
+                    // Decide whether to add to taggedPlayersDamage
+                    if(attacker instanceof Player) {
+                        player.hitByWeapon(attacker.getName(), true, attackerWeapon, attacker.getAttack());
+                    }
+                    else{
+                        player.hitByWeapon(attacker.getName(), false, attackerWeapon, attacker.getAttack());
+                    }
                 }
             }
         }
@@ -355,7 +372,13 @@ public class GameLogic {
             }
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
-                monster.hitByWeapon(attacker.getName(), attacker.getWeapon(), attacker.getAttack());
+                // Decide whether to add to taggedPlayersDamage
+                if(attacker instanceof Player) {
+                    monster.hitByWeapon(attacker.getName(), true, attackerWeapon, attacker.getAttack());
+                }
+                else{
+                    monster.hitByWeapon(attacker.getName(), false, attackerWeapon, attacker.getAttack());
+                }
             }
         }
 
@@ -456,6 +479,9 @@ public class GameLogic {
      * @return Manhattan Distance between pos1 and pos2
      */
     public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
+        if(pos1.getBoardID().equals(pos2.getBoardID())){
+            return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
+        }
+        return Integer.MAX_VALUE;
     }
 }

@@ -26,6 +26,9 @@ public class Main {
     // public static MessageBus bus = Bootstrap.bootstrap(new UnitOfWorkFake());
     public static MessageBus bus = Bootstrap.bootstrap();
 
+    // Represents the presence of the --enableInfra flag (used by Spring services)
+    public static boolean enableInfra;
+
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     @Bean
@@ -33,9 +36,14 @@ public class Main {
         return bus;
     }
 
+    public boolean enableInfra(){ return enableInfra; }
+
     public static void main(String[] args) {
         // Configure commandline options for this program
         Options options = new Options();
+        options.addOption("t", "turn", true,
+                "The turn number from which to start the engine. " +
+                        "Defaults to 0 if not specified or if --enableInfra is not set.");
         options.addOption("ei", "enableInfra", false,
                 "This flag tells the engine to run in infra mode and attempt to connect to AWS.");
         options.addOption("ip", "infraPort", true,
@@ -53,7 +61,7 @@ public class Main {
         }
 
         // Default to false unless set by command line args
-        boolean enableInfra = cmd.hasOption("enableInfra");
+        enableInfra = cmd.hasOption("enableInfra");
 
         // Default to ports in Config, but command line args can override
         String infraPort = cmd.hasOption("infraPort") ?
@@ -65,13 +73,18 @@ public class Main {
             // Don't connect to AWS if infra is not enabled
             bus = Bootstrap.bootstrap(new UnitOfWorkFake());
         }
+        else if(cmd.hasOption("turn")){
+            // If infra is enabled and a starting turn was specified, restore from it
+            int startTurn = Integer.parseInt(cmd.getOptionValue("turn"));
+            bus.handle(new CommandRestoreTurn(startTurn));
+        }
 
         // Start servers
         bus.handle(new CommandStartInfraServer(infraPort));
         bus.handle(new CommandStartVisualizerServer(visualizerPort));
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
-        for (int turn = 1; (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
+        for (int turn = bus.getUow().getTurn(); (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
 
             Instant turnStartTime = Instant.now();
             Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));

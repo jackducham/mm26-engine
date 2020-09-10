@@ -81,9 +81,9 @@ class ServerIntegrationTests {
      */
     @After
     fun cleanup() {
-        // end game server - send HTTP request to server
+        // end game server - send HTTP request to server (password not needed because infra is not enabled)
         // https://stackoverflow.com/questions/46177133/http-request-in-kotlin
-        val url = URL("http://localhost:$infraPort/infra/endgame")
+        val url = URL("http://localhost:$infraPort/infra/endgame?password=none")
         try {
             val bytes = url.readBytes()
             val statusObj = InfraStatus.parseFrom(bytes)
@@ -94,7 +94,7 @@ class ServerIntegrationTests {
         }
 
         // Wait for server to truly shut down
-        Thread.sleep(5000);
+        Thread.sleep(8000);
     }
 
     /**

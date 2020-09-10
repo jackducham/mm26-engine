@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
+import kotlin.Triple;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
@@ -35,22 +36,12 @@ public class Player extends Character {
     }
 
     public Player(CharacterProtos.Player playerProto) {
-        super(
-                playerProto.getCharacter().getName(),
-                playerProto.getCharacter().getBaseSpeed(),
-                playerProto.getCharacter().getBaseMaxHealth(),
-                playerProto.getCharacter().getBaseAttack(),
-                playerProto.getCharacter().getBaseDefense(),
-                playerProto.getCharacter().getExperience(),
-                new Position(playerProto.getCharacter().getSpawnPoint()),
-                new Weapon(playerProto.getCharacter().getWeapon())
-        );
+        super(playerProto.getCharacter());
 
         hat = new Hat(playerProto.getHat());
         clothes = new Clothes(playerProto.getClothes());
         shoes = new Shoes(playerProto.getShoes());
         inventory = new Item[INVENTORY_SIZE];
-        taggedPlayersDamage = playerProto.getCharacter().getTaggedPlayersDamageMap();
 
         for (int i = 0; i < playerProto.getInventoryCount(); i++) {
             ItemProtos.Item protoItem = playerProto.getInventory(i);
@@ -134,6 +125,10 @@ public class Player extends Character {
         inventory[index] = item;
     }
 
+    public void setPlayerStats(Stats playerStats) {
+        this.playerStats = playerStats;
+    }
+
     /**
      * Applies active effects and updates the death state
      * This should be called once a turn
@@ -144,11 +139,12 @@ public class Player extends Character {
         if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
-            applyEffect(hatStats, this.getName());
+            applyEffect(this.getName(), true, hatStats);
         }
         updateActiveEffects();
         applyWearableRegen();
         updateDeathState(gameState);
+        playerStats.incrementTurnsSinceJoined();
     }
 
     /**
@@ -209,9 +205,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatSpeedChange();
-            percentChange += effect.getPercentSpeedChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatSpeedChange();
+            percentChange += effect.getFirst().getPercentSpeedChange();
         }
 
         // Make sure stat can't be negative
@@ -256,9 +252,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatHealthChange();
-            percentChange += effect.getPercentHealthChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatHealthChange();
+            percentChange += effect.getFirst().getPercentHealthChange();
         }
 
         // Make sure stat can't be negative
@@ -306,9 +302,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatAttackChange();
-            percentChange += effect.getPercentAttackChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatAttackChange();
+            percentChange += effect.getFirst().getPercentAttackChange();
         }
 
         // Make sure stat can't be negative
@@ -356,9 +352,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatDefenseChange();
-            percentChange += effect.getPercentDefenseChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatDefenseChange();
+            percentChange += effect.getFirst().getPercentDefenseChange();
         }
 
         // Make sure stat can't be negative
@@ -406,9 +402,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatExperienceChange();
-            percentChange += effect.getPercentExperienceChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatExperienceChange();
+            percentChange += effect.getFirst().getPercentExperienceChange();
         }
 
         // Make sure stat can't be negative
@@ -520,7 +516,7 @@ public class Player extends Character {
         if(this.hat != null && this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
-        applyEffect(effect, this.getName());
+        applyEffect(this.getName(), true, effect);
 
         //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {
@@ -563,6 +559,31 @@ public class Player extends Character {
                 .build();
     }
 
+    public void setPlayerStats(CharacterProtos.PlayerStats statsProto){
+        playerStats = new Stats(statsProto);
+    }
+
+    /**
+     * Gets the stats object within this Player to update any extra stats.
+     * @return a Stats object (Player.Stats)
+     */
+    public Stats getExtraStats() {
+        return playerStats;
+    }
+
+    /**
+     * Update death count for the player by overriding updateDeathState and making
+     * sure that the player <b>just</b> died.
+     * @param gameState gameState to call Character.updateDeathState() with
+     */
+    @Override
+    public void updateDeathState(GameState gameState) {
+        super.updateDeathState(gameState);
+        if (ticksSinceDeath == 0) {
+            playerStats.incrementDeathCount();
+        }
+    }
+
     /**
      * Class of <b>extra</b> attributes that are required for infra's player
      * stat calculation
@@ -571,6 +592,18 @@ public class Player extends Character {
         private int monstersSlain;
         private int deathCount;
         private int turnsSinceJoined;
+
+        public Stats(){
+            monstersSlain = 0;
+            deathCount = 0;
+            turnsSinceJoined = 0;
+        }
+
+        public Stats(CharacterProtos.PlayerStats stats){
+            monstersSlain = stats.getMonstersSlain();
+            deathCount = stats.getDeathCount();
+            turnsSinceJoined = stats.getTurnsSinceJoined();
+        }
 
         public void incrementMonstersSlain() {
             monstersSlain++;

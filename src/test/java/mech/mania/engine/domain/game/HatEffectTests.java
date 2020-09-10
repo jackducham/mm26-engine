@@ -54,7 +54,7 @@ public class HatEffectTests {
         p1.setInventory(2, Consumable.createDefaultConsumable());
 
         // deals 15 damage to the player.
-        p1.applyDamage("player2", 15);
+        p1.applyDamage("player2", true, 15);
 
 
         // Check that the player starts with 5 hp
@@ -236,6 +236,7 @@ public class HatEffectTests {
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
+
         //base speed of 5 plus one from hat plus 10 TSMs. (We've added more than 10, but the durations on the earliest
         // have begun to run out. This leaves us with a number of TSMs equal to the duration.
         assertEquals(16, p1.getSpeed());
