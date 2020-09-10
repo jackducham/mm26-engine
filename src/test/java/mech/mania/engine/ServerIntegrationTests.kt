@@ -286,7 +286,7 @@ class ServerIntegrationTests {
     fun testMultipleVisualizerConnections(){
         val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
         val turns = 10
-        val visualizers = 400
+        val visualizers = 100
         val latch = CountDownLatch(turns * visualizers)
 
         // Create WebSocket client
@@ -303,8 +303,8 @@ class ServerIntegrationTests {
     fun testMultipleVisualizerConnectionsWithPlayers(){
         val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
         val turns = 10
-        val players = 400
-        val visualizers = 400
+        val players = 100
+        val visualizers = 100
         val latch = CountDownLatch(turns * (visualizers + players))
 
         connectNPlayers(players, {
