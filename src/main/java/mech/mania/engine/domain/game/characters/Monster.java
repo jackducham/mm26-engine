@@ -15,7 +15,7 @@ import java.util.Map;
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
-    private final List<Item> drops;
+    private List<Item> drops;
 
 
     // --------Constructors-------- //
@@ -30,12 +30,11 @@ public class Monster extends Character {
      * @param experience the monster's base exp to be awarded on kill
      * @param spawnPoint the monster's spawn point, and the point it will leash back to
      * @param weapon the monster's weapon (used to apply on-hit effects)
-     * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
      */
     public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                   int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
+                   int experience, Position spawnPoint, Weapon weapon) {
         super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
-        this.drops = drops;
+        this.drops = getMonsterDrops();
     }
 
 
@@ -48,26 +47,26 @@ public class Monster extends Character {
     public Monster(CharacterProtos.Monster monsterProto) {
         super(monsterProto.getCharacter());
 
-        drops = new ArrayList<>(monsterProto.getDropsCount());
-        for (int i = 0; i < monsterProto.getDropsCount(); i++) {
-            ItemProtos.Item protoItem = monsterProto.getDrops(i);
-            switch(protoItem.getItemCase()) {
-                case CLOTHES:
-                    drops.add(i, new Clothes(protoItem.getClothes()));
-                    break;
-                case HAT:
-                    drops.add(i, new Hat(protoItem.getHat()));
-                    break;
-                case SHOES:
-                    drops.add(i, new Shoes(protoItem.getShoes()));
-                    break;
-                case WEAPON:
-                    drops.add(i, new Weapon(protoItem.getWeapon()));
-                    break;
-                case CONSUMABLE:
-                    drops.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
-            }
-        }
+//        drops = new ArrayList<>(monsterProto.getDropsCount());
+//        for (int i = 0; i < monsterProto.getDropsCount(); i++) {
+//            ItemProtos.Item protoItem = monsterProto.getDrops(i);
+//            switch(protoItem.getItemCase()) {
+//                case CLOTHES:
+//                    drops.add(i, new Clothes(protoItem.getClothes()));
+//                    break;
+//                case HAT:
+//                    drops.add(i, new Hat(protoItem.getHat()));
+//                    break;
+//                case SHOES:
+//                    drops.add(i, new Shoes(protoItem.getShoes()));
+//                    break;
+//                case WEAPON:
+//                    drops.add(i, new Weapon(protoItem.getWeapon()));
+//                    break;
+//                case CONSUMABLE:
+//                    drops.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+//            }
+//        }
     }
 
     /**
@@ -181,12 +180,10 @@ public class Monster extends Character {
      * @param experienceFactor slightly modifies the Monster's base experience awarded upon kill
      * @param rangeFactor slightly modifies the Monster's base attack range
      * @param splashFactor slightly modifies the Monster's base splash damage size
-     * @param numberOfDrops the number of Items this Monster instance will drop. (This function contains the full drop
-     *                      list and will pick a number of Items from that list based on this input)
      * @param spawnPoint the Monster's spawn point
      * @return
      */
-    public static Monster createDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
+    public static Monster createDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, Position spawnPoint) {
 
         /*
         Default stats and their scaling factors:
@@ -216,25 +213,6 @@ public class Monster extends Character {
         int splashSpread = 0;
 
         int attack = 1;
-
-        /*
-        TODO: add Item drop generation
-        My current plan is to have an item generator specific to this monster which will generate a number of items
-        equal to the numberOfDrops argument and add them to the list of drops. Everything in this list will then be
-        dropped upon the monster dieing.
-         */
-
-        List<Item> drops = new ArrayList<Item>();
-        /*
-        //here is where we will generate and add items:
-
-        for(int i = 0; i < numberOfDrops; ++i) {
-            //generate item and add it to the list
-        }
-
-        */
-
-
         StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, attack, defaultOnHit);
@@ -245,7 +223,7 @@ public class Monster extends Character {
                 baseAttack + (int)attackFactor*baseAttackSpread,
                 baseDefense + (int)defenseFactor*baseDefenseSpread,
                 experience + (int)experienceFactor*experienceSpread,
-                spawnPoint,  defaultWeapon, drops);
+                spawnPoint,  defaultWeapon);
 
         ++DefaultMonsterQuantity;
         return newMonster;
@@ -271,5 +249,14 @@ public class Monster extends Character {
                 currentPlayer.getExtraStats().incrementMonstersSlain();
             }
         }
+    }
+
+    /**
+     * @TODO: Write function for generating Monster drops based off level
+     * @return list of Items Monster drops
+     */
+    private List<Item> getMonsterDrops() {
+        List<Item> drops = new ArrayList<Item>() {};
+        return drops;
     }
 }

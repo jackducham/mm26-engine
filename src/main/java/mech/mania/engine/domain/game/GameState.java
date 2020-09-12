@@ -193,7 +193,7 @@ public class GameState {
         //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster
         defaultGameState.addNewMonster(
                 Monster.createDefaultMonster(0, 0, 0, 0, 0,
-                        0, 0, 0, new Position(14, 25, "pvp"))
+                        0, 0, new Position(14, 25, "pvp"))
         );
 
         return defaultGameState;
