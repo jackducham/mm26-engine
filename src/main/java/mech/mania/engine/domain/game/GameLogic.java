@@ -202,6 +202,11 @@ public class GameLogic {
     public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
         if (!validatePosition(gameState, targetPosition)) return;
 
+        // Check if character's board matches target board
+        if (!character.getPosition().getBoardID().equals(targetPosition.getBoardID())) {
+            return;
+        }
+
         // Get shortest path length from current to target position (returns empty list for impossible target)
         List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
 
