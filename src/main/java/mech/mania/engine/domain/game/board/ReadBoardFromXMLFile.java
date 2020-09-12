@@ -56,6 +56,20 @@ public class ReadBoardFromXMLFile {
             this.height = height;
             data = new int[width][height];
         }
+
+        @Override
+        public String toString() {
+            String output = "";
+            for(int y = 0; y < height; ++y) {
+                output += data[0][y];
+                for(int x = 1; x < width; ++x) {
+                    output += (", " + data[x][y]);
+                }
+                output += "\n";
+            }
+
+            return output;
+        }
     }
 
 
@@ -157,10 +171,10 @@ public class ReadBoardFromXMLFile {
                 //System.out.println("rowData[1]: \n" + rowData[1]);
                 //System.out.println("rowData[29]: \n" + rowData[29]);
 
-                for(int x = 0; x < currentLayer.height; ++x) {//splits each of the rows into individual data points
-                    String[] currentRowData = rowData[x].split(",", 0);
-                    for(int y = 0; y < currentLayer.width; ++y) {//puts each of those data points into the layer
-                        currentLayer.data[y][x] = Integer.parseInt(currentRowData[y]);
+                for(int ri = 0; ri < currentLayer.height; ++ri) {//splits each of the rows into individual data points
+                    String[] currentRowData = rowData[ri].split(",", 0);
+                    for(int ewr = 0; ewr < currentLayer.width; ++ewr) {//puts each of those data points into the layer
+                        currentLayer.data[ewr][ri] = Integer.parseInt(currentRowData[ewr]);
                         //System.out.println("Set (" + y + ", " + x + ") to " + Integer.parseInt(currentRowData[y]));
                     }
                 }
@@ -195,6 +209,7 @@ public class ReadBoardFromXMLFile {
 
     public void updateBoardAndMonsters(String tileSetFileName, String mapDataFileName, String boardName) throws TileIDNotFoundException {
         loadTileData(tileSetFileName);
+
         /*
         for(int key: tileSet.keySet()) {
             System.out.println(key);
@@ -202,8 +217,10 @@ public class ReadBoardFromXMLFile {
         */
 
         loadBoardData(mapDataFileName);
-        for(int x = 0; x < dataSet.get(0).width; ++x) {
-            for(int y = 0; y < dataSet.get(0).height; ++y) {
+        //System.out.println(dataSet.get(2).toString());
+        Map<Integer, Integer> monstersQuantityOfEachID = new HashMap<>();
+        for(int y = 0; y < dataSet.get(0).height; ++y) {
+            for(int x = 0; x < dataSet.get(0).width; ++x) {
                 //set BLANK or IMPASSIBLE
                 if(dataSet.get(0).data[x][y] != 0 && tileSet.get(dataSet.get(0).data[x][y]) == null) {
                     throw new TileIDNotFoundException(
@@ -223,20 +240,26 @@ public class ReadBoardFromXMLFile {
                 //Add monsters to the list of monsters.
                 //TODO: figure out exactly how monster data gets put into monster object. particularly the damage stat vs weapon damage.
                 int monsterIndex = dataSet.get(2).data[x][y];
-                if(monsterIndex != 0 && monsterSet.get(monsterIndex) != null) {
-                    PseudoMonster toCopy = monsterSet.get(monsterIndex);
-                    StatusModifier zeroStats = new StatusModifier(0, 0, 0,
-                            0, 0, 0, 0,
-                            0, 0, 0, 0);
-                    TempStatusModifier zeroOnHit = new TempStatusModifier(0, 0,
-                            0, 0, 0, 0,
-                            0, 0, 0, 0,
-                            0, 0, 0);
-                    Monster newMonster = new Monster(toCopy.name, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense,
-                    toCopy.level, new Position(x, y, boardName), new Weapon(zeroStats, 1, 0, 0, zeroOnHit), new ArrayList<Item>());
-                    monsterList.add(newMonster);
-                }
+                if(monsterIndex != 0) {
+                    if(monsterSet.get(monsterIndex) == null) {
+                        throw new TileIDNotFoundException("Could not locate monster with ID = " + dataSet.get(2).data[x][y] + " in current dataSet. This tile was requested by Data Layer 2 at Position (" + x + ", " + y + ")");
+                    } else {
 
+                        monstersQuantityOfEachID.merge(monsterIndex, 1, Integer::sum);
+
+                        PseudoMonster toCopy = monsterSet.get(monsterIndex);
+                        StatusModifier zeroStats = new StatusModifier(0, 0, 0,
+                                0, 0, 0, 0,
+                                0, 0, 0, 0);
+                        TempStatusModifier zeroOnHit = new TempStatusModifier(0, 0,
+                                0, 0, 0, 0,
+                                0, 0, 0, 0,
+                                0, 0, 0);
+                        Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1), toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense,
+                                toCopy.level, new Position(x, y, boardName), new Weapon(zeroStats, 1, 0, 0, zeroOnHit), new ArrayList<Item>());
+                        monsterList.add(newMonster);
+                    }
+                }
             }
         }
     }

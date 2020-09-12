@@ -52,10 +52,13 @@ public class ReadFromXMLTests {
     public void loadBoard(){
         loadedBoard = boardReader.extractBoard();
         assertTrue(loadedBoard != null);
+        //check size of board
         assertEquals(30, loadedBoard.getGrid().length);
         assertEquals(30, loadedBoard.getGrid()[0].length);
 
+        //check that tile walkability is loaded correctly
         assertEquals(Tile.TileType.BLANK, loadedBoard.getGrid()[2][2].getType());
+        assertEquals(Tile.TileType.IMPASSIBLE, loadedBoard.getGrid()[11][14].getType());
     }
 
     /**
@@ -64,5 +67,16 @@ public class ReadFromXMLTests {
     @Test
     public void loadMonsters(){
         loadedMonsters = boardReader.extractMonsters();
+        assertEquals(9, loadedMonsters.size());
+        assertEquals("Zombie0", loadedMonsters.get(0).getName());
+        assertEquals(1, loadedMonsters.get(0).getSpeed());
+        assertEquals(20, loadedMonsters.get(0).getLevel());
+        assertEquals(50, loadedMonsters.get(0).getMaxHealth());
+        assertEquals(4, loadedMonsters.get(0).getDefense());
+        assertEquals(7, loadedMonsters.get(0).getAttack());
+        assertEquals("Zombie1", loadedMonsters.get(1).getName());
+        assertEquals("Zombie3", loadedMonsters.get(3).getName());
+        assertEquals("Uniboar0", loadedMonsters.get(5).getName());
+        assertEquals("Uniboar3", loadedMonsters.get(8).getName());
     }
 }
