@@ -14,6 +14,1442 @@ public final class VisualizerProtos {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface VisualizerInitialOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:player_communication.VisualizerInitial)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return Whether the state field is set.
+     */
+    boolean hasState();
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return The state.
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameState getState();
+    /**
+     * <code>.game.GameState state = 1;</code>
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder();
+  }
+  /**
+   * Protobuf type {@code player_communication.VisualizerInitial}
+   */
+  public  static final class VisualizerInitial extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:player_communication.VisualizerInitial)
+      VisualizerInitialOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use VisualizerInitial.newBuilder() to construct.
+    private VisualizerInitial(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private VisualizerInitial() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VisualizerInitial();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private VisualizerInitial(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mech.mania.engine.domain.model.GameStateProtos.GameState.Builder subBuilder = null;
+              if (state_ != null) {
+                subBuilder = state_.toBuilder();
+              }
+              state_ = input.readMessage(mech.mania.engine.domain.model.GameStateProtos.GameState.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(state_);
+                state_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerInitial_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerInitial_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.class, mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.Builder.class);
+    }
+
+    public static final int STATE_FIELD_NUMBER = 1;
+    private mech.mania.engine.domain.model.GameStateProtos.GameState state_;
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return Whether the state field is set.
+     */
+    public boolean hasState() {
+      return state_ != null;
+    }
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return The state.
+     */
+    public mech.mania.engine.domain.model.GameStateProtos.GameState getState() {
+      return state_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
+    }
+    /**
+     * <code>.game.GameState state = 1;</code>
+     */
+    public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder() {
+      return getState();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (state_ != null) {
+        output.writeMessage(1, getState());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (state_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getState());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial other = (mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial) obj;
+
+      if (hasState() != other.hasState()) return false;
+      if (hasState()) {
+        if (!getState()
+            .equals(other.getState())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasState()) {
+        hash = (37 * hash) + STATE_FIELD_NUMBER;
+        hash = (53 * hash) + getState().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code player_communication.VisualizerInitial}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:player_communication.VisualizerInitial)
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitialOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerInitial_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerInitial_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.class, mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (stateBuilder_ == null) {
+          state_ = null;
+        } else {
+          state_ = null;
+          stateBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerInitial_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial build() {
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial buildPartial() {
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial result = new mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial(this);
+        if (stateBuilder_ == null) {
+          result.state_ = state_;
+        } else {
+          result.state_ = stateBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial) {
+          return mergeFrom((mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial other) {
+        if (other == mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial.getDefaultInstance()) return this;
+        if (other.hasState()) {
+          mergeState(other.getState());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.GameStateProtos.GameState state_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> stateBuilder_;
+      /**
+       * <code>.game.GameState state = 1;</code>
+       * @return Whether the state field is set.
+       */
+      public boolean hasState() {
+        return stateBuilder_ != null || state_ != null;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       * @return The state.
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState getState() {
+        if (stateBuilder_ == null) {
+          return state_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
+        } else {
+          return stateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder setState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (stateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          state_ = value;
+          onChanged();
+        } else {
+          stateBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder setState(
+          mech.mania.engine.domain.model.GameStateProtos.GameState.Builder builderForValue) {
+        if (stateBuilder_ == null) {
+          state_ = builderForValue.build();
+          onChanged();
+        } else {
+          stateBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder mergeState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (stateBuilder_ == null) {
+          if (state_ != null) {
+            state_ =
+              mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder(state_).mergeFrom(value).buildPartial();
+          } else {
+            state_ = value;
+          }
+          onChanged();
+        } else {
+          stateBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder clearState() {
+        if (stateBuilder_ == null) {
+          state_ = null;
+          onChanged();
+        } else {
+          state_ = null;
+          stateBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState.Builder getStateBuilder() {
+        
+        onChanged();
+        return getStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder() {
+        if (stateBuilder_ != null) {
+          return stateBuilder_.getMessageOrBuilder();
+        } else {
+          return state_ == null ?
+              mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
+        }
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> 
+          getStateFieldBuilder() {
+        if (stateBuilder_ == null) {
+          stateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder>(
+                  getState(),
+                  getParentForChildren(),
+                  isClean());
+          state_ = null;
+        }
+        return stateBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:player_communication.VisualizerInitial)
+    }
+
+    // @@protoc_insertion_point(class_scope:player_communication.VisualizerInitial)
+    private static final mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial();
+    }
+
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<VisualizerInitial>
+        PARSER = new com.google.protobuf.AbstractParser<VisualizerInitial>() {
+      @java.lang.Override
+      public VisualizerInitial parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VisualizerInitial(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<VisualizerInitial> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VisualizerInitial> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.VisualizerProtos.VisualizerInitial getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface VisualizerTurnOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:player_communication.VisualizerTurn)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return Whether the state field is set.
+     */
+    boolean hasState();
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return The state.
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameState getState();
+    /**
+     * <code>.game.GameState state = 1;</code>
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder();
+
+    /**
+     * <code>.player_communication.GameChange change = 2;</code>
+     * @return Whether the change field is set.
+     */
+    boolean hasChange();
+    /**
+     * <code>.player_communication.GameChange change = 2;</code>
+     * @return The change.
+     */
+    mech.mania.engine.domain.model.VisualizerProtos.GameChange getChange();
+    /**
+     * <code>.player_communication.GameChange change = 2;</code>
+     */
+    mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder getChangeOrBuilder();
+  }
+  /**
+   * Protobuf type {@code player_communication.VisualizerTurn}
+   */
+  public  static final class VisualizerTurn extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:player_communication.VisualizerTurn)
+      VisualizerTurnOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use VisualizerTurn.newBuilder() to construct.
+    private VisualizerTurn(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private VisualizerTurn() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new VisualizerTurn();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private VisualizerTurn(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mech.mania.engine.domain.model.GameStateProtos.GameState.Builder subBuilder = null;
+              if (state_ != null) {
+                subBuilder = state_.toBuilder();
+              }
+              state_ = input.readMessage(mech.mania.engine.domain.model.GameStateProtos.GameState.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(state_);
+                state_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              mech.mania.engine.domain.model.VisualizerProtos.GameChange.Builder subBuilder = null;
+              if (change_ != null) {
+                subBuilder = change_.toBuilder();
+              }
+              change_ = input.readMessage(mech.mania.engine.domain.model.VisualizerProtos.GameChange.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(change_);
+                change_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerTurn_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerTurn_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.class, mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.Builder.class);
+    }
+
+    public static final int STATE_FIELD_NUMBER = 1;
+    private mech.mania.engine.domain.model.GameStateProtos.GameState state_;
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return Whether the state field is set.
+     */
+    public boolean hasState() {
+      return state_ != null;
+    }
+    /**
+     * <code>.game.GameState state = 1;</code>
+     * @return The state.
+     */
+    public mech.mania.engine.domain.model.GameStateProtos.GameState getState() {
+      return state_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
+    }
+    /**
+     * <code>.game.GameState state = 1;</code>
+     */
+    public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder() {
+      return getState();
+    }
+
+    public static final int CHANGE_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.VisualizerProtos.GameChange change_;
+    /**
+     * <code>.player_communication.GameChange change = 2;</code>
+     * @return Whether the change field is set.
+     */
+    public boolean hasChange() {
+      return change_ != null;
+    }
+    /**
+     * <code>.player_communication.GameChange change = 2;</code>
+     * @return The change.
+     */
+    public mech.mania.engine.domain.model.VisualizerProtos.GameChange getChange() {
+      return change_ == null ? mech.mania.engine.domain.model.VisualizerProtos.GameChange.getDefaultInstance() : change_;
+    }
+    /**
+     * <code>.player_communication.GameChange change = 2;</code>
+     */
+    public mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder getChangeOrBuilder() {
+      return getChange();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (state_ != null) {
+        output.writeMessage(1, getState());
+      }
+      if (change_ != null) {
+        output.writeMessage(2, getChange());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (state_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getState());
+      }
+      if (change_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getChange());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn other = (mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn) obj;
+
+      if (hasState() != other.hasState()) return false;
+      if (hasState()) {
+        if (!getState()
+            .equals(other.getState())) return false;
+      }
+      if (hasChange() != other.hasChange()) return false;
+      if (hasChange()) {
+        if (!getChange()
+            .equals(other.getChange())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasState()) {
+        hash = (37 * hash) + STATE_FIELD_NUMBER;
+        hash = (53 * hash) + getState().hashCode();
+      }
+      if (hasChange()) {
+        hash = (37 * hash) + CHANGE_FIELD_NUMBER;
+        hash = (53 * hash) + getChange().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code player_communication.VisualizerTurn}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:player_communication.VisualizerTurn)
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurnOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerTurn_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerTurn_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.class, mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (stateBuilder_ == null) {
+          state_ = null;
+        } else {
+          state_ = null;
+          stateBuilder_ = null;
+        }
+        if (changeBuilder_ == null) {
+          change_ = null;
+        } else {
+          change_ = null;
+          changeBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_VisualizerTurn_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn build() {
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn buildPartial() {
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn result = new mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn(this);
+        if (stateBuilder_ == null) {
+          result.state_ = state_;
+        } else {
+          result.state_ = stateBuilder_.build();
+        }
+        if (changeBuilder_ == null) {
+          result.change_ = change_;
+        } else {
+          result.change_ = changeBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn) {
+          return mergeFrom((mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn other) {
+        if (other == mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn.getDefaultInstance()) return this;
+        if (other.hasState()) {
+          mergeState(other.getState());
+        }
+        if (other.hasChange()) {
+          mergeChange(other.getChange());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.GameStateProtos.GameState state_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> stateBuilder_;
+      /**
+       * <code>.game.GameState state = 1;</code>
+       * @return Whether the state field is set.
+       */
+      public boolean hasState() {
+        return stateBuilder_ != null || state_ != null;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       * @return The state.
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState getState() {
+        if (stateBuilder_ == null) {
+          return state_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
+        } else {
+          return stateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder setState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (stateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          state_ = value;
+          onChanged();
+        } else {
+          stateBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder setState(
+          mech.mania.engine.domain.model.GameStateProtos.GameState.Builder builderForValue) {
+        if (stateBuilder_ == null) {
+          state_ = builderForValue.build();
+          onChanged();
+        } else {
+          stateBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder mergeState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (stateBuilder_ == null) {
+          if (state_ != null) {
+            state_ =
+              mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder(state_).mergeFrom(value).buildPartial();
+          } else {
+            state_ = value;
+          }
+          onChanged();
+        } else {
+          stateBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public Builder clearState() {
+        if (stateBuilder_ == null) {
+          state_ = null;
+          onChanged();
+        } else {
+          state_ = null;
+          stateBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState.Builder getStateBuilder() {
+        
+        onChanged();
+        return getStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder() {
+        if (stateBuilder_ != null) {
+          return stateBuilder_.getMessageOrBuilder();
+        } else {
+          return state_ == null ?
+              mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
+        }
+      }
+      /**
+       * <code>.game.GameState state = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> 
+          getStateFieldBuilder() {
+        if (stateBuilder_ == null) {
+          stateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder>(
+                  getState(),
+                  getParentForChildren(),
+                  isClean());
+          state_ = null;
+        }
+        return stateBuilder_;
+      }
+
+      private mech.mania.engine.domain.model.VisualizerProtos.GameChange change_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.VisualizerProtos.GameChange, mech.mania.engine.domain.model.VisualizerProtos.GameChange.Builder, mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder> changeBuilder_;
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       * @return Whether the change field is set.
+       */
+      public boolean hasChange() {
+        return changeBuilder_ != null || change_ != null;
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       * @return The change.
+       */
+      public mech.mania.engine.domain.model.VisualizerProtos.GameChange getChange() {
+        if (changeBuilder_ == null) {
+          return change_ == null ? mech.mania.engine.domain.model.VisualizerProtos.GameChange.getDefaultInstance() : change_;
+        } else {
+          return changeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      public Builder setChange(mech.mania.engine.domain.model.VisualizerProtos.GameChange value) {
+        if (changeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          change_ = value;
+          onChanged();
+        } else {
+          changeBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      public Builder setChange(
+          mech.mania.engine.domain.model.VisualizerProtos.GameChange.Builder builderForValue) {
+        if (changeBuilder_ == null) {
+          change_ = builderForValue.build();
+          onChanged();
+        } else {
+          changeBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      public Builder mergeChange(mech.mania.engine.domain.model.VisualizerProtos.GameChange value) {
+        if (changeBuilder_ == null) {
+          if (change_ != null) {
+            change_ =
+              mech.mania.engine.domain.model.VisualizerProtos.GameChange.newBuilder(change_).mergeFrom(value).buildPartial();
+          } else {
+            change_ = value;
+          }
+          onChanged();
+        } else {
+          changeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      public Builder clearChange() {
+        if (changeBuilder_ == null) {
+          change_ = null;
+          onChanged();
+        } else {
+          change_ = null;
+          changeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      public mech.mania.engine.domain.model.VisualizerProtos.GameChange.Builder getChangeBuilder() {
+        
+        onChanged();
+        return getChangeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      public mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder getChangeOrBuilder() {
+        if (changeBuilder_ != null) {
+          return changeBuilder_.getMessageOrBuilder();
+        } else {
+          return change_ == null ?
+              mech.mania.engine.domain.model.VisualizerProtos.GameChange.getDefaultInstance() : change_;
+        }
+      }
+      /**
+       * <code>.player_communication.GameChange change = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.VisualizerProtos.GameChange, mech.mania.engine.domain.model.VisualizerProtos.GameChange.Builder, mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder> 
+          getChangeFieldBuilder() {
+        if (changeBuilder_ == null) {
+          changeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.VisualizerProtos.GameChange, mech.mania.engine.domain.model.VisualizerProtos.GameChange.Builder, mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder>(
+                  getChange(),
+                  getParentForChildren(),
+                  isClean());
+          change_ = null;
+        }
+        return changeBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:player_communication.VisualizerTurn)
+    }
+
+    // @@protoc_insertion_point(class_scope:player_communication.VisualizerTurn)
+    private static final mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn();
+    }
+
+    public static mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<VisualizerTurn>
+        PARSER = new com.google.protobuf.AbstractParser<VisualizerTurn>() {
+      @java.lang.Override
+      public VisualizerTurn parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VisualizerTurn(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<VisualizerTurn> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VisualizerTurn> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.VisualizerProtos.VisualizerTurn getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface GameChangeOrBuilder extends
       // @@protoc_insertion_point(interface_extends:player_communication.GameChange)
       com.google.protobuf.MessageOrBuilder {
@@ -44,43 +1480,92 @@ public final class VisualizerProtos {
         getNewPlayerNamesBytes(int index);
 
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
-    int getCharacterStatChangesCount();
+    int getCharacterChangesCount();
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
-    boolean containsCharacterStatChanges(
+    boolean containsCharacterChanges(
         java.lang.String key);
     /**
-     * Use {@link #getCharacterStatChangesMap()} instead.
+     * Use {@link #getCharacterChangesMap()} instead.
      */
     @java.lang.Deprecated
     java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-    getCharacterStatChanges();
+    getCharacterChanges();
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
     java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-    getCharacterStatChangesMap();
+    getCharacterChangesMap();
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
 
-    mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrDefault(
+    mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrDefault(
         java.lang.String key,
         mech.mania.engine.domain.model.VisualizerProtos.CharacterChange defaultValue);
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
 
-    mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrThrow(
+    mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrThrow(
         java.lang.String key);
+
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
+        getTileTimeChangesList();
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getTileTimeChanges(int index);
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    int getTileTimeChangesCount();
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+        getTileTimeChangesOrBuilderList();
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileTimeChangesOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code player_communication.GameChange}
    */
-  public static final class GameChange extends
+  public  static final class GameChange extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.GameChange)
       GameChangeOrBuilder {
@@ -91,6 +1576,7 @@ public final class VisualizerProtos {
     }
     private GameChange() {
       newPlayerNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      tileTimeChanges_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -135,15 +1621,24 @@ public final class VisualizerProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                characterStatChanges_ = com.google.protobuf.MapField.newMapField(
-                    CharacterStatChangesDefaultEntryHolder.defaultEntry);
+                characterChanges_ = com.google.protobuf.MapField.newMapField(
+                    CharacterChangesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000002;
               }
               com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-              characterStatChanges__ = input.readMessage(
-                  CharacterStatChangesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              characterStatChanges_.getMutableMap().put(
-                  characterStatChanges__.getKey(), characterStatChanges__.getValue());
+              characterChanges__ = input.readMessage(
+                  CharacterChangesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              characterChanges_.getMutableMap().put(
+                  characterChanges__.getKey(), characterChanges__.getValue());
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                tileTimeChanges_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              tileTimeChanges_.add(
+                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -164,6 +1659,9 @@ public final class VisualizerProtos {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           newPlayerNames_ = newPlayerNames_.getUnmodifiableView();
         }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          tileTimeChanges_ = java.util.Collections.unmodifiableList(tileTimeChanges_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -179,7 +1677,7 @@ public final class VisualizerProtos {
         int number) {
       switch (number) {
         case 2:
-          return internalGetCharacterStatChanges();
+          return internalGetCharacterChanges();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -228,85 +1726,140 @@ public final class VisualizerProtos {
       return newPlayerNames_.getByteString(index);
     }
 
-    public static final int CHARACTER_STAT_CHANGES_FIELD_NUMBER = 2;
-    private static final class CharacterStatChangesDefaultEntryHolder {
+    public static final int CHARACTER_CHANGES_FIELD_NUMBER = 2;
+    private static final class CharacterChangesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> defaultEntry =
               com.google.protobuf.MapEntry
-              .newDefaultInstance(
-                  mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_GameChange_CharacterStatChangesEntry_descriptor, 
+              .<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>newDefaultInstance(
+                  mech.mania.engine.domain.model.VisualizerProtos.internal_static_player_communication_GameChange_CharacterChangesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
                   mech.mania.engine.domain.model.VisualizerProtos.CharacterChange.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> characterStatChanges_;
+        java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> characterChanges_;
     private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-    internalGetCharacterStatChanges() {
-      if (characterStatChanges_ == null) {
+    internalGetCharacterChanges() {
+      if (characterChanges_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
-            CharacterStatChangesDefaultEntryHolder.defaultEntry);
+            CharacterChangesDefaultEntryHolder.defaultEntry);
       }
-      return characterStatChanges_;
+      return characterChanges_;
     }
 
-    public int getCharacterStatChangesCount() {
-      return internalGetCharacterStatChanges().getMap().size();
+    public int getCharacterChangesCount() {
+      return internalGetCharacterChanges().getMap().size();
     }
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
 
-    @java.lang.Override
-    public boolean containsCharacterStatChanges(
+    public boolean containsCharacterChanges(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      return internalGetCharacterStatChanges().getMap().containsKey(key);
+      return internalGetCharacterChanges().getMap().containsKey(key);
     }
     /**
-     * Use {@link #getCharacterStatChangesMap()} instead.
+     * Use {@link #getCharacterChangesMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterStatChanges() {
-      return getCharacterStatChangesMap();
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChanges() {
+      return getCharacterChangesMap();
     }
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
-    @java.lang.Override
 
-    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterStatChangesMap() {
-      return internalGetCharacterStatChanges().getMap();
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChangesMap() {
+      return internalGetCharacterChanges().getMap();
     }
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
-    @java.lang.Override
 
-    public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrDefault(
+    public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrDefault(
         java.lang.String key,
         mech.mania.engine.domain.model.VisualizerProtos.CharacterChange defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
       java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> map =
-          internalGetCharacterStatChanges().getMap();
+          internalGetCharacterChanges().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+     * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
-    @java.lang.Override
 
-    public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrThrow(
+    public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
       java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> map =
-          internalGetCharacterStatChanges().getMap();
+          internalGetCharacterChanges().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
       return map.get(key);
+    }
+
+    public static final int TILE_TIME_CHANGES_FIELD_NUMBER = 3;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> tileTimeChanges_;
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileTimeChangesList() {
+      return tileTimeChanges_;
+    }
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+        getTileTimeChangesOrBuilderList() {
+      return tileTimeChanges_;
+    }
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    public int getTileTimeChangesCount() {
+      return tileTimeChanges_.size();
+    }
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.Position getTileTimeChanges(int index) {
+      return tileTimeChanges_.get(index);
+    }
+    /**
+     * <pre>
+     * Visualizer will check each tile and draw a treasure chest
+     * if there are any items there
+     * </pre>
+     *
+     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileTimeChangesOrBuilder(
+        int index) {
+      return tileTimeChanges_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -329,9 +1882,12 @@ public final class VisualizerProtos {
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
-          internalGetCharacterStatChanges(),
-          CharacterStatChangesDefaultEntryHolder.defaultEntry,
+          internalGetCharacterChanges(),
+          CharacterChangesDefaultEntryHolder.defaultEntry,
           2);
+      for (int i = 0; i < tileTimeChanges_.size(); i++) {
+        output.writeMessage(3, tileTimeChanges_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -350,14 +1906,18 @@ public final class VisualizerProtos {
         size += 1 * getNewPlayerNamesList().size();
       }
       for (java.util.Map.Entry<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> entry
-           : internalGetCharacterStatChanges().getMap().entrySet()) {
+           : internalGetCharacterChanges().getMap().entrySet()) {
         com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-        characterStatChanges__ = CharacterStatChangesDefaultEntryHolder.defaultEntry.newBuilderForType()
+        characterChanges__ = CharacterChangesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, characterStatChanges__);
+            .computeMessageSize(2, characterChanges__);
+      }
+      for (int i = 0; i < tileTimeChanges_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, tileTimeChanges_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -376,9 +1936,12 @@ public final class VisualizerProtos {
 
       if (!getNewPlayerNamesList()
           .equals(other.getNewPlayerNamesList())) return false;
-      if (!internalGetCharacterStatChanges().equals(
-          other.internalGetCharacterStatChanges())) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!internalGetCharacterChanges().equals(
+          other.internalGetCharacterChanges())) return false;
+      if (!getTileTimeChangesList()
+          .equals(other.getTileTimeChangesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -392,9 +1955,13 @@ public final class VisualizerProtos {
         hash = (37 * hash) + NEW_PLAYER_NAMES_FIELD_NUMBER;
         hash = (53 * hash) + getNewPlayerNamesList().hashCode();
       }
-      if (!internalGetCharacterStatChanges().getMap().isEmpty()) {
-        hash = (37 * hash) + CHARACTER_STAT_CHANGES_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetCharacterStatChanges().hashCode();
+      if (!internalGetCharacterChanges().getMap().isEmpty()) {
+        hash = (37 * hash) + CHARACTER_CHANGES_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetCharacterChanges().hashCode();
+      }
+      if (getTileTimeChangesCount() > 0) {
+        hash = (37 * hash) + TILE_TIME_CHANGES_FIELD_NUMBER;
+        hash = (53 * hash) + getTileTimeChangesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -508,7 +2075,7 @@ public final class VisualizerProtos {
           int number) {
         switch (number) {
           case 2:
-            return internalGetCharacterStatChanges();
+            return internalGetCharacterChanges();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -519,7 +2086,7 @@ public final class VisualizerProtos {
           int number) {
         switch (number) {
           case 2:
-            return internalGetMutableCharacterStatChanges();
+            return internalGetMutableCharacterChanges();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -546,6 +2113,7 @@ public final class VisualizerProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getTileTimeChangesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -553,7 +2121,13 @@ public final class VisualizerProtos {
         super.clear();
         newPlayerNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        internalGetMutableCharacterStatChanges().clear();
+        internalGetMutableCharacterChanges().clear();
+        if (tileTimeChangesBuilder_ == null) {
+          tileTimeChanges_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          tileTimeChangesBuilder_.clear();
+        }
         return this;
       }
 
@@ -586,8 +2160,17 @@ public final class VisualizerProtos {
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.newPlayerNames_ = newPlayerNames_;
-        result.characterStatChanges_ = internalGetCharacterStatChanges();
-        result.characterStatChanges_.makeImmutable();
+        result.characterChanges_ = internalGetCharacterChanges();
+        result.characterChanges_.makeImmutable();
+        if (tileTimeChangesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            tileTimeChanges_ = java.util.Collections.unmodifiableList(tileTimeChanges_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.tileTimeChanges_ = tileTimeChanges_;
+        } else {
+          result.tileTimeChanges_ = tileTimeChangesBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -646,8 +2229,34 @@ public final class VisualizerProtos {
           }
           onChanged();
         }
-        internalGetMutableCharacterStatChanges().mergeFrom(
-            other.internalGetCharacterStatChanges());
+        internalGetMutableCharacterChanges().mergeFrom(
+            other.internalGetCharacterChanges());
+        if (tileTimeChangesBuilder_ == null) {
+          if (!other.tileTimeChanges_.isEmpty()) {
+            if (tileTimeChanges_.isEmpty()) {
+              tileTimeChanges_ = other.tileTimeChanges_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureTileTimeChangesIsMutable();
+              tileTimeChanges_.addAll(other.tileTimeChanges_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tileTimeChanges_.isEmpty()) {
+            if (tileTimeChangesBuilder_.isEmpty()) {
+              tileTimeChangesBuilder_.dispose();
+              tileTimeChangesBuilder_ = null;
+              tileTimeChanges_ = other.tileTimeChanges_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              tileTimeChangesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getTileTimeChangesFieldBuilder() : null;
+            } else {
+              tileTimeChangesBuilder_.addAllMessages(other.tileTimeChanges_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -789,99 +2398,94 @@ public final class VisualizerProtos {
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> characterStatChanges_;
+          java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> characterChanges_;
       private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-      internalGetCharacterStatChanges() {
-        if (characterStatChanges_ == null) {
+      internalGetCharacterChanges() {
+        if (characterChanges_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
-              CharacterStatChangesDefaultEntryHolder.defaultEntry);
+              CharacterChangesDefaultEntryHolder.defaultEntry);
         }
-        return characterStatChanges_;
+        return characterChanges_;
       }
       private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-      internalGetMutableCharacterStatChanges() {
-        onChanged();
-        if (characterStatChanges_ == null) {
-          characterStatChanges_ = com.google.protobuf.MapField.newMapField(
-              CharacterStatChangesDefaultEntryHolder.defaultEntry);
+      internalGetMutableCharacterChanges() {
+        onChanged();;
+        if (characterChanges_ == null) {
+          characterChanges_ = com.google.protobuf.MapField.newMapField(
+              CharacterChangesDefaultEntryHolder.defaultEntry);
         }
-        if (!characterStatChanges_.isMutable()) {
-          characterStatChanges_ = characterStatChanges_.copy();
+        if (!characterChanges_.isMutable()) {
+          characterChanges_ = characterChanges_.copy();
         }
-        return characterStatChanges_;
+        return characterChanges_;
       }
 
-      public int getCharacterStatChangesCount() {
-        return internalGetCharacterStatChanges().getMap().size();
+      public int getCharacterChangesCount() {
+        return internalGetCharacterChanges().getMap().size();
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
 
-      @java.lang.Override
-      public boolean containsCharacterStatChanges(
+      public boolean containsCharacterChanges(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        return internalGetCharacterStatChanges().getMap().containsKey(key);
+        return internalGetCharacterChanges().getMap().containsKey(key);
       }
       /**
-       * Use {@link #getCharacterStatChangesMap()} instead.
+       * Use {@link #getCharacterChangesMap()} instead.
        */
-      @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterStatChanges() {
-        return getCharacterStatChangesMap();
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChanges() {
+        return getCharacterChangesMap();
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
-      @java.lang.Override
 
-      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterStatChangesMap() {
-        return internalGetCharacterStatChanges().getMap();
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChangesMap() {
+        return internalGetCharacterChanges().getMap();
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
-      @java.lang.Override
 
-      public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrDefault(
+      public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrDefault(
           java.lang.String key,
           mech.mania.engine.domain.model.VisualizerProtos.CharacterChange defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> map =
-            internalGetCharacterStatChanges().getMap();
+            internalGetCharacterChanges().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
-      @java.lang.Override
 
-      public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterStatChangesOrThrow(
+      public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> map =
-            internalGetCharacterStatChanges().getMap();
+            internalGetCharacterChanges().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
         }
         return map.get(key);
       }
 
-      public Builder clearCharacterStatChanges() {
-        internalGetMutableCharacterStatChanges().getMutableMap()
+      public Builder clearCharacterChanges() {
+        internalGetMutableCharacterChanges().getMutableMap()
             .clear();
         return this;
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
 
-      public Builder removeCharacterStatChanges(
+      public Builder removeCharacterChanges(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        internalGetMutableCharacterStatChanges().getMutableMap()
+        internalGetMutableCharacterChanges().getMutableMap()
             .remove(key);
         return this;
       }
@@ -890,30 +2494,360 @@ public final class VisualizerProtos {
        */
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange>
-      getMutableCharacterStatChanges() {
-        return internalGetMutableCharacterStatChanges().getMutableMap();
+      getMutableCharacterChanges() {
+        return internalGetMutableCharacterChanges().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
-      public Builder putCharacterStatChanges(
+      public Builder putCharacterChanges(
           java.lang.String key,
           mech.mania.engine.domain.model.VisualizerProtos.CharacterChange value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         if (value == null) { throw new java.lang.NullPointerException(); }
-        internalGetMutableCharacterStatChanges().getMutableMap()
+        internalGetMutableCharacterChanges().getMutableMap()
             .put(key, value);
         return this;
       }
       /**
-       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_stat_changes = 2;</code>
+       * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
 
-      public Builder putAllCharacterStatChanges(
+      public Builder putAllCharacterChanges(
           java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> values) {
-        internalGetMutableCharacterStatChanges().getMutableMap()
+        internalGetMutableCharacterChanges().getMutableMap()
             .putAll(values);
         return this;
+      }
+
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> tileTimeChanges_ =
+        java.util.Collections.emptyList();
+      private void ensureTileTimeChangesIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          tileTimeChanges_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>(tileTimeChanges_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> tileTimeChangesBuilder_;
+
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileTimeChangesList() {
+        if (tileTimeChangesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tileTimeChanges_);
+        } else {
+          return tileTimeChangesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public int getTileTimeChangesCount() {
+        if (tileTimeChangesBuilder_ == null) {
+          return tileTimeChanges_.size();
+        } else {
+          return tileTimeChangesBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getTileTimeChanges(int index) {
+        if (tileTimeChangesBuilder_ == null) {
+          return tileTimeChanges_.get(index);
+        } else {
+          return tileTimeChangesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder setTileTimeChanges(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (tileTimeChangesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.set(index, value);
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder setTileTimeChanges(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (tileTimeChangesBuilder_ == null) {
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder addTileTimeChanges(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (tileTimeChangesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.add(value);
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder addTileTimeChanges(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (tileTimeChangesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.add(index, value);
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder addTileTimeChanges(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (tileTimeChangesBuilder_ == null) {
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder addTileTimeChanges(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (tileTimeChangesBuilder_ == null) {
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder addAllTileTimeChanges(
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Position> values) {
+        if (tileTimeChangesBuilder_ == null) {
+          ensureTileTimeChangesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, tileTimeChanges_);
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder clearTileTimeChanges() {
+        if (tileTimeChangesBuilder_ == null) {
+          tileTimeChanges_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public Builder removeTileTimeChanges(int index) {
+        if (tileTimeChangesBuilder_ == null) {
+          ensureTileTimeChangesIsMutable();
+          tileTimeChanges_.remove(index);
+          onChanged();
+        } else {
+          tileTimeChangesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getTileTimeChangesBuilder(
+          int index) {
+        return getTileTimeChangesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileTimeChangesOrBuilder(
+          int index) {
+        if (tileTimeChangesBuilder_ == null) {
+          return tileTimeChanges_.get(index);  } else {
+          return tileTimeChangesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+           getTileTimeChangesOrBuilderList() {
+        if (tileTimeChangesBuilder_ != null) {
+          return tileTimeChangesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tileTimeChanges_);
+        }
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addTileTimeChangesBuilder() {
+        return getTileTimeChangesFieldBuilder().addBuilder(
+            mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addTileTimeChangesBuilder(
+          int index) {
+        return getTileTimeChangesFieldBuilder().addBuilder(
+            index, mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Visualizer will check each tile and draw a treasure chest
+       * if there are any items there
+       * </pre>
+       *
+       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
+           getTileTimeChangesBuilderList() {
+        return getTileTimeChangesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getTileTimeChangesFieldBuilder() {
+        if (tileTimeChangesBuilder_ == null) {
+          tileTimeChangesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  tileTimeChanges_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          tileTimeChanges_ = null;
+        }
+        return tileTimeChangesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -985,44 +2919,158 @@ public final class VisualizerProtos {
     boolean getRespawned();
 
     /**
-     * <code>.character.DecisionType decision_type = 3;</code>
-     * @return The enum numeric value on the wire for decisionType.
+     * <pre>
+     * Visualizer will have to check for decisions:
+     * - ATTACK: must know where the attack was to put animation
+     * - PORTAL: must know where they went to (check this Character's location)
+     * </pre>
+     *
+     * <code>.character.CharacterDecision decision = 3;</code>
+     * @return Whether the decision field is set.
      */
-    int getDecisionTypeValue();
+    boolean hasDecision();
     /**
-     * <code>.character.DecisionType decision_type = 3;</code>
-     * @return The decisionType.
+     * <pre>
+     * Visualizer will have to check for decisions:
+     * - ATTACK: must know where the attack was to put animation
+     * - PORTAL: must know where they went to (check this Character's location)
+     * </pre>
+     *
+     * <code>.character.CharacterDecision decision = 3;</code>
+     * @return The decision.
      */
-    mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType();
+    mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDecision();
+    /**
+     * <pre>
+     * Visualizer will have to check for decisions:
+     * - ATTACK: must know where the attack was to put animation
+     * - PORTAL: must know where they went to (check this Character's location)
+     * </pre>
+     *
+     * <code>.character.CharacterDecision decision = 3;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder getDecisionOrBuilder();
 
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
     java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
         getPathList();
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
     mech.mania.engine.domain.model.CharacterProtos.Position getPath(int index);
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
     int getPathCount();
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
     java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPathOrBuilderList();
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
     mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPathOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * If successful EQUIP decision was made, one of these will be true
+     * </pre>
+     *
+     * <code>bool hat_changed = 5;</code>
+     * @return The hatChanged.
+     */
+    boolean getHatChanged();
+
+    /**
+     * <code>bool clothes_changed = 6;</code>
+     * @return The clothesChanged.
+     */
+    boolean getClothesChanged();
+
+    /**
+     * <code>bool shoes_changed = 7;</code>
+     * @return The shoesChanged.
+     */
+    boolean getShoesChanged();
+
+    /**
+     * <code>bool weapon_changed = 8;</code>
+     * @return The weaponChanged.
+     */
+    boolean getWeaponChanged();
+
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
+        getAttackLocationsList();
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index);
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    int getAttackLocationsCount();
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+        getAttackLocationsOrBuilderList();
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
         int index);
   }
   /**
    * Protobuf type {@code player_communication.CharacterChange}
    */
-  public static final class CharacterChange extends
+  public  static final class CharacterChange extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.CharacterChange)
       CharacterChangeOrBuilder {
@@ -1032,8 +3080,8 @@ public final class VisualizerProtos {
       super(builder);
     }
     private CharacterChange() {
-      decisionType_ = 0;
       path_ = java.util.Collections.emptyList();
+      attackLocations_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1077,10 +3125,17 @@ public final class VisualizerProtos {
               respawned_ = input.readBool();
               break;
             }
-            case 24: {
-              int rawValue = input.readEnum();
+            case 26: {
+              mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder subBuilder = null;
+              if (decision_ != null) {
+                subBuilder = decision_.toBuilder();
+              }
+              decision_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(decision_);
+                decision_ = subBuilder.buildPartial();
+              }
 
-              decisionType_ = rawValue;
               break;
             }
             case 34: {
@@ -1089,6 +3144,35 @@ public final class VisualizerProtos {
                 mutable_bitField0_ |= 0x00000001;
               }
               path_.add(
+                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry));
+              break;
+            }
+            case 40: {
+
+              hatChanged_ = input.readBool();
+              break;
+            }
+            case 48: {
+
+              clothesChanged_ = input.readBool();
+              break;
+            }
+            case 56: {
+
+              shoesChanged_ = input.readBool();
+              break;
+            }
+            case 64: {
+
+              weaponChanged_ = input.readBool();
+              break;
+            }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                attackLocations_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              attackLocations_.add(
                   input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry));
               break;
             }
@@ -1109,6 +3193,9 @@ public final class VisualizerProtos {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           path_ = java.util.Collections.unmodifiableList(path_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          attackLocations_ = java.util.Collections.unmodifiableList(attackLocations_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1133,7 +3220,6 @@ public final class VisualizerProtos {
      * <code>bool died = 1;</code>
      * @return The died.
      */
-    @java.lang.Override
     public boolean getDied() {
       return died_;
     }
@@ -1144,68 +3230,203 @@ public final class VisualizerProtos {
      * <code>bool respawned = 2;</code>
      * @return The respawned.
      */
-    @java.lang.Override
     public boolean getRespawned() {
       return respawned_;
     }
 
-    public static final int DECISION_TYPE_FIELD_NUMBER = 3;
-    private int decisionType_;
+    public static final int DECISION_FIELD_NUMBER = 3;
+    private mech.mania.engine.domain.model.CharacterProtos.CharacterDecision decision_;
     /**
-     * <code>.character.DecisionType decision_type = 3;</code>
-     * @return The enum numeric value on the wire for decisionType.
+     * <pre>
+     * Visualizer will have to check for decisions:
+     * - ATTACK: must know where the attack was to put animation
+     * - PORTAL: must know where they went to (check this Character's location)
+     * </pre>
+     *
+     * <code>.character.CharacterDecision decision = 3;</code>
+     * @return Whether the decision field is set.
      */
-    @java.lang.Override public int getDecisionTypeValue() {
-      return decisionType_;
+    public boolean hasDecision() {
+      return decision_ != null;
     }
     /**
-     * <code>.character.DecisionType decision_type = 3;</code>
-     * @return The decisionType.
+     * <pre>
+     * Visualizer will have to check for decisions:
+     * - ATTACK: must know where the attack was to put animation
+     * - PORTAL: must know where they went to (check this Character's location)
+     * </pre>
+     *
+     * <code>.character.CharacterDecision decision = 3;</code>
+     * @return The decision.
      */
-    @java.lang.Override public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
-      @SuppressWarnings("deprecation")
-      mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
-      return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+    public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDecision() {
+      return decision_ == null ? mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance() : decision_;
+    }
+    /**
+     * <pre>
+     * Visualizer will have to check for decisions:
+     * - ATTACK: must know where the attack was to put animation
+     * - PORTAL: must know where they went to (check this Character's location)
+     * </pre>
+     *
+     * <code>.character.CharacterDecision decision = 3;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder getDecisionOrBuilder() {
+      return getDecision();
     }
 
     public static final int PATH_FIELD_NUMBER = 4;
     private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> path_;
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPathList() {
       return path_;
     }
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPathOrBuilderList() {
       return path_;
     }
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public int getPathCount() {
       return path_.size();
     }
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPath(int index) {
       return path_.get(index);
     }
     /**
+     * <pre>
+     * If successful MOVE decision was made, this will not be null
+     * </pre>
+     *
      * <code>repeated .character.Position path = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPathOrBuilder(
         int index) {
       return path_.get(index);
+    }
+
+    public static final int HAT_CHANGED_FIELD_NUMBER = 5;
+    private boolean hatChanged_;
+    /**
+     * <pre>
+     * If successful EQUIP decision was made, one of these will be true
+     * </pre>
+     *
+     * <code>bool hat_changed = 5;</code>
+     * @return The hatChanged.
+     */
+    public boolean getHatChanged() {
+      return hatChanged_;
+    }
+
+    public static final int CLOTHES_CHANGED_FIELD_NUMBER = 6;
+    private boolean clothesChanged_;
+    /**
+     * <code>bool clothes_changed = 6;</code>
+     * @return The clothesChanged.
+     */
+    public boolean getClothesChanged() {
+      return clothesChanged_;
+    }
+
+    public static final int SHOES_CHANGED_FIELD_NUMBER = 7;
+    private boolean shoesChanged_;
+    /**
+     * <code>bool shoes_changed = 7;</code>
+     * @return The shoesChanged.
+     */
+    public boolean getShoesChanged() {
+      return shoesChanged_;
+    }
+
+    public static final int WEAPON_CHANGED_FIELD_NUMBER = 8;
+    private boolean weaponChanged_;
+    /**
+     * <code>bool weapon_changed = 8;</code>
+     * @return The weaponChanged.
+     */
+    public boolean getWeaponChanged() {
+      return weaponChanged_;
+    }
+
+    public static final int ATTACK_LOCATIONS_FIELD_NUMBER = 9;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> attackLocations_;
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getAttackLocationsList() {
+      return attackLocations_;
+    }
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+        getAttackLocationsOrBuilderList() {
+      return attackLocations_;
+    }
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    public int getAttackLocationsCount() {
+      return attackLocations_.size();
+    }
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index) {
+      return attackLocations_.get(index);
+    }
+    /**
+     * <pre>
+     * If successful ATTACK decision was made, this will not be null
+     * </pre>
+     *
+     * <code>repeated .character.Position attack_locations = 9;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
+        int index) {
+      return attackLocations_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1228,11 +3449,26 @@ public final class VisualizerProtos {
       if (respawned_ != false) {
         output.writeBool(2, respawned_);
       }
-      if (decisionType_ != mech.mania.engine.domain.model.CharacterProtos.DecisionType.NONE.getNumber()) {
-        output.writeEnum(3, decisionType_);
+      if (decision_ != null) {
+        output.writeMessage(3, getDecision());
       }
       for (int i = 0; i < path_.size(); i++) {
         output.writeMessage(4, path_.get(i));
+      }
+      if (hatChanged_ != false) {
+        output.writeBool(5, hatChanged_);
+      }
+      if (clothesChanged_ != false) {
+        output.writeBool(6, clothesChanged_);
+      }
+      if (shoesChanged_ != false) {
+        output.writeBool(7, shoesChanged_);
+      }
+      if (weaponChanged_ != false) {
+        output.writeBool(8, weaponChanged_);
+      }
+      for (int i = 0; i < attackLocations_.size(); i++) {
+        output.writeMessage(9, attackLocations_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -1251,13 +3487,33 @@ public final class VisualizerProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, respawned_);
       }
-      if (decisionType_ != mech.mania.engine.domain.model.CharacterProtos.DecisionType.NONE.getNumber()) {
+      if (decision_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, decisionType_);
+          .computeMessageSize(3, getDecision());
       }
       for (int i = 0; i < path_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, path_.get(i));
+      }
+      if (hatChanged_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, hatChanged_);
+      }
+      if (clothesChanged_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, clothesChanged_);
+      }
+      if (shoesChanged_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, shoesChanged_);
+      }
+      if (weaponChanged_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, weaponChanged_);
+      }
+      for (int i = 0; i < attackLocations_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, attackLocations_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1278,10 +3534,25 @@ public final class VisualizerProtos {
           != other.getDied()) return false;
       if (getRespawned()
           != other.getRespawned()) return false;
-      if (decisionType_ != other.decisionType_) return false;
+      if (hasDecision() != other.hasDecision()) return false;
+      if (hasDecision()) {
+        if (!getDecision()
+            .equals(other.getDecision())) return false;
+      }
       if (!getPathList()
           .equals(other.getPathList())) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (getHatChanged()
+          != other.getHatChanged()) return false;
+      if (getClothesChanged()
+          != other.getClothesChanged()) return false;
+      if (getShoesChanged()
+          != other.getShoesChanged()) return false;
+      if (getWeaponChanged()
+          != other.getWeaponChanged()) return false;
+      if (!getAttackLocationsList()
+          .equals(other.getAttackLocationsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1297,11 +3568,29 @@ public final class VisualizerProtos {
       hash = (37 * hash) + RESPAWNED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getRespawned());
-      hash = (37 * hash) + DECISION_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + decisionType_;
+      if (hasDecision()) {
+        hash = (37 * hash) + DECISION_FIELD_NUMBER;
+        hash = (53 * hash) + getDecision().hashCode();
+      }
       if (getPathCount() > 0) {
         hash = (37 * hash) + PATH_FIELD_NUMBER;
         hash = (53 * hash) + getPathList().hashCode();
+      }
+      hash = (37 * hash) + HAT_CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHatChanged());
+      hash = (37 * hash) + CLOTHES_CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getClothesChanged());
+      hash = (37 * hash) + SHOES_CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getShoesChanged());
+      hash = (37 * hash) + WEAPON_CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getWeaponChanged());
+      if (getAttackLocationsCount() > 0) {
+        hash = (37 * hash) + ATTACK_LOCATIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getAttackLocationsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1432,6 +3721,7 @@ public final class VisualizerProtos {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getPathFieldBuilder();
+          getAttackLocationsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -1441,13 +3731,31 @@ public final class VisualizerProtos {
 
         respawned_ = false;
 
-        decisionType_ = 0;
-
+        if (decisionBuilder_ == null) {
+          decision_ = null;
+        } else {
+          decision_ = null;
+          decisionBuilder_ = null;
+        }
         if (pathBuilder_ == null) {
           path_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           pathBuilder_.clear();
+        }
+        hatChanged_ = false;
+
+        clothesChanged_ = false;
+
+        shoesChanged_ = false;
+
+        weaponChanged_ = false;
+
+        if (attackLocationsBuilder_ == null) {
+          attackLocations_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          attackLocationsBuilder_.clear();
         }
         return this;
       }
@@ -1478,7 +3786,11 @@ public final class VisualizerProtos {
         int from_bitField0_ = bitField0_;
         result.died_ = died_;
         result.respawned_ = respawned_;
-        result.decisionType_ = decisionType_;
+        if (decisionBuilder_ == null) {
+          result.decision_ = decision_;
+        } else {
+          result.decision_ = decisionBuilder_.build();
+        }
         if (pathBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             path_ = java.util.Collections.unmodifiableList(path_);
@@ -1487,6 +3799,19 @@ public final class VisualizerProtos {
           result.path_ = path_;
         } else {
           result.path_ = pathBuilder_.build();
+        }
+        result.hatChanged_ = hatChanged_;
+        result.clothesChanged_ = clothesChanged_;
+        result.shoesChanged_ = shoesChanged_;
+        result.weaponChanged_ = weaponChanged_;
+        if (attackLocationsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            attackLocations_ = java.util.Collections.unmodifiableList(attackLocations_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.attackLocations_ = attackLocations_;
+        } else {
+          result.attackLocations_ = attackLocationsBuilder_.build();
         }
         onBuilt();
         return result;
@@ -1542,8 +3867,8 @@ public final class VisualizerProtos {
         if (other.getRespawned() != false) {
           setRespawned(other.getRespawned());
         }
-        if (other.decisionType_ != 0) {
-          setDecisionTypeValue(other.getDecisionTypeValue());
+        if (other.hasDecision()) {
+          mergeDecision(other.getDecision());
         }
         if (pathBuilder_ == null) {
           if (!other.path_.isEmpty()) {
@@ -1568,6 +3893,44 @@ public final class VisualizerProtos {
                    getPathFieldBuilder() : null;
             } else {
               pathBuilder_.addAllMessages(other.path_);
+            }
+          }
+        }
+        if (other.getHatChanged() != false) {
+          setHatChanged(other.getHatChanged());
+        }
+        if (other.getClothesChanged() != false) {
+          setClothesChanged(other.getClothesChanged());
+        }
+        if (other.getShoesChanged() != false) {
+          setShoesChanged(other.getShoesChanged());
+        }
+        if (other.getWeaponChanged() != false) {
+          setWeaponChanged(other.getWeaponChanged());
+        }
+        if (attackLocationsBuilder_ == null) {
+          if (!other.attackLocations_.isEmpty()) {
+            if (attackLocations_.isEmpty()) {
+              attackLocations_ = other.attackLocations_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureAttackLocationsIsMutable();
+              attackLocations_.addAll(other.attackLocations_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.attackLocations_.isEmpty()) {
+            if (attackLocationsBuilder_.isEmpty()) {
+              attackLocationsBuilder_.dispose();
+              attackLocationsBuilder_ = null;
+              attackLocations_ = other.attackLocations_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              attackLocationsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getAttackLocationsFieldBuilder() : null;
+            } else {
+              attackLocationsBuilder_.addAllMessages(other.attackLocations_);
             }
           }
         }
@@ -1606,7 +3969,6 @@ public final class VisualizerProtos {
        * <code>bool died = 1;</code>
        * @return The died.
        */
-      @java.lang.Override
       public boolean getDied() {
         return died_;
       }
@@ -1637,7 +3999,6 @@ public final class VisualizerProtos {
        * <code>bool respawned = 2;</code>
        * @return The respawned.
        */
-      @java.lang.Override
       public boolean getRespawned() {
         return respawned_;
       }
@@ -1663,58 +4024,177 @@ public final class VisualizerProtos {
         return this;
       }
 
-      private int decisionType_ = 0;
+      private mech.mania.engine.domain.model.CharacterProtos.CharacterDecision decision_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.CharacterDecision, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder> decisionBuilder_;
       /**
-       * <code>.character.DecisionType decision_type = 3;</code>
-       * @return The enum numeric value on the wire for decisionType.
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       * @return Whether the decision field is set.
        */
-      @java.lang.Override public int getDecisionTypeValue() {
-        return decisionType_;
+      public boolean hasDecision() {
+        return decisionBuilder_ != null || decision_ != null;
       }
       /**
-       * <code>.character.DecisionType decision_type = 3;</code>
-       * @param value The enum numeric value on the wire for decisionType to set.
-       * @return This builder for chaining.
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       * @return The decision.
        */
-      public Builder setDecisionTypeValue(int value) {
-        
-        decisionType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.character.DecisionType decision_type = 3;</code>
-       * @return The decisionType.
-       */
-      @java.lang.Override
-      public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
-        @SuppressWarnings("deprecation")
-        mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
-        return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.character.DecisionType decision_type = 3;</code>
-       * @param value The decisionType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDecisionType(mech.mania.engine.domain.model.CharacterProtos.DecisionType value) {
-        if (value == null) {
-          throw new NullPointerException();
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDecision() {
+        if (decisionBuilder_ == null) {
+          return decision_ == null ? mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance() : decision_;
+        } else {
+          return decisionBuilder_.getMessage();
         }
-        
-        decisionType_ = value.getNumber();
-        onChanged();
+      }
+      /**
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       */
+      public Builder setDecision(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision value) {
+        if (decisionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          decision_ = value;
+          onChanged();
+        } else {
+          decisionBuilder_.setMessage(value);
+        }
+
         return this;
       }
       /**
-       * <code>.character.DecisionType decision_type = 3;</code>
-       * @return This builder for chaining.
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
        */
-      public Builder clearDecisionType() {
-        
-        decisionType_ = 0;
-        onChanged();
+      public Builder setDecision(
+          mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder builderForValue) {
+        if (decisionBuilder_ == null) {
+          decision_ = builderForValue.build();
+          onChanged();
+        } else {
+          decisionBuilder_.setMessage(builderForValue.build());
+        }
+
         return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       */
+      public Builder mergeDecision(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision value) {
+        if (decisionBuilder_ == null) {
+          if (decision_ != null) {
+            decision_ =
+              mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.newBuilder(decision_).mergeFrom(value).buildPartial();
+          } else {
+            decision_ = value;
+          }
+          onChanged();
+        } else {
+          decisionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       */
+      public Builder clearDecision() {
+        if (decisionBuilder_ == null) {
+          decision_ = null;
+          onChanged();
+        } else {
+          decision_ = null;
+          decisionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder getDecisionBuilder() {
+        
+        onChanged();
+        return getDecisionFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder getDecisionOrBuilder() {
+        if (decisionBuilder_ != null) {
+          return decisionBuilder_.getMessageOrBuilder();
+        } else {
+          return decision_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance() : decision_;
+        }
+      }
+      /**
+       * <pre>
+       * Visualizer will have to check for decisions:
+       * - ATTACK: must know where the attack was to put animation
+       * - PORTAL: must know where they went to (check this Character's location)
+       * </pre>
+       *
+       * <code>.character.CharacterDecision decision = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.CharacterDecision, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder> 
+          getDecisionFieldBuilder() {
+        if (decisionBuilder_ == null) {
+          decisionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.CharacterDecision, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder>(
+                  getDecision(),
+                  getParentForChildren(),
+                  isClean());
+          decision_ = null;
+        }
+        return decisionBuilder_;
       }
 
       private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> path_ =
@@ -1730,6 +4210,10 @@ public final class VisualizerProtos {
           mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> pathBuilder_;
 
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPathList() {
@@ -1740,6 +4224,10 @@ public final class VisualizerProtos {
         }
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public int getPathCount() {
@@ -1750,6 +4238,10 @@ public final class VisualizerProtos {
         }
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position getPath(int index) {
@@ -1760,6 +4252,10 @@ public final class VisualizerProtos {
         }
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder setPath(
@@ -1777,6 +4273,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder setPath(
@@ -1791,6 +4291,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder addPath(mech.mania.engine.domain.model.CharacterProtos.Position value) {
@@ -1807,6 +4311,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder addPath(
@@ -1824,6 +4332,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder addPath(
@@ -1838,6 +4350,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder addPath(
@@ -1852,6 +4368,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder addAllPath(
@@ -1867,6 +4387,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder clearPath() {
@@ -1880,6 +4404,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public Builder removePath(int index) {
@@ -1893,6 +4421,10 @@ public final class VisualizerProtos {
         return this;
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPathBuilder(
@@ -1900,6 +4432,10 @@ public final class VisualizerProtos {
         return getPathFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPathOrBuilder(
@@ -1910,6 +4446,10 @@ public final class VisualizerProtos {
         }
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
@@ -1921,6 +4461,10 @@ public final class VisualizerProtos {
         }
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addPathBuilder() {
@@ -1928,6 +4472,10 @@ public final class VisualizerProtos {
             mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addPathBuilder(
@@ -1936,6 +4484,10 @@ public final class VisualizerProtos {
             index, mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
       }
       /**
+       * <pre>
+       * If successful MOVE decision was made, this will not be null
+       * </pre>
+       *
        * <code>repeated .character.Position path = 4;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
@@ -1955,6 +4507,450 @@ public final class VisualizerProtos {
           path_ = null;
         }
         return pathBuilder_;
+      }
+
+      private boolean hatChanged_ ;
+      /**
+       * <pre>
+       * If successful EQUIP decision was made, one of these will be true
+       * </pre>
+       *
+       * <code>bool hat_changed = 5;</code>
+       * @return The hatChanged.
+       */
+      public boolean getHatChanged() {
+        return hatChanged_;
+      }
+      /**
+       * <pre>
+       * If successful EQUIP decision was made, one of these will be true
+       * </pre>
+       *
+       * <code>bool hat_changed = 5;</code>
+       * @param value The hatChanged to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHatChanged(boolean value) {
+        
+        hatChanged_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful EQUIP decision was made, one of these will be true
+       * </pre>
+       *
+       * <code>bool hat_changed = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHatChanged() {
+        
+        hatChanged_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean clothesChanged_ ;
+      /**
+       * <code>bool clothes_changed = 6;</code>
+       * @return The clothesChanged.
+       */
+      public boolean getClothesChanged() {
+        return clothesChanged_;
+      }
+      /**
+       * <code>bool clothes_changed = 6;</code>
+       * @param value The clothesChanged to set.
+       * @return This builder for chaining.
+       */
+      public Builder setClothesChanged(boolean value) {
+        
+        clothesChanged_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool clothes_changed = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearClothesChanged() {
+        
+        clothesChanged_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean shoesChanged_ ;
+      /**
+       * <code>bool shoes_changed = 7;</code>
+       * @return The shoesChanged.
+       */
+      public boolean getShoesChanged() {
+        return shoesChanged_;
+      }
+      /**
+       * <code>bool shoes_changed = 7;</code>
+       * @param value The shoesChanged to set.
+       * @return This builder for chaining.
+       */
+      public Builder setShoesChanged(boolean value) {
+        
+        shoesChanged_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool shoes_changed = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearShoesChanged() {
+        
+        shoesChanged_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean weaponChanged_ ;
+      /**
+       * <code>bool weapon_changed = 8;</code>
+       * @return The weaponChanged.
+       */
+      public boolean getWeaponChanged() {
+        return weaponChanged_;
+      }
+      /**
+       * <code>bool weapon_changed = 8;</code>
+       * @param value The weaponChanged to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWeaponChanged(boolean value) {
+        
+        weaponChanged_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool weapon_changed = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWeaponChanged() {
+        
+        weaponChanged_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> attackLocations_ =
+        java.util.Collections.emptyList();
+      private void ensureAttackLocationsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          attackLocations_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>(attackLocations_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> attackLocationsBuilder_;
+
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getAttackLocationsList() {
+        if (attackLocationsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(attackLocations_);
+        } else {
+          return attackLocationsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public int getAttackLocationsCount() {
+        if (attackLocationsBuilder_ == null) {
+          return attackLocations_.size();
+        } else {
+          return attackLocationsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index) {
+        if (attackLocationsBuilder_ == null) {
+          return attackLocations_.get(index);
+        } else {
+          return attackLocationsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder setAttackLocations(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (attackLocationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttackLocationsIsMutable();
+          attackLocations_.set(index, value);
+          onChanged();
+        } else {
+          attackLocationsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder setAttackLocations(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (attackLocationsBuilder_ == null) {
+          ensureAttackLocationsIsMutable();
+          attackLocations_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          attackLocationsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder addAttackLocations(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (attackLocationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttackLocationsIsMutable();
+          attackLocations_.add(value);
+          onChanged();
+        } else {
+          attackLocationsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder addAttackLocations(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (attackLocationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttackLocationsIsMutable();
+          attackLocations_.add(index, value);
+          onChanged();
+        } else {
+          attackLocationsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder addAttackLocations(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (attackLocationsBuilder_ == null) {
+          ensureAttackLocationsIsMutable();
+          attackLocations_.add(builderForValue.build());
+          onChanged();
+        } else {
+          attackLocationsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder addAttackLocations(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (attackLocationsBuilder_ == null) {
+          ensureAttackLocationsIsMutable();
+          attackLocations_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          attackLocationsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder addAllAttackLocations(
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Position> values) {
+        if (attackLocationsBuilder_ == null) {
+          ensureAttackLocationsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, attackLocations_);
+          onChanged();
+        } else {
+          attackLocationsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder clearAttackLocations() {
+        if (attackLocationsBuilder_ == null) {
+          attackLocations_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          attackLocationsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public Builder removeAttackLocations(int index) {
+        if (attackLocationsBuilder_ == null) {
+          ensureAttackLocationsIsMutable();
+          attackLocations_.remove(index);
+          onChanged();
+        } else {
+          attackLocationsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getAttackLocationsBuilder(
+          int index) {
+        return getAttackLocationsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
+          int index) {
+        if (attackLocationsBuilder_ == null) {
+          return attackLocations_.get(index);  } else {
+          return attackLocationsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+           getAttackLocationsOrBuilderList() {
+        if (attackLocationsBuilder_ != null) {
+          return attackLocationsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(attackLocations_);
+        }
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addAttackLocationsBuilder() {
+        return getAttackLocationsFieldBuilder().addBuilder(
+            mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addAttackLocationsBuilder(
+          int index) {
+        return getAttackLocationsFieldBuilder().addBuilder(
+            index, mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * If successful ATTACK decision was made, this will not be null
+       * </pre>
+       *
+       * <code>repeated .character.Position attack_locations = 9;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
+           getAttackLocationsBuilderList() {
+        return getAttackLocationsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getAttackLocationsFieldBuilder() {
+        if (attackLocationsBuilder_ == null) {
+          attackLocationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  attackLocations_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          attackLocations_ = null;
+        }
+        return attackLocationsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2010,15 +5006,25 @@ public final class VisualizerProtos {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_player_communication_VisualizerInitial_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_player_communication_VisualizerInitial_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_player_communication_VisualizerTurn_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_player_communication_VisualizerTurn_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_player_communication_GameChange_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_player_communication_GameChange_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_player_communication_GameChange_CharacterStatChangesEntry_descriptor;
+    internal_static_player_communication_GameChange_CharacterChangesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_player_communication_GameChange_CharacterStatChangesEntry_fieldAccessorTable;
+      internal_static_player_communication_GameChange_CharacterChangesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_player_communication_CharacterChange_descriptor;
   private static final 
@@ -2034,42 +5040,65 @@ public final class VisualizerProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\020visualizer.proto\022\024player_communication" +
-      "\032\017character.proto\"\346\001\n\nGameChange\022\030\n\020new_" +
-      "player_names\030\001 \003(\t\022Z\n\026character_stat_cha" +
-      "nges\030\002 \003(\0132:.player_communication.GameCh" +
-      "ange.CharacterStatChangesEntry\032b\n\031Charac" +
-      "terStatChangesEntry\022\013\n\003key\030\001 \001(\t\0224\n\005valu" +
+      "\032\ngame.proto\032\017character.proto\"3\n\021Visuali" +
+      "zerInitial\022\036\n\005state\030\001 \001(\0132\017.game.GameSta" +
+      "te\"b\n\016VisualizerTurn\022\036\n\005state\030\001 \001(\0132\017.ga" +
+      "me.GameState\0220\n\006change\030\002 \001(\0132 .player_co" +
+      "mmunication.GameChange\"\211\002\n\nGameChange\022\030\n" +
+      "\020new_player_names\030\001 \003(\t\022Q\n\021character_cha" +
+      "nges\030\002 \003(\01326.player_communication.GameCh" +
+      "ange.CharacterChangesEntry\022.\n\021tile_time_" +
+      "changes\030\003 \003(\0132\023.character.Position\032^\n\025Ch" +
+      "aracterChangesEntry\022\013\n\003key\030\001 \001(\t\0224\n\005valu" +
       "e\030\002 \001(\0132%.player_communication.Character" +
-      "Change:\0028\001\"\205\001\n\017CharacterChange\022\014\n\004died\030\001" +
-      " \001(\010\022\021\n\trespawned\030\002 \001(\010\022.\n\rdecision_type" +
-      "\030\003 \001(\0162\027.character.DecisionType\022!\n\004path\030" +
-      "\004 \003(\0132\023.character.PositionBC\n\036mech.mania" +
-      ".engine.domain.modelB\020VisualizerProtos\252\002" +
-      "\016MM26.IO.Modelsb\006proto3"
+      "Change:\0028\001\"\221\002\n\017CharacterChange\022\014\n\004died\030\001" +
+      " \001(\010\022\021\n\trespawned\030\002 \001(\010\022.\n\010decision\030\003 \001(" +
+      "\0132\034.character.CharacterDecision\022!\n\004path\030" +
+      "\004 \003(\0132\023.character.Position\022\023\n\013hat_change" +
+      "d\030\005 \001(\010\022\027\n\017clothes_changed\030\006 \001(\010\022\025\n\rshoe" +
+      "s_changed\030\007 \001(\010\022\026\n\016weapon_changed\030\010 \001(\010\022" +
+      "-\n\020attack_locations\030\t \003(\0132\023.character.Po" +
+      "sitionBC\n\036mech.mania.engine.domain.model" +
+      "B\020VisualizerProtos\252\002\016MM26.IO.Modelsb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          mech.mania.engine.domain.model.GameStateProtos.getDescriptor(),
           mech.mania.engine.domain.model.CharacterProtos.getDescriptor(),
         });
-    internal_static_player_communication_GameChange_descriptor =
+    internal_static_player_communication_VisualizerInitial_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_player_communication_VisualizerInitial_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_player_communication_VisualizerInitial_descriptor,
+        new java.lang.String[] { "State", });
+    internal_static_player_communication_VisualizerTurn_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_player_communication_VisualizerTurn_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_player_communication_VisualizerTurn_descriptor,
+        new java.lang.String[] { "State", "Change", });
+    internal_static_player_communication_GameChange_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_player_communication_GameChange_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_GameChange_descriptor,
-        new java.lang.String[] { "NewPlayerNames", "CharacterStatChanges", });
-    internal_static_player_communication_GameChange_CharacterStatChangesEntry_descriptor =
+        new java.lang.String[] { "NewPlayerNames", "CharacterChanges", "TileTimeChanges", });
+    internal_static_player_communication_GameChange_CharacterChangesEntry_descriptor =
       internal_static_player_communication_GameChange_descriptor.getNestedTypes().get(0);
-    internal_static_player_communication_GameChange_CharacterStatChangesEntry_fieldAccessorTable = new
+    internal_static_player_communication_GameChange_CharacterChangesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_player_communication_GameChange_CharacterStatChangesEntry_descriptor,
+        internal_static_player_communication_GameChange_CharacterChangesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_player_communication_CharacterChange_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_player_communication_CharacterChange_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_CharacterChange_descriptor,
-        new java.lang.String[] { "Died", "Respawned", "DecisionType", "Path", });
+        new java.lang.String[] { "Died", "Respawned", "Decision", "Path", "HatChanged", "ClothesChanged", "ShoesChanged", "WeaponChanged", "AttackLocations", });
+    mech.mania.engine.domain.model.GameStateProtos.getDescriptor();
     mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
   }
 

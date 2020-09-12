@@ -43,7 +43,7 @@ public class GameChange {
         CharacterChange change = characterChanges.get(character.getName());
 
         if (decision != null) {
-            change.decision = decision.getDecision();
+            change.decision = decision;
         }
 
         if (path != null) {
@@ -57,7 +57,7 @@ public class GameChange {
     private class CharacterChange {
         boolean died = false;
         boolean revived = false;
-        CharacterDecision.decisionTypes decision = null;
+        CharacterDecision decision = null;
         List<Position> path = null;
 
 
@@ -66,27 +66,8 @@ public class GameChange {
             builder.setDied(died);
             builder.setRespawned(revived);
 
-            switch (decision) {
-                case MOVE:
-                    builder.setDecisionType(CharacterProtos.DecisionType.MOVE);
-                    break;
-                case ATTACK:
-                    builder.setDecisionType(CharacterProtos.DecisionType.ATTACK);
-                    break;
-                case PORTAL:
-                    builder.setDecisionType(CharacterProtos.DecisionType.PORTAL);
-                    break;
-                case DROP:
-                    builder.setDecisionType(CharacterProtos.DecisionType.DROP);
-                    break;
-                case EQUIP:
-                    builder.setDecisionType(CharacterProtos.DecisionType.EQUIP);
-                    break;
-                case PICKUP:
-                    builder.setDecisionType(CharacterProtos.DecisionType.PICKUP);
-                    break;
-                default:
-                    builder.setDecisionType(CharacterProtos.DecisionType.NONE);
+            if(decision != null) {
+                builder.setDecision(decision.buildProtoClassCharacterDecision());
             }
 
             if(path != null){
@@ -104,7 +85,7 @@ public class GameChange {
         builder.addAllNewPlayerNames(newPlayerNames);
 
         for (String name : characterChanges.keySet()) {
-            builder.putCharacterStatChanges(name, characterChanges.get(name).buildProtoClass());
+            builder.putCharacterChanges(name, characterChanges.get(name).buildProtoClass());
         }
 
         return builder.build();

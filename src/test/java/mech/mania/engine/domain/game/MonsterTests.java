@@ -4,6 +4,7 @@ import mech.mania.engine.domain.game.characters.CharacterDecision;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
@@ -44,7 +45,7 @@ public class MonsterTests {
         assertNotEquals(monster.getPosition(), monster.getSpawnPoint());
 
         // Run a turn
-        HashMap<String, PlayerProtos.PlayerDecision> emptyDecisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
         GameLogic.doTurn(gameState, emptyDecisionMap);
 
         // Assert that monster is now at spawn

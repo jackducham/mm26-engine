@@ -63,13 +63,13 @@ public class HatEffectTests {
         assertEquals(5, currentHP);
 
         // Create a decision to use the potion
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.EQUIP);
         decision.setIndex(2);
 
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -177,12 +177,12 @@ public class HatEffectTests {
         assertTrue(affectedPositions.containsKey(p2.getPosition()));
 
         // Create a decision to attack player2
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.ATTACK);
         decision.setTargetPosition(p2.getPosition().buildProtoClass());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -190,9 +190,9 @@ public class HatEffectTests {
         //assertEquals(0, p1.getAttack());
         assertEquals(5, p2.getCurrentHealth());
 
-        PlayerProtos.PlayerDecision.Builder emptyDecision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder emptyDecision = CharacterProtos.CharacterDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
-        HashMap<String, PlayerProtos.PlayerDecision> emptyDecisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
         emptyDecisionMap.put("player1", emptyDecision.build());
         emptyDecisionMap.put("player2", emptyDecision.build());
         GameLogic.doTurn(gameState, emptyDecisionMap);
@@ -213,9 +213,9 @@ public class HatEffectTests {
         //base speed of 5 plus 1 from the hat.
         assertEquals(6, p1.getSpeed());
 
-        PlayerProtos.PlayerDecision.Builder emptyDecision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder emptyDecision = CharacterProtos.CharacterDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
-        HashMap<String, PlayerProtos.PlayerDecision> emptyDecisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
         emptyDecisionMap.put("player1", emptyDecision.build());
         emptyDecisionMap.put("player2", emptyDecision.build());
         GameLogic.doTurn(gameState, emptyDecisionMap);

@@ -45,27 +45,6 @@ public class GameLogicTests {
         assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
     }
 
-    /**
-     * Helper function that creates a custom PlayerDecision from custom commands
-     *
-     * @param commands String[] of commands to use
-     * @return PlayerDecision object
-     */
-    private PlayerProtos.PlayerDecision createDecisionsFromCommands(String[] commands) {
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
-
-        // TODO: create more commands for convenience
-        for (String command : commands) {
-            switch (command) {
-                case "move":
-                    // decision.setMovement()
-                    break;
-            }
-        }
-
-        return decision.build();
-    }
-
     @Test
     public void manhattanDistanceTests() {
         Position x0y0 = new Position(0, 0, "id");

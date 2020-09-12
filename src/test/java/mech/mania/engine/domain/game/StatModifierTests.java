@@ -41,10 +41,10 @@ public class StatModifierTests {
      * Helper function to pass a turn with no actions
      */
     public void passTurn(){
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
-        Map<String, PlayerProtos.PlayerDecision> map = new HashMap<>();
+        Map<String, CharacterProtos.CharacterDecision> map = new HashMap<>();
         map.put("player1", decision.build());
         map.put("player2", decision.build());
 

@@ -101,7 +101,7 @@ public final class BoardProtos {
   /**
    * Protobuf type {@code board.Board}
    */
-  public static final class Board extends
+  public  static final class Board extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:board.Board)
       BoardOrBuilder {
@@ -218,7 +218,6 @@ public final class BoardProtos {
      * <code>int32 rows = 1;</code>
      * @return The rows.
      */
-    @java.lang.Override
     public int getRows() {
       return rows_;
     }
@@ -229,7 +228,6 @@ public final class BoardProtos {
      * <code>int32 columns = 2;</code>
      * @return The columns.
      */
-    @java.lang.Override
     public int getColumns() {
       return columns_;
     }
@@ -243,7 +241,6 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.BoardProtos.Tile> getGridList() {
       return grid_;
     }
@@ -254,7 +251,6 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.BoardProtos.TileOrBuilder> 
         getGridOrBuilderList() {
       return grid_;
@@ -266,7 +262,6 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    @java.lang.Override
     public int getGridCount() {
       return grid_.size();
     }
@@ -277,7 +272,6 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.BoardProtos.Tile getGrid(int index) {
       return grid_.get(index);
     }
@@ -288,7 +282,6 @@ public final class BoardProtos {
      *
      * <code>repeated .board.Tile grid = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.BoardProtos.TileOrBuilder getGridOrBuilder(
         int index) {
       return grid_.get(index);
@@ -299,14 +292,12 @@ public final class BoardProtos {
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPortalsList() {
       return portals_;
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPortalsOrBuilderList() {
       return portals_;
@@ -314,21 +305,18 @@ public final class BoardProtos {
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    @java.lang.Override
     public int getPortalsCount() {
       return portals_.size();
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPortals(int index) {
       return portals_.get(index);
     }
     /**
      * <code>repeated .character.Position portals = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPortalsOrBuilder(
         int index) {
       return portals_.get(index);
@@ -770,7 +758,6 @@ public final class BoardProtos {
        * <code>int32 rows = 1;</code>
        * @return The rows.
        */
-      @java.lang.Override
       public int getRows() {
         return rows_;
       }
@@ -801,7 +788,6 @@ public final class BoardProtos {
        * <code>int32 columns = 2;</code>
        * @return The columns.
        */
-      @java.lang.Override
       public int getColumns() {
         return columns_;
       }
@@ -1473,7 +1459,7 @@ public final class BoardProtos {
   /**
    * Protobuf type {@code board.Tile}
    */
-  public static final class Tile extends
+  public  static final class Tile extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:board.Tile)
       TileOrBuilder {
@@ -1656,10 +1642,6 @@ public final class BoardProtos {
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
         return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -1700,14 +1682,14 @@ public final class BoardProtos {
      * <code>.board.Tile.TileType tile_type = 1;</code>
      * @return The enum numeric value on the wire for tileType.
      */
-    @java.lang.Override public int getTileTypeValue() {
+    public int getTileTypeValue() {
       return tileType_;
     }
     /**
      * <code>.board.Tile.TileType tile_type = 1;</code>
      * @return The tileType.
      */
-    @java.lang.Override public mech.mania.engine.domain.model.BoardProtos.Tile.TileType getTileType() {
+    public mech.mania.engine.domain.model.BoardProtos.Tile.TileType getTileType() {
       @SuppressWarnings("deprecation")
       mech.mania.engine.domain.model.BoardProtos.Tile.TileType result = mech.mania.engine.domain.model.BoardProtos.Tile.TileType.valueOf(tileType_);
       return result == null ? mech.mania.engine.domain.model.BoardProtos.Tile.TileType.UNRECOGNIZED : result;
@@ -1718,14 +1700,12 @@ public final class BoardProtos {
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
       return items_;
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getItemsOrBuilderList() {
       return items_;
@@ -1733,21 +1713,18 @@ public final class BoardProtos {
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public int getItemsCount() {
       return items_.size();
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
       return items_.get(index);
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
         int index) {
       return items_.get(index);
@@ -2116,7 +2093,7 @@ public final class BoardProtos {
        * <code>.board.Tile.TileType tile_type = 1;</code>
        * @return The enum numeric value on the wire for tileType.
        */
-      @java.lang.Override public int getTileTypeValue() {
+      public int getTileTypeValue() {
         return tileType_;
       }
       /**
@@ -2125,7 +2102,6 @@ public final class BoardProtos {
        * @return This builder for chaining.
        */
       public Builder setTileTypeValue(int value) {
-        
         tileType_ = value;
         onChanged();
         return this;
@@ -2134,7 +2110,6 @@ public final class BoardProtos {
        * <code>.board.Tile.TileType tile_type = 1;</code>
        * @return The tileType.
        */
-      @java.lang.Override
       public mech.mania.engine.domain.model.BoardProtos.Tile.TileType getTileType() {
         @SuppressWarnings("deprecation")
         mech.mania.engine.domain.model.BoardProtos.Tile.TileType result = mech.mania.engine.domain.model.BoardProtos.Tile.TileType.valueOf(tileType_);

@@ -8,7 +8,6 @@ import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.PlayerProtos;
-import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,12 +43,12 @@ public class GameLogic {
 
 
     /**
-     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link PlayerDecision}s.
+     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link CharacterProtos.CharacterDecision}s.
      * @param gameState The initial game state.
-     * @param decisions A list of player decisions.
+     * @param constestantDecisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, CharacterProtos.CharacterDecision> constestantDecisions) {
         // ========== NOTES & TODOS ========== \\
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
@@ -58,21 +57,21 @@ public class GameLogic {
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         // Search decisions map for new players. For each new player, create Player object and a private Board
-        for (String playerName : decisions.keySet()) {
+        for (String playerName : constestantDecisions.keySet()) {
             if (!gameState.getAllPlayers().containsKey(playerName)) {
                 gameState.addNewPlayer(playerName);
             }
         }
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
-        Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
-        for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
+        Map<String, CharacterDecision> allDecisions = new HashMap<String, CharacterDecision>();
+        for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : constestantDecisions.entrySet()) {
             // Remove decision from dead players and NONE decisions
             if(!gameState.getPlayer(entry.getKey()).isDead()
                     && entry.getValue() != null
                     && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
-                cDecisions.put(entry.getKey(), newDecision);
+                allDecisions.put(entry.getKey(), newDecision);
             }
         }
 
@@ -84,7 +83,7 @@ public class GameLogic {
             if(!gameState.getMonster(entry.getKey()).isDead()
                     && decision != null
                     && decision.getDecision() != CharacterDecision.decisionTypes.NONE) {
-                cDecisions.put(entry.getKey(), decision);
+                allDecisions.put(entry.getKey(), decision);
             }
         }
 
@@ -93,7 +92,7 @@ public class GameLogic {
         Map<String, CharacterDecision> attackActions = new HashMap<>();
         Map<String, CharacterDecision> movementActions = new HashMap<>();
 
-        for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
+        for (Map.Entry<String, CharacterDecision> entry : allDecisions.entrySet()) {
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
