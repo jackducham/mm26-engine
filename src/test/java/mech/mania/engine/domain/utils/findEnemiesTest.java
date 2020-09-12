@@ -47,9 +47,9 @@ public class findEnemiesTest {
         ans.add(new Position(14, 24, "pvp"));
         ans.add(new Position(14, 25, "pvp"));
         ans.add(new Position(14, 26, "pvp"));
-        ans.add(new Position(10, 9, "pvp"));
         ans.add(new Position(0, 5, "pvp"));
         ans.add(new Position(0, 4, "pvp"));
+        ans.add(new Position(10, 9, "pvp"));
         assertEquals(enemies.size(), ans.size());
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));

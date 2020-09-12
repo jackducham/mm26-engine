@@ -69,9 +69,9 @@ public class Position {
         return Objects.hash(x, y, board_id);
     }
 
-    public double distance(Position other) {
-        double x = (double) Math.abs(this.x - other.getX());
-        double y = (double) Math.abs(this.y - other.getY());
-        return Math.hypot(x, y);
+    public int distance(Position other) {
+        int x = Math.abs(this.x - other.getX());
+        int y = Math.abs(this.y - other.getY());
+        return x + y;
     }
 }

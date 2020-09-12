@@ -89,7 +89,7 @@ public class Monster extends Character {
             } else if (curItem instanceof Weapon) {
                 monsterBuilder.setDrops(i, ((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClass());
+                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
 

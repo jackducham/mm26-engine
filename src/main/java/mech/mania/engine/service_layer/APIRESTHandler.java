@@ -4,7 +4,9 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.ItemProtos;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
@@ -286,6 +288,39 @@ public class APIRESTHandler {
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
             LOGGER.warning("InvalidProtocolBufferException on /findAllEnemiesHit request from player: " + e.getMessage());
+            return ApiProtos.APIAllEnemiesHitResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        }
+    }
+
+    @GetMapping("/itemsInRange")
+    public byte[] getItemsInRange(@RequestBody byte[] payload) {
+        try {
+            ApiProtos.APIItemsInRangeRequest requestInfo = ApiProtos.APIItemsInRangeRequest.parseFrom(payload);
+            GameState gameState = new GameState(requestInfo.getGameState());
+            String playerName = requestInfo.getPlayerName();
+            int range = requestInfo.getRange();
+
+            List<Item> itemsInRange = utils.itemsInRange(gameState, playerName, range);
+
+            ApiProtos.APIItemsInRangeResponse.Builder responseBuilder = ApiProtos.APIItemsInRangeResponse.newBuilder();
+            List<ItemProtos.Item> protoItemsInRange = new ArrayList<>();
+            for (Item item : itemsInRange) {
+                protoItemsInRange.add(item.buildProtoClassItem());
+            }
+            responseBuilder.addAllItems(protoItemsInRange);
+            LOGGER.fine(String.format("Successfully processed ApiItemsInRange."));
+
+            return responseBuilder.build().toByteArray();
+
+        } catch (InvalidProtocolBufferException e) {
+            // log that error occurred
+            LOGGER.warning("InvalidProtocolBufferException on /itemsInRange request from player: " + e.getMessage());
             return ApiProtos.APIAllEnemiesHitResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
