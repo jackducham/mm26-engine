@@ -73,7 +73,7 @@ class ServerIntegrationTests {
             Main.main(args)
         }
 
-        Thread.sleep(5000)
+        Thread.sleep(8000)
     }
 
     /**
