@@ -23,8 +23,8 @@ public class CharacterDecision {
         this.index = inventoryIndex;
     }
 
-    public CharacterDecision(PlayerProtos.PlayerDecision playerProto) {
-        switch(playerProto.getDecisionType()) {
+    public CharacterDecision(CharacterProtos.CharacterDecision characterProto) {
+        switch(characterProto.getDecisionType()) {
             case NONE:
                 decision = decisionTypes.NONE;
                 break;
@@ -48,12 +48,12 @@ public class CharacterDecision {
                 break;
         }
 
-        actionPosition = new Position(playerProto.getTargetPosition());
-        index = playerProto.getIndex();
+        actionPosition = new Position(characterProto.getTargetPosition());
+        index = characterProto.getIndex();
     }
 
-    public PlayerProtos.PlayerDecision buildProtoClassCharacterDecision(){
-        PlayerProtos.PlayerDecision.Builder decisionBuilder = PlayerProtos.PlayerDecision.newBuilder();
+    public CharacterProtos.CharacterDecision buildProtoClassCharacterDecision() {
+        CharacterProtos.CharacterDecision.Builder decisionBuilder = CharacterProtos.CharacterDecision.newBuilder();
         switch(this.decision) {
             case NONE:
                 decisionBuilder.setDecisionType(CharacterProtos.DecisionType.NONE);

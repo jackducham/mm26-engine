@@ -266,6 +266,7 @@ public class GameState {
         boardNames.put(playerName, createHomeBoard(playerName));
         //TODO specify spawn point location on each board
         playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
+        stateChange.addCharacter(playerName);
     }
 
     public void addNewMonster(Monster monster){

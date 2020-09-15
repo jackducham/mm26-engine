@@ -8,12 +8,8 @@ import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.PlayerProtos;
-import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
@@ -44,12 +40,12 @@ public class GameLogic {
 
 
     /**
-     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link PlayerDecision}s.
+     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link CharacterDecision}s.
      * @param gameState The initial game state.
      * @param decisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, CharacterProtos.CharacterDecision> decisions) {
         // ========== NOTES & TODOS ========== \\
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
@@ -64,9 +60,21 @@ public class GameLogic {
             }
         }
 
+        for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
+            if (entry.getValue().isDead()) {
+                gameState.stateChange.addDeadCharacter(entry.getKey());
+            }
+        }
+
+        for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
+            if (entry.getValue().isDead()) {
+                gameState.stateChange.addDeadCharacter(entry.getKey());
+            }
+        }
+
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
-        for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
+        for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : decisions.entrySet()) {
             // Remove decision from dead players and NONE decisions
             if(!gameState.getPlayer(entry.getKey()).isDead()
                     && entry.getValue() != null
@@ -94,6 +102,7 @@ public class GameLogic {
         Map<String, CharacterDecision> movementActions = new HashMap<>();
 
         for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
+            gameState.stateChange.setCharacterDecision(entry.getKey(), entry.getValue());
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
@@ -134,9 +143,19 @@ public class GameLogic {
 
         for (Player player: players) {
             player.updateCharacter(gameState);
+            if (player.isDead()) {
+                gameState.stateChange.characterDied(player.getName());
+            } else if (gameState.stateChange.wasDeadAtTurnStart(player.getName())) {
+                gameState.stateChange.characterRevived(player.getName());
+            }
         }
         for (Monster monster: monsters) {
             monster.updateCharacter(gameState);
+            if (monster.isDead()) {
+                gameState.stateChange.characterDied(monster.getName());
+            } else if (gameState.stateChange.wasDeadAtTurnStart(monster.getName())) {
+                gameState.stateChange.characterRevived(monster.getName());
+            }
         }
 
         return gameState;
@@ -158,39 +177,38 @@ public class GameLogic {
         switch (decision.getDecision()) {
             case ATTACK:
                 // Check for invalid protos
-                if(character == null || actionPosition == null) return;
+                if (character == null || actionPosition == null) return;
                 processAttack(gameState, character, actionPosition);
                 break;
             case MOVE:
                 // Check for invalid protos
-                if(character == null || actionPosition == null) return;
+                if (character == null || actionPosition == null) return;
                 moveCharacter(gameState, character, actionPosition);
                 break;
             case PORTAL:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 usePortal(gameState, character, index);
                 break;
             case EQUIP:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 Player player = (Player) character;
-                player.equipItem(index);
+                gameState.stateChange.characterEquip(player.getName(), player.equipItem(index));
                 break;
             case DROP:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 player = (Player) character;
                 dropItem(gameState, player, index);
                 break;
             case PICKUP:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 player = (Player) character;
                 pickUpItem(gameState, player, index);
                 break;
         }
-        gameState.stateChange.updatePlayer(character, decision, null, false, false);
     }
 
     /**
@@ -212,7 +230,7 @@ public class GameLogic {
         if(path.size() > character.getSpeed()) return;
 
         character.setPosition(targetPosition);
-        gameState.stateChange.updatePlayer(character, null, path, false, false);
+        gameState.stateChange.setCharacterMovePath(character.getName(), path);
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -339,6 +357,11 @@ public class GameLogic {
             return;
         }
 
+        gameState.stateChange.characterAttackLocations(
+                                                        attacker.getName(),
+                                                        new ArrayList<> (affectedPositions.keySet())
+                                                        );
+
         for (Player player: players) {
             if (player == attacker) {
                 continue;
@@ -373,16 +396,10 @@ public class GameLogic {
             Position playerPos = monster.getPosition();
             if (affectedPositions.containsKey(playerPos)) {
                 // Decide whether to add to taggedPlayersDamage
-                if(attacker instanceof Player) {
-                    monster.hitByWeapon(attacker.getName(), true, attackerWeapon, attacker.getAttack());
-                }
-                else{
-                    monster.hitByWeapon(attacker.getName(), false, attackerWeapon, attacker.getAttack());
-                }
+                monster.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
             }
         }
 
-        return;
     }
 
 
