@@ -45,7 +45,7 @@ public final class InfraProtos {
   /**
    * Protobuf type {@code infra.InfraPlayer}
    */
-  public  static final class InfraPlayer extends
+  public static final class InfraPlayer extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:infra.InfraPlayer)
       InfraPlayerOrBuilder {
@@ -139,6 +139,7 @@ public final class InfraProtos {
      * <code>string player_name = 1;</code>
      * @return The playerName.
      */
+    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -155,6 +156,7 @@ public final class InfraProtos {
      * <code>string player_name = 1;</code>
      * @return The bytes for playerName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -175,6 +177,7 @@ public final class InfraProtos {
      * <code>string player_ip = 2;</code>
      * @return The playerIp.
      */
+    @java.lang.Override
     public java.lang.String getPlayerIp() {
       java.lang.Object ref = playerIp_;
       if (ref instanceof java.lang.String) {
@@ -191,6 +194,7 @@ public final class InfraProtos {
      * <code>string player_ip = 2;</code>
      * @return The bytes for playerIp.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerIpBytes() {
       java.lang.Object ref = playerIp_;
@@ -259,8 +263,7 @@ public final class InfraProtos {
           .equals(other.getPlayerName())) return false;
       if (!getPlayerIp()
           .equals(other.getPlayerIp())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -747,7 +750,7 @@ public final class InfraProtos {
   /**
    * Protobuf type {@code infra.InfraVisualizer}
    */
-  public  static final class InfraVisualizer extends
+  public static final class InfraVisualizer extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:infra.InfraVisualizer)
       InfraVisualizerOrBuilder {
@@ -834,6 +837,7 @@ public final class InfraProtos {
      * <code>string visualizer_connect_url = 1;</code>
      * @return The visualizerConnectUrl.
      */
+    @java.lang.Override
     public java.lang.String getVisualizerConnectUrl() {
       java.lang.Object ref = visualizerConnectUrl_;
       if (ref instanceof java.lang.String) {
@@ -850,6 +854,7 @@ public final class InfraProtos {
      * <code>string visualizer_connect_url = 1;</code>
      * @return The bytes for visualizerConnectUrl.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getVisualizerConnectUrlBytes() {
       java.lang.Object ref = visualizerConnectUrl_;
@@ -910,8 +915,7 @@ public final class InfraProtos {
 
       if (!getVisualizerConnectUrl()
           .equals(other.getVisualizerConnectUrl())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1319,7 +1323,7 @@ public final class InfraProtos {
   /**
    * Protobuf type {@code infra.InfraStatus}
    */
-  public  static final class InfraStatus extends
+  public static final class InfraStatus extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:infra.InfraStatus)
       InfraStatusOrBuilder {
@@ -1411,6 +1415,7 @@ public final class InfraProtos {
      * <code>int32 status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public int getStatus() {
       return status_;
     }
@@ -1421,6 +1426,7 @@ public final class InfraProtos {
      * <code>string message = 2;</code>
      * @return The message.
      */
+    @java.lang.Override
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
@@ -1437,6 +1443,7 @@ public final class InfraProtos {
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
       java.lang.Object ref = message_;
@@ -1506,8 +1513,7 @@ public final class InfraProtos {
           != other.getStatus()) return false;
       if (!getMessage()
           .equals(other.getMessage())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return unknownFields.equals(other.unknownFields);
     }
 
     @java.lang.Override
@@ -1775,6 +1781,7 @@ public final class InfraProtos {
        * <code>int32 status = 1;</code>
        * @return The status.
        */
+      @java.lang.Override
       public int getStatus() {
         return status_;
       }

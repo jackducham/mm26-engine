@@ -3,6 +3,7 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,10 +41,10 @@ public class StatModifierTests {
      * Helper function to pass a turn with no actions
      */
     public void passTurn(){
-        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
-        Map<String, CharacterProtos.CharacterDecision> map = new HashMap<>();
+        Map<String, PlayerProtos.PlayerDecision> map = new HashMap<>();
         map.put("player1", decision.build());
         map.put("player2", decision.build());
 
