@@ -40,12 +40,12 @@ public class GameLogic {
 
 
     /**
-     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link CharacterDecision}s.
+     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link CharacterProtos.CharacterDecision}s.
      * @param gameState The initial game state.
-     * @param decisions A list of player decisions.
+     * @param contestantDecisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, Map<String, CharacterProtos.CharacterDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, CharacterProtos.CharacterDecision> contestantDecisions) {
         // ========== NOTES & TODOS ========== \\
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
@@ -54,7 +54,7 @@ public class GameLogic {
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         // Search decisions map for new players. For each new player, create Player object and a private Board
-        for (String playerName : decisions.keySet()) {
+        for (String playerName : contestantDecisions.keySet()) {
             if (!gameState.getAllPlayers().containsKey(playerName)) {
                 gameState.addNewPlayer(playerName);
             }
@@ -73,14 +73,14 @@ public class GameLogic {
         }
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
-        Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
-        for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : decisions.entrySet()) {
+        Map<String, CharacterDecision> allDecisions = new HashMap<>();
+        for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : contestantDecisions.entrySet()) {
             // Remove decision from dead players and NONE decisions
             if(!gameState.getPlayer(entry.getKey()).isDead()
                     && entry.getValue() != null
                     && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
-                cDecisions.put(entry.getKey(), newDecision);
+                allDecisions.put(entry.getKey(), newDecision);
             }
         }
 
@@ -92,7 +92,7 @@ public class GameLogic {
             if(!gameState.getMonster(entry.getKey()).isDead()
                     && decision != null
                     && decision.getDecision() != CharacterDecision.decisionTypes.NONE) {
-                cDecisions.put(entry.getKey(), decision);
+                allDecisions.put(entry.getKey(), decision);
             }
         }
 
@@ -101,8 +101,7 @@ public class GameLogic {
         Map<String, CharacterDecision> attackActions = new HashMap<>();
         Map<String, CharacterDecision> movementActions = new HashMap<>();
 
-        for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
-            gameState.stateChange.setCharacterDecision(entry.getKey(), entry.getValue());
+        for (Map.Entry<String, CharacterDecision> entry : allDecisions.entrySet()) {
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
@@ -345,7 +344,6 @@ public class GameLogic {
      * @param attackCoordinate coordinate to attack
      */
     public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
-        Board board = gameState.getBoard(attackCoordinate.getBoardID());
         List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
         List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
@@ -379,12 +377,7 @@ public class GameLogic {
                     player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                 } else {
                     // Decide whether to add to taggedPlayersDamage
-                    if(attacker instanceof Player) {
-                        player.hitByWeapon(attacker.getName(), true, attackerWeapon, attacker.getAttack());
-                    }
-                    else{
-                        player.hitByWeapon(attacker.getName(), false, attackerWeapon, attacker.getAttack());
-                    }
+                    player.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
                 }
             }
         }
@@ -448,6 +441,8 @@ public class GameLogic {
             return false;
         }
 
+        if(currentTile == null) return false;
+
         Item item = player.getInventory()[index];
         player.setInventory(index, null);
         currentTile.addItem(item);
@@ -471,7 +466,7 @@ public class GameLogic {
 
     /**
      * Checks whether position is within the bounds of the board
-     * @param gameState
+     * @param gameState the game state context
      * @param position position to validate
      * @return true, if position is valid
      */

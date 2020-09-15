@@ -71,7 +71,6 @@ public class GameChange {
         characterChanges.get(characterName).path = path;
     }
 
-    // 0: hat change, 1: clothes change, 2: shoes change, 3: weapon change
     public void characterEquip(String characterName, Class itemType) {
         createUntrackedCharacter(characterName);
         CharacterChange curChange = characterChanges.get(characterName);
@@ -109,7 +108,10 @@ public class GameChange {
             VisualizerProtos.CharacterChange.Builder builder = VisualizerProtos.CharacterChange.newBuilder();
             builder.setDied(died);
             builder.setRespawned(revived);
-            builder.setDecision(decision.buildProtoClassCharacterDecision());
+
+            if(decision != null) {
+                builder.setDecision(decision.buildProtoClassCharacterDecision());
+            }
 
             if(path != null){
                 for (Position position : path) {
