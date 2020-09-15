@@ -10,8 +10,10 @@ import io.ktor.http.cio.websocket.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import mech.mania.engine.domain.model.CharacterProtos
+import mech.mania.engine.domain.model.GameStateProtos
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
+import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn
 import mech.mania.engine.domain.model.VisualizerProtos
 import mech.mania.engine.entrypoints.Main
@@ -71,7 +73,7 @@ class ServerIntegrationTests {
             Main.main(args)
         }
 
-        Thread.sleep(8000)
+        Thread.sleep(5000)
     }
 
     /**
@@ -99,9 +101,9 @@ class ServerIntegrationTests {
      * Helper function that creates player servers with random names + ip addresses, sends POST
      * requests to the game to add those players to the game.
      */
-    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> CharacterProtos.CharacterDecision,
+    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> PlayerDecision,
                                 onReceive: (turn: PlayerTurn) -> Unit,
-                                onSend: (decision: CharacterProtos.CharacterDecision) -> Unit) {
+                                onSend: (decision: PlayerDecision) -> Unit) {
         val playerNames: ArrayList<String> = ArrayList()
         val playerAddrs: ArrayList<String> = ArrayList()
 
@@ -129,7 +131,7 @@ class ServerIntegrationTests {
                             onReceive(turn)
 
                             // calculate what to do with turn
-                            val decision: CharacterProtos.CharacterDecision = f(turn)
+                            val decision: PlayerDecision = f(turn)
                             val size: Long = decision.toByteArray().size.toLong()
 
                             // send back response
@@ -194,7 +196,7 @@ class ServerIntegrationTests {
         val latch = CountDownLatch(turns * players)
 
         connectNPlayers(players, {
-            CharacterProtos.CharacterDecision.newBuilder()
+            PlayerDecision.newBuilder()
                     .setDecisionType(CharacterProtos.DecisionType.ATTACK)
                     .build()
         }, {
@@ -214,12 +216,12 @@ class ServerIntegrationTests {
     /**
      * Helper function which creates a visualizer instance
      * @param duration: The number of turns (GameChanges) this visualizer should process
-     * @param onVisualizerInitial: A function to call on receipt of a VisualizerInitial
-     * @param onVisualizerTurn: A function to call on receipt of a VisualizerTurn
+     * @param onGameState: A function to call on receipt of a GameState
+     * @param onGameChange: A function to call on receipt of a GameChange
      */
     fun createVisualizer(duration: Int,
-                         onVisualizerInitial: (visualizerInitial: VisualizerProtos.VisualizerInitial) -> Unit,
-                         onVisualizerTurn: (visualizerTurn: VisualizerProtos.VisualizerTurn) -> Unit) {
+                         onGameState: (gameState: GameStateProtos.GameState) -> Unit,
+                         onGameChange: (gameChange: VisualizerProtos.GameChange) -> Unit) {
         // Create WebSocket client
         val client = HttpClient {
             install(WebSockets)
@@ -235,12 +237,12 @@ class ServerIntegrationTests {
                 when (val frame = incoming.receive()) {
                     is Frame.Binary -> {
                         try {
-                            val visualizerInitial = VisualizerProtos.VisualizerInitial.parseFrom(frame.readBytes())
+                            val gameState = GameStateProtos.GameState.parseFrom(frame.readBytes())
                             //logger.info("Received GameState for turn " + gameState.stateId)
-                            onVisualizerInitial(visualizerInitial)
+                            onGameState(gameState)
                         }
                         catch(e: InvalidProtocolBufferException){
-                            fail("Expected VisualizerInitial but encountered exception: $e")
+                            fail("Expected GameState but encountered exception: $e")
                         }
                     }
                 }
@@ -250,13 +252,13 @@ class ServerIntegrationTests {
                     when (val frame = incoming.receive()) {
                         is Frame.Binary -> {
                             try{
-                                val visualizerTurn = VisualizerProtos.VisualizerTurn.parseFrom(frame.readBytes())
+                                val gameChange = VisualizerProtos.GameChange.parseFrom(frame.readBytes())
 //                                logger.info("Received GameChange with " +
 //                                        gameChange.characterStatChangesCount + " changes")
-                                onVisualizerTurn(visualizerTurn)
+                                onGameChange(gameChange)
                             }
                             catch(e: InvalidProtocolBufferException){
-                                fail("Expected VisualizerTurn but encountered exception: $e")
+                                fail("Expected GameChange but encountered exception: $e")
                             }
                         }
                     }
@@ -306,7 +308,7 @@ class ServerIntegrationTests {
         val latch = CountDownLatch(turns * (visualizers + players))
 
         connectNPlayers(players, {
-            CharacterProtos.CharacterDecision.newBuilder()
+            PlayerDecision.newBuilder()
                     .setDecisionType(CharacterProtos.DecisionType.ATTACK)
                     .build()
         }, {

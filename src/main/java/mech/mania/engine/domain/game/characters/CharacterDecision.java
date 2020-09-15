@@ -1,6 +1,7 @@
 package mech.mania.engine.domain.game.characters;
 
 import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.PlayerProtos;
 
 public class CharacterDecision {
     public enum decisionTypes {
@@ -22,8 +23,8 @@ public class CharacterDecision {
         this.index = inventoryIndex;
     }
 
-    public CharacterDecision(CharacterProtos.CharacterDecision characterDecision) {
-        switch(characterDecision.getDecisionType()) {
+    public CharacterDecision(PlayerProtos.PlayerDecision playerProto) {
+        switch(playerProto.getDecisionType()) {
             case NONE:
                 decision = decisionTypes.NONE;
                 break;
@@ -47,12 +48,12 @@ public class CharacterDecision {
                 break;
         }
 
-        actionPosition = new Position(characterDecision.getTargetPosition());
-        index = characterDecision.getIndex();
+        actionPosition = new Position(playerProto.getTargetPosition());
+        index = playerProto.getIndex();
     }
 
-    public CharacterProtos.CharacterDecision buildProtoClassCharacterDecision(){
-        CharacterProtos.CharacterDecision.Builder decisionBuilder = CharacterProtos.CharacterDecision.newBuilder();
+    public PlayerProtos.PlayerDecision buildProtoClassCharacterDecision(){
+        PlayerProtos.PlayerDecision.Builder decisionBuilder = PlayerProtos.PlayerDecision.newBuilder();
         switch(this.decision) {
             case NONE:
                 decisionBuilder.setDecisionType(CharacterProtos.DecisionType.NONE);

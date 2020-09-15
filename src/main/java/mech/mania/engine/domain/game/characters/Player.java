@@ -419,30 +419,30 @@ public class Player extends Character {
      * Exchanges an item in the Player's inventory with an equipped.
      *
      * @param index the index of the inventory which contains the item to be equipped.
-     * @return the equipped item if successful, null otherwise
+     * @return true if successful
      */
-    public Class equipItem(int index) {
+    public boolean equipItem(int index) {
         Item itemToEquip;
         if (index < 0 || index >= INVENTORY_SIZE) {
-            return null;
+            return false;
         }
         if (inventory[index] != null) {
             itemToEquip = inventory[index];
         } else {
-            return null;
+            return false;
         }
         if (itemToEquip instanceof Hat) {
-            return equipHat((Hat)itemToEquip, index) ? Hat.class : null ;
+            return equipHat((Hat)itemToEquip, index);
         } else if (itemToEquip instanceof Clothes) {
-            return equipClothes((Clothes)itemToEquip, index) ? Clothes.class : null;
+            return equipClothes((Clothes)itemToEquip, index);
         } else if (itemToEquip instanceof Shoes) {
-            return equipShoes((Shoes)itemToEquip, index) ? Shoes.class : null;
+            return equipShoes((Shoes)itemToEquip, index);
         } else if (itemToEquip instanceof Weapon) {
-            return equipWeapon((Weapon)itemToEquip, index) ? Weapon.class : null;
+            return equipWeapon((Weapon)itemToEquip, index);
         } else if (itemToEquip instanceof Consumable) {
-            return useConsumable((Consumable)itemToEquip, index) ? Consumable.class : null;
+            return useConsumable((Consumable)itemToEquip, index);
         }
-        return null;
+        return false;
     }
 
     /**

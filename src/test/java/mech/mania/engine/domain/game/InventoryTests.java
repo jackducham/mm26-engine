@@ -7,6 +7,7 @@ import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.Shoes;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
+import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -66,36 +67,36 @@ public class InventoryTests {
     // ============================= DECISION FUNCTIONS ======================================== //
     public void pickupItem(int index) {
         // pick up item from tile
-        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.PICKUP);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
+        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
 
     public void equipItem(int index) {
         // equip item from inventory
-        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.EQUIP);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
+        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
 
     public void dropItem(int index) {
         // drop item from inventory
-        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
+        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.DROP);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
+        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
