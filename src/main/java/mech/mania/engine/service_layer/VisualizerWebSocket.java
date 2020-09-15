@@ -55,9 +55,12 @@ public class VisualizerWebSocket {
         public void afterConnectionEstablished(@NotNull WebSocketSession newSession) {
             sessions.add(newSession); // Add to list of connections
 
-            // Send initial game state on new connection
-            BinaryMessage message = new BinaryMessage(lastGameState.toByteArray());
+            // Send initial proto on new connection
+            VisualizerProtos.VisualizerInitial initMessage = VisualizerProtos.VisualizerInitial.newBuilder()
+                    .setState(lastGameState)
+                    .build();
 
+            BinaryMessage message = new BinaryMessage(initMessage.toByteArray());
             try {
                 newSession.sendMessage(message);
             } catch (IOException e) {
@@ -70,7 +73,7 @@ public class VisualizerWebSocket {
          * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
          * @param change the VisualizerTurn to send
          */
-        public void sendChange(VisualizerProtos.GameChange change) {
+        public void sendChange(VisualizerProtos.VisualizerTurn change) {
             BinaryMessage message = new BinaryMessage(change.toByteArray());
 
             if (sessions.isEmpty()) {

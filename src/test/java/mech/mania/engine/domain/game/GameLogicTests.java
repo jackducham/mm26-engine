@@ -3,7 +3,6 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,27 +42,6 @@ public class GameLogicTests {
         // Check that player1 is at 0, 0 on their board
         Position initPos = new Position(0, 4, "pvp");
         assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
-    }
-
-    /**
-     * Helper function that creates a custom PlayerDecision from custom commands
-     *
-     * @param commands String[] of commands to use
-     * @return PlayerDecision object
-     */
-    private PlayerProtos.PlayerDecision createDecisionsFromCommands(String[] commands) {
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
-
-        // TODO: create more commands for convenience
-        for (String command : commands) {
-            switch (command) {
-                case "move":
-                    // decision.setMovement()
-                    break;
-            }
-        }
-
-        return decision.build();
     }
 
     @Test

@@ -5,9 +5,9 @@ import mech.mania.engine.Config;
 import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.messages.Command;
+import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.PlayerConnectInfo;
 import mech.mania.engine.domain.model.PlayerProtos;
-import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
 
     @Override
     public void handle(Command command) {
-        Map<String, PlayerDecision> playerDecisionMap = getSuccessfulPlayerDecisions(uow);
+        Map<String, CharacterProtos.CharacterDecision> playerDecisionMap = getSuccessfulPlayerDecisions(uow);
         GameState updatedGameState = GameLogic.doTurn(uow.getGameState(), playerDecisionMap);
         uow.setGameState(updatedGameState);
     }
@@ -37,7 +37,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
      * Get player decisions from all players given a UnitOfWork
      * (containing a PlayerInfoMap) and return the successful requests.
      */
-    private Map<String, PlayerDecision> getSuccessfulPlayerDecisions(UnitOfWorkAbstract uow) {
+    private Map<String, CharacterProtos.CharacterDecision> getSuccessfulPlayerDecisions(UnitOfWorkAbstract uow) {
         Map<String, PlayerConnectInfo> playerInfoMap = uow.getPlayerConnectInfoMap();
         if (playerInfoMap == null || playerInfoMap.isEmpty()) {
             LOGGER.info("No players connected");
@@ -54,11 +54,11 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         // https://stackoverflow.com/questions/21670451/how-to-send-multiple-asynchronous-requests-to-different-web-services
         ExecutorService pool = Executors.newFixedThreadPool(cores);
 
-        List<Callable<Map.Entry<String, PlayerDecision>>> tasks = new ArrayList<>();
+        List<Callable<Map.Entry<String, CharacterProtos.CharacterDecision>>> tasks = new ArrayList<>();
         for (Map.Entry<String, PlayerConnectInfo> playerInfo : playerInfoMap.entrySet()) {
             tasks.add(() -> {
                 URL url;
-                PlayerDecision decision = null;
+                CharacterProtos.CharacterDecision decision = null;
                 String playerName = playerInfo.getKey();
                 HttpURLConnection http = null;
                 try {
@@ -81,7 +81,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                     PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(new GameState(), playerName);
                     turn.writeTo(http.getOutputStream());
 
-                    decision = PlayerDecision.parseFrom(http.getInputStream());
+                    decision = CharacterProtos.CharacterDecision.parseFrom(http.getInputStream());
                 } catch (InvalidProtocolBufferException e) {
                     LOGGER.warning(String.format("InvalidProtocolBufferException: could not connect to player \"%s\" at url %s: %s",
                             playerInfo.getKey(), playerInfo.getValue().getIpAddr(), e.getMessage()));
@@ -111,13 +111,13 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
             });
         }
 
-        List<Future<Map.Entry<String, PlayerDecision>>> results;
-        Map<String, PlayerDecision> map = new HashMap<>();
+        List<Future<Map.Entry<String, CharacterProtos.CharacterDecision>>> results;
+        Map<String, CharacterProtos.CharacterDecision> map = new HashMap<>();
         try {
             results = pool.invokeAll(tasks);
 
-            for (Future<Map.Entry<String, PlayerDecision>> future : results) {
-                Map.Entry<String, PlayerDecision> result = future.get();
+            for (Future<Map.Entry<String, CharacterProtos.CharacterDecision>> future : results) {
+                Map.Entry<String, CharacterProtos.CharacterDecision> result = future.get();
                 if (result.getValue() != null) {
                     map.put(result.getKey(), result.getValue());
                 }

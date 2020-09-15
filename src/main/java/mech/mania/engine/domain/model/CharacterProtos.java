@@ -8238,6 +8238,885 @@ public final class CharacterProtos {
 
   }
 
+  public interface CharacterDecisionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:character.CharacterDecision)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
+     */
+    int getDecisionTypeValue();
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The decisionType.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType();
+
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return Whether the targetPosition field is set.
+     */
+    boolean hasTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return The targetPosition.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder();
+
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    int getIndex();
+  }
+  /**
+   * <pre>
+   * Proto sent from player to engine and from engine to visualizer
+   * </pre>
+   *
+   * Protobuf type {@code character.CharacterDecision}
+   */
+  public  static final class CharacterDecision extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:character.CharacterDecision)
+      CharacterDecisionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CharacterDecision.newBuilder() to construct.
+    private CharacterDecision(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CharacterDecision() {
+      decisionType_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CharacterDecision();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CharacterDecision(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              decisionType_ = rawValue;
+              break;
+            }
+            case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (targetPosition_ != null) {
+                subBuilder = targetPosition_.toBuilder();
+              }
+              targetPosition_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(targetPosition_);
+                targetPosition_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+
+              index_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.class, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder.class);
+    }
+
+    public static final int DECISION_TYPE_FIELD_NUMBER = 1;
+    private int decisionType_;
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
+     */
+    public int getDecisionTypeValue() {
+      return decisionType_;
+    }
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The decisionType.
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
+      @SuppressWarnings("deprecation")
+      mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+    }
+
+    public static final int TARGET_POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position targetPosition_;
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return Whether the targetPosition field is set.
+     */
+    public boolean hasTargetPosition() {
+      return targetPosition_ != null;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return The targetPosition.
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition() {
+      return targetPosition_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+      return getTargetPosition();
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 3;
+    private int index_;
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (decisionType_ != mech.mania.engine.domain.model.CharacterProtos.DecisionType.NONE.getNumber()) {
+        output.writeEnum(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        output.writeMessage(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        output.writeInt32(3, index_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (decisionType_ != mech.mania.engine.domain.model.CharacterProtos.DecisionType.NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, index_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.CharacterProtos.CharacterDecision)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.CharacterProtos.CharacterDecision other = (mech.mania.engine.domain.model.CharacterProtos.CharacterDecision) obj;
+
+      if (decisionType_ != other.decisionType_) return false;
+      if (hasTargetPosition() != other.hasTargetPosition()) return false;
+      if (hasTargetPosition()) {
+        if (!getTargetPosition()
+            .equals(other.getTargetPosition())) return false;
+      }
+      if (getIndex()
+          != other.getIndex()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DECISION_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + decisionType_;
+      if (hasTargetPosition()) {
+        hash = (37 * hash) + TARGET_POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getTargetPosition().hashCode();
+      }
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Proto sent from player to engine and from engine to visualizer
+     * </pre>
+     *
+     * Protobuf type {@code character.CharacterDecision}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:character.CharacterDecision)
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.class, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        decisionType_ = 0;
+
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+        index_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision build() {
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecision result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision buildPartial() {
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecision result = new mech.mania.engine.domain.model.CharacterProtos.CharacterDecision(this);
+        result.decisionType_ = decisionType_;
+        if (targetPositionBuilder_ == null) {
+          result.targetPosition_ = targetPosition_;
+        } else {
+          result.targetPosition_ = targetPositionBuilder_.build();
+        }
+        result.index_ = index_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.CharacterProtos.CharacterDecision) {
+          return mergeFrom((mech.mania.engine.domain.model.CharacterProtos.CharacterDecision)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision other) {
+        if (other == mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance()) return this;
+        if (other.decisionType_ != 0) {
+          setDecisionTypeValue(other.getDecisionTypeValue());
+        }
+        if (other.hasTargetPosition()) {
+          mergeTargetPosition(other.getTargetPosition());
+        }
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.CharacterProtos.CharacterDecision) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int decisionType_ = 0;
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @return The enum numeric value on the wire for decisionType.
+       */
+      public int getDecisionTypeValue() {
+        return decisionType_;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @param value The enum numeric value on the wire for decisionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDecisionTypeValue(int value) {
+        decisionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @return The decisionType.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
+        @SuppressWarnings("deprecation")
+        mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @param value The decisionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDecisionType(mech.mania.engine.domain.model.CharacterProtos.DecisionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        decisionType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDecisionType() {
+        
+        decisionType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.CharacterProtos.Position targetPosition_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> targetPositionBuilder_;
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       * @return Whether the targetPosition field is set.
+       */
+      public boolean hasTargetPosition() {
+        return targetPositionBuilder_ != null || targetPosition_ != null;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       * @return The targetPosition.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          return targetPosition_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+        } else {
+          return targetPositionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder setTargetPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          targetPosition_ = value;
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder setTargetPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = builderForValue.build();
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder mergeTargetPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (targetPosition_ != null) {
+            targetPosition_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(targetPosition_).mergeFrom(value).buildPartial();
+          } else {
+            targetPosition_ = value;
+          }
+          onChanged();
+        } else {
+          targetPositionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder clearTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+          onChanged();
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getTargetPositionBuilder() {
+        
+        onChanged();
+        return getTargetPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+        if (targetPositionBuilder_ != null) {
+          return targetPositionBuilder_.getMessageOrBuilder();
+        } else {
+          return targetPosition_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+        }
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getTargetPositionFieldBuilder() {
+        if (targetPositionBuilder_ == null) {
+          targetPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getTargetPosition(),
+                  getParentForChildren(),
+                  isClean());
+          targetPosition_ = null;
+        }
+        return targetPositionBuilder_;
+      }
+
+      private int index_ ;
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @return The index.
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @param value The index to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:character.CharacterDecision)
+    }
+
+    // @@protoc_insertion_point(class_scope:character.CharacterDecision)
+    private static final mech.mania.engine.domain.model.CharacterProtos.CharacterDecision DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.CharacterProtos.CharacterDecision();
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CharacterDecision>
+        PARSER = new com.google.protobuf.AbstractParser<CharacterDecision>() {
+      @java.lang.Override
+      public CharacterDecision parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CharacterDecision(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CharacterDecision> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CharacterDecision> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_character_Character_descriptor;
   private static final 
@@ -8278,6 +9157,11 @@ public final class CharacterProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_character_Position_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_character_CharacterDecision_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_character_CharacterDecision_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -8319,11 +9203,14 @@ public final class CharacterProtos {
       "tatsEntry\032D\n\nStatsEntry\022\013\n\003key\030\001 \001(\t\022%\n\005" +
       "value\030\002 \001(\0132\026.character.PlayerStats:\0028\001\"" +
       "2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005" +
-      "\022\t\n\001y\030\003 \001(\005*[\n\014DecisionType\022\010\n\004NONE\020\000\022\010\n" +
-      "\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020" +
-      "\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036mech.mania.e" +
-      "ngine.domain.modelB\017CharacterProtos\252\002\016MM" +
-      "26.IO.Modelsb\006proto3"
+      "\022\t\n\001y\030\003 \001(\005\"\200\001\n\021CharacterDecision\022.\n\rdec" +
+      "ision_type\030\001 \001(\0162\027.character.DecisionTyp" +
+      "e\022,\n\017target_position\030\002 \001(\0132\023.character.P" +
+      "osition\022\r\n\005index\030\003 \001(\005*[\n\014DecisionType\022\010" +
+      "\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL" +
+      "\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036m" +
+      "ech.mania.engine.domain.modelB\017Character" +
+      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -8378,6 +9265,12 @@ public final class CharacterProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Position_descriptor,
         new java.lang.String[] { "BoardId", "X", "Y", });
+    internal_static_character_CharacterDecision_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_character_CharacterDecision_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_character_CharacterDecision_descriptor,
+        new java.lang.String[] { "DecisionType", "TargetPosition", "Index", });
     mech.mania.engine.domain.model.ItemProtos.getDescriptor();
   }
 
