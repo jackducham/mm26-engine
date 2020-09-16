@@ -15,6 +15,9 @@ public class utils {
 
     public static List<Character> findEnemies(GameState gameState, String playerName) {
         Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
 
         List<AbstractMap.SimpleEntry<Integer, Character>> enemiesDist = new ArrayList<>();
         for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
@@ -44,6 +47,9 @@ public class utils {
 
     public static List<Character> findEnemiesInRange(GameState gameState, String playerName) {
         Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
         Weapon weapon = player.getWeapon();
         if (weapon == null) {
             return new ArrayList<>();
@@ -79,6 +85,9 @@ public class utils {
 
     public static List<Character> findAllEnemiesHit(GameState gameState, String playerName, Position targetSpot) {
         Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
         Weapon weapon = player.getWeapon();
         if (weapon == null) {
             return new ArrayList<>();
@@ -113,6 +122,9 @@ public class utils {
 
     public static List<Monster> findMonsters(GameState gameState, String playerName) {
         Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
 
         List<Monster> monsters = new ArrayList<>();
         for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
@@ -130,8 +142,11 @@ public class utils {
         return monsters;
     }
 
-    public static boolean canBeAttacked(GameState gameState, String playerName) {
+    public static Boolean canBeAttacked(GameState gameState, String playerName) {
         Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
 
         List<Character> enemies = findEnemies(gameState, playerName);
         for (Character enemy : enemies) {
@@ -148,6 +163,9 @@ public class utils {
 
     public static Position findClosestPortal(GameState gameState, String playerName) {
         Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
         Board board = gameState.getBoard(player.getPosition().getBoardID());
         List<Position> portals = board.getPortals();
 
@@ -163,6 +181,9 @@ public class utils {
                 closestPortal = portal;
             }
         }
+        if (closestPortal == null) {
+            return new Position(-1, -1, "no_portal");
+        }
         return closestPortal;
     }
 
@@ -176,7 +197,13 @@ public class utils {
     }
 
     public static List<Item> itemsInRange(GameState gameState, String playerName, int range) {
-        Position pos = gameState.getPlayer(playerName).getPosition();
+        Player player = gameState.getPlayer(playerName);
+        if (player == null) {
+            return null;
+        }
+
+        Position pos = player.getPosition();
+
         int playerX = pos.getX();
         int playerY = pos.getY();
         Tile[][] grid = gameState.getBoard(pos.getBoardID()).getGrid();

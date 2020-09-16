@@ -90,6 +90,16 @@ public class APIRESTHandler {
             String player_name = requestInfo.getPlayerName();
 
             List<Character> enemies = utils.findEnemies(gameState, player_name);
+            if (enemies == null) {
+                LOGGER.warning("Invalid playerName on /findEnemies request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
 
             ApiProtos.APIFindEnemiesResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesResponse.newBuilder();
             List<CharacterProtos.Character> protoEnemies = new ArrayList<>();
@@ -122,6 +132,16 @@ public class APIRESTHandler {
             String player_name = requestInfo.getPlayerName();
 
             List<Monster> monsters = utils.findMonsters(gameState, player_name);
+            if (monsters == null) {
+                LOGGER.warning("Invalid playerName on /findMonsters request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
 
             ApiProtos.APIFindMonstersResponse.Builder responseBuilder = ApiProtos.APIFindMonstersResponse.newBuilder();
             List<CharacterProtos.Monster> protoMonsters = new ArrayList<>();
@@ -154,6 +174,16 @@ public class APIRESTHandler {
             String player_name = requestInfo.getPlayerName();
 
             List<Character> enemies = utils.findEnemiesInRange(gameState, player_name);
+            if (enemies == null) {
+                LOGGER.warning("Invalid playerName on /findEnemiesInRange request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
 
             ApiProtos.APIFindEnemiesInRangeResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesInRangeResponse.newBuilder();
             List<CharacterProtos.Character> protoEnemies = new ArrayList<>();
@@ -185,7 +215,17 @@ public class APIRESTHandler {
             GameState gameState = new GameState(requestInfo.getGameState());
             String player_name = requestInfo.getPlayerName();
 
-            boolean canPlayerBeAttacked = utils.canBeAttacked(gameState, player_name);
+            Boolean canPlayerBeAttacked = utils.canBeAttacked(gameState, player_name);
+            if (canPlayerBeAttacked == null) {
+                LOGGER.warning("Invalid playerName on /canBeAttacked request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
 
             ApiProtos.APICanBeAttackedResponse.Builder responseBuilder = ApiProtos.APICanBeAttackedResponse.newBuilder();
             responseBuilder.setCanBeAttacked(canPlayerBeAttacked);
@@ -214,6 +254,19 @@ public class APIRESTHandler {
             String player_name = requestInfo.getPlayerName();
 
             Position portal = utils.findClosestPortal(gameState, player_name);
+            if (portal == null) {
+                LOGGER.warning("Invalid playerName on /findClosestPortal request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
+            if (portal.getBoardID() == "no_portal") {
+                return ApiProtos.APIFindClosestPortalResponse.newBuilder().build().toByteArray();
+            }
 
             ApiProtos.APIFindClosestPortalResponse.Builder responseBuilder = ApiProtos.APIFindClosestPortalResponse.newBuilder();
             responseBuilder.setPortal(portal.buildProtoClass());
@@ -274,6 +327,16 @@ public class APIRESTHandler {
             Position targetSpot = new Position(requestInfo.getTargetSpot());
 
             List<Character> allEnemiesHit= utils.findAllEnemiesHit(gameState, playerName, targetSpot);
+            if (allEnemiesHit == null) {
+                LOGGER.warning("Invalid playerName on /findAllEnemiesHit request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
 
             ApiProtos.APIAllEnemiesHitResponse.Builder responseBuilder = ApiProtos.APIAllEnemiesHitResponse.newBuilder();
             List<CharacterProtos.Character> protoAllEnemiesHit = new ArrayList<>();
@@ -298,7 +361,7 @@ public class APIRESTHandler {
         }
     }
 
-    @PostMapping("/itemsInRange")
+    @PostMapping("/findItemsInRange")
     public byte[] getItemsInRange(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIItemsInRangeRequest requestInfo = ApiProtos.APIItemsInRangeRequest.parseFrom(payload);
@@ -307,6 +370,16 @@ public class APIRESTHandler {
             int range = requestInfo.getRange();
 
             List<Item> itemsInRange = utils.itemsInRange(gameState, playerName, range);
+            if (itemsInRange == null) {
+                LOGGER.warning("Invalid playerName on /findItemsInRange request from player.");
+                return ApiProtos.APIFindEnemiesResponse.newBuilder()
+                        .setStatus(ApiProtos.APIStatus.newBuilder()
+                                .setStatus(400)
+                                .setMessage("Invalid player name.")
+                                .build())
+                        .build()
+                        .toByteArray();
+            }
 
             ApiProtos.APIItemsInRangeResponse.Builder responseBuilder = ApiProtos.APIItemsInRangeResponse.newBuilder();
             List<ItemProtos.Item> protoItemsInRange = new ArrayList<>();
