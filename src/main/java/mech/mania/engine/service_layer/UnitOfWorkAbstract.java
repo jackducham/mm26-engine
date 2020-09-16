@@ -31,6 +31,7 @@ public abstract class UnitOfWorkAbstract {
 
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;
+    protected ConfigurableApplicationContext APICtx;
 
     /**
      * Constructor that sets an AbstractRepository

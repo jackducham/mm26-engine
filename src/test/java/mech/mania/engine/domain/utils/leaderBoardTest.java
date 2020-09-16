@@ -24,7 +24,7 @@ public class leaderBoardTest {
     @Test
     public void testLeaderBoardPlayer1() {
         GameState gameState1 = GameState.createDefaultGameState();
-        gameState1.getMonster("DefaultMonster0").applyDamage("player1", 1000);
+        gameState1.getMonster("DefaultMonster0").applyDamage("player1", true,1000);
         gameState1.getMonster("DefaultMonster0").distributeRewards(gameState1);
         List<Player> leaderboard = utils.leaderBoard(gameState1);
         List<Player> ans = new ArrayList<>();
@@ -36,7 +36,7 @@ public class leaderBoardTest {
         }
 
         GameState gameState2 = GameState.createDefaultGameState();
-        gameState2.getMonster("DefaultMonster1").applyDamage("player2", 1000);
+        gameState2.getMonster("DefaultMonster1").applyDamage("player2", true,1000);
         gameState2.getMonster("DefaultMonster1").distributeRewards(gameState2);
         List<Player> leaderboard2 = utils.leaderBoard(gameState2);
         List<Player> ans2 = new ArrayList<>();

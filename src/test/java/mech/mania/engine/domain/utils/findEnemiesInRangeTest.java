@@ -4,6 +4,7 @@ import static junit.framework.TestCase.assertEquals;
 
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.characters.Character;
+import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.game.utils;
@@ -19,12 +20,12 @@ public class findEnemiesInRangeTest {
 
     @Before
     public void setup() {
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(14, 26, "pvp"));
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(10, 9, "pvp"));
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(0, 5, "pvp"));
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(0, 14, "pvp"));
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(1, 16, "pvp"));
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(1, 21, "pvp"));
+        gameState.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 0, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster2", 0, 0, 0, 0, 0, new Position(10, 9, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster3", 0, 0, 0, 0, 0, new Position(0, 5, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster4", 0, 0, 0, 0, 0, new Position(0, 14, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster5", 0, 0, 0, 0, 0, new Position(1, 16, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster6", 0, 0, 0, 0, 0, new Position(1, 21, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
 
         Weapon weapon1 = Weapon.createDefaultWeapon();
         Weapon weapon2 = Weapon.createStrongerDefaultWeapon();

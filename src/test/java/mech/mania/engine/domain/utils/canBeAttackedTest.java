@@ -5,7 +5,7 @@ import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
 
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.game.characters.Character;
+import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.StatusModifier;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
@@ -56,7 +56,7 @@ public class canBeAttackedTest {
 
     @Test
     public void testCanBeAttackedPlayer2() {
-        gameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(0, 24, "pvp"));
+        gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(0, 24, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
         boolean canBeAttacked = utils.canBeAttacked(this.gameState, "player2");
         assertTrue(canBeAttacked);
     }
