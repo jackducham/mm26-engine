@@ -49,7 +49,7 @@ public class APIRESTHandler {
                 .toByteArray();
     }
 
-    @GetMapping("/pathFinding")
+    @PostMapping("/pathFinding")
     public byte[] pathFinding(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIPathFindingRequest requestInfo = ApiProtos.APIPathFindingRequest.parseFrom(payload);
@@ -82,7 +82,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/findEnemies")
+    @PostMapping("/findEnemies")
     public byte[] getEnemies(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIFindEnemiesRequest requestInfo = ApiProtos.APIFindEnemiesRequest.parseFrom(payload);
@@ -114,7 +114,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/findMonsters")
+    @PostMapping("/findMonsters")
     public byte[] getMonsters(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIFindMonstersRequest requestInfo = ApiProtos.APIFindMonstersRequest.parseFrom(payload);
@@ -146,7 +146,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/findEnemiesInRange")
+    @PostMapping("/findEnemiesInRange")
     public byte[] getEnemiesInRange(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIFindEnemiesInRangeRequest requestInfo = ApiProtos.APIFindEnemiesInRangeRequest.parseFrom(payload);
@@ -178,7 +178,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/canBeAttacked")
+    @PostMapping("/canBeAttacked")
     public byte[] canBeAttacked(@RequestBody byte[] payload) {
         try {
             ApiProtos.APICanBeAttackedRequest requestInfo = ApiProtos.APICanBeAttackedRequest.parseFrom(payload);
@@ -206,7 +206,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/findClosestPortal")
+    @PostMapping("/findClosestPortal")
     public byte[] getClosestPortal(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIFindClosestPortalRequest requestInfo = ApiProtos.APIFindClosestPortalRequest.parseFrom(payload);
@@ -234,7 +234,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/leaderBoard")
+    @PostMapping("/leaderBoard")
     public byte[] getLeaderBoard(@RequestBody byte[] payload) {
         try {
             ApiProtos.APILeaderBoardRequest requestInfo = ApiProtos.APILeaderBoardRequest.parseFrom(payload);
@@ -265,7 +265,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/findAllEnemiesHit")
+    @PostMapping("/findAllEnemiesHit")
     public byte[] getAllEnemiesHit(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIAllEnemiesHitRequest requestInfo = ApiProtos.APIAllEnemiesHitRequest.parseFrom(payload);
@@ -298,7 +298,7 @@ public class APIRESTHandler {
         }
     }
 
-    @GetMapping("/itemsInRange")
+    @PostMapping("/itemsInRange")
     public byte[] getItemsInRange(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIItemsInRangeRequest requestInfo = ApiProtos.APIItemsInRangeRequest.parseFrom(payload);
