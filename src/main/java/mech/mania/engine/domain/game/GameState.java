@@ -11,11 +11,10 @@ import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.GameStateProtos;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -82,6 +81,27 @@ public class GameState {
         }
 
         return null;
+    }
+
+    /**
+     * Gets the map of character names to character objects.
+     * @return the requested map
+     */
+    public Map<String, Character> getAllCharacters() {
+        Map<String, Character> characters = new HashMap<>(getAllPlayers());
+        characters.putAll(getAllMonsters());
+        return characters;
+    }
+
+    /**
+     * Gets all characters on a specific board.
+     * @param boardId id of the board of interest
+     * @return list of characters on given board
+     */
+    public List<Character> getCharactersOnBoard(String boardId) {
+        List<Character> characters = new ArrayList<>(getPlayersOnBoard(boardId));
+        characters.addAll(getMonstersOnBoard(boardId));
+        return characters;
     }
 
     /**
