@@ -14,7 +14,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class findMonstersTest {
+public class findMonstersByExpTest {
     private GameState gameState = GameState.createDefaultGameState();
 
     @Before
@@ -27,13 +27,13 @@ public class findMonstersTest {
 
     @Test
     public void testFindMonstersPlayer1() {
-        List<Monster> enemies = utils.findMonsters(this.gameState, "player1");
+        List<Monster> enemies = utils.findMonstersByExp(this.gameState, gameState.getPlayer("player1").getPosition());
         ArrayList<Position> ans = new ArrayList<>();
-        ans.add(new Position(14, 25, "pvp")); // 10 exp points
         ans.add(new Position(14, 24, "pvp"));
         ans.add(new Position(0, 5, "pvp"));
         ans.add(new Position(10, 9, "pvp"));
         ans.add(new Position(14, 26, "pvp"));
+        ans.add(new Position(14, 25, "pvp")); // 10 exp points
         assertEquals(enemies.size(), ans.size());
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));

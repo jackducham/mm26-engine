@@ -1,6 +1,5 @@
 package mech.mania.engine.domain.utils;
 
-import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
 
@@ -11,14 +10,12 @@ import mech.mania.engine.domain.game.items.StatusModifier;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.game.utils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class canBeAttackedTest {
+public class inRangeOfAttackTest {
     private GameState gameState = GameState.createDefaultGameState();
 
     @Before
@@ -31,7 +28,7 @@ public class canBeAttackedTest {
 
     @Test
     public void testCannotBeAttackedPlayer1() {
-        boolean canBeAttacked = utils.canBeAttacked(this.gameState, "player1");
+        boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player1").getPosition(), "player1");
         assertFalse(canBeAttacked);
     }
 
@@ -44,20 +41,20 @@ public class canBeAttackedTest {
         gameState.getPlayer("player2").setInventory(0, weapon2);
         gameState.getPlayer("player2").equipItem(0);
 
-        boolean canBeAttacked = utils.canBeAttacked(this.gameState, "player1");
+        boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player1").getPosition(), "player1");
         assertTrue(canBeAttacked);
     }
 
     @Test
     public void testCannotBeAttackedPlayer2() {
-        boolean canBeAttacked = utils.canBeAttacked(this.gameState, "player2");
+        boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player2").getPosition(), "player2");
         assertFalse(canBeAttacked);
     }
 
     @Test
     public void testCanBeAttackedPlayer2() {
         gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(0, 24, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
-        boolean canBeAttacked = utils.canBeAttacked(this.gameState, "player2");
+        boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player2").getPosition(), "player2");
         assertTrue(canBeAttacked);
     }
 }

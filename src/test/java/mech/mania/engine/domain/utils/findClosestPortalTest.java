@@ -23,13 +23,13 @@ public class findClosestPortalTest {
 
     @Test
     public void testFindClosestPortalPlayer1() {
-        Position portal = utils.findClosestPortal(gameState, "player1");
+        Position portal = utils.findClosestPortal(gameState, gameState.getPlayer("player1").getPosition());
         assertEquals(portal, new Position(14, 1, "pvp"));
     }
 
     @Test
     public void testFindClosestPortalPlayer2() {
-        Position portal = utils.findClosestPortal(gameState, "player2");
+        Position portal = utils.findClosestPortal(gameState, gameState.getPlayer("player2").getPosition());
         assertEquals(portal, new Position(10, 14, "pvp"));
     }
 }

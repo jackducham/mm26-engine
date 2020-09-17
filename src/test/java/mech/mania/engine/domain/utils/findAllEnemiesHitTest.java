@@ -1,6 +1,7 @@
 package mech.mania.engine.domain.utils;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.characters.Character;
@@ -8,12 +9,13 @@ import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.game.utils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class findAllEnemiesHitTest {
     private GameState gameState = GameState.createDefaultGameState();
@@ -39,33 +41,33 @@ public class findAllEnemiesHitTest {
 
     @Test
     public void testFindAllEnemiesHitPlayer1() {
-        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, "player1", new Position(0, 5, "pvp"));
-        ArrayList<Position> ans = new ArrayList<>();
+        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, new Position(0, 5, "pvp"), "player1");
+        Set<Position> ans = new HashSet<Position>();
         ans.add(new Position(0, 5, "pvp"));
         assertEquals(ans.size(), enemies.size());
         for (int i = 0; i < enemies.size(); i++) {
-            assertEquals(enemies.get(i).getPosition(), ans.get(i));
+            assertTrue(ans.contains(enemies.get(i).getPosition()));
         }
     }
 
     @Test
     public void testFindAllEnemiesHitPlayer1Splash() {
-        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, "player1", new Position(0, 7, "pvp"));
-        ArrayList<Position> ans = new ArrayList<>();
+        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, new Position(0, 7, "pvp"), "player1");
+        Set<Position> ans = new HashSet<Position>();
         assertEquals(ans.size(), enemies.size());
     }
 
     @Test
     public void testFindAllEnemiesHitPlayer2Splash() {
-        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, "player2", new Position(0, 25, "pvp"));
-        ArrayList<Position> ans = new ArrayList<>();
+        List<Character> enemies = utils.findAllEnemiesHit(this.gameState, new Position(0, 25, "pvp"), "player2");
+        Set<Position> ans = new HashSet<Position>();
         ans.add(new Position(0, 25, "pvp"));
         ans.add(new Position(0, 26, "pvp"));
         ans.add(new Position(1, 21, "pvp"));
         assertEquals(ans.size(), enemies.size());
 
         for (int i = 0; i < enemies.size(); i++) {
-            assertEquals(enemies.get(i).getPosition(), ans.get(i));
+            assertTrue(ans.contains(enemies.get(i).getPosition()));
         }
     }
 }

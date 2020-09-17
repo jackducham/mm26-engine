@@ -389,6 +389,10 @@ public abstract class Character {
         return getExperience() % 10; // @TODO: Replace with actual level equation
     }
 
+    public int getTotalExperience() {
+        return getLevel() * (getLevel() + 1) * 100 / 2 + getExperience();
+    }
+
     public boolean isDead() {
         return isDead;
     }

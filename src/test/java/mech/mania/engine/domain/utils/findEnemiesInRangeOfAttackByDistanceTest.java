@@ -15,7 +15,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class findEnemiesInRangeTest {
+public class findEnemiesInRangeOfAttackByDistanceTest {
     private GameState gameState = GameState.createDefaultGameState();
 
     @Before
@@ -37,7 +37,7 @@ public class findEnemiesInRangeTest {
 
     @Test
     public void testFindEnemiesInRangePlayer1() {
-        List<Character> enemies = utils.findEnemiesInRange(this.gameState, "player1");
+        List<Character> enemies = utils.findEnemiesInRangeOfAttackByDistance(this.gameState, gameState.getPlayer("player1").getPosition(), "player1");
         ArrayList<Position> ans = new ArrayList<>();
         ans.add(new Position(0, 5, "pvp"));
         assertEquals(enemies.size(), ans.size());
@@ -48,7 +48,7 @@ public class findEnemiesInRangeTest {
 
     @Test
     public void testFindEnemiesInRangePlayer2() {
-        List<Character> enemies = utils.findEnemiesInRange(this.gameState, "player2");
+        List<Character> enemies = utils.findEnemiesInRangeOfAttackByDistance(this.gameState, gameState.getPlayer("player2").getPosition(), "player2");
         ArrayList<Position> ans = new ArrayList<>();
         ans.add(new Position(1, 21, "pvp"));
         ans.add(new Position(1, 16, "pvp"));

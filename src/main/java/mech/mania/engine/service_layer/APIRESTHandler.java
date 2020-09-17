@@ -18,6 +18,7 @@ import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.utils;
 
 import javax.annotation.Resource;
+import java.util.AbstractMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -82,39 +83,30 @@ public class APIRESTHandler {
         }
     }
 
-    @PostMapping("/findEnemies")
-    public byte[] getEnemies(@RequestBody byte[] payload) {
+    @PostMapping("/findEnemiesByDistance")
+    public byte[] findEnemiesByDistanceAPI(@RequestBody byte[] payload) {
         try {
-            ApiProtos.APIFindEnemiesRequest requestInfo = ApiProtos.APIFindEnemiesRequest.parseFrom(payload);
+            ApiProtos.APIFindEnemiesByDistanceRequest requestInfo = ApiProtos.APIFindEnemiesByDistanceRequest.parseFrom(payload);
             GameState gameState = new GameState(requestInfo.getGameState());
+            Position position = new Position(requestInfo.getPosition());
             String player_name = requestInfo.getPlayerName();
 
-            List<Character> enemies = utils.findEnemies(gameState, player_name);
-            if (enemies == null) {
-                LOGGER.warning("Invalid playerName on /findEnemies request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
-            }
+            List<Character> enemies = utils.findEnemiesByDistance(gameState, position, player_name);
 
-            ApiProtos.APIFindEnemiesResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesResponse.newBuilder();
+            ApiProtos.APIFindEnemiesByDistanceResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesByDistanceResponse.newBuilder();
             List<CharacterProtos.Character> protoEnemies = new ArrayList<>();
             for (Character enemy : enemies) {
                 protoEnemies.add(enemy.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemies(protoEnemies);
-            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesRequest."));
+            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesByDistanceRequest."));
 
             return responseBuilder.build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
-            LOGGER.warning("InvalidProtocolBufferException on /findEnemies request from player: " + e.getMessage());
-            return ApiProtos.APIFindEnemiesResponse.newBuilder()
+            LOGGER.warning("InvalidProtocolBufferException on /findEnemiesByDistance request from player: " + e.getMessage());
+            return ApiProtos.APIFindEnemiesByDistanceResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
@@ -124,39 +116,29 @@ public class APIRESTHandler {
         }
     }
 
-    @PostMapping("/findMonsters")
-    public byte[] getMonsters(@RequestBody byte[] payload) {
+    @PostMapping("/findMonstersByExp")
+    public byte[] findMonstersByExpAPI(@RequestBody byte[] payload) {
         try {
-            ApiProtos.APIFindMonstersRequest requestInfo = ApiProtos.APIFindMonstersRequest.parseFrom(payload);
+            ApiProtos.APIFindMonstersByExpRequest requestInfo = ApiProtos.APIFindMonstersByExpRequest.parseFrom(payload);
             GameState gameState = new GameState(requestInfo.getGameState());
-            String player_name = requestInfo.getPlayerName();
+            Position position = new Position(requestInfo.getPosition());
 
-            List<Monster> monsters = utils.findMonsters(gameState, player_name);
-            if (monsters == null) {
-                LOGGER.warning("Invalid playerName on /findMonsters request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
-            }
+            List<Monster> monsters = utils.findMonstersByExp(gameState, position);
 
-            ApiProtos.APIFindMonstersResponse.Builder responseBuilder = ApiProtos.APIFindMonstersResponse.newBuilder();
+            ApiProtos.APIFindMonstersByExpResponse.Builder responseBuilder = ApiProtos.APIFindMonstersByExpResponse.newBuilder();
             List<CharacterProtos.Monster> protoMonsters = new ArrayList<>();
             for (Monster monster : monsters) {
                 protoMonsters.add(monster.buildProtoClassMonster());
             }
             responseBuilder.addAllMonsters(protoMonsters);
-            LOGGER.fine(String.format("Successfully processed ApiFindMonstersRequest."));
+            LOGGER.fine(String.format("Successfully processed ApiFindMonstersByExpRequest."));
 
             return responseBuilder.build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
-            LOGGER.warning("InvalidProtocolBufferException on /findMonsters request from player: " + e.getMessage());
-            return ApiProtos.APIFindMonstersResponse.newBuilder()
+            LOGGER.warning("InvalidProtocolBufferException on /findMonstersByExp request from player: " + e.getMessage());
+            return ApiProtos.APIFindMonstersByExpResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
@@ -166,39 +148,67 @@ public class APIRESTHandler {
         }
     }
 
-    @PostMapping("/findEnemiesInRange")
-    public byte[] getEnemiesInRange(@RequestBody byte[] payload) {
+    @PostMapping("/findItemsInRangeByDistance")
+    public byte[] findItemsInRangeByDistanceAPI(@RequestBody byte[] payload) {
         try {
-            ApiProtos.APIFindEnemiesInRangeRequest requestInfo = ApiProtos.APIFindEnemiesInRangeRequest.parseFrom(payload);
+            ApiProtos.APIFindItemsInRangeByDistanceRequest requestInfo = ApiProtos.APIFindItemsInRangeByDistanceRequest.parseFrom(payload);
             GameState gameState = new GameState(requestInfo.getGameState());
+            String playerName = requestInfo.getPlayerName();
+            Position position = new Position(requestInfo.getPosition());
+            int range = requestInfo.getRange();
+
+            List<AbstractMap.SimpleEntry<Item, Position>> itemsInRange = utils.findItemsInRangeByDistance(gameState, position, playerName, range);
+
+            ApiProtos.APIFindItemsInRangeByDistanceResponse.Builder responseBuilder = ApiProtos.APIFindItemsInRangeByDistanceResponse.newBuilder();
+            List<ItemProtos.Item> protoItems = new ArrayList<>();
+            List<CharacterProtos.Position> protoPositions = new ArrayList<>();
+            for (AbstractMap.SimpleEntry<Item, Position> entry : itemsInRange) {
+                protoItems.add(entry.getKey().buildProtoClassItem());
+                protoPositions.add(entry.getValue().buildProtoClass());
+            }
+            responseBuilder.addAllItems(protoItems);
+            responseBuilder.addAllPositions(protoPositions);
+            LOGGER.fine(String.format("Successfully processed ApiFindItemsByDistanceRequest."));
+
+            return responseBuilder.build().toByteArray();
+
+        } catch (InvalidProtocolBufferException e) {
+            // log that error occurred
+            LOGGER.warning("InvalidProtocolBufferException on /findItemsInRangeByDistance request from player: " + e.getMessage());
+            return ApiProtos.APIFindItemsInRangeByDistanceResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        }
+    }
+
+    @PostMapping("/findEnemiesInRangeOfAttackByDistance")
+    public byte[] findEnemiesInRangeOfAttackByDistanceAPI(@RequestBody byte[] payload) {
+        try {
+            ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest requestInfo = ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.parseFrom(payload);
+            GameState gameState = new GameState(requestInfo.getGameState());
+            Position position = new Position(requestInfo.getPosition());
             String player_name = requestInfo.getPlayerName();
 
-            List<Character> enemies = utils.findEnemiesInRange(gameState, player_name);
-            if (enemies == null) {
-                LOGGER.warning("Invalid playerName on /findEnemiesInRange request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
-            }
+            List<Character> enemies = utils.findEnemiesInRangeOfAttackByDistance(gameState, position, player_name);
 
-            ApiProtos.APIFindEnemiesInRangeResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesInRangeResponse.newBuilder();
+            ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.newBuilder();
             List<CharacterProtos.Character> protoEnemies = new ArrayList<>();
             for (Character enemy : enemies) {
                 protoEnemies.add(enemy.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemies(protoEnemies);
-            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesInRange."));
+            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesInRangeOfAttackByDistanceRequest."));
 
             return responseBuilder.build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
-            LOGGER.warning("InvalidProtocolBufferException on /findEnemiesInRange request from player: " + e.getMessage());
-            return ApiProtos.APIFindEnemiesInRangeResponse.newBuilder()
+            LOGGER.warning("InvalidProtocolBufferException on /findEnemiesInRangeOfAttackByDistance request from player: " + e.getMessage());
+            return ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
@@ -208,35 +218,60 @@ public class APIRESTHandler {
         }
     }
 
-    @PostMapping("/canBeAttacked")
-    public byte[] canBeAttacked(@RequestBody byte[] payload) {
+
+    @PostMapping("/findAllEnemiesHitRequest")
+    public byte[] findAllEnemiesHitRequestAPI(@RequestBody byte[] payload) {
         try {
-            ApiProtos.APICanBeAttackedRequest requestInfo = ApiProtos.APICanBeAttackedRequest.parseFrom(payload);
+            ApiProtos.APIFindAllEnemiesHitRequest requestInfo = ApiProtos.APIFindAllEnemiesHitRequest.parseFrom(payload);
             GameState gameState = new GameState(requestInfo.getGameState());
-            String player_name = requestInfo.getPlayerName();
+            Position position = new Position(requestInfo.getPosition());
+            String playerName = requestInfo.getPlayerName();
 
-            Boolean canPlayerBeAttacked = utils.canBeAttacked(gameState, player_name);
-            if (canPlayerBeAttacked == null) {
-                LOGGER.warning("Invalid playerName on /canBeAttacked request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
+            List<Character> allEnemiesHit = utils.findAllEnemiesHit(gameState, position, playerName);
+
+            ApiProtos.APIFindAllEnemiesHitResponse.Builder responseBuilder = ApiProtos.APIFindAllEnemiesHitResponse.newBuilder();
+            List<CharacterProtos.Character> protoAllEnemiesHit = new ArrayList<>();
+            for (Character character : allEnemiesHit) {
+                protoAllEnemiesHit.add(character.buildProtoClassCharacter());
             }
-
-            ApiProtos.APICanBeAttackedResponse.Builder responseBuilder = ApiProtos.APICanBeAttackedResponse.newBuilder();
-            responseBuilder.setCanBeAttacked(canPlayerBeAttacked);
-            LOGGER.fine(String.format("Successfully processed ApiCanBeAttackedRequest."));
+            responseBuilder.addAllEnemiesHit(protoAllEnemiesHit);
+            LOGGER.fine(String.format("Successfully processed ApiFindAllEnemiesHitRequest."));
 
             return responseBuilder.build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
-            LOGGER.warning("InvalidProtocolBufferException on /canBeAttacked request from player: " + e.getMessage());
-            return ApiProtos.APICanBeAttackedResponse.newBuilder()
+            LOGGER.warning("InvalidProtocolBufferException on /findAllEnemiesHit request from player: " + e.getMessage());
+            return ApiProtos.APIFindAllEnemiesHitResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        }
+    }
+
+    @PostMapping("/inRangeOfAttack")
+    public byte[] inRangeOfAttackAPI(@RequestBody byte[] payload) {
+        try {
+            ApiProtos.APIInRangeOfAttackRequest requestInfo = ApiProtos.APIInRangeOfAttackRequest.parseFrom(payload);
+            GameState gameState = new GameState(requestInfo.getGameState());
+            Position position = new Position(requestInfo.getPosition());
+            String player_name = requestInfo.getPlayerName();
+
+            boolean inRangeOfAttack = utils.inRangeOfAttack(gameState, position, player_name);
+
+            ApiProtos.APIInRangeOfAttackResponse.Builder responseBuilder = ApiProtos.APIInRangeOfAttackResponse.newBuilder();
+            responseBuilder.setInRangeOfAttack(inRangeOfAttack);
+            LOGGER.fine(String.format("Successfully processed ApiInRangeOfAttackRequest."));
+
+            return responseBuilder.build().toByteArray();
+
+        } catch (InvalidProtocolBufferException e) {
+            // log that error occurred
+            LOGGER.warning("InvalidProtocolBufferException on /inRangeOfAttack request from player: " + e.getMessage());
+            return ApiProtos.APIInRangeOfAttackResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
@@ -247,24 +282,15 @@ public class APIRESTHandler {
     }
 
     @PostMapping("/findClosestPortal")
-    public byte[] getClosestPortal(@RequestBody byte[] payload) {
+    public byte[] findClosestPortalAPI(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIFindClosestPortalRequest requestInfo = ApiProtos.APIFindClosestPortalRequest.parseFrom(payload);
             GameState gameState = new GameState(requestInfo.getGameState());
-            String player_name = requestInfo.getPlayerName();
+            Position position = new Position(requestInfo.getPosition());
 
-            Position portal = utils.findClosestPortal(gameState, player_name);
-            if (portal == null) {
-                LOGGER.warning("Invalid playerName on /findClosestPortal request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
-            }
-            if (portal.getBoardID() == "no_portal") {
+            Position portal = utils.findClosestPortal(gameState, position);
+
+            if (portal.getBoardID().equals("no_portal")) {
                 return ApiProtos.APIFindClosestPortalResponse.newBuilder().build().toByteArray();
             }
 
@@ -288,7 +314,7 @@ public class APIRESTHandler {
     }
 
     @PostMapping("/leaderBoard")
-    public byte[] getLeaderBoard(@RequestBody byte[] payload) {
+    public byte[] leaderBoardAPI(@RequestBody byte[] payload) {
         try {
             ApiProtos.APILeaderBoardRequest requestInfo = ApiProtos.APILeaderBoardRequest.parseFrom(payload);
             GameState gameState = new GameState(requestInfo.getGameState());
@@ -309,92 +335,6 @@ public class APIRESTHandler {
             // log that error occurred
             LOGGER.warning("InvalidProtocolBufferException on /leaderBoard request from player: " + e.getMessage());
             return ApiProtos.APILeaderBoardResponse.newBuilder()
-                    .setStatus(ApiProtos.APIStatus.newBuilder()
-                            .setStatus(400)
-                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
-                            .build())
-                    .build()
-                    .toByteArray();
-        }
-    }
-
-    @PostMapping("/findAllEnemiesHit")
-    public byte[] getAllEnemiesHit(@RequestBody byte[] payload) {
-        try {
-            ApiProtos.APIAllEnemiesHitRequest requestInfo = ApiProtos.APIAllEnemiesHitRequest.parseFrom(payload);
-            GameState gameState = new GameState(requestInfo.getGameState());
-            String playerName = requestInfo.getPlayerName();
-            Position targetSpot = new Position(requestInfo.getTargetSpot());
-
-            List<Character> allEnemiesHit= utils.findAllEnemiesHit(gameState, playerName, targetSpot);
-            if (allEnemiesHit == null) {
-                LOGGER.warning("Invalid playerName on /findAllEnemiesHit request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
-            }
-
-            ApiProtos.APIAllEnemiesHitResponse.Builder responseBuilder = ApiProtos.APIAllEnemiesHitResponse.newBuilder();
-            List<CharacterProtos.Character> protoAllEnemiesHit = new ArrayList<>();
-            for (Character character : allEnemiesHit) {
-                protoAllEnemiesHit.add(character.buildProtoClassCharacter());
-            }
-            responseBuilder.addAllEnemiesHit(protoAllEnemiesHit);
-            LOGGER.fine(String.format("Successfully processed ApiAllEnemiesHitRequest."));
-
-            return responseBuilder.build().toByteArray();
-
-        } catch (InvalidProtocolBufferException e) {
-            // log that error occurred
-            LOGGER.warning("InvalidProtocolBufferException on /findAllEnemiesHit request from player: " + e.getMessage());
-            return ApiProtos.APIAllEnemiesHitResponse.newBuilder()
-                    .setStatus(ApiProtos.APIStatus.newBuilder()
-                            .setStatus(400)
-                            .setMessage("InvalidProtocolBufferException: " + e.getMessage())
-                            .build())
-                    .build()
-                    .toByteArray();
-        }
-    }
-
-    @PostMapping("/findItemsInRange")
-    public byte[] getItemsInRange(@RequestBody byte[] payload) {
-        try {
-            ApiProtos.APIItemsInRangeRequest requestInfo = ApiProtos.APIItemsInRangeRequest.parseFrom(payload);
-            GameState gameState = new GameState(requestInfo.getGameState());
-            String playerName = requestInfo.getPlayerName();
-            int range = requestInfo.getRange();
-
-            List<Item> itemsInRange = utils.itemsInRange(gameState, playerName, range);
-            if (itemsInRange == null) {
-                LOGGER.warning("Invalid playerName on /findItemsInRange request from player.");
-                return ApiProtos.APIFindEnemiesResponse.newBuilder()
-                        .setStatus(ApiProtos.APIStatus.newBuilder()
-                                .setStatus(400)
-                                .setMessage("Invalid player name.")
-                                .build())
-                        .build()
-                        .toByteArray();
-            }
-
-            ApiProtos.APIItemsInRangeResponse.Builder responseBuilder = ApiProtos.APIItemsInRangeResponse.newBuilder();
-            List<ItemProtos.Item> protoItemsInRange = new ArrayList<>();
-            for (Item item : itemsInRange) {
-                protoItemsInRange.add(item.buildProtoClassItem());
-            }
-            responseBuilder.addAllItems(protoItemsInRange);
-            LOGGER.fine(String.format("Successfully processed ApiItemsInRange."));
-
-            return responseBuilder.build().toByteArray();
-
-        } catch (InvalidProtocolBufferException e) {
-            // log that error occurred
-            LOGGER.warning("InvalidProtocolBufferException on /itemsInRange request from player: " + e.getMessage());
-            return ApiProtos.APIAllEnemiesHitResponse.newBuilder()
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
