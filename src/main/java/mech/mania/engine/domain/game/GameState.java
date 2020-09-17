@@ -207,13 +207,17 @@ public class GameState {
         defaultGameState.getPlayer("player1").setPosition(new Position(0, 4, "pvp"));
         defaultGameState.addNewPlayer("player2");
         defaultGameState.getPlayer("player2").setPosition(new Position(0, 24, "pvp"));
+        defaultGameState.addNewPlayer("player3");
 
-
-        //adds a single monster to the pvp board.
+        //adds two monsters to the pvp board.
         //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster
         defaultGameState.addNewMonster(
                 Monster.createDefaultMonster(0, 0, 0, 0, 0,
                         0, 0, 0, new Position(14, 25, "pvp"))
+        );
+        defaultGameState.addNewMonster(
+                Monster.createDefaultMonster(0, 0, 0, 0, 0,
+                        0, 0, 0, new Position(14, 25, "pvp1"))
         );
 
         return defaultGameState;
