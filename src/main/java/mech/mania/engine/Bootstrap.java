@@ -36,6 +36,8 @@ public class Bootstrap {
         commandHandlers.put(CommandStopInfraServer.class,                       new StopInfraServer(uow));
         commandHandlers.put(CommandStartVisualizerServer.class,                 new StartVisualizerServer(uow));
         commandHandlers.put(CommandStopVisualizerServer.class,                  new StopVisualizerServer(uow));
+        commandHandlers.put(CommandStartAPIServer.class,                        new StartAPIServer(uow));
+        commandHandlers.put(CommandStopAPIServer.class,                         new StopAPIServer(uow));
         commandHandlers.put(CommandStoreGameState.class,                        new StoreGameState(uow));
         commandHandlers.put(CommandSendPlayerRequestsAndUpdateGameState.class,  new SendPlayerRequestsAndUpdateGameState(uow));
         commandHandlers.put(CommandUpdateGameState.class,                       new UpdateGameState(uow));

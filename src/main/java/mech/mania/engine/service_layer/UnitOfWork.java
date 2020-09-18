@@ -33,4 +33,9 @@ public class UnitOfWork extends UnitOfWorkAbstract {
         //visualizerCtx.close();
         SpringApplication.exit(visualizerCtx, () -> 0);
     }
+
+    @Override
+    public void stopAPIServer() {
+        SpringApplication.exit(APICtx, () -> 0);
+    }
 }

@@ -291,7 +291,7 @@ public class GameLogic {
             return false;
         }
 
-        return calculateManhattanDistance(character.getPosition(), attackCoordinate) <= playerWeapon.getRange();
+        return character.getPosition().manhattanDistance(attackCoordinate) <= playerWeapon.getRange();
     }
 
     /**
@@ -318,7 +318,7 @@ public class GameLogic {
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
                 Position position = new Position(x, y, attackCoordinate.getBoardID());
-                if (calculateManhattanDistance(position, attackCoordinate) <= radius && validatePosition(gameState, position)) {
+                if (position.manhattanDistance(attackCoordinate) <= radius && validatePosition(gameState, position)) {
                     affectedPositions.put(position, 1);
                 }
             }
@@ -463,15 +463,4 @@ public class GameLogic {
         return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
 
-    /**
-     * @param pos1 first position
-     * @param pos2 second position
-     * @return Manhattan Distance between pos1 and pos2
-     */
-    public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        if(pos1.getBoardID().equals(pos2.getBoardID())){
-            return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
-        }
-        return Integer.MAX_VALUE;
-    }
 }

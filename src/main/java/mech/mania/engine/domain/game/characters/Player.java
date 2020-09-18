@@ -81,7 +81,7 @@ public class Player extends Character {
             } else if (curItem instanceof Weapon) {
                 playerBuilder.setInventory(i, ((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClass());
+                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
 
