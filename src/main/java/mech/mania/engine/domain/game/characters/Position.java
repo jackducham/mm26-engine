@@ -69,7 +69,7 @@ public class Position {
         return Objects.hash(x, y, board_id);
     }
 
-    public int distance(Position other) {
+    public int manhattanDistance(Position other) {
         int x = Math.abs(this.x - other.getX());
         int y = Math.abs(this.y - other.getY());
         return x + y;

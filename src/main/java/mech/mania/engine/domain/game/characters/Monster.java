@@ -138,7 +138,7 @@ public class Monster extends Character {
 
             Position toAttack = target.position;
 
-            int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
+            int manhattanDistance = position.manhattanDistance(toAttack);
             if (manhattanDistance <= weapon.getRange()) {
                 return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
             } else {

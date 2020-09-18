@@ -18,11 +18,11 @@ public class utils {
         List<AbstractMap.SimpleEntry<Integer, Character>> enemiesDist = new ArrayList<>();
         for (Player player : gameState.getPlayersOnBoard(position.getBoardID())) {
             if (!player.getName().equals(playerName)) {
-                enemiesDist.add(new AbstractMap.SimpleEntry<Integer, Character>(position.distance(player.getPosition()), (Character) player));
+                enemiesDist.add(new AbstractMap.SimpleEntry<Integer, Character>(position.manhattanDistance(player.getPosition()), (Character) player));
             }
         }
         for (Monster monster : gameState.getMonstersOnBoard(position.getBoardID())) {
-            enemiesDist.add(new AbstractMap.SimpleEntry<Integer, Character>(position.distance(monster.getPosition()), (Character) monster));
+            enemiesDist.add(new AbstractMap.SimpleEntry<Integer, Character>(position.manhattanDistance(monster.getPosition()), (Character) monster));
         }
 
         Comparator<AbstractMap.SimpleEntry<Integer, Character>> compareByDistance = (AbstractMap.SimpleEntry<Integer, Character> d1, AbstractMap.SimpleEntry<Integer, Character> d2)
@@ -125,13 +125,13 @@ public class utils {
 
         List<AbstractMap.SimpleEntry<Integer, Character>> enemiesDist = new ArrayList<>();
         for (Player other : gameState.getPlayersOnBoard(position.getBoardID())) {
-            int distance = position.distance(other.getPosition());
+            int distance = position.manhattanDistance(other.getPosition());
             if (!other.getName().equals(playerName) && distance <= weapon.getRange() + weapon.getSplashRadius()) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<Integer, Character>(distance, (Character) other));
             }
         }
         for (Monster other : gameState.getMonstersOnBoard(position.getBoardID())) {
-            int distance = position.distance(other.getPosition());
+            int distance = position.manhattanDistance(other.getPosition());
             if (distance <= weapon.getRange() + weapon.getSplashRadius()) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<Integer, Character>(distance, (Character) other));
             }
@@ -159,13 +159,13 @@ public class utils {
 
         List<Character> enemies = new ArrayList<>();
         for (Player other : gameState.getPlayersOnBoard(position.getBoardID())) {
-            int distance = position.distance(other.getPosition());
+            int distance = position.manhattanDistance(other.getPosition());
             if (!other.getName().equals(playerName) && distance <= weapon.getSplashRadius()) {
                 enemies.add((Character) other);
             }
         }
         for (Monster other : gameState.getMonstersOnBoard(position.getBoardID())) {
-            int distance = position.distance(other.getPosition());
+            int distance = position.manhattanDistance(other.getPosition());
             if (distance <= weapon.getSplashRadius()) {
                 enemies.add((Character) other);
             }
@@ -176,7 +176,7 @@ public class utils {
     public static boolean inRangeOfAttack(GameState gameState, Position position, String playerName) {
         List<Character> enemies = findEnemiesByDistance(gameState, position, playerName);
         for (Character enemy : enemies) {
-            Integer dist = position.distance(enemy.getPosition());
+            Integer dist = position.manhattanDistance(enemy.getPosition());
             if (enemy.getWeapon() == null) {
                 continue;
             }
@@ -195,7 +195,7 @@ public class utils {
         Integer minDist = null;
         Position closestPortal = null;
         for (Position portal : portals) {
-            Integer dist = portal.distance(pos);
+            Integer dist = portal.manhattanDistance(pos);
             if (minDist == null) {
                 minDist = dist;
                 closestPortal = portal;
