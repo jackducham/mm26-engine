@@ -1,5 +1,6 @@
 package mech.mania.engine.service_layer.handlers;
 
+import com.amazonaws.services.s3.transfer.Copy;
 import com.google.protobuf.InvalidProtocolBufferException;
 import mech.mania.engine.Config;
 import mech.mania.engine.domain.game.GameLogic;
@@ -31,11 +32,56 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         Map<String, CharacterProtos.CharacterDecision> playerDecisionMap = getSuccessfulPlayerDecisions(uow);
         GameState updatedGameState = GameLogic.doTurn(uow.getGameState(), playerDecisionMap);
         uow.setGameState(updatedGameState);
+        shutdownExpiredPlayerServers(uow);
+    }
+
+    /**
+     * Shuts down all servers in the expiredConnectInfo list of the UOW
+     * @param uow the Unit of work
+     */
+    private void shutdownExpiredPlayerServers(UnitOfWorkAbstract uow) {
+        // For each expired server, shut it down and remove it from the list
+        for(Iterator<PlayerConnectInfo> itr = uow.getExpiredConnectInfoList().iterator(); itr.hasNext();){
+            PlayerConnectInfo playerConnectInfo = itr.next();
+
+            URL url;
+            HttpURLConnection http = null;
+            try {
+                // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
+                url = new URL(playerConnectInfo.getIpAddr()); // TODO: point this at the shutdown endpoint
+                URLConnection con = url.openConnection();
+                http = (HttpURLConnection) con;
+            } catch (IOException e) {
+                LOGGER.warning(String.format("MalformedURLException: could not shutdown player at url %s: %s",
+                        playerConnectInfo.getIpAddr(), e.getMessage()));
+            }
+
+            assert http != null;
+            try {
+                http.setRequestMethod("GET");
+                http.setConnectTimeout(1000);
+                http.setReadTimeout(1000);
+                http.setInstanceFollowRedirects(false);
+
+                // Send the signal
+                http.connect();
+
+                // TODO: verify result
+
+                // Mark this player server and removed
+                itr.remove();
+            } // TODO: Catch a connectionRefused exception and assume that means the instance was already shut down
+            catch(IOException e) {
+                LOGGER.warning(String.format("IOException: could not shutdown player at url %s: %s",
+                        playerConnectInfo.getIpAddr(), e));
+            }
+        }
     }
 
     /**
      * Get player decisions from all players given a UnitOfWork
      * (containing a PlayerInfoMap) and return the successful requests.
+     * Calls
      */
     private Map<String, CharacterProtos.CharacterDecision> getSuccessfulPlayerDecisions(UnitOfWorkAbstract uow) {
         Map<String, PlayerConnectInfo> playerInfoMap = uow.getPlayerConnectInfoMap();
@@ -75,6 +121,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 try {
                     http.setRequestMethod("POST");
                     http.setDoOutput(true);
+                    http.setInstanceFollowRedirects(false);
                     http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
                     http.setReadTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
 
