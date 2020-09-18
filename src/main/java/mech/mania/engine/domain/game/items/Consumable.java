@@ -33,7 +33,7 @@ public class Consumable extends Item {
      * Creates a consumable Protocol Buffer based on the instance of Consumable this function is called on.
      * @return a protocol buffer based on the Consumable
      */
-    public ItemProtos.Item buildProtoClass() {
+    public ItemProtos.Item buildProtoClassItem() {
         ItemProtos.Consumable.Builder consumableBuilder = ItemProtos.Consumable.newBuilder();
         consumableBuilder.setStacks(stacks);
         consumableBuilder.setEffect(effect.buildProtoClassTemp());

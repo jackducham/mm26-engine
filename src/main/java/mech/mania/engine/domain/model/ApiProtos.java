@@ -39,7 +39,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIStatus}
    */
-  public  static final class APIStatus extends
+  public static final class APIStatus extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIStatus)
       APIStatusOrBuilder {
@@ -131,6 +131,7 @@ public final class ApiProtos {
      * <code>int32 status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public int getStatus() {
       return status_;
     }
@@ -141,6 +142,7 @@ public final class ApiProtos {
      * <code>string message = 2;</code>
      * @return The message.
      */
+    @java.lang.Override
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
@@ -157,6 +159,7 @@ public final class ApiProtos {
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
       java.lang.Object ref = message_;
@@ -495,6 +498,7 @@ public final class ApiProtos {
        * <code>int32 status = 1;</code>
        * @return The status.
        */
+      @java.lang.Override
       public int getStatus() {
         return status_;
       }
@@ -700,7 +704,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIPathFindingRequest}
    */
-  public  static final class APIPathFindingRequest extends
+  public static final class APIPathFindingRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIPathFindingRequest)
       APIPathFindingRequestOrBuilder {
@@ -819,6 +823,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -826,12 +831,14 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -842,6 +849,7 @@ public final class ApiProtos {
      * <code>.character.Position start = 2;</code>
      * @return Whether the start field is set.
      */
+    @java.lang.Override
     public boolean hasStart() {
       return start_ != null;
     }
@@ -849,12 +857,14 @@ public final class ApiProtos {
      * <code>.character.Position start = 2;</code>
      * @return The start.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getStart() {
       return start_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : start_;
     }
     /**
      * <code>.character.Position start = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getStartOrBuilder() {
       return getStart();
     }
@@ -865,6 +875,7 @@ public final class ApiProtos {
      * <code>.character.Position end = 3;</code>
      * @return Whether the end field is set.
      */
+    @java.lang.Override
     public boolean hasEnd() {
       return end_ != null;
     }
@@ -872,12 +883,14 @@ public final class ApiProtos {
      * <code>.character.Position end = 3;</code>
      * @return The end.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getEnd() {
       return end_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : end_;
     }
     /**
      * <code>.character.Position end = 3;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getEndOrBuilder() {
       return getEnd();
     }
@@ -1712,7 +1725,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIPathFindingResponse}
    */
-  public  static final class APIPathFindingResponse extends
+  public static final class APIPathFindingResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIPathFindingResponse)
       APIPathFindingResponseOrBuilder {
@@ -1819,6 +1832,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -1826,12 +1840,14 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -1841,12 +1857,14 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPathList() {
       return path_;
     }
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPathOrBuilderList() {
       return path_;
@@ -1854,18 +1872,21 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
+    @java.lang.Override
     public int getPathCount() {
       return path_.size();
     }
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPath(int index) {
       return path_.get(index);
     }
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPathOrBuilder(
         int index) {
       return path_.get(index);
@@ -2654,8 +2675,8 @@ public final class ApiProtos {
 
   }
 
-  public interface APIFindEnemiesRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesRequest)
+  public interface APIFindEnemiesByDistanceRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesByDistanceRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2674,30 +2695,45 @@ public final class ApiProtos {
     mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
 
     /**
-     * <code>string player_name = 2;</code>
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    boolean hasPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>string player_name = 3;</code>
      * @return The playerName.
      */
     java.lang.String getPlayerName();
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
         getPlayerNameBytes();
   }
   /**
-   * Protobuf type {@code api.APIFindEnemiesRequest}
+   * Protobuf type {@code api.APIFindEnemiesByDistanceRequest}
    */
-  public  static final class APIFindEnemiesRequest extends
+  public static final class APIFindEnemiesByDistanceRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesRequest)
-      APIFindEnemiesRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesByDistanceRequest)
+      APIFindEnemiesByDistanceRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APIFindEnemiesRequest.newBuilder() to construct.
-    private APIFindEnemiesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindEnemiesByDistanceRequest.newBuilder() to construct.
+    private APIFindEnemiesByDistanceRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APIFindEnemiesRequest() {
+    private APIFindEnemiesByDistanceRequest() {
       playerName_ = "";
     }
 
@@ -2705,7 +2741,7 @@ public final class ApiProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APIFindEnemiesRequest();
+      return new APIFindEnemiesByDistanceRequest();
     }
 
     @java.lang.Override
@@ -2713,7 +2749,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APIFindEnemiesRequest(
+    private APIFindEnemiesByDistanceRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2745,6 +2781,19 @@ public final class ApiProtos {
               break;
             }
             case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               playerName_ = s;
@@ -2771,15 +2820,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesRequest_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesRequest_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.Builder.class);
     }
 
     public static final int GAMESTATE_FIELD_NUMBER = 1;
@@ -2788,6 +2837,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -2795,22 +2845,51 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
 
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
+    }
+
+    public static final int PLAYER_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object playerName_;
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The playerName.
      */
+    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -2824,9 +2903,10 @@ public final class ApiProtos {
       }
     }
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -2858,8 +2938,11 @@ public final class ApiProtos {
       if (gameState_ != null) {
         output.writeMessage(1, getGameState());
       }
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
+      }
       if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, playerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -2874,8 +2957,12 @@ public final class ApiProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getGameState());
       }
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
+      }
       if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, playerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2887,15 +2974,20 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest) obj;
 
       if (hasGameState() != other.hasGameState()) return false;
       if (hasGameState()) {
         if (!getGameState()
             .equals(other.getGameState())) return false;
+      }
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
       }
       if (!getPlayerName()
           .equals(other.getPlayerName())) return false;
@@ -2914,6 +3006,10 @@ public final class ApiProtos {
         hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
         hash = (53 * hash) + getGameState().hashCode();
       }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
       hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -2921,69 +3017,69 @@ public final class ApiProtos {
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2996,7 +3092,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3012,26 +3108,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APIFindEnemiesRequest}
+     * Protobuf type {@code api.APIFindEnemiesByDistanceRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesRequest)
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesByDistanceRequest)
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesRequest_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3055,6 +3151,12 @@ public final class ApiProtos {
           gameState_ = null;
           gameStateBuilder_ = null;
         }
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
         playerName_ = "";
 
         return this;
@@ -3063,17 +3165,17 @@ public final class ApiProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceRequest_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest build() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3081,12 +3183,17 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest(this);
         if (gameStateBuilder_ == null) {
           result.gameState_ = gameState_;
         } else {
           result.gameState_ = gameStateBuilder_.build();
+        }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
         }
         result.playerName_ = playerName_;
         onBuilt();
@@ -3127,18 +3234,21 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest.getDefaultInstance()) return this;
         if (other.hasGameState()) {
           mergeGameState(other.getGameState());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
         }
         if (!other.getPlayerName().isEmpty()) {
           playerName_ = other.playerName_;
@@ -3159,11 +3269,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3292,9 +3402,128 @@ public final class ApiProtos {
         return gameStateBuilder_;
       }
 
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
+       */
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
       private java.lang.Object playerName_ = "";
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return The playerName.
        */
       public java.lang.String getPlayerName() {
@@ -3310,7 +3539,7 @@ public final class ApiProtos {
         }
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return The bytes for playerName.
        */
       public com.google.protobuf.ByteString
@@ -3327,7 +3556,7 @@ public final class ApiProtos {
         }
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @param value The playerName to set.
        * @return This builder for chaining.
        */
@@ -3342,7 +3571,7 @@ public final class ApiProtos {
         return this;
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearPlayerName() {
@@ -3352,7 +3581,7 @@ public final class ApiProtos {
         return this;
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @param value The bytes for playerName to set.
        * @return This builder for chaining.
        */
@@ -3380,48 +3609,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesRequest)
+      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesByDistanceRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesRequest)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesByDistanceRequest)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APIFindEnemiesRequest>
-        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesRequest>() {
+    private static final com.google.protobuf.Parser<APIFindEnemiesByDistanceRequest>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesByDistanceRequest>() {
       @java.lang.Override
-      public APIFindEnemiesRequest parsePartialFrom(
+      public APIFindEnemiesByDistanceRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIFindEnemiesRequest(input, extensionRegistry);
+        return new APIFindEnemiesByDistanceRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APIFindEnemiesRequest> parser() {
+    public static com.google.protobuf.Parser<APIFindEnemiesByDistanceRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APIFindEnemiesRequest> getParserForType() {
+    public com.google.protobuf.Parser<APIFindEnemiesByDistanceRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesRequest getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APIFindEnemiesResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesResponse)
+  public interface APIFindEnemiesByDistanceResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesByDistanceResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3464,18 +3693,18 @@ public final class ApiProtos {
         int index);
   }
   /**
-   * Protobuf type {@code api.APIFindEnemiesResponse}
+   * Protobuf type {@code api.APIFindEnemiesByDistanceResponse}
    */
-  public  static final class APIFindEnemiesResponse extends
+  public static final class APIFindEnemiesByDistanceResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesResponse)
-      APIFindEnemiesResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesByDistanceResponse)
+      APIFindEnemiesByDistanceResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APIFindEnemiesResponse.newBuilder() to construct.
-    private APIFindEnemiesResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindEnemiesByDistanceResponse.newBuilder() to construct.
+    private APIFindEnemiesByDistanceResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APIFindEnemiesResponse() {
+    private APIFindEnemiesByDistanceResponse() {
       enemies_ = java.util.Collections.emptyList();
     }
 
@@ -3483,7 +3712,7 @@ public final class ApiProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APIFindEnemiesResponse();
+      return new APIFindEnemiesByDistanceResponse();
     }
 
     @java.lang.Override
@@ -3491,7 +3720,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APIFindEnemiesResponse(
+    private APIFindEnemiesByDistanceResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3556,15 +3785,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesResponse_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesResponse_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -3573,6 +3802,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -3580,12 +3810,14 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -3595,12 +3827,14 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesList() {
       return enemies_;
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
         getEnemiesOrBuilderList() {
       return enemies_;
@@ -3608,18 +3842,21 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public int getEnemiesCount() {
       return enemies_.size();
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getEnemies(int index) {
       return enemies_.get(index);
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesOrBuilder(
         int index) {
       return enemies_.get(index);
@@ -3672,10 +3909,10 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse) obj;
 
       if (hasStatus() != other.hasStatus()) return false;
       if (hasStatus()) {
@@ -3708,69 +3945,69 @@ public final class ApiProtos {
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3783,7 +4020,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3799,26 +4036,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APIFindEnemiesResponse}
+     * Protobuf type {@code api.APIFindEnemiesByDistanceResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesResponse)
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesByDistanceResponse)
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesResponse_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3855,17 +4092,17 @@ public final class ApiProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesByDistanceResponse_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse build() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3873,8 +4110,8 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse(this);
         int from_bitField0_ = bitField0_;
         if (statusBuilder_ == null) {
           result.status_ = status_;
@@ -3928,16 +4165,16 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           mergeStatus(other.getStatus());
         }
@@ -3982,11 +4219,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4368,48 +4605,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesResponse)
+      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesByDistanceResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesResponse)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesByDistanceResponse)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APIFindEnemiesResponse>
-        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesResponse>() {
+    private static final com.google.protobuf.Parser<APIFindEnemiesByDistanceResponse>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesByDistanceResponse>() {
       @java.lang.Override
-      public APIFindEnemiesResponse parsePartialFrom(
+      public APIFindEnemiesByDistanceResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIFindEnemiesResponse(input, extensionRegistry);
+        return new APIFindEnemiesByDistanceResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APIFindEnemiesResponse> parser() {
+    public static com.google.protobuf.Parser<APIFindEnemiesByDistanceResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APIFindEnemiesResponse> getParserForType() {
+    public com.google.protobuf.Parser<APIFindEnemiesByDistanceResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesResponse getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesByDistanceResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APIFindMonstersRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIFindMonstersRequest)
+  public interface APIFindMonstersByExpRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindMonstersByExpRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4428,38 +4665,40 @@ public final class ApiProtos {
     mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
 
     /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
      */
-    java.lang.String getPlayerName();
+    boolean hasPosition();
     /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
      */
-    com.google.protobuf.ByteString
-        getPlayerNameBytes();
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
   }
   /**
-   * Protobuf type {@code api.APIFindMonstersRequest}
+   * Protobuf type {@code api.APIFindMonstersByExpRequest}
    */
-  public  static final class APIFindMonstersRequest extends
+  public static final class APIFindMonstersByExpRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIFindMonstersRequest)
-      APIFindMonstersRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindMonstersByExpRequest)
+      APIFindMonstersByExpRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APIFindMonstersRequest.newBuilder() to construct.
-    private APIFindMonstersRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindMonstersByExpRequest.newBuilder() to construct.
+    private APIFindMonstersByExpRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APIFindMonstersRequest() {
-      playerName_ = "";
+    private APIFindMonstersByExpRequest() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APIFindMonstersRequest();
+      return new APIFindMonstersByExpRequest();
     }
 
     @java.lang.Override
@@ -4467,7 +4706,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APIFindMonstersRequest(
+    private APIFindMonstersByExpRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4499,9 +4738,16 @@ public final class ApiProtos {
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
 
-              playerName_ = s;
               break;
             }
             default: {
@@ -4525,15 +4771,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersRequest_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersRequest_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.Builder.class);
     }
 
     public static final int GAMESTATE_FIELD_NUMBER = 1;
@@ -4542,6 +4788,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -4549,50 +4796,42 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
 
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object playerName_;
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
     /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
      */
-    public java.lang.String getPlayerName() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerName_ = s;
-        return s;
-      }
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
     }
     /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
      */
-    public com.google.protobuf.ByteString
-        getPlayerNameBytes() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4612,8 +4851,8 @@ public final class ApiProtos {
       if (gameState_ != null) {
         output.writeMessage(1, getGameState());
       }
-      if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
       }
       unknownFields.writeTo(output);
     }
@@ -4628,8 +4867,9 @@ public final class ApiProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getGameState());
       }
-      if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4641,18 +4881,21 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest) obj;
 
       if (hasGameState() != other.hasGameState()) return false;
       if (hasGameState()) {
         if (!getGameState()
             .equals(other.getGameState())) return false;
       }
-      if (!getPlayerName()
-          .equals(other.getPlayerName())) return false;
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4668,76 +4911,78 @@ public final class ApiProtos {
         hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
         hash = (53 * hash) + getGameState().hashCode();
       }
-      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerName().hashCode();
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4750,7 +4995,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4766,26 +5011,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APIFindMonstersRequest}
+     * Protobuf type {@code api.APIFindMonstersByExpRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIFindMonstersRequest)
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindMonstersByExpRequest)
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersRequest_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4809,25 +5054,29 @@ public final class ApiProtos {
           gameState_ = null;
           gameStateBuilder_ = null;
         }
-        playerName_ = "";
-
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpRequest_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest build() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4835,14 +5084,18 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest(this);
         if (gameStateBuilder_ == null) {
           result.gameState_ = gameState_;
         } else {
           result.gameState_ = gameStateBuilder_.build();
         }
-        result.playerName_ = playerName_;
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -4881,22 +5134,21 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest.getDefaultInstance()) return this;
         if (other.hasGameState()) {
           mergeGameState(other.getGameState());
         }
-        if (!other.getPlayerName().isEmpty()) {
-          playerName_ = other.playerName_;
-          onChanged();
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4913,11 +5165,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5046,80 +5298,123 @@ public final class ApiProtos {
         return gameStateBuilder_;
       }
 
-      private java.lang.Object playerName_ = "";
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
       /**
-       * <code>string player_name = 2;</code>
-       * @return The playerName.
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
        */
-      public java.lang.String getPlayerName() {
-        java.lang.Object ref = playerName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerName_ = s;
-          return s;
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
         } else {
-          return (java.lang.String) ref;
+          return positionBuilder_.getMessage();
         }
       }
       /**
-       * <code>string player_name = 2;</code>
-       * @return The bytes for playerName.
+       * <code>.character.Position position = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getPlayerNameBytes() {
-        java.lang.Object ref = playerName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerName_ = b;
-          return b;
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
         }
       }
       /**
-       * <code>string player_name = 2;</code>
-       * @param value The playerName to set.
-       * @return This builder for chaining.
+       * <code>.character.Position position = 2;</code>
        */
-      public Builder setPlayerName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerName() {
-        
-        playerName_ = getDefaultInstance().getPlayerName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The bytes for playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerName_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5134,48 +5429,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APIFindMonstersRequest)
+      // @@protoc_insertion_point(builder_scope:api.APIFindMonstersByExpRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APIFindMonstersRequest)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindMonstersByExpRequest)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APIFindMonstersRequest>
-        PARSER = new com.google.protobuf.AbstractParser<APIFindMonstersRequest>() {
+    private static final com.google.protobuf.Parser<APIFindMonstersByExpRequest>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindMonstersByExpRequest>() {
       @java.lang.Override
-      public APIFindMonstersRequest parsePartialFrom(
+      public APIFindMonstersByExpRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIFindMonstersRequest(input, extensionRegistry);
+        return new APIFindMonstersByExpRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APIFindMonstersRequest> parser() {
+    public static com.google.protobuf.Parser<APIFindMonstersByExpRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APIFindMonstersRequest> getParserForType() {
+    public com.google.protobuf.Parser<APIFindMonstersByExpRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersRequest getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APIFindMonstersResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIFindMonstersResponse)
+  public interface APIFindMonstersByExpResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindMonstersByExpResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5218,18 +5513,18 @@ public final class ApiProtos {
         int index);
   }
   /**
-   * Protobuf type {@code api.APIFindMonstersResponse}
+   * Protobuf type {@code api.APIFindMonstersByExpResponse}
    */
-  public  static final class APIFindMonstersResponse extends
+  public static final class APIFindMonstersByExpResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIFindMonstersResponse)
-      APIFindMonstersResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindMonstersByExpResponse)
+      APIFindMonstersByExpResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APIFindMonstersResponse.newBuilder() to construct.
-    private APIFindMonstersResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindMonstersByExpResponse.newBuilder() to construct.
+    private APIFindMonstersByExpResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APIFindMonstersResponse() {
+    private APIFindMonstersByExpResponse() {
       monsters_ = java.util.Collections.emptyList();
     }
 
@@ -5237,7 +5532,7 @@ public final class ApiProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APIFindMonstersResponse();
+      return new APIFindMonstersByExpResponse();
     }
 
     @java.lang.Override
@@ -5245,7 +5540,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APIFindMonstersResponse(
+    private APIFindMonstersByExpResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5310,15 +5605,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersResponse_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersResponse_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -5327,6 +5622,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -5334,12 +5630,14 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -5349,12 +5647,14 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Monster> getMonstersList() {
       return monsters_;
     }
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.MonsterOrBuilder> 
         getMonstersOrBuilderList() {
       return monsters_;
@@ -5362,18 +5662,21 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
+    @java.lang.Override
     public int getMonstersCount() {
       return monsters_.size();
     }
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsters(int index) {
       return monsters_.get(index);
     }
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.MonsterOrBuilder getMonstersOrBuilder(
         int index) {
       return monsters_.get(index);
@@ -5426,10 +5729,10 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse) obj;
 
       if (hasStatus() != other.hasStatus()) return false;
       if (hasStatus()) {
@@ -5462,69 +5765,69 @@ public final class ApiProtos {
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5537,7 +5840,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5553,26 +5856,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APIFindMonstersResponse}
+     * Protobuf type {@code api.APIFindMonstersByExpResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIFindMonstersResponse)
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindMonstersByExpResponse)
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersResponse_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5609,17 +5912,17 @@ public final class ApiProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindMonstersByExpResponse_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse build() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5627,8 +5930,8 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse(this);
         int from_bitField0_ = bitField0_;
         if (statusBuilder_ == null) {
           result.status_ = status_;
@@ -5682,16 +5985,16 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           mergeStatus(other.getStatus());
         }
@@ -5736,11 +6039,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6122,48 +6425,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APIFindMonstersResponse)
+      // @@protoc_insertion_point(builder_scope:api.APIFindMonstersByExpResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APIFindMonstersResponse)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindMonstersByExpResponse)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APIFindMonstersResponse>
-        PARSER = new com.google.protobuf.AbstractParser<APIFindMonstersResponse>() {
+    private static final com.google.protobuf.Parser<APIFindMonstersByExpResponse>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindMonstersByExpResponse>() {
       @java.lang.Override
-      public APIFindMonstersResponse parsePartialFrom(
+      public APIFindMonstersByExpResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIFindMonstersResponse(input, extensionRegistry);
+        return new APIFindMonstersByExpResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APIFindMonstersResponse> parser() {
+    public static com.google.protobuf.Parser<APIFindMonstersByExpResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APIFindMonstersResponse> getParserForType() {
+    public com.google.protobuf.Parser<APIFindMonstersByExpResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersResponse getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindMonstersByExpResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APIFindEnemiesInRangeRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesInRangeRequest)
+  public interface APIFindItemsInRangeByDistanceRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindItemsInRangeByDistanceRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6182,30 +6485,51 @@ public final class ApiProtos {
     mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
 
     /**
-     * <code>string player_name = 2;</code>
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    boolean hasPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>string player_name = 3;</code>
      * @return The playerName.
      */
     java.lang.String getPlayerName();
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
         getPlayerNameBytes();
+
+    /**
+     * <code>int32 range = 4;</code>
+     * @return The range.
+     */
+    int getRange();
   }
   /**
-   * Protobuf type {@code api.APIFindEnemiesInRangeRequest}
+   * Protobuf type {@code api.APIFindItemsInRangeByDistanceRequest}
    */
-  public  static final class APIFindEnemiesInRangeRequest extends
+  public static final class APIFindItemsInRangeByDistanceRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesInRangeRequest)
-      APIFindEnemiesInRangeRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindItemsInRangeByDistanceRequest)
+      APIFindItemsInRangeByDistanceRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APIFindEnemiesInRangeRequest.newBuilder() to construct.
-    private APIFindEnemiesInRangeRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindItemsInRangeByDistanceRequest.newBuilder() to construct.
+    private APIFindItemsInRangeByDistanceRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APIFindEnemiesInRangeRequest() {
+    private APIFindItemsInRangeByDistanceRequest() {
       playerName_ = "";
     }
 
@@ -6213,7 +6537,7 @@ public final class ApiProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APIFindEnemiesInRangeRequest();
+      return new APIFindItemsInRangeByDistanceRequest();
     }
 
     @java.lang.Override
@@ -6221,7 +6545,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APIFindEnemiesInRangeRequest(
+    private APIFindItemsInRangeByDistanceRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6253,9 +6577,27 @@ public final class ApiProtos {
               break;
             }
             case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               playerName_ = s;
+              break;
+            }
+            case 32: {
+
+              range_ = input.readInt32();
               break;
             }
             default: {
@@ -6279,15 +6621,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeRequest_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeRequest_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.Builder.class);
     }
 
     public static final int GAMESTATE_FIELD_NUMBER = 1;
@@ -6296,6 +6638,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -6303,22 +6646,51 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
 
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
+    }
+
+    public static final int PLAYER_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object playerName_;
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The playerName.
      */
+    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -6332,9 +6704,10 @@ public final class ApiProtos {
       }
     }
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -6347,6 +6720,17 @@ public final class ApiProtos {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int RANGE_FIELD_NUMBER = 4;
+    private int range_;
+    /**
+     * <code>int32 range = 4;</code>
+     * @return The range.
+     */
+    @java.lang.Override
+    public int getRange() {
+      return range_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6366,8 +6750,14 @@ public final class ApiProtos {
       if (gameState_ != null) {
         output.writeMessage(1, getGameState());
       }
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
+      }
       if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, playerName_);
+      }
+      if (range_ != 0) {
+        output.writeInt32(4, range_);
       }
       unknownFields.writeTo(output);
     }
@@ -6382,8 +6772,16 @@ public final class ApiProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getGameState());
       }
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
+      }
       if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, playerName_);
+      }
+      if (range_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, range_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6395,18 +6793,25 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest) obj;
 
       if (hasGameState() != other.hasGameState()) return false;
       if (hasGameState()) {
         if (!getGameState()
             .equals(other.getGameState())) return false;
       }
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
+      }
       if (!getPlayerName()
           .equals(other.getPlayerName())) return false;
+      if (getRange()
+          != other.getRange()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6422,76 +6827,82 @@ public final class ApiProtos {
         hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
         hash = (53 * hash) + getGameState().hashCode();
       }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
       hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerName().hashCode();
+      hash = (37 * hash) + RANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getRange();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6504,7 +6915,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6520,26 +6931,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APIFindEnemiesInRangeRequest}
+     * Protobuf type {@code api.APIFindItemsInRangeByDistanceRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesInRangeRequest)
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindItemsInRangeByDistanceRequest)
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeRequest_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6563,7 +6974,15 @@ public final class ApiProtos {
           gameState_ = null;
           gameStateBuilder_ = null;
         }
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
         playerName_ = "";
+
+        range_ = 0;
 
         return this;
       }
@@ -6571,17 +6990,17 @@ public final class ApiProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceRequest_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest build() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6589,14 +7008,20 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest(this);
         if (gameStateBuilder_ == null) {
           result.gameState_ = gameState_;
         } else {
           result.gameState_ = gameStateBuilder_.build();
         }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
         result.playerName_ = playerName_;
+        result.range_ = range_;
         onBuilt();
         return result;
       }
@@ -6635,22 +7060,28 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest.getDefaultInstance()) return this;
         if (other.hasGameState()) {
           mergeGameState(other.getGameState());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
         }
         if (!other.getPlayerName().isEmpty()) {
           playerName_ = other.playerName_;
           onChanged();
+        }
+        if (other.getRange() != 0) {
+          setRange(other.getRange());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6667,11 +7098,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6800,9 +7231,128 @@ public final class ApiProtos {
         return gameStateBuilder_;
       }
 
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
+       */
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
       private java.lang.Object playerName_ = "";
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return The playerName.
        */
       public java.lang.String getPlayerName() {
@@ -6818,7 +7368,7 @@ public final class ApiProtos {
         }
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return The bytes for playerName.
        */
       public com.google.protobuf.ByteString
@@ -6835,7 +7385,7 @@ public final class ApiProtos {
         }
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @param value The playerName to set.
        * @return This builder for chaining.
        */
@@ -6850,7 +7400,7 @@ public final class ApiProtos {
         return this;
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearPlayerName() {
@@ -6860,7 +7410,2380 @@ public final class ApiProtos {
         return this;
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
+       * @param value The bytes for playerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int range_ ;
+      /**
+       * <code>int32 range = 4;</code>
+       * @return The range.
+       */
+      @java.lang.Override
+      public int getRange() {
+        return range_;
+      }
+      /**
+       * <code>int32 range = 4;</code>
+       * @param value The range to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRange(int value) {
+        
+        range_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 range = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRange() {
+        
+        range_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:api.APIFindItemsInRangeByDistanceRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:api.APIFindItemsInRangeByDistanceRequest)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest();
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<APIFindItemsInRangeByDistanceRequest>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindItemsInRangeByDistanceRequest>() {
+      @java.lang.Override
+      public APIFindItemsInRangeByDistanceRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new APIFindItemsInRangeByDistanceRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<APIFindItemsInRangeByDistanceRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<APIFindItemsInRangeByDistanceRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface APIFindItemsInRangeByDistanceResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindItemsInRangeByDistanceResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    boolean hasStatus();
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return The status.
+     */
+    mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus();
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     */
+    mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder();
+
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> 
+        getItemsList();
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    mech.mania.engine.domain.model.ItemProtos.Item getItems(int index);
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    int getItemsCount();
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
+        getItemsOrBuilderList();
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
+        getPositionsList();
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getPositions(int index);
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    int getPositionsCount();
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+        getPositionsOrBuilderList();
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code api.APIFindItemsInRangeByDistanceResponse}
+   */
+  public static final class APIFindItemsInRangeByDistanceResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:api.APIFindItemsInRangeByDistanceResponse)
+      APIFindItemsInRangeByDistanceResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use APIFindItemsInRangeByDistanceResponse.newBuilder() to construct.
+    private APIFindItemsInRangeByDistanceResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private APIFindItemsInRangeByDistanceResponse() {
+      items_ = java.util.Collections.emptyList();
+      positions_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new APIFindItemsInRangeByDistanceResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private APIFindItemsInRangeByDistanceResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder subBuilder = null;
+              if (status_ != null) {
+                subBuilder = status_.toBuilder();
+              }
+              status_ = input.readMessage(mech.mania.engine.domain.model.ApiProtos.APIStatus.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(status_);
+                status_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                items_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              items_.add(
+                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Item.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                positions_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              positions_.add(
+                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          items_ = java.util.Collections.unmodifiableList(items_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          positions_ = java.util.Collections.unmodifiableList(positions_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    @java.lang.Override
+    public boolean hasStatus() {
+      return status_ != null;
+    }
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
+      return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
+    }
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
+      return getStatus();
+    }
+
+    public static final int ITEMS_FIELD_NUMBER = 2;
+    private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> items_;
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
+        getItemsOrBuilderList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    @java.lang.Override
+    public int getItemsCount() {
+      return items_.size();
+    }
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
+      return items_.get(index);
+    }
+    /**
+     * <code>repeated .item.Item items = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
+        int index) {
+      return items_.get(index);
+    }
+
+    public static final int POSITIONS_FIELD_NUMBER = 3;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> positions_;
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPositionsList() {
+      return positions_;
+    }
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+        getPositionsOrBuilderList() {
+      return positions_;
+    }
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    @java.lang.Override
+    public int getPositionsCount() {
+      return positions_.size();
+    }
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPositions(int index) {
+      return positions_.get(index);
+    }
+    /**
+     * <code>repeated .character.Position positions = 3;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionsOrBuilder(
+        int index) {
+      return positions_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (status_ != null) {
+        output.writeMessage(1, getStatus());
+      }
+      for (int i = 0; i < items_.size(); i++) {
+        output.writeMessage(2, items_.get(i));
+      }
+      for (int i = 0; i < positions_.size(); i++) {
+        output.writeMessage(3, positions_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (status_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getStatus());
+      }
+      for (int i = 0; i < items_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, items_.get(i));
+      }
+      for (int i = 0; i < positions_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, positions_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse) obj;
+
+      if (hasStatus() != other.hasStatus()) return false;
+      if (hasStatus()) {
+        if (!getStatus()
+            .equals(other.getStatus())) return false;
+      }
+      if (!getItemsList()
+          .equals(other.getItemsList())) return false;
+      if (!getPositionsList()
+          .equals(other.getPositionsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStatus()) {
+        hash = (37 * hash) + STATUS_FIELD_NUMBER;
+        hash = (53 * hash) + getStatus().hashCode();
+      }
+      if (getItemsCount() > 0) {
+        hash = (37 * hash) + ITEMS_FIELD_NUMBER;
+        hash = (53 * hash) + getItemsList().hashCode();
+      }
+      if (getPositionsCount() > 0) {
+        hash = (37 * hash) + POSITIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getPositionsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code api.APIFindItemsInRangeByDistanceResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:api.APIFindItemsInRangeByDistanceResponse)
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getItemsFieldBuilder();
+          getPositionsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (statusBuilder_ == null) {
+          status_ = null;
+        } else {
+          status_ = null;
+          statusBuilder_ = null;
+        }
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          itemsBuilder_.clear();
+        }
+        if (positionsBuilder_ == null) {
+          positions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          positionsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindItemsInRangeByDistanceResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse(this);
+        int from_bitField0_ = bitField0_;
+        if (statusBuilder_ == null) {
+          result.status_ = status_;
+        } else {
+          result.status_ = statusBuilder_.build();
+        }
+        if (itemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            items_ = java.util.Collections.unmodifiableList(items_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.items_ = items_;
+        } else {
+          result.items_ = itemsBuilder_.build();
+        }
+        if (positionsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            positions_ = java.util.Collections.unmodifiableList(positions_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.positions_ = positions_;
+        } else {
+          result.positions_ = positionsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          mergeStatus(other.getStatus());
+        }
+        if (itemsBuilder_ == null) {
+          if (!other.items_.isEmpty()) {
+            if (items_.isEmpty()) {
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureItemsIsMutable();
+              items_.addAll(other.items_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.items_.isEmpty()) {
+            if (itemsBuilder_.isEmpty()) {
+              itemsBuilder_.dispose();
+              itemsBuilder_ = null;
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              itemsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getItemsFieldBuilder() : null;
+            } else {
+              itemsBuilder_.addAllMessages(other.items_);
+            }
+          }
+        }
+        if (positionsBuilder_ == null) {
+          if (!other.positions_.isEmpty()) {
+            if (positions_.isEmpty()) {
+              positions_ = other.positions_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensurePositionsIsMutable();
+              positions_.addAll(other.positions_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.positions_.isEmpty()) {
+            if (positionsBuilder_.isEmpty()) {
+              positionsBuilder_.dispose();
+              positionsBuilder_ = null;
+              positions_ = other.positions_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              positionsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPositionsFieldBuilder() : null;
+            } else {
+              positionsBuilder_.addAllMessages(other.positions_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> statusBuilder_;
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       * @return Whether the status field is set.
+       */
+      public boolean hasStatus() {
+        return statusBuilder_ != null || status_ != null;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       * @return The status.
+       */
+      public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
+        if (statusBuilder_ == null) {
+          return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
+        } else {
+          return statusBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder setStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
+        if (statusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          status_ = value;
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder setStatus(
+          mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder builderForValue) {
+        if (statusBuilder_ == null) {
+          status_ = builderForValue.build();
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder mergeStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
+        if (statusBuilder_ == null) {
+          if (status_ != null) {
+            status_ =
+              mech.mania.engine.domain.model.ApiProtos.APIStatus.newBuilder(status_).mergeFrom(value).buildPartial();
+          } else {
+            status_ = value;
+          }
+          onChanged();
+        } else {
+          statusBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder clearStatus() {
+        if (statusBuilder_ == null) {
+          status_ = null;
+          onChanged();
+        } else {
+          status_ = null;
+          statusBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder getStatusBuilder() {
+        
+        onChanged();
+        return getStatusFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
+        if (statusBuilder_ != null) {
+          return statusBuilder_.getMessageOrBuilder();
+        } else {
+          return status_ == null ?
+              mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
+        }
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> 
+          getStatusFieldBuilder() {
+        if (statusBuilder_ == null) {
+          statusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder>(
+                  getStatus(),
+                  getParentForChildren(),
+                  isClean());
+          status_ = null;
+        }
+        return statusBuilder_;
+      }
+
+      private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> items_ =
+        java.util.Collections.emptyList();
+      private void ensureItemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          items_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>(items_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> itemsBuilder_;
+
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
+        if (itemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(items_);
+        } else {
+          return itemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public int getItemsCount() {
+        if (itemsBuilder_ == null) {
+          return items_.size();
+        } else {
+          return itemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);
+        } else {
+          return itemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder setItems(
+          int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.set(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder setItems(
+          int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder addItems(mech.mania.engine.domain.model.ItemProtos.Item value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder addItems(
+          int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder addItems(
+          mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder addItems(
+          int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder addAllItems(
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.ItemProtos.Item> values) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, items_);
+          onChanged();
+        } else {
+          itemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder clearItems() {
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public Builder removeItems(int index) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.remove(index);
+          onChanged();
+        } else {
+          itemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.Item.Builder getItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
+          int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);  } else {
+          return itemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
+           getItemsOrBuilderList() {
+        if (itemsBuilder_ != null) {
+          return itemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(items_);
+        }
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.Item.Builder addItemsBuilder() {
+        return getItemsFieldBuilder().addBuilder(
+            mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.Item.Builder addItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().addBuilder(
+            index, mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .item.Item items = 2;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item.Builder> 
+           getItemsBuilderList() {
+        return getItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
+          getItemsFieldBuilder() {
+        if (itemsBuilder_ == null) {
+          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder>(
+                  items_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          items_ = null;
+        }
+        return itemsBuilder_;
+      }
+
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> positions_ =
+        java.util.Collections.emptyList();
+      private void ensurePositionsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          positions_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>(positions_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionsBuilder_;
+
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPositionsList() {
+        if (positionsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(positions_);
+        } else {
+          return positionsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public int getPositionsCount() {
+        if (positionsBuilder_ == null) {
+          return positions_.size();
+        } else {
+          return positionsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPositions(int index) {
+        if (positionsBuilder_ == null) {
+          return positions_.get(index);
+        } else {
+          return positionsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder setPositions(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePositionsIsMutable();
+          positions_.set(index, value);
+          onChanged();
+        } else {
+          positionsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder setPositions(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionsBuilder_ == null) {
+          ensurePositionsIsMutable();
+          positions_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          positionsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder addPositions(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePositionsIsMutable();
+          positions_.add(value);
+          onChanged();
+        } else {
+          positionsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder addPositions(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePositionsIsMutable();
+          positions_.add(index, value);
+          onChanged();
+        } else {
+          positionsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder addPositions(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionsBuilder_ == null) {
+          ensurePositionsIsMutable();
+          positions_.add(builderForValue.build());
+          onChanged();
+        } else {
+          positionsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder addPositions(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionsBuilder_ == null) {
+          ensurePositionsIsMutable();
+          positions_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          positionsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder addAllPositions(
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Position> values) {
+        if (positionsBuilder_ == null) {
+          ensurePositionsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, positions_);
+          onChanged();
+        } else {
+          positionsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder clearPositions() {
+        if (positionsBuilder_ == null) {
+          positions_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          positionsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public Builder removePositions(int index) {
+        if (positionsBuilder_ == null) {
+          ensurePositionsIsMutable();
+          positions_.remove(index);
+          onChanged();
+        } else {
+          positionsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionsBuilder(
+          int index) {
+        return getPositionsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionsOrBuilder(
+          int index) {
+        if (positionsBuilder_ == null) {
+          return positions_.get(index);  } else {
+          return positionsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+           getPositionsOrBuilderList() {
+        if (positionsBuilder_ != null) {
+          return positionsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(positions_);
+        }
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addPositionsBuilder() {
+        return getPositionsFieldBuilder().addBuilder(
+            mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addPositionsBuilder(
+          int index) {
+        return getPositionsFieldBuilder().addBuilder(
+            index, mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .character.Position positions = 3;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
+           getPositionsBuilderList() {
+        return getPositionsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionsFieldBuilder() {
+        if (positionsBuilder_ == null) {
+          positionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  positions_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          positions_ = null;
+        }
+        return positionsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:api.APIFindItemsInRangeByDistanceResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:api.APIFindItemsInRangeByDistanceResponse)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse();
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<APIFindItemsInRangeByDistanceResponse>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindItemsInRangeByDistanceResponse>() {
+      @java.lang.Override
+      public APIFindItemsInRangeByDistanceResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new APIFindItemsInRangeByDistanceResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<APIFindItemsInRangeByDistanceResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<APIFindItemsInRangeByDistanceResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIFindItemsInRangeByDistanceResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface APIFindEnemiesInRangeOfAttackByDistanceRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesInRangeOfAttackByDistanceRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return Whether the gameState field is set.
+     */
+    boolean hasGameState();
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return The gameState.
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameState getGameState();
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
+
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    boolean hasPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The playerName.
+     */
+    java.lang.String getPlayerName();
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The bytes for playerName.
+     */
+    com.google.protobuf.ByteString
+        getPlayerNameBytes();
+  }
+  /**
+   * Protobuf type {@code api.APIFindEnemiesInRangeOfAttackByDistanceRequest}
+   */
+  public static final class APIFindEnemiesInRangeOfAttackByDistanceRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesInRangeOfAttackByDistanceRequest)
+      APIFindEnemiesInRangeOfAttackByDistanceRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use APIFindEnemiesInRangeOfAttackByDistanceRequest.newBuilder() to construct.
+    private APIFindEnemiesInRangeOfAttackByDistanceRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private APIFindEnemiesInRangeOfAttackByDistanceRequest() {
+      playerName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new APIFindEnemiesInRangeOfAttackByDistanceRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private APIFindEnemiesInRangeOfAttackByDistanceRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mech.mania.engine.domain.model.GameStateProtos.GameState.Builder subBuilder = null;
+              if (gameState_ != null) {
+                subBuilder = gameState_.toBuilder();
+              }
+              gameState_ = input.readMessage(mech.mania.engine.domain.model.GameStateProtos.GameState.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(gameState_);
+                gameState_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerName_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.Builder.class);
+    }
+
+    public static final int GAMESTATE_FIELD_NUMBER = 1;
+    private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return Whether the gameState field is set.
+     */
+    @java.lang.Override
+    public boolean hasGameState() {
+      return gameState_ != null;
+    }
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return The gameState.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
+      return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
+    }
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
+      return getGameState();
+    }
+
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
+    }
+
+    public static final int PLAYER_NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object playerName_;
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The playerName.
+     */
+    @java.lang.Override
+    public java.lang.String getPlayerName() {
+      java.lang.Object ref = playerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The bytes for playerName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPlayerNameBytes() {
+      java.lang.Object ref = playerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (gameState_ != null) {
+        output.writeMessage(1, getGameState());
+      }
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
+      }
+      if (!getPlayerNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, playerName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (gameState_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getGameState());
+      }
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
+      }
+      if (!getPlayerNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, playerName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest) obj;
+
+      if (hasGameState() != other.hasGameState()) return false;
+      if (hasGameState()) {
+        if (!getGameState()
+            .equals(other.getGameState())) return false;
+      }
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
+      }
+      if (!getPlayerName()
+          .equals(other.getPlayerName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasGameState()) {
+        hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
+        hash = (53 * hash) + getGameState().hashCode();
+      }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
+      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code api.APIFindEnemiesInRangeOfAttackByDistanceRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesInRangeOfAttackByDistanceRequest)
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (gameStateBuilder_ == null) {
+          gameState_ = null;
+        } else {
+          gameState_ = null;
+          gameStateBuilder_ = null;
+        }
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+        playerName_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest(this);
+        if (gameStateBuilder_ == null) {
+          result.gameState_ = gameState_;
+        } else {
+          result.gameState_ = gameStateBuilder_.build();
+        }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
+        result.playerName_ = playerName_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest.getDefaultInstance()) return this;
+        if (other.hasGameState()) {
+          mergeGameState(other.getGameState());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
+        }
+        if (!other.getPlayerName().isEmpty()) {
+          playerName_ = other.playerName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> gameStateBuilder_;
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       * @return Whether the gameState field is set.
+       */
+      public boolean hasGameState() {
+        return gameStateBuilder_ != null || gameState_ != null;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       * @return The gameState.
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
+        if (gameStateBuilder_ == null) {
+          return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
+        } else {
+          return gameStateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder setGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (gameStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          gameState_ = value;
+          onChanged();
+        } else {
+          gameStateBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder setGameState(
+          mech.mania.engine.domain.model.GameStateProtos.GameState.Builder builderForValue) {
+        if (gameStateBuilder_ == null) {
+          gameState_ = builderForValue.build();
+          onChanged();
+        } else {
+          gameStateBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder mergeGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (gameStateBuilder_ == null) {
+          if (gameState_ != null) {
+            gameState_ =
+              mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder(gameState_).mergeFrom(value).buildPartial();
+          } else {
+            gameState_ = value;
+          }
+          onChanged();
+        } else {
+          gameStateBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder clearGameState() {
+        if (gameStateBuilder_ == null) {
+          gameState_ = null;
+          onChanged();
+        } else {
+          gameState_ = null;
+          gameStateBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState.Builder getGameStateBuilder() {
+        
+        onChanged();
+        return getGameStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
+        if (gameStateBuilder_ != null) {
+          return gameStateBuilder_.getMessageOrBuilder();
+        } else {
+          return gameState_ == null ?
+              mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
+        }
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> 
+          getGameStateFieldBuilder() {
+        if (gameStateBuilder_ == null) {
+          gameStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder>(
+                  getGameState(),
+                  getParentForChildren(),
+                  isClean());
+          gameState_ = null;
+        }
+        return gameStateBuilder_;
+      }
+
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
+       */
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
+      private java.lang.Object playerName_ = "";
+      /**
+       * <code>string player_name = 3;</code>
+       * @return The playerName.
+       */
+      public java.lang.String getPlayerName() {
+        java.lang.Object ref = playerName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @return The bytes for playerName.
+       */
+      public com.google.protobuf.ByteString
+          getPlayerNameBytes() {
+        java.lang.Object ref = playerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @param value The playerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPlayerName() {
+        
+        playerName_ = getDefaultInstance().getPlayerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string player_name = 3;</code>
        * @param value The bytes for playerName to set.
        * @return This builder for chaining.
        */
@@ -6888,48 +9811,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesInRangeRequest)
+      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesInRangeOfAttackByDistanceRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesInRangeRequest)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesInRangeOfAttackByDistanceRequest)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APIFindEnemiesInRangeRequest>
-        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesInRangeRequest>() {
+    private static final com.google.protobuf.Parser<APIFindEnemiesInRangeOfAttackByDistanceRequest>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesInRangeOfAttackByDistanceRequest>() {
       @java.lang.Override
-      public APIFindEnemiesInRangeRequest parsePartialFrom(
+      public APIFindEnemiesInRangeOfAttackByDistanceRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIFindEnemiesInRangeRequest(input, extensionRegistry);
+        return new APIFindEnemiesInRangeOfAttackByDistanceRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APIFindEnemiesInRangeRequest> parser() {
+    public static com.google.protobuf.Parser<APIFindEnemiesInRangeOfAttackByDistanceRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APIFindEnemiesInRangeRequest> getParserForType() {
+    public com.google.protobuf.Parser<APIFindEnemiesInRangeOfAttackByDistanceRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeRequest getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APIFindEnemiesInRangeResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesInRangeResponse)
+  public interface APIFindEnemiesInRangeOfAttackByDistanceResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindEnemiesInRangeOfAttackByDistanceResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6972,18 +9895,18 @@ public final class ApiProtos {
         int index);
   }
   /**
-   * Protobuf type {@code api.APIFindEnemiesInRangeResponse}
+   * Protobuf type {@code api.APIFindEnemiesInRangeOfAttackByDistanceResponse}
    */
-  public  static final class APIFindEnemiesInRangeResponse extends
+  public static final class APIFindEnemiesInRangeOfAttackByDistanceResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesInRangeResponse)
-      APIFindEnemiesInRangeResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindEnemiesInRangeOfAttackByDistanceResponse)
+      APIFindEnemiesInRangeOfAttackByDistanceResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APIFindEnemiesInRangeResponse.newBuilder() to construct.
-    private APIFindEnemiesInRangeResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindEnemiesInRangeOfAttackByDistanceResponse.newBuilder() to construct.
+    private APIFindEnemiesInRangeOfAttackByDistanceResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APIFindEnemiesInRangeResponse() {
+    private APIFindEnemiesInRangeOfAttackByDistanceResponse() {
       enemies_ = java.util.Collections.emptyList();
     }
 
@@ -6991,7 +9914,7 @@ public final class ApiProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APIFindEnemiesInRangeResponse();
+      return new APIFindEnemiesInRangeOfAttackByDistanceResponse();
     }
 
     @java.lang.Override
@@ -6999,7 +9922,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APIFindEnemiesInRangeResponse(
+    private APIFindEnemiesInRangeOfAttackByDistanceResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7064,15 +9987,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeResponse_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeResponse_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -7081,6 +10004,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -7088,12 +10012,14 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -7103,12 +10029,14 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesList() {
       return enemies_;
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
         getEnemiesOrBuilderList() {
       return enemies_;
@@ -7116,18 +10044,21 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public int getEnemiesCount() {
       return enemies_.size();
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getEnemies(int index) {
       return enemies_.get(index);
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesOrBuilder(
         int index) {
       return enemies_.get(index);
@@ -7180,10 +10111,10 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse) obj;
 
       if (hasStatus() != other.hasStatus()) return false;
       if (hasStatus()) {
@@ -7216,69 +10147,69 @@ public final class ApiProtos {
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7291,7 +10222,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7307,26 +10238,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APIFindEnemiesInRangeResponse}
+     * Protobuf type {@code api.APIFindEnemiesInRangeOfAttackByDistanceResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesInRangeResponse)
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindEnemiesInRangeOfAttackByDistanceResponse)
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeResponse_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7363,17 +10294,17 @@ public final class ApiProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse build() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7381,8 +10312,8 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse(this);
         int from_bitField0_ = bitField0_;
         if (statusBuilder_ == null) {
           result.status_ = status_;
@@ -7436,16 +10367,16 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           mergeStatus(other.getStatus());
         }
@@ -7490,11 +10421,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7876,48 +10807,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesInRangeResponse)
+      // @@protoc_insertion_point(builder_scope:api.APIFindEnemiesInRangeOfAttackByDistanceResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesInRangeResponse)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindEnemiesInRangeOfAttackByDistanceResponse)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APIFindEnemiesInRangeResponse>
-        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesInRangeResponse>() {
+    private static final com.google.protobuf.Parser<APIFindEnemiesInRangeOfAttackByDistanceResponse>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindEnemiesInRangeOfAttackByDistanceResponse>() {
       @java.lang.Override
-      public APIFindEnemiesInRangeResponse parsePartialFrom(
+      public APIFindEnemiesInRangeOfAttackByDistanceResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIFindEnemiesInRangeResponse(input, extensionRegistry);
+        return new APIFindEnemiesInRangeOfAttackByDistanceResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APIFindEnemiesInRangeResponse> parser() {
+    public static com.google.protobuf.Parser<APIFindEnemiesInRangeOfAttackByDistanceResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APIFindEnemiesInRangeResponse> getParserForType() {
+    public com.google.protobuf.Parser<APIFindEnemiesInRangeOfAttackByDistanceResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeResponse getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APICanBeAttackedRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APICanBeAttackedRequest)
+  public interface APIFindAllEnemiesHitRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindAllEnemiesHitRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7936,30 +10867,45 @@ public final class ApiProtos {
     mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
 
     /**
-     * <code>string player_name = 2;</code>
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    boolean hasPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>string player_name = 3;</code>
      * @return The playerName.
      */
     java.lang.String getPlayerName();
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
     com.google.protobuf.ByteString
         getPlayerNameBytes();
   }
   /**
-   * Protobuf type {@code api.APICanBeAttackedRequest}
+   * Protobuf type {@code api.APIFindAllEnemiesHitRequest}
    */
-  public  static final class APICanBeAttackedRequest extends
+  public static final class APIFindAllEnemiesHitRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APICanBeAttackedRequest)
-      APICanBeAttackedRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindAllEnemiesHitRequest)
+      APIFindAllEnemiesHitRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APICanBeAttackedRequest.newBuilder() to construct.
-    private APICanBeAttackedRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindAllEnemiesHitRequest.newBuilder() to construct.
+    private APIFindAllEnemiesHitRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APICanBeAttackedRequest() {
+    private APIFindAllEnemiesHitRequest() {
       playerName_ = "";
     }
 
@@ -7967,7 +10913,7 @@ public final class ApiProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APICanBeAttackedRequest();
+      return new APIFindAllEnemiesHitRequest();
     }
 
     @java.lang.Override
@@ -7975,7 +10921,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APICanBeAttackedRequest(
+    private APIFindAllEnemiesHitRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8007,6 +10953,19 @@ public final class ApiProtos {
               break;
             }
             case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               playerName_ = s;
@@ -8033,15 +10992,15 @@ public final class ApiProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedRequest_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedRequest_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.class, mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.Builder.class);
     }
 
     public static final int GAMESTATE_FIELD_NUMBER = 1;
@@ -8050,6 +11009,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -8057,22 +11017,51 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
 
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
+    }
+
+    public static final int PLAYER_NAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object playerName_;
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The playerName.
      */
+    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -8086,9 +11075,10 @@ public final class ApiProtos {
       }
     }
     /**
-     * <code>string player_name = 2;</code>
+     * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -8120,8 +11110,11 @@ public final class ApiProtos {
       if (gameState_ != null) {
         output.writeMessage(1, getGameState());
       }
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
+      }
       if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, playerName_);
       }
       unknownFields.writeTo(output);
     }
@@ -8136,8 +11129,12 @@ public final class ApiProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getGameState());
       }
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
+      }
       if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, playerName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8149,15 +11146,20 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest other = (mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest other = (mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest) obj;
 
       if (hasGameState() != other.hasGameState()) return false;
       if (hasGameState()) {
         if (!getGameState()
             .equals(other.getGameState())) return false;
+      }
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
       }
       if (!getPlayerName()
           .equals(other.getPlayerName())) return false;
@@ -8176,6 +11178,10 @@ public final class ApiProtos {
         hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
         hash = (53 * hash) + getGameState().hashCode();
       }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
       hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPlayerName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -8183,69 +11189,69 @@ public final class ApiProtos {
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8258,7 +11264,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8274,26 +11280,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APICanBeAttackedRequest}
+     * Protobuf type {@code api.APIFindAllEnemiesHitRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APICanBeAttackedRequest)
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindAllEnemiesHitRequest)
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedRequest_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.class, mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.class, mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8317,6 +11323,12 @@ public final class ApiProtos {
           gameState_ = null;
           gameStateBuilder_ = null;
         }
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
         playerName_ = "";
 
         return this;
@@ -8325,17 +11337,17 @@ public final class ApiProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedRequest_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitRequest_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest build() {
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8343,12 +11355,17 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest result = new mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest result = new mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest(this);
         if (gameStateBuilder_ == null) {
           result.gameState_ = gameState_;
         } else {
           result.gameState_ = gameStateBuilder_.build();
+        }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
         }
         result.playerName_ = playerName_;
         onBuilt();
@@ -8389,18 +11406,21 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest.getDefaultInstance()) return this;
         if (other.hasGameState()) {
           mergeGameState(other.getGameState());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
         }
         if (!other.getPlayerName().isEmpty()) {
           playerName_ = other.playerName_;
@@ -8421,11 +11441,11 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8554,9 +11574,128 @@ public final class ApiProtos {
         return gameStateBuilder_;
       }
 
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
+       */
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
       private java.lang.Object playerName_ = "";
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return The playerName.
        */
       public java.lang.String getPlayerName() {
@@ -8572,7 +11711,7 @@ public final class ApiProtos {
         }
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return The bytes for playerName.
        */
       public com.google.protobuf.ByteString
@@ -8589,7 +11728,7 @@ public final class ApiProtos {
         }
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @param value The playerName to set.
        * @return This builder for chaining.
        */
@@ -8604,7 +11743,7 @@ public final class ApiProtos {
         return this;
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearPlayerName() {
@@ -8614,7 +11753,7 @@ public final class ApiProtos {
         return this;
       }
       /**
-       * <code>string player_name = 2;</code>
+       * <code>string player_name = 3;</code>
        * @param value The bytes for playerName to set.
        * @return This builder for chaining.
        */
@@ -8642,48 +11781,48 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APICanBeAttackedRequest)
+      // @@protoc_insertion_point(builder_scope:api.APIFindAllEnemiesHitRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APICanBeAttackedRequest)
-    private static final mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIFindAllEnemiesHitRequest)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APICanBeAttackedRequest>
-        PARSER = new com.google.protobuf.AbstractParser<APICanBeAttackedRequest>() {
+    private static final com.google.protobuf.Parser<APIFindAllEnemiesHitRequest>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindAllEnemiesHitRequest>() {
       @java.lang.Override
-      public APICanBeAttackedRequest parsePartialFrom(
+      public APIFindAllEnemiesHitRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APICanBeAttackedRequest(input, extensionRegistry);
+        return new APIFindAllEnemiesHitRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APICanBeAttackedRequest> parser() {
+    public static com.google.protobuf.Parser<APIFindAllEnemiesHitRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APICanBeAttackedRequest> getParserForType() {
+    public com.google.protobuf.Parser<APIFindAllEnemiesHitRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedRequest getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface APICanBeAttackedResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APICanBeAttackedResponse)
+  public interface APIFindAllEnemiesHitResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIFindAllEnemiesHitResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -8702,31 +11841,50 @@ public final class ApiProtos {
     mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder();
 
     /**
-     * <code>bool canBeAttacked = 2;</code>
-     * @return The canBeAttacked.
+     * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    boolean getCanBeAttacked();
+    java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> 
+        getEnemiesHitList();
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index);
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    int getEnemiesHitCount();
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
+        getEnemiesHitOrBuilderList();
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code api.APICanBeAttackedResponse}
+   * Protobuf type {@code api.APIFindAllEnemiesHitResponse}
    */
-  public  static final class APICanBeAttackedResponse extends
+  public static final class APIFindAllEnemiesHitResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APICanBeAttackedResponse)
-      APICanBeAttackedResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:api.APIFindAllEnemiesHitResponse)
+      APIFindAllEnemiesHitResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use APICanBeAttackedResponse.newBuilder() to construct.
-    private APICanBeAttackedResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use APIFindAllEnemiesHitResponse.newBuilder() to construct.
+    private APIFindAllEnemiesHitResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private APICanBeAttackedResponse() {
+    private APIFindAllEnemiesHitResponse() {
+      enemiesHit_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new APICanBeAttackedResponse();
+      return new APIFindAllEnemiesHitResponse();
     }
 
     @java.lang.Override
@@ -8734,7 +11892,7 @@ public final class ApiProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private APICanBeAttackedResponse(
+    private APIFindAllEnemiesHitResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8742,6 +11900,7 @@ public final class ApiProtos {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -8765,9 +11924,13 @@ public final class ApiProtos {
 
               break;
             }
-            case 16: {
-
-              canBeAttacked_ = input.readBool();
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                enemiesHit_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Character>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              enemiesHit_.add(
+                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Character.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -8785,21 +11948,24 @@ public final class ApiProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          enemiesHit_ = java.util.Collections.unmodifiableList(enemiesHit_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedResponse_descriptor;
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedResponse_fieldAccessorTable
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.class, mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.Builder.class);
+              mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -8808,6 +11974,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -8815,24 +11982,56 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
 
-    public static final int CANBEATTACKED_FIELD_NUMBER = 2;
-    private boolean canBeAttacked_;
+    public static final int ENEMIES_HIT_FIELD_NUMBER = 2;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> enemiesHit_;
     /**
-     * <code>bool canBeAttacked = 2;</code>
-     * @return The canBeAttacked.
+     * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    public boolean getCanBeAttacked() {
-      return canBeAttacked_;
+    @java.lang.Override
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesHitList() {
+      return enemiesHit_;
+    }
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
+        getEnemiesHitOrBuilderList() {
+      return enemiesHit_;
+    }
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    @java.lang.Override
+    public int getEnemiesHitCount() {
+      return enemiesHit_.size();
+    }
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index) {
+      return enemiesHit_.get(index);
+    }
+    /**
+     * <code>repeated .character.Character enemies_hit = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
+        int index) {
+      return enemiesHit_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8852,8 +12051,8 @@ public final class ApiProtos {
       if (status_ != null) {
         output.writeMessage(1, getStatus());
       }
-      if (canBeAttacked_ != false) {
-        output.writeBool(2, canBeAttacked_);
+      for (int i = 0; i < enemiesHit_.size(); i++) {
+        output.writeMessage(2, enemiesHit_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -8868,9 +12067,9 @@ public final class ApiProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getStatus());
       }
-      if (canBeAttacked_ != false) {
+      for (int i = 0; i < enemiesHit_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, canBeAttacked_);
+          .computeMessageSize(2, enemiesHit_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8882,18 +12081,18 @@ public final class ApiProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse)) {
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse)) {
         return super.equals(obj);
       }
-      mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse other = (mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse) obj;
+      mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse other = (mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse) obj;
 
       if (hasStatus() != other.hasStatus()) return false;
       if (hasStatus()) {
         if (!getStatus()
             .equals(other.getStatus())) return false;
       }
-      if (getCanBeAttacked()
-          != other.getCanBeAttacked()) return false;
+      if (!getEnemiesHitList()
+          .equals(other.getEnemiesHitList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -8909,77 +12108,78 @@ public final class ApiProtos {
         hash = (37 * hash) + STATUS_FIELD_NUMBER;
         hash = (53 * hash) + getStatus().hashCode();
       }
-      hash = (37 * hash) + CANBEATTACKED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getCanBeAttacked());
+      if (getEnemiesHitCount() > 0) {
+        hash = (37 * hash) + ENEMIES_HIT_FIELD_NUMBER;
+        hash = (53 * hash) + getEnemiesHitList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(byte[] data)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseDelimitedFrom(java.io.InputStream input)
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseDelimitedFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parseFrom(
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8992,7 +12192,7 @@ public final class ApiProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse prototype) {
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9008,26 +12208,26 @@ public final class ApiProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code api.APICanBeAttackedResponse}
+     * Protobuf type {@code api.APIFindAllEnemiesHitResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APICanBeAttackedResponse)
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:api.APIFindAllEnemiesHitResponse)
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedResponse_fieldAccessorTable
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.class, mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.Builder.class);
+                mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.class, mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.Builder.class);
       }
 
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.newBuilder()
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9040,6 +12240,7 @@ public final class ApiProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getEnemiesHitFieldBuilder();
         }
       }
       @java.lang.Override
@@ -9051,25 +12252,29 @@ public final class ApiProtos {
           status_ = null;
           statusBuilder_ = null;
         }
-        canBeAttacked_ = false;
-
+        if (enemiesHitBuilder_ == null) {
+          enemiesHit_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          enemiesHitBuilder_.clear();
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APICanBeAttackedResponse_descriptor;
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIFindAllEnemiesHitResponse_descriptor;
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.getDefaultInstance();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse build() {
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse result = buildPartial();
+      public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse build() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9077,14 +12282,23 @@ public final class ApiProtos {
       }
 
       @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse result = new mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse(this);
+      public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse result = new mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse(this);
+        int from_bitField0_ = bitField0_;
         if (statusBuilder_ == null) {
           result.status_ = status_;
         } else {
           result.status_ = statusBuilder_.build();
         }
-        result.canBeAttacked_ = canBeAttacked_;
+        if (enemiesHitBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            enemiesHit_ = java.util.Collections.unmodifiableList(enemiesHit_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.enemiesHit_ = enemiesHit_;
+        } else {
+          result.enemiesHit_ = enemiesHitBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -9123,21 +12337,44 @@ public final class ApiProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse)other);
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           mergeStatus(other.getStatus());
         }
-        if (other.getCanBeAttacked() != false) {
-          setCanBeAttacked(other.getCanBeAttacked());
+        if (enemiesHitBuilder_ == null) {
+          if (!other.enemiesHit_.isEmpty()) {
+            if (enemiesHit_.isEmpty()) {
+              enemiesHit_ = other.enemiesHit_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEnemiesHitIsMutable();
+              enemiesHit_.addAll(other.enemiesHit_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.enemiesHit_.isEmpty()) {
+            if (enemiesHitBuilder_.isEmpty()) {
+              enemiesHitBuilder_.dispose();
+              enemiesHitBuilder_ = null;
+              enemiesHit_ = other.enemiesHit_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              enemiesHitBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEnemiesHitFieldBuilder() : null;
+            } else {
+              enemiesHitBuilder_.addAllMessages(other.enemiesHit_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9154,11 +12391,1887 @@ public final class ApiProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse parsedMessage = null;
+        mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse) e.getUnfinishedMessage();
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> statusBuilder_;
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       * @return Whether the status field is set.
+       */
+      public boolean hasStatus() {
+        return statusBuilder_ != null || status_ != null;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       * @return The status.
+       */
+      public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
+        if (statusBuilder_ == null) {
+          return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
+        } else {
+          return statusBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder setStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
+        if (statusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          status_ = value;
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder setStatus(
+          mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder builderForValue) {
+        if (statusBuilder_ == null) {
+          status_ = builderForValue.build();
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder mergeStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
+        if (statusBuilder_ == null) {
+          if (status_ != null) {
+            status_ =
+              mech.mania.engine.domain.model.ApiProtos.APIStatus.newBuilder(status_).mergeFrom(value).buildPartial();
+          } else {
+            status_ = value;
+          }
+          onChanged();
+        } else {
+          statusBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public Builder clearStatus() {
+        if (statusBuilder_ == null) {
+          status_ = null;
+          onChanged();
+        } else {
+          status_ = null;
+          statusBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder getStatusBuilder() {
+        
+        onChanged();
+        return getStatusFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
+        if (statusBuilder_ != null) {
+          return statusBuilder_.getMessageOrBuilder();
+        } else {
+          return status_ == null ?
+              mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
+        }
+      }
+      /**
+       * <code>.api.APIStatus status = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> 
+          getStatusFieldBuilder() {
+        if (statusBuilder_ == null) {
+          statusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder>(
+                  getStatus(),
+                  getParentForChildren(),
+                  isClean());
+          status_ = null;
+        }
+        return statusBuilder_;
+      }
+
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> enemiesHit_ =
+        java.util.Collections.emptyList();
+      private void ensureEnemiesHitIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          enemiesHit_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Character>(enemiesHit_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Character, mech.mania.engine.domain.model.CharacterProtos.Character.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> enemiesHitBuilder_;
+
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesHitList() {
+        if (enemiesHitBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(enemiesHit_);
+        } else {
+          return enemiesHitBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public int getEnemiesHitCount() {
+        if (enemiesHitBuilder_ == null) {
+          return enemiesHit_.size();
+        } else {
+          return enemiesHitBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index) {
+        if (enemiesHitBuilder_ == null) {
+          return enemiesHit_.get(index);
+        } else {
+          return enemiesHitBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder setEnemiesHit(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Character value) {
+        if (enemiesHitBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.set(index, value);
+          onChanged();
+        } else {
+          enemiesHitBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder setEnemiesHit(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Character.Builder builderForValue) {
+        if (enemiesHitBuilder_ == null) {
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          enemiesHitBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder addEnemiesHit(mech.mania.engine.domain.model.CharacterProtos.Character value) {
+        if (enemiesHitBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.add(value);
+          onChanged();
+        } else {
+          enemiesHitBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder addEnemiesHit(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Character value) {
+        if (enemiesHitBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.add(index, value);
+          onChanged();
+        } else {
+          enemiesHitBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder addEnemiesHit(
+          mech.mania.engine.domain.model.CharacterProtos.Character.Builder builderForValue) {
+        if (enemiesHitBuilder_ == null) {
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.add(builderForValue.build());
+          onChanged();
+        } else {
+          enemiesHitBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder addEnemiesHit(
+          int index, mech.mania.engine.domain.model.CharacterProtos.Character.Builder builderForValue) {
+        if (enemiesHitBuilder_ == null) {
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          enemiesHitBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder addAllEnemiesHit(
+          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Character> values) {
+        if (enemiesHitBuilder_ == null) {
+          ensureEnemiesHitIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, enemiesHit_);
+          onChanged();
+        } else {
+          enemiesHitBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder clearEnemiesHit() {
+        if (enemiesHitBuilder_ == null) {
+          enemiesHit_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          enemiesHitBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public Builder removeEnemiesHit(int index) {
+        if (enemiesHitBuilder_ == null) {
+          ensureEnemiesHitIsMutable();
+          enemiesHit_.remove(index);
+          onChanged();
+        } else {
+          enemiesHitBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Character.Builder getEnemiesHitBuilder(
+          int index) {
+        return getEnemiesHitFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
+          int index) {
+        if (enemiesHitBuilder_ == null) {
+          return enemiesHit_.get(index);  } else {
+          return enemiesHitBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
+           getEnemiesHitOrBuilderList() {
+        if (enemiesHitBuilder_ != null) {
+          return enemiesHitBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(enemiesHit_);
+        }
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Character.Builder addEnemiesHitBuilder() {
+        return getEnemiesHitFieldBuilder().addBuilder(
+            mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Character.Builder addEnemiesHitBuilder(
+          int index) {
+        return getEnemiesHitFieldBuilder().addBuilder(
+            index, mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .character.Character enemies_hit = 2;</code>
+       */
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character.Builder> 
+           getEnemiesHitBuilderList() {
+        return getEnemiesHitFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Character, mech.mania.engine.domain.model.CharacterProtos.Character.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
+          getEnemiesHitFieldBuilder() {
+        if (enemiesHitBuilder_ == null) {
+          enemiesHitBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Character, mech.mania.engine.domain.model.CharacterProtos.Character.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder>(
+                  enemiesHit_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          enemiesHit_ = null;
+        }
+        return enemiesHitBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:api.APIFindAllEnemiesHitResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:api.APIFindAllEnemiesHitResponse)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse();
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<APIFindAllEnemiesHitResponse>
+        PARSER = new com.google.protobuf.AbstractParser<APIFindAllEnemiesHitResponse>() {
+      @java.lang.Override
+      public APIFindAllEnemiesHitResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new APIFindAllEnemiesHitResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<APIFindAllEnemiesHitResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<APIFindAllEnemiesHitResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIFindAllEnemiesHitResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface APIInRangeOfAttackRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIInRangeOfAttackRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return Whether the gameState field is set.
+     */
+    boolean hasGameState();
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return The gameState.
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameState getGameState();
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     */
+    mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
+
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    boolean hasPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The playerName.
+     */
+    java.lang.String getPlayerName();
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The bytes for playerName.
+     */
+    com.google.protobuf.ByteString
+        getPlayerNameBytes();
+  }
+  /**
+   * Protobuf type {@code api.APIInRangeOfAttackRequest}
+   */
+  public static final class APIInRangeOfAttackRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:api.APIInRangeOfAttackRequest)
+      APIInRangeOfAttackRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use APIInRangeOfAttackRequest.newBuilder() to construct.
+    private APIInRangeOfAttackRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private APIInRangeOfAttackRequest() {
+      playerName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new APIInRangeOfAttackRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private APIInRangeOfAttackRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mech.mania.engine.domain.model.GameStateProtos.GameState.Builder subBuilder = null;
+              if (gameState_ != null) {
+                subBuilder = gameState_.toBuilder();
+              }
+              gameState_ = input.readMessage(mech.mania.engine.domain.model.GameStateProtos.GameState.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(gameState_);
+                gameState_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              playerName_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.class, mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.Builder.class);
+    }
+
+    public static final int GAMESTATE_FIELD_NUMBER = 1;
+    private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return Whether the gameState field is set.
+     */
+    @java.lang.Override
+    public boolean hasGameState() {
+      return gameState_ != null;
+    }
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     * @return The gameState.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
+      return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
+    }
+    /**
+     * <code>.game.GameState gameState = 1;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
+      return getGameState();
+    }
+
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
+     */
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
+    }
+
+    public static final int PLAYER_NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object playerName_;
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The playerName.
+     */
+    @java.lang.Override
+    public java.lang.String getPlayerName() {
+      java.lang.Object ref = playerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        playerName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string player_name = 3;</code>
+     * @return The bytes for playerName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPlayerNameBytes() {
+      java.lang.Object ref = playerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        playerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (gameState_ != null) {
+        output.writeMessage(1, getGameState());
+      }
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
+      }
+      if (!getPlayerNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, playerName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (gameState_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getGameState());
+      }
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
+      }
+      if (!getPlayerNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, playerName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest other = (mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest) obj;
+
+      if (hasGameState() != other.hasGameState()) return false;
+      if (hasGameState()) {
+        if (!getGameState()
+            .equals(other.getGameState())) return false;
+      }
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
+      }
+      if (!getPlayerName()
+          .equals(other.getPlayerName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasGameState()) {
+        hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
+        hash = (53 * hash) + getGameState().hashCode();
+      }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
+      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code api.APIInRangeOfAttackRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:api.APIInRangeOfAttackRequest)
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.class, mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (gameStateBuilder_ == null) {
+          gameState_ = null;
+        } else {
+          gameState_ = null;
+          gameStateBuilder_ = null;
+        }
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+        playerName_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest build() {
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest result = new mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest(this);
+        if (gameStateBuilder_ == null) {
+          result.gameState_ = gameState_;
+        } else {
+          result.gameState_ = gameStateBuilder_.build();
+        }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
+        result.playerName_ = playerName_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest.getDefaultInstance()) return this;
+        if (other.hasGameState()) {
+          mergeGameState(other.getGameState());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
+        }
+        if (!other.getPlayerName().isEmpty()) {
+          playerName_ = other.playerName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> gameStateBuilder_;
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       * @return Whether the gameState field is set.
+       */
+      public boolean hasGameState() {
+        return gameStateBuilder_ != null || gameState_ != null;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       * @return The gameState.
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
+        if (gameStateBuilder_ == null) {
+          return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
+        } else {
+          return gameStateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder setGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (gameStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          gameState_ = value;
+          onChanged();
+        } else {
+          gameStateBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder setGameState(
+          mech.mania.engine.domain.model.GameStateProtos.GameState.Builder builderForValue) {
+        if (gameStateBuilder_ == null) {
+          gameState_ = builderForValue.build();
+          onChanged();
+        } else {
+          gameStateBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder mergeGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
+        if (gameStateBuilder_ == null) {
+          if (gameState_ != null) {
+            gameState_ =
+              mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder(gameState_).mergeFrom(value).buildPartial();
+          } else {
+            gameState_ = value;
+          }
+          onChanged();
+        } else {
+          gameStateBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public Builder clearGameState() {
+        if (gameStateBuilder_ == null) {
+          gameState_ = null;
+          onChanged();
+        } else {
+          gameState_ = null;
+          gameStateBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameState.Builder getGameStateBuilder() {
+        
+        onChanged();
+        return getGameStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
+        if (gameStateBuilder_ != null) {
+          return gameStateBuilder_.getMessageOrBuilder();
+        } else {
+          return gameState_ == null ?
+              mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
+        }
+      }
+      /**
+       * <code>.game.GameState gameState = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> 
+          getGameStateFieldBuilder() {
+        if (gameStateBuilder_ == null) {
+          gameStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder>(
+                  getGameState(),
+                  getParentForChildren(),
+                  isClean());
+          gameState_ = null;
+        }
+        return gameStateBuilder_;
+      }
+
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
+       */
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+        }
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
+      private java.lang.Object playerName_ = "";
+      /**
+       * <code>string player_name = 3;</code>
+       * @return The playerName.
+       */
+      public java.lang.String getPlayerName() {
+        java.lang.Object ref = playerName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @return The bytes for playerName.
+       */
+      public com.google.protobuf.ByteString
+          getPlayerNameBytes() {
+        java.lang.Object ref = playerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @param value The playerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        playerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPlayerName() {
+        
+        playerName_ = getDefaultInstance().getPlayerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string player_name = 3;</code>
+       * @param value The bytes for playerName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        playerName_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:api.APIInRangeOfAttackRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:api.APIInRangeOfAttackRequest)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest();
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<APIInRangeOfAttackRequest>
+        PARSER = new com.google.protobuf.AbstractParser<APIInRangeOfAttackRequest>() {
+      @java.lang.Override
+      public APIInRangeOfAttackRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new APIInRangeOfAttackRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<APIInRangeOfAttackRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<APIInRangeOfAttackRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface APIInRangeOfAttackResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:api.APIInRangeOfAttackResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    boolean hasStatus();
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return The status.
+     */
+    mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus();
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     */
+    mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder();
+
+    /**
+     * <code>bool inRangeOfAttack = 2;</code>
+     * @return The inRangeOfAttack.
+     */
+    boolean getInRangeOfAttack();
+  }
+  /**
+   * Protobuf type {@code api.APIInRangeOfAttackResponse}
+   */
+  public static final class APIInRangeOfAttackResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:api.APIInRangeOfAttackResponse)
+      APIInRangeOfAttackResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use APIInRangeOfAttackResponse.newBuilder() to construct.
+    private APIInRangeOfAttackResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private APIInRangeOfAttackResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new APIInRangeOfAttackResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private APIInRangeOfAttackResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder subBuilder = null;
+              if (status_ != null) {
+                subBuilder = status_.toBuilder();
+              }
+              status_ = input.readMessage(mech.mania.engine.domain.model.ApiProtos.APIStatus.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(status_);
+                status_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 16: {
+
+              inRangeOfAttack_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.class, mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    @java.lang.Override
+    public boolean hasStatus() {
+      return status_ != null;
+    }
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
+      return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
+    }
+    /**
+     * <code>.api.APIStatus status = 1;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
+      return getStatus();
+    }
+
+    public static final int INRANGEOFATTACK_FIELD_NUMBER = 2;
+    private boolean inRangeOfAttack_;
+    /**
+     * <code>bool inRangeOfAttack = 2;</code>
+     * @return The inRangeOfAttack.
+     */
+    @java.lang.Override
+    public boolean getInRangeOfAttack() {
+      return inRangeOfAttack_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (status_ != null) {
+        output.writeMessage(1, getStatus());
+      }
+      if (inRangeOfAttack_ != false) {
+        output.writeBool(2, inRangeOfAttack_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (status_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getStatus());
+      }
+      if (inRangeOfAttack_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, inRangeOfAttack_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse other = (mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse) obj;
+
+      if (hasStatus() != other.hasStatus()) return false;
+      if (hasStatus()) {
+        if (!getStatus()
+            .equals(other.getStatus())) return false;
+      }
+      if (getInRangeOfAttack()
+          != other.getInRangeOfAttack()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStatus()) {
+        hash = (37 * hash) + STATUS_FIELD_NUMBER;
+        hash = (53 * hash) + getStatus().hashCode();
+      }
+      hash = (37 * hash) + INRANGEOFATTACK_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getInRangeOfAttack());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code api.APIInRangeOfAttackResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:api.APIInRangeOfAttackResponse)
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.class, mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (statusBuilder_ == null) {
+          status_ = null;
+        } else {
+          status_ = null;
+          statusBuilder_ = null;
+        }
+        inRangeOfAttack_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIInRangeOfAttackResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse build() {
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse buildPartial() {
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse result = new mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse(this);
+        if (statusBuilder_ == null) {
+          result.status_ = status_;
+        } else {
+          result.status_ = statusBuilder_.build();
+        }
+        result.inRangeOfAttack_ = inRangeOfAttack_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse) {
+          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse other) {
+        if (other == mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          mergeStatus(other.getStatus());
+        }
+        if (other.getInRangeOfAttack() != false) {
+          setInRangeOfAttack(other.getInRangeOfAttack());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9287,32 +14400,33 @@ public final class ApiProtos {
         return statusBuilder_;
       }
 
-      private boolean canBeAttacked_ ;
+      private boolean inRangeOfAttack_ ;
       /**
-       * <code>bool canBeAttacked = 2;</code>
-       * @return The canBeAttacked.
+       * <code>bool inRangeOfAttack = 2;</code>
+       * @return The inRangeOfAttack.
        */
-      public boolean getCanBeAttacked() {
-        return canBeAttacked_;
+      @java.lang.Override
+      public boolean getInRangeOfAttack() {
+        return inRangeOfAttack_;
       }
       /**
-       * <code>bool canBeAttacked = 2;</code>
-       * @param value The canBeAttacked to set.
+       * <code>bool inRangeOfAttack = 2;</code>
+       * @param value The inRangeOfAttack to set.
        * @return This builder for chaining.
        */
-      public Builder setCanBeAttacked(boolean value) {
+      public Builder setInRangeOfAttack(boolean value) {
         
-        canBeAttacked_ = value;
+        inRangeOfAttack_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bool canBeAttacked = 2;</code>
+       * <code>bool inRangeOfAttack = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCanBeAttacked() {
+      public Builder clearInRangeOfAttack() {
         
-        canBeAttacked_ = false;
+        inRangeOfAttack_ = false;
         onChanged();
         return this;
       }
@@ -9329,41 +14443,41 @@ public final class ApiProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:api.APICanBeAttackedResponse)
+      // @@protoc_insertion_point(builder_scope:api.APIInRangeOfAttackResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:api.APICanBeAttackedResponse)
-    private static final mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:api.APIInRangeOfAttackResponse)
+    private static final mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse();
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse();
     }
 
-    public static mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse getDefaultInstance() {
+    public static mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<APICanBeAttackedResponse>
-        PARSER = new com.google.protobuf.AbstractParser<APICanBeAttackedResponse>() {
+    private static final com.google.protobuf.Parser<APIInRangeOfAttackResponse>
+        PARSER = new com.google.protobuf.AbstractParser<APIInRangeOfAttackResponse>() {
       @java.lang.Override
-      public APICanBeAttackedResponse parsePartialFrom(
+      public APIInRangeOfAttackResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APICanBeAttackedResponse(input, extensionRegistry);
+        return new APIInRangeOfAttackResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<APICanBeAttackedResponse> parser() {
+    public static com.google.protobuf.Parser<APIInRangeOfAttackResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<APICanBeAttackedResponse> getParserForType() {
+    public com.google.protobuf.Parser<APIInRangeOfAttackResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APICanBeAttackedResponse getDefaultInstanceForType() {
+    public mech.mania.engine.domain.model.ApiProtos.APIInRangeOfAttackResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9389,21 +14503,24 @@ public final class ApiProtos {
     mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
 
     /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
      */
-    java.lang.String getPlayerName();
+    boolean hasPosition();
     /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
      */
-    com.google.protobuf.ByteString
-        getPlayerNameBytes();
+    mech.mania.engine.domain.model.CharacterProtos.Position getPosition();
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder();
   }
   /**
    * Protobuf type {@code api.APIFindClosestPortalRequest}
    */
-  public  static final class APIFindClosestPortalRequest extends
+  public static final class APIFindClosestPortalRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindClosestPortalRequest)
       APIFindClosestPortalRequestOrBuilder {
@@ -9413,7 +14530,6 @@ public final class ApiProtos {
       super(builder);
     }
     private APIFindClosestPortalRequest() {
-      playerName_ = "";
     }
 
     @java.lang.Override
@@ -9460,9 +14576,16 @@ public final class ApiProtos {
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (position_ != null) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
 
-              playerName_ = s;
               break;
             }
             default: {
@@ -9503,6 +14626,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -9510,50 +14634,42 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
 
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object playerName_;
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position position_;
     /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return Whether the position field is set.
      */
-    public java.lang.String getPlayerName() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerName_ = s;
-        return s;
-      }
+    @java.lang.Override
+    public boolean hasPosition() {
+      return position_ != null;
     }
     /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
+     * <code>.character.Position position = 2;</code>
+     * @return The position.
      */
-    public com.google.protobuf.ByteString
-        getPlayerNameBytes() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+      return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
+    }
+    /**
+     * <code>.character.Position position = 2;</code>
+     */
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+      return getPosition();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9573,8 +14689,8 @@ public final class ApiProtos {
       if (gameState_ != null) {
         output.writeMessage(1, getGameState());
       }
-      if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
+      if (position_ != null) {
+        output.writeMessage(2, getPosition());
       }
       unknownFields.writeTo(output);
     }
@@ -9589,8 +14705,9 @@ public final class ApiProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getGameState());
       }
-      if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
+      if (position_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPosition());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9612,8 +14729,11 @@ public final class ApiProtos {
         if (!getGameState()
             .equals(other.getGameState())) return false;
       }
-      if (!getPlayerName()
-          .equals(other.getPlayerName())) return false;
+      if (hasPosition() != other.hasPosition()) return false;
+      if (hasPosition()) {
+        if (!getPosition()
+            .equals(other.getPosition())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9629,8 +14749,10 @@ public final class ApiProtos {
         hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
         hash = (53 * hash) + getGameState().hashCode();
       }
-      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerName().hashCode();
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9770,8 +14892,12 @@ public final class ApiProtos {
           gameState_ = null;
           gameStateBuilder_ = null;
         }
-        playerName_ = "";
-
+        if (positionBuilder_ == null) {
+          position_ = null;
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
         return this;
       }
 
@@ -9803,7 +14929,11 @@ public final class ApiProtos {
         } else {
           result.gameState_ = gameStateBuilder_.build();
         }
-        result.playerName_ = playerName_;
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -9855,9 +14985,8 @@ public final class ApiProtos {
         if (other.hasGameState()) {
           mergeGameState(other.getGameState());
         }
-        if (!other.getPlayerName().isEmpty()) {
-          playerName_ = other.playerName_;
-          onChanged();
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10007,80 +15136,123 @@ public final class ApiProtos {
         return gameStateBuilder_;
       }
 
-      private java.lang.Object playerName_ = "";
+      private mech.mania.engine.domain.model.CharacterProtos.Position position_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> positionBuilder_;
       /**
-       * <code>string player_name = 2;</code>
-       * @return The playerName.
+       * <code>.character.Position position = 2;</code>
+       * @return Whether the position field is set.
        */
-      public java.lang.String getPlayerName() {
-        java.lang.Object ref = playerName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerName_ = s;
-          return s;
+      public boolean hasPosition() {
+        return positionBuilder_ != null || position_ != null;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       * @return The position.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
         } else {
-          return (java.lang.String) ref;
+          return positionBuilder_.getMessage();
         }
       }
       /**
-       * <code>string player_name = 2;</code>
-       * @return The bytes for playerName.
+       * <code>.character.Position position = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getPlayerNameBytes() {
-        java.lang.Object ref = playerName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerName_ = b;
-          return b;
+      public Builder setPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          positionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder setPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder mergePosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (positionBuilder_ == null) {
+          if (position_ != null) {
+            position_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = null;
+          onChanged();
+        } else {
+          position_ = null;
+          positionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getPositionBuilder() {
+        
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.character.Position position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
         }
       }
       /**
-       * <code>string player_name = 2;</code>
-       * @param value The playerName to set.
-       * @return This builder for chaining.
+       * <code>.character.Position position = 2;</code>
        */
-      public Builder setPlayerName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerName() {
-        
-        playerName_ = getDefaultInstance().getPlayerName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The bytes for playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerName_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -10172,7 +15344,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindClosestPortalResponse}
    */
-  public  static final class APIFindClosestPortalResponse extends
+  public static final class APIFindClosestPortalResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindClosestPortalResponse)
       APIFindClosestPortalResponseOrBuilder {
@@ -10278,6 +15450,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -10285,12 +15458,14 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -10301,6 +15476,7 @@ public final class ApiProtos {
      * <code>.character.Position portal = 2;</code>
      * @return Whether the portal field is set.
      */
+    @java.lang.Override
     public boolean hasPortal() {
       return portal_ != null;
     }
@@ -10308,12 +15484,14 @@ public final class ApiProtos {
      * <code>.character.Position portal = 2;</code>
      * @return The portal.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPortal() {
       return portal_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : portal_;
     }
     /**
      * <code>.character.Position portal = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPortalOrBuilder() {
       return getPortal();
     }
@@ -10975,7 +16153,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APILeaderBoardRequest}
    */
-  public  static final class APILeaderBoardRequest extends
+  public static final class APILeaderBoardRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APILeaderBoardRequest)
       APILeaderBoardRequestOrBuilder {
@@ -11068,6 +16246,7 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -11075,12 +16254,14 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -11617,7 +16798,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APILeaderBoardResponse}
    */
-  public  static final class APILeaderBoardResponse extends
+  public static final class APILeaderBoardResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APILeaderBoardResponse)
       APILeaderBoardResponseOrBuilder {
@@ -11724,6 +16905,7 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
+    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -11731,12 +16913,14 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -11746,12 +16930,14 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Player> getLeaderBoardList() {
       return leaderBoard_;
     }
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerOrBuilder> 
         getLeaderBoardOrBuilderList() {
       return leaderBoard_;
@@ -11759,18 +16945,21 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
+    @java.lang.Override
     public int getLeaderBoardCount() {
       return leaderBoard_.size();
     }
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Player getLeaderBoard(int index) {
       return leaderBoard_.get(index);
     }
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PlayerOrBuilder getLeaderBoardOrBuilder(
         int index) {
       return leaderBoard_.get(index);
@@ -12559,3782 +17748,6 @@ public final class ApiProtos {
 
   }
 
-  public interface APIAllEnemiesHitRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIAllEnemiesHitRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return Whether the gameState field is set.
-     */
-    boolean hasGameState();
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return The gameState.
-     */
-    mech.mania.engine.domain.model.GameStateProtos.GameState getGameState();
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     */
-    mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
-
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
-     */
-    java.lang.String getPlayerName();
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
-     */
-    com.google.protobuf.ByteString
-        getPlayerNameBytes();
-
-    /**
-     * <code>.character.Position target_spot = 3;</code>
-     * @return Whether the targetSpot field is set.
-     */
-    boolean hasTargetSpot();
-    /**
-     * <code>.character.Position target_spot = 3;</code>
-     * @return The targetSpot.
-     */
-    mech.mania.engine.domain.model.CharacterProtos.Position getTargetSpot();
-    /**
-     * <code>.character.Position target_spot = 3;</code>
-     */
-    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetSpotOrBuilder();
-  }
-  /**
-   * Protobuf type {@code api.APIAllEnemiesHitRequest}
-   */
-  public  static final class APIAllEnemiesHitRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIAllEnemiesHitRequest)
-      APIAllEnemiesHitRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use APIAllEnemiesHitRequest.newBuilder() to construct.
-    private APIAllEnemiesHitRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private APIAllEnemiesHitRequest() {
-      playerName_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new APIAllEnemiesHitRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private APIAllEnemiesHitRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              mech.mania.engine.domain.model.GameStateProtos.GameState.Builder subBuilder = null;
-              if (gameState_ != null) {
-                subBuilder = gameState_.toBuilder();
-              }
-              gameState_ = input.readMessage(mech.mania.engine.domain.model.GameStateProtos.GameState.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(gameState_);
-                gameState_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              playerName_ = s;
-              break;
-            }
-            case 26: {
-              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
-              if (targetSpot_ != null) {
-                subBuilder = targetSpot_.toBuilder();
-              }
-              targetSpot_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(targetSpot_);
-                targetSpot_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.class, mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.Builder.class);
-    }
-
-    public static final int GAMESTATE_FIELD_NUMBER = 1;
-    private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return Whether the gameState field is set.
-     */
-    public boolean hasGameState() {
-      return gameState_ != null;
-    }
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return The gameState.
-     */
-    public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
-      return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-    }
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     */
-    public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
-      return getGameState();
-    }
-
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object playerName_;
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
-     */
-    public java.lang.String getPlayerName() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
-     */
-    public com.google.protobuf.ByteString
-        getPlayerNameBytes() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int TARGET_SPOT_FIELD_NUMBER = 3;
-    private mech.mania.engine.domain.model.CharacterProtos.Position targetSpot_;
-    /**
-     * <code>.character.Position target_spot = 3;</code>
-     * @return Whether the targetSpot field is set.
-     */
-    public boolean hasTargetSpot() {
-      return targetSpot_ != null;
-    }
-    /**
-     * <code>.character.Position target_spot = 3;</code>
-     * @return The targetSpot.
-     */
-    public mech.mania.engine.domain.model.CharacterProtos.Position getTargetSpot() {
-      return targetSpot_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetSpot_;
-    }
-    /**
-     * <code>.character.Position target_spot = 3;</code>
-     */
-    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetSpotOrBuilder() {
-      return getTargetSpot();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (gameState_ != null) {
-        output.writeMessage(1, getGameState());
-      }
-      if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
-      }
-      if (targetSpot_ != null) {
-        output.writeMessage(3, getTargetSpot());
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (gameState_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getGameState());
-      }
-      if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
-      }
-      if (targetSpot_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getTargetSpot());
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest)) {
-        return super.equals(obj);
-      }
-      mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest other = (mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest) obj;
-
-      if (hasGameState() != other.hasGameState()) return false;
-      if (hasGameState()) {
-        if (!getGameState()
-            .equals(other.getGameState())) return false;
-      }
-      if (!getPlayerName()
-          .equals(other.getPlayerName())) return false;
-      if (hasTargetSpot() != other.hasTargetSpot()) return false;
-      if (hasTargetSpot()) {
-        if (!getTargetSpot()
-            .equals(other.getTargetSpot())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasGameState()) {
-        hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
-        hash = (53 * hash) + getGameState().hashCode();
-      }
-      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerName().hashCode();
-      if (hasTargetSpot()) {
-        hash = (37 * hash) + TARGET_SPOT_FIELD_NUMBER;
-        hash = (53 * hash) + getTargetSpot().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code api.APIAllEnemiesHitRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIAllEnemiesHitRequest)
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.class, mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.Builder.class);
-      }
-
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (gameStateBuilder_ == null) {
-          gameState_ = null;
-        } else {
-          gameState_ = null;
-          gameStateBuilder_ = null;
-        }
-        playerName_ = "";
-
-        if (targetSpotBuilder_ == null) {
-          targetSpot_ = null;
-        } else {
-          targetSpot_ = null;
-          targetSpotBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest build() {
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest result = new mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest(this);
-        if (gameStateBuilder_ == null) {
-          result.gameState_ = gameState_;
-        } else {
-          result.gameState_ = gameStateBuilder_.build();
-        }
-        result.playerName_ = playerName_;
-        if (targetSpotBuilder_ == null) {
-          result.targetSpot_ = targetSpot_;
-        } else {
-          result.targetSpot_ = targetSpotBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest.getDefaultInstance()) return this;
-        if (other.hasGameState()) {
-          mergeGameState(other.getGameState());
-        }
-        if (!other.getPlayerName().isEmpty()) {
-          playerName_ = other.playerName_;
-          onChanged();
-        }
-        if (other.hasTargetSpot()) {
-          mergeTargetSpot(other.getTargetSpot());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> gameStateBuilder_;
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       * @return Whether the gameState field is set.
-       */
-      public boolean hasGameState() {
-        return gameStateBuilder_ != null || gameState_ != null;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       * @return The gameState.
-       */
-      public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
-        if (gameStateBuilder_ == null) {
-          return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-        } else {
-          return gameStateBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder setGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
-        if (gameStateBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          gameState_ = value;
-          onChanged();
-        } else {
-          gameStateBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder setGameState(
-          mech.mania.engine.domain.model.GameStateProtos.GameState.Builder builderForValue) {
-        if (gameStateBuilder_ == null) {
-          gameState_ = builderForValue.build();
-          onChanged();
-        } else {
-          gameStateBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder mergeGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
-        if (gameStateBuilder_ == null) {
-          if (gameState_ != null) {
-            gameState_ =
-              mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder(gameState_).mergeFrom(value).buildPartial();
-          } else {
-            gameState_ = value;
-          }
-          onChanged();
-        } else {
-          gameStateBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder clearGameState() {
-        if (gameStateBuilder_ == null) {
-          gameState_ = null;
-          onChanged();
-        } else {
-          gameState_ = null;
-          gameStateBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public mech.mania.engine.domain.model.GameStateProtos.GameState.Builder getGameStateBuilder() {
-        
-        onChanged();
-        return getGameStateFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
-        if (gameStateBuilder_ != null) {
-          return gameStateBuilder_.getMessageOrBuilder();
-        } else {
-          return gameState_ == null ?
-              mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-        }
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> 
-          getGameStateFieldBuilder() {
-        if (gameStateBuilder_ == null) {
-          gameStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder>(
-                  getGameState(),
-                  getParentForChildren(),
-                  isClean());
-          gameState_ = null;
-        }
-        return gameStateBuilder_;
-      }
-
-      private java.lang.Object playerName_ = "";
-      /**
-       * <code>string player_name = 2;</code>
-       * @return The playerName.
-       */
-      public java.lang.String getPlayerName() {
-        java.lang.Object ref = playerName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return The bytes for playerName.
-       */
-      public com.google.protobuf.ByteString
-          getPlayerNameBytes() {
-        java.lang.Object ref = playerName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerName() {
-        
-        playerName_ = getDefaultInstance().getPlayerName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The bytes for playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private mech.mania.engine.domain.model.CharacterProtos.Position targetSpot_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> targetSpotBuilder_;
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       * @return Whether the targetSpot field is set.
-       */
-      public boolean hasTargetSpot() {
-        return targetSpotBuilder_ != null || targetSpot_ != null;
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       * @return The targetSpot.
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.Position getTargetSpot() {
-        if (targetSpotBuilder_ == null) {
-          return targetSpot_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetSpot_;
-        } else {
-          return targetSpotBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      public Builder setTargetSpot(mech.mania.engine.domain.model.CharacterProtos.Position value) {
-        if (targetSpotBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          targetSpot_ = value;
-          onChanged();
-        } else {
-          targetSpotBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      public Builder setTargetSpot(
-          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
-        if (targetSpotBuilder_ == null) {
-          targetSpot_ = builderForValue.build();
-          onChanged();
-        } else {
-          targetSpotBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      public Builder mergeTargetSpot(mech.mania.engine.domain.model.CharacterProtos.Position value) {
-        if (targetSpotBuilder_ == null) {
-          if (targetSpot_ != null) {
-            targetSpot_ =
-              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(targetSpot_).mergeFrom(value).buildPartial();
-          } else {
-            targetSpot_ = value;
-          }
-          onChanged();
-        } else {
-          targetSpotBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      public Builder clearTargetSpot() {
-        if (targetSpotBuilder_ == null) {
-          targetSpot_ = null;
-          onChanged();
-        } else {
-          targetSpot_ = null;
-          targetSpotBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getTargetSpotBuilder() {
-        
-        onChanged();
-        return getTargetSpotFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetSpotOrBuilder() {
-        if (targetSpotBuilder_ != null) {
-          return targetSpotBuilder_.getMessageOrBuilder();
-        } else {
-          return targetSpot_ == null ?
-              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetSpot_;
-        }
-      }
-      /**
-       * <code>.character.Position target_spot = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
-          getTargetSpotFieldBuilder() {
-        if (targetSpotBuilder_ == null) {
-          targetSpotBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
-                  getTargetSpot(),
-                  getParentForChildren(),
-                  isClean());
-          targetSpot_ = null;
-        }
-        return targetSpotBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:api.APIAllEnemiesHitRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:api.APIAllEnemiesHitRequest)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest();
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<APIAllEnemiesHitRequest>
-        PARSER = new com.google.protobuf.AbstractParser<APIAllEnemiesHitRequest>() {
-      @java.lang.Override
-      public APIAllEnemiesHitRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIAllEnemiesHitRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<APIAllEnemiesHitRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<APIAllEnemiesHitRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface APIAllEnemiesHitResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIAllEnemiesHitResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return Whether the status field is set.
-     */
-    boolean hasStatus();
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return The status.
-     */
-    mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus();
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     */
-    mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder();
-
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> 
-        getEnemiesHitList();
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index);
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    int getEnemiesHitCount();
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
-        getEnemiesHitOrBuilderList();
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code api.APIAllEnemiesHitResponse}
-   */
-  public  static final class APIAllEnemiesHitResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIAllEnemiesHitResponse)
-      APIAllEnemiesHitResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use APIAllEnemiesHitResponse.newBuilder() to construct.
-    private APIAllEnemiesHitResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private APIAllEnemiesHitResponse() {
-      enemiesHit_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new APIAllEnemiesHitResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private APIAllEnemiesHitResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder subBuilder = null;
-              if (status_ != null) {
-                subBuilder = status_.toBuilder();
-              }
-              status_ = input.readMessage(mech.mania.engine.domain.model.ApiProtos.APIStatus.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(status_);
-                status_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                enemiesHit_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Character>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              enemiesHit_.add(
-                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Character.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          enemiesHit_ = java.util.Collections.unmodifiableList(enemiesHit_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.class, mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return Whether the status field is set.
-     */
-    public boolean hasStatus() {
-      return status_ != null;
-    }
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return The status.
-     */
-    public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
-      return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
-    }
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     */
-    public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
-      return getStatus();
-    }
-
-    public static final int ENEMIES_HIT_FIELD_NUMBER = 2;
-    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> enemiesHit_;
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesHitList() {
-      return enemiesHit_;
-    }
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
-        getEnemiesHitOrBuilderList() {
-      return enemiesHit_;
-    }
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    public int getEnemiesHitCount() {
-      return enemiesHit_.size();
-    }
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    public mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index) {
-      return enemiesHit_.get(index);
-    }
-    /**
-     * <code>repeated .character.Character enemies_hit = 2;</code>
-     */
-    public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
-        int index) {
-      return enemiesHit_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != null) {
-        output.writeMessage(1, getStatus());
-      }
-      for (int i = 0; i < enemiesHit_.size(); i++) {
-        output.writeMessage(2, enemiesHit_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getStatus());
-      }
-      for (int i = 0; i < enemiesHit_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, enemiesHit_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse)) {
-        return super.equals(obj);
-      }
-      mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse other = (mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse) obj;
-
-      if (hasStatus() != other.hasStatus()) return false;
-      if (hasStatus()) {
-        if (!getStatus()
-            .equals(other.getStatus())) return false;
-      }
-      if (!getEnemiesHitList()
-          .equals(other.getEnemiesHitList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasStatus()) {
-        hash = (37 * hash) + STATUS_FIELD_NUMBER;
-        hash = (53 * hash) + getStatus().hashCode();
-      }
-      if (getEnemiesHitCount() > 0) {
-        hash = (37 * hash) + ENEMIES_HIT_FIELD_NUMBER;
-        hash = (53 * hash) + getEnemiesHitList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code api.APIAllEnemiesHitResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIAllEnemiesHitResponse)
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.class, mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.Builder.class);
-      }
-
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getEnemiesHitFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (statusBuilder_ == null) {
-          status_ = null;
-        } else {
-          status_ = null;
-          statusBuilder_ = null;
-        }
-        if (enemiesHitBuilder_ == null) {
-          enemiesHit_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          enemiesHitBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIAllEnemiesHitResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse build() {
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse result = new mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse(this);
-        int from_bitField0_ = bitField0_;
-        if (statusBuilder_ == null) {
-          result.status_ = status_;
-        } else {
-          result.status_ = statusBuilder_.build();
-        }
-        if (enemiesHitBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            enemiesHit_ = java.util.Collections.unmodifiableList(enemiesHit_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.enemiesHit_ = enemiesHit_;
-        } else {
-          result.enemiesHit_ = enemiesHitBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse.getDefaultInstance()) return this;
-        if (other.hasStatus()) {
-          mergeStatus(other.getStatus());
-        }
-        if (enemiesHitBuilder_ == null) {
-          if (!other.enemiesHit_.isEmpty()) {
-            if (enemiesHit_.isEmpty()) {
-              enemiesHit_ = other.enemiesHit_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureEnemiesHitIsMutable();
-              enemiesHit_.addAll(other.enemiesHit_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.enemiesHit_.isEmpty()) {
-            if (enemiesHitBuilder_.isEmpty()) {
-              enemiesHitBuilder_.dispose();
-              enemiesHitBuilder_ = null;
-              enemiesHit_ = other.enemiesHit_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              enemiesHitBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEnemiesHitFieldBuilder() : null;
-            } else {
-              enemiesHitBuilder_.addAllMessages(other.enemiesHit_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> statusBuilder_;
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       * @return Whether the status field is set.
-       */
-      public boolean hasStatus() {
-        return statusBuilder_ != null || status_ != null;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       * @return The status.
-       */
-      public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
-        if (statusBuilder_ == null) {
-          return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
-        } else {
-          return statusBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder setStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
-        if (statusBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          status_ = value;
-          onChanged();
-        } else {
-          statusBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder setStatus(
-          mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder builderForValue) {
-        if (statusBuilder_ == null) {
-          status_ = builderForValue.build();
-          onChanged();
-        } else {
-          statusBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder mergeStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
-        if (statusBuilder_ == null) {
-          if (status_ != null) {
-            status_ =
-              mech.mania.engine.domain.model.ApiProtos.APIStatus.newBuilder(status_).mergeFrom(value).buildPartial();
-          } else {
-            status_ = value;
-          }
-          onChanged();
-        } else {
-          statusBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder clearStatus() {
-        if (statusBuilder_ == null) {
-          status_ = null;
-          onChanged();
-        } else {
-          status_ = null;
-          statusBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder getStatusBuilder() {
-        
-        onChanged();
-        return getStatusFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
-        if (statusBuilder_ != null) {
-          return statusBuilder_.getMessageOrBuilder();
-        } else {
-          return status_ == null ?
-              mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
-        }
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> 
-          getStatusFieldBuilder() {
-        if (statusBuilder_ == null) {
-          statusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder>(
-                  getStatus(),
-                  getParentForChildren(),
-                  isClean());
-          status_ = null;
-        }
-        return statusBuilder_;
-      }
-
-      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> enemiesHit_ =
-        java.util.Collections.emptyList();
-      private void ensureEnemiesHitIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          enemiesHit_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Character>(enemiesHit_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.Character, mech.mania.engine.domain.model.CharacterProtos.Character.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> enemiesHitBuilder_;
-
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesHitList() {
-        if (enemiesHitBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(enemiesHit_);
-        } else {
-          return enemiesHitBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public int getEnemiesHitCount() {
-        if (enemiesHitBuilder_ == null) {
-          return enemiesHit_.size();
-        } else {
-          return enemiesHitBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index) {
-        if (enemiesHitBuilder_ == null) {
-          return enemiesHit_.get(index);
-        } else {
-          return enemiesHitBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder setEnemiesHit(
-          int index, mech.mania.engine.domain.model.CharacterProtos.Character value) {
-        if (enemiesHitBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.set(index, value);
-          onChanged();
-        } else {
-          enemiesHitBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder setEnemiesHit(
-          int index, mech.mania.engine.domain.model.CharacterProtos.Character.Builder builderForValue) {
-        if (enemiesHitBuilder_ == null) {
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          enemiesHitBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder addEnemiesHit(mech.mania.engine.domain.model.CharacterProtos.Character value) {
-        if (enemiesHitBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.add(value);
-          onChanged();
-        } else {
-          enemiesHitBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder addEnemiesHit(
-          int index, mech.mania.engine.domain.model.CharacterProtos.Character value) {
-        if (enemiesHitBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.add(index, value);
-          onChanged();
-        } else {
-          enemiesHitBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder addEnemiesHit(
-          mech.mania.engine.domain.model.CharacterProtos.Character.Builder builderForValue) {
-        if (enemiesHitBuilder_ == null) {
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.add(builderForValue.build());
-          onChanged();
-        } else {
-          enemiesHitBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder addEnemiesHit(
-          int index, mech.mania.engine.domain.model.CharacterProtos.Character.Builder builderForValue) {
-        if (enemiesHitBuilder_ == null) {
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          enemiesHitBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder addAllEnemiesHit(
-          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Character> values) {
-        if (enemiesHitBuilder_ == null) {
-          ensureEnemiesHitIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, enemiesHit_);
-          onChanged();
-        } else {
-          enemiesHitBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder clearEnemiesHit() {
-        if (enemiesHitBuilder_ == null) {
-          enemiesHit_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          enemiesHitBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public Builder removeEnemiesHit(int index) {
-        if (enemiesHitBuilder_ == null) {
-          ensureEnemiesHitIsMutable();
-          enemiesHit_.remove(index);
-          onChanged();
-        } else {
-          enemiesHitBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.Character.Builder getEnemiesHitBuilder(
-          int index) {
-        return getEnemiesHitFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
-          int index) {
-        if (enemiesHitBuilder_ == null) {
-          return enemiesHit_.get(index);  } else {
-          return enemiesHitBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
-           getEnemiesHitOrBuilderList() {
-        if (enemiesHitBuilder_ != null) {
-          return enemiesHitBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(enemiesHit_);
-        }
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.Character.Builder addEnemiesHitBuilder() {
-        return getEnemiesHitFieldBuilder().addBuilder(
-            mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.Character.Builder addEnemiesHitBuilder(
-          int index) {
-        return getEnemiesHitFieldBuilder().addBuilder(
-            index, mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.Character enemies_hit = 2;</code>
-       */
-      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character.Builder> 
-           getEnemiesHitBuilderList() {
-        return getEnemiesHitFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.Character, mech.mania.engine.domain.model.CharacterProtos.Character.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
-          getEnemiesHitFieldBuilder() {
-        if (enemiesHitBuilder_ == null) {
-          enemiesHitBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.domain.model.CharacterProtos.Character, mech.mania.engine.domain.model.CharacterProtos.Character.Builder, mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder>(
-                  enemiesHit_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          enemiesHit_ = null;
-        }
-        return enemiesHitBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:api.APIAllEnemiesHitResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:api.APIAllEnemiesHitResponse)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse();
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<APIAllEnemiesHitResponse>
-        PARSER = new com.google.protobuf.AbstractParser<APIAllEnemiesHitResponse>() {
-      @java.lang.Override
-      public APIAllEnemiesHitResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIAllEnemiesHitResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<APIAllEnemiesHitResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<APIAllEnemiesHitResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIAllEnemiesHitResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface APIItemsInRangeRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIItemsInRangeRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return Whether the gameState field is set.
-     */
-    boolean hasGameState();
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return The gameState.
-     */
-    mech.mania.engine.domain.model.GameStateProtos.GameState getGameState();
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     */
-    mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder();
-
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
-     */
-    java.lang.String getPlayerName();
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
-     */
-    com.google.protobuf.ByteString
-        getPlayerNameBytes();
-
-    /**
-     * <code>int32 range = 3;</code>
-     * @return The range.
-     */
-    int getRange();
-  }
-  /**
-   * Protobuf type {@code api.APIItemsInRangeRequest}
-   */
-  public  static final class APIItemsInRangeRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIItemsInRangeRequest)
-      APIItemsInRangeRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use APIItemsInRangeRequest.newBuilder() to construct.
-    private APIItemsInRangeRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private APIItemsInRangeRequest() {
-      playerName_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new APIItemsInRangeRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private APIItemsInRangeRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              mech.mania.engine.domain.model.GameStateProtos.GameState.Builder subBuilder = null;
-              if (gameState_ != null) {
-                subBuilder = gameState_.toBuilder();
-              }
-              gameState_ = input.readMessage(mech.mania.engine.domain.model.GameStateProtos.GameState.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(gameState_);
-                gameState_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              playerName_ = s;
-              break;
-            }
-            case 24: {
-
-              range_ = input.readInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.class, mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.Builder.class);
-    }
-
-    public static final int GAMESTATE_FIELD_NUMBER = 1;
-    private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return Whether the gameState field is set.
-     */
-    public boolean hasGameState() {
-      return gameState_ != null;
-    }
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     * @return The gameState.
-     */
-    public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
-      return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-    }
-    /**
-     * <code>.game.GameState gameState = 1;</code>
-     */
-    public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
-      return getGameState();
-    }
-
-    public static final int PLAYER_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object playerName_;
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The playerName.
-     */
-    public java.lang.String getPlayerName() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        playerName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string player_name = 2;</code>
-     * @return The bytes for playerName.
-     */
-    public com.google.protobuf.ByteString
-        getPlayerNameBytes() {
-      java.lang.Object ref = playerName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        playerName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int RANGE_FIELD_NUMBER = 3;
-    private int range_;
-    /**
-     * <code>int32 range = 3;</code>
-     * @return The range.
-     */
-    public int getRange() {
-      return range_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (gameState_ != null) {
-        output.writeMessage(1, getGameState());
-      }
-      if (!getPlayerNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, playerName_);
-      }
-      if (range_ != 0) {
-        output.writeInt32(3, range_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (gameState_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getGameState());
-      }
-      if (!getPlayerNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, playerName_);
-      }
-      if (range_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, range_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest)) {
-        return super.equals(obj);
-      }
-      mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest other = (mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest) obj;
-
-      if (hasGameState() != other.hasGameState()) return false;
-      if (hasGameState()) {
-        if (!getGameState()
-            .equals(other.getGameState())) return false;
-      }
-      if (!getPlayerName()
-          .equals(other.getPlayerName())) return false;
-      if (getRange()
-          != other.getRange()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasGameState()) {
-        hash = (37 * hash) + GAMESTATE_FIELD_NUMBER;
-        hash = (53 * hash) + getGameState().hashCode();
-      }
-      hash = (37 * hash) + PLAYER_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerName().hashCode();
-      hash = (37 * hash) + RANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getRange();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code api.APIItemsInRangeRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIItemsInRangeRequest)
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.class, mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.Builder.class);
-      }
-
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (gameStateBuilder_ == null) {
-          gameState_ = null;
-        } else {
-          gameState_ = null;
-          gameStateBuilder_ = null;
-        }
-        playerName_ = "";
-
-        range_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest build() {
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest result = new mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest(this);
-        if (gameStateBuilder_ == null) {
-          result.gameState_ = gameState_;
-        } else {
-          result.gameState_ = gameStateBuilder_.build();
-        }
-        result.playerName_ = playerName_;
-        result.range_ = range_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest.getDefaultInstance()) return this;
-        if (other.hasGameState()) {
-          mergeGameState(other.getGameState());
-        }
-        if (!other.getPlayerName().isEmpty()) {
-          playerName_ = other.playerName_;
-          onChanged();
-        }
-        if (other.getRange() != 0) {
-          setRange(other.getRange());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private mech.mania.engine.domain.model.GameStateProtos.GameState gameState_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> gameStateBuilder_;
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       * @return Whether the gameState field is set.
-       */
-      public boolean hasGameState() {
-        return gameStateBuilder_ != null || gameState_ != null;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       * @return The gameState.
-       */
-      public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
-        if (gameStateBuilder_ == null) {
-          return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-        } else {
-          return gameStateBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder setGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
-        if (gameStateBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          gameState_ = value;
-          onChanged();
-        } else {
-          gameStateBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder setGameState(
-          mech.mania.engine.domain.model.GameStateProtos.GameState.Builder builderForValue) {
-        if (gameStateBuilder_ == null) {
-          gameState_ = builderForValue.build();
-          onChanged();
-        } else {
-          gameStateBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder mergeGameState(mech.mania.engine.domain.model.GameStateProtos.GameState value) {
-        if (gameStateBuilder_ == null) {
-          if (gameState_ != null) {
-            gameState_ =
-              mech.mania.engine.domain.model.GameStateProtos.GameState.newBuilder(gameState_).mergeFrom(value).buildPartial();
-          } else {
-            gameState_ = value;
-          }
-          onChanged();
-        } else {
-          gameStateBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public Builder clearGameState() {
-        if (gameStateBuilder_ == null) {
-          gameState_ = null;
-          onChanged();
-        } else {
-          gameState_ = null;
-          gameStateBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public mech.mania.engine.domain.model.GameStateProtos.GameState.Builder getGameStateBuilder() {
-        
-        onChanged();
-        return getGameStateFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
-        if (gameStateBuilder_ != null) {
-          return gameStateBuilder_.getMessageOrBuilder();
-        } else {
-          return gameState_ == null ?
-              mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
-        }
-      }
-      /**
-       * <code>.game.GameState gameState = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder> 
-          getGameStateFieldBuilder() {
-        if (gameStateBuilder_ == null) {
-          gameStateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.domain.model.GameStateProtos.GameState, mech.mania.engine.domain.model.GameStateProtos.GameState.Builder, mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder>(
-                  getGameState(),
-                  getParentForChildren(),
-                  isClean());
-          gameState_ = null;
-        }
-        return gameStateBuilder_;
-      }
-
-      private java.lang.Object playerName_ = "";
-      /**
-       * <code>string player_name = 2;</code>
-       * @return The playerName.
-       */
-      public java.lang.String getPlayerName() {
-        java.lang.Object ref = playerName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          playerName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return The bytes for playerName.
-       */
-      public com.google.protobuf.ByteString
-          getPlayerNameBytes() {
-        java.lang.Object ref = playerName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          playerName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerName() {
-        
-        playerName_ = getDefaultInstance().getPlayerName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string player_name = 2;</code>
-       * @param value The bytes for playerName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        playerName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int range_ ;
-      /**
-       * <code>int32 range = 3;</code>
-       * @return The range.
-       */
-      public int getRange() {
-        return range_;
-      }
-      /**
-       * <code>int32 range = 3;</code>
-       * @param value The range to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRange(int value) {
-        
-        range_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 range = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRange() {
-        
-        range_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:api.APIItemsInRangeRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:api.APIItemsInRangeRequest)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest();
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<APIItemsInRangeRequest>
-        PARSER = new com.google.protobuf.AbstractParser<APIItemsInRangeRequest>() {
-      @java.lang.Override
-      public APIItemsInRangeRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIItemsInRangeRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<APIItemsInRangeRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<APIItemsInRangeRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface APIItemsInRangeResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:api.APIItemsInRangeResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return Whether the status field is set.
-     */
-    boolean hasStatus();
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return The status.
-     */
-    mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus();
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     */
-    mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder();
-
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> 
-        getItemsList();
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    mech.mania.engine.domain.model.ItemProtos.Item getItems(int index);
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    int getItemsCount();
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
-        getItemsOrBuilderList();
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code api.APIItemsInRangeResponse}
-   */
-  public  static final class APIItemsInRangeResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:api.APIItemsInRangeResponse)
-      APIItemsInRangeResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use APIItemsInRangeResponse.newBuilder() to construct.
-    private APIItemsInRangeResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private APIItemsInRangeResponse() {
-      items_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new APIItemsInRangeResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private APIItemsInRangeResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder subBuilder = null;
-              if (status_ != null) {
-                subBuilder = status_.toBuilder();
-              }
-              status_ = input.readMessage(mech.mania.engine.domain.model.ApiProtos.APIStatus.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(status_);
-                status_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                items_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              items_.add(
-                  input.readMessage(mech.mania.engine.domain.model.ItemProtos.Item.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          items_ = java.util.Collections.unmodifiableList(items_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.class, mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return Whether the status field is set.
-     */
-    public boolean hasStatus() {
-      return status_ != null;
-    }
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     * @return The status.
-     */
-    public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
-      return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
-    }
-    /**
-     * <code>.api.APIStatus status = 1;</code>
-     */
-    public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
-      return getStatus();
-    }
-
-    public static final int ITEMS_FIELD_NUMBER = 2;
-    private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> items_;
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
-      return items_;
-    }
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
-        getItemsOrBuilderList() {
-      return items_;
-    }
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    public int getItemsCount() {
-      return items_.size();
-    }
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
-      return items_.get(index);
-    }
-    /**
-     * <code>repeated .item.Item items = 2;</code>
-     */
-    public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
-        int index) {
-      return items_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != null) {
-        output.writeMessage(1, getStatus());
-      }
-      for (int i = 0; i < items_.size(); i++) {
-        output.writeMessage(2, items_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getStatus());
-      }
-      for (int i = 0; i < items_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, items_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse)) {
-        return super.equals(obj);
-      }
-      mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse other = (mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse) obj;
-
-      if (hasStatus() != other.hasStatus()) return false;
-      if (hasStatus()) {
-        if (!getStatus()
-            .equals(other.getStatus())) return false;
-      }
-      if (!getItemsList()
-          .equals(other.getItemsList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasStatus()) {
-        hash = (37 * hash) + STATUS_FIELD_NUMBER;
-        hash = (53 * hash) + getStatus().hashCode();
-      }
-      if (getItemsCount() > 0) {
-        hash = (37 * hash) + ITEMS_FIELD_NUMBER;
-        hash = (53 * hash) + getItemsList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code api.APIItemsInRangeResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:api.APIItemsInRangeResponse)
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.class, mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.Builder.class);
-      }
-
-      // Construct using mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getItemsFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (statusBuilder_ == null) {
-          status_ = null;
-        } else {
-          status_ = null;
-          statusBuilder_ = null;
-        }
-        if (itemsBuilder_ == null) {
-          items_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          itemsBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return mech.mania.engine.domain.model.ApiProtos.internal_static_api_APIItemsInRangeResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse getDefaultInstanceForType() {
-        return mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse build() {
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse buildPartial() {
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse result = new mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse(this);
-        int from_bitField0_ = bitField0_;
-        if (statusBuilder_ == null) {
-          result.status_ = status_;
-        } else {
-          result.status_ = statusBuilder_.build();
-        }
-        if (itemsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            items_ = java.util.Collections.unmodifiableList(items_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.items_ = items_;
-        } else {
-          result.items_ = itemsBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse) {
-          return mergeFrom((mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse other) {
-        if (other == mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse.getDefaultInstance()) return this;
-        if (other.hasStatus()) {
-          mergeStatus(other.getStatus());
-        }
-        if (itemsBuilder_ == null) {
-          if (!other.items_.isEmpty()) {
-            if (items_.isEmpty()) {
-              items_ = other.items_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureItemsIsMutable();
-              items_.addAll(other.items_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.items_.isEmpty()) {
-            if (itemsBuilder_.isEmpty()) {
-              itemsBuilder_.dispose();
-              itemsBuilder_ = null;
-              items_ = other.items_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              itemsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getItemsFieldBuilder() : null;
-            } else {
-              itemsBuilder_.addAllMessages(other.items_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private mech.mania.engine.domain.model.ApiProtos.APIStatus status_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> statusBuilder_;
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       * @return Whether the status field is set.
-       */
-      public boolean hasStatus() {
-        return statusBuilder_ != null || status_ != null;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       * @return The status.
-       */
-      public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
-        if (statusBuilder_ == null) {
-          return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
-        } else {
-          return statusBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder setStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
-        if (statusBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          status_ = value;
-          onChanged();
-        } else {
-          statusBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder setStatus(
-          mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder builderForValue) {
-        if (statusBuilder_ == null) {
-          status_ = builderForValue.build();
-          onChanged();
-        } else {
-          statusBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder mergeStatus(mech.mania.engine.domain.model.ApiProtos.APIStatus value) {
-        if (statusBuilder_ == null) {
-          if (status_ != null) {
-            status_ =
-              mech.mania.engine.domain.model.ApiProtos.APIStatus.newBuilder(status_).mergeFrom(value).buildPartial();
-          } else {
-            status_ = value;
-          }
-          onChanged();
-        } else {
-          statusBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public Builder clearStatus() {
-        if (statusBuilder_ == null) {
-          status_ = null;
-          onChanged();
-        } else {
-          status_ = null;
-          statusBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder getStatusBuilder() {
-        
-        onChanged();
-        return getStatusFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
-        if (statusBuilder_ != null) {
-          return statusBuilder_.getMessageOrBuilder();
-        } else {
-          return status_ == null ?
-              mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
-        }
-      }
-      /**
-       * <code>.api.APIStatus status = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder> 
-          getStatusFieldBuilder() {
-        if (statusBuilder_ == null) {
-          statusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              mech.mania.engine.domain.model.ApiProtos.APIStatus, mech.mania.engine.domain.model.ApiProtos.APIStatus.Builder, mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder>(
-                  getStatus(),
-                  getParentForChildren(),
-                  isClean());
-          status_ = null;
-        }
-        return statusBuilder_;
-      }
-
-      private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> items_ =
-        java.util.Collections.emptyList();
-      private void ensureItemsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          items_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>(items_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> itemsBuilder_;
-
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
-        if (itemsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(items_);
-        } else {
-          return itemsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public int getItemsCount() {
-        if (itemsBuilder_ == null) {
-          return items_.size();
-        } else {
-          return itemsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
-        if (itemsBuilder_ == null) {
-          return items_.get(index);
-        } else {
-          return itemsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder setItems(
-          int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
-        if (itemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemsIsMutable();
-          items_.set(index, value);
-          onChanged();
-        } else {
-          itemsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder setItems(
-          int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          itemsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder addItems(mech.mania.engine.domain.model.ItemProtos.Item value) {
-        if (itemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemsIsMutable();
-          items_.add(value);
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder addItems(
-          int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
-        if (itemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemsIsMutable();
-          items_.add(index, value);
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder addItems(
-          mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.add(builderForValue.build());
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder addItems(
-          int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder addAllItems(
-          java.lang.Iterable<? extends mech.mania.engine.domain.model.ItemProtos.Item> values) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, items_);
-          onChanged();
-        } else {
-          itemsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder clearItems() {
-        if (itemsBuilder_ == null) {
-          items_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          itemsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public Builder removeItems(int index) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.remove(index);
-          onChanged();
-        } else {
-          itemsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public mech.mania.engine.domain.model.ItemProtos.Item.Builder getItemsBuilder(
-          int index) {
-        return getItemsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
-          int index) {
-        if (itemsBuilder_ == null) {
-          return items_.get(index);  } else {
-          return itemsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
-           getItemsOrBuilderList() {
-        if (itemsBuilder_ != null) {
-          return itemsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(items_);
-        }
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public mech.mania.engine.domain.model.ItemProtos.Item.Builder addItemsBuilder() {
-        return getItemsFieldBuilder().addBuilder(
-            mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public mech.mania.engine.domain.model.ItemProtos.Item.Builder addItemsBuilder(
-          int index) {
-        return getItemsFieldBuilder().addBuilder(
-            index, mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .item.Item items = 2;</code>
-       */
-      public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item.Builder> 
-           getItemsBuilderList() {
-        return getItemsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
-          getItemsFieldBuilder() {
-        if (itemsBuilder_ == null) {
-          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder>(
-                  items_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          items_ = null;
-        }
-        return itemsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:api.APIItemsInRangeResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:api.APIItemsInRangeResponse)
-    private static final mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse();
-    }
-
-    public static mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<APIItemsInRangeResponse>
-        PARSER = new com.google.protobuf.AbstractParser<APIItemsInRangeResponse>() {
-      @java.lang.Override
-      public APIItemsInRangeResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new APIItemsInRangeResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<APIItemsInRangeResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<APIItemsInRangeResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public mech.mania.engine.domain.model.ApiProtos.APIItemsInRangeResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_api_APIStatus_descriptor;
   private static final 
@@ -16351,45 +17764,65 @@ public final class ApiProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_api_APIPathFindingResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIFindEnemiesRequest_descriptor;
+    internal_static_api_APIFindEnemiesByDistanceRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIFindEnemiesRequest_fieldAccessorTable;
+      internal_static_api_APIFindEnemiesByDistanceRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIFindEnemiesResponse_descriptor;
+    internal_static_api_APIFindEnemiesByDistanceResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIFindEnemiesResponse_fieldAccessorTable;
+      internal_static_api_APIFindEnemiesByDistanceResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIFindMonstersRequest_descriptor;
+    internal_static_api_APIFindMonstersByExpRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIFindMonstersRequest_fieldAccessorTable;
+      internal_static_api_APIFindMonstersByExpRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIFindMonstersResponse_descriptor;
+    internal_static_api_APIFindMonstersByExpResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIFindMonstersResponse_fieldAccessorTable;
+      internal_static_api_APIFindMonstersByExpResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIFindEnemiesInRangeRequest_descriptor;
+    internal_static_api_APIFindItemsInRangeByDistanceRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIFindEnemiesInRangeRequest_fieldAccessorTable;
+      internal_static_api_APIFindItemsInRangeByDistanceRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIFindEnemiesInRangeResponse_descriptor;
+    internal_static_api_APIFindItemsInRangeByDistanceResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIFindEnemiesInRangeResponse_fieldAccessorTable;
+      internal_static_api_APIFindItemsInRangeByDistanceResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APICanBeAttackedRequest_descriptor;
+    internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APICanBeAttackedRequest_fieldAccessorTable;
+      internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APICanBeAttackedResponse_descriptor;
+    internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APICanBeAttackedResponse_fieldAccessorTable;
+      internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_api_APIFindAllEnemiesHitRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_api_APIFindAllEnemiesHitRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_api_APIFindAllEnemiesHitResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_api_APIFindAllEnemiesHitResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_api_APIInRangeOfAttackRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_api_APIInRangeOfAttackRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_api_APIInRangeOfAttackResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_api_APIInRangeOfAttackResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_api_APIFindClosestPortalRequest_descriptor;
   private static final 
@@ -16410,26 +17843,6 @@ public final class ApiProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_api_APILeaderBoardResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIAllEnemiesHitRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIAllEnemiesHitRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIAllEnemiesHitResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIAllEnemiesHitResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIItemsInRangeRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIItemsInRangeRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_api_APIItemsInRangeResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_api_APIItemsInRangeResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -16447,45 +17860,54 @@ public final class ApiProtos {
       "n\022 \n\003end\030\003 \001(\0132\023.character.Position\"[\n\026A" +
       "PIPathFindingResponse\022\036\n\006status\030\001 \001(\0132\016." +
       "api.APIStatus\022!\n\004path\030\002 \003(\0132\023.character." +
-      "Position\"P\n\025APIFindEnemiesRequest\022\"\n\tgam" +
-      "eState\030\001 \001(\0132\017.game.GameState\022\023\n\013player_" +
-      "name\030\002 \001(\t\"_\n\026APIFindEnemiesResponse\022\036\n\006" +
-      "status\030\001 \001(\0132\016.api.APIStatus\022%\n\007enemies\030" +
-      "\002 \003(\0132\024.character.Character\"Q\n\026APIFindMo" +
-      "nstersRequest\022\"\n\tgameState\030\001 \001(\0132\017.game." +
-      "GameState\022\023\n\013player_name\030\002 \001(\t\"_\n\027APIFin" +
-      "dMonstersResponse\022\036\n\006status\030\001 \001(\0132\016.api." +
-      "APIStatus\022$\n\010monsters\030\002 \003(\0132\022.character." +
-      "Monster\"W\n\034APIFindEnemiesInRangeRequest\022" +
-      "\"\n\tgameState\030\001 \001(\0132\017.game.GameState\022\023\n\013p" +
-      "layer_name\030\002 \001(\t\"f\n\035APIFindEnemiesInRang" +
+      "Position\"\201\001\n\037APIFindEnemiesByDistanceReq" +
+      "uest\022\"\n\tgameState\030\001 \001(\0132\017.game.GameState" +
+      "\022%\n\010position\030\002 \001(\0132\023.character.Position\022" +
+      "\023\n\013player_name\030\003 \001(\t\"i\n APIFindEnemiesBy" +
+      "DistanceResponse\022\036\n\006status\030\001 \001(\0132\016.api.A" +
+      "PIStatus\022%\n\007enemies\030\002 \003(\0132\024.character.Ch" +
+      "aracter\"h\n\033APIFindMonstersByExpRequest\022\"" +
+      "\n\tgameState\030\001 \001(\0132\017.game.GameState\022%\n\010po" +
+      "sition\030\002 \001(\0132\023.character.Position\"d\n\034API" +
+      "FindMonstersByExpResponse\022\036\n\006status\030\001 \001(" +
+      "\0132\016.api.APIStatus\022$\n\010monsters\030\002 \003(\0132\022.ch" +
+      "aracter.Monster\"\225\001\n$APIFindItemsInRangeB" +
+      "yDistanceRequest\022\"\n\tgameState\030\001 \001(\0132\017.ga" +
+      "me.GameState\022%\n\010position\030\002 \001(\0132\023.charact" +
+      "er.Position\022\023\n\013player_name\030\003 \001(\t\022\r\n\005rang" +
+      "e\030\004 \001(\005\"\212\001\n%APIFindItemsInRangeByDistanc" +
       "eResponse\022\036\n\006status\030\001 \001(\0132\016.api.APIStatu" +
-      "s\022%\n\007enemies\030\002 \003(\0132\024.character.Character" +
-      "\"R\n\027APICanBeAttackedRequest\022\"\n\tgameState" +
-      "\030\001 \001(\0132\017.game.GameState\022\023\n\013player_name\030\002" +
-      " \001(\t\"Q\n\030APICanBeAttackedResponse\022\036\n\006stat" +
-      "us\030\001 \001(\0132\016.api.APIStatus\022\025\n\rcanBeAttacke" +
-      "d\030\002 \001(\010\"V\n\033APIFindClosestPortalRequest\022\"" +
-      "\n\tgameState\030\001 \001(\0132\017.game.GameState\022\023\n\013pl" +
-      "ayer_name\030\002 \001(\t\"c\n\034APIFindClosestPortalR" +
-      "esponse\022\036\n\006status\030\001 \001(\0132\016.api.APIStatus\022" +
-      "#\n\006portal\030\002 \001(\0132\023.character.Position\";\n\025" +
-      "APILeaderBoardRequest\022\"\n\tgameState\030\001 \001(\013" +
-      "2\017.game.GameState\"`\n\026APILeaderBoardRespo" +
-      "nse\022\036\n\006status\030\001 \001(\0132\016.api.APIStatus\022&\n\013l" +
-      "eaderBoard\030\002 \003(\0132\021.character.Player\"|\n\027A" +
-      "PIAllEnemiesHitRequest\022\"\n\tgameState\030\001 \001(" +
-      "\0132\017.game.GameState\022\023\n\013player_name\030\002 \001(\t\022" +
-      "(\n\013target_spot\030\003 \001(\0132\023.character.Positio" +
-      "n\"e\n\030APIAllEnemiesHitResponse\022\036\n\006status\030" +
-      "\001 \001(\0132\016.api.APIStatus\022)\n\013enemies_hit\030\002 \003" +
-      "(\0132\024.character.Character\"`\n\026APIItemsInRa" +
-      "ngeRequest\022\"\n\tgameState\030\001 \001(\0132\017.game.Gam" +
-      "eState\022\023\n\013player_name\030\002 \001(\t\022\r\n\005range\030\003 \001" +
-      "(\005\"T\n\027APIItemsInRangeResponse\022\036\n\006status\030" +
-      "\001 \001(\0132\016.api.APIStatus\022\031\n\005items\030\002 \003(\0132\n.i" +
-      "tem.ItemB<\n\036mech.mania.engine.domain.mod" +
-      "elB\tApiProtos\252\002\016MM26.IO.Modelsb\006proto3"
+      "s\022\031\n\005items\030\002 \003(\0132\n.item.Item\022&\n\tposition" +
+      "s\030\003 \003(\0132\023.character.Position\"\220\001\n.APIFind" +
+      "EnemiesInRangeOfAttackByDistanceRequest\022" +
+      "\"\n\tgameState\030\001 \001(\0132\017.game.GameState\022%\n\010p" +
+      "osition\030\002 \001(\0132\023.character.Position\022\023\n\013pl" +
+      "ayer_name\030\003 \001(\t\"x\n/APIFindEnemiesInRange" +
+      "OfAttackByDistanceResponse\022\036\n\006status\030\001 \001" +
+      "(\0132\016.api.APIStatus\022%\n\007enemies\030\002 \003(\0132\024.ch" +
+      "aracter.Character\"}\n\033APIFindAllEnemiesHi" +
+      "tRequest\022\"\n\tgameState\030\001 \001(\0132\017.game.GameS" +
+      "tate\022%\n\010position\030\002 \001(\0132\023.character.Posit" +
+      "ion\022\023\n\013player_name\030\003 \001(\t\"i\n\034APIFindAllEn" +
+      "emiesHitResponse\022\036\n\006status\030\001 \001(\0132\016.api.A" +
+      "PIStatus\022)\n\013enemies_hit\030\002 \003(\0132\024.characte" +
+      "r.Character\"{\n\031APIInRangeOfAttackRequest" +
+      "\022\"\n\tgameState\030\001 \001(\0132\017.game.GameState\022%\n\010" +
+      "position\030\002 \001(\0132\023.character.Position\022\023\n\013p" +
+      "layer_name\030\003 \001(\t\"U\n\032APIInRangeOfAttackRe" +
+      "sponse\022\036\n\006status\030\001 \001(\0132\016.api.APIStatus\022\027" +
+      "\n\017inRangeOfAttack\030\002 \001(\010\"h\n\033APIFindCloses" +
+      "tPortalRequest\022\"\n\tgameState\030\001 \001(\0132\017.game" +
+      ".GameState\022%\n\010position\030\002 \001(\0132\023.character" +
+      ".Position\"c\n\034APIFindClosestPortalRespons" +
+      "e\022\036\n\006status\030\001 \001(\0132\016.api.APIStatus\022#\n\006por" +
+      "tal\030\002 \001(\0132\023.character.Position\";\n\025APILea" +
+      "derBoardRequest\022\"\n\tgameState\030\001 \001(\0132\017.gam" +
+      "e.GameState\"`\n\026APILeaderBoardResponse\022\036\n" +
+      "\006status\030\001 \001(\0132\016.api.APIStatus\022&\n\013leaderB" +
+      "oard\030\002 \003(\0132\021.character.PlayerB<\n\036mech.ma" +
+      "nia.engine.domain.modelB\tApiProtos\252\002\016MM2" +
+      "6.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -16512,102 +17934,102 @@ public final class ApiProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_api_APIPathFindingResponse_descriptor,
         new java.lang.String[] { "Status", "Path", });
-    internal_static_api_APIFindEnemiesRequest_descriptor =
+    internal_static_api_APIFindEnemiesByDistanceRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_api_APIFindEnemiesRequest_fieldAccessorTable = new
+    internal_static_api_APIFindEnemiesByDistanceRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIFindEnemiesRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", });
-    internal_static_api_APIFindEnemiesResponse_descriptor =
+        internal_static_api_APIFindEnemiesByDistanceRequest_descriptor,
+        new java.lang.String[] { "GameState", "Position", "PlayerName", });
+    internal_static_api_APIFindEnemiesByDistanceResponse_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_api_APIFindEnemiesResponse_fieldAccessorTable = new
+    internal_static_api_APIFindEnemiesByDistanceResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIFindEnemiesResponse_descriptor,
+        internal_static_api_APIFindEnemiesByDistanceResponse_descriptor,
         new java.lang.String[] { "Status", "Enemies", });
-    internal_static_api_APIFindMonstersRequest_descriptor =
+    internal_static_api_APIFindMonstersByExpRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_api_APIFindMonstersRequest_fieldAccessorTable = new
+    internal_static_api_APIFindMonstersByExpRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIFindMonstersRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", });
-    internal_static_api_APIFindMonstersResponse_descriptor =
+        internal_static_api_APIFindMonstersByExpRequest_descriptor,
+        new java.lang.String[] { "GameState", "Position", });
+    internal_static_api_APIFindMonstersByExpResponse_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_api_APIFindMonstersResponse_fieldAccessorTable = new
+    internal_static_api_APIFindMonstersByExpResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIFindMonstersResponse_descriptor,
+        internal_static_api_APIFindMonstersByExpResponse_descriptor,
         new java.lang.String[] { "Status", "Monsters", });
-    internal_static_api_APIFindEnemiesInRangeRequest_descriptor =
+    internal_static_api_APIFindItemsInRangeByDistanceRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_api_APIFindEnemiesInRangeRequest_fieldAccessorTable = new
+    internal_static_api_APIFindItemsInRangeByDistanceRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIFindEnemiesInRangeRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", });
-    internal_static_api_APIFindEnemiesInRangeResponse_descriptor =
+        internal_static_api_APIFindItemsInRangeByDistanceRequest_descriptor,
+        new java.lang.String[] { "GameState", "Position", "PlayerName", "Range", });
+    internal_static_api_APIFindItemsInRangeByDistanceResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_api_APIFindEnemiesInRangeResponse_fieldAccessorTable = new
+    internal_static_api_APIFindItemsInRangeByDistanceResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIFindEnemiesInRangeResponse_descriptor,
-        new java.lang.String[] { "Status", "Enemies", });
-    internal_static_api_APICanBeAttackedRequest_descriptor =
+        internal_static_api_APIFindItemsInRangeByDistanceResponse_descriptor,
+        new java.lang.String[] { "Status", "Items", "Positions", });
+    internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_api_APICanBeAttackedRequest_fieldAccessorTable = new
+    internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APICanBeAttackedRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", });
-    internal_static_api_APICanBeAttackedResponse_descriptor =
+        internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceRequest_descriptor,
+        new java.lang.String[] { "GameState", "Position", "PlayerName", });
+    internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_api_APICanBeAttackedResponse_fieldAccessorTable = new
+    internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APICanBeAttackedResponse_descriptor,
-        new java.lang.String[] { "Status", "CanBeAttacked", });
-    internal_static_api_APIFindClosestPortalRequest_descriptor =
+        internal_static_api_APIFindEnemiesInRangeOfAttackByDistanceResponse_descriptor,
+        new java.lang.String[] { "Status", "Enemies", });
+    internal_static_api_APIFindAllEnemiesHitRequest_descriptor =
       getDescriptor().getMessageTypes().get(11);
+    internal_static_api_APIFindAllEnemiesHitRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_api_APIFindAllEnemiesHitRequest_descriptor,
+        new java.lang.String[] { "GameState", "Position", "PlayerName", });
+    internal_static_api_APIFindAllEnemiesHitResponse_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_api_APIFindAllEnemiesHitResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_api_APIFindAllEnemiesHitResponse_descriptor,
+        new java.lang.String[] { "Status", "EnemiesHit", });
+    internal_static_api_APIInRangeOfAttackRequest_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_api_APIInRangeOfAttackRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_api_APIInRangeOfAttackRequest_descriptor,
+        new java.lang.String[] { "GameState", "Position", "PlayerName", });
+    internal_static_api_APIInRangeOfAttackResponse_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_api_APIInRangeOfAttackResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_api_APIInRangeOfAttackResponse_descriptor,
+        new java.lang.String[] { "Status", "InRangeOfAttack", });
+    internal_static_api_APIFindClosestPortalRequest_descriptor =
+      getDescriptor().getMessageTypes().get(15);
     internal_static_api_APIFindClosestPortalRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_api_APIFindClosestPortalRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", });
+        new java.lang.String[] { "GameState", "Position", });
     internal_static_api_APIFindClosestPortalResponse_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_api_APIFindClosestPortalResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_api_APIFindClosestPortalResponse_descriptor,
         new java.lang.String[] { "Status", "Portal", });
     internal_static_api_APILeaderBoardRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_api_APILeaderBoardRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_api_APILeaderBoardRequest_descriptor,
         new java.lang.String[] { "GameState", });
     internal_static_api_APILeaderBoardResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_api_APILeaderBoardResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_api_APILeaderBoardResponse_descriptor,
         new java.lang.String[] { "Status", "LeaderBoard", });
-    internal_static_api_APIAllEnemiesHitRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_api_APIAllEnemiesHitRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIAllEnemiesHitRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", "TargetSpot", });
-    internal_static_api_APIAllEnemiesHitResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_api_APIAllEnemiesHitResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIAllEnemiesHitResponse_descriptor,
-        new java.lang.String[] { "Status", "EnemiesHit", });
-    internal_static_api_APIItemsInRangeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_api_APIItemsInRangeRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIItemsInRangeRequest_descriptor,
-        new java.lang.String[] { "GameState", "PlayerName", "Range", });
-    internal_static_api_APIItemsInRangeResponse_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_api_APIItemsInRangeResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_api_APIItemsInRangeResponse_descriptor,
-        new java.lang.String[] { "Status", "Items", });
     mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
     mech.mania.engine.domain.model.GameStateProtos.getDescriptor();
     mech.mania.engine.domain.model.ItemProtos.getDescriptor();

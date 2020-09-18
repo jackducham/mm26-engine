@@ -50,12 +50,12 @@ public class GameLogicTests {
         Position x10y10 = new Position(10, 10, "id");
         Position x5y10 = new Position(5, 10, "id");
         Position x5y11 = new Position(5, 11, "id");
-        assertEquals(20, GameLogic.calculateManhattanDistance(x0y0, x10y10));
-        assertEquals(15, GameLogic.calculateManhattanDistance(x0y0, x5y10));
-        assertEquals(16, GameLogic.calculateManhattanDistance(x0y0, x5y11));
-        assertEquals(0, GameLogic.calculateManhattanDistance(x10y10, x10y10));
-        assertEquals(5, GameLogic.calculateManhattanDistance(x5y10, x10y10));
-        assertEquals(1, GameLogic.calculateManhattanDistance(x5y10, x5y11));
+        assertEquals(20, x0y0.manhattanDistance(x10y10));
+        assertEquals(15, x0y0.manhattanDistance(x5y10));
+        assertEquals(16, x0y0.manhattanDistance(x5y11));
+        assertEquals(0, x10y10.manhattanDistance(x10y10));
+        assertEquals(5, x5y10.manhattanDistance(x10y10));
+        assertEquals(1, x5y10.manhattanDistance(x5y11));
     }
 
     @Test

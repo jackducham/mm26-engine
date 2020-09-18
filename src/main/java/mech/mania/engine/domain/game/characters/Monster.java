@@ -89,7 +89,7 @@ public class Monster extends Character {
             } else if (curItem instanceof Weapon) {
                 monsterBuilder.setDrops(i, ((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClass());
+                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
 
@@ -138,7 +138,7 @@ public class Monster extends Character {
 
             Position toAttack = target.position;
 
-            int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
+            int manhattanDistance = position.manhattanDistance(toAttack);
             if (manhattanDistance <= weapon.getRange()) {
                 return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
             } else {
