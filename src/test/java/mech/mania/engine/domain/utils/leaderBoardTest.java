@@ -32,6 +32,7 @@ public class leaderBoardTest {
         List<Player> ans = new ArrayList<>();
         ans.add(gameState1.getPlayer("player1"));
         ans.add(gameState1.getPlayer("player2"));
+        ans.add(gameState1.getPlayer("player3"));
         assertEquals(leaderboard.size(), ans.size());
         for (int i = 0; i < leaderboard.size(); i++) {
             assertEquals(ans.get(i), leaderboard.get(i));
@@ -44,6 +45,7 @@ public class leaderBoardTest {
         List<Player> ans2 = new ArrayList<>();
         ans2.add(gameState1.getPlayer("player2"));
         ans2.add(gameState1.getPlayer("player1"));
+        ans2.add(gameState1.getPlayer("player3"));
         assertEquals(leaderboard2.size(), ans2.size());
         for (int i = 0; i < leaderboard2.size(); i++) {
             assertEquals(ans2.get(i), leaderboard2.get(i));
