@@ -60,13 +60,7 @@ public class GameLogic {
             }
         }
 
-        for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
-            if (entry.getValue().isDead()) {
-                gameState.stateChange.addDeadCharacter(entry.getKey());
-            }
-        }
-
-        for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
+        for (Map.Entry<String, Character> entry : gameState.getAllCharacters().entrySet()) {
             if (entry.getValue().isDead()) {
                 gameState.stateChange.addDeadCharacter(entry.getKey());
             }
@@ -137,23 +131,14 @@ public class GameLogic {
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
         // respawning, and distributing rewards
-        Collection<Player> players = gameState.getAllPlayers().values();
-        Collection<Monster> monsters = gameState.getAllMonsters().values();
+        Collection<Character> characters = gameState.getAllCharacters().values();
 
-        for (Player player: players) {
-            player.updateCharacter(gameState);
-            if (player.isDead()) {
-                gameState.stateChange.characterDied(player.getName());
-            } else if (gameState.stateChange.wasDeadAtTurnStart(player.getName())) {
-                gameState.stateChange.characterRevived(player.getName());
-            }
-        }
-        for (Monster monster: monsters) {
-            monster.updateCharacter(gameState);
-            if (monster.isDead()) {
-                gameState.stateChange.characterDied(monster.getName());
-            } else if (gameState.stateChange.wasDeadAtTurnStart(monster.getName())) {
-                gameState.stateChange.characterRevived(monster.getName());
+        for (Character character: characters) {
+            character.updateCharacter(gameState);
+            if (character.isDead()) {
+                gameState.stateChange.characterDied(character.getName());
+            } else if (gameState.stateChange.wasDeadAtTurnStart(character.getName())) {
+                gameState.stateChange.characterRevived(character.getName());
             }
         }
 
@@ -349,8 +334,7 @@ public class GameLogic {
      * @param attackCoordinate coordinate to attack
      */
     public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
-        List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
-        List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
+        List<Character> characters = gameState.getCharactersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         Weapon attackerWeapon = attacker.getWeapon();
@@ -365,36 +349,25 @@ public class GameLogic {
                                                         new ArrayList<> (affectedPositions.keySet())
                                                         );
 
-        for (Player player: players) {
-            if (player == attacker) {
+        for (Character character: characters) {
+            if (character == attacker) {
                 continue;
             }
-            Position playerPos = player.getPosition();
-            if (affectedPositions.containsKey(playerPos)) {
+            Position characterPos = character.getPosition();
+            if (affectedPositions.containsKey(characterPos)) {
                 // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
                 if(attacker instanceof Player && ((Player) attacker).getHat() != null
                         && ((Player) attacker).getHat().getHatEffect().equals(HatEffect.TRIPLED_ON_HIT)) {
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
                             new TempStatusModifier(attackerWeapon.getOnHitEffect()));
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                 } else {
                     // Decide whether to add to taggedPlayersDamage
-                    player.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
                 }
-            }
-        }
-
-        for (Monster monster: monsters) {
-            if (monster == attacker) {
-                continue;
-            }
-            Position playerPos = monster.getPosition();
-            if (affectedPositions.containsKey(playerPos)) {
-                // Decide whether to add to taggedPlayersDamage
-                monster.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
             }
         }
 
