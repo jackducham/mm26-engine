@@ -162,35 +162,52 @@ public class GameLogic {
             case ATTACK:
                 // Check for invalid protos
                 if (character == null || actionPosition == null) return;
-                processAttack(gameState, character, actionPosition);
+                if (processAttack(gameState, character, actionPosition)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case MOVE:
                 // Check for invalid protos
                 if (character == null || actionPosition == null) return;
-                moveCharacter(gameState, character, actionPosition);
+
+                if (moveCharacter(gameState, character, actionPosition)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case PORTAL:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
-                usePortal(gameState, character, index);
+                if (usePortal(gameState, character, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case EQUIP:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
                 Player player = (Player) character;
-                gameState.stateChange.characterEquip(player.getName(), player.equipItem(index));
+                Class equippedItem = player.equipItem(index);
+                if (equippedItem != null) {
+                    gameState.stateChange.characterEquip(player.getName(), equippedItem);
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case DROP:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
                 player = (Player) character;
-                dropItem(gameState, player, index);
+                if (dropItem(gameState, player, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    gameState.stateChange.addChangedTile(character.getPosition());
+                }
                 break;
             case PICKUP:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
                 player = (Player) character;
-                pickUpItem(gameState, player, index);
+                if (pickUpItem(gameState, player, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    gameState.stateChange.addChangedTile(character.getPosition());
+                }
                 break;
         }
     }
@@ -201,25 +218,27 @@ public class GameLogic {
      * @param character player to be moved
      * @param targetPosition position the player should be moved to
      */
-    public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
-        if (!validatePosition(gameState, targetPosition)) return;
+    public static boolean moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) return false;
 
         // Check if character's board matches target board
         if (!character.getPosition().getBoardID().equals(targetPosition.getBoardID())) {
-            return;
+            return false;
         }
 
         // Get shortest path length from current to target position (returns empty list for impossible target)
         List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
 
         // If path is empty (i.e. target is unreachable), don't move
-        if(path.size() == 0) return;
+        if(path.size() == 0) return false;
 
         // If path would be greater than speed allows, act as if impossible target was chosen and don't move
-        if(path.size() > character.getSpeed()) return;
+        if(path.size() > character.getSpeed()) return false;
 
         character.setPosition(targetPosition);
         gameState.stateChange.setCharacterMovePath(character.getName(), path);
+
+        return true;
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -333,7 +352,7 @@ public class GameLogic {
      * @param attacker character doing the attacking
      * @param attackCoordinate coordinate to attack
      */
-    public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
+    public static boolean processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
         List<Character> characters = gameState.getCharactersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
@@ -341,7 +360,7 @@ public class GameLogic {
 
         // Character gave invalid attack position
         if (affectedPositions == null || affectedPositions.isEmpty()) {
-            return;
+            return false;
         }
 
         gameState.stateChange.characterAttackLocations(
@@ -370,6 +389,8 @@ public class GameLogic {
                 }
             }
         }
+
+        return true;
 
     }
 

@@ -36,6 +36,10 @@ public class GameChange {
         tileTimeChanges.clear();
     }
 
+    public void addChangedTile(Position position) {
+        tileTimeChanges.add(position);
+    }
+
     private void createUntrackedCharacter(String characterName) {
         if (!characterChanges.containsKey(characterName)) {
             characterChanges.put(characterName, new CharacterChange());
