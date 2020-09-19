@@ -390,7 +390,7 @@ public abstract class Character {
     }
 
     public int getTotalExperience() {
-        return getLevel() * (getLevel() + 1) * 100 / 2 + getExperience();
+        return getLevel() * (getLevel() - 1) * 100 / 2 + getExperience();
     }
 
     public boolean isDead() {
