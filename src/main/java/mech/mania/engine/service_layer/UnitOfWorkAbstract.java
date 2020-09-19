@@ -31,6 +31,7 @@ public abstract class UnitOfWorkAbstract {
 
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;
+    protected ConfigurableApplicationContext APICtx;
 
     /**
      * Constructor that sets an AbstractRepository
@@ -49,16 +50,28 @@ public abstract class UnitOfWorkAbstract {
     }
 
     /**
-     * Use the repository to store game states
+     * Use the repository to store game state
+     * Also store game state in Visualizer WebSocket to be sent to new connections
      * @param turn turn for the game state
      * @param gameState game state object
      */
     public void storeGameState(int turn, GameState gameState) {
         repository.storeGameState(turn, gameState);
+        visualizerCtx.getBean(VisualizerWebSocket.VisualizerBinaryWebSocketHandler.class).setLastGameState(gameState);
     }
 
     public void storePlayerStatsBundle(int turn, CharacterProtos.PlayerStatsBundle playerStatsBundle) {
         repository.storePlayerStatsBundle(turn, playerStatsBundle);
+    }
+
+    /**
+     * Use the repository to restore game state
+     * @param turn turn to restore from
+     */
+    public void restoreTurn(int turn){
+        GameState startState = repository.getGameState(turn);
+        this.setTurn(turn);
+        this.setGameState(startState);
     }
 
     /**
@@ -159,9 +172,30 @@ public abstract class UnitOfWorkAbstract {
     }
 
     /**
+     * Get visualizer context to be able to send out GameChanges
+     * @return The application context of the visualizer websocket
+     */
+    public ConfigurableApplicationContext getVisualizerCtx() {
+        return visualizerCtx;
+    }
+
+    /**
      * Use the saved ConfigurableApplicationContext to stop the VisualizerWebSocket
      */
     public abstract void stopVisualizerServer();
+
+    /**
+     * Store a ConfigurableApplicationContext object in order to stop the API server WebSocket
+     * @param ctx
+     */
+    public void storeAPICtx(ConfigurableApplicationContext ctx) {
+        this.APICtx = ctx;
+    }
+
+    /**
+     * Use the saved ConfigurableApplicationContext to stop the API server WebSocket
+     */
+    public abstract void stopAPIServer();
 
     /**
      * Sets the game over status for this UoW.

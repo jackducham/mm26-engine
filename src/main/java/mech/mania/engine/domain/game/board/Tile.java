@@ -96,7 +96,7 @@ public class Tile {
             } else if (curItem instanceof Weapon) {
                 tileBuilder.setItems(i, ((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClass());
+                tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
 

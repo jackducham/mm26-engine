@@ -129,10 +129,6 @@ public final class CharacterProtos {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
-            "Can't get the descriptor of an unrecognized enum value.");
-      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -160,7 +156,7 @@ public final class CharacterProtos {
 
     private final int value;
 
-    DecisionType(int value) {
+    private DecisionType(int value) {
       this.value = value;
     }
 
@@ -247,35 +243,97 @@ public final class CharacterProtos {
     mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder getWeaponOrBuilder();
 
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
     java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> 
-        getActiveEffectsList();
+        getActiveEffectsTempStatusModifierList();
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffects(int index);
+    mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffectsTempStatusModifier(int index);
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    int getActiveEffectsCount();
+    int getActiveEffectsTempStatusModifierCount();
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
     java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
-        getActiveEffectsOrBuilderList();
+        getActiveEffectsTempStatusModifierOrBuilderList();
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
+    mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsTempStatusModifierOrBuilder(
         int index);
+
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @return A list containing the activeEffectsSource.
+     */
+    java.util.List<java.lang.String>
+        getActiveEffectsSourceList();
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @return The count of activeEffectsSource.
+     */
+    int getActiveEffectsSourceCount();
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @param index The index of the element to return.
+     * @return The activeEffectsSource at the given index.
+     */
+    java.lang.String getActiveEffectsSource(int index);
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the activeEffectsSource at the given index.
+     */
+    com.google.protobuf.ByteString
+        getActiveEffectsSourceBytes(int index);
+
+    /**
+     * <code>repeated bool active_effects_is_player = 11;</code>
+     * @return A list containing the activeEffectsIsPlayer.
+     */
+    java.util.List<java.lang.Boolean> getActiveEffectsIsPlayerList();
+    /**
+     * <code>repeated bool active_effects_is_player = 11;</code>
+     * @return The count of activeEffectsIsPlayer.
+     */
+    int getActiveEffectsIsPlayerCount();
+    /**
+     * <code>repeated bool active_effects_is_player = 11;</code>
+     * @param index The index of the element to return.
+     * @return The activeEffectsIsPlayer at the given index.
+     */
+    boolean getActiveEffectsIsPlayer(int index);
 
     /**
      * <pre>
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
     int getTaggedPlayersDamageCount();
     /**
@@ -283,7 +341,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
     boolean containsTaggedPlayersDamage(
         java.lang.String key);
@@ -298,7 +356,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
     java.util.Map<java.lang.String, java.lang.Integer>
     getTaggedPlayersDamageMap();
@@ -307,7 +365,7 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
 
     int getTaggedPlayersDamageOrDefault(
@@ -318,44 +376,44 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
 
     int getTaggedPlayersDamageOrThrow(
         java.lang.String key);
 
     /**
-     * <code>bool is_dead = 11;</code>
+     * <code>bool is_dead = 13;</code>
      * @return The isDead.
      */
     boolean getIsDead();
 
     /**
-     * <code>int32 ticks_since_death = 12;</code>
+     * <code>int32 ticks_since_death = 14;</code>
      * @return The ticksSinceDeath.
      */
     int getTicksSinceDeath();
 
     /**
-     * <code>string name = 13;</code>
+     * <code>string name = 15;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
-     * <code>string name = 13;</code>
+     * <code>string name = 15;</code>
      * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>int32 base_attack = 14;</code>
+     * <code>int32 base_attack = 16;</code>
      * @return The baseAttack.
      */
     int getBaseAttack();
 
     /**
-     * <code>int32 base_defense = 15;</code>
+     * <code>int32 base_defense = 17;</code>
      * @return The baseDefense.
      */
     int getBaseDefense();
@@ -363,7 +421,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Character}
    */
-  public static final class Character extends
+  public  static final class Character extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Character)
       CharacterOrBuilder {
@@ -373,7 +431,9 @@ public final class CharacterProtos {
       super(builder);
     }
     private Character() {
-      activeEffects_ = java.util.Collections.emptyList();
+      activeEffectsTempStatusModifier_ = java.util.Collections.emptyList();
+      activeEffectsSource_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      activeEffectsIsPlayer_ = emptyBooleanList();
       name_ = "";
     }
 
@@ -474,18 +534,48 @@ public final class CharacterProtos {
             }
             case 74: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                activeEffects_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier>();
+                activeEffectsTempStatusModifier_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              activeEffects_.add(
+              activeEffectsTempStatusModifier_.add(
                   input.readMessage(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.parser(), extensionRegistry));
               break;
             }
             case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                activeEffectsSource_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              activeEffectsSource_.add(s);
+              break;
+            }
+            case 88: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                activeEffectsIsPlayer_ = newBooleanList();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              activeEffectsIsPlayer_.addBoolean(input.readBool());
+              break;
+            }
+            case 90: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
+                activeEffectsIsPlayer_ = newBooleanList();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                activeEffectsIsPlayer_.addBoolean(input.readBool());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 98: {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 taggedPlayersDamage_ = com.google.protobuf.MapField.newMapField(
                     TaggedPlayersDamageDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000008;
               }
               com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
               taggedPlayersDamage__ = input.readMessage(
@@ -494,28 +584,28 @@ public final class CharacterProtos {
                   taggedPlayersDamage__.getKey(), taggedPlayersDamage__.getValue());
               break;
             }
-            case 88: {
+            case 104: {
 
               isDead_ = input.readBool();
               break;
             }
-            case 96: {
+            case 112: {
 
               ticksSinceDeath_ = input.readInt32();
               break;
             }
-            case 106: {
+            case 122: {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
               break;
             }
-            case 112: {
+            case 128: {
 
               baseAttack_ = input.readInt32();
               break;
             }
-            case 120: {
+            case 136: {
 
               baseDefense_ = input.readInt32();
               break;
@@ -536,7 +626,13 @@ public final class CharacterProtos {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          activeEffects_ = java.util.Collections.unmodifiableList(activeEffects_);
+          activeEffectsTempStatusModifier_ = java.util.Collections.unmodifiableList(activeEffectsTempStatusModifier_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          activeEffectsSource_ = activeEffectsSource_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          activeEffectsIsPlayer_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -552,7 +648,7 @@ public final class CharacterProtos {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 10:
+        case 12:
           return internalGetTaggedPlayersDamage();
         default:
           throw new RuntimeException(
@@ -573,7 +669,6 @@ public final class CharacterProtos {
      * <code>int32 current_health = 1;</code>
      * @return The currentHealth.
      */
-    @java.lang.Override
     public int getCurrentHealth() {
       return currentHealth_;
     }
@@ -584,7 +679,6 @@ public final class CharacterProtos {
      * <code>int32 base_max_health = 2;</code>
      * @return The baseMaxHealth.
      */
-    @java.lang.Override
     public int getBaseMaxHealth() {
       return baseMaxHealth_;
     }
@@ -595,7 +689,6 @@ public final class CharacterProtos {
      * <code>int32 experience = 3;</code>
      * @return The experience.
      */
-    @java.lang.Override
     public int getExperience() {
       return experience_;
     }
@@ -606,7 +699,6 @@ public final class CharacterProtos {
      * <code>int32 level = 4;</code>
      * @return The level.
      */
-    @java.lang.Override
     public int getLevel() {
       return level_;
     }
@@ -617,7 +709,6 @@ public final class CharacterProtos {
      * <code>int32 base_speed = 5;</code>
      * @return The baseSpeed.
      */
-    @java.lang.Override
     public int getBaseSpeed() {
       return baseSpeed_;
     }
@@ -628,7 +719,6 @@ public final class CharacterProtos {
      * <code>.character.Position position = 6;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -636,14 +726,12 @@ public final class CharacterProtos {
      * <code>.character.Position position = 6;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 6;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -654,7 +742,6 @@ public final class CharacterProtos {
      * <code>.character.Position spawn_point = 7;</code>
      * @return Whether the spawnPoint field is set.
      */
-    @java.lang.Override
     public boolean hasSpawnPoint() {
       return spawnPoint_ != null;
     }
@@ -662,14 +749,12 @@ public final class CharacterProtos {
      * <code>.character.Position spawn_point = 7;</code>
      * @return The spawnPoint.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getSpawnPoint() {
       return spawnPoint_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : spawnPoint_;
     }
     /**
      * <code>.character.Position spawn_point = 7;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getSpawnPointOrBuilder() {
       return getSpawnPoint();
     }
@@ -680,7 +765,6 @@ public final class CharacterProtos {
      * <code>.item.Weapon weapon = 8;</code>
      * @return Whether the weapon field is set.
      */
-    @java.lang.Override
     public boolean hasWeapon() {
       return weapon_ != null;
     }
@@ -688,64 +772,139 @@ public final class CharacterProtos {
      * <code>.item.Weapon weapon = 8;</code>
      * @return The weapon.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Weapon getWeapon() {
       return weapon_ == null ? mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance() : weapon_;
     }
     /**
      * <code>.item.Weapon weapon = 8;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
       return getWeapon();
     }
 
-    public static final int ACTIVE_EFFECTS_FIELD_NUMBER = 9;
-    private java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> activeEffects_;
+    public static final int ACTIVE_EFFECTS_TEMP_STATUS_MODIFIER_FIELD_NUMBER = 9;
+    private java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> activeEffectsTempStatusModifier_;
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    @java.lang.Override
-    public java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> getActiveEffectsList() {
-      return activeEffects_;
+    public java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> getActiveEffectsTempStatusModifierList() {
+      return activeEffectsTempStatusModifier_;
     }
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
-        getActiveEffectsOrBuilderList() {
-      return activeEffects_;
+        getActiveEffectsTempStatusModifierOrBuilderList() {
+      return activeEffectsTempStatusModifier_;
     }
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    @java.lang.Override
-    public int getActiveEffectsCount() {
-      return activeEffects_.size();
+    public int getActiveEffectsTempStatusModifierCount() {
+      return activeEffectsTempStatusModifier_.size();
     }
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    @java.lang.Override
-    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffects(int index) {
-      return activeEffects_.get(index);
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffectsTempStatusModifier(int index) {
+      return activeEffectsTempStatusModifier_.get(index);
     }
     /**
-     * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+     * <pre>
+     * Parallel arrays to be stored as a triple
+     * </pre>
+     *
+     * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
-    @java.lang.Override
-    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
+    public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsTempStatusModifierOrBuilder(
         int index) {
-      return activeEffects_.get(index);
+      return activeEffectsTempStatusModifier_.get(index);
     }
 
-    public static final int TAGGED_PLAYERS_DAMAGE_FIELD_NUMBER = 10;
+    public static final int ACTIVE_EFFECTS_SOURCE_FIELD_NUMBER = 10;
+    private com.google.protobuf.LazyStringList activeEffectsSource_;
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @return A list containing the activeEffectsSource.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getActiveEffectsSourceList() {
+      return activeEffectsSource_;
+    }
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @return The count of activeEffectsSource.
+     */
+    public int getActiveEffectsSourceCount() {
+      return activeEffectsSource_.size();
+    }
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @param index The index of the element to return.
+     * @return The activeEffectsSource at the given index.
+     */
+    public java.lang.String getActiveEffectsSource(int index) {
+      return activeEffectsSource_.get(index);
+    }
+    /**
+     * <code>repeated string active_effects_source = 10;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the activeEffectsSource at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getActiveEffectsSourceBytes(int index) {
+      return activeEffectsSource_.getByteString(index);
+    }
+
+    public static final int ACTIVE_EFFECTS_IS_PLAYER_FIELD_NUMBER = 11;
+    private com.google.protobuf.Internal.BooleanList activeEffectsIsPlayer_;
+    /**
+     * <code>repeated bool active_effects_is_player = 11;</code>
+     * @return A list containing the activeEffectsIsPlayer.
+     */
+    public java.util.List<java.lang.Boolean>
+        getActiveEffectsIsPlayerList() {
+      return activeEffectsIsPlayer_;
+    }
+    /**
+     * <code>repeated bool active_effects_is_player = 11;</code>
+     * @return The count of activeEffectsIsPlayer.
+     */
+    public int getActiveEffectsIsPlayerCount() {
+      return activeEffectsIsPlayer_.size();
+    }
+    /**
+     * <code>repeated bool active_effects_is_player = 11;</code>
+     * @param index The index of the element to return.
+     * @return The activeEffectsIsPlayer at the given index.
+     */
+    public boolean getActiveEffectsIsPlayer(int index) {
+      return activeEffectsIsPlayer_.getBoolean(index);
+    }
+    private int activeEffectsIsPlayerMemoizedSerializedSize = -1;
+
+    public static final int TAGGED_PLAYERS_DAMAGE_FIELD_NUMBER = 12;
     private static final class TaggedPlayersDamageDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
-              .newDefaultInstance(
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
                   mech.mania.engine.domain.model.CharacterProtos.internal_static_character_Character_TaggedPlayersDamageEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
@@ -771,10 +930,9 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
 
-    @java.lang.Override
     public boolean containsTaggedPlayersDamage(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -783,7 +941,6 @@ public final class CharacterProtos {
     /**
      * Use {@link #getTaggedPlayersDamageMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
       return getTaggedPlayersDamageMap();
@@ -793,9 +950,8 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
-    @java.lang.Override
 
     public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
       return internalGetTaggedPlayersDamage().getMap();
@@ -805,9 +961,8 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
-    @java.lang.Override
 
     public int getTaggedPlayersDamageOrDefault(
         java.lang.String key,
@@ -822,9 +977,8 @@ public final class CharacterProtos {
      * Maps from player name to damage
      * </pre>
      *
-     * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+     * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
-    @java.lang.Override
 
     public int getTaggedPlayersDamageOrThrow(
         java.lang.String key) {
@@ -837,35 +991,32 @@ public final class CharacterProtos {
       return map.get(key);
     }
 
-    public static final int IS_DEAD_FIELD_NUMBER = 11;
+    public static final int IS_DEAD_FIELD_NUMBER = 13;
     private boolean isDead_;
     /**
-     * <code>bool is_dead = 11;</code>
+     * <code>bool is_dead = 13;</code>
      * @return The isDead.
      */
-    @java.lang.Override
     public boolean getIsDead() {
       return isDead_;
     }
 
-    public static final int TICKS_SINCE_DEATH_FIELD_NUMBER = 12;
+    public static final int TICKS_SINCE_DEATH_FIELD_NUMBER = 14;
     private int ticksSinceDeath_;
     /**
-     * <code>int32 ticks_since_death = 12;</code>
+     * <code>int32 ticks_since_death = 14;</code>
      * @return The ticksSinceDeath.
      */
-    @java.lang.Override
     public int getTicksSinceDeath() {
       return ticksSinceDeath_;
     }
 
-    public static final int NAME_FIELD_NUMBER = 13;
+    public static final int NAME_FIELD_NUMBER = 15;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 13;</code>
+     * <code>string name = 15;</code>
      * @return The name.
      */
-    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -879,10 +1030,9 @@ public final class CharacterProtos {
       }
     }
     /**
-     * <code>string name = 13;</code>
+     * <code>string name = 15;</code>
      * @return The bytes for name.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -897,24 +1047,22 @@ public final class CharacterProtos {
       }
     }
 
-    public static final int BASE_ATTACK_FIELD_NUMBER = 14;
+    public static final int BASE_ATTACK_FIELD_NUMBER = 16;
     private int baseAttack_;
     /**
-     * <code>int32 base_attack = 14;</code>
+     * <code>int32 base_attack = 16;</code>
      * @return The baseAttack.
      */
-    @java.lang.Override
     public int getBaseAttack() {
       return baseAttack_;
     }
 
-    public static final int BASE_DEFENSE_FIELD_NUMBER = 15;
+    public static final int BASE_DEFENSE_FIELD_NUMBER = 17;
     private int baseDefense_;
     /**
-     * <code>int32 base_defense = 15;</code>
+     * <code>int32 base_defense = 17;</code>
      * @return The baseDefense.
      */
-    @java.lang.Override
     public int getBaseDefense() {
       return baseDefense_;
     }
@@ -933,6 +1081,7 @@ public final class CharacterProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (currentHealth_ != 0) {
         output.writeInt32(1, currentHealth_);
       }
@@ -957,29 +1106,39 @@ public final class CharacterProtos {
       if (weapon_ != null) {
         output.writeMessage(8, getWeapon());
       }
-      for (int i = 0; i < activeEffects_.size(); i++) {
-        output.writeMessage(9, activeEffects_.get(i));
+      for (int i = 0; i < activeEffectsTempStatusModifier_.size(); i++) {
+        output.writeMessage(9, activeEffectsTempStatusModifier_.get(i));
+      }
+      for (int i = 0; i < activeEffectsSource_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, activeEffectsSource_.getRaw(i));
+      }
+      if (getActiveEffectsIsPlayerList().size() > 0) {
+        output.writeUInt32NoTag(90);
+        output.writeUInt32NoTag(activeEffectsIsPlayerMemoizedSerializedSize);
+      }
+      for (int i = 0; i < activeEffectsIsPlayer_.size(); i++) {
+        output.writeBoolNoTag(activeEffectsIsPlayer_.getBoolean(i));
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetTaggedPlayersDamage(),
           TaggedPlayersDamageDefaultEntryHolder.defaultEntry,
-          10);
+          12);
       if (isDead_ != false) {
-        output.writeBool(11, isDead_);
+        output.writeBool(13, isDead_);
       }
       if (ticksSinceDeath_ != 0) {
-        output.writeInt32(12, ticksSinceDeath_);
+        output.writeInt32(14, ticksSinceDeath_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 15, name_);
       }
       if (baseAttack_ != 0) {
-        output.writeInt32(14, baseAttack_);
+        output.writeInt32(16, baseAttack_);
       }
       if (baseDefense_ != 0) {
-        output.writeInt32(15, baseDefense_);
+        output.writeInt32(17, baseDefense_);
       }
       unknownFields.writeTo(output);
     }
@@ -1022,9 +1181,28 @@ public final class CharacterProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, getWeapon());
       }
-      for (int i = 0; i < activeEffects_.size(); i++) {
+      for (int i = 0; i < activeEffectsTempStatusModifier_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, activeEffects_.get(i));
+          .computeMessageSize(9, activeEffectsTempStatusModifier_.get(i));
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < activeEffectsSource_.size(); i++) {
+          dataSize += computeStringSizeNoTag(activeEffectsSource_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getActiveEffectsSourceList().size();
+      }
+      {
+        int dataSize = 0;
+        dataSize = 1 * getActiveEffectsIsPlayerList().size();
+        size += dataSize;
+        if (!getActiveEffectsIsPlayerList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        activeEffectsIsPlayerMemoizedSerializedSize = dataSize;
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
            : internalGetTaggedPlayersDamage().getMap().entrySet()) {
@@ -1034,26 +1212,26 @@ public final class CharacterProtos {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(10, taggedPlayersDamage__);
+            .computeMessageSize(12, taggedPlayersDamage__);
       }
       if (isDead_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(11, isDead_);
+          .computeBoolSize(13, isDead_);
       }
       if (ticksSinceDeath_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, ticksSinceDeath_);
+          .computeInt32Size(14, ticksSinceDeath_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, name_);
       }
       if (baseAttack_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, baseAttack_);
+          .computeInt32Size(16, baseAttack_);
       }
       if (baseDefense_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(15, baseDefense_);
+          .computeInt32Size(17, baseDefense_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1095,8 +1273,12 @@ public final class CharacterProtos {
         if (!getWeapon()
             .equals(other.getWeapon())) return false;
       }
-      if (!getActiveEffectsList()
-          .equals(other.getActiveEffectsList())) return false;
+      if (!getActiveEffectsTempStatusModifierList()
+          .equals(other.getActiveEffectsTempStatusModifierList())) return false;
+      if (!getActiveEffectsSourceList()
+          .equals(other.getActiveEffectsSourceList())) return false;
+      if (!getActiveEffectsIsPlayerList()
+          .equals(other.getActiveEffectsIsPlayerList())) return false;
       if (!internalGetTaggedPlayersDamage().equals(
           other.internalGetTaggedPlayersDamage())) return false;
       if (getIsDead()
@@ -1109,7 +1291,8 @@ public final class CharacterProtos {
           != other.getBaseAttack()) return false;
       if (getBaseDefense()
           != other.getBaseDefense()) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1141,9 +1324,17 @@ public final class CharacterProtos {
         hash = (37 * hash) + WEAPON_FIELD_NUMBER;
         hash = (53 * hash) + getWeapon().hashCode();
       }
-      if (getActiveEffectsCount() > 0) {
-        hash = (37 * hash) + ACTIVE_EFFECTS_FIELD_NUMBER;
-        hash = (53 * hash) + getActiveEffectsList().hashCode();
+      if (getActiveEffectsTempStatusModifierCount() > 0) {
+        hash = (37 * hash) + ACTIVE_EFFECTS_TEMP_STATUS_MODIFIER_FIELD_NUMBER;
+        hash = (53 * hash) + getActiveEffectsTempStatusModifierList().hashCode();
+      }
+      if (getActiveEffectsSourceCount() > 0) {
+        hash = (37 * hash) + ACTIVE_EFFECTS_SOURCE_FIELD_NUMBER;
+        hash = (53 * hash) + getActiveEffectsSourceList().hashCode();
+      }
+      if (getActiveEffectsIsPlayerCount() > 0) {
+        hash = (37 * hash) + ACTIVE_EFFECTS_IS_PLAYER_FIELD_NUMBER;
+        hash = (53 * hash) + getActiveEffectsIsPlayerList().hashCode();
       }
       if (!internalGetTaggedPlayersDamage().getMap().isEmpty()) {
         hash = (37 * hash) + TAGGED_PLAYERS_DAMAGE_FIELD_NUMBER;
@@ -1271,7 +1462,7 @@ public final class CharacterProtos {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 10:
+          case 12:
             return internalGetTaggedPlayersDamage();
           default:
             throw new RuntimeException(
@@ -1282,7 +1473,7 @@ public final class CharacterProtos {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 10:
+          case 12:
             return internalGetMutableTaggedPlayersDamage();
           default:
             throw new RuntimeException(
@@ -1310,7 +1501,7 @@ public final class CharacterProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getActiveEffectsFieldBuilder();
+          getActiveEffectsTempStatusModifierFieldBuilder();
         }
       }
       @java.lang.Override
@@ -1344,12 +1535,16 @@ public final class CharacterProtos {
           weapon_ = null;
           weaponBuilder_ = null;
         }
-        if (activeEffectsBuilder_ == null) {
-          activeEffects_ = java.util.Collections.emptyList();
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          activeEffectsTempStatusModifier_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          activeEffectsBuilder_.clear();
+          activeEffectsTempStatusModifierBuilder_.clear();
         }
+        activeEffectsSource_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        activeEffectsIsPlayer_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000004);
         internalGetMutableTaggedPlayersDamage().clear();
         isDead_ = false;
 
@@ -1408,15 +1603,25 @@ public final class CharacterProtos {
         } else {
           result.weapon_ = weaponBuilder_.build();
         }
-        if (activeEffectsBuilder_ == null) {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
-            activeEffects_ = java.util.Collections.unmodifiableList(activeEffects_);
+            activeEffectsTempStatusModifier_ = java.util.Collections.unmodifiableList(activeEffectsTempStatusModifier_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.activeEffects_ = activeEffects_;
+          result.activeEffectsTempStatusModifier_ = activeEffectsTempStatusModifier_;
         } else {
-          result.activeEffects_ = activeEffectsBuilder_.build();
+          result.activeEffectsTempStatusModifier_ = activeEffectsTempStatusModifierBuilder_.build();
         }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          activeEffectsSource_ = activeEffectsSource_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.activeEffectsSource_ = activeEffectsSource_;
+        if (((bitField0_ & 0x00000004) != 0)) {
+          activeEffectsIsPlayer_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.activeEffectsIsPlayer_ = activeEffectsIsPlayer_;
         result.taggedPlayersDamage_ = internalGetTaggedPlayersDamage();
         result.taggedPlayersDamage_.makeImmutable();
         result.isDead_ = isDead_;
@@ -1496,31 +1701,51 @@ public final class CharacterProtos {
         if (other.hasWeapon()) {
           mergeWeapon(other.getWeapon());
         }
-        if (activeEffectsBuilder_ == null) {
-          if (!other.activeEffects_.isEmpty()) {
-            if (activeEffects_.isEmpty()) {
-              activeEffects_ = other.activeEffects_;
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          if (!other.activeEffectsTempStatusModifier_.isEmpty()) {
+            if (activeEffectsTempStatusModifier_.isEmpty()) {
+              activeEffectsTempStatusModifier_ = other.activeEffectsTempStatusModifier_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureActiveEffectsIsMutable();
-              activeEffects_.addAll(other.activeEffects_);
+              ensureActiveEffectsTempStatusModifierIsMutable();
+              activeEffectsTempStatusModifier_.addAll(other.activeEffectsTempStatusModifier_);
             }
             onChanged();
           }
         } else {
-          if (!other.activeEffects_.isEmpty()) {
-            if (activeEffectsBuilder_.isEmpty()) {
-              activeEffectsBuilder_.dispose();
-              activeEffectsBuilder_ = null;
-              activeEffects_ = other.activeEffects_;
+          if (!other.activeEffectsTempStatusModifier_.isEmpty()) {
+            if (activeEffectsTempStatusModifierBuilder_.isEmpty()) {
+              activeEffectsTempStatusModifierBuilder_.dispose();
+              activeEffectsTempStatusModifierBuilder_ = null;
+              activeEffectsTempStatusModifier_ = other.activeEffectsTempStatusModifier_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              activeEffectsBuilder_ = 
+              activeEffectsTempStatusModifierBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getActiveEffectsFieldBuilder() : null;
+                   getActiveEffectsTempStatusModifierFieldBuilder() : null;
             } else {
-              activeEffectsBuilder_.addAllMessages(other.activeEffects_);
+              activeEffectsTempStatusModifierBuilder_.addAllMessages(other.activeEffectsTempStatusModifier_);
             }
           }
+        }
+        if (!other.activeEffectsSource_.isEmpty()) {
+          if (activeEffectsSource_.isEmpty()) {
+            activeEffectsSource_ = other.activeEffectsSource_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureActiveEffectsSourceIsMutable();
+            activeEffectsSource_.addAll(other.activeEffectsSource_);
+          }
+          onChanged();
+        }
+        if (!other.activeEffectsIsPlayer_.isEmpty()) {
+          if (activeEffectsIsPlayer_.isEmpty()) {
+            activeEffectsIsPlayer_ = other.activeEffectsIsPlayer_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureActiveEffectsIsPlayerIsMutable();
+            activeEffectsIsPlayer_.addAll(other.activeEffectsIsPlayer_);
+          }
+          onChanged();
         }
         internalGetMutableTaggedPlayersDamage().mergeFrom(
             other.internalGetTaggedPlayersDamage());
@@ -1575,7 +1800,6 @@ public final class CharacterProtos {
        * <code>int32 current_health = 1;</code>
        * @return The currentHealth.
        */
-      @java.lang.Override
       public int getCurrentHealth() {
         return currentHealth_;
       }
@@ -1606,7 +1830,6 @@ public final class CharacterProtos {
        * <code>int32 base_max_health = 2;</code>
        * @return The baseMaxHealth.
        */
-      @java.lang.Override
       public int getBaseMaxHealth() {
         return baseMaxHealth_;
       }
@@ -1637,7 +1860,6 @@ public final class CharacterProtos {
        * <code>int32 experience = 3;</code>
        * @return The experience.
        */
-      @java.lang.Override
       public int getExperience() {
         return experience_;
       }
@@ -1668,7 +1890,6 @@ public final class CharacterProtos {
        * <code>int32 level = 4;</code>
        * @return The level.
        */
-      @java.lang.Override
       public int getLevel() {
         return level_;
       }
@@ -1699,7 +1920,6 @@ public final class CharacterProtos {
        * <code>int32 base_speed = 5;</code>
        * @return The baseSpeed.
        */
-      @java.lang.Override
       public int getBaseSpeed() {
         return baseSpeed_;
       }
@@ -2082,244 +2302,505 @@ public final class CharacterProtos {
         return weaponBuilder_;
       }
 
-      private java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> activeEffects_ =
+      private java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> activeEffectsTempStatusModifier_ =
         java.util.Collections.emptyList();
-      private void ensureActiveEffectsIsMutable() {
+      private void ensureActiveEffectsTempStatusModifierIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          activeEffects_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier>(activeEffects_);
+          activeEffectsTempStatusModifier_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier>(activeEffectsTempStatusModifier_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> activeEffectsBuilder_;
+          mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> activeEffectsTempStatusModifierBuilder_;
 
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> getActiveEffectsList() {
-        if (activeEffectsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(activeEffects_);
+      public java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> getActiveEffectsTempStatusModifierList() {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(activeEffectsTempStatusModifier_);
         } else {
-          return activeEffectsBuilder_.getMessageList();
+          return activeEffectsTempStatusModifierBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public int getActiveEffectsCount() {
-        if (activeEffectsBuilder_ == null) {
-          return activeEffects_.size();
+      public int getActiveEffectsTempStatusModifierCount() {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          return activeEffectsTempStatusModifier_.size();
         } else {
-          return activeEffectsBuilder_.getCount();
+          return activeEffectsTempStatusModifierBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffects(int index) {
-        if (activeEffectsBuilder_ == null) {
-          return activeEffects_.get(index);
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffectsTempStatusModifier(int index) {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          return activeEffectsTempStatusModifier_.get(index);
         } else {
-          return activeEffectsBuilder_.getMessage(index);
+          return activeEffectsTempStatusModifierBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder setActiveEffects(
+      public Builder setActiveEffectsTempStatusModifier(
           int index, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
-        if (activeEffectsBuilder_ == null) {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureActiveEffectsIsMutable();
-          activeEffects_.set(index, value);
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.set(index, value);
           onChanged();
         } else {
-          activeEffectsBuilder_.setMessage(index, value);
+          activeEffectsTempStatusModifierBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder setActiveEffects(
+      public Builder setActiveEffectsTempStatusModifier(
           int index, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder builderForValue) {
-        if (activeEffectsBuilder_ == null) {
-          ensureActiveEffectsIsMutable();
-          activeEffects_.set(index, builderForValue.build());
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.set(index, builderForValue.build());
           onChanged();
         } else {
-          activeEffectsBuilder_.setMessage(index, builderForValue.build());
+          activeEffectsTempStatusModifierBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder addActiveEffects(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
-        if (activeEffectsBuilder_ == null) {
+      public Builder addActiveEffectsTempStatusModifier(mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureActiveEffectsIsMutable();
-          activeEffects_.add(value);
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.add(value);
           onChanged();
         } else {
-          activeEffectsBuilder_.addMessage(value);
+          activeEffectsTempStatusModifierBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder addActiveEffects(
+      public Builder addActiveEffectsTempStatusModifier(
           int index, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier value) {
-        if (activeEffectsBuilder_ == null) {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureActiveEffectsIsMutable();
-          activeEffects_.add(index, value);
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.add(index, value);
           onChanged();
         } else {
-          activeEffectsBuilder_.addMessage(index, value);
+          activeEffectsTempStatusModifierBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder addActiveEffects(
+      public Builder addActiveEffectsTempStatusModifier(
           mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder builderForValue) {
-        if (activeEffectsBuilder_ == null) {
-          ensureActiveEffectsIsMutable();
-          activeEffects_.add(builderForValue.build());
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.add(builderForValue.build());
           onChanged();
         } else {
-          activeEffectsBuilder_.addMessage(builderForValue.build());
+          activeEffectsTempStatusModifierBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder addActiveEffects(
+      public Builder addActiveEffectsTempStatusModifier(
           int index, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder builderForValue) {
-        if (activeEffectsBuilder_ == null) {
-          ensureActiveEffectsIsMutable();
-          activeEffects_.add(index, builderForValue.build());
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.add(index, builderForValue.build());
           onChanged();
         } else {
-          activeEffectsBuilder_.addMessage(index, builderForValue.build());
+          activeEffectsTempStatusModifierBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder addAllActiveEffects(
+      public Builder addAllActiveEffectsTempStatusModifier(
           java.lang.Iterable<? extends mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> values) {
-        if (activeEffectsBuilder_ == null) {
-          ensureActiveEffectsIsMutable();
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          ensureActiveEffectsTempStatusModifierIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, activeEffects_);
+              values, activeEffectsTempStatusModifier_);
           onChanged();
         } else {
-          activeEffectsBuilder_.addAllMessages(values);
+          activeEffectsTempStatusModifierBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder clearActiveEffects() {
-        if (activeEffectsBuilder_ == null) {
-          activeEffects_ = java.util.Collections.emptyList();
+      public Builder clearActiveEffectsTempStatusModifier() {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          activeEffectsTempStatusModifier_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          activeEffectsBuilder_.clear();
+          activeEffectsTempStatusModifierBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public Builder removeActiveEffects(int index) {
-        if (activeEffectsBuilder_ == null) {
-          ensureActiveEffectsIsMutable();
-          activeEffects_.remove(index);
+      public Builder removeActiveEffectsTempStatusModifier(int index) {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          ensureActiveEffectsTempStatusModifierIsMutable();
+          activeEffectsTempStatusModifier_.remove(index);
           onChanged();
         } else {
-          activeEffectsBuilder_.remove(index);
+          activeEffectsTempStatusModifierBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder getActiveEffectsBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder getActiveEffectsTempStatusModifierBuilder(
           int index) {
-        return getActiveEffectsFieldBuilder().getBuilder(index);
+        return getActiveEffectsTempStatusModifierFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsOrBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsTempStatusModifierOrBuilder(
           int index) {
-        if (activeEffectsBuilder_ == null) {
-          return activeEffects_.get(index);  } else {
-          return activeEffectsBuilder_.getMessageOrBuilder(index);
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          return activeEffectsTempStatusModifier_.get(index);  } else {
+          return activeEffectsTempStatusModifierBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
       public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
-           getActiveEffectsOrBuilderList() {
-        if (activeEffectsBuilder_ != null) {
-          return activeEffectsBuilder_.getMessageOrBuilderList();
+           getActiveEffectsTempStatusModifierOrBuilderList() {
+        if (activeEffectsTempStatusModifierBuilder_ != null) {
+          return activeEffectsTempStatusModifierBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(activeEffects_);
+          return java.util.Collections.unmodifiableList(activeEffectsTempStatusModifier_);
         }
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder addActiveEffectsBuilder() {
-        return getActiveEffectsFieldBuilder().addBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder addActiveEffectsTempStatusModifierBuilder() {
+        return getActiveEffectsTempStatusModifierFieldBuilder().addBuilder(
             mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
-      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder addActiveEffectsBuilder(
+      public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder addActiveEffectsTempStatusModifierBuilder(
           int index) {
-        return getActiveEffectsFieldBuilder().addBuilder(
+        return getActiveEffectsTempStatusModifierFieldBuilder().addBuilder(
             index, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.TempStatusModifier active_effects = 9;</code>
+       * <pre>
+       * Parallel arrays to be stored as a triple
+       * </pre>
+       *
+       * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder> 
-           getActiveEffectsBuilderList() {
-        return getActiveEffectsFieldBuilder().getBuilderList();
+           getActiveEffectsTempStatusModifierBuilderList() {
+        return getActiveEffectsTempStatusModifierFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
           mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
-          getActiveEffectsFieldBuilder() {
-        if (activeEffectsBuilder_ == null) {
-          activeEffectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getActiveEffectsTempStatusModifierFieldBuilder() {
+        if (activeEffectsTempStatusModifierBuilder_ == null) {
+          activeEffectsTempStatusModifierBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               mech.mania.engine.domain.model.ItemProtos.TempStatusModifier, mech.mania.engine.domain.model.ItemProtos.TempStatusModifier.Builder, mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder>(
-                  activeEffects_,
+                  activeEffectsTempStatusModifier_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
-          activeEffects_ = null;
+          activeEffectsTempStatusModifier_ = null;
         }
-        return activeEffectsBuilder_;
+        return activeEffectsTempStatusModifierBuilder_;
+      }
+
+      private com.google.protobuf.LazyStringList activeEffectsSource_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureActiveEffectsSourceIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          activeEffectsSource_ = new com.google.protobuf.LazyStringArrayList(activeEffectsSource_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @return A list containing the activeEffectsSource.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getActiveEffectsSourceList() {
+        return activeEffectsSource_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @return The count of activeEffectsSource.
+       */
+      public int getActiveEffectsSourceCount() {
+        return activeEffectsSource_.size();
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @param index The index of the element to return.
+       * @return The activeEffectsSource at the given index.
+       */
+      public java.lang.String getActiveEffectsSource(int index) {
+        return activeEffectsSource_.get(index);
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the activeEffectsSource at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getActiveEffectsSourceBytes(int index) {
+        return activeEffectsSource_.getByteString(index);
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @param index The index to set the value at.
+       * @param value The activeEffectsSource to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActiveEffectsSource(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureActiveEffectsSourceIsMutable();
+        activeEffectsSource_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @param value The activeEffectsSource to add.
+       * @return This builder for chaining.
+       */
+      public Builder addActiveEffectsSource(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureActiveEffectsSourceIsMutable();
+        activeEffectsSource_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @param values The activeEffectsSource to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllActiveEffectsSource(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureActiveEffectsSourceIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, activeEffectsSource_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearActiveEffectsSource() {
+        activeEffectsSource_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string active_effects_source = 10;</code>
+       * @param value The bytes of the activeEffectsSource to add.
+       * @return This builder for chaining.
+       */
+      public Builder addActiveEffectsSourceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureActiveEffectsSourceIsMutable();
+        activeEffectsSource_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.BooleanList activeEffectsIsPlayer_ = emptyBooleanList();
+      private void ensureActiveEffectsIsPlayerIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          activeEffectsIsPlayer_ = mutableCopy(activeEffectsIsPlayer_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @return A list containing the activeEffectsIsPlayer.
+       */
+      public java.util.List<java.lang.Boolean>
+          getActiveEffectsIsPlayerList() {
+        return ((bitField0_ & 0x00000004) != 0) ?
+                 java.util.Collections.unmodifiableList(activeEffectsIsPlayer_) : activeEffectsIsPlayer_;
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @return The count of activeEffectsIsPlayer.
+       */
+      public int getActiveEffectsIsPlayerCount() {
+        return activeEffectsIsPlayer_.size();
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @param index The index of the element to return.
+       * @return The activeEffectsIsPlayer at the given index.
+       */
+      public boolean getActiveEffectsIsPlayer(int index) {
+        return activeEffectsIsPlayer_.getBoolean(index);
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @param index The index to set the value at.
+       * @param value The activeEffectsIsPlayer to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActiveEffectsIsPlayer(
+          int index, boolean value) {
+        ensureActiveEffectsIsPlayerIsMutable();
+        activeEffectsIsPlayer_.setBoolean(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @param value The activeEffectsIsPlayer to add.
+       * @return This builder for chaining.
+       */
+      public Builder addActiveEffectsIsPlayer(boolean value) {
+        ensureActiveEffectsIsPlayerIsMutable();
+        activeEffectsIsPlayer_.addBoolean(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @param values The activeEffectsIsPlayer to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllActiveEffectsIsPlayer(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensureActiveEffectsIsPlayerIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, activeEffectsIsPlayer_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool active_effects_is_player = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearActiveEffectsIsPlayer() {
+        activeEffectsIsPlayer_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
       }
 
       private com.google.protobuf.MapField<
@@ -2334,7 +2815,7 @@ public final class CharacterProtos {
       }
       private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
       internalGetMutableTaggedPlayersDamage() {
-        onChanged();
+        onChanged();;
         if (taggedPlayersDamage_ == null) {
           taggedPlayersDamage_ = com.google.protobuf.MapField.newMapField(
               TaggedPlayersDamageDefaultEntryHolder.defaultEntry);
@@ -2353,10 +2834,9 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
 
-      @java.lang.Override
       public boolean containsTaggedPlayersDamage(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2365,7 +2845,6 @@ public final class CharacterProtos {
       /**
        * Use {@link #getTaggedPlayersDamageMap()} instead.
        */
-      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
         return getTaggedPlayersDamageMap();
@@ -2375,9 +2854,8 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
-      @java.lang.Override
 
       public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
         return internalGetTaggedPlayersDamage().getMap();
@@ -2387,9 +2865,8 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
-      @java.lang.Override
 
       public int getTaggedPlayersDamageOrDefault(
           java.lang.String key,
@@ -2404,9 +2881,8 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
-      @java.lang.Override
 
       public int getTaggedPlayersDamageOrThrow(
           java.lang.String key) {
@@ -2429,7 +2905,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
 
       public Builder removeTaggedPlayersDamage(
@@ -2452,7 +2928,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
       public Builder putTaggedPlayersDamage(
           java.lang.String key,
@@ -2468,7 +2944,7 @@ public final class CharacterProtos {
        * Maps from player name to damage
        * </pre>
        *
-       * <code>map&lt;string, int32&gt; tagged_players_damage = 10;</code>
+       * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
 
       public Builder putAllTaggedPlayersDamage(
@@ -2480,15 +2956,14 @@ public final class CharacterProtos {
 
       private boolean isDead_ ;
       /**
-       * <code>bool is_dead = 11;</code>
+       * <code>bool is_dead = 13;</code>
        * @return The isDead.
        */
-      @java.lang.Override
       public boolean getIsDead() {
         return isDead_;
       }
       /**
-       * <code>bool is_dead = 11;</code>
+       * <code>bool is_dead = 13;</code>
        * @param value The isDead to set.
        * @return This builder for chaining.
        */
@@ -2499,7 +2974,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>bool is_dead = 11;</code>
+       * <code>bool is_dead = 13;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsDead() {
@@ -2511,15 +2986,14 @@ public final class CharacterProtos {
 
       private int ticksSinceDeath_ ;
       /**
-       * <code>int32 ticks_since_death = 12;</code>
+       * <code>int32 ticks_since_death = 14;</code>
        * @return The ticksSinceDeath.
        */
-      @java.lang.Override
       public int getTicksSinceDeath() {
         return ticksSinceDeath_;
       }
       /**
-       * <code>int32 ticks_since_death = 12;</code>
+       * <code>int32 ticks_since_death = 14;</code>
        * @param value The ticksSinceDeath to set.
        * @return This builder for chaining.
        */
@@ -2530,7 +3004,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>int32 ticks_since_death = 12;</code>
+       * <code>int32 ticks_since_death = 14;</code>
        * @return This builder for chaining.
        */
       public Builder clearTicksSinceDeath() {
@@ -2542,7 +3016,7 @@ public final class CharacterProtos {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 13;</code>
+       * <code>string name = 15;</code>
        * @return The name.
        */
       public java.lang.String getName() {
@@ -2558,7 +3032,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>string name = 13;</code>
+       * <code>string name = 15;</code>
        * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
@@ -2575,7 +3049,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>string name = 13;</code>
+       * <code>string name = 15;</code>
        * @param value The name to set.
        * @return This builder for chaining.
        */
@@ -2590,7 +3064,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>string name = 13;</code>
+       * <code>string name = 15;</code>
        * @return This builder for chaining.
        */
       public Builder clearName() {
@@ -2600,7 +3074,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>string name = 13;</code>
+       * <code>string name = 15;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
@@ -2618,15 +3092,14 @@ public final class CharacterProtos {
 
       private int baseAttack_ ;
       /**
-       * <code>int32 base_attack = 14;</code>
+       * <code>int32 base_attack = 16;</code>
        * @return The baseAttack.
        */
-      @java.lang.Override
       public int getBaseAttack() {
         return baseAttack_;
       }
       /**
-       * <code>int32 base_attack = 14;</code>
+       * <code>int32 base_attack = 16;</code>
        * @param value The baseAttack to set.
        * @return This builder for chaining.
        */
@@ -2637,7 +3110,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>int32 base_attack = 14;</code>
+       * <code>int32 base_attack = 16;</code>
        * @return This builder for chaining.
        */
       public Builder clearBaseAttack() {
@@ -2649,15 +3122,14 @@ public final class CharacterProtos {
 
       private int baseDefense_ ;
       /**
-       * <code>int32 base_defense = 15;</code>
+       * <code>int32 base_defense = 17;</code>
        * @return The baseDefense.
        */
-      @java.lang.Override
       public int getBaseDefense() {
         return baseDefense_;
       }
       /**
-       * <code>int32 base_defense = 15;</code>
+       * <code>int32 base_defense = 17;</code>
        * @param value The baseDefense to set.
        * @return This builder for chaining.
        */
@@ -2668,7 +3140,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>int32 base_defense = 15;</code>
+       * <code>int32 base_defense = 17;</code>
        * @return This builder for chaining.
        */
       public Builder clearBaseDefense() {
@@ -2776,7 +3248,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Monster}
    */
-  public static final class Monster extends
+  public  static final class Monster extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Monster)
       MonsterOrBuilder {
@@ -2883,7 +3355,6 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return Whether the character field is set.
      */
-    @java.lang.Override
     public boolean hasCharacter() {
       return character_ != null;
     }
@@ -2891,14 +3362,12 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return The character.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getCharacter() {
       return character_ == null ? mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance() : character_;
     }
     /**
      * <code>.character.Character character = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getCharacterOrBuilder() {
       return getCharacter();
     }
@@ -2908,14 +3377,12 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getDropsList() {
       return drops_;
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getDropsOrBuilderList() {
       return drops_;
@@ -2923,21 +3390,18 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
-    @java.lang.Override
     public int getDropsCount() {
       return drops_.size();
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Item getDrops(int index) {
       return drops_.get(index);
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getDropsOrBuilder(
         int index) {
       return drops_.get(index);
@@ -3002,7 +3466,8 @@ public final class CharacterProtos {
       }
       if (!getDropsList()
           .equals(other.getDropsList())) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3816,7 +4281,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Player}
    */
-  public static final class Player extends
+  public  static final class Player extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Player)
       PlayerOrBuilder {
@@ -3962,7 +4427,6 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return Whether the character field is set.
      */
-    @java.lang.Override
     public boolean hasCharacter() {
       return character_ != null;
     }
@@ -3970,14 +4434,12 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return The character.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getCharacter() {
       return character_ == null ? mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance() : character_;
     }
     /**
      * <code>.character.Character character = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getCharacterOrBuilder() {
       return getCharacter();
     }
@@ -3988,7 +4450,6 @@ public final class CharacterProtos {
      * <code>.item.Hat hat = 2;</code>
      * @return Whether the hat field is set.
      */
-    @java.lang.Override
     public boolean hasHat() {
       return hat_ != null;
     }
@@ -3996,14 +4457,12 @@ public final class CharacterProtos {
      * <code>.item.Hat hat = 2;</code>
      * @return The hat.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Hat getHat() {
       return hat_ == null ? mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance() : hat_;
     }
     /**
      * <code>.item.Hat hat = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.HatOrBuilder getHatOrBuilder() {
       return getHat();
     }
@@ -4014,7 +4473,6 @@ public final class CharacterProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return Whether the clothes field is set.
      */
-    @java.lang.Override
     public boolean hasClothes() {
       return clothes_ != null;
     }
@@ -4022,14 +4480,12 @@ public final class CharacterProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return The clothes.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Clothes getClothes() {
       return clothes_ == null ? mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance() : clothes_;
     }
     /**
      * <code>.item.Clothes clothes = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
       return getClothes();
     }
@@ -4040,7 +4496,6 @@ public final class CharacterProtos {
      * <code>.item.Shoes shoes = 4;</code>
      * @return Whether the shoes field is set.
      */
-    @java.lang.Override
     public boolean hasShoes() {
       return shoes_ != null;
     }
@@ -4048,14 +4503,12 @@ public final class CharacterProtos {
      * <code>.item.Shoes shoes = 4;</code>
      * @return The shoes.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Shoes getShoes() {
       return shoes_ == null ? mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance() : shoes_;
     }
     /**
      * <code>.item.Shoes shoes = 4;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
       return getShoes();
     }
@@ -4065,14 +4518,12 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getInventoryList() {
       return inventory_;
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getInventoryOrBuilderList() {
       return inventory_;
@@ -4080,21 +4531,18 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
-    @java.lang.Override
     public int getInventoryCount() {
       return inventory_.size();
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Item getInventory(int index) {
       return inventory_.get(index);
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getInventoryOrBuilder(
         int index) {
       return inventory_.get(index);
@@ -4195,7 +4643,8 @@ public final class CharacterProtos {
       }
       if (!getInventoryList()
           .equals(other.getInventoryList())) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -5390,7 +5839,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.PlayerStats}
    */
-  public static final class PlayerStats extends
+  public  static final class PlayerStats extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.PlayerStats)
       PlayerStatsOrBuilder {
@@ -5515,7 +5964,6 @@ public final class CharacterProtos {
      * <code>int32 level = 1;</code>
      * @return The level.
      */
-    @java.lang.Override
     public int getLevel() {
       return level_;
     }
@@ -5526,7 +5974,6 @@ public final class CharacterProtos {
      * <code>int32 experience = 2;</code>
      * @return The experience.
      */
-    @java.lang.Override
     public int getExperience() {
       return experience_;
     }
@@ -5537,7 +5984,6 @@ public final class CharacterProtos {
      * <code>int32 monsters_slain = 3;</code>
      * @return The monstersSlain.
      */
-    @java.lang.Override
     public int getMonstersSlain() {
       return monstersSlain_;
     }
@@ -5548,7 +5994,6 @@ public final class CharacterProtos {
      * <code>int32 attack = 4;</code>
      * @return The attack.
      */
-    @java.lang.Override
     public int getAttack() {
       return attack_;
     }
@@ -5559,7 +6004,6 @@ public final class CharacterProtos {
      * <code>int32 defense = 5;</code>
      * @return The defense.
      */
-    @java.lang.Override
     public int getDefense() {
       return defense_;
     }
@@ -5570,7 +6014,6 @@ public final class CharacterProtos {
      * <code>int32 current_health = 6;</code>
      * @return The currentHealth.
      */
-    @java.lang.Override
     public int getCurrentHealth() {
       return currentHealth_;
     }
@@ -5581,7 +6024,6 @@ public final class CharacterProtos {
      * <code>int32 max_health = 7;</code>
      * @return The maxHealth.
      */
-    @java.lang.Override
     public int getMaxHealth() {
       return maxHealth_;
     }
@@ -5592,7 +6034,6 @@ public final class CharacterProtos {
      * <code>int32 death_count = 8;</code>
      * @return The deathCount.
      */
-    @java.lang.Override
     public int getDeathCount() {
       return deathCount_;
     }
@@ -5603,7 +6044,6 @@ public final class CharacterProtos {
      * <code>int32 turns_since_joined = 9;</code>
      * @return The turnsSinceJoined.
      */
-    @java.lang.Override
     public int getTurnsSinceJoined() {
       return turnsSinceJoined_;
     }
@@ -5727,7 +6167,8 @@ public final class CharacterProtos {
           != other.getDeathCount()) return false;
       if (getTurnsSinceJoined()
           != other.getTurnsSinceJoined()) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6050,7 +6491,6 @@ public final class CharacterProtos {
        * <code>int32 level = 1;</code>
        * @return The level.
        */
-      @java.lang.Override
       public int getLevel() {
         return level_;
       }
@@ -6081,7 +6521,6 @@ public final class CharacterProtos {
        * <code>int32 experience = 2;</code>
        * @return The experience.
        */
-      @java.lang.Override
       public int getExperience() {
         return experience_;
       }
@@ -6112,7 +6551,6 @@ public final class CharacterProtos {
        * <code>int32 monsters_slain = 3;</code>
        * @return The monstersSlain.
        */
-      @java.lang.Override
       public int getMonstersSlain() {
         return monstersSlain_;
       }
@@ -6143,7 +6581,6 @@ public final class CharacterProtos {
        * <code>int32 attack = 4;</code>
        * @return The attack.
        */
-      @java.lang.Override
       public int getAttack() {
         return attack_;
       }
@@ -6174,7 +6611,6 @@ public final class CharacterProtos {
        * <code>int32 defense = 5;</code>
        * @return The defense.
        */
-      @java.lang.Override
       public int getDefense() {
         return defense_;
       }
@@ -6205,7 +6641,6 @@ public final class CharacterProtos {
        * <code>int32 current_health = 6;</code>
        * @return The currentHealth.
        */
-      @java.lang.Override
       public int getCurrentHealth() {
         return currentHealth_;
       }
@@ -6236,7 +6671,6 @@ public final class CharacterProtos {
        * <code>int32 max_health = 7;</code>
        * @return The maxHealth.
        */
-      @java.lang.Override
       public int getMaxHealth() {
         return maxHealth_;
       }
@@ -6267,7 +6701,6 @@ public final class CharacterProtos {
        * <code>int32 death_count = 8;</code>
        * @return The deathCount.
        */
-      @java.lang.Override
       public int getDeathCount() {
         return deathCount_;
       }
@@ -6298,7 +6731,6 @@ public final class CharacterProtos {
        * <code>int32 turns_since_joined = 9;</code>
        * @return The turnsSinceJoined.
        */
-      @java.lang.Override
       public int getTurnsSinceJoined() {
         return turnsSinceJoined_;
       }
@@ -6381,33 +6813,43 @@ public final class CharacterProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
-     */
-    java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> 
-        getStatsList();
-    /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
-     */
-    mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStats(int index);
-    /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
     int getStatsCount();
     /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
-    java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
-        getStatsOrBuilderList();
+    boolean containsStats(
+        java.lang.String key);
     /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
+     * Use {@link #getStatsMap()} instead.
      */
-    mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder getStatsOrBuilder(
-        int index);
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+    getStats();
+    /**
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
+     */
+    java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+    getStatsMap();
+    /**
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
+     */
+
+    mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrDefault(
+        java.lang.String key,
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStats defaultValue);
+    /**
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
+     */
+
+    mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrThrow(
+        java.lang.String key);
   }
   /**
    * Protobuf type {@code character.PlayerStatsBundle}
    */
-  public static final class PlayerStatsBundle extends
+  public  static final class PlayerStatsBundle extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.PlayerStatsBundle)
       PlayerStatsBundleOrBuilder {
@@ -6417,7 +6859,6 @@ public final class CharacterProtos {
       super(builder);
     }
     private PlayerStatsBundle() {
-      stats_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -6453,11 +6894,15 @@ public final class CharacterProtos {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                stats_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.PlayerStats>();
+                stats_ = com.google.protobuf.MapField.newMapField(
+                    StatsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              stats_.add(
-                  input.readMessage(mech.mania.engine.domain.model.CharacterProtos.PlayerStats.parser(), extensionRegistry));
+              com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+              stats__ = input.readMessage(
+                  StatsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              stats_.getMutableMap().put(
+                  stats__.getKey(), stats__.getValue());
               break;
             }
             default: {
@@ -6475,9 +6920,6 @@ public final class CharacterProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          stats_ = java.util.Collections.unmodifiableList(stats_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -6487,6 +6929,18 @@ public final class CharacterProtos {
       return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetStats();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -6496,43 +6950,79 @@ public final class CharacterProtos {
     }
 
     public static final int STATS_FIELD_NUMBER = 1;
-    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> stats_;
-    /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsList() {
+    private static final class StatsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>newDefaultInstance(
+                  mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_StatsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> stats_;
+    private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+    internalGetStats() {
+      if (stats_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StatsDefaultEntryHolder.defaultEntry);
+      }
       return stats_;
     }
-    /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
-        getStatsOrBuilderList() {
-      return stats_;
-    }
-    /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
-     */
-    @java.lang.Override
+
     public int getStatsCount() {
-      return stats_.size();
+      return internalGetStats().getMap().size();
     }
     /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
-    @java.lang.Override
-    public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStats(int index) {
-      return stats_.get(index);
+
+    public boolean containsStats(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetStats().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .character.PlayerStats stats = 1;</code>
+     * Use {@link #getStatsMap()} instead.
      */
-    @java.lang.Override
-    public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder getStatsOrBuilder(
-        int index) {
-      return stats_.get(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStats() {
+      return getStatsMap();
+    }
+    /**
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
+     */
+
+    public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsMap() {
+      return internalGetStats().getMap();
+    }
+    /**
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
+     */
+
+    public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrDefault(
+        java.lang.String key,
+        mech.mania.engine.domain.model.CharacterProtos.PlayerStats defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> map =
+          internalGetStats().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
+     */
+
+    public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> map =
+          internalGetStats().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6549,9 +7039,12 @@ public final class CharacterProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < stats_.size(); i++) {
-        output.writeMessage(1, stats_.get(i));
-      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetStats(),
+          StatsDefaultEntryHolder.defaultEntry,
+          1);
       unknownFields.writeTo(output);
     }
 
@@ -6561,9 +7054,15 @@ public final class CharacterProtos {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < stats_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> entry
+           : internalGetStats().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+        stats__ = StatsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, stats_.get(i));
+            .computeMessageSize(1, stats__);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6580,9 +7079,10 @@ public final class CharacterProtos {
       }
       mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle other = (mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle) obj;
 
-      if (!getStatsList()
-          .equals(other.getStatsList())) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!internalGetStats().equals(
+          other.internalGetStats())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -6592,9 +7092,9 @@ public final class CharacterProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getStatsCount() > 0) {
+      if (!internalGetStats().getMap().isEmpty()) {
         hash = (37 * hash) + STATS_FIELD_NUMBER;
-        hash = (53 * hash) + getStatsList().hashCode();
+        hash = (53 * hash) + internalGetStats().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -6703,6 +7203,28 @@ public final class CharacterProtos {
         return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_PlayerStatsBundle_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetStats();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableStats();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -6724,18 +7246,12 @@ public final class CharacterProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getStatsFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (statsBuilder_ == null) {
-          stats_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          statsBuilder_.clear();
-        }
+        internalGetMutableStats().clear();
         return this;
       }
 
@@ -6763,15 +7279,8 @@ public final class CharacterProtos {
       public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle buildPartial() {
         mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle result = new mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle(this);
         int from_bitField0_ = bitField0_;
-        if (statsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            stats_ = java.util.Collections.unmodifiableList(stats_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.stats_ = stats_;
-        } else {
-          result.stats_ = statsBuilder_.build();
-        }
+        result.stats_ = internalGetStats();
+        result.stats_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -6820,32 +7329,8 @@ public final class CharacterProtos {
 
       public Builder mergeFrom(mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle other) {
         if (other == mech.mania.engine.domain.model.CharacterProtos.PlayerStatsBundle.getDefaultInstance()) return this;
-        if (statsBuilder_ == null) {
-          if (!other.stats_.isEmpty()) {
-            if (stats_.isEmpty()) {
-              stats_ = other.stats_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureStatsIsMutable();
-              stats_.addAll(other.stats_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.stats_.isEmpty()) {
-            if (statsBuilder_.isEmpty()) {
-              statsBuilder_.dispose();
-              statsBuilder_ = null;
-              stats_ = other.stats_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              statsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getStatsFieldBuilder() : null;
-            } else {
-              statsBuilder_.addAllMessages(other.stats_);
-            }
-          }
-        }
+        internalGetMutableStats().mergeFrom(
+            other.internalGetStats());
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6876,244 +7361,127 @@ public final class CharacterProtos {
       }
       private int bitField0_;
 
-      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> stats_ =
-        java.util.Collections.emptyList();
-      private void ensureStatsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          stats_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.PlayerStats>(stats_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.PlayerStats, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> statsBuilder_;
-
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsList() {
-        if (statsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(stats_);
-        } else {
-          return statsBuilder_.getMessageList();
+      private com.google.protobuf.MapField<
+          java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> stats_;
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+      internalGetStats() {
+        if (stats_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              StatsDefaultEntryHolder.defaultEntry);
         }
+        return stats_;
       }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
+      private com.google.protobuf.MapField<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+      internalGetMutableStats() {
+        onChanged();;
+        if (stats_ == null) {
+          stats_ = com.google.protobuf.MapField.newMapField(
+              StatsDefaultEntryHolder.defaultEntry);
+        }
+        if (!stats_.isMutable()) {
+          stats_ = stats_.copy();
+        }
+        return stats_;
+      }
+
       public int getStatsCount() {
-        if (statsBuilder_ == null) {
-          return stats_.size();
-        } else {
-          return statsBuilder_.getCount();
-        }
+        return internalGetStats().getMap().size();
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStats(int index) {
-        if (statsBuilder_ == null) {
-          return stats_.get(index);
-        } else {
-          return statsBuilder_.getMessage(index);
-        }
+
+      public boolean containsStats(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetStats().getMap().containsKey(key);
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * Use {@link #getStatsMap()} instead.
        */
-      public Builder setStats(
-          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
-        if (statsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatsIsMutable();
-          stats_.set(index, value);
-          onChanged();
-        } else {
-          statsBuilder_.setMessage(index, value);
-        }
-        return this;
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStats() {
+        return getStatsMap();
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public Builder setStats(
-          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder builderForValue) {
-        if (statsBuilder_ == null) {
-          ensureStatsIsMutable();
-          stats_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          statsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
+
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsMap() {
+        return internalGetStats().getMap();
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public Builder addStats(mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
-        if (statsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatsIsMutable();
-          stats_.add(value);
-          onChanged();
-        } else {
-          statsBuilder_.addMessage(value);
-        }
-        return this;
+
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrDefault(
+          java.lang.String key,
+          mech.mania.engine.domain.model.CharacterProtos.PlayerStats defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> map =
+            internalGetStats().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public Builder addStats(
-          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
-        if (statsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatsIsMutable();
-          stats_.add(index, value);
-          onChanged();
-        } else {
-          statsBuilder_.addMessage(index, value);
+
+      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> map =
+            internalGetStats().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
         }
-        return this;
+        return map.get(key);
       }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public Builder addStats(
-          mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder builderForValue) {
-        if (statsBuilder_ == null) {
-          ensureStatsIsMutable();
-          stats_.add(builderForValue.build());
-          onChanged();
-        } else {
-          statsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public Builder addStats(
-          int index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder builderForValue) {
-        if (statsBuilder_ == null) {
-          ensureStatsIsMutable();
-          stats_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          statsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public Builder addAllStats(
-          java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStats> values) {
-        if (statsBuilder_ == null) {
-          ensureStatsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, stats_);
-          onChanged();
-        } else {
-          statsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
+
       public Builder clearStats() {
-        if (statsBuilder_ == null) {
-          stats_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          statsBuilder_.clear();
-        }
+        internalGetMutableStats().getMutableMap()
+            .clear();
         return this;
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public Builder removeStats(int index) {
-        if (statsBuilder_ == null) {
-          ensureStatsIsMutable();
-          stats_.remove(index);
-          onChanged();
-        } else {
-          statsBuilder_.remove(index);
-        }
+
+      public Builder removeStats(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableStats().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * Use alternate mutation accessors instead.
        */
-      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder getStatsBuilder(
-          int index) {
-        return getStatsFieldBuilder().getBuilder(index);
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats>
+      getMutableStats() {
+        return internalGetMutableStats().getMutableMap();
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder getStatsOrBuilder(
-          int index) {
-        if (statsBuilder_ == null) {
-          return stats_.get(index);  } else {
-          return statsBuilder_.getMessageOrBuilder(index);
-        }
+      public Builder putStats(
+          java.lang.String key,
+          mech.mania.engine.domain.model.CharacterProtos.PlayerStats value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableStats().getMutableMap()
+            .put(key, value);
+        return this;
       }
       /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
+       * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
-      public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
-           getStatsOrBuilderList() {
-        if (statsBuilder_ != null) {
-          return statsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(stats_);
-        }
-      }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder addStatsBuilder() {
-        return getStatsFieldBuilder().addBuilder(
-            mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder addStatsBuilder(
-          int index) {
-        return getStatsFieldBuilder().addBuilder(
-            index, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .character.PlayerStats stats = 1;</code>
-       */
-      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder> 
-           getStatsBuilderList() {
-        return getStatsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.PlayerStats, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder> 
-          getStatsFieldBuilder() {
-        if (statsBuilder_ == null) {
-          statsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              mech.mania.engine.domain.model.CharacterProtos.PlayerStats, mech.mania.engine.domain.model.CharacterProtos.PlayerStats.Builder, mech.mania.engine.domain.model.CharacterProtos.PlayerStatsOrBuilder>(
-                  stats_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          stats_ = null;
-        }
-        return statsBuilder_;
+
+      public Builder putAllStats(
+          java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> values) {
+        internalGetMutableStats().getMutableMap()
+            .putAll(values);
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7199,7 +7567,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Position}
    */
-  public static final class Position extends
+  public  static final class Position extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Position)
       PositionOrBuilder {
@@ -7296,7 +7664,6 @@ public final class CharacterProtos {
      * <code>string board_id = 1;</code>
      * @return The boardId.
      */
-    @java.lang.Override
     public java.lang.String getBoardId() {
       java.lang.Object ref = boardId_;
       if (ref instanceof java.lang.String) {
@@ -7313,7 +7680,6 @@ public final class CharacterProtos {
      * <code>string board_id = 1;</code>
      * @return The bytes for boardId.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getBoardIdBytes() {
       java.lang.Object ref = boardId_;
@@ -7334,7 +7700,6 @@ public final class CharacterProtos {
      * <code>int32 x = 2;</code>
      * @return The x.
      */
-    @java.lang.Override
     public int getX() {
       return x_;
     }
@@ -7345,7 +7710,6 @@ public final class CharacterProtos {
      * <code>int32 y = 3;</code>
      * @return The y.
      */
-    @java.lang.Override
     public int getY() {
       return y_;
     }
@@ -7414,7 +7778,8 @@ public final class CharacterProtos {
           != other.getX()) return false;
       if (getY()
           != other.getY()) return false;
-      return unknownFields.equals(other.unknownFields);
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -7766,7 +8131,6 @@ public final class CharacterProtos {
        * <code>int32 x = 2;</code>
        * @return The x.
        */
-      @java.lang.Override
       public int getX() {
         return x_;
       }
@@ -7797,7 +8161,6 @@ public final class CharacterProtos {
        * <code>int32 y = 3;</code>
        * @return The y.
        */
-      @java.lang.Override
       public int getY() {
         return y_;
       }
@@ -7875,6 +8238,885 @@ public final class CharacterProtos {
 
   }
 
+  public interface CharacterDecisionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:character.CharacterDecision)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
+     */
+    int getDecisionTypeValue();
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The decisionType.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType();
+
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return Whether the targetPosition field is set.
+     */
+    boolean hasTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return The targetPosition.
+     */
+    mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition();
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     */
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder();
+
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    int getIndex();
+  }
+  /**
+   * <pre>
+   * Proto sent from player to engine and from engine to visualizer
+   * </pre>
+   *
+   * Protobuf type {@code character.CharacterDecision}
+   */
+  public  static final class CharacterDecision extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:character.CharacterDecision)
+      CharacterDecisionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CharacterDecision.newBuilder() to construct.
+    private CharacterDecision(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CharacterDecision() {
+      decisionType_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CharacterDecision();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CharacterDecision(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              decisionType_ = rawValue;
+              break;
+            }
+            case 18: {
+              mech.mania.engine.domain.model.CharacterProtos.Position.Builder subBuilder = null;
+              if (targetPosition_ != null) {
+                subBuilder = targetPosition_.toBuilder();
+              }
+              targetPosition_ = input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(targetPosition_);
+                targetPosition_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+
+              index_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.class, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder.class);
+    }
+
+    public static final int DECISION_TYPE_FIELD_NUMBER = 1;
+    private int decisionType_;
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The enum numeric value on the wire for decisionType.
+     */
+    public int getDecisionTypeValue() {
+      return decisionType_;
+    }
+    /**
+     * <code>.character.DecisionType decision_type = 1;</code>
+     * @return The decisionType.
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
+      @SuppressWarnings("deprecation")
+      mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
+      return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+    }
+
+    public static final int TARGET_POSITION_FIELD_NUMBER = 2;
+    private mech.mania.engine.domain.model.CharacterProtos.Position targetPosition_;
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return Whether the targetPosition field is set.
+     */
+    public boolean hasTargetPosition() {
+      return targetPosition_ != null;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     * @return The targetPosition.
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition() {
+      return targetPosition_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+    }
+    /**
+     * <pre>
+     * For MOVE, ATTACK
+     * </pre>
+     *
+     * <code>.character.Position target_position = 2;</code>
+     */
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+      return getTargetPosition();
+    }
+
+    public static final int INDEX_FIELD_NUMBER = 3;
+    private int index_;
+    /**
+     * <pre>
+     * For TRAVEL, DROP, EQUIP, PICKUP
+     * </pre>
+     *
+     * <code>int32 index = 3;</code>
+     * @return The index.
+     */
+    public int getIndex() {
+      return index_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (decisionType_ != mech.mania.engine.domain.model.CharacterProtos.DecisionType.NONE.getNumber()) {
+        output.writeEnum(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        output.writeMessage(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        output.writeInt32(3, index_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (decisionType_ != mech.mania.engine.domain.model.CharacterProtos.DecisionType.NONE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, decisionType_);
+      }
+      if (targetPosition_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getTargetPosition());
+      }
+      if (index_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, index_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mech.mania.engine.domain.model.CharacterProtos.CharacterDecision)) {
+        return super.equals(obj);
+      }
+      mech.mania.engine.domain.model.CharacterProtos.CharacterDecision other = (mech.mania.engine.domain.model.CharacterProtos.CharacterDecision) obj;
+
+      if (decisionType_ != other.decisionType_) return false;
+      if (hasTargetPosition() != other.hasTargetPosition()) return false;
+      if (hasTargetPosition()) {
+        if (!getTargetPosition()
+            .equals(other.getTargetPosition())) return false;
+      }
+      if (getIndex()
+          != other.getIndex()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + DECISION_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + decisionType_;
+      if (hasTargetPosition()) {
+        hash = (37 * hash) + TARGET_POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getTargetPosition().hashCode();
+      }
+      hash = (37 * hash) + INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getIndex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Proto sent from player to engine and from engine to visualizer
+     * </pre>
+     *
+     * Protobuf type {@code character.CharacterDecision}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:character.CharacterDecision)
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.class, mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.Builder.class);
+      }
+
+      // Construct using mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        decisionType_ = 0;
+
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+        index_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.internal_static_character_CharacterDecision_descriptor;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDefaultInstanceForType() {
+        return mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision build() {
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecision result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision buildPartial() {
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecision result = new mech.mania.engine.domain.model.CharacterProtos.CharacterDecision(this);
+        result.decisionType_ = decisionType_;
+        if (targetPositionBuilder_ == null) {
+          result.targetPosition_ = targetPosition_;
+        } else {
+          result.targetPosition_ = targetPositionBuilder_.build();
+        }
+        result.index_ = index_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mech.mania.engine.domain.model.CharacterProtos.CharacterDecision) {
+          return mergeFrom((mech.mania.engine.domain.model.CharacterProtos.CharacterDecision)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mech.mania.engine.domain.model.CharacterProtos.CharacterDecision other) {
+        if (other == mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance()) return this;
+        if (other.decisionType_ != 0) {
+          setDecisionTypeValue(other.getDecisionTypeValue());
+        }
+        if (other.hasTargetPosition()) {
+          mergeTargetPosition(other.getTargetPosition());
+        }
+        if (other.getIndex() != 0) {
+          setIndex(other.getIndex());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mech.mania.engine.domain.model.CharacterProtos.CharacterDecision parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mech.mania.engine.domain.model.CharacterProtos.CharacterDecision) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int decisionType_ = 0;
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @return The enum numeric value on the wire for decisionType.
+       */
+      public int getDecisionTypeValue() {
+        return decisionType_;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @param value The enum numeric value on the wire for decisionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDecisionTypeValue(int value) {
+        decisionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @return The decisionType.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
+        @SuppressWarnings("deprecation")
+        mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
+        return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @param value The decisionType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDecisionType(mech.mania.engine.domain.model.CharacterProtos.DecisionType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        decisionType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.character.DecisionType decision_type = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDecisionType() {
+        
+        decisionType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private mech.mania.engine.domain.model.CharacterProtos.Position targetPosition_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> targetPositionBuilder_;
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       * @return Whether the targetPosition field is set.
+       */
+      public boolean hasTargetPosition() {
+        return targetPositionBuilder_ != null || targetPosition_ != null;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       * @return The targetPosition.
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          return targetPosition_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+        } else {
+          return targetPositionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder setTargetPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          targetPosition_ = value;
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder setTargetPosition(
+          mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = builderForValue.build();
+          onChanged();
+        } else {
+          targetPositionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder mergeTargetPosition(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (targetPositionBuilder_ == null) {
+          if (targetPosition_ != null) {
+            targetPosition_ =
+              mech.mania.engine.domain.model.CharacterProtos.Position.newBuilder(targetPosition_).mergeFrom(value).buildPartial();
+          } else {
+            targetPosition_ = value;
+          }
+          onChanged();
+        } else {
+          targetPositionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public Builder clearTargetPosition() {
+        if (targetPositionBuilder_ == null) {
+          targetPosition_ = null;
+          onChanged();
+        } else {
+          targetPosition_ = null;
+          targetPositionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getTargetPositionBuilder() {
+        
+        onChanged();
+        return getTargetPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
+        if (targetPositionBuilder_ != null) {
+          return targetPositionBuilder_.getMessageOrBuilder();
+        } else {
+          return targetPosition_ == null ?
+              mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
+        }
+      }
+      /**
+       * <pre>
+       * For MOVE, ATTACK
+       * </pre>
+       *
+       * <code>.character.Position target_position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
+          getTargetPositionFieldBuilder() {
+        if (targetPositionBuilder_ == null) {
+          targetPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
+                  getTargetPosition(),
+                  getParentForChildren(),
+                  isClean());
+          targetPosition_ = null;
+        }
+        return targetPositionBuilder_;
+      }
+
+      private int index_ ;
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @return The index.
+       */
+      public int getIndex() {
+        return index_;
+      }
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @param value The index to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIndex(int value) {
+        
+        index_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For TRAVEL, DROP, EQUIP, PICKUP
+       * </pre>
+       *
+       * <code>int32 index = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIndex() {
+        
+        index_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:character.CharacterDecision)
+    }
+
+    // @@protoc_insertion_point(class_scope:character.CharacterDecision)
+    private static final mech.mania.engine.domain.model.CharacterProtos.CharacterDecision DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mech.mania.engine.domain.model.CharacterProtos.CharacterDecision();
+    }
+
+    public static mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CharacterDecision>
+        PARSER = new com.google.protobuf.AbstractParser<CharacterDecision>() {
+      @java.lang.Override
+      public CharacterDecision parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CharacterDecision(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CharacterDecision> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CharacterDecision> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_character_Character_descriptor;
   private static final 
@@ -7906,10 +9148,20 @@ public final class CharacterProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_character_PlayerStatsBundle_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_character_PlayerStatsBundle_StatsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_character_PlayerStatsBundle_StatsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_character_Position_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_character_Position_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_character_CharacterDecision_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_character_CharacterDecision_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7920,38 +9172,45 @@ public final class CharacterProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017character.proto\022\tcharacter\032\nitem.proto" +
-      "\"\203\004\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
+      "\"\331\004\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
       "\n\017base_max_health\030\002 \001(\005\022\022\n\nexperience\030\003 " +
       "\001(\005\022\r\n\005level\030\004 \001(\005\022\022\n\nbase_speed\030\005 \001(\005\022%" +
       "\n\010position\030\006 \001(\0132\023.character.Position\022(\n" +
       "\013spawn_point\030\007 \001(\0132\023.character.Position\022" +
-      "\034\n\006weapon\030\010 \001(\0132\014.item.Weapon\0220\n\016active_" +
-      "effects\030\t \003(\0132\030.item.TempStatusModifier\022" +
-      "L\n\025tagged_players_damage\030\n \003(\0132-.charact" +
-      "er.Character.TaggedPlayersDamageEntry\022\017\n" +
-      "\007is_dead\030\013 \001(\010\022\031\n\021ticks_since_death\030\014 \001(" +
-      "\005\022\014\n\004name\030\r \001(\t\022\023\n\013base_attack\030\016 \001(\005\022\024\n\014" +
-      "base_defense\030\017 \001(\005\032:\n\030TaggedPlayersDamag" +
-      "eEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"M" +
-              "\n\007Monster\022'\n\tcharacter\030\001 \001(\0132\024.character" +
-      ".Character\022\031\n\005drops\030\002 \003(\0132\n.item.Item\"\244\001" +
-              "\n\006Player\022'\n\tcharacter\030\001 \001(\0132\024.character." +
-      "Character\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clo" +
-      "thes\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 \001(\013" +
-      "2\013.item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n.item." +
-      "Item\"\306\001\n\013PlayerStats\022\r\n\005level\030\001 \001(\005\022\022\n\ne" +
-      "xperience\030\002 \001(\005\022\026\n\016monsters_slain\030\003 \001(\005\022" +
-      "\016\n\006attack\030\004 \001(\005\022\017\n\007defense\030\005 \001(\005\022\026\n\016curr" +
-      "ent_health\030\006 \001(\005\022\022\n\nmax_health\030\007 \001(\005\022\023\n\013" +
-      "death_count\030\010 \001(\005\022\032\n\022turns_since_joined\030" +
-      "\t \001(\005\":\n\021PlayerStatsBundle\022%\n\005stats\030\001 \003(" +
-      "\0132\026.character.PlayerStats\"2\n\010Position\022\020\n" +
-      "\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005*[\n" +
-      "\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATT" +
-      "ACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n" +
-      "\n\006PICKUP\020\006BB\n\036mech.mania.engine.domain.m" +
-      "odelB\017CharacterProtos\252\002\016MM26.IO.Modelsb\006" +
-      "proto3"
+      "\034\n\006weapon\030\010 \001(\0132\014.item.Weapon\022E\n#active_" +
+      "effects_temp_status_modifier\030\t \003(\0132\030.ite" +
+      "m.TempStatusModifier\022\035\n\025active_effects_s" +
+      "ource\030\n \003(\t\022 \n\030active_effects_is_player\030" +
+      "\013 \003(\010\022L\n\025tagged_players_damage\030\014 \003(\0132-.c" +
+      "haracter.Character.TaggedPlayersDamageEn" +
+      "try\022\017\n\007is_dead\030\r \001(\010\022\031\n\021ticks_since_deat" +
+      "h\030\016 \001(\005\022\014\n\004name\030\017 \001(\t\022\023\n\013base_attack\030\020 \001" +
+      "(\005\022\024\n\014base_defense\030\021 \001(\005\032:\n\030TaggedPlayer" +
+      "sDamageEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005" +
+      ":\0028\001\"M\n\007Monster\022\'\n\tcharacter\030\001 \001(\0132\024.cha" +
+      "racter.Character\022\031\n\005drops\030\002 \003(\0132\n.item.I" +
+      "tem\"\244\001\n\006Player\022\'\n\tcharacter\030\001 \001(\0132\024.char" +
+      "acter.Character\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022" +
+      "\036\n\007clothes\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes" +
+      "\030\004 \001(\0132\013.item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n" +
+      ".item.Item\"\306\001\n\013PlayerStats\022\r\n\005level\030\001 \001(" +
+      "\005\022\022\n\nexperience\030\002 \001(\005\022\026\n\016monsters_slain\030" +
+      "\003 \001(\005\022\016\n\006attack\030\004 \001(\005\022\017\n\007defense\030\005 \001(\005\022\026" +
+      "\n\016current_health\030\006 \001(\005\022\022\n\nmax_health\030\007 \001" +
+      "(\005\022\023\n\013death_count\030\010 \001(\005\022\032\n\022turns_since_j" +
+      "oined\030\t \001(\005\"\221\001\n\021PlayerStatsBundle\0226\n\005sta" +
+      "ts\030\001 \003(\0132\'.character.PlayerStatsBundle.S" +
+      "tatsEntry\032D\n\nStatsEntry\022\013\n\003key\030\001 \001(\t\022%\n\005" +
+      "value\030\002 \001(\0132\026.character.PlayerStats:\0028\001\"" +
+      "2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005" +
+      "\022\t\n\001y\030\003 \001(\005\"\200\001\n\021CharacterDecision\022.\n\rdec" +
+      "ision_type\030\001 \001(\0162\027.character.DecisionTyp" +
+      "e\022,\n\017target_position\030\002 \001(\0132\023.character.P" +
+      "osition\022\r\n\005index\030\003 \001(\005*[\n\014DecisionType\022\010" +
+      "\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL" +
+      "\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036m" +
+      "ech.mania.engine.domain.modelB\017Character" +
+      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7963,7 +9222,7 @@ public final class CharacterProtos {
     internal_static_character_Character_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Character_descriptor,
-        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffects", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", "BaseAttack", "BaseDefense", });
+        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffectsTempStatusModifier", "ActiveEffectsSource", "ActiveEffectsIsPlayer", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", "BaseAttack", "BaseDefense", });
     internal_static_character_Character_TaggedPlayersDamageEntry_descriptor =
       internal_static_character_Character_descriptor.getNestedTypes().get(0);
     internal_static_character_Character_TaggedPlayersDamageEntry_fieldAccessorTable = new
@@ -7994,12 +9253,24 @@ public final class CharacterProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_PlayerStatsBundle_descriptor,
         new java.lang.String[] { "Stats", });
+    internal_static_character_PlayerStatsBundle_StatsEntry_descriptor =
+      internal_static_character_PlayerStatsBundle_descriptor.getNestedTypes().get(0);
+    internal_static_character_PlayerStatsBundle_StatsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_character_PlayerStatsBundle_StatsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_character_Position_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_character_Position_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Position_descriptor,
         new java.lang.String[] { "BoardId", "X", "Y", });
+    internal_static_character_CharacterDecision_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_character_CharacterDecision_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_character_CharacterDecision_descriptor,
+        new java.lang.String[] { "DecisionType", "TargetPosition", "Index", });
     mech.mania.engine.domain.model.ItemProtos.getDescriptor();
   }
 

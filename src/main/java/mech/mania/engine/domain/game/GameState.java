@@ -11,11 +11,10 @@ import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.GameStateProtos;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -39,7 +38,8 @@ public class GameState {
         monsterNames = new HashMap<>();
         stateChange = new GameChange();
 
-        // @TODO: Create pvp board
+        // @TODO: Create actual pvp board
+        boardNames.put("pvp", Board.createDefaultBoard(20, 20, true, "pvp"));
     }
 
 
@@ -81,6 +81,27 @@ public class GameState {
         }
 
         return null;
+    }
+
+    /**
+     * Gets the map of character names to character objects.
+     * @return the requested map
+     */
+    public Map<String, Character> getAllCharacters() {
+        Map<String, Character> characters = new HashMap<>(getAllPlayers());
+        characters.putAll(getAllMonsters());
+        return characters;
+    }
+
+    /**
+     * Gets all characters on a specific board.
+     * @param boardId id of the board of interest
+     * @return list of characters on given board
+     */
+    public List<Character> getCharactersOnBoard(String boardId) {
+        List<Character> characters = new ArrayList<>(getPlayersOnBoard(boardId));
+        characters.addAll(getMonstersOnBoard(boardId));
+        return characters;
     }
 
     /**
@@ -155,6 +176,10 @@ public class GameState {
                 .collect(Collectors.toList());
     }
 
+    public void setTurnNumber(long turnNumber) {
+        this.turnNumber = turnNumber;
+    }
+
     /**
      * Creates a GameState object for use with a variety of tests.
      * @return a custom GameState
@@ -182,11 +207,18 @@ public class GameState {
         defaultGameState.getPlayer("player1").setPosition(new Position(0, 4, "pvp"));
         defaultGameState.addNewPlayer("player2");
         defaultGameState.getPlayer("player2").setPosition(new Position(0, 24, "pvp"));
+        defaultGameState.addNewPlayer("player3");
 
-
-        //adds a single monster to the pvp board.
+        //adds two monsters to the pvp board.
         //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster
-        defaultGameState.addNewMonster(0, 0, 0, 0, 0, 0, 0, 0, new Position(14, 25, "pvp"));
+        defaultGameState.addNewMonster(
+                Monster.createDefaultMonster(0, 0, 0, 0, 0,
+                        0, 0, 0, new Position(14, 25, "pvp"))
+        );
+        defaultGameState.addNewMonster(
+                Monster.createDefaultMonster(0, 0, 0, 0, 0,
+                        0, 0, 0, new Position(14, 25, "pvp1"))
+        );
 
         return defaultGameState;
     }
@@ -221,6 +253,8 @@ public class GameState {
      * @param gameStateProto Protocol Buffer representing the GameState to be copied
      */
     public GameState(GameStateProtos.GameState gameStateProto) {
+        stateChange = new GameChange();
+
         boardNames = new HashMap<>();
 
         Map<String, BoardProtos.Board> boardProtoMap = gameStateProto.getBoardNamesMap();
@@ -256,28 +290,10 @@ public class GameState {
         boardNames.put(playerName, createHomeBoard(playerName));
         //TODO specify spawn point location on each board
         playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
+        stateChange.addCharacter(playerName);
     }
 
-
-    //TODO: should this function have a bool instead of all the doubles where false sets all factors to 0
-    // and true picks a random value from -1 to 1 for each of them?
-    // Also this function will likely need split into a separate function for each monster type.
-    /**
-     * Adds a new monster to the game.
-     * @param speedFactor random factor for speed spread
-     * @param maxHealthFactor random factor for max hp spread
-     * @param attackFactor random factor for attack spread
-     * @param defenseFactor random factor for defense spread
-     * @param experienceFactor random factor for exp spread
-     * @param rangeFactor random factor for range spread
-     * @param splashFactor random factor for splash spread
-     * @param numberOfDrops random factor for number of drops
-     * @param spawnPoint spawn point (and location the monster leashes back to)
-     */
-    public void addNewMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
-        Monster monster = Monster.createDefaultMonster(speedFactor, maxHealthFactor, attackFactor, defenseFactor, experienceFactor, rangeFactor, splashFactor, numberOfDrops, spawnPoint);
+    public void addNewMonster(Monster monster){
         monsterNames.put(monster.getName(), monster);
     }
-
-
 }

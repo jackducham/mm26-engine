@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
+import kotlin.Triple;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
@@ -35,22 +36,12 @@ public class Player extends Character {
     }
 
     public Player(CharacterProtos.Player playerProto) {
-        super(
-                playerProto.getCharacter().getName(),
-                playerProto.getCharacter().getBaseSpeed(),
-                playerProto.getCharacter().getBaseMaxHealth(),
-                playerProto.getCharacter().getBaseAttack(),
-                playerProto.getCharacter().getBaseDefense(),
-                playerProto.getCharacter().getExperience(),
-                new Position(playerProto.getCharacter().getSpawnPoint()),
-                new Weapon(playerProto.getCharacter().getWeapon())
-        );
+        super(playerProto.getCharacter());
 
         hat = new Hat(playerProto.getHat());
         clothes = new Clothes(playerProto.getClothes());
         shoes = new Shoes(playerProto.getShoes());
         inventory = new Item[INVENTORY_SIZE];
-        taggedPlayersDamage = playerProto.getCharacter().getTaggedPlayersDamageMap();
 
         for (int i = 0; i < playerProto.getInventoryCount(); i++) {
             ItemProtos.Item protoItem = playerProto.getInventory(i);
@@ -90,7 +81,7 @@ public class Player extends Character {
             } else if (curItem instanceof Weapon) {
                 playerBuilder.setInventory(i, ((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClass());
+                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
 
@@ -134,6 +125,10 @@ public class Player extends Character {
         inventory[index] = item;
     }
 
+    public void setPlayerStats(Stats playerStats) {
+        this.playerStats = playerStats;
+    }
+
     /**
      * Applies active effects and updates the death state
      * This should be called once a turn
@@ -144,12 +139,13 @@ public class Player extends Character {
         if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
-            applyEffect(hatStats, this.getName());
+            applyEffect(this.getName(), true, hatStats);
         }
         updateActiveEffects();
         applyWearableRegen();
         updateLevel();
         updateDeathState(gameState);
+        playerStats.incrementTurnsSinceJoined();
     }
 
     /**
@@ -210,9 +206,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatSpeedChange();
-            percentChange += effect.getPercentSpeedChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatSpeedChange();
+            percentChange += effect.getFirst().getPercentSpeedChange();
         }
 
         // Make sure stat can't be negative
@@ -257,9 +253,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatHealthChange();
-            percentChange += effect.getPercentHealthChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatHealthChange();
+            percentChange += effect.getFirst().getPercentHealthChange();
         }
 
         // Make sure stat can't be negative
@@ -307,9 +303,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatAttackChange();
-            percentChange += effect.getPercentAttackChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatAttackChange();
+            percentChange += effect.getFirst().getPercentAttackChange();
         }
 
         // Make sure stat can't be negative
@@ -357,9 +353,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatDefenseChange();
-            percentChange += effect.getPercentDefenseChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatDefenseChange();
+            percentChange += effect.getFirst().getPercentDefenseChange();
         }
 
         // Make sure stat can't be negative
@@ -407,9 +403,9 @@ public class Player extends Character {
         }
 
         // Add active effects
-        for (TempStatusModifier effect: activeEffects) {
-            flatChange += effect.getFlatExperienceChange();
-            percentChange += effect.getPercentExperienceChange();
+        for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
+            flatChange += effect.getFirst().getFlatExperienceChange();
+            percentChange += effect.getFirst().getPercentExperienceChange();
         }
 
         // Make sure stat can't be negative
@@ -424,30 +420,30 @@ public class Player extends Character {
      * Exchanges an item in the Player's inventory with an equipped.
      *
      * @param index the index of the inventory which contains the item to be equipped.
-     * @return true if successful
+     * @return the equipped item if successful, null otherwise
      */
-    public boolean equipItem(int index) {
+    public Class equipItem(int index) {
         Item itemToEquip;
         if (index < 0 || index >= INVENTORY_SIZE) {
-            return false;
+            return null;
         }
         if (inventory[index] != null) {
             itemToEquip = inventory[index];
         } else {
-            return false;
+            return null;
         }
         if (itemToEquip instanceof Hat) {
-            return equipHat((Hat)itemToEquip, index);
+            return equipHat((Hat)itemToEquip, index) ? Hat.class : null ;
         } else if (itemToEquip instanceof Clothes) {
-            return equipClothes((Clothes)itemToEquip, index);
+            return equipClothes((Clothes)itemToEquip, index) ? Clothes.class : null;
         } else if (itemToEquip instanceof Shoes) {
-            return equipShoes((Shoes)itemToEquip, index);
+            return equipShoes((Shoes)itemToEquip, index) ? Shoes.class : null;
         } else if (itemToEquip instanceof Weapon) {
-            return equipWeapon((Weapon)itemToEquip, index);
+            return equipWeapon((Weapon)itemToEquip, index) ? Weapon.class : null;
         } else if (itemToEquip instanceof Consumable) {
-            return useConsumable((Consumable)itemToEquip, index);
+            return useConsumable((Consumable)itemToEquip, index) ? Consumable.class : null;
         }
-        return false;
+        return null;
     }
 
     /**
@@ -521,7 +517,7 @@ public class Player extends Character {
         if(this.hat != null && this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
-        applyEffect(effect, this.getName());
+        applyEffect(this.getName(), true, effect);
 
         //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {
@@ -564,6 +560,31 @@ public class Player extends Character {
                 .build();
     }
 
+    public void setPlayerStats(CharacterProtos.PlayerStats statsProto){
+        playerStats = new Stats(statsProto);
+    }
+
+    /**
+     * Gets the stats object within this Player to update any extra stats.
+     * @return a Stats object (Player.Stats)
+     */
+    public Stats getExtraStats() {
+        return playerStats;
+    }
+
+    /**
+     * Update death count for the player by overriding updateDeathState and making
+     * sure that the player <b>just</b> died.
+     * @param gameState gameState to call Character.updateDeathState() with
+     */
+    @Override
+    public void updateDeathState(GameState gameState) {
+        super.updateDeathState(gameState);
+        if (ticksSinceDeath == 0) {
+            playerStats.incrementDeathCount();
+        }
+    }
+
     /**
      * Class of <b>extra</b> attributes that are required for infra's player
      * stat calculation
@@ -572,6 +593,18 @@ public class Player extends Character {
         private int monstersSlain;
         private int deathCount;
         private int turnsSinceJoined;
+
+        public Stats(){
+            monstersSlain = 0;
+            deathCount = 0;
+            turnsSinceJoined = 0;
+        }
+
+        public Stats(CharacterProtos.PlayerStats stats){
+            monstersSlain = stats.getMonstersSlain();
+            deathCount = stats.getDeathCount();
+            turnsSinceJoined = stats.getTurnsSinceJoined();
+        }
 
         public void incrementMonstersSlain() {
             monstersSlain++;

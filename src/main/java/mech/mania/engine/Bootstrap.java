@@ -30,11 +30,14 @@ public class Bootstrap {
 
         // commands must happen synchronously
         Map<Class<? extends Command>, CommandHandler> commandHandlers = new HashMap<>();
+        commandHandlers.put(CommandRestoreTurn.class,                           new RestoreTurn(uow));
         commandHandlers.put(CommandStartTurn.class,                             new StartTurn(uow));
         commandHandlers.put(CommandStartInfraServer.class,                      new StartInfraServer(uow));
         commandHandlers.put(CommandStopInfraServer.class,                       new StopInfraServer(uow));
         commandHandlers.put(CommandStartVisualizerServer.class,                 new StartVisualizerServer(uow));
         commandHandlers.put(CommandStopVisualizerServer.class,                  new StopVisualizerServer(uow));
+        commandHandlers.put(CommandStartAPIServer.class,                        new StartAPIServer(uow));
+        commandHandlers.put(CommandStopAPIServer.class,                         new StopAPIServer(uow));
         commandHandlers.put(CommandStoreGameState.class,                        new StoreGameState(uow));
         commandHandlers.put(CommandSendPlayerRequestsAndUpdateGameState.class,  new SendPlayerRequestsAndUpdateGameState(uow));
         commandHandlers.put(CommandUpdateGameState.class,                       new UpdateGameState(uow));

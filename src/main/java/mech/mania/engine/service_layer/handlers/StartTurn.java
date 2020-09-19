@@ -16,7 +16,7 @@ public class StartTurn extends CommandHandler {
     @Override
     public void handle(Command command) {
         if (uow.getGameOver()) {
-            System.out.println("game is over");
+            System.out.println("Game is over");
 
             // Game was ended last turn so don't add more commands.
             return;
@@ -26,6 +26,7 @@ public class StartTurn extends CommandHandler {
         LOGGER.info(String.format("Turn %s", turn));
 
         uow.setTurn(turn);
+        uow.getGameState().setTurnNumber(turn);
 
         // these three abstractions aren't completely necessary, but allows for
         // asynchronous operations if necessary

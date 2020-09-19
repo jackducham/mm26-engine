@@ -2,10 +2,7 @@ package mech.mania.engine.entrypoints;
 
 import mech.mania.engine.Bootstrap;
 import mech.mania.engine.Config;
-import mech.mania.engine.domain.messages.CommandStartInfraServer;
-import mech.mania.engine.domain.messages.CommandStartTurn;
-import mech.mania.engine.domain.messages.CommandStartVisualizerServer;
-import mech.mania.engine.domain.messages.EventSendHistoryObjects;
+import mech.mania.engine.domain.messages.*;
 import mech.mania.engine.service_layer.MessageBus;
 import mech.mania.engine.service_layer.UnitOfWorkFake;
 import org.apache.commons.cli.CommandLine;
@@ -29,6 +26,9 @@ public class Main {
     // public static MessageBus bus = Bootstrap.bootstrap(new UnitOfWorkFake());
     public static MessageBus bus = Bootstrap.bootstrap();
 
+    // Represents the presence of the --enableInfra flag (used by Spring services)
+    public static boolean enableInfra;
+
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     @Bean
@@ -36,15 +36,22 @@ public class Main {
         return bus;
     }
 
+    public boolean enableInfra(){ return enableInfra; }
+
     public static void main(String[] args) {
         // Configure commandline options for this program
         Options options = new Options();
+        options.addOption("t", "turn", true,
+                "The turn number from which to start the engine. " +
+                        "Defaults to 0 if not specified or if --enableInfra is not set.");
         options.addOption("ei", "enableInfra", false,
                 "This flag tells the engine to run in infra mode and attempt to connect to AWS.");
         options.addOption("ip", "infraPort", true,
                 "The port number for the /infra endpoints.");
         options.addOption("vp", "visualizerPort", true,
                 "The port number for the visualizer websocket.");
+        options.addOption("ap", "apiPort", true,
+                "The port number for the api server websocket.");
 
         // Get current options
         CommandLine cmd;
@@ -56,25 +63,33 @@ public class Main {
         }
 
         // Default to false unless set by command line args
-        boolean enableInfra = cmd.hasOption("enableInfra");
+        enableInfra = cmd.hasOption("enableInfra");
 
         // Default to ports in Config, but command line args can override
         String infraPort = cmd.hasOption("infraPort") ?
                 cmd.getOptionValue("infraPort") : Config.getProperty("infraPort");
         String visualizerPort = cmd.hasOption("visualizerPort") ?
                 cmd.getOptionValue("visualizerPort") : Config.getProperty("visualizerPort");
+        String apiPort = cmd.hasOption("apiPort") ?
+                cmd.getOptionValue("apiPort") : Config.getProperty("apiPort");
 
         if(!enableInfra){
             // Don't connect to AWS if infra is not enabled
             bus = Bootstrap.bootstrap(new UnitOfWorkFake());
         }
+        else if(cmd.hasOption("turn")){
+            // If infra is enabled and a starting turn was specified, restore from it
+            int startTurn = Integer.parseInt(cmd.getOptionValue("turn"));
+            bus.handle(new CommandRestoreTurn(startTurn));
+        }
 
         // Start servers
         bus.handle(new CommandStartInfraServer(infraPort));
         bus.handle(new CommandStartVisualizerServer(visualizerPort));
+        bus.handle(new CommandStartAPIServer(apiPort));
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
-        for (int turn = 1; (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
+        for (int turn = bus.getUow().getTurn(); (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
 
             Instant turnStartTime = Instant.now();
             Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));
@@ -92,7 +107,8 @@ public class Main {
                 Instant now = Instant.now();
                 long waitTime = MILLIS.between(now, nextTurnStart);
                 if (waitTime < 0) {
-                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") + " ms (" + (-waitTime) + " ms too long).");
+                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") +
+                            " ms (" + (-waitTime) + " ms too long).");
                     waitTime = 0;
                 }
                 Thread.sleep(waitTime);
@@ -100,5 +116,12 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
+        /* TODO: Logs only show the first of these two commands (switching the order switches which one shows up).
+            Worth looking into what might cause that. */
+
+        bus.handle(new CommandStopInfraServer());
+        bus.handle(new CommandStopVisualizerServer());
+        bus.handle(new CommandStopAPIServer());
     }
 }

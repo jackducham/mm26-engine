@@ -23,11 +23,19 @@ public class UnitOfWork extends UnitOfWorkAbstract {
 
     @Override
     public void stopInfraServer() {
+        //infraCtx.close();
         SpringApplication.exit(infraCtx, () -> 0);
     }
 
     @Override
     public void stopVisualizerServer() {
+        LOGGER.warning("STOPPING VIS HANDLER");
+        //visualizerCtx.close();
         SpringApplication.exit(visualizerCtx, () -> 0);
+    }
+
+    @Override
+    public void stopAPIServer() {
+        SpringApplication.exit(APICtx, () -> 0);
     }
 }

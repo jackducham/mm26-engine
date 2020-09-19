@@ -3,7 +3,6 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,10 +40,10 @@ public class StatModifierTests {
      * Helper function to pass a turn with no actions
      */
     public void passTurn(){
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
-        Map<String, PlayerProtos.PlayerDecision> map = new HashMap<>();
+        Map<String, CharacterProtos.CharacterDecision> map = new HashMap<>();
         map.put("player1", decision.build());
         map.put("player2", decision.build());
 
@@ -73,7 +72,7 @@ public class StatModifierTests {
         int defense = p1.getDefense();
 
         // Add status effect to player1 from player2
-        p1.applyEffect(effect, p2.getName());
+        p1.applyEffect(p2.getName(), true, effect);
 
         // Record expected stats
         int expectedSpeed = (int)((speed + 5) * (1.5));
@@ -125,7 +124,7 @@ public class StatModifierTests {
         int defense = p1.getDefense();
 
         // Add status effect to player1 from player2
-        p1.applyEffect(effect, p2.getName());
+        p1.applyEffect(p2.getName(), true, effect);
 
         // Record expected stats
         int expectedSpeed = max(1, (int)((speed - 1) * (0.5)));
