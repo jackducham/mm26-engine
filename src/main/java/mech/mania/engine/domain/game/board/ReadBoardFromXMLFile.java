@@ -25,12 +25,34 @@ public class ReadBoardFromXMLFile {
 
     //internal class used to represent each type of monster loaded from an XML file
     private static class PseudoMonster {
+        //base monster stats
         protected int attack;
         protected int defense;
         protected int maxHealth;
         protected int level;
         protected String name;
         protected int speed;
+
+        //weapon stats
+        protected int weaponRange;
+        protected int weaponSplashRadius;
+        protected int weaponDamage;
+
+        //on hit effect stats
+        protected int flatSpeedChange;
+        protected double percentSpeedChange;
+        protected int flatHealthChange;
+        protected double percentHealthChange;
+        protected int flatExperienceChange;
+        protected double percentExperienceChange;
+        protected int flatAttackChange;
+        protected double percentAttackChange;
+        protected int flatDefenseChange;
+        protected double percentDefenseChange;
+
+        protected int regenPerTurn;
+        protected int duration;
+        protected int damagePerTurn;
 
         @Override
         public String toString() {
@@ -116,6 +138,38 @@ public class ReadBoardFromXMLFile {
                             monsterSet.get(currentID).name = attributes.getValue("value");
                         } else if (attributes.getValue("name").equalsIgnoreCase("Speed")) {
                             monsterSet.get(currentID).speed = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("weapon_attack")) {
+                            monsterSet.get(currentID).weaponDamage = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("range")) {
+                            monsterSet.get(currentID).weaponRange = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("splash_radius")) {
+                            monsterSet.get(currentID).weaponSplashRadius = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("flat_attack_change")) {
+                            monsterSet.get(currentID).flatAttackChange = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("percent_attack_change")) {
+                            monsterSet.get(currentID).percentAttackChange = Double.parseDouble(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("flat_defense_change")) {
+                            monsterSet.get(currentID).flatDefenseChange = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("percent_defense_change")) {
+                            monsterSet.get(currentID).percentDefenseChange = Double.parseDouble(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("flat_experience_change")) {
+                            monsterSet.get(currentID).flatExperienceChange = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("percent_experience_change")) {
+                            monsterSet.get(currentID).percentExperienceChange = Double.parseDouble(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("flat_health_change")) {
+                            monsterSet.get(currentID).flatHealthChange = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("percent_health_change")) {
+                            monsterSet.get(currentID).percentHealthChange = Double.parseDouble(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("flat_speed_change")) {
+                            monsterSet.get(currentID).flatSpeedChange = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("percent_speed_change")) {
+                            monsterSet.get(currentID).percentSpeedChange = Double.parseDouble(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("flat_regen_per_turn")) {
+                            monsterSet.get(currentID).regenPerTurn = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("damage_per_turn")) {
+                            monsterSet.get(currentID).damagePerTurn = Integer.parseInt(attributes.getValue("value"));
+                        } else if (attributes.getValue("name").equalsIgnoreCase("duration")) {
+                            monsterSet.get(currentID).duration = Integer.parseInt(attributes.getValue("value"));
                         }
                     }
                 }
@@ -248,15 +302,18 @@ public class ReadBoardFromXMLFile {
                         monstersQuantityOfEachID.merge(monsterIndex, 1, Integer::sum);
 
                         PseudoMonster toCopy = monsterSet.get(monsterIndex);
-                        StatusModifier zeroStats = new StatusModifier(0, 0, 0,
+                        TempStatusModifier onHit = new TempStatusModifier(toCopy.flatSpeedChange, toCopy.percentSpeedChange,
+                                toCopy.flatHealthChange, toCopy.percentHealthChange, toCopy.flatExperienceChange,
+                                toCopy.percentExperienceChange, toCopy.flatAttackChange, toCopy.percentAttackChange,
+                                toCopy.flatDefenseChange, toCopy.percentDefenseChange, toCopy.regenPerTurn, toCopy.duration,
+                                toCopy.damagePerTurn);
+                        StatusModifier zeroStats = new StatusModifier(0, 0,
                                 0, 0, 0, 0,
-                                0, 0, 0, 0);
-                        TempStatusModifier zeroOnHit = new TempStatusModifier(0, 0,
                                 0, 0, 0, 0,
-                                0, 0, 0, 0,
-                                0, 0, 0);
-                        Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1), toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense,
-                                toCopy.level, new Position(x, y, boardName), new Weapon(zeroStats, 1, 0, 0, zeroOnHit), new ArrayList<Item>());
+                                0);
+                        Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1),
+                                toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
+                                new Position(x, y, boardName), new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit), new ArrayList<Item>());
                         monsterList.add(newMonster);
                     }
                 }

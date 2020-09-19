@@ -31,7 +31,7 @@ public class ReadFromXMLTests {
     public void setup() {
         boardReader = new ReadBoardFromXMLFile();
         try {
-            boardReader.updateBoardAndMonsters("src/test/java/mech/mania/engine/domain/game/mm26_sample_tileset.tsx", "src/test/java/mech/mania/engine/domain/game/mm26_sample_map.tmx", "loadedBoard");
+            boardReader.updateBoardAndMonsters("src/test/java/mech/mania/engine/domain/game/mm26_sample_tileset.tsx", "src/test/java/mech/mania/engine/domain/game/mm26_sp_map.tmx", "loadedBoard");
         } catch (TileIDNotFoundException e) {
             System.err.print(e);
         }
@@ -67,16 +67,16 @@ public class ReadFromXMLTests {
     @Test
     public void loadMonsters(){
         loadedMonsters = boardReader.extractMonsters();
-        assertEquals(9, loadedMonsters.size());
-        assertEquals("Zombie0", loadedMonsters.get(0).getName());
+        assertEquals(1, loadedMonsters.size());
+        assertEquals("0", loadedMonsters.get(0).getName());
         assertEquals(1, loadedMonsters.get(0).getSpeed());
-        assertEquals(20, loadedMonsters.get(0).getLevel());
-        assertEquals(50, loadedMonsters.get(0).getMaxHealth());
-        assertEquals(4, loadedMonsters.get(0).getDefense());
-        assertEquals(7, loadedMonsters.get(0).getAttack());
-        assertEquals("Zombie1", loadedMonsters.get(1).getName());
-        assertEquals("Zombie3", loadedMonsters.get(3).getName());
-        assertEquals("Uniboar0", loadedMonsters.get(5).getName());
-        assertEquals("Uniboar3", loadedMonsters.get(8).getName());
+        assertEquals(0, loadedMonsters.get(0).getLevel());
+        assertEquals(1, loadedMonsters.get(0).getMaxHealth());
+        assertEquals(0, loadedMonsters.get(0).getDefense());
+        assertEquals(1, loadedMonsters.get(0).getAttack());
+        assertEquals(0, loadedMonsters.get(0).getWeapon().getRange());
+        assertEquals(0, loadedMonsters.get(0).getWeapon().getAttack());
+        assertEquals(0, loadedMonsters.get(0).getWeapon().getSplashRadius());
+        assertEquals(0, loadedMonsters.get(0).getWeapon().getOnHitEffect().getFlatAttackChange());
     }
 }
