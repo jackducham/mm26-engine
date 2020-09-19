@@ -19,6 +19,8 @@ public class findMonstersByExpTest {
 
     @Before
     public void setup() {
+        gameState.getAllMonsters().remove("DefaultMonster0");
+
         gameState.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 1, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
         gameState.addNewMonster(new Monster("monster2", 0, 0, 0, 0, 2, new Position(10, 9, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
         gameState.addNewMonster(new Monster("monster3", 0, 0, 0, 0, 3, new Position(0, 5, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
@@ -33,7 +35,6 @@ public class findMonstersByExpTest {
         ans.add(new Position(0, 5, "pvp"));
         ans.add(new Position(10, 9, "pvp"));
         ans.add(new Position(14, 26, "pvp"));
-        ans.add(new Position(14, 25, "pvp")); // 10 exp points
         assertEquals(enemies.size(), ans.size());
         for (int i = 0; i < enemies.size(); i++) {
             assertEquals(enemies.get(i).getPosition(), ans.get(i));
