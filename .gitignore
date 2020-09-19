@@ -36,3 +36,6 @@ build/
 
 ### Protocol Buffer Binary ###
 /protoc-3.10.0-win64/
+
+### Local File Repository ###
+/repository/

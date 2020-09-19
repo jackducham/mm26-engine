@@ -2,6 +2,7 @@ package mech.mania.engine.service_layer;
 
 import mech.mania.engine.adapters.RepositoryAbstract;
 import mech.mania.engine.adapters.RepositoryFake;
+import mech.mania.engine.adapters.RepositoryLocalFile;
 import org.springframework.boot.SpringApplication;
 
 public class UnitOfWorkFake extends UnitOfWorkAbstract {
@@ -9,7 +10,7 @@ public class UnitOfWorkFake extends UnitOfWorkAbstract {
      * Constructor that sets an AbstractRepository
      */
     public UnitOfWorkFake() {
-        super(new RepositoryFake());
+        super(new RepositoryLocalFile());
     }
 
     @Override
