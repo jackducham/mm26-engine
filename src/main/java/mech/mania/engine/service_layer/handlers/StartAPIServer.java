@@ -23,6 +23,6 @@ public class StartAPIServer extends CommandHandler {
         ConfigurableApplicationContext ctx = app.run();
 
         // store application context to be able to stop server later
-        uow.storeInfraCtx(ctx);
+        uow.storeAPICtx(ctx);
     }
 }
