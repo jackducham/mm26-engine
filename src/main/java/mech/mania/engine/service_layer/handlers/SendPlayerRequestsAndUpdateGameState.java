@@ -78,7 +78,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                     http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
                     http.setReadTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
 
-                    PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(new GameState(), playerName);
+                    PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(uow.getGameState(), playerName);
                     turn.writeTo(http.getOutputStream());
 
                     decision = CharacterProtos.CharacterDecision.parseFrom(http.getInputStream());
