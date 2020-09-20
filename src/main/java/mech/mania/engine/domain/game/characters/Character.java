@@ -283,10 +283,10 @@ public abstract class Character {
     }
 
     /**
-     * After Character dies, give actualDamage XP points to attacking Player
+     * After Character dies, give XP points to attacking Player according to formula
      * @param gameState The current gameState
      */
-    protected void distributeRewards(GameState gameState) {
+    public void distributeRewards(GameState gameState) {
         for (Map.Entry<String, Integer> mapElement : taggedPlayersDamage.entrySet()) {
             String attackerName = mapElement.getKey();
 
@@ -299,8 +299,8 @@ public abstract class Character {
 
             int attackingPlayerLevel = attackingPlayer.getLevel();
             int levelDiff = abs(attackingPlayerLevel  - this.getLevel());
-            double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + levelDiff);
-            int expGain = 10 * this.getLevel() * (int) expMultiplier;
+            double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + (double)levelDiff);
+            int expGain = (int)(10 * this.getLevel() * expMultiplier);
             attackingPlayer.addExperience(expGain);
         }
     }

@@ -250,26 +250,4 @@ public class Monster extends Character {
         ++DefaultMonsterQuantity;
         return newMonster;
     }
-
-
-    /**
-     * Gives experience to player who participated in killing this monster.
-     * @param gameState the current game state
-     */
-    @Override
-    public void distributeRewards(GameState gameState) {
-        super.distributeRewards(gameState);
-        Board current = gameState.getBoard(position.getBoardID());
-        Tile currentTile = current.getGrid()[position.getX()][position.getY()];
-        currentTile.getItems().addAll(drops);
-
-        //iterates through every player still on the taggedPlayersDamage map.
-        for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
-            Player currentPlayer = gameState.getPlayer(entry.getKey());
-            if(currentPlayer != null) {
-                currentPlayer.addExperience(this.getExperience());
-                currentPlayer.getExtraStats().incrementMonstersSlain();
-            }
-        }
-    }
 }

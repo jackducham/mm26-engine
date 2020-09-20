@@ -43,12 +43,12 @@ public class AttackTests {
 
     public void doTurn(int index) {
         // pick up item from tile
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.NONE);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
