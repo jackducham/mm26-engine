@@ -10,8 +10,8 @@ public class Hat extends Wearable {
      * @param stats a StatusModifier storing the stats the Hat will be created with
      * @param hatEffect the effect the Hat will have
      */
-    public Hat(StatusModifier stats, HatEffect hatEffect) {
-        super(stats);
+    public Hat(StatusModifier stats, HatEffect hatEffect, String sprite) {
+        super(stats, sprite);
         this.hatEffect = hatEffect;
     }
 
@@ -20,7 +20,7 @@ public class Hat extends Wearable {
      * @param hatProto the protocol buffer to be copied
      */
     public Hat(ItemProtos.Hat hatProto) {
-        super(new StatusModifier(hatProto.getStats()));
+        super(new StatusModifier(hatProto.getStats()), hatProto.getSprite());
         // TODO: copy HatEffect
     }
 
@@ -32,6 +32,7 @@ public class Hat extends Wearable {
         ItemProtos.Hat.Builder hatBuilder = ItemProtos.Hat.newBuilder();
 
         hatBuilder.setStats(stats.buildProtoClass());
+        hatBuilder.setSprite(sprite);
         // TODO: add HatEffect
 
         return hatBuilder.build();
@@ -66,7 +67,7 @@ public class Hat extends Wearable {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0,
                 0.2, 0, 0, 0, 0,
                 0, 0, 0);
-        Hat defaultHat = new Hat(defaultStatusModifier, null);
+        Hat defaultHat = new Hat(defaultStatusModifier, null, "");
         return defaultHat;
     }
 }

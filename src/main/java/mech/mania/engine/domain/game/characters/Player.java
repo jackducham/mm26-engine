@@ -22,13 +22,18 @@ public class Player extends Character {
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
 
+    public static final int SPAWN_X = 0;
+    public static final int SPAWN_Y = 0;
+    public static final String PLAYER_SPRITE = ""; // TODO: Sprite filepath
+
     /**
      * Standard Constructor which uses default static values for speed, hp, atk, and def.
      * @param name Player's name
+     * @param sprite filepath of Player's sprite
      * @param spawnPoint Player's spawn point
      */
-    public Player(String name, Position spawnPoint) {
-        super(name, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, null);
+    public Player(String name, String sprite, Position spawnPoint) {
+        super(name, sprite, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, null);
         hat = null;
         clothes = null;
         shoes = null;
@@ -59,7 +64,7 @@ public class Player extends Character {
                     inventory[i] = new Weapon(protoItem.getWeapon());
                     break;
                 case CONSUMABLE:
-                    inventory[i] = new Consumable(protoItem.getMaxStack(), protoItem.getConsumable());
+                    inventory[i] = new Consumable(protoItem.getConsumable());
             }
         }
     }

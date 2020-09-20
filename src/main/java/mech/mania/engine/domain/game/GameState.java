@@ -293,10 +293,9 @@ public class GameState {
      * @param playerName name of the player being added
      */
     public void addNewPlayer(String playerName) {
-        // TODO specify board dimensions
         boardNames.put(playerName, createHomeBoard(playerName));
-        //TODO specify spawn point location on each board
-        playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
+        playerNames.put(playerName, new Player(playerName, Player.PLAYER_SPRITE,
+                new Position(Player.SPAWN_X, Player.SPAWN_Y, playerName)));
         stateChange.addCharacter(playerName);
     }
 

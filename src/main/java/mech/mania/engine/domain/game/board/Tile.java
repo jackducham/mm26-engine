@@ -13,6 +13,7 @@ public class Tile {
         VOID, BLANK, IMPASSIBLE, PORTAL
     }
     private TileType type;
+    private String sprite;
 
     /**
      * Constructs a default Tile of type BLANK.
@@ -44,7 +45,7 @@ public class Tile {
                     items.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    items.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    items.add(i, new Consumable(protoItem.getConsumable()));
             }
         }
 
@@ -62,6 +63,8 @@ public class Tile {
                 type = TileType.PORTAL;
                 break;
         }
+
+        sprite = tileProto.getSprite();
     }
 
     /**
@@ -99,6 +102,8 @@ public class Tile {
                 tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
+
+        tileBuilder.setSprite(sprite);
 
         return tileBuilder.build();
     }

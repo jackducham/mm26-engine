@@ -17,9 +17,9 @@ import java.util.*;
 
 public class ReadBoardFromXMLFile {
 
-    private Map<Integer, Tile> tileSet = new HashMap();
-    private Map<Integer, PseudoMonster> monsterSet = new HashMap();
-    private Map<Integer, DataLayer> dataSet = new HashMap();
+    private Map<Integer, Tile> tileSet = new HashMap<>();
+    private Map<Integer, PseudoMonster> monsterSet = new HashMap<>();
+    private Map<Integer, DataLayer> dataSet = new HashMap<>();
     private Board board = null;
     private List<Monster> monsterList = new ArrayList<>();
 
@@ -311,9 +311,13 @@ public class ReadBoardFromXMLFile {
                                 0, 0, 0, 0,
                                 0, 0, 0, 0,
                                 0);
+
+                        // TODO: add sprite filepaths
                         Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1),
-                                toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
-                                new Position(x, y, boardName), new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit), new ArrayList<Item>());
+                                "", toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
+                                new Position(x, y, boardName),
+                                new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit, ""),
+                                new ArrayList<Item>());
                         monsterList.add(newMonster);
                     }
                 }
