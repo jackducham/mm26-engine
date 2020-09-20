@@ -302,5 +302,6 @@ public class GameState {
 
     public void addNewMonster(Monster monster){
         monsterNames.put(monster.getName(), monster);
+        stateChange.addCharacter(monster.getName());
     }
 }
