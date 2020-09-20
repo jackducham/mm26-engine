@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game;
 
+import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Position;
@@ -23,6 +24,11 @@ public class GameLogicTests {
     @Before
     public void setup() {
         gameState = GameState.createDefaultGameState();
+
+        // Make home board simple
+        Board newHome = new Board(20, 20);
+        newHome.addPortal(new Position(5, 10, "player1"));
+        gameState.getAllBoards().put("player1", newHome);
     }
 
     /**

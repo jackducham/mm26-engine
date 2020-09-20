@@ -38,7 +38,12 @@ public class GameState {
         monsterNames = new HashMap<>();
         stateChange = new GameChange();
 
-        // @TODO: Create actual pvp board
+        // @TODO: Create actual pvp board (uncomment once mm26_mp_map.tmx is usable)
+//        boardNames.put("pvp", Board.loadBoard(
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_mp_map.tmx",
+//                "pvp"
+//        ));
         boardNames.put("pvp", Board.createDefaultBoard(20, 20, true, "pvp"));
     }
 
@@ -64,7 +69,9 @@ public class GameState {
         return null;
     }
 
-
+    public Map<String, Board> getAllBoards() {
+        return boardNames;
+    }
 
     /**
      * Getter for a specific character (player or monster).
