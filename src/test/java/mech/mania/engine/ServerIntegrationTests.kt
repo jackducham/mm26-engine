@@ -92,7 +92,7 @@ class ServerIntegrationTests {
         }
 
         // Wait for server to truly shut down
-        Thread.sleep(8000);
+        Thread.sleep(10000);
     }
 
     /**

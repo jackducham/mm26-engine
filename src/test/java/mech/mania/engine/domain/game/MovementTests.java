@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game;
 
+import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.model.CharacterProtos;
 import org.junit.After;
@@ -24,6 +25,11 @@ public class MovementTests {
 
         // Add player1
         gameState.addNewPlayer("player1");
+
+        // Make home board simple
+        Board newHome = new Board(20, 20);
+        newHome.addPortal(new Position(5, 10, "player1"));
+        gameState.getAllBoards().put("player1", newHome);
     }
 
     /**

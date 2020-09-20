@@ -15,8 +15,9 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ReadFromXMLTests {
 
@@ -31,9 +32,14 @@ public class ReadFromXMLTests {
     public void setup() {
         boardReader = new ReadBoardFromXMLFile();
         try {
-            boardReader.updateBoardAndMonsters("src/test/java/mech/mania/engine/domain/game/mm26_sample_tileset.tsx", "src/test/java/mech/mania/engine/domain/game/mm26_sp_map.tmx", "loadedBoard");
+            boardReader.updateBoardAndMonsters(
+                    "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
+                    "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
+                    "loadedBoard"
+            );
         } catch (TileIDNotFoundException e) {
             System.err.print(e);
+            fail();
         }
     }
 
@@ -51,7 +57,7 @@ public class ReadFromXMLTests {
     @Test
     public void loadBoard(){
         loadedBoard = boardReader.extractBoard();
-        assertTrue(loadedBoard != null);
+        assertNotNull(loadedBoard);
         //check size of board
         assertEquals(30, loadedBoard.getGrid().length);
         assertEquals(30, loadedBoard.getGrid()[0].length);
