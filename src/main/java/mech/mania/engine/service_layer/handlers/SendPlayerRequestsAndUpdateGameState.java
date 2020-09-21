@@ -150,4 +150,15 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                         Config.getProperty("playerServerShutdownEndpoint")
         );
     }
+
+    /**
+     * Helper function to get URL to get player servers' health
+     */
+    private URL buildHealthUrl(PlayerConnectInfo playerConnectInfo) throws MalformedURLException {
+        return new URL(
+                Config.getProperty("playerServerProtocol") +
+                        playerConnectInfo.getIpAddr() +
+                        Config.getProperty("playerServerHealthEndpoint")
+        );
+    }
 }
