@@ -15,12 +15,21 @@ public class UnitOfWorkFake extends UnitOfWorkAbstract {
     @Override
     public void stopInfraServer() {
         LOGGER.info("Stopping infra server");
-        infraCtx.close();
+//        infraCtx.close();
+        SpringApplication.exit(infraCtx, () -> 0);
     }
+
 
     @Override
     public void stopVisualizerServer() {
         LOGGER.info("Stopping visualizer server");
-        visualizerCtx.close();
+//        visualizerCtx.close();
+        SpringApplication.exit(visualizerCtx, () -> 0);
+    }
+
+    @Override
+    public void stopAPIServer() {
+        LOGGER.info("Stopping API server");
+        SpringApplication.exit(APICtx, () -> 0);
     }
 }

@@ -27,14 +27,14 @@ public class Monster extends Character {
      * @param baseMaxHealth the monster's base maximum health
      * @param baseAttack the monster's base attack damage
      * @param baseDefense the monster's base defense
-     * @param experience the monster's base exp to be awarded on kill
+     * @param level the monster's level
      * @param spawnPoint the monster's spawn point, and the point it will leash back to
      * @param weapon the monster's weapon (used to apply on-hit effects)
      * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
      */
     public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                   int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
-        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
+                   int level, Position spawnPoint, Weapon weapon, List<Item> drops) {
+        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
         this.drops = drops;
     }
 
@@ -89,7 +89,7 @@ public class Monster extends Character {
             } else if (curItem instanceof Weapon) {
                 monsterBuilder.setDrops(i, ((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClass());
+                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
 
@@ -138,7 +138,7 @@ public class Monster extends Character {
 
             Position toAttack = target.position;
 
-            int manhattanDistance = GameLogic.calculateManhattanDistance(position, toAttack);
+            int manhattanDistance = position.manhattanDistance(toAttack);
             if (manhattanDistance <= weapon.getRange()) {
                 return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
             } else {
@@ -249,27 +249,5 @@ public class Monster extends Character {
 
         ++DefaultMonsterQuantity;
         return newMonster;
-    }
-
-
-    /**
-     * Gives experience to player who participated in killing this monster.
-     * @param gameState the current game state
-     */
-    @Override
-    public void distributeRewards(GameState gameState) {
-        super.distributeRewards(gameState);
-        Board current = gameState.getBoard(position.getBoardID());
-        Tile currentTile = current.getGrid()[position.getX()][position.getY()];
-        currentTile.getItems().addAll(drops);
-
-        //iterates through every player still on the taggedPlayersDamage map.
-        for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
-            Player currentPlayer = gameState.getPlayer(entry.getKey());
-            if(currentPlayer != null) {
-                currentPlayer.addExperience(this.getExperience());
-                currentPlayer.getExtraStats().incrementMonstersSlain();
-            }
-        }
     }
 }

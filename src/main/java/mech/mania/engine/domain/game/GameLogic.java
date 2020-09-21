@@ -8,12 +8,8 @@ import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.PlayerProtos;
-import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
@@ -44,12 +40,12 @@ public class GameLogic {
 
 
     /**
-     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link PlayerDecision}s.
+     * Executes the logic of one turn given a starting {@link GameState} and a list of {@link CharacterProtos.CharacterDecision}s.
      * @param gameState The initial game state.
-     * @param decisions A list of player decisions.
+     * @param contestantDecisions A list of player decisions.
      * @return the resulting {@link GameState}.
      */
-    public static GameState doTurn(GameState gameState, Map<String, PlayerDecision> decisions) {
+    public static GameState doTurn(GameState gameState, Map<String, CharacterProtos.CharacterDecision> contestantDecisions) {
         // ========== NOTES & TODOS ========== \\
         // Note: VisualizerChange will be sent later via Main.java, so no need to worry about that here
 
@@ -58,21 +54,27 @@ public class GameLogic {
 
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         // Search decisions map for new players. For each new player, create Player object and a private Board
-        for (String playerName : decisions.keySet()) {
+        for (String playerName : contestantDecisions.keySet()) {
             if (!gameState.getAllPlayers().containsKey(playerName)) {
                 gameState.addNewPlayer(playerName);
             }
         }
 
+        for (Map.Entry<String, Character> entry : gameState.getAllCharacters().entrySet()) {
+            if (entry.getValue().isDead()) {
+                gameState.stateChange.addDeadCharacter(entry.getKey());
+            }
+        }
+
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
-        Map<String, CharacterDecision> cDecisions = new HashMap<String, CharacterDecision>();
-        for (Map.Entry<String, PlayerDecision> entry : decisions.entrySet()) {
+        Map<String, CharacterDecision> allDecisions = new HashMap<>();
+        for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : contestantDecisions.entrySet()) {
             // Remove decision from dead players and NONE decisions
             if(!gameState.getPlayer(entry.getKey()).isDead()
                     && entry.getValue() != null
                     && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
-                cDecisions.put(entry.getKey(), newDecision);
+                allDecisions.put(entry.getKey(), newDecision);
             }
         }
 
@@ -84,7 +86,7 @@ public class GameLogic {
             if(!gameState.getMonster(entry.getKey()).isDead()
                     && decision != null
                     && decision.getDecision() != CharacterDecision.decisionTypes.NONE) {
-                cDecisions.put(entry.getKey(), decision);
+                allDecisions.put(entry.getKey(), decision);
             }
         }
 
@@ -93,7 +95,7 @@ public class GameLogic {
         Map<String, CharacterDecision> attackActions = new HashMap<>();
         Map<String, CharacterDecision> movementActions = new HashMap<>();
 
-        for (Map.Entry<String, CharacterDecision> entry : cDecisions.entrySet()) {
+        for (Map.Entry<String, CharacterDecision> entry : allDecisions.entrySet()) {
             if (entry.getValue().getDecision() == CharacterDecision.decisionTypes.PICKUP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.EQUIP
                     || entry.getValue().getDecision() == CharacterDecision.decisionTypes.DROP) {
@@ -129,14 +131,15 @@ public class GameLogic {
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
         // respawning, and distributing rewards
-        Collection<Player> players = gameState.getAllPlayers().values();
-        Collection<Monster> monsters = gameState.getAllMonsters().values();
+        Collection<Character> characters = gameState.getAllCharacters().values();
 
-        for (Player player: players) {
-            player.updateCharacter(gameState);
-        }
-        for (Monster monster: monsters) {
-            monster.updateCharacter(gameState);
+        for (Character character: characters) {
+            character.updateCharacter(gameState);
+            if (character.isDead()) {
+                gameState.stateChange.characterDied(character.getName());
+            } else if (gameState.stateChange.wasDeadAtTurnStart(character.getName())) {
+                gameState.stateChange.characterRevived(character.getName());
+            }
         }
 
         return gameState;
@@ -158,39 +161,55 @@ public class GameLogic {
         switch (decision.getDecision()) {
             case ATTACK:
                 // Check for invalid protos
-                if(character == null || actionPosition == null) return;
-                processAttack(gameState, character, actionPosition);
+                if (character == null || actionPosition == null) return;
+                if (processAttack(gameState, character, actionPosition)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case MOVE:
                 // Check for invalid protos
-                if(character == null || actionPosition == null) return;
-                moveCharacter(gameState, character, actionPosition);
+                if (character == null || actionPosition == null) return;
+
+                if (moveCharacter(gameState, character, actionPosition)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case PORTAL:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
-                usePortal(gameState, character, index);
+                if (character == null || index < 0) return;
+                if (usePortal(gameState, character, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case EQUIP:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 Player player = (Player) character;
-                player.equipItem(index);
+                Class equippedItem = player.equipItem(index);
+                if (equippedItem != null) {
+                    gameState.stateChange.characterEquip(player.getName(), equippedItem);
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case DROP:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 player = (Player) character;
-                dropItem(gameState, player, index);
+                if (dropItem(gameState, player, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    gameState.stateChange.addChangedTile(character.getPosition());
+                }
                 break;
             case PICKUP:
                 // Check for invalid protos
-                if(character == null || index < 0) return;
+                if (character == null || index < 0) return;
                 player = (Player) character;
-                pickUpItem(gameState, player, index);
+                if (pickUpItem(gameState, player, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    gameState.stateChange.addChangedTile(character.getPosition());
+                }
                 break;
         }
-        gameState.stateChange.updatePlayer(character, decision, null, false, false);
     }
 
     /**
@@ -199,20 +218,27 @@ public class GameLogic {
      * @param character player to be moved
      * @param targetPosition position the player should be moved to
      */
-    public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
-        if (!validatePosition(gameState, targetPosition)) return;
+    public static boolean moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) return false;
+
+        // Check if character's board matches target board
+        if (!character.getPosition().getBoardID().equals(targetPosition.getBoardID())) {
+            return false;
+        }
 
         // Get shortest path length from current to target position (returns empty list for impossible target)
         List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
 
         // If path is empty (i.e. target is unreachable), don't move
-        if(path.size() == 0) return;
+        if(path.size() == 0) return false;
 
         // If path would be greater than speed allows, act as if impossible target was chosen and don't move
-        if(path.size() > character.getSpeed()) return;
+        if(path.size() > character.getSpeed()) return false;
 
         character.setPosition(targetPosition);
-        gameState.stateChange.updatePlayer(character, null, path, false, false);
+        gameState.stateChange.setCharacterMovePath(character.getName(), path);
+
+        return true;
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -284,7 +310,7 @@ public class GameLogic {
             return false;
         }
 
-        return calculateManhattanDistance(character.getPosition(), attackCoordinate) <= playerWeapon.getRange();
+        return character.getPosition().manhattanDistance(attackCoordinate) <= playerWeapon.getRange();
     }
 
     /**
@@ -311,7 +337,7 @@ public class GameLogic {
         for (int x = xMin; x <= centerX + radius; x++) {
             for (int y = yMin; y <= centerY + radius; y++) {
                 Position position = new Position(x, y, attackCoordinate.getBoardID());
-                if (calculateManhattanDistance(position, attackCoordinate) <= radius && validatePosition(gameState, position)) {
+                if (position.manhattanDistance(attackCoordinate) <= radius && validatePosition(gameState, position)) {
                     affectedPositions.put(position, 1);
                 }
             }
@@ -326,63 +352,46 @@ public class GameLogic {
      * @param attacker character doing the attacking
      * @param attackCoordinate coordinate to attack
      */
-    public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
-        Board board = gameState.getBoard(attackCoordinate.getBoardID());
-        List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
-        List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
+    public static boolean processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
+        List<Character> characters = gameState.getCharactersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         Weapon attackerWeapon = attacker.getWeapon();
 
         // Character gave invalid attack position
         if (affectedPositions == null || affectedPositions.isEmpty()) {
-            return;
+            return false;
         }
 
-        for (Player player: players) {
-            if (player == attacker) {
+        gameState.stateChange.characterAttackLocations(
+                                                        attacker.getName(),
+                                                        new ArrayList<> (affectedPositions.keySet())
+                                                        );
+
+        for (Character character: characters) {
+            if (character == attacker) {
                 continue;
             }
-            Position playerPos = player.getPosition();
-            if (affectedPositions.containsKey(playerPos)) {
+            Position characterPos = character.getPosition();
+            if (affectedPositions.containsKey(characterPos)) {
                 // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
                 if(attacker instanceof Player && ((Player) attacker).getHat() != null
                         && ((Player) attacker).getHat().getHatEffect().equals(HatEffect.TRIPLED_ON_HIT)) {
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
                             new TempStatusModifier(attackerWeapon.getOnHitEffect()));
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                 } else {
                     // Decide whether to add to taggedPlayersDamage
-                    if(attacker instanceof Player) {
-                        player.hitByWeapon(attacker.getName(), true, attackerWeapon, attacker.getAttack());
-                    }
-                    else{
-                        player.hitByWeapon(attacker.getName(), false, attackerWeapon, attacker.getAttack());
-                    }
+                    character.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
                 }
             }
         }
 
-        for (Monster monster: monsters) {
-            if (monster == attacker) {
-                continue;
-            }
-            Position playerPos = monster.getPosition();
-            if (affectedPositions.containsKey(playerPos)) {
-                // Decide whether to add to taggedPlayersDamage
-                if(attacker instanceof Player) {
-                    monster.hitByWeapon(attacker.getName(), true, attackerWeapon, attacker.getAttack());
-                }
-                else{
-                    monster.hitByWeapon(attacker.getName(), false, attackerWeapon, attacker.getAttack());
-                }
-            }
-        }
+        return true;
 
-        return;
     }
 
 
@@ -431,6 +440,8 @@ public class GameLogic {
             return false;
         }
 
+        if(currentTile == null) return false;
+
         Item item = player.getInventory()[index];
         player.setInventory(index, null);
         currentTile.addItem(item);
@@ -454,7 +465,7 @@ public class GameLogic {
 
     /**
      * Checks whether position is within the bounds of the board
-     * @param gameState
+     * @param gameState the game state context
      * @param position position to validate
      * @return true, if position is valid
      */
@@ -473,15 +484,4 @@ public class GameLogic {
         return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
 
-    /**
-     * @param pos1 first position
-     * @param pos2 second position
-     * @return Manhattan Distance between pos1 and pos2
-     */
-    public static int calculateManhattanDistance(Position pos1, Position pos2) {
-        if(pos1.getBoardID().equals(pos2.getBoardID())){
-            return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
-        }
-        return Integer.MAX_VALUE;
-    }
 }

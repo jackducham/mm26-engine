@@ -31,6 +31,7 @@ public abstract class UnitOfWorkAbstract {
 
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;
+    protected ConfigurableApplicationContext APICtx;
 
     /**
      * Constructor that sets an AbstractRepository
@@ -182,6 +183,19 @@ public abstract class UnitOfWorkAbstract {
      * Use the saved ConfigurableApplicationContext to stop the VisualizerWebSocket
      */
     public abstract void stopVisualizerServer();
+
+    /**
+     * Store a ConfigurableApplicationContext object in order to stop the API server WebSocket
+     * @param ctx
+     */
+    public void storeAPICtx(ConfigurableApplicationContext ctx) {
+        this.APICtx = ctx;
+    }
+
+    /**
+     * Use the saved ConfigurableApplicationContext to stop the API server WebSocket
+     */
+    public abstract void stopAPIServer();
 
     /**
      * Sets the game over status for this UoW.

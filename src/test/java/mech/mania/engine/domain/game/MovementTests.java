@@ -1,8 +1,8 @@
 package mech.mania.engine.domain.game;
 
+import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +25,11 @@ public class MovementTests {
 
         // Add player1
         gameState.addNewPlayer("player1");
+
+        // Make home board simple
+        Board newHome = new Board(20, 20);
+        newHome.addPortal(new Position(5, 10, "player1"));
+        gameState.getAllBoards().put("player1", newHome);
     }
 
     /**
@@ -44,7 +49,7 @@ public class MovementTests {
         final int final_y = 0;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -52,7 +57,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -75,7 +80,7 @@ public class MovementTests {
         final int final_y = 0;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -83,7 +88,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -103,7 +108,7 @@ public class MovementTests {
         final int final_y = 1;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -111,7 +116,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -134,7 +139,7 @@ public class MovementTests {
         final int final_y = 0;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -142,7 +147,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -162,7 +167,7 @@ public class MovementTests {
         final int final_y = 2;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -170,7 +175,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -190,7 +195,7 @@ public class MovementTests {
         final int final_y = 0;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -198,7 +203,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -218,7 +223,7 @@ public class MovementTests {
         final int final_y = 0;
 
         // Move player1 to 1, 0
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
         CharacterProtos.Position.Builder newPos = CharacterProtos.Position.newBuilder();
@@ -226,7 +231,7 @@ public class MovementTests {
         decision.setTargetPosition(newPos.build());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
