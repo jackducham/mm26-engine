@@ -266,6 +266,7 @@ public abstract class Character {
         } else if (getCurrentHealth() <= 0) { // player has just died
             ticksSinceDeath = 0;
             distributeRewards(gameState);
+            taggedPlayersDamage.clear();
             isDead = true;
         }
     }
@@ -297,11 +298,16 @@ public abstract class Character {
                 continue;
             }
 
+            if (attackingPlayer.isDead()) {
+                continue;
+            }
+
             int attackingPlayerLevel = attackingPlayer.getLevel();
             int levelDiff = abs(attackingPlayerLevel  - this.getLevel());
             double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + (double)levelDiff);
             int expGain = (int)(10 * this.getLevel() * expMultiplier);
             attackingPlayer.addExperience(expGain);
+            attackingPlayer.removePlayer(this.name);
         }
     }
 

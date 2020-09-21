@@ -137,6 +137,10 @@ public class GameLogic {
             character.updateCharacter(gameState);
             if (character.isDead()) {
                 gameState.stateChange.characterDied(character.getName());
+                Position position = character.getPosition();
+                for (Character c : gameState.getCharactersOnBoard(position.getBoardID())) {
+                    c.removePlayer(character.getName());
+                }
             } else if (gameState.stateChange.wasDeadAtTurnStart(character.getName())) {
                 gameState.stateChange.characterRevived(character.getName());
             }
@@ -177,8 +181,12 @@ public class GameLogic {
             case PORTAL:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
+                Position curPosition = character.getPosition();
                 if (usePortal(gameState, character, index)) {
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    for (Character c : gameState.getCharactersOnBoard(curPosition.getBoardID())) {
+                        c.removePlayer(character.getName());
+                    }
                 }
                 break;
             case EQUIP:
