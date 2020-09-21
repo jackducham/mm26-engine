@@ -71,7 +71,7 @@ class ServerIntegrationTests {
             Main.main(args)
         }
 
-        Thread.sleep(8000)
+        awaitEngineStart()
     }
 
     /**
@@ -93,6 +93,29 @@ class ServerIntegrationTests {
 
         // Wait for server to truly shut down
         Thread.sleep(10000);
+    }
+
+    /**
+     * Helper function that waits until engine /health endpoint responds
+     */
+    private fun awaitEngineStart(){
+        while(true){
+            // Connect to engine health endpoint
+            val url = URL("http://localhost:$infraPort/infra/health")
+            try {
+                val bytes = url.readBytes()
+                val statusObj = InfraStatus.parseFrom(bytes)
+                // LOGGER.info("Waiting for engine to start. Health endpoint returned: " + statusObj.message)
+                if(statusObj.status == 200){
+                    Thread.sleep(8000) // Wait for server to fully boot (if some tests fail, try upping this time)
+                    return
+                }
+            } catch (e: Exception) {
+                // LOGGER.info("Waiting for engine to start. Exception received: " + e.message)
+                Thread.sleep(1000)
+                continue; // Try again
+            }
+        }
     }
 
     /**
