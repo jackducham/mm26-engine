@@ -136,10 +136,12 @@ public class Monster extends Character {
 
         if (target == null) {
             List<Character> inRange = utils.findEnemiesInRangeOfAttackByDistance(gameState, getPosition(), getName(), aggroRange);
-            for (Character character: inRange) {
-                if (character instanceof Player) {
-                    target = (Player) character;
-                    break;
+            if(inRange != null) {
+                for (Character character : inRange) {
+                    if (character instanceof Player) {
+                        target = (Player) character;
+                        break;
+                    }
                 }
             }
         }
