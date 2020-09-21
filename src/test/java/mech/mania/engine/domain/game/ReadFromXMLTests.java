@@ -6,6 +6,7 @@ import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.board.TileIDNotFoundException;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.model.ApiProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
@@ -65,6 +66,29 @@ public class ReadFromXMLTests {
         //check that tile walkability is loaded correctly
         assertEquals(Tile.TileType.BLANK, loadedBoard.getGrid()[2][2].getType());
         assertEquals(Tile.TileType.IMPASSIBLE, loadedBoard.getGrid()[11][14].getType());
+    }
+
+    /**
+     * Tests that sprites are loaded correctly
+     */
+    @Test
+    public void testSpriteParsing(){
+        loadedBoard = boardReader.extractBoard();
+        assertNotNull(loadedBoard);
+
+        final String portalSprite = "mm26_tiles/magicportal.PNG";
+
+        // Find portal
+        assertTrue(loadedBoard.getPortals().size() > 0);
+        Position portalPos = loadedBoard.getPortals().get(0);
+        Tile portalTile = loadedBoard.getGrid()[portalPos.getX()][portalPos.getY()];
+
+        // Assert correct TileType and aboveSprite
+        assertEquals(Tile.TileType.PORTAL, portalTile.getType());
+        assertEquals(portalSprite, portalTile.aboveSprite);
+
+        // Assert that groundSprite isn't the portal sprite
+        assertNotEquals(portalSprite, portalTile.groundSprite);
     }
 
     /**

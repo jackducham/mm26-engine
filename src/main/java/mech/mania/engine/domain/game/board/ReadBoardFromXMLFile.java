@@ -121,6 +121,12 @@ public class ReadBoardFromXMLFile {
                         }
                         tileSet.put(currentID, newTile);
                     }
+                    else if(attributes.getValue("name").equalsIgnoreCase("isPortal")){
+                        if(attributes.getValue("value").equalsIgnoreCase("true")) {
+                            // This tile is a portal
+                            tileSet.get(currentID).setType(Tile.TileType.PORTAL);
+                        }
+                    }
                     else {
                         //The current "tile" is a monster
 
@@ -303,11 +309,20 @@ public class ReadBoardFromXMLFile {
                     throw new TileIDNotFoundException(
                             "Could not locate tile with ID = " + dataSet.get(1).data[x][y] + " in current dataSet. This tile was requested by Data Layer 1 at Position (" + x + ", " + y + ")");
                     //board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
-                } else if ((dataSet.get(0).data[x][y] == 0 || tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK)
-                        && (dataSet.get(1).data[x][y] == 0 || tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK)) {
-                    board.getGrid()[x][y].setType(Tile.TileType.BLANK);
                 } else {
-                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                    // Set tile types
+                    if (dataSet.get(0).data[x][y] != 0){
+                        board.getGrid()[x][y].setType(tileSet.get(dataSet.get(0).data[x][y]).getType());
+                    }
+                    if (dataSet.get(1).data[x][y] != 0){
+                        Tile.TileType type = tileSet.get(dataSet.get(1).data[x][y]).getType();
+                        board.getGrid()[x][y].setType(type);
+
+                        // Add portals to portal list
+                        if(type == Tile.TileType.PORTAL){
+                            board.addPortal(new Position(x, y, boardName));
+                        }
+                    }
                 }
 
                 // Add sprites for tile

@@ -23,7 +23,7 @@ public class Tile {
      */
     public Tile() {
         this.items = new ArrayList<>();
-        this.type = TileType.BLANK;
+        this.type = TileType.VOID;
         this.groundSprite = "";
         this.aboveSprite = "";
     }
