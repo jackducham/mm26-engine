@@ -39,7 +39,7 @@ public class leaderBoardTest {
         p3.updateLevel();
 
         // Create a single monster with low level and kill it w/ player2
-        gameState1.addNewMonster(new Monster("monster", 0, 0, 0, 0, 1, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+        gameState1.addNewMonster(new Monster("monster", 0, 0, 0, 0, 1, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
         gameState1.getMonster("monster").applyDamage("player2", true,1000);
         gameState1.getMonster("monster").distributeRewards(gameState1);
         List<Player> leaderboard = utils.leaderBoard(gameState1);
@@ -54,7 +54,7 @@ public class leaderBoardTest {
 
         // Create a single monster with equal level and kill it w/ player3
         // equal level monsters give more XP, so player3 should be in the lead
-        gameState1.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 5, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), 0,new ArrayList<>()));
+        gameState1.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 5, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
         gameState1.getMonster("monster1").applyDamage("player3", true,1000);
         gameState1.getMonster("monster1").distributeRewards(gameState1);
         List<Player> leaderboard2 = utils.leaderBoard(gameState1);

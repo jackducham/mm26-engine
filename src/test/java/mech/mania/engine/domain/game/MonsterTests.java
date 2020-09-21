@@ -25,72 +25,14 @@ public class MonsterTests {
 
         // Add default monster which spawns at (0, 0)
         //  use high attackFactor to make sure monster deals damage to monster
-        monster = Monster.createDefaultMonster(3, 0, 100, 0,
-                0, 0,0, 0, 5, 0, new Position(0, 0, "pvp"));
+        monster = Monster.createDefaultMonster(0, 0, 100, 0,
+                0, 0,0, 0, new Position(0, 0, "pvp"));
         gameState.addNewMonster(monster);
     }
 
     @After
     public void cleanup(){
 
-    }
-
-    @Test
-    public void testMonsterAggroRange() {
-        // Add new player at (0, 3)
-        gameState.addNewPlayer("player1");
-        Player player1 = gameState.getPlayer("player1");
-        player1.setPosition(new Position(0, 3, "pvp"));
-
-        // Assert that Monster wants to attack player1
-        assertEquals(monster.makeDecision(gameState).getDecision(), CharacterDecision.decisionTypes.ATTACK);
-        assertEquals(monster.makeDecision(gameState).getActionPosition(), player1.getPosition());
-
-        // Assert that after 1 turn, player1 was damaged by the monster
-        int initialPlayerHealth = player1.getCurrentHealth();
-        GameLogic.doTurn(gameState, Collections.emptyMap());
-        int finalPlayerHealth = player1.getCurrentHealth();
-
-        // Assert greater than because exact damage is unknown
-        assertTrue(initialPlayerHealth > finalPlayerHealth);
-    }
-
-    @Test
-    public void testNothingInRangeReturn() {
-        monster.setPosition(new Position(0, 1, "pvp"));
-
-        gameState.addNewPlayer("player1");
-        Player player1 = gameState.getPlayer("player1");
-        player1.setPosition(new Position(0, 7, "pvp"));
-
-        // Run a turn
-        HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-
-        // Assert that monster is now at spawn
-        assertEquals(monster.getPosition(), monster.getSpawnPoint());
-    }
-
-    @Test
-    public void testDamagePriorityOverRange() {
-        monster.setPosition(new Position(0, 0, "pvp"));
-
-        // add player outside range
-        gameState.addNewPlayer("player1");
-        Player player1 = gameState.getPlayer("player1");
-        player1.setPosition(new Position(0, 8, "pvp"));
-
-        // add player within range
-        gameState.addNewPlayer("player2");
-        Player player2 = gameState.getPlayer("player2");
-        player2.setPosition(new Position(0, 2, "pvp"));
-
-        // Add Player1 to monster's aggro table
-        monster.applyDamage("player1", true, 1);
-
-        // Assert that Monster wants to attack player1
-        assertEquals(monster.makeDecision(gameState).getDecision(), CharacterDecision.decisionTypes.MOVE);
-        assertEquals(monster.makeDecision(gameState).getActionPosition(), player1.getPosition());
     }
 
     @Test

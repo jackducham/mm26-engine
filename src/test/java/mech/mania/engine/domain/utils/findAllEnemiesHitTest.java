@@ -22,14 +22,14 @@ public class findAllEnemiesHitTest {
 
     @Before
     public void setup() {
-        gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 0, new Position(10, 9, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster2", 0, 0, 0, 0, 0, new Position(0, 5, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster3", 0, 0, 0, 0, 0, new Position(0, 14, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster4", 0, 0, 0, 0, 0, new Position(1, 16, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster5", 0, 0, 0, 0, 0, new Position(1, 21, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster6", 0, 0, 0, 0, 0, new Position(0, 25, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster7", 0, 0, 0, 0, 0, new Position(0, 26, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 0, new Position(10, 9, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster2", 0, 0, 0, 0, 0, new Position(0, 5, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster3", 0, 0, 0, 0, 0, new Position(0, 14, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster4", 0, 0, 0, 0, 0, new Position(1, 16, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster5", 0, 0, 0, 0, 0, new Position(1, 21, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster6", 0, 0, 0, 0, 0, new Position(0, 25, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster7", 0, 0, 0, 0, 0, new Position(0, 26, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
 
         Weapon weapon1 = Weapon.createDefaultWeapon();
         Weapon weapon2 = Weapon.createStrongerDefaultWeapon();
