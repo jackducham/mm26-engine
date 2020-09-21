@@ -88,11 +88,15 @@ public class Board {
      * @return a finished home board with default settings
      */
     public static Board createHomeBoard(String id) {
-        return Board.loadBoard(
-                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
-                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
-                id
-        );
+//        return Board.loadBoard(
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
+//                id
+//        );
+        // Make home board simple to avoid XML errors for now
+        Board home = new Board(20, 20);
+        home.addPortal(new Position(5, 10, "player1"));
+        return home;
     }
 
     /**
