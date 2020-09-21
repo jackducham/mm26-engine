@@ -3226,7 +3226,6 @@ public final class CharacterProtos {
      */
     java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> 
         getDropsList();
-
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
@@ -3245,12 +3244,6 @@ public final class CharacterProtos {
      */
     mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getDropsOrBuilder(
         int index);
-
-    /**
-     * <code>int32 aggro = 3;</code>
-     * @return The aggroRange.
-     */
-    int getAggroRange();
   }
   /**
    * Protobuf type {@code character.Monster}
@@ -3319,11 +3312,6 @@ public final class CharacterProtos {
               }
               drops_.add(
                   input.readMessage(mech.mania.engine.domain.model.ItemProtos.Item.parser(), extensionRegistry));
-              break;
-            }
-            case 26: {
-
-              aggroRange_ = input.readInt32();
               break;
             }
             default: {
@@ -3419,16 +3407,6 @@ public final class CharacterProtos {
       return drops_.get(index);
     }
 
-    public static final int AGGRO_RANGE_FIELD_NUMBER = 3;
-    private int aggroRange_;
-    /**
-     * <code>int32 aggro_range = 3;</code>
-     * @return the aggroRange.
-     */
-    public int getAggroRange() {
-      return aggroRange_;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3449,9 +3427,6 @@ public final class CharacterProtos {
       for (int i = 0; i < drops_.size(); i++) {
         output.writeMessage(2, drops_.get(i));
       }
-      if (aggroRange_ != 0) {
-        output.writeInt32(3, aggroRange_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -3468,11 +3443,6 @@ public final class CharacterProtos {
       for (int i = 0; i < drops_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, drops_.get(i));
-      }
-
-      if (aggroRange_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-                .computeInt32Size(3, aggroRange_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3496,8 +3466,6 @@ public final class CharacterProtos {
       }
       if (!getDropsList()
           .equals(other.getDropsList())) return false;
-
-      if (getAggroRange() != other.getAggroRange()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3517,9 +3485,6 @@ public final class CharacterProtos {
         hash = (37 * hash) + DROPS_FIELD_NUMBER;
         hash = (53 * hash) + getDropsList().hashCode();
       }
-
-      hash = (37 * hash) + AGGRO_RANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getAggroRange();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3666,7 +3631,6 @@ public final class CharacterProtos {
         } else {
           dropsBuilder_.clear();
         }
-        aggroRange_ = 0;
         return this;
       }
 
@@ -3708,7 +3672,6 @@ public final class CharacterProtos {
         } else {
           result.drops_ = dropsBuilder_.build();
         }
-        result.aggroRange_ = aggroRange_;
         onBuilt();
         return result;
       }
@@ -3785,10 +3748,6 @@ public final class CharacterProtos {
               dropsBuilder_.addAllMessages(other.drops_);
             }
           }
-        }
-
-        if (other.getAggroRange() != 0) {
-          setAggroRange(other.getAggroRange());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3903,7 +3862,6 @@ public final class CharacterProtos {
 
         return this;
       }
-
       /**
        * <code>.character.Character character = 1;</code>
        */
@@ -4179,37 +4137,6 @@ public final class CharacterProtos {
         }
         return dropsBuilder_;
       }
-
-      private int aggroRange_;
-      /**
-       * <code>int32 aggro_range = 3;</code>
-       * @return The aggroRange.
-       */
-      public int getAggroRange_() {
-        return aggroRange_;
-      }
-      /**
-       * <code>int32 aggro_range = 3;</code>
-       * @param value The aggroRange to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAggroRange(int value) {
-
-        aggroRange_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 aggro_range = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAggroRange() {
-
-        aggroRange_ = 0;
-        onChanged();
-        return this;
-      }
-
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
