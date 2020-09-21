@@ -70,6 +70,9 @@ public class Position {
     }
 
     public int manhattanDistance(Position other) {
+        if (!this.getBoardID().equals(other.getBoardID())) {
+            return Integer.MAX_VALUE;
+        }
         int x = Math.abs(this.x - other.getX());
         int y = Math.abs(this.y - other.getY());
         return x + y;

@@ -311,9 +311,11 @@ public class ReadBoardFromXMLFile {
                                 0, 0, 0, 0,
                                 0, 0, 0, 0,
                                 0);
+
+                        //@TODO need to add agrorange as parameter, currently put 0 as filler
                         Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1),
                                 toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
-                                new Position(x, y, boardName), new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit), new ArrayList<Item>());
+                                new Position(x, y, boardName), new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit), 0, new ArrayList<>());
                         monsterList.add(newMonster);
                     }
                 }
