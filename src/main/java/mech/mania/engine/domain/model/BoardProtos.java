@@ -1458,23 +1458,35 @@ public final class BoardProtos {
 
     /**
      * <pre>
-     * Filepath to sprite for this tile
+     * Filepaths to sprites for this tile
      * </pre>
      *
-     * <code>string sprite = 3;</code>
-     * @return The sprite.
+     * <code>string ground_sprite = 3;</code>
+     * @return The groundSprite.
      */
-    java.lang.String getSprite();
+    java.lang.String getGroundSprite();
     /**
      * <pre>
-     * Filepath to sprite for this tile
+     * Filepaths to sprites for this tile
      * </pre>
      *
-     * <code>string sprite = 3;</code>
-     * @return The bytes for sprite.
+     * <code>string ground_sprite = 3;</code>
+     * @return The bytes for groundSprite.
      */
     com.google.protobuf.ByteString
-        getSpriteBytes();
+        getGroundSpriteBytes();
+
+    /**
+     * <code>string above_sprite = 4;</code>
+     * @return The aboveSprite.
+     */
+    java.lang.String getAboveSprite();
+    /**
+     * <code>string above_sprite = 4;</code>
+     * @return The bytes for aboveSprite.
+     */
+    com.google.protobuf.ByteString
+        getAboveSpriteBytes();
   }
   /**
    * Protobuf type {@code board.Tile}
@@ -1491,7 +1503,8 @@ public final class BoardProtos {
     private Tile() {
       tileType_ = 0;
       items_ = java.util.Collections.emptyList();
-      sprite_ = "";
+      groundSprite_ = "";
+      aboveSprite_ = "";
     }
 
     @java.lang.Override
@@ -1543,7 +1556,13 @@ public final class BoardProtos {
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              sprite_ = s;
+              groundSprite_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              aboveSprite_ = s;
               break;
             }
             default: {
@@ -1757,44 +1776,80 @@ public final class BoardProtos {
       return items_.get(index);
     }
 
-    public static final int SPRITE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object sprite_;
+    public static final int GROUND_SPRITE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object groundSprite_;
     /**
      * <pre>
-     * Filepath to sprite for this tile
+     * Filepaths to sprites for this tile
      * </pre>
      *
-     * <code>string sprite = 3;</code>
-     * @return The sprite.
+     * <code>string ground_sprite = 3;</code>
+     * @return The groundSprite.
      */
-    public java.lang.String getSprite() {
-      java.lang.Object ref = sprite_;
+    public java.lang.String getGroundSprite() {
+      java.lang.Object ref = groundSprite_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        sprite_ = s;
+        groundSprite_ = s;
         return s;
       }
     }
     /**
      * <pre>
-     * Filepath to sprite for this tile
+     * Filepaths to sprites for this tile
      * </pre>
      *
-     * <code>string sprite = 3;</code>
-     * @return The bytes for sprite.
+     * <code>string ground_sprite = 3;</code>
+     * @return The bytes for groundSprite.
      */
     public com.google.protobuf.ByteString
-        getSpriteBytes() {
-      java.lang.Object ref = sprite_;
+        getGroundSpriteBytes() {
+      java.lang.Object ref = groundSprite_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        sprite_ = b;
+        groundSprite_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ABOVE_SPRITE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object aboveSprite_;
+    /**
+     * <code>string above_sprite = 4;</code>
+     * @return The aboveSprite.
+     */
+    public java.lang.String getAboveSprite() {
+      java.lang.Object ref = aboveSprite_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        aboveSprite_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string above_sprite = 4;</code>
+     * @return The bytes for aboveSprite.
+     */
+    public com.google.protobuf.ByteString
+        getAboveSpriteBytes() {
+      java.lang.Object ref = aboveSprite_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        aboveSprite_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1821,8 +1876,11 @@ public final class BoardProtos {
       for (int i = 0; i < items_.size(); i++) {
         output.writeMessage(2, items_.get(i));
       }
-      if (!getSpriteBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sprite_);
+      if (!getGroundSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, groundSprite_);
+      }
+      if (!getAboveSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, aboveSprite_);
       }
       unknownFields.writeTo(output);
     }
@@ -1841,8 +1899,11 @@ public final class BoardProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, items_.get(i));
       }
-      if (!getSpriteBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sprite_);
+      if (!getGroundSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, groundSprite_);
+      }
+      if (!getAboveSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, aboveSprite_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1862,8 +1923,10 @@ public final class BoardProtos {
       if (tileType_ != other.tileType_) return false;
       if (!getItemsList()
           .equals(other.getItemsList())) return false;
-      if (!getSprite()
-          .equals(other.getSprite())) return false;
+      if (!getGroundSprite()
+          .equals(other.getGroundSprite())) return false;
+      if (!getAboveSprite()
+          .equals(other.getAboveSprite())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1881,8 +1944,10 @@ public final class BoardProtos {
         hash = (37 * hash) + ITEMS_FIELD_NUMBER;
         hash = (53 * hash) + getItemsList().hashCode();
       }
-      hash = (37 * hash) + SPRITE_FIELD_NUMBER;
-      hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + GROUND_SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getGroundSprite().hashCode();
+      hash = (37 * hash) + ABOVE_SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getAboveSprite().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2025,7 +2090,9 @@ public final class BoardProtos {
         } else {
           itemsBuilder_.clear();
         }
-        sprite_ = "";
+        groundSprite_ = "";
+
+        aboveSprite_ = "";
 
         return this;
       }
@@ -2064,7 +2131,8 @@ public final class BoardProtos {
         } else {
           result.items_ = itemsBuilder_.build();
         }
-        result.sprite_ = sprite_;
+        result.groundSprite_ = groundSprite_;
+        result.aboveSprite_ = aboveSprite_;
         onBuilt();
         return result;
       }
@@ -2142,8 +2210,12 @@ public final class BoardProtos {
             }
           }
         }
-        if (!other.getSprite().isEmpty()) {
-          sprite_ = other.sprite_;
+        if (!other.getGroundSprite().isEmpty()) {
+          groundSprite_ = other.groundSprite_;
+          onChanged();
+        }
+        if (!other.getAboveSprite().isEmpty()) {
+          aboveSprite_ = other.aboveSprite_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -2468,22 +2540,22 @@ public final class BoardProtos {
         return itemsBuilder_;
       }
 
-      private java.lang.Object sprite_ = "";
+      private java.lang.Object groundSprite_ = "";
       /**
        * <pre>
-       * Filepath to sprite for this tile
+       * Filepaths to sprites for this tile
        * </pre>
        *
-       * <code>string sprite = 3;</code>
-       * @return The sprite.
+       * <code>string ground_sprite = 3;</code>
+       * @return The groundSprite.
        */
-      public java.lang.String getSprite() {
-        java.lang.Object ref = sprite_;
+      public java.lang.String getGroundSprite() {
+        java.lang.Object ref = groundSprite_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          sprite_ = s;
+          groundSprite_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -2491,20 +2563,20 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Filepath to sprite for this tile
+       * Filepaths to sprites for this tile
        * </pre>
        *
-       * <code>string sprite = 3;</code>
-       * @return The bytes for sprite.
+       * <code>string ground_sprite = 3;</code>
+       * @return The bytes for groundSprite.
        */
       public com.google.protobuf.ByteString
-          getSpriteBytes() {
-        java.lang.Object ref = sprite_;
+          getGroundSpriteBytes() {
+        java.lang.Object ref = groundSprite_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          sprite_ = b;
+          groundSprite_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -2512,54 +2584,130 @@ public final class BoardProtos {
       }
       /**
        * <pre>
-       * Filepath to sprite for this tile
+       * Filepaths to sprites for this tile
        * </pre>
        *
-       * <code>string sprite = 3;</code>
-       * @param value The sprite to set.
+       * <code>string ground_sprite = 3;</code>
+       * @param value The groundSprite to set.
        * @return This builder for chaining.
        */
-      public Builder setSprite(
+      public Builder setGroundSprite(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        sprite_ = value;
+        groundSprite_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Filepath to sprite for this tile
+       * Filepaths to sprites for this tile
        * </pre>
        *
-       * <code>string sprite = 3;</code>
+       * <code>string ground_sprite = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSprite() {
+      public Builder clearGroundSprite() {
         
-        sprite_ = getDefaultInstance().getSprite();
+        groundSprite_ = getDefaultInstance().getGroundSprite();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * Filepath to sprite for this tile
+       * Filepaths to sprites for this tile
        * </pre>
        *
-       * <code>string sprite = 3;</code>
-       * @param value The bytes for sprite to set.
+       * <code>string ground_sprite = 3;</code>
+       * @param value The bytes for groundSprite to set.
        * @return This builder for chaining.
        */
-      public Builder setSpriteBytes(
+      public Builder setGroundSpriteBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        sprite_ = value;
+        groundSprite_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object aboveSprite_ = "";
+      /**
+       * <code>string above_sprite = 4;</code>
+       * @return The aboveSprite.
+       */
+      public java.lang.String getAboveSprite() {
+        java.lang.Object ref = aboveSprite_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          aboveSprite_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string above_sprite = 4;</code>
+       * @return The bytes for aboveSprite.
+       */
+      public com.google.protobuf.ByteString
+          getAboveSpriteBytes() {
+        java.lang.Object ref = aboveSprite_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          aboveSprite_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string above_sprite = 4;</code>
+       * @param value The aboveSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAboveSprite(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        aboveSprite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string above_sprite = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAboveSprite() {
+        
+        aboveSprite_ = getDefaultInstance().getAboveSprite();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string above_sprite = 4;</code>
+       * @param value The bytes for aboveSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAboveSpriteBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        aboveSprite_ = value;
         onChanged();
         return this;
       }
@@ -2638,13 +2786,14 @@ public final class BoardProtos {
       "\n\013board.proto\022\005board\032\nitem.proto\032\017charac" +
       "ter.proto\"g\n\005Board\022\014\n\004rows\030\001 \001(\005\022\017\n\007colu" +
       "mns\030\002 \001(\005\022\031\n\004grid\030\003 \003(\0132\013.board.Tile\022$\n\007" +
-      "portals\030\004 \003(\0132\023.character.Position\"\227\001\n\004T" +
+      "portals\030\004 \003(\0132\023.character.Position\"\264\001\n\004T" +
       "ile\022\'\n\ttile_type\030\001 \001(\0162\024.board.Tile.Tile" +
-      "Type\022\031\n\005items\030\002 \003(\0132\n.item.Item\022\016\n\006sprit" +
-      "e\030\003 \001(\t\";\n\010TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001" +
-      "\022\016\n\nIMPASSIBLE\020\002\022\n\n\006PORTAL\020\003B>\n\036mech.man" +
-      "ia.engine.domain.modelB\013BoardProtos\252\002\016MM" +
-      "26.IO.Modelsb\006proto3"
+      "Type\022\031\n\005items\030\002 \003(\0132\n.item.Item\022\025\n\rgroun" +
+      "d_sprite\030\003 \001(\t\022\024\n\014above_sprite\030\004 \001(\t\";\n\010" +
+      "TileType\022\010\n\004VOID\020\000\022\t\n\005BLANK\020\001\022\016\n\nIMPASSI" +
+      "BLE\020\002\022\n\n\006PORTAL\020\003B>\n\036mech.mania.engine.d" +
+      "omain.modelB\013BoardProtos\252\002\016MM26.IO.Model" +
+      "sb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2663,7 +2812,7 @@ public final class BoardProtos {
     internal_static_board_Tile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_board_Tile_descriptor,
-        new java.lang.String[] { "TileType", "Items", "Sprite", });
+        new java.lang.String[] { "TileType", "Items", "GroundSprite", "AboveSprite", });
     mech.mania.engine.domain.model.ItemProtos.getDescriptor();
     mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
   }

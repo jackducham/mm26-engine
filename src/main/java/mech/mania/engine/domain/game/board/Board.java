@@ -89,7 +89,7 @@ public class Board {
      */
     public static Board createHomeBoard(String id) {
         return Board.loadBoard(
-                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
+                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_tileset.tsx",
                 "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
                 id
         );

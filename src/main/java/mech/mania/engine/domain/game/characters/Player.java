@@ -22,8 +22,8 @@ public class Player extends Character {
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
 
-    public static final int SPAWN_X = 0;
-    public static final int SPAWN_Y = 0;
+    public static final int SPAWN_X = 2;
+    public static final int SPAWN_Y = 3;
     public static final String PLAYER_SPRITE = ""; // TODO: Sprite filepath
 
     /**

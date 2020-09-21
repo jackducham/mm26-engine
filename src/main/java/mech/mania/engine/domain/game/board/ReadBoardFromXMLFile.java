@@ -25,6 +25,8 @@ public class ReadBoardFromXMLFile {
 
     //internal class used to represent each type of monster loaded from an XML file
     private static class PseudoMonster {
+        protected String sprite;
+
         //base monster stats
         protected int attack;
         protected int defense;
@@ -105,10 +107,11 @@ public class ReadBoardFromXMLFile {
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
             if (qName.equalsIgnoreCase("tile")) {
-                currentID = Integer.parseInt(attributes.getValue("id"));
+                // Add 1 to translate from local to global IDs
+                currentID = Integer.parseInt(attributes.getValue("id")) + 1;
             } else if(qName.equalsIgnoreCase("property")) {
                 if(currentID >= 0) {
-                    //The current "tile" is a tile
+                    // The current "tile" is a tile
                     if(attributes.getValue("name").equalsIgnoreCase("Walkable")) {
                         Tile newTile = new Tile();
                         if(attributes.getValue("value").equalsIgnoreCase("true")) {
@@ -117,7 +120,8 @@ public class ReadBoardFromXMLFile {
                             newTile.setType(Tile.TileType.IMPASSIBLE);
                         }
                         tileSet.put(currentID, newTile);
-                    } else {
+                    }
+                    else {
                         //The current "tile" is a monster
 
                         //setup a new monster if we haven't started work on this one yet.
@@ -174,11 +178,26 @@ public class ReadBoardFromXMLFile {
                     }
                 }
             }
+            else if (qName.equalsIgnoreCase("image")){
+                // Check that we're in a tile
+                if(currentID >= 0){
+                    // Check if this is a monster or tile
+                    if(monsterSet.containsKey(currentID)){
+                        // We're a monster
+                        monsterSet.get(currentID).sprite = attributes.getValue("source");
+                    }
+                    else if(tileSet.containsKey(currentID)) {
+                        // We're a tile
+                        // Since we don't know what layer we're on, set both sprites to the same source
+                        tileSet.get(currentID).groundSprite = attributes.getValue("source");
+                        tileSet.get(currentID).aboveSprite = attributes.getValue("source");
+                    }
+                }
+            }
         }
 
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-
             if (qName.equalsIgnoreCase("tile")) {
                 currentID = -1;
             }
@@ -205,7 +224,7 @@ public class ReadBoardFromXMLFile {
         }
 
         @Override
-        public void characters(char ch[], int start, int length) {
+        public void characters(char[] ch, int start, int length) {
 
             if (dataContentBuffer != null) {
                 dataContentBuffer.append(new String(ch, start, length));
@@ -291,8 +310,15 @@ public class ReadBoardFromXMLFile {
                     board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
                 }
 
+                // Add sprites for tile
+                if(dataSet.get(0).data[x][y] != 0) {
+                    board.getGrid()[x][y].groundSprite = tileSet.get(dataSet.get(0).data[x][y]).groundSprite;
+                }
+                if(dataSet.get(1).data[x][y] != 0) {
+                    board.getGrid()[x][y].aboveSprite = tileSet.get(dataSet.get(1).data[x][y]).aboveSprite;
+                }
+
                 //Add monsters to the list of monsters.
-                //TODO: figure out exactly how monster data gets put into monster object. particularly the damage stat vs weapon damage.
                 int monsterIndex = dataSet.get(2).data[x][y];
                 if(monsterIndex != 0) {
                     if(monsterSet.get(monsterIndex) == null) {
@@ -312,12 +338,12 @@ public class ReadBoardFromXMLFile {
                                 0, 0, 0, 0,
                                 0);
 
-                        // TODO: add sprite filepaths
+                        // Monster weapons don't need a sprite because they are only used internally for range/splash radius
                         Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1),
-                                "", toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
+                                toCopy.sprite, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
                                 new Position(x, y, boardName),
                                 new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit, ""),
-                                new ArrayList<Item>());
+                                new ArrayList<>());
                         monsterList.add(newMonster);
                     }
                 }

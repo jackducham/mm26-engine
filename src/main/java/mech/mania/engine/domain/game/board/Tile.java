@@ -13,14 +13,19 @@ public class Tile {
         VOID, BLANK, IMPASSIBLE, PORTAL
     }
     private TileType type;
-    private String sprite;
+
+    // Filenames for sprites for this tile
+    public String groundSprite;
+    public String aboveSprite;
 
     /**
      * Constructs a default Tile of type BLANK.
      */
     public Tile() {
-        items = new ArrayList<>();
-        type = TileType.BLANK;
+        this.items = new ArrayList<>();
+        this.type = TileType.BLANK;
+        this.groundSprite = "";
+        this.aboveSprite = "";
     }
 
     /**
@@ -64,7 +69,8 @@ public class Tile {
                 break;
         }
 
-        sprite = tileProto.getSprite();
+        groundSprite = tileProto.getGroundSprite();
+        aboveSprite = tileProto.getAboveSprite();
     }
 
     /**
@@ -103,7 +109,8 @@ public class Tile {
             }
         }
 
-        tileBuilder.setSprite(sprite);
+        tileBuilder.setGroundSprite(groundSprite);
+        tileBuilder.setAboveSprite(aboveSprite);
 
         return tileBuilder.build();
     }
