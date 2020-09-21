@@ -2,7 +2,7 @@ package mech.mania.engine.service_layer.handlers;
 
 import mech.mania.engine.domain.messages.Command;
 import mech.mania.engine.domain.messages.CommandStartAPIServer;
-import mech.mania.engine.service_layer.InfraRESTHandler;
+import mech.mania.engine.service_layer.APIRESTHandler;
 import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,7 +18,7 @@ public class StartAPIServer extends CommandHandler {
     public void handle(Command command) {
         String port = ((CommandStartAPIServer) command).getPort();
 
-        SpringApplication app = new SpringApplication(InfraRESTHandler.class);
+        SpringApplication app = new SpringApplication(APIRESTHandler.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", port));
         ConfigurableApplicationContext ctx = app.run();
 
