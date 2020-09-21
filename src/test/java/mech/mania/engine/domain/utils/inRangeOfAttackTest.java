@@ -53,7 +53,7 @@ public class inRangeOfAttackTest {
 
     @Test
     public void testCanBeAttackedPlayer2() {
-        gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(0, 24, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(0, 24, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
         boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player2").getPosition(), "player2");
         assertTrue(canBeAttacked);
     }
