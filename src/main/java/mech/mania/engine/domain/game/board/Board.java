@@ -79,7 +79,7 @@ public class Board {
 
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[r].length; c++) {
-                boardBuilder.addGrid(r * grid[c].length + c, grid[r][c].buildProtoClass());
+                boardBuilder.addGrid(r * grid[r].length + c, grid[r][c].buildProtoClass());
             }
         }
 

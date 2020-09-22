@@ -38,9 +38,7 @@ public class GameState {
         stateChange = new GameChange();
 
         // @TODO: Create actual pvp board (uncomment once mm26_mp_map.tmx is usable)
-//        addBoardFromXML(BoardFactory.createPvpBoardReader());
-
-        boardNames.put("pvp", Board.createDefaultBoard(20, 20, true, "pvp"));
+        addBoardFromXML(BoardFactory.createPvpBoardReader());
     }
 
 

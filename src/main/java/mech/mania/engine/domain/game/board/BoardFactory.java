@@ -28,6 +28,7 @@ public class BoardFactory {
     public static ReadBoardFromXMLFile createHomeBoardReader(String id) {
         Board board = initHomeBoardReader.extractBoard();
         List<Monster> monsterList = initHomeBoardReader.extractMonsters();
+        initHomeBoardReader.setBoardName(id);
 
         // Replace all positions with new id string
         for(int i = 0; i < board.getPortals().size(); i++){

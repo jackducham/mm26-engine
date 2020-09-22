@@ -377,4 +377,8 @@ public class ReadBoardFromXMLFile {
     }
 
     public String getBoardName(){ return boardName; }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
+    }
 }

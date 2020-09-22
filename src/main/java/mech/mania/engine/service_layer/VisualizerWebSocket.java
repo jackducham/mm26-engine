@@ -73,7 +73,7 @@ public class VisualizerWebSocket {
             // TODO: remove this testing code
 //            // Save VisualizerInitial to local file
 //            try {
-//                File file = new File(String.format("./repository/%s/VisualizerInitial/%06d.pb", "unnamed", initMessage.getState().getStateId()));
+//                File file = new File(String.format("./repository/VisualizerInitial_%06d.pb", initMessage.getState().getStateId()));
 //                file.getParentFile().mkdirs();
 //
 //                FileOutputStream stream = new FileOutputStream(file);
@@ -115,7 +115,7 @@ public class VisualizerWebSocket {
             // TODO: remove this testing code
 //            // Save VisualizerInitial to local file
 //            try {
-//                File file = new File(String.format("./repository/%s/VisualizerTurn/%06d.pb", "unnamed", change.getState().getStateId()));
+//                File file = new File(String.format("./repository/VisualizerTurn_%06d.pb", change.getState().getStateId()));
 //                file.getParentFile().mkdirs();
 //
 //                FileOutputStream stream = new FileOutputStream(file);
