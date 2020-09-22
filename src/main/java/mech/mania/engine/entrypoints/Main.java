@@ -84,9 +84,9 @@ public class Main {
         }
 
         // Start servers
-        bus.handle(new CommandStartInfraServer(infraPort));
         bus.handle(new CommandStartVisualizerServer(visualizerPort));
         bus.handle(new CommandStartAPIServer(apiPort));
+        bus.handle(new CommandStartInfraServer(infraPort)); // Start last so /health is only up after everything else
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
         for (int turn = bus.getUow().getTurn(); (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
