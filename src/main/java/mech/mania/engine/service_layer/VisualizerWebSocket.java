@@ -66,7 +66,7 @@ public class VisualizerWebSocket {
             try {
                 newSession.sendMessage(message);
             } catch (IOException e) {
-                LOGGER.warning("An IOException occurred when sending game state to visualizer (id = " +
+                LOGGER.warning("An IOException occurred when sending VisualizerInitial to visualizer (id = " +
                         newSession.getId() + "). Error message:\n" + e);
             }
 

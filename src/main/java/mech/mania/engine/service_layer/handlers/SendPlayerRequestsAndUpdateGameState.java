@@ -11,10 +11,7 @@ import mech.mania.engine.domain.model.PlayerProtos;
 import mech.mania.engine.service_layer.UnitOfWorkAbstract;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -32,6 +29,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         GameState updatedGameState = GameLogic.doTurn(uow.getGameState(), playerDecisionMap);
         uow.setGameState(updatedGameState);
     }
+
 
     /**
      * Get player decisions from all players given a UnitOfWork
@@ -63,7 +61,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 HttpURLConnection http = null;
                 try {
                     // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
-                    url = new URL(playerInfo.getValue().getIpAddr());
+                    url = buildDecisionUrl(playerInfo.getValue());
                     URLConnection con = url.openConnection();
                     http = (HttpURLConnection) con;
                 } catch (IOException e) {
@@ -129,5 +127,38 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
 
         LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors: %s.", numPlayers.get() - errors.get(), errors.get(), exceptions));
         return map;
+    }
+
+    /**
+     * Helper function to get URL for player servers' decisions
+     */
+    private URL buildDecisionUrl(PlayerConnectInfo playerConnectInfo) throws MalformedURLException {
+        return new URL(
+                Config.getProperty("playerServerProtocol") +
+                        playerConnectInfo.getIpAddr() +
+                        Config.getProperty("playerServerDecisionEndpoint")
+        );
+    }
+
+    /**
+     * Helper function to get URL to shutdown player servers
+     */
+    private URL buildShutdownUrl(PlayerConnectInfo playerConnectInfo) throws MalformedURLException {
+        return new URL(
+                Config.getProperty("playerServerProtocol") +
+                        playerConnectInfo.getIpAddr() +
+                        Config.getProperty("playerServerShutdownEndpoint")
+        );
+    }
+
+    /**
+     * Helper function to get URL to get player servers' health
+     */
+    private URL buildHealthUrl(PlayerConnectInfo playerConnectInfo) throws MalformedURLException {
+        return new URL(
+                Config.getProperty("playerServerProtocol") +
+                        playerConnectInfo.getIpAddr() +
+                        Config.getProperty("playerServerHealthEndpoint")
+        );
     }
 }

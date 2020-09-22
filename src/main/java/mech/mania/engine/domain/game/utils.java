@@ -116,20 +116,25 @@ public class utils {
             return new ArrayList<>();
         }
 
-        List<AbstractMap.SimpleEntry<Character, Integer>> enemiesDist = new ArrayList<>();
-        for (Character other : gameState.getCharactersOnBoard(position.getBoardID())) {
+        return findEnemiesInRangeOfAttackByDistance(gameState, position, playerName,weapon.getRange() + weapon.getSplashRadius());
+    }
+
+    public static List<Character> findEnemiesInRangeOfAttackByDistance(GameState gameState, Position position, String characterName, int range) {
+        Character character = gameState.getCharacter(characterName);
+        if (character == null) {
+            return null;
+        }
+
+        List<Character> enemiesInRange = new ArrayList<>();
+        for (Character other : findEnemiesByDistance(gameState, position, characterName)) {
             int distance = position.manhattanDistance(other.getPosition());
-            if (!other.getName().equals(playerName) && distance <= weapon.getRange() + weapon.getSplashRadius()) {
-                enemiesDist.add(new AbstractMap.SimpleEntry<>(other, distance));
+            if (distance <= range) {
+                enemiesInRange.add(other);
+            } else {
+                break;
             }
         }
-        Comparator<AbstractMap.SimpleEntry<Character, Integer>> compareByDistance = Comparator.comparing(AbstractMap.SimpleEntry<Character, Integer>::getValue);
-        Collections.sort(enemiesDist, compareByDistance);
-        List<Character> enemies = new ArrayList<>();
-        for (AbstractMap.SimpleEntry<Character, Integer> dist : enemiesDist) {
-            enemies.add(dist.getKey());
-        }
-        return enemies;
+        return enemiesInRange;
     }
 
     public static List<Character> findAllEnemiesHit(GameState gameState, Position position, String playerName) {

@@ -10,8 +10,6 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 /** This contains tests for any overall board tests or helper functions */
@@ -47,7 +45,7 @@ public class GameLogicTests {
 
         // Check that player1 is at 0, 0 on their board
         Position initPos = new Position(0, 4, "pvp");
-        assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
+        assertEquals(gameState.getPlayer("player1").getPosition(), initPos);
     }
 
     @Test
@@ -67,7 +65,7 @@ public class GameLogicTests {
     @Test
     public void illegalPlayerPortalPosition() {
         Character playerOnBoard = gameState.getPlayer("player1");
-        assertTrue(playerOnBoard.getPosition().equals(new Position(0, 4, "pvp")));
+        assertEquals(playerOnBoard.getPosition(), new Position(0, 4, "pvp"));
         assertFalse(GameLogic.canUsePortal(gameState, playerOnBoard));
     }
 

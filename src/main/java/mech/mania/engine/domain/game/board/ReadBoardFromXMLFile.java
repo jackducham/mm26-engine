@@ -4,7 +4,6 @@ import javax.xml.parsers.SAXParserFactory;
 
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.StatusModifier;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
@@ -358,7 +357,7 @@ public class ReadBoardFromXMLFile {
                                 toCopy.sprite, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
                                 new Position(x, y, boardName),
                                 new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit, ""),
-                                new ArrayList<>());
+                                0, new ArrayList<>());
                         monsterList.add(newMonster);
                     }
                 }

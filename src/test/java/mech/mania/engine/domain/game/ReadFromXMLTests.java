@@ -6,14 +6,10 @@ import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.board.TileIDNotFoundException;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.model.ApiProtos;
-import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;

@@ -56,6 +56,7 @@ public class Board {
         for(int i = 0; i < xdim; ++i) {
             for(int j = 0; j < ydim; ++j) {
                 grid[i][j] = new Tile();
+                grid[i][j].setType(Tile.TileType.BLANK);
             }
         }
         portals = new ArrayList<>();

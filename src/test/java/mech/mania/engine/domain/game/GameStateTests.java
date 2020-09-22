@@ -15,8 +15,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class GameStateTests {
 
@@ -51,6 +50,7 @@ public class GameStateTests {
     @Test
     public void testHello() {
         UnitOfWorkAbstract uow = new UnitOfWorkFake();
+        assertNotNull(uow);
     }
 
     @Test
