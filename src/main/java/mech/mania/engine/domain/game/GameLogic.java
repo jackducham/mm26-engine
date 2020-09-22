@@ -56,9 +56,7 @@ public class GameLogic {
         // Search decisions map for new players. For each new player, create Player object and a private Board
         for (String playerName : contestantDecisions.keySet()) {
             if (!gameState.getAllPlayers().containsKey(playerName)) {
-                if (!playerName.equals("pvp") && !gameState.getAllMonsters().containsKey(playerName)) {
-                    gameState.addNewPlayer(playerName);
-                }
+                gameState.addNewPlayer(playerName);
             }
         }
 
