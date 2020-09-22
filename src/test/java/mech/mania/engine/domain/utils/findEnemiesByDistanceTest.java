@@ -19,10 +19,10 @@ public class findEnemiesByDistanceTest {
 
     @Before
     public void setup() {
-        gameState.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 0, new Position(0, 21, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster2", 0, 0, 0, 0, 0, new Position(0, 11, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster3", 0, 0, 0, 0, 0, new Position(0, 1, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
-        gameState.addNewMonster(new Monster("monster4", 0, 0, 0, 0, 0, new Position(0, 2, "pvp"), Weapon.createDefaultWeapon(), new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster1", 0, 0, 0, 0, 0, new Position(0, 21, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster2", 0, 0, 0, 0, 0, new Position(0, 11, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster3", 0, 0, 0, 0, 0, new Position(0, 1, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster4", 0, 0, 0, 0, 0, new Position(0, 2, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
     }
 
     @Test

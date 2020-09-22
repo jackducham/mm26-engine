@@ -3244,6 +3244,12 @@ public final class CharacterProtos {
      */
     mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getDropsOrBuilder(
         int index);
+
+    /**
+     * <code>int32 aggro_range = 3;</code>
+     * @return The aggroRange.
+     */
+    int getAggroRange();
   }
   /**
    * Protobuf type {@code character.Monster}
@@ -3312,6 +3318,11 @@ public final class CharacterProtos {
               }
               drops_.add(
                   input.readMessage(mech.mania.engine.domain.model.ItemProtos.Item.parser(), extensionRegistry));
+              break;
+            }
+            case 24: {
+
+              aggroRange_ = input.readInt32();
               break;
             }
             default: {
@@ -3407,6 +3418,16 @@ public final class CharacterProtos {
       return drops_.get(index);
     }
 
+    public static final int AGGRO_RANGE_FIELD_NUMBER = 3;
+    private int aggroRange_;
+    /**
+     * <code>int32 aggro_range = 3;</code>
+     * @return The aggroRange.
+     */
+    public int getAggroRange() {
+      return aggroRange_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3427,6 +3448,9 @@ public final class CharacterProtos {
       for (int i = 0; i < drops_.size(); i++) {
         output.writeMessage(2, drops_.get(i));
       }
+      if (aggroRange_ != 0) {
+        output.writeInt32(3, aggroRange_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3443,6 +3467,10 @@ public final class CharacterProtos {
       for (int i = 0; i < drops_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, drops_.get(i));
+      }
+      if (aggroRange_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, aggroRange_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3466,6 +3494,8 @@ public final class CharacterProtos {
       }
       if (!getDropsList()
           .equals(other.getDropsList())) return false;
+      if (getAggroRange()
+          != other.getAggroRange()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3485,6 +3515,8 @@ public final class CharacterProtos {
         hash = (37 * hash) + DROPS_FIELD_NUMBER;
         hash = (53 * hash) + getDropsList().hashCode();
       }
+      hash = (37 * hash) + AGGRO_RANGE_FIELD_NUMBER;
+      hash = (53 * hash) + getAggroRange();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3631,6 +3663,8 @@ public final class CharacterProtos {
         } else {
           dropsBuilder_.clear();
         }
+        aggroRange_ = 0;
+
         return this;
       }
 
@@ -3672,6 +3706,7 @@ public final class CharacterProtos {
         } else {
           result.drops_ = dropsBuilder_.build();
         }
+        result.aggroRange_ = aggroRange_;
         onBuilt();
         return result;
       }
@@ -3748,6 +3783,9 @@ public final class CharacterProtos {
               dropsBuilder_.addAllMessages(other.drops_);
             }
           }
+        }
+        if (other.getAggroRange() != 0) {
+          setAggroRange(other.getAggroRange());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4136,6 +4174,36 @@ public final class CharacterProtos {
           drops_ = null;
         }
         return dropsBuilder_;
+      }
+
+      private int aggroRange_ ;
+      /**
+       * <code>int32 aggro_range = 3;</code>
+       * @return The aggroRange.
+       */
+      public int getAggroRange() {
+        return aggroRange_;
+      }
+      /**
+       * <code>int32 aggro_range = 3;</code>
+       * @param value The aggroRange to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAggroRange(int value) {
+        
+        aggroRange_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 aggro_range = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAggroRange() {
+        
+        aggroRange_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9187,30 +9255,31 @@ public final class CharacterProtos {
       "h\030\016 \001(\005\022\014\n\004name\030\017 \001(\t\022\023\n\013base_attack\030\020 \001" +
       "(\005\022\024\n\014base_defense\030\021 \001(\005\032:\n\030TaggedPlayer" +
       "sDamageEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005" +
-      ":\0028\001\"M\n\007Monster\022\'\n\tcharacter\030\001 \001(\0132\024.cha" +
+      ":\0028\001\"b\n\007Monster\022\'\n\tcharacter\030\001 \001(\0132\024.cha" +
       "racter.Character\022\031\n\005drops\030\002 \003(\0132\n.item.I" +
-      "tem\"\244\001\n\006Player\022\'\n\tcharacter\030\001 \001(\0132\024.char" +
-      "acter.Character\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022" +
-      "\036\n\007clothes\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes" +
-      "\030\004 \001(\0132\013.item.Shoes\022\035\n\tinventory\030\005 \003(\0132\n" +
-      ".item.Item\"\306\001\n\013PlayerStats\022\r\n\005level\030\001 \001(" +
-      "\005\022\022\n\nexperience\030\002 \001(\005\022\026\n\016monsters_slain\030" +
-      "\003 \001(\005\022\016\n\006attack\030\004 \001(\005\022\017\n\007defense\030\005 \001(\005\022\026" +
-      "\n\016current_health\030\006 \001(\005\022\022\n\nmax_health\030\007 \001" +
-      "(\005\022\023\n\013death_count\030\010 \001(\005\022\032\n\022turns_since_j" +
-      "oined\030\t \001(\005\"\221\001\n\021PlayerStatsBundle\0226\n\005sta" +
-      "ts\030\001 \003(\0132\'.character.PlayerStatsBundle.S" +
-      "tatsEntry\032D\n\nStatsEntry\022\013\n\003key\030\001 \001(\t\022%\n\005" +
-      "value\030\002 \001(\0132\026.character.PlayerStats:\0028\001\"" +
-      "2\n\010Position\022\020\n\010board_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005" +
-      "\022\t\n\001y\030\003 \001(\005\"\200\001\n\021CharacterDecision\022.\n\rdec" +
-      "ision_type\030\001 \001(\0162\027.character.DecisionTyp" +
-      "e\022,\n\017target_position\030\002 \001(\0132\023.character.P" +
-      "osition\022\r\n\005index\030\003 \001(\005*[\n\014DecisionType\022\010" +
-      "\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006ATTACK\020\002\022\n\n\006PORTAL" +
-      "\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005\022\n\n\006PICKUP\020\006BB\n\036m" +
-      "ech.mania.engine.domain.modelB\017Character" +
-      "Protos\252\002\016MM26.IO.Modelsb\006proto3"
+      "tem\022\023\n\013aggro_range\030\003 \001(\005\"\244\001\n\006Player\022\'\n\tc" +
+      "haracter\030\001 \001(\0132\024.character.Character\022\026\n\003" +
+      "hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clothes\030\003 \001(\0132\r." +
+      "item.Clothes\022\032\n\005shoes\030\004 \001(\0132\013.item.Shoes" +
+      "\022\035\n\tinventory\030\005 \003(\0132\n.item.Item\"\306\001\n\013Play" +
+      "erStats\022\r\n\005level\030\001 \001(\005\022\022\n\nexperience\030\002 \001" +
+      "(\005\022\026\n\016monsters_slain\030\003 \001(\005\022\016\n\006attack\030\004 \001" +
+      "(\005\022\017\n\007defense\030\005 \001(\005\022\026\n\016current_health\030\006 " +
+      "\001(\005\022\022\n\nmax_health\030\007 \001(\005\022\023\n\013death_count\030\010" +
+      " \001(\005\022\032\n\022turns_since_joined\030\t \001(\005\"\221\001\n\021Pla" +
+      "yerStatsBundle\0226\n\005stats\030\001 \003(\0132\'.characte" +
+      "r.PlayerStatsBundle.StatsEntry\032D\n\nStatsE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022%\n\005value\030\002 \001(\0132\026.chara" +
+      "cter.PlayerStats:\0028\001\"2\n\010Position\022\020\n\010boar" +
+      "d_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\"\200\001\n\021Cha" +
+      "racterDecision\022.\n\rdecision_type\030\001 \001(\0162\027." +
+      "character.DecisionType\022,\n\017target_positio" +
+      "n\030\002 \001(\0132\023.character.Position\022\r\n\005index\030\003 " +
+      "\001(\005*[\n\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022" +
+      "\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQU" +
+      "IP\020\005\022\n\n\006PICKUP\020\006BB\n\036mech.mania.engine.do" +
+      "main.modelB\017CharacterProtos\252\002\016MM26.IO.Mo" +
+      "delsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9234,7 +9303,7 @@ public final class CharacterProtos {
     internal_static_character_Monster_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Monster_descriptor,
-        new java.lang.String[] { "Character", "Drops", });
+        new java.lang.String[] { "Character", "Drops", "AggroRange", });
     internal_static_character_Player_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_character_Player_fieldAccessorTable = new

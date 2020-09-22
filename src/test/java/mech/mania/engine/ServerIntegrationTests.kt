@@ -92,7 +92,7 @@ class ServerIntegrationTests {
         }
 
         // Wait for server to truly shut down
-        Thread.sleep(10000);
+        Thread.sleep(10000)
     }
 
     /**
@@ -113,7 +113,7 @@ class ServerIntegrationTests {
             } catch (e: Exception) {
                 // LOGGER.info("Waiting for engine to start. Exception received: " + e.message)
                 Thread.sleep(1000)
-                continue; // Try again
+                continue // Try again
             }
         }
     }
@@ -240,7 +240,7 @@ class ServerIntegrationTests {
      * @param onVisualizerInitial: A function to call on receipt of a VisualizerInitial
      * @param onVisualizerTurn: A function to call on receipt of a VisualizerTurn
      */
-    fun createVisualizer(duration: Int,
+    private fun createVisualizer(duration: Int,
                          onVisualizerInitial: (visualizerInitial: VisualizerProtos.VisualizerInitial) -> Unit,
                          onVisualizerTurn: (visualizerTurn: VisualizerProtos.VisualizerTurn) -> Unit) {
         // Create WebSocket client
