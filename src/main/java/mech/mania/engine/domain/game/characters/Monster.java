@@ -109,14 +109,18 @@ public class Monster extends Character {
      * @return the position the Monster should move to
      */
     private Position findPositionToMove(GameState gameState, Position destination) {
-        List<Position> path = findPath(gameState, this.position, destination);
-        Position toMove;
-        if (path.size() < getSpeed()) {
-            toMove = path.get(path.size() - 1);
-        } else {
-            toMove = path.get(getSpeed() - 1);
-        }
-        return toMove;
+        return utils.getPositionInRange(gameState, getPosition(), destination, getSpeed());
+    }
+
+    /**
+     * Takes an input of a target position and returns the position the Monster should attack
+     * in order to damage the Player at target
+     * @param gameState the current Game State
+     * @param target the position of the Player the monster wants to attack
+     * @return the position the Monster should attack
+     */
+    private Position findPositionToTarget(GameState gameState, Position target) {
+        return utils.getPositionInRange(gameState, getPosition(), target, getWeapon().getRange());
     }
 
     /**
@@ -144,17 +148,18 @@ public class Monster extends Character {
             }
         }
 
-        // nothing in taggedPlayersDamage and no Players in agroRange
+        // nothing in taggedPlayersDamage and no Players in aggroRange
         if (target == null) {
             return moveToStartDecision(gameState);
         }
 
-        Position toAttack = target.position;
-        int manhattanDistance = position.manhattanDistance(toAttack);
+        Position targetPos = target.position;
+        int manhattanDistance = position.manhattanDistance(targetPos);
         if (manhattanDistance <= weapon.getRange() + weapon.getSplashRadius()) {
-            return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
+            Position toTarget = findPositionToTarget(gameState, targetPos);
+            return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toTarget);
         } else {
-            Position toMove = findPositionToMove(gameState, toAttack);
+            Position toMove = findPositionToMove(gameState, targetPos);
             return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
         }
     }
