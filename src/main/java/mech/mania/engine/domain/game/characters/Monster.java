@@ -1,9 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
-import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.game.board.Board;
-import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
@@ -11,12 +8,11 @@ import mech.mania.engine.domain.model.ItemProtos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
-    private int aggroRange;
+    private final int aggroRange;
     private final List<Item> drops;
 
 
@@ -52,6 +48,7 @@ public class Monster extends Character {
         super(monsterProto.getCharacter());
 
         drops = new ArrayList<>(monsterProto.getDropsCount());
+        aggroRange = monsterProto.getAggroRange();
         for (int i = 0; i < monsterProto.getDropsCount(); i++) {
             ItemProtos.Item protoItem = monsterProto.getDrops(i);
             switch(protoItem.getItemCase()) {
@@ -95,6 +92,7 @@ public class Monster extends Character {
                 monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
+        monsterBuilder.setAggroRange(aggroRange);
 
         return monsterBuilder.build();
     }
