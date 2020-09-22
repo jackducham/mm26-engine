@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.4" tiledversion="1.4.2" name="mm26_tileset" tilewidth="570" tileheight="570" tilecount="148" columns="0">
+<tileset version="1.4" tiledversion="1.4.2" name="mm26_tileset" tilewidth="570" tileheight="570" tilecount="200" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <properties>
@@ -225,12 +225,13 @@
  </tile>
  <tile id="37">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
-   <property name="Name" value="Lizard"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Level" type="int" value="38"/>
+   <property name="Name" value="Lizard Grunt"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -246,18 +247,19 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="38"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/lizard.png"/>
  </tile>
  <tile id="38">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="48"/>
    <property name="Name" value="Lizard Knight"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -286,12 +288,13 @@
  </tile>
  <tile id="40">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="55"/>
    <property name="Name" value="Mimic"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -313,12 +316,13 @@
  </tile>
  <tile id="41">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
-   <property name="Name" value="Mushroom Eel"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Level" type="int" value="41"/>
+   <property name="Name" value="Shroomsnake"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -346,12 +350,13 @@
  </tile>
  <tile id="43">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="60"/>
    <property name="Name" value="Rock Elemental"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -373,12 +378,13 @@
  </tile>
  <tile id="44">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="55"/>
    <property name="Name" value="Greater Cacosheep"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -400,12 +406,13 @@
  </tile>
  <tile id="45">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="33"/>
    <property name="Name" value="Lesser Cacosheep"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -427,12 +434,13 @@
  </tile>
  <tile id="46">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="19"/>
    <property name="Name" value="Cursed Skull"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -454,12 +462,13 @@
  </tile>
  <tile id="47">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="13"/>
    <property name="Name" value="Confused Skull"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -481,12 +490,13 @@
  </tile>
  <tile id="48">
   <properties>
-   <property name="Attack" type="int" value="0"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Attack" type="int" value="75"/>
+   <property name="Defense" type="int" value="3"/>
+   <property name="HP" type="int" value="10"/>
    <property name="Level" type="int" value="1"/>
    <property name="Name" value="Slug Slime"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -502,18 +512,19 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="1"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/slime_bloo.png"/>
  </tile>
  <tile id="49">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="10"/>
    <property name="Name" value="Sociable Slime"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -535,12 +546,13 @@
  </tile>
  <tile id="50">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="40"/>
    <property name="Name" value="Spooky Slime"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -562,12 +574,13 @@
  </tile>
  <tile id="51">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="43"/>
    <property name="Name" value="Armored Soulcrab"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -589,12 +602,13 @@
  </tile>
  <tile id="52">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="33"/>
    <property name="Name" value="Soulcrab"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -616,12 +630,13 @@
  </tile>
  <tile id="53">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="4"/>
    <property name="Name" value="Spider Hatchling"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -643,12 +658,13 @@
  </tile>
  <tile id="54">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="24"/>
    <property name="Name" value="Spider Matron"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -694,12 +710,13 @@
  </tile>
  <tile id="59">
   <properties>
-   <property name="Attack" type="int" value="0"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
+   <property name="Defense" type="int" value="20"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="26"/>
    <property name="Name" value="Tusk Worm"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="4"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -709,24 +726,25 @@
    <property name="flat_regen_per_turn" type="int" value="0"/>
    <property name="flat_speed_change" type="int" value="0"/>
    <property name="percent_attack_change" type="float" value="0"/>
-   <property name="percent_defense_change" type="float" value="0"/>
+   <property name="percent_defense_change" type="float" value="-0.25"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="50"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/tusk_worm.png"/>
  </tile>
  <tile id="60">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="25"/>
    <property name="Name" value="Uniboar Pigasus"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -748,12 +766,13 @@
  </tile>
  <tile id="61">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="15"/>
    <property name="Name" value="Uniboar"/>
    <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -775,12 +794,13 @@
  </tile>
  <tile id="62">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="15"/>
    <property name="Name" value="Uniboar"/>
    <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -976,12 +996,13 @@
  </tile>
  <tile id="92">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="8"/>
    <property name="Name" value="Zombie"/>
-   <property name="Speed" type="int" value="1"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1003,12 +1024,13 @@
  </tile>
  <tile id="93">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="8"/>
    <property name="Name" value="Zombie"/>
-   <property name="Speed" type="int" value="1"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1072,12 +1094,13 @@
  </tile>
  <tile id="101">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="5"/>
-   <property name="Name" value="Bat"/>
-   <property name="Speed" type="int" value="1"/>
+   <property name="Name" value="Occubat"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1099,12 +1122,13 @@
  </tile>
  <tile id="102">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="27"/>
    <property name="Name" value="Dentabat"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1126,12 +1150,13 @@
  </tile>
  <tile id="103">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="45"/>
    <property name="Name" value="Bogo Sorcerer"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1153,12 +1178,13 @@
  </tile>
  <tile id="104">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="70"/>
+   <property name="Level" type="int" value="60"/>
    <property name="Name" value="Super Bogo Sorcerer"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1216,12 +1242,13 @@
  </tile>
  <tile id="111">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="37"/>
    <property name="Name" value="Percentipede"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1351,12 +1378,13 @@
  </tile>
  <tile id="130">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="70"/>
    <property name="Name" value="Dragon"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1378,12 +1406,13 @@
  </tile>
  <tile id="131">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="0"/>
    <property name="Name" value="Dragon"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1405,12 +1434,13 @@
  </tile>
  <tile id="132">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="70"/>
    <property name="Name" value="Lizard King"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1438,12 +1468,13 @@
  </tile>
  <tile id="134">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="16"/>
    <property name="Name" value="Greater Legfish"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1465,12 +1496,13 @@
  </tile>
  <tile id="135">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="4"/>
    <property name="Name" value="Lesser Legfish"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1492,12 +1524,13 @@
  </tile>
  <tile id="136">
   <properties>
-   <property name="Attack" type="int" value="0"/>
+   <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
    <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="0"/>
+   <property name="Level" type="int" value="8"/>
    <property name="Name" value="Legfish"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="2"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1543,12 +1576,13 @@
  </tile>
  <tile id="141">
   <properties>
-   <property name="Attack" type="int" value="0"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
-   <property name="Level" type="int" value="70"/>
+   <property name="Attack" type="int" value="75"/>
+   <property name="Defense" type="int" value="200"/>
+   <property name="HP" type="int" value="1000"/>
+   <property name="Level" type="int" value="100"/>
    <property name="Name" value="Goose"/>
-   <property name="Speed" type="int" value="0"/>
+   <property name="Speed" type="int" value="5"/>
+   <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1556,15 +1590,15 @@
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_speed_change" type="int" value="-3"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
-   <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="range" type="int" value="2"/>
+   <property name="splash_radius" type="int" value="2"/>
+   <property name="weapon_attack" type="int" value="300"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/goose.png"/>
  </tile>
@@ -1603,5 +1637,317 @@
    <property name="Walkable" type="bool" value="true"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/grass3b.png"/>
+ </tile>
+ <tile id="148">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/arch rear right.PNG"/>
+ </tile>
+ <tile id="149">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/arch top right.PNG"/>
+ </tile>
+ <tile id="150">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archbottomleft.PNG"/>
+ </tile>
+ <tile id="151">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archbottomright.PNG"/>
+ </tile>
+ <tile id="152">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archtopleft.PNG"/>
+ </tile>
+ <tile id="153">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/door rear.PNG"/>
+ </tile>
+ <tile id="154">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/arch rear left.PNG"/>
+ </tile>
+ <tile id="155">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/darktreebugs.PNG"/>
+ </tile>
+ <tile id="156">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/eyeballplant.PNG"/>
+ </tile>
+ <tile id="157">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/fireyplant.PNG"/>
+ </tile>
+ <tile id="158">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/floatygrass1.PNG"/>
+ </tile>
+ <tile id="159">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/floatygrass2.PNG"/>
+ </tile>
+ <tile id="160">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/nautilusplant.PNG"/>
+ </tile>
+ <tile id="161">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/rocks1.PNG"/>
+ </tile>
+ <tile id="162">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/rocks2.PNG"/>
+ </tile>
+ <tile id="163">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/rockwithlizard.PNG"/>
+ </tile>
+ <tile id="164">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/small house green.PNG"/>
+ </tile>
+ <tile id="165">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/smallhouseblue.PNG"/>
+ </tile>
+ <tile id="166">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/smallhouseorange.PNG"/>
+ </tile>
+ <tile id="167">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/smallhousered.PNG"/>
+ </tile>
+ <tile id="168">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/snailplant.PNG"/>
+ </tile>
+ <tile id="169">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/spikes.PNG"/>
+ </tile>
+ <tile id="170">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/spiralbush.PNG"/>
+ </tile>
+ <tile id="171">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/spiralbush2.PNG"/>
+ </tile>
+ <tile id="172">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/spiralbush3.PNG"/>
+ </tile>
+ <tile id="173">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/talldarktreebottom.PNG"/>
+ </tile>
+ <tile id="174">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/talldarktreetop.PNG"/>
+ </tile>
+ <tile id="175">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousebottomblue.PNG"/>
+ </tile>
+ <tile id="176">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousebottomgreen.PNG"/>
+ </tile>
+ <tile id="177">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousebottomorange.PNG"/>
+ </tile>
+ <tile id="178">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousebottomred.PNG"/>
+ </tile>
+ <tile id="179">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/Tallhousetopblue.PNG"/>
+ </tile>
+ <tile id="180">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousetopgreen.PNG"/>
+ </tile>
+ <tile id="181">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousetoporange.PNG"/>
+ </tile>
+ <tile id="182">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tallhousetopred.PNG"/>
+ </tile>
+ <tile id="183">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/talltreebottom.PNG"/>
+ </tile>
+ <tile id="184">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/talltreetop.PNG"/>
+ </tile>
+ <tile id="185">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/tree3.PNG"/>
+ </tile>
+ <tile id="186">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/bushes.PNG"/>
+ </tile>
+ <tile id="187">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/bushes2.PNG"/>
+ </tile>
+ <tile id="188">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/carpetbottom.PNG"/>
+ </tile>
+ <tile id="189">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/carpetleft.PNG"/>
+ </tile>
+ <tile id="190">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/carpet-left-right.PNG"/>
+ </tile>
+ <tile id="191">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/carpetright.PNG"/>
+ </tile>
+ <tile id="192">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/carpettop.PNG"/>
+ </tile>
+ <tile id="193">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/carpet-up-down.PNG"/>
+ </tile>
+ <tile id="194">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/curvytreebottom.PNG"/>
+ </tile>
+ <tile id="195">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/curvytreetop.PNG"/>
+ </tile>
+ <tile id="196">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/darktree1.PNG"/>
+ </tile>
+ <tile id="197">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/darktree2.PNG"/>
+ </tile>
+ <tile id="198">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/darktree3.PNG"/>
+ </tile>
+ <tile id="199">
+  <properties>
+   <property name="Walkable" type="bool" value="false"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/darktree4.PNG"/>
  </tile>
 </tileset>

@@ -17,6 +17,8 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.*;
@@ -67,6 +69,21 @@ public class VisualizerWebSocket {
                 LOGGER.warning("An IOException occurred when sending game state to visualizer (id = " +
                         newSession.getId() + "). Error message:\n" + e);
             }
+
+            // TODO: remove this testing code
+//            // Save VisualizerInitial to local file
+//            try {
+//                File file = new File(String.format("./repository/%s/VisualizerInitial/%06d.pb", "unnamed", initMessage.getState().getStateId()));
+//                file.getParentFile().mkdirs();
+//
+//                FileOutputStream stream = new FileOutputStream(file);
+//
+//                initMessage.writeTo(stream);
+//                stream.flush();
+//                stream.close();
+//            } catch (IOException e){
+//                LOGGER.warning("IOException when storing VisualizerInitial to file: " + e.getMessage());
+//            }
         }
 
         /**
@@ -94,6 +111,21 @@ public class VisualizerWebSocket {
             }
 
             LOGGER.info("Sent GameChange to " + successfulSends + " visualizer instances");
+
+            // TODO: remove this testing code
+//            // Save VisualizerInitial to local file
+//            try {
+//                File file = new File(String.format("./repository/%s/VisualizerTurn/%06d.pb", "unnamed", change.getState().getStateId()));
+//                file.getParentFile().mkdirs();
+//
+//                FileOutputStream stream = new FileOutputStream(file);
+//
+//                change.writeTo(stream);
+//                stream.flush();
+//                stream.close();
+//            } catch (IOException e){
+//                LOGGER.warning("IOException when storing VisualizerTurn to file: " + e.getMessage());
+//            }
         }
 
         @Override
