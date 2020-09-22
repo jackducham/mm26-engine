@@ -150,7 +150,7 @@ public class Monster extends Character {
         if (target == null) {
             return moveToStartDecision(gameState);
         }
-
+        
         Position targetPos = target.position;
         int manhattanDistance = position.manhattanDistance(targetPos);
         if (manhattanDistance <= weapon.getRange() + weapon.getSplashRadius()) {
