@@ -21,6 +21,7 @@ public class ReadBoardFromXMLFile {
     private Map<Integer, DataLayer> dataSet = new HashMap<>();
     private Board board = null;
     private List<Monster> monsterList = new ArrayList<>();
+    private String boardName;
 
     //internal class used to represent each type of monster loaded from an XML file
     private static class PseudoMonster {
@@ -286,6 +287,8 @@ public class ReadBoardFromXMLFile {
     }
 
     public void updateBoardAndMonsters(String tileSetFileName, String mapDataFileName, String boardName) throws TileIDNotFoundException {
+        this.boardName = boardName;
+
         loadTileData(tileSetFileName);
 
         /*
@@ -372,4 +375,6 @@ public class ReadBoardFromXMLFile {
     public List<Monster> extractMonsters() {
         return monsterList;
     }
+
+    public String getBoardName(){ return boardName; }
 }

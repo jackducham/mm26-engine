@@ -87,28 +87,10 @@ public class GameStateTests {
     }
 
     @Test
-    public void getMonsters() {
-        Map<String, Monster> monsters = gameState.getAllMonsters();
-        assertEquals(2, monsters.size());
-//        for (String key: monsters.keySet()) {
-//            System.out.println(key);
-//        }
-    }
-
-    @Test
     public void getMonstersOnBoard() {
         List<Monster> monsters = gameState.getMonstersOnBoard("pvp");
         assertEquals(1, monsters.size());
         assertEquals("pvp", monsters.get(0).getPosition().getBoardID());
-    }
-
-    @Test
-    public void getCharacters() {
-        Map<String, Character> characters = gameState.getAllCharacters();
-        assertEquals(5, characters.size());
-        for (String character: characters.keySet()) {
-            System.out.println(character);
-        }
     }
 
     @Test

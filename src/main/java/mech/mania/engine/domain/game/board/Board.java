@@ -6,11 +6,8 @@ import mech.mania.engine.domain.model.BoardProtos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Board {
-    private static final Logger LOGGER = Logger.getLogger( Board.class.getName() );
-
     private final Tile[][] grid;
     private final List<Position> portals;
 
@@ -34,16 +31,6 @@ public class Board {
             portals.add(i, new Position(board.getPortals(i)));
         }
 
-    }
-
-    public static Board loadBoard(String tileSetFileName, String mapDataFileName, String boardName){
-        ReadBoardFromXMLFile boardReader = new ReadBoardFromXMLFile();
-        try {
-            boardReader.updateBoardAndMonsters(tileSetFileName, mapDataFileName, boardName);
-        } catch (TileIDNotFoundException e) {
-            LOGGER.warning("Exception while parsing board \"" + boardName + "\" XML: " + e);
-        }
-        return boardReader.extractBoard();
     }
 
     /**
@@ -81,19 +68,6 @@ public class Board {
         }
 
         return defaultBoard;
-    }
-
-    /**
-     * Creates a home board for a new player. Used by GameState when adding new players.
-     * @param id the id of the player. required to correctly create the home board portal
-     * @return a finished home board with default settings
-     */
-    public static Board createHomeBoard(String id) {
-        return Board.loadBoard(
-                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_tileset.tsx",
-                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
-                id
-        );
     }
 
     /**
