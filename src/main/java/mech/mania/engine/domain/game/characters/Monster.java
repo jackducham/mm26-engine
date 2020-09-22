@@ -9,8 +9,6 @@ import mech.mania.engine.domain.model.ItemProtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
-
 public class Monster extends Character {
     private final int aggroRange;
     private final List<Item> drops;
