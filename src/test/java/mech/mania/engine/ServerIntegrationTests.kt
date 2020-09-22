@@ -165,7 +165,7 @@ class ServerIntegrationTests {
                     validPort = true
 
                     val playerName = java.util.UUID.randomUUID().toString()
-                    val playerAddr = "http://localhost:$randomPort/server"
+                    val playerAddr = "localhost:$randomPort"
                     logger.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
                     playerNames.add(playerName)
@@ -208,7 +208,7 @@ class ServerIntegrationTests {
     @Test
     @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
     fun testReceiveSendPlayerDecisions() {
-        val players = 400
+        val players = 100
         val turns = 20
 
         val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns"))
