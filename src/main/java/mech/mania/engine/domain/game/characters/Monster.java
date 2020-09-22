@@ -135,7 +135,7 @@ public class Monster extends Character {
         }
 
         if (target == null) {
-            List<Character> inRange = utils.findEnemiesInRangeOfAttackByDistance(gameState, getPosition(), getName(), aggroRange);
+            List<Character> inRange = utils.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
             if(inRange != null) {
                 for (Character character : inRange) {
                     if (character instanceof Player) {
@@ -150,7 +150,7 @@ public class Monster extends Character {
         if (target == null) {
             return moveToStartDecision(gameState);
         }
-        
+
         Position targetPos = target.position;
         int manhattanDistance = position.manhattanDistance(targetPos);
         if (manhattanDistance <= weapon.getRange() + weapon.getSplashRadius()) {

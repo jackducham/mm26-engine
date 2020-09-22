@@ -117,10 +117,10 @@ public class utils {
             return new ArrayList<>();
         }
 
-        return findEnemiesInRangeOfAttackByDistance(gameState, position, playerName,weapon.getRange() + weapon.getSplashRadius());
+        return findEnemiesInRangeByDistance(gameState, position, playerName,weapon.getRange() + weapon.getSplashRadius());
     }
 
-    public static List<Character> findEnemiesInRangeOfAttackByDistance(GameState gameState, Position position, String characterName, int range) {
+    public static List<Character> findEnemiesInRangeByDistance(GameState gameState, Position position, String characterName, int range) {
         Character character = gameState.getCharacter(characterName);
         if (character == null) {
             return null;
