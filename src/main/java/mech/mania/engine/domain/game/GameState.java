@@ -293,6 +293,9 @@ public class GameState {
      * @param playerName name of the player being added
      */
     public void addNewPlayer(String playerName) {
+        if (playerName.equals("pvp") || getAllCharacters().containsKey(playerName)) {
+            return;
+        }
         // TODO specify board dimensions
         boardNames.put(playerName, createHomeBoard(playerName));
         //TODO specify spawn point location on each board
