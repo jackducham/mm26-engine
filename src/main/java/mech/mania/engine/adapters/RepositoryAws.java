@@ -35,7 +35,7 @@ public class RepositoryAws implements RepositoryAbstract {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                sendToAws(String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn), gameState.buildProtoClass());
+                sendToAws(String.format("engine/%s/GameState/%06d.pb", serverName == null ? "unnamed" : serverName, turn), gameState.buildProtoClass());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -48,7 +48,7 @@ public class RepositoryAws implements RepositoryAbstract {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                sendToAws(String.format("engine/%s/GameChange/%06d", serverName == null ? "unnamed" : serverName, turn), gameChange);
+                sendToAws(String.format("engine/%s/GameChange/%06d.pb", serverName == null ? "unnamed" : serverName, turn), gameChange);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,7 +61,7 @@ public class RepositoryAws implements RepositoryAbstract {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn), playerStatsBundle);
+                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d.pb", serverName == null ? "unnamed" : serverName, turn), playerStatsBundle);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -73,7 +73,7 @@ public class RepositoryAws implements RepositoryAbstract {
     public GameState getGameState(int turn) {
         String serverName = System.getenv("ENGINE_NAME");
         String gameStateKey = String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn);
-        String playerStatsKey = String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn);
+        String playerStatsKey = String.format("engine/%s/PlayerStatsBundle/%06d.pb", serverName == null ? "unnamed" : serverName, turn);
         MessageLite gameStateProto = GameStateProtos.GameState.getDefaultInstance();
 
         // Get GameState from AWS
