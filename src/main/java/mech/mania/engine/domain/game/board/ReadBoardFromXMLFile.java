@@ -335,6 +335,11 @@ public class ReadBoardFromXMLFile {
                     board.getGrid()[x][y].aboveSprite = tileSet.get(dataSet.get(1).data[x][y]).aboveSprite;
                 }
 
+                // If there was no tile data on either layer, this must be a VOID tile
+                if(dataSet.get(0).data[x][y] == 0 && dataSet.get(1).data[x][y] == 0){
+                    board.getGrid()[x][y].setType(Tile.TileType.VOID);
+                }
+
                 //Add monsters to the list of monsters.
                 int monsterIndex = dataSet.get(2).data[x][y];
                 if(monsterIndex != 0) {

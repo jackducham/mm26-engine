@@ -32,7 +32,7 @@ public class ReadFromXMLTests {
             spReader.updateBoardAndMonsters(
                     "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_tileset.tsx",
                     "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
-                    "loadedBoard"
+                    "spBoard"
             );
         } catch (TileIDNotFoundException e) {
             System.err.print(e + "\n");
@@ -44,7 +44,7 @@ public class ReadFromXMLTests {
             mpReader.updateBoardAndMonsters(
                     "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_tileset.tsx",
                     "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_mp_map.tmx",
-                    "loadedBoard"
+                    "mpBoard"
             );
         } catch (TileIDNotFoundException e) {
             System.err.print(e + "\n");
@@ -93,10 +93,10 @@ public class ReadFromXMLTests {
     }
 
     /**
-     * Tests that sprites are loaded correctly on the single-player board
+     * Tests that portal sprites are loaded correctly on the single-player board
      */
     @Test
-    public void testSpriteParsingSPBoard(){
+    public void testPortalSpriteParsingSPBoard(){
         spBoard = spReader.extractBoard();
         assertNotNull(spBoard);
 
@@ -113,6 +113,56 @@ public class ReadFromXMLTests {
 
         // Assert that groundSprite isn't the portal sprite
         assertNotEquals(portalSprite, portalTile.groundSprite);
+    }
+
+    /**
+     * Tests that all tiles have at least one of ground_sprite and above_sprite set in SP Board
+     */
+    @Test
+    public void testSpriteLayersSPBoard(){
+        // Testing SP board
+        spBoard = spReader.extractBoard();
+        assertNotNull(spBoard);
+
+        for(int x = 0; x < spBoard.getGrid().length; x++){
+            for(int y = 0; y < spBoard.getGrid()[x].length; y++){
+                Tile tile = spBoard.getGrid()[x][y];
+
+                // Check that non-VOID tiles have a sprite
+                assertFalse(
+                        String.format("Empty sprites at (%d, %d)", x, y),
+
+                        tile.getType() != Tile.TileType.VOID
+                        && tile.groundSprite.equals("")
+                        && tile.aboveSprite.equals("")
+                );
+            }
+        }
+    }
+
+    /**
+     * Tests that all tiles have at least one of ground_sprite and above_sprite set in MP Board
+     */
+    @Test
+    public void testSpriteLayersMPBoard(){
+        // Testing SP board
+        mpBoard = mpReader.extractBoard();
+        assertNotNull(mpBoard);
+
+        for(int x = 0; x < mpBoard.getGrid().length; x++){
+            for(int y = 0; y < mpBoard.getGrid()[x].length; y++){
+                Tile tile = mpBoard.getGrid()[x][y];
+
+                // Check that non-VOID tiles have a sprite
+                assertFalse(
+                        String.format("Empty sprites at (%d, %d)", x, y),
+
+                        tile.getType() != Tile.TileType.VOID
+                                && tile.groundSprite.equals("")
+                                && tile.aboveSprite.equals("")
+                );
+            }
+        }
     }
 
     /**
