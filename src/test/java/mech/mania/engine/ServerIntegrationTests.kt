@@ -166,7 +166,7 @@ class ServerIntegrationTests {
                     }
                     validPort = true
 
-                    val playerName = java.util.UUID.randomUUID().toString()
+                    val playerName = "player$i"
                     val playerAddr = "localhost:$randomPort"
                     logger.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
@@ -309,9 +309,6 @@ class ServerIntegrationTests {
         val turns = 5
         val latch = CountDownLatch(turns*2)
 
-        // Create WebSocket client
-        createVisualizer(turns, {}, { latch.countDown() })
-
         // Create player that walks back and forth
         fun makeDecision(turn: PlayerTurn): CharacterProtos.CharacterDecision {
             val playerName = turn.playerName
@@ -345,6 +342,12 @@ class ServerIntegrationTests {
         }
 
         connectNPlayers(1, ::makeDecision, {}, { latch.countDown() })
+
+        // Wait a while so that the WebSocket joins after the player
+        Thread.sleep(2000)
+
+        // Create WebSocket client
+        createVisualizer(turns, {}, { latch.countDown() })
 
         // Wait for 1 extra turn in case connection happens between turns
         val result: Boolean = latch.await((turns + 1) * timePerTurn, TimeUnit.MILLISECONDS)
