@@ -35,7 +35,7 @@ public class RepositoryAws implements RepositoryAbstract {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                String key = String.format("engine/%s/CurrentTurn", serverName == null ? "unnamed" : serverName);
+                String key = String.format("engine/%s/CurrentTurn.txt", serverName == null ? "unnamed" : serverName);
 
                 AmazonS3 s3 = AmazonS3ClientBuilder.standard()
                         .withCredentials(new EnvironmentVariableCredentialsProvider())
