@@ -11,6 +11,8 @@ public interface RepositoryAbstract {
 
     Logger LOGGER = Logger.getLogger("Repository");
 
+    int storeCurrentTurn(final int turn);
+
     int storeGameState(final int turn, final GameState gameState);
 
     int storeGameChange(final int turn, final VisualizerProtos.GameChange gameChange);

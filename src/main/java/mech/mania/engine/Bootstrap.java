@@ -26,7 +26,7 @@ public class Bootstrap {
         eventHandlers.put(EventReceivePlayerDecision.class,       Arrays.asList(new StorePlayerDecision(uow)));
         eventHandlers.put(EventNewPlayer.class,                   Arrays.asList(new UpdatePlayer(uow)));
         eventHandlers.put(EventEndGame.class,                     Arrays.asList(new EndGame(uow)));
-        eventHandlers.put(EventSendHistoryObjects.class,          Arrays.asList(new StoreHistoryObjects(uow)));
+        eventHandlers.put(EventStoreHistoryObjects.class,          Arrays.asList(new StoreHistoryObjects(uow)));
 
         // commands must happen synchronously
         Map<Class<? extends Command>, CommandHandler> commandHandlers = new HashMap<>();
@@ -38,7 +38,6 @@ public class Bootstrap {
         commandHandlers.put(CommandStopVisualizerServer.class,                  new StopVisualizerServer(uow));
         commandHandlers.put(CommandStartAPIServer.class,                        new StartAPIServer(uow));
         commandHandlers.put(CommandStopAPIServer.class,                         new StopAPIServer(uow));
-        commandHandlers.put(CommandStoreGameState.class,                        new StoreGameState(uow));
         commandHandlers.put(CommandSendPlayerRequestsAndUpdateGameState.class,  new SendPlayerRequestsAndUpdateGameState(uow));
         commandHandlers.put(CommandUpdateGameState.class,                       new UpdateGameState(uow));
         commandHandlers.put(CommandSendVisualizerChange.class,                  new SendVisualizerChange(uow));

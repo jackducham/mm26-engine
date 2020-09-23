@@ -31,6 +31,32 @@ public class RepositoryAws implements RepositoryAbstract {
     private static final String region = Config.getProperty("awsRegion"); // "us-east-1"
 
     @Override
+    public int storeCurrentTurn(int turn) {
+        new Thread(() -> {
+            try {
+                String serverName = System.getenv("ENGINE_NAME");
+                String key = String.format("engine/%s/CurrentTurn", serverName == null ? "unnamed" : serverName);
+
+                AmazonS3 s3 = AmazonS3ClientBuilder.standard()
+                        .withCredentials(new EnvironmentVariableCredentialsProvider())
+                        .withRegion(region)
+                        .build();
+
+                s3.putObject(bucketName, key, "" + turn);
+            } catch (AmazonServiceException e) {
+                // The call was transmitted successfully, but Amazon S3 couldn't process
+                // it, so it returned an error response.
+                LOGGER.warning("Unable to process S3 request when setting CurrentTurn in AWS: " + e);
+            } catch (SdkClientException e) {
+                // Amazon S3 couldn't be contacted for a response, or the client
+                // couldn't parse the response from Amazon S3.
+                LOGGER.warning("Failed to connect to S3 when setting CurrentTurn in AWS: " + e);
+            }
+        }).start();
+        return 0;
+    }
+
+    @Override
     public int storeGameState(final int turn, final GameState gameState) {
         new Thread(() -> {
             try {
