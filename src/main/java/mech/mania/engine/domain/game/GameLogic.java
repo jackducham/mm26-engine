@@ -494,4 +494,22 @@ public class GameLogic {
         return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
     }
 
+    public static List<Character> findEnemiesInRangeByDistance(GameState gameState, Position position, String characterName, int range) {
+        Character character = gameState.getCharacter(characterName);
+        if (character == null) {
+            return null;
+        }
+
+        List<Character> enemiesInRange = new ArrayList<>();
+        for (Character other : utils.findEnemiesByDistance(gameState, position, characterName)) {
+            int distance = position.manhattanDistance(other.getPosition());
+            if (distance <= range) {
+                enemiesInRange.add(other);
+            } else {
+                break;
+            }
+        }
+        return enemiesInRange;
+    }
+
 }

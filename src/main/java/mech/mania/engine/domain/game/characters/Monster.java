@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game.characters;
 
+import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.game.utils;
@@ -8,6 +9,8 @@ import mech.mania.engine.domain.model.ItemProtos;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
     private final int aggroRange;
@@ -107,7 +110,7 @@ public class Monster extends Character {
      * @return the position the Monster should move to
      */
     private Position findPositionToMove(GameState gameState, Position destination) {
-        return utils.getPositionInRange(gameState, getPosition(), destination, getSpeed());
+        return getPositionInRange(gameState, getPosition(), destination, getSpeed());
     }
 
     /**
@@ -118,7 +121,7 @@ public class Monster extends Character {
      * @return the position the Monster should attack
      */
     private Position findPositionToTarget(GameState gameState, Position target) {
-        return utils.getPositionInRange(gameState, getPosition(), target, getWeapon().getRange());
+        return getPositionInRange(gameState, getPosition(), target, getWeapon().getRange());
     }
 
     /**
@@ -135,7 +138,7 @@ public class Monster extends Character {
         }
 
         if (target == null) {
-            List<Character> inRange = utils.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
+            List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
             if(inRange != null) {
                 for (Character character : inRange) {
                     if (character instanceof Player) {
@@ -259,5 +262,25 @@ public class Monster extends Character {
 
         ++DefaultMonsterQuantity;
         return newMonster;
+    }
+
+    /**
+     * Can use this function to determine the position that is closest along the path to the target within a range.
+     * Useful for moving to a targetPosition at a speed or for attacking a targetPosition within a range
+     * @param gameState
+     * @param currentPosition
+     * @param targetPosition
+     * @param range
+     * @return position within range along the path
+     */
+    public static Position getPositionInRange(GameState gameState, Position currentPosition, Position targetPosition, int range) {
+        List<Position> path = findPath(gameState, currentPosition, targetPosition);
+        Position pos;
+        if (path.size() < range) {
+            pos = path.get(path.size() - 1);
+        } else {
+            pos = path.get(range - 1);
+        }
+        return pos;
     }
 }
