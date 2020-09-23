@@ -9,7 +9,7 @@ public class ItemFactory {
         Random rand = new Random();
         //check that the provided level is not negative
         if(level < 0) {
-            return null;
+            throw new IllegalArgumentException("Items cannot have negative levels");
         }
 
         int itemTypeDecider = rand.nextInt(5);

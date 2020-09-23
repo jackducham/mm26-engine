@@ -26,7 +26,7 @@ public class MonsterTests {
         // Add default monster which spawns at (0, 0)
         //  use high attackFactor to make sure monster deals damage to monster
         monster = Monster.createDefaultMonster(0, 0, 100, 0,
-                0, 0,0, 0, new Position(0, 0, "pvp"));
+                0, 0,0, new Position(0, 0, "pvp"));
         gameState.addNewMonster(monster);
     }
 
