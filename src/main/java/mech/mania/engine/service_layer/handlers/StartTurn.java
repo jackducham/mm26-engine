@@ -30,9 +30,8 @@ public class StartTurn extends CommandHandler {
 
         // these three abstractions aren't completely necessary, but allows for
         // asynchronous operations if necessary
-        uow.addNewMessage(new CommandStoreGameState(turn, uow.getGameState()));
         uow.addNewMessage(new CommandSendPlayerRequestsAndUpdateGameState());
         uow.addNewMessage(new CommandSendVisualizerChange());
-        uow.addNewMessage(new EventSendHistoryObjects());
+        uow.addNewMessage(new EventStoreHistoryObjects());
     }
 }

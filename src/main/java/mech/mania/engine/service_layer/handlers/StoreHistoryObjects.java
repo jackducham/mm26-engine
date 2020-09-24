@@ -23,6 +23,7 @@ public class StoreHistoryObjects extends EventHandler {
         }
         CharacterProtos.PlayerStatsBundle playerStatsBundleObj = playerStatsBundleObjBuilder.build();
 
+        uow.storeCurrentTurn(uow.getTurn());
         uow.storePlayerStatsBundle(uow.getTurn(), playerStatsBundleObj);
         uow.storeGameState(uow.getTurn(), uow.getGameState());
         uow.storeGameChange(uow.getTurn(), uow.getGameChange());
