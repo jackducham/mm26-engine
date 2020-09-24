@@ -2,6 +2,8 @@ package mech.mania.engine.domain.game.characters;
 
 import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
+import mech.mania.engine.domain.game.board.Board;
+import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
@@ -110,7 +112,14 @@ public class Monster extends Character {
      * @return the position the Monster should move to
      */
     private Position findPositionToMove(GameState gameState, Position destination) {
-        return getPositionInRange(gameState, getPosition(), destination, getSpeed());
+        List<Position> path = findPath(gameState, getPosition(), destination);
+        Position pos;
+        if (path.size() < getSpeed()) {
+            pos = path.get(path.size() - 1);
+        } else {
+            pos = path.get(getSpeed() - 1);
+        }
+        return pos;
     }
 
     /**
@@ -265,8 +274,7 @@ public class Monster extends Character {
     }
 
     /**
-     * Can use this function to determine the position that is closest along the path to the target within a range.
-     * Useful for moving to a targetPosition at a speed or for attacking a targetPosition within a range
+     * Can use this function to determine the position to attack within a range
      * @param gameState
      * @param currentPosition
      * @param targetPosition
@@ -274,13 +282,48 @@ public class Monster extends Character {
      * @return position within range along the path
      */
     public static Position getPositionInRange(GameState gameState, Position currentPosition, Position targetPosition, int range) {
-        List<Position> path = findPath(gameState, currentPosition, targetPosition);
-        Position pos;
-        if (path.size() < range) {
-            pos = path.get(path.size() - 1);
-        } else {
-            pos = path.get(range - 1);
+        if (currentPosition == null || targetPosition == null) {
+            return null;
         }
-        return pos;
+
+        Board board = gameState.getBoard("pvp");
+
+        if (!currentPosition.getBoardID().equals(targetPosition.getBoardID())) {
+            return null;
+        }
+        int distance = currentPosition.manhattanDistance(targetPosition);
+        if (distance <= range) {
+            return targetPosition;
+        }
+
+        int currX = currentPosition.getX();
+        int currY = currentPosition.getY();
+        int targetX = targetPosition.getX();
+        int targetY = targetPosition.getY();
+        int xDiff = targetX - currX;
+        int xDir = (xDiff) < 0 ? -1 : 1;
+        int yDir = (targetY - currY) < 0 ? -1 : 1;
+
+        int yOffset;
+        int xOffset;
+        if (xDiff >= range) {
+            yOffset = currY;
+            xOffset = currX + (xDir * range);
+        } else {
+            yOffset = currY + yDir * (range - xDiff);
+            xOffset = currX + xDir * xDiff;
+        }
+
+        while(xOffset <= Math.max(currX, targetX) &&
+                xOffset >= Math.min(currX, targetX) &&
+                yOffset <= Math.max(currY, targetY) &&
+                yOffset >= Math.min(currY, targetY)) {
+            if (board.getGrid()[yOffset][xOffset].getType() != Tile.TileType.VOID) {
+                return new Position(xOffset, yOffset, currentPosition.getBoardID());
+            }
+            yOffset += yDir;
+            xOffset += -xDir;
+        }
+        return null;
     }
 }

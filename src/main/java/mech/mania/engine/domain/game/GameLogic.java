@@ -490,8 +490,7 @@ public class GameLogic {
         if (position.getY() > board.getGrid().length || position.getY() < 0) {
             return false;
         }
-
-        return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
+        return board.getTileAtPosition(position).getType() != Tile.TileType.VOID;
     }
 
     public static List<Character> findEnemiesInRangeByDistance(GameState gameState, Position position, String characterName, int range) {
