@@ -385,10 +385,14 @@ public class GameLogic {
             Position characterPos = character.getPosition();
             if (affectedPositions.containsKey(characterPos)) {
                 // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
-                if(attacker instanceof Player && ((Player) attacker).getHat() != null
-                        && (((Player) attacker).getHat().getMagicEffect().equals(MagicEffect.TRIPLED_ON_HIT) ||
-                        ((Player) attacker).getAccessory().getMagicEffect().equals(MagicEffect.TRIPLED_ON_HIT))
-                            ) {
+                if(attacker instanceof Player &&
+                    (
+                    (((Player) attacker).getHat() != null
+                            && ((Player) attacker).getHat().getMagicEffect().equals(MagicEffect.TRIPLED_ON_HIT)) ||
+                    (((Player) attacker).getAccessory() != null
+                            && ((Player) attacker).getAccessory().getMagicEffect().equals(MagicEffect.TRIPLED_ON_HIT)))
+                ) {
+
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
                             new TempStatusModifier(attackerWeapon.getOnHitEffect()));

@@ -133,7 +133,8 @@ public class Player extends Character {
      */
     @Override
     public void updateCharacter(GameState gameState) {
-        if(hat != null && hat.getMagicEffect().equals(MagicEffect.STACKING_BONUS)) {
+        if((hat != null && hat.getMagicEffect().equals(MagicEffect.STACKING_BONUS)) ||
+                (accessory != null && accessory.getMagicEffect().equals(MagicEffect.STACKING_BONUS))) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
             applyEffect(this.getName(), true, hatStats);
@@ -190,13 +191,11 @@ public class Player extends Character {
             flatChange += shoes.getStats().getFlatSpeedChange();
             percentChange += shoes.getStats().getPercentSpeedChange();
 
-            if(hat != null && hat.getMagicEffect().equals(MagicEffect.SHOES_BOOST)) {
+            if((hat != null && hat.getMagicEffect().equals(MagicEffect.SHOES_BOOST)) ||
+                    (accessory != null && accessory.getMagicEffect().equals(MagicEffect.SHOES_BOOST))) {
                 flatChange += shoes.getStats().getFlatSpeedChange();
             }
 
-            if (accessory != null && accessory.getMagicEffect().equals(MagicEffect.SHOES_BOOST)) {
-                flatChange += shoes.getStats().getFlatSpeedChange();
-            }
         }
         if (weapon != null) {
             flatChange += weapon.getStats().getFlatSpeedChange();
@@ -282,13 +281,11 @@ public class Player extends Character {
             flatChange += weapon.getStats().getFlatAttackChange();
             percentChange += weapon.getStats().getPercentAttackChange();
 
-            if(hat != null && hat.getMagicEffect().equals(MagicEffect.WEAPON_BOOST)) {
+            if((hat != null && hat.getMagicEffect().equals(MagicEffect.WEAPON_BOOST)) ||
+                    accessory != null && accessory.getMagicEffect().equals(MagicEffect.WEAPON_BOOST)) {
                 flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
             }
 
-            if (accessory != null && accessory.getMagicEffect().equals(MagicEffect.WEAPON_BOOST)) {
-                flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
-            }
         }
         // Add active effects
         for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
@@ -322,10 +319,8 @@ public class Player extends Character {
             flatChange += clothes.getStats().getFlatDefenseChange();
             percentChange += clothes.getStats().getPercentDefenseChange();
 
-            if(hat != null && hat.getMagicEffect().equals(MagicEffect.CLOTHES_BOOST)) {
-                flatChange += clothes.getStats().getFlatDefenseChange();
-            }
-            if (accessory != null && accessory.getMagicEffect().equals(MagicEffect.CLOTHES_BOOST)) {
+            if((hat != null && hat.getMagicEffect().equals(MagicEffect.CLOTHES_BOOST)) ||
+                    accessory != null && accessory.getMagicEffect().equals(MagicEffect.CLOTHES_BOOST)) {
                 flatChange += clothes.getStats().getFlatDefenseChange();
             }
         }
@@ -443,10 +438,10 @@ public class Player extends Character {
     }
 
     /**
-     * Exchanges hat in Player parameters with accessory in inventory
+     * Exchanges accessory in Player parameters with accessory in inventory
      *
      * @param index index of the inventory to which the currently equipped accessory will be returned
-     * @param accessoryToEquip the hat which will replace the currently equipped accessory
+     * @param accessoryToEquip the accessory which will replace the currently equipped accessory
      * @return true if accessory was successfully equipped
      */
     private boolean equipAccessory(Accessory accessoryToEquip, int index) {
@@ -510,7 +505,8 @@ public class Player extends Character {
         TempStatusModifier effect = consumableToConsume.getEffect();
 
         //checks for LINGERING_POTIONS hat effect and doubles the duration if detected.
-        if(this.hat != null && this.hat.getMagicEffect() == MagicEffect.LINGERING_POTIONS) {
+        if((this.hat != null && this.hat.getMagicEffect() == MagicEffect.LINGERING_POTIONS) ||
+                (this.accessory != null && this.accessory.getMagicEffect() == MagicEffect.LINGERING_POTIONS)) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
         applyEffect(this.getName(), true, effect);
