@@ -44,7 +44,7 @@ public class Tile {
                     items.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    items.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    items.add(i, new Consumable(protoItem.getConsumable().getMaxStack(), protoItem.getConsumable()));
             }
         }
 

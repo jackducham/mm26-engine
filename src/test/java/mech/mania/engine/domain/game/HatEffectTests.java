@@ -47,7 +47,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.LINGERING_POTIONS));
+                MagicEffect.LINGERING_POTIONS));
         p1.equipItem(1);
         p1.setInventory(2, Consumable.createDefaultConsumable());
 
@@ -115,7 +115,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.SHOES_BOOST));
+                MagicEffect.SHOES_BOOST));
         p1.setInventory(2, Shoes.createDefaultShoes());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -130,7 +130,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.WEAPON_BOOST));
+                MagicEffect.WEAPON_BOOST));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -145,7 +145,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.CLOTHES_BOOST));
+                MagicEffect.CLOTHES_BOOST));
         p1.setInventory(2, Clothes.createDefaultClothes());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -160,7 +160,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.TRIPLED_ON_HIT));
+                MagicEffect.TRIPLED_ON_HIT));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -205,7 +205,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(1,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.STACKING_BONUS));
+                MagicEffect.STACKING_BONUS));
         p1.equipItem(1);
 
         //base speed of 5 plus 1 from the hat.

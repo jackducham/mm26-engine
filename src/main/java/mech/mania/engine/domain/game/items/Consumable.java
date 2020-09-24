@@ -39,7 +39,6 @@ public class Consumable extends Item {
         consumableBuilder.setEffect(effect.buildProtoClassTemp());
 
         ItemProtos.Item.Builder itemBuilder = ItemProtos.Item.newBuilder();
-        itemBuilder.setMaxStack(maxStack);
         itemBuilder.setConsumable(consumableBuilder.build());
 
         return itemBuilder.build();
