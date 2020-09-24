@@ -3,7 +3,7 @@ package mech.mania.engine.domain.game.factory;
 import mech.mania.engine.domain.game.items.*;
 
 import java.util.Random;
-
+//TODO: Hat maker, accessory maker, add a return to everything besides weapons, add names, add name generation, add accessories, update wiki with items, change health values by a factor of 10, combine hat and accessory makers, just return a different kind
 public class ItemFactory {
     public static Item generateItem(int level) {
         Random rand = new Random();
