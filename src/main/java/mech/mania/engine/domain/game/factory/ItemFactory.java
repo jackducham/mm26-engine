@@ -415,15 +415,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(6), rand.nextDouble() * 0.1, 1 + rand.nextInt(60), rand.nextDouble() * 0.05, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -440,15 +444,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(8), rand.nextDouble() * 0.15, 1 + rand.nextInt(80), rand.nextDouble() * 0.1, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -465,15 +473,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(10), rand.nextDouble() * 0.15, 1 + rand.nextInt(100), rand.nextDouble() * 0.15, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -490,15 +502,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(14), rand.nextDouble() * 0.2, 1 + rand.nextInt(130), rand.nextDouble() * 0.15, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -515,15 +531,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(18), rand.nextDouble() * 0.2, 1 + rand.nextInt(170), rand.nextDouble() * 0.2, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -543,15 +563,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(8), rand.nextDouble() * 0.15, 1 + rand.nextInt(80), rand.nextDouble() * 0.1, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -568,15 +592,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(10), rand.nextDouble() * 0.15, 1 + rand.nextInt(100), rand.nextDouble() * 0.15, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -593,15 +621,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(14), rand.nextDouble() * 0.2, 1 + rand.nextInt(130), rand.nextDouble() * 0.15, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
@@ -618,15 +650,19 @@ public class ItemFactory {
                     weaponDamage = rand.nextInt(10);
                     weaponRange = 1;
                     weaponSplash = 0;
-                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(19), 0, 0, 0, 0);
+                    weaponStats = new StatusModifier(0, 0, 0, 0, 1 + rand.nextInt(18), rand.nextDouble() * 0.2, 1 + rand.nextInt(170), rand.nextDouble() * 0.2, 0, 0, 0);
                     weaponOnHit = new TempStatusModifier(-1, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 1 + rand.nextInt(2), 1);
-                    attributes = 1;
-                    for(int i = 0; i < 2 - attributes; ++i) {
-                        int attributeToRemove = rand.nextInt(2);
+                    attributes = 1 + rand.nextInt(2);
+                    for(int i = 0; i < 4 - attributes; ++i) {
+                        int attributeToRemove = rand.nextInt(4);
                         if(attributeToRemove == 0) {
                             weaponStats.setFlatExperienceChange(0);
-                        } else {
+                        } else if (attributeToRemove == 1) {
                             weaponStats.setFlatAttackChange(0);
+                        } else if (attributeToRemove == 2) {
+                            weaponStats.setPercentExperienceChange(0);
+                        } else {
+                            weaponStats.setPercentAttackChange(0);
                         }
                     }
                     for(int i = 0; i < 3 - onHitAttributes; ++i) {
