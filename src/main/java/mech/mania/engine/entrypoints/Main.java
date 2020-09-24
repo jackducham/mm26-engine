@@ -124,6 +124,8 @@ public class Main {
         bus.handle(new CommandStopVisualizerServer());
         bus.handle(new CommandStopAPIServer());
 
-        while (true) { }
+        if (enableInfra) {
+            while (true) { }
+        }
     }
 }
