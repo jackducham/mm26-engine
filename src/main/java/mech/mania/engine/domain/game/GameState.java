@@ -11,11 +11,10 @@ import mech.mania.engine.domain.model.BoardProtos;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.GameStateProtos;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -39,7 +38,12 @@ public class GameState {
         monsterNames = new HashMap<>();
         stateChange = new GameChange();
 
-        // @TODO: Create actual pvp board
+        // @TODO: Create actual pvp board (uncomment once mm26_mp_map.tmx is usable)
+//        boardNames.put("pvp", Board.loadBoard(
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_mp_map.tmx",
+//                "pvp"
+//        ));
         boardNames.put("pvp", Board.createDefaultBoard(20, 20, true, "pvp"));
     }
 
@@ -65,7 +69,9 @@ public class GameState {
         return null;
     }
 
-
+    public Map<String, Board> getAllBoards() {
+        return boardNames;
+    }
 
     /**
      * Getter for a specific character (player or monster).
@@ -82,6 +88,27 @@ public class GameState {
         }
 
         return null;
+    }
+
+    /**
+     * Gets the map of character names to character objects.
+     * @return the requested map
+     */
+    public Map<String, Character> getAllCharacters() {
+        Map<String, Character> characters = new HashMap<>(getAllPlayers());
+        characters.putAll(getAllMonsters());
+        return characters;
+    }
+
+    /**
+     * Gets all characters on a specific board.
+     * @param boardId id of the board of interest
+     * @return list of characters on given board
+     */
+    public List<Character> getCharactersOnBoard(String boardId) {
+        List<Character> characters = new ArrayList<>(getPlayersOnBoard(boardId));
+        characters.addAll(getMonstersOnBoard(boardId));
+        return characters;
     }
 
     /**
@@ -187,13 +214,17 @@ public class GameState {
         defaultGameState.getPlayer("player1").setPosition(new Position(0, 4, "pvp"));
         defaultGameState.addNewPlayer("player2");
         defaultGameState.getPlayer("player2").setPosition(new Position(0, 24, "pvp"));
+        defaultGameState.addNewPlayer("player3");
 
-
-        //adds a single monster to the pvp board.
+        //adds two monsters to the pvp board.
         //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster
         defaultGameState.addNewMonster(
                 Monster.createDefaultMonster(0, 0, 0, 0, 0,
-                        0, 0, 0, new Position(14, 25, "pvp"))
+                        0, 0, 0, 0, 0, new Position(14, 25, "pvp"))
+        );
+        defaultGameState.addNewMonster(
+                Monster.createDefaultMonster(0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, new Position(14, 25, "pvp1"))
         );
 
         return defaultGameState;
@@ -262,6 +293,9 @@ public class GameState {
      * @param playerName name of the player being added
      */
     public void addNewPlayer(String playerName) {
+        if (playerName.equals("pvp") || getAllCharacters().containsKey(playerName)) {
+            return;
+        }
         // TODO specify board dimensions
         boardNames.put(playerName, createHomeBoard(playerName));
         //TODO specify spawn point location on each board
@@ -271,5 +305,6 @@ public class GameState {
 
     public void addNewMonster(Monster monster){
         monsterNames.put(monster.getName(), monster);
+        stateChange.addCharacter(monster.getName());
     }
 }

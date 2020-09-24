@@ -10,6 +10,6 @@ public class StopAPIServer extends CommandHandler {
 
     @Override
     public void handle(Command command) {
-        uow.stopInfraServer();
+        uow.stopAPIServer();
     }
 }

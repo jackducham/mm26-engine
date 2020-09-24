@@ -66,6 +66,10 @@ public abstract class UnitOfWorkAbstract {
         repository.storePlayerStatsBundle(turn, playerStatsBundle);
     }
 
+    public void storeCurrentTurn(int turn){
+        repository.storeCurrentTurn(turn);
+    }
+
     /**
      * Use the repository to restore game state
      * @param turn turn to restore from

@@ -1,20 +1,18 @@
 package mech.mania.engine.domain.game.characters;
 
-import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
-import mech.mania.engine.domain.game.board.Board;
-import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
+import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
+    private final int aggroRange;
     private final List<Item> drops;
 
 
@@ -27,14 +25,15 @@ public class Monster extends Character {
      * @param baseMaxHealth the monster's base maximum health
      * @param baseAttack the monster's base attack damage
      * @param baseDefense the monster's base defense
-     * @param experience the monster's base exp to be awarded on kill
+     * @param level the monster's level
      * @param spawnPoint the monster's spawn point, and the point it will leash back to
      * @param weapon the monster's weapon (used to apply on-hit effects)
      * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
      */
     public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                   int experience, Position spawnPoint, Weapon weapon, List<Item> drops) {
-        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, experience, spawnPoint, weapon);
+                   int level, Position spawnPoint, Weapon weapon, int aggroRange, List<Item> drops) {
+        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
+        this.aggroRange = aggroRange;
         this.drops = drops;
     }
 
@@ -49,6 +48,7 @@ public class Monster extends Character {
         super(monsterProto.getCharacter());
 
         drops = new ArrayList<>(monsterProto.getDropsCount());
+        aggroRange = monsterProto.getAggroRange();
         for (int i = 0; i < monsterProto.getDropsCount(); i++) {
             ItemProtos.Item protoItem = monsterProto.getDrops(i);
             switch(protoItem.getItemCase()) {
@@ -92,6 +92,7 @@ public class Monster extends Character {
                 monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
+        monsterBuilder.setAggroRange(aggroRange);
 
         return monsterBuilder.build();
     }
@@ -125,26 +126,38 @@ public class Monster extends Character {
      * @return the Monster's next decision
      */
     public CharacterDecision makeDecision(GameState gameState) {
-        if (taggedPlayersDamage.isEmpty()) {
-            return moveToStartDecision(gameState);
-        } else {
+        Player target = null;
+        if (!taggedPlayersDamage.isEmpty()) {
             String highestDamageCharacter = getPlayerWithMostDamage();
-            Player target = gameState.getPlayer(highestDamageCharacter);
+            target = gameState.getPlayer(highestDamageCharacter);
+        }
 
-            // Check that this player still exists
-            if(target == null){
-                return moveToStartDecision(gameState);
+        if (target == null) {
+            List<Character> inRange = utils.findEnemiesInRangeOfAttackByDistance(gameState, getPosition(), getName(), aggroRange);
+            if(inRange != null) {
+                for (Character character : inRange) {
+                    if (character instanceof Player) {
+                        target = (Player) character;
+                        break;
+                    }
+                }
             }
+        }
 
-            Position toAttack = target.position;
+        // nothing in taggedPlayersDamage and no Players in agroRange
+        if (target == null) {
+            return moveToStartDecision(gameState);
+        }
 
-            int manhattanDistance = position.manhattanDistance(toAttack);
-            if (manhattanDistance <= weapon.getRange()) {
-                return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
-            } else {
-                Position toMove = findPositionToMove(gameState, toAttack);
-                return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
-            }
+        Position toAttack = target.position;
+        int manhattanDistance = position.manhattanDistance(toAttack);
+
+        // Don't check for splash radius because that would require us to submit a closer toAttack
+        if (manhattanDistance <= weapon.getRange()) {
+            return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toAttack);
+        } else {
+            Position toMove = findPositionToMove(gameState, toAttack);
+            return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
         }
     }
 
@@ -186,7 +199,7 @@ public class Monster extends Character {
      * @param spawnPoint the Monster's spawn point
      * @return
      */
-    public static Monster createDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int numberOfDrops, Position spawnPoint) {
+    public static Monster createDefaultMonster(double speedFactor, double maxHealthFactor, double attackFactor, double defenseFactor, double experienceFactor, double rangeFactor, double splashFactor, int level, int agroRange, int numberOfDrops, Position spawnPoint) {
 
         /*
         Default stats and their scaling factors:
@@ -205,9 +218,6 @@ public class Monster extends Character {
 
         int baseDefense = 2;
         int baseDefenseSpread = 1;
-
-        int experience = 10;
-        int experienceSpread = 2;
 
         int range = 3;
         int rangeSpread = 0;
@@ -244,32 +254,9 @@ public class Monster extends Character {
                 baseMaxHealth + (int)maxHealthFactor*baseMaxHealthSpread,
                 baseAttack + (int)attackFactor*baseAttackSpread,
                 baseDefense + (int)defenseFactor*baseDefenseSpread,
-                experience + (int)experienceFactor*experienceSpread,
-                spawnPoint,  defaultWeapon, drops);
+                level, spawnPoint, defaultWeapon, agroRange, drops);
 
         ++DefaultMonsterQuantity;
         return newMonster;
-    }
-
-
-    /**
-     * Gives experience to player who participated in killing this monster.
-     * @param gameState the current game state
-     */
-    @Override
-    public void distributeRewards(GameState gameState) {
-        super.distributeRewards(gameState);
-        Board current = gameState.getBoard(position.getBoardID());
-        Tile currentTile = current.getGrid()[position.getX()][position.getY()];
-        currentTile.getItems().addAll(drops);
-
-        //iterates through every player still on the taggedPlayersDamage map.
-        for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
-            Player currentPlayer = gameState.getPlayer(entry.getKey());
-            if(currentPlayer != null) {
-                currentPlayer.addExperience(this.getExperience());
-                currentPlayer.getExtraStats().incrementMonstersSlain();
-            }
-        }
     }
 }

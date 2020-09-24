@@ -16,13 +16,13 @@ public class GameChange {
     private List<String> newPlayerNames;
     private List<String> deadPlayerNames;
     private Map<String, CharacterChange> characterChanges;
-    private List<Position> tileTimeChanges;
+    private List<Position> tileItemChanges;
 
     public GameChange() {
         characterChanges = new HashMap<>();
         deadPlayerNames = new ArrayList<>();
         newPlayerNames = new ArrayList<>();
-        tileTimeChanges = new ArrayList<>();
+        tileItemChanges = new ArrayList<>();
     }
 
     public void addCharacter(String newCharacter) {
@@ -33,7 +33,11 @@ public class GameChange {
         newPlayerNames.clear();
         deadPlayerNames.clear();
         characterChanges.clear();
-        tileTimeChanges.clear();
+        tileItemChanges.clear();
+    }
+
+    public void addChangedTile(Position position) {
+        tileItemChanges.add(position);
     }
 
     private void createUntrackedCharacter(String characterName) {
@@ -136,8 +140,8 @@ public class GameChange {
             builder.putCharacterChanges(name, characterChanges.get(name).buildProtoClass());
         }
 
-        for (Position pos : tileTimeChanges) {
-            builder.addTileTimeChanges(pos.buildProtoClass());
+        for (Position pos : tileItemChanges) {
+            builder.addTileItemChanges(pos.buildProtoClass());
         }
 
         return builder.build();

@@ -6,10 +6,13 @@ import mech.mania.engine.domain.model.BoardProtos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Board {
-    private Tile[][] grid;
-    private List<Position> portals;
+    private static final Logger LOGGER = Logger.getLogger( Board.class.getName() );
+
+    private final Tile[][] grid;
+    private final List<Position> portals;
 
     /**
      * Board constructor used to recreate boards from Protocol Buffers.
@@ -33,12 +36,22 @@ public class Board {
 
     }
 
+    public static Board loadBoard(String tileSetFileName, String mapDataFileName, String boardName){
+        ReadBoardFromXMLFile boardReader = new ReadBoardFromXMLFile();
+        try {
+            boardReader.updateBoardAndMonsters(tileSetFileName, mapDataFileName, boardName);
+        } catch (TileIDNotFoundException e) {
+            LOGGER.warning("Exception while parsing board \"" + boardName + "\" XML: " + e);
+        }
+        return boardReader.extractBoard();
+    }
+
     /**
      * Board constructor used to create blank boards.
      * @param xdim size of board's x dimension
      * @param ydim size of board's y dimension
      */
-    private Board(int xdim, int ydim) {
+    public Board(int xdim, int ydim) {
         grid = new Tile[xdim][ydim];
         for(int i = 0; i < xdim; ++i) {
             for(int j = 0; j < ydim; ++j) {
@@ -75,17 +88,15 @@ public class Board {
      * @return a finished home board with default settings
      */
     public static Board createHomeBoard(String id) {
-        int WIDTH = 20;
-        int HEIGHT = 20;
-        int PORTAL_X = 5;
-        int PORTAL_Y = 10;
-
-        //TODO: load this data from an XML file instead
-
-        Board homeBoard = new Board(WIDTH , HEIGHT);
-        homeBoard.portals.add(new Position(PORTAL_X, PORTAL_Y, id));
-
-        return homeBoard;
+//        return Board.loadBoard(
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
+//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
+//                id
+//        );
+        // Make home board simple to avoid XML errors for now
+        Board home = new Board(20, 20);
+        home.addPortal(new Position(5, 10, "player1"));
+        return home;
     }
 
     /**

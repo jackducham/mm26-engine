@@ -60,13 +60,7 @@ public class GameLogic {
             }
         }
 
-        for (Map.Entry<String, Player> entry : gameState.getAllPlayers().entrySet()) {
-            if (entry.getValue().isDead()) {
-                gameState.stateChange.addDeadCharacter(entry.getKey());
-            }
-        }
-
-        for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
+        for (Map.Entry<String, Character> entry : gameState.getAllCharacters().entrySet()) {
             if (entry.getValue().isDead()) {
                 gameState.stateChange.addDeadCharacter(entry.getKey());
             }
@@ -75,10 +69,12 @@ public class GameLogic {
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> allDecisions = new HashMap<>();
         for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : contestantDecisions.entrySet()) {
-            // Remove decision from dead players and NONE decisions
-            if(!gameState.getPlayer(entry.getKey()).isDead()
-                    && entry.getValue() != null
-                    && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
+            // Remove decision from nonexistent or dead players and NONE decisions
+            if(gameState.getPlayer(entry.getKey()) != null
+                && !gameState.getPlayer(entry.getKey()).isDead()
+                && entry.getValue() != null
+                && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
+
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 allDecisions.put(entry.getKey(), newDecision);
             }
@@ -137,23 +133,18 @@ public class GameLogic {
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
         // respawning, and distributing rewards
-        Collection<Player> players = gameState.getAllPlayers().values();
-        Collection<Monster> monsters = gameState.getAllMonsters().values();
+        Collection<Character> characters = gameState.getAllCharacters().values();
 
-        for (Player player: players) {
-            player.updateCharacter(gameState);
-            if (player.isDead()) {
-                gameState.stateChange.characterDied(player.getName());
-            } else if (gameState.stateChange.wasDeadAtTurnStart(player.getName())) {
-                gameState.stateChange.characterRevived(player.getName());
-            }
-        }
-        for (Monster monster: monsters) {
-            monster.updateCharacter(gameState);
-            if (monster.isDead()) {
-                gameState.stateChange.characterDied(monster.getName());
-            } else if (gameState.stateChange.wasDeadAtTurnStart(monster.getName())) {
-                gameState.stateChange.characterRevived(monster.getName());
+        for (Character character: characters) {
+            character.updateCharacter(gameState);
+            if (character.isDead()) {
+                gameState.stateChange.characterDied(character.getName());
+                Position position = character.getPosition();
+                for (Character c : gameState.getCharactersOnBoard(position.getBoardID())) {
+                    c.removePlayer(character.getName());
+                }
+            } else if (gameState.stateChange.wasDeadAtTurnStart(character.getName())) {
+                gameState.stateChange.characterRevived(character.getName());
             }
         }
 
@@ -177,35 +168,56 @@ public class GameLogic {
             case ATTACK:
                 // Check for invalid protos
                 if (character == null || actionPosition == null) return;
-                processAttack(gameState, character, actionPosition);
+                if (processAttack(gameState, character, actionPosition)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case MOVE:
                 // Check for invalid protos
                 if (character == null || actionPosition == null) return;
-                moveCharacter(gameState, character, actionPosition);
+
+                if (moveCharacter(gameState, character, actionPosition)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case PORTAL:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
-                usePortal(gameState, character, index);
+                Position curPosition = character.getPosition();
+                if (usePortal(gameState, character, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    for (Character c : gameState.getCharactersOnBoard(curPosition.getBoardID())) {
+                        c.removePlayer(character.getName());
+                    }
+                }
                 break;
             case EQUIP:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
                 Player player = (Player) character;
-                gameState.stateChange.characterEquip(player.getName(), player.equipItem(index));
+                Class equippedItem = player.equipItem(index);
+                if (equippedItem != null) {
+                    gameState.stateChange.characterEquip(player.getName(), equippedItem);
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
                 break;
             case DROP:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
                 player = (Player) character;
-                dropItem(gameState, player, index);
+                if (dropItem(gameState, player, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    gameState.stateChange.addChangedTile(character.getPosition());
+                }
                 break;
             case PICKUP:
                 // Check for invalid protos
                 if (character == null || index < 0) return;
                 player = (Player) character;
-                pickUpItem(gameState, player, index);
+                if (pickUpItem(gameState, player, index)) {
+                    gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                    gameState.stateChange.addChangedTile(character.getPosition());
+                }
                 break;
         }
     }
@@ -216,25 +228,27 @@ public class GameLogic {
      * @param character player to be moved
      * @param targetPosition position the player should be moved to
      */
-    public static void moveCharacter(GameState gameState, Character character, Position targetPosition) {
-        if (!validatePosition(gameState, targetPosition)) return;
+    public static boolean moveCharacter(GameState gameState, Character character, Position targetPosition) {
+        if (!validatePosition(gameState, targetPosition)) return false;
 
         // Check if character's board matches target board
         if (!character.getPosition().getBoardID().equals(targetPosition.getBoardID())) {
-            return;
+            return false;
         }
 
         // Get shortest path length from current to target position (returns empty list for impossible target)
         List<Position> path = findPath(gameState, character.getPosition(), targetPosition);
 
         // If path is empty (i.e. target is unreachable), don't move
-        if(path.size() == 0) return;
+        if(path.size() == 0) return false;
 
         // If path would be greater than speed allows, act as if impossible target was chosen and don't move
-        if(path.size() > character.getSpeed()) return;
+        if(path.size() > character.getSpeed()) return false;
 
         character.setPosition(targetPosition);
         gameState.stateChange.setCharacterMovePath(character.getName(), path);
+
+        return true;
     }
 
     // ============================= PORTAL FUNCTIONS ================================================================== //
@@ -348,16 +362,15 @@ public class GameLogic {
      * @param attacker character doing the attacking
      * @param attackCoordinate coordinate to attack
      */
-    public static void processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
-        List<Monster> monsters = gameState.getMonstersOnBoard(attackCoordinate.getBoardID());
-        List<Player> players = gameState.getPlayersOnBoard(attackCoordinate.getBoardID());
+    public static boolean processAttack(GameState gameState, Character attacker, Position attackCoordinate) {
+        List<Character> characters = gameState.getCharactersOnBoard(attackCoordinate.getBoardID());
         Map<Position, Integer> affectedPositions = returnAffectedPositions(gameState, attacker, attackCoordinate);
 
         Weapon attackerWeapon = attacker.getWeapon();
 
         // Character gave invalid attack position
         if (affectedPositions == null || affectedPositions.isEmpty()) {
-            return;
+            return false;
         }
 
         gameState.stateChange.characterAttackLocations(
@@ -365,38 +378,29 @@ public class GameLogic {
                                                         new ArrayList<> (affectedPositions.keySet())
                                                         );
 
-        for (Player player: players) {
-            if (player == attacker) {
+        for (Character character: characters) {
+            if (character == attacker) {
                 continue;
             }
-            Position playerPos = player.getPosition();
-            if (affectedPositions.containsKey(playerPos)) {
+            Position characterPos = character.getPosition();
+            if (affectedPositions.containsKey(characterPos)) {
                 // SPECIAL CASE: Hat effect TRIPLED_ON_HIT
                 if(attacker instanceof Player && ((Player) attacker).getHat() != null
                         && ((Player) attacker).getHat().getHatEffect().equals(HatEffect.TRIPLED_ON_HIT)) {
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
                             new TempStatusModifier(attackerWeapon.getOnHitEffect()));
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
-                    player.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                 } else {
                     // Decide whether to add to taggedPlayersDamage
-                    player.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
+                    character.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
                 }
             }
         }
 
-        for (Monster monster: monsters) {
-            if (monster == attacker) {
-                continue;
-            }
-            Position playerPos = monster.getPosition();
-            if (affectedPositions.containsKey(playerPos)) {
-                // Decide whether to add to taggedPlayersDamage
-                monster.hitByWeapon(attacker.getName(), attacker instanceof Player, attackerWeapon, attacker.getAttack());
-            }
-        }
+        return true;
 
     }
 

@@ -1519,47 +1519,47 @@ public final class VisualizerProtos {
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
     java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
-        getTileTimeChangesList();
+        getTileItemChangesList();
     /**
      * <pre>
      * Visualizer will check each tile and draw a treasure chest
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    mech.mania.engine.domain.model.CharacterProtos.Position getTileTimeChanges(int index);
+    mech.mania.engine.domain.model.CharacterProtos.Position getTileItemChanges(int index);
     /**
      * <pre>
      * Visualizer will check each tile and draw a treasure chest
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    int getTileTimeChangesCount();
+    int getTileItemChangesCount();
     /**
      * <pre>
      * Visualizer will check each tile and draw a treasure chest
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
     java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
-        getTileTimeChangesOrBuilderList();
+        getTileItemChangesOrBuilderList();
     /**
      * <pre>
      * Visualizer will check each tile and draw a treasure chest
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileTimeChangesOrBuilder(
+    mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileItemChangesOrBuilder(
         int index);
   }
   /**
@@ -1576,7 +1576,7 @@ public final class VisualizerProtos {
     }
     private GameChange() {
       newPlayerNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      tileTimeChanges_ = java.util.Collections.emptyList();
+      tileItemChanges_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1634,10 +1634,10 @@ public final class VisualizerProtos {
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                tileTimeChanges_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
+                tileItemChanges_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              tileTimeChanges_.add(
+              tileItemChanges_.add(
                   input.readMessage(mech.mania.engine.domain.model.CharacterProtos.Position.parser(), extensionRegistry));
               break;
             }
@@ -1660,7 +1660,7 @@ public final class VisualizerProtos {
           newPlayerNames_ = newPlayerNames_.getUnmodifiableView();
         }
         if (((mutable_bitField0_ & 0x00000004) != 0)) {
-          tileTimeChanges_ = java.util.Collections.unmodifiableList(tileTimeChanges_);
+          tileItemChanges_ = java.util.Collections.unmodifiableList(tileItemChanges_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1802,18 +1802,18 @@ public final class VisualizerProtos {
       return map.get(key);
     }
 
-    public static final int TILE_TIME_CHANGES_FIELD_NUMBER = 3;
-    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> tileTimeChanges_;
+    public static final int TILE_ITEM_CHANGES_FIELD_NUMBER = 3;
+    private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> tileItemChanges_;
     /**
      * <pre>
      * Visualizer will check each tile and draw a treasure chest
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileTimeChangesList() {
-      return tileTimeChanges_;
+    public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileItemChangesList() {
+      return tileItemChanges_;
     }
     /**
      * <pre>
@@ -1821,11 +1821,11 @@ public final class VisualizerProtos {
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
-        getTileTimeChangesOrBuilderList() {
-      return tileTimeChanges_;
+        getTileItemChangesOrBuilderList() {
+      return tileItemChanges_;
     }
     /**
      * <pre>
@@ -1833,10 +1833,10 @@ public final class VisualizerProtos {
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    public int getTileTimeChangesCount() {
-      return tileTimeChanges_.size();
+    public int getTileItemChangesCount() {
+      return tileItemChanges_.size();
     }
     /**
      * <pre>
@@ -1844,10 +1844,10 @@ public final class VisualizerProtos {
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    public mech.mania.engine.domain.model.CharacterProtos.Position getTileTimeChanges(int index) {
-      return tileTimeChanges_.get(index);
+    public mech.mania.engine.domain.model.CharacterProtos.Position getTileItemChanges(int index) {
+      return tileItemChanges_.get(index);
     }
     /**
      * <pre>
@@ -1855,11 +1855,11 @@ public final class VisualizerProtos {
      * if there are any items there
      * </pre>
      *
-     * <code>repeated .character.Position tile_time_changes = 3;</code>
+     * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
-    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileTimeChangesOrBuilder(
+    public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileItemChangesOrBuilder(
         int index) {
-      return tileTimeChanges_.get(index);
+      return tileItemChanges_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1885,8 +1885,8 @@ public final class VisualizerProtos {
           internalGetCharacterChanges(),
           CharacterChangesDefaultEntryHolder.defaultEntry,
           2);
-      for (int i = 0; i < tileTimeChanges_.size(); i++) {
-        output.writeMessage(3, tileTimeChanges_.get(i));
+      for (int i = 0; i < tileItemChanges_.size(); i++) {
+        output.writeMessage(3, tileItemChanges_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -1915,9 +1915,9 @@ public final class VisualizerProtos {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(2, characterChanges__);
       }
-      for (int i = 0; i < tileTimeChanges_.size(); i++) {
+      for (int i = 0; i < tileItemChanges_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, tileTimeChanges_.get(i));
+          .computeMessageSize(3, tileItemChanges_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1938,8 +1938,8 @@ public final class VisualizerProtos {
           .equals(other.getNewPlayerNamesList())) return false;
       if (!internalGetCharacterChanges().equals(
           other.internalGetCharacterChanges())) return false;
-      if (!getTileTimeChangesList()
-          .equals(other.getTileTimeChangesList())) return false;
+      if (!getTileItemChangesList()
+          .equals(other.getTileItemChangesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1959,9 +1959,9 @@ public final class VisualizerProtos {
         hash = (37 * hash) + CHARACTER_CHANGES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetCharacterChanges().hashCode();
       }
-      if (getTileTimeChangesCount() > 0) {
-        hash = (37 * hash) + TILE_TIME_CHANGES_FIELD_NUMBER;
-        hash = (53 * hash) + getTileTimeChangesList().hashCode();
+      if (getTileItemChangesCount() > 0) {
+        hash = (37 * hash) + TILE_ITEM_CHANGES_FIELD_NUMBER;
+        hash = (53 * hash) + getTileItemChangesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2113,7 +2113,7 @@ public final class VisualizerProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getTileTimeChangesFieldBuilder();
+          getTileItemChangesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -2122,11 +2122,11 @@ public final class VisualizerProtos {
         newPlayerNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         internalGetMutableCharacterChanges().clear();
-        if (tileTimeChangesBuilder_ == null) {
-          tileTimeChanges_ = java.util.Collections.emptyList();
+        if (tileItemChangesBuilder_ == null) {
+          tileItemChanges_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
         } else {
-          tileTimeChangesBuilder_.clear();
+          tileItemChangesBuilder_.clear();
         }
         return this;
       }
@@ -2162,14 +2162,14 @@ public final class VisualizerProtos {
         result.newPlayerNames_ = newPlayerNames_;
         result.characterChanges_ = internalGetCharacterChanges();
         result.characterChanges_.makeImmutable();
-        if (tileTimeChangesBuilder_ == null) {
+        if (tileItemChangesBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0)) {
-            tileTimeChanges_ = java.util.Collections.unmodifiableList(tileTimeChanges_);
+            tileItemChanges_ = java.util.Collections.unmodifiableList(tileItemChanges_);
             bitField0_ = (bitField0_ & ~0x00000004);
           }
-          result.tileTimeChanges_ = tileTimeChanges_;
+          result.tileItemChanges_ = tileItemChanges_;
         } else {
-          result.tileTimeChanges_ = tileTimeChangesBuilder_.build();
+          result.tileItemChanges_ = tileItemChangesBuilder_.build();
         }
         onBuilt();
         return result;
@@ -2231,29 +2231,29 @@ public final class VisualizerProtos {
         }
         internalGetMutableCharacterChanges().mergeFrom(
             other.internalGetCharacterChanges());
-        if (tileTimeChangesBuilder_ == null) {
-          if (!other.tileTimeChanges_.isEmpty()) {
-            if (tileTimeChanges_.isEmpty()) {
-              tileTimeChanges_ = other.tileTimeChanges_;
+        if (tileItemChangesBuilder_ == null) {
+          if (!other.tileItemChanges_.isEmpty()) {
+            if (tileItemChanges_.isEmpty()) {
+              tileItemChanges_ = other.tileItemChanges_;
               bitField0_ = (bitField0_ & ~0x00000004);
             } else {
-              ensureTileTimeChangesIsMutable();
-              tileTimeChanges_.addAll(other.tileTimeChanges_);
+              ensureTileItemChangesIsMutable();
+              tileItemChanges_.addAll(other.tileItemChanges_);
             }
             onChanged();
           }
         } else {
-          if (!other.tileTimeChanges_.isEmpty()) {
-            if (tileTimeChangesBuilder_.isEmpty()) {
-              tileTimeChangesBuilder_.dispose();
-              tileTimeChangesBuilder_ = null;
-              tileTimeChanges_ = other.tileTimeChanges_;
+          if (!other.tileItemChanges_.isEmpty()) {
+            if (tileItemChangesBuilder_.isEmpty()) {
+              tileItemChangesBuilder_.dispose();
+              tileItemChangesBuilder_ = null;
+              tileItemChanges_ = other.tileItemChanges_;
               bitField0_ = (bitField0_ & ~0x00000004);
-              tileTimeChangesBuilder_ = 
+              tileItemChangesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getTileTimeChangesFieldBuilder() : null;
+                   getTileItemChangesFieldBuilder() : null;
             } else {
-              tileTimeChangesBuilder_.addAllMessages(other.tileTimeChanges_);
+              tileItemChangesBuilder_.addAllMessages(other.tileItemChanges_);
             }
           }
         }
@@ -2520,17 +2520,17 @@ public final class VisualizerProtos {
         return this;
       }
 
-      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> tileTimeChanges_ =
+      private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> tileItemChanges_ =
         java.util.Collections.emptyList();
-      private void ensureTileTimeChangesIsMutable() {
+      private void ensureTileItemChangesIsMutable() {
         if (!((bitField0_ & 0x00000004) != 0)) {
-          tileTimeChanges_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>(tileTimeChanges_);
+          tileItemChanges_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>(tileItemChanges_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> tileTimeChangesBuilder_;
+          mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> tileItemChangesBuilder_;
 
       /**
        * <pre>
@@ -2538,13 +2538,13 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileTimeChangesList() {
-        if (tileTimeChangesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(tileTimeChanges_);
+      public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileItemChangesList() {
+        if (tileItemChangesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tileItemChanges_);
         } else {
-          return tileTimeChangesBuilder_.getMessageList();
+          return tileItemChangesBuilder_.getMessageList();
         }
       }
       /**
@@ -2553,13 +2553,13 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public int getTileTimeChangesCount() {
-        if (tileTimeChangesBuilder_ == null) {
-          return tileTimeChanges_.size();
+      public int getTileItemChangesCount() {
+        if (tileItemChangesBuilder_ == null) {
+          return tileItemChanges_.size();
         } else {
-          return tileTimeChangesBuilder_.getCount();
+          return tileItemChangesBuilder_.getCount();
         }
       }
       /**
@@ -2568,13 +2568,13 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.Position getTileTimeChanges(int index) {
-        if (tileTimeChangesBuilder_ == null) {
-          return tileTimeChanges_.get(index);
+      public mech.mania.engine.domain.model.CharacterProtos.Position getTileItemChanges(int index) {
+        if (tileItemChangesBuilder_ == null) {
+          return tileItemChanges_.get(index);
         } else {
-          return tileTimeChangesBuilder_.getMessage(index);
+          return tileItemChangesBuilder_.getMessage(index);
         }
       }
       /**
@@ -2583,19 +2583,19 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder setTileTimeChanges(
+      public Builder setTileItemChanges(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
-        if (tileTimeChangesBuilder_ == null) {
+        if (tileItemChangesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.set(index, value);
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.set(index, value);
           onChanged();
         } else {
-          tileTimeChangesBuilder_.setMessage(index, value);
+          tileItemChangesBuilder_.setMessage(index, value);
         }
         return this;
       }
@@ -2605,16 +2605,16 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder setTileTimeChanges(
+      public Builder setTileItemChanges(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
-        if (tileTimeChangesBuilder_ == null) {
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.set(index, builderForValue.build());
+        if (tileItemChangesBuilder_ == null) {
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.set(index, builderForValue.build());
           onChanged();
         } else {
-          tileTimeChangesBuilder_.setMessage(index, builderForValue.build());
+          tileItemChangesBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
@@ -2624,18 +2624,18 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder addTileTimeChanges(mech.mania.engine.domain.model.CharacterProtos.Position value) {
-        if (tileTimeChangesBuilder_ == null) {
+      public Builder addTileItemChanges(mech.mania.engine.domain.model.CharacterProtos.Position value) {
+        if (tileItemChangesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.add(value);
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.add(value);
           onChanged();
         } else {
-          tileTimeChangesBuilder_.addMessage(value);
+          tileItemChangesBuilder_.addMessage(value);
         }
         return this;
       }
@@ -2645,19 +2645,19 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder addTileTimeChanges(
+      public Builder addTileItemChanges(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
-        if (tileTimeChangesBuilder_ == null) {
+        if (tileItemChangesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.add(index, value);
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.add(index, value);
           onChanged();
         } else {
-          tileTimeChangesBuilder_.addMessage(index, value);
+          tileItemChangesBuilder_.addMessage(index, value);
         }
         return this;
       }
@@ -2667,16 +2667,16 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder addTileTimeChanges(
+      public Builder addTileItemChanges(
           mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
-        if (tileTimeChangesBuilder_ == null) {
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.add(builderForValue.build());
+        if (tileItemChangesBuilder_ == null) {
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.add(builderForValue.build());
           onChanged();
         } else {
-          tileTimeChangesBuilder_.addMessage(builderForValue.build());
+          tileItemChangesBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
@@ -2686,16 +2686,16 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder addTileTimeChanges(
+      public Builder addTileItemChanges(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
-        if (tileTimeChangesBuilder_ == null) {
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.add(index, builderForValue.build());
+        if (tileItemChangesBuilder_ == null) {
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.add(index, builderForValue.build());
           onChanged();
         } else {
-          tileTimeChangesBuilder_.addMessage(index, builderForValue.build());
+          tileItemChangesBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
@@ -2705,17 +2705,17 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder addAllTileTimeChanges(
+      public Builder addAllTileItemChanges(
           java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Position> values) {
-        if (tileTimeChangesBuilder_ == null) {
-          ensureTileTimeChangesIsMutable();
+        if (tileItemChangesBuilder_ == null) {
+          ensureTileItemChangesIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, tileTimeChanges_);
+              values, tileItemChanges_);
           onChanged();
         } else {
-          tileTimeChangesBuilder_.addAllMessages(values);
+          tileItemChangesBuilder_.addAllMessages(values);
         }
         return this;
       }
@@ -2725,15 +2725,15 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder clearTileTimeChanges() {
-        if (tileTimeChangesBuilder_ == null) {
-          tileTimeChanges_ = java.util.Collections.emptyList();
+      public Builder clearTileItemChanges() {
+        if (tileItemChangesBuilder_ == null) {
+          tileItemChanges_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
-          tileTimeChangesBuilder_.clear();
+          tileItemChangesBuilder_.clear();
         }
         return this;
       }
@@ -2743,15 +2743,15 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public Builder removeTileTimeChanges(int index) {
-        if (tileTimeChangesBuilder_ == null) {
-          ensureTileTimeChangesIsMutable();
-          tileTimeChanges_.remove(index);
+      public Builder removeTileItemChanges(int index) {
+        if (tileItemChangesBuilder_ == null) {
+          ensureTileItemChangesIsMutable();
+          tileItemChanges_.remove(index);
           onChanged();
         } else {
-          tileTimeChangesBuilder_.remove(index);
+          tileItemChangesBuilder_.remove(index);
         }
         return this;
       }
@@ -2761,11 +2761,11 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getTileTimeChangesBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getTileItemChangesBuilder(
           int index) {
-        return getTileTimeChangesFieldBuilder().getBuilder(index);
+        return getTileItemChangesFieldBuilder().getBuilder(index);
       }
       /**
        * <pre>
@@ -2773,13 +2773,13 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileTimeChangesOrBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileItemChangesOrBuilder(
           int index) {
-        if (tileTimeChangesBuilder_ == null) {
-          return tileTimeChanges_.get(index);  } else {
-          return tileTimeChangesBuilder_.getMessageOrBuilder(index);
+        if (tileItemChangesBuilder_ == null) {
+          return tileItemChanges_.get(index);  } else {
+          return tileItemChangesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
@@ -2788,14 +2788,14 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
       public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
-           getTileTimeChangesOrBuilderList() {
-        if (tileTimeChangesBuilder_ != null) {
-          return tileTimeChangesBuilder_.getMessageOrBuilderList();
+           getTileItemChangesOrBuilderList() {
+        if (tileItemChangesBuilder_ != null) {
+          return tileItemChangesBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(tileTimeChanges_);
+          return java.util.Collections.unmodifiableList(tileItemChanges_);
         }
       }
       /**
@@ -2804,10 +2804,10 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addTileTimeChangesBuilder() {
-        return getTileTimeChangesFieldBuilder().addBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addTileItemChangesBuilder() {
+        return getTileItemChangesFieldBuilder().addBuilder(
             mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
       }
       /**
@@ -2816,11 +2816,11 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
-      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addTileTimeChangesBuilder(
+      public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addTileItemChangesBuilder(
           int index) {
-        return getTileTimeChangesFieldBuilder().addBuilder(
+        return getTileItemChangesFieldBuilder().addBuilder(
             index, mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance());
       }
       /**
@@ -2829,25 +2829,25 @@ public final class VisualizerProtos {
        * if there are any items there
        * </pre>
        *
-       * <code>repeated .character.Position tile_time_changes = 3;</code>
+       * <code>repeated .character.Position tile_item_changes = 3;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
-           getTileTimeChangesBuilderList() {
-        return getTileTimeChangesFieldBuilder().getBuilderList();
+           getTileItemChangesBuilderList() {
+        return getTileItemChangesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
           mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
-          getTileTimeChangesFieldBuilder() {
-        if (tileTimeChangesBuilder_ == null) {
-          tileTimeChangesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getTileItemChangesFieldBuilder() {
+        if (tileItemChangesBuilder_ == null) {
+          tileItemChangesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               mech.mania.engine.domain.model.CharacterProtos.Position, mech.mania.engine.domain.model.CharacterProtos.Position.Builder, mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder>(
-                  tileTimeChanges_,
+                  tileItemChanges_,
                   ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
-          tileTimeChanges_ = null;
+          tileItemChanges_ = null;
         }
-        return tileTimeChangesBuilder_;
+        return tileItemChangesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5047,7 +5047,7 @@ public final class VisualizerProtos {
       "mmunication.GameChange\"\211\002\n\nGameChange\022\030\n" +
       "\020new_player_names\030\001 \003(\t\022Q\n\021character_cha" +
       "nges\030\002 \003(\01326.player_communication.GameCh" +
-      "ange.CharacterChangesEntry\022.\n\021tile_time_" +
+      "ange.CharacterChangesEntry\022.\n\021tile_item_" +
       "changes\030\003 \003(\0132\023.character.Position\032^\n\025Ch" +
       "aracterChangesEntry\022\013\n\003key\030\001 \001(\t\0224\n\005valu" +
       "e\030\002 \001(\0132%.player_communication.Character" +
@@ -5085,7 +5085,7 @@ public final class VisualizerProtos {
     internal_static_player_communication_GameChange_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_GameChange_descriptor,
-        new java.lang.String[] { "NewPlayerNames", "CharacterChanges", "TileTimeChanges", });
+        new java.lang.String[] { "NewPlayerNames", "CharacterChanges", "TileItemChanges", });
     internal_static_player_communication_GameChange_CharacterChangesEntry_descriptor =
       internal_static_player_communication_GameChange_descriptor.getNestedTypes().get(0);
     internal_static_player_communication_GameChange_CharacterChangesEntry_fieldAccessorTable = new
