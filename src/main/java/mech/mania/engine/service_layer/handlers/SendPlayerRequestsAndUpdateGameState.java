@@ -105,6 +105,16 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         List<Callable<Map.Entry<String, CharacterProtos.CharacterDecision>>> tasks = new ArrayList<>();
         for (Map.Entry<String, PlayerConnectInfo> playerInfo : playerInfoMap.entrySet()) {
             if (uow.getGameState().getPlayer(playerInfo.getKey()) == null) {
+                // Don't contact them for a decision because they aren't in the game. Add a fake NONE decision to alert
+                //  GameLogic to add them to the game
+                tasks.add(() -> new AbstractMap.SimpleEntry<>(
+                        playerInfo.getKey(),
+                        CharacterProtos.CharacterDecision.newBuilder()
+                                .setDecisionType(CharacterProtos.DecisionType.NONE)
+                                .setIndex(-1)
+                                .build()
+                ));
+
                 continue;
             }
 
@@ -129,8 +139,8 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                     http.setDoOutput(true);
                     http.setInstanceFollowRedirects(false);
                     // conservative estimate on how many players each core will handle in serial
-                    http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / numPlayers);
-                    http.setReadTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / numPlayers);
+                    http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
+                    http.setReadTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
 
                     PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(uow.getGameState(), playerName);
                     turn.writeTo(http.getOutputStream());
