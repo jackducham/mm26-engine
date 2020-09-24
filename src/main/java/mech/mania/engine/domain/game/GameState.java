@@ -294,8 +294,7 @@ public class GameState {
      */
     public void addNewPlayer(String playerName) {
         addBoardFromXML(BoardFactory.createHomeBoardReader(playerName));
-        playerNames.put(playerName, new Player(playerName, Player.PLAYER_SPRITE,
-                new Position(Player.SPAWN_X, Player.SPAWN_Y, playerName)));
+        playerNames.put(playerName, new Player(playerName, new Position(Player.SPAWN_X, Player.SPAWN_Y, playerName)));
         stateChange.addCharacter(playerName);
     }
 
