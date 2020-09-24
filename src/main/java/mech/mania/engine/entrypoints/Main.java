@@ -95,7 +95,7 @@ public class Main {
             Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));
 
             bus.handle(new CommandStartTurn(turn));
-            bus.handle(new EventSendHistoryObjects());
+            bus.handle(new EventStoreHistoryObjects());
 
             // have the next turn start after waiting millisBetweenTurns
             // after this turn began (make sure time between turns is
@@ -123,5 +123,9 @@ public class Main {
         bus.handle(new CommandStopInfraServer());
         bus.handle(new CommandStopVisualizerServer());
         bus.handle(new CommandStopAPIServer());
+
+        if (enableInfra) {
+            while (true) { }
+        }
     }
 }

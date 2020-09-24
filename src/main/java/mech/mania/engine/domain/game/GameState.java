@@ -37,7 +37,6 @@ public class GameState {
         monsterNames = new HashMap<>();
         stateChange = new GameChange();
 
-        // @TODO: Create actual pvp board (uncomment once mm26_mp_map.tmx is usable)
         addBoardFromXML(BoardFactory.createPvpBoardReader());
     }
 
@@ -293,6 +292,10 @@ public class GameState {
      * @param playerName name of the player being added
      */
     public void addNewPlayer(String playerName) {
+        if (playerName.equals("pvp") || getAllCharacters().containsKey(playerName)) {
+            return;
+        }
+
         addBoardFromXML(BoardFactory.createHomeBoardReader(playerName));
         playerNames.put(playerName, new Player(playerName, new Position(Player.SPAWN_X, Player.SPAWN_Y, playerName)));
         stateChange.addCharacter(playerName);

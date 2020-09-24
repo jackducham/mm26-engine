@@ -15,9 +15,17 @@ public class RepositoryFake implements RepositoryAbstract {
 
     private static final Logger LOGGER = Logger.getLogger( RepositoryFake.class.getName() );
 
+    private int currentTurn;
     private final Map<Integer, GameState> gameStates = new HashMap<>();
     private final Map<Integer, VisualizerProtos.GameChange> visualizerChanges = new HashMap<>();
     private final Map<Integer, CharacterProtos.PlayerStatsBundle> playerStatsBundles = new HashMap<>();
+
+    @Override
+    public int storeCurrentTurn(int turn) {
+        LOGGER.fine("Setting current turn to " + turn);
+        currentTurn = turn;
+        return 0;
+    }
 
     @Override
     public int storeGameState(final int turn, final GameState gameState) {
@@ -46,11 +54,12 @@ public class RepositoryFake implements RepositoryAbstract {
     @Override
     public GameState getGameState(int turn) {
         LOGGER.warning("Attempting to get stored GameState from fake repository.");
-        return new GameState();
+        return gameStates.get(turn);
     }
 
     @Override
     public void reset() {
+        currentTurn = 0;
         playerStatsBundles.clear();
         gameStates.clear();
         visualizerChanges.clear();

@@ -69,10 +69,12 @@ public class GameLogic {
         // ========== CONVERT DECISIONS AND REMOVE DECISIONS MADE BY DEAD PLAYERS ========== \\
         Map<String, CharacterDecision> allDecisions = new HashMap<>();
         for (Map.Entry<String, CharacterProtos.CharacterDecision> entry : contestantDecisions.entrySet()) {
-            // Remove decision from dead players and NONE decisions
-            if(!gameState.getPlayer(entry.getKey()).isDead()
-                    && entry.getValue() != null
-                    && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
+            // Remove decision from nonexistent or dead players and NONE decisions
+            if(gameState.getPlayer(entry.getKey()) != null
+                && !gameState.getPlayer(entry.getKey()).isDead()
+                && entry.getValue() != null
+                && entry.getValue().getDecisionType() != CharacterProtos.DecisionType.NONE) {
+
                 CharacterDecision newDecision = new CharacterDecision(entry.getValue());
                 allDecisions.put(entry.getKey(), newDecision);
             }

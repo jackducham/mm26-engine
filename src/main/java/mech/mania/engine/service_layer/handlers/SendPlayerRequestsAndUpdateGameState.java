@@ -28,12 +28,60 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         Map<String, CharacterProtos.CharacterDecision> playerDecisionMap = getSuccessfulPlayerDecisions(uow);
         GameState updatedGameState = GameLogic.doTurn(uow.getGameState(), playerDecisionMap);
         uow.setGameState(updatedGameState);
+        shutdownExpiredPlayerServers(uow);
+    }
+
+    /**
+     * Shuts down all servers in the expiredConnectInfo list of the UOW
+     * @param uow the Unit of work
+     */
+    private void shutdownExpiredPlayerServers(UnitOfWorkAbstract uow) {
+        // For each expired server, shut it down and remove it from the list
+        for(Iterator<PlayerConnectInfo> itr = uow.getExpiredConnectInfoList().iterator(); itr.hasNext();){
+            PlayerConnectInfo playerConnectInfo = itr.next();
+
+            URL url;
+            HttpURLConnection http = null;
+            try {
+                // https://stackoverflow.com/questions/3324717/sending-http-post-request-in-java
+                url = buildShutdownUrl(playerConnectInfo);
+                URLConnection con = url.openConnection();
+                http = (HttpURLConnection) con;
+            } catch (IOException e) {
+                LOGGER.warning(String.format("MalformedURLException: could not shutdown player at url %s: %s",
+                        playerConnectInfo.getIpAddr(), e.getMessage()));
+            }
+
+            assert http != null;
+            try {
+                http.setRequestMethod("GET");
+                http.setConnectTimeout(1000);
+                http.setReadTimeout(1000);
+                http.setInstanceFollowRedirects(false);
+
+                // Send the signal
+                http.connect();
+
+                // TODO: verify result
+
+                // Mark this player server and removed
+                itr.remove();
+            } // TODO: Catch a connectionRefused exception and assume that means the instance was already shut down
+            catch(ConnectException e) {
+                LOGGER.warning(String.format("ConnectException: Instance already shutdown? Error: %s", e));
+            }
+            catch(IOException e) {
+                LOGGER.warning(String.format("IOException: could not shutdown player at url %s: %s",
+                        playerConnectInfo.getIpAddr(), e));
+            }
+        }
     }
 
 
     /**
      * Get player decisions from all players given a UnitOfWork
      * (containing a PlayerInfoMap) and return the successful requests.
+     * Calls
      */
     private Map<String, CharacterProtos.CharacterDecision> getSuccessfulPlayerDecisions(UnitOfWorkAbstract uow) {
         Map<String, PlayerConnectInfo> playerInfoMap = uow.getPlayerConnectInfoMap();
@@ -43,7 +91,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         }
 
         AtomicInteger errors = new AtomicInteger();
-        AtomicInteger numPlayers = new AtomicInteger();
+        AtomicInteger numTotalDecisions = new AtomicInteger();
 
         ConcurrentMap<Class<? extends Exception>, Integer> exceptions = new ConcurrentHashMap<>();
 
@@ -52,8 +100,24 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
         // https://stackoverflow.com/questions/21670451/how-to-send-multiple-asynchronous-requests-to-different-web-services
         ExecutorService pool = Executors.newFixedThreadPool(cores);
 
+        int numPlayers = playerInfoMap.size();
+
         List<Callable<Map.Entry<String, CharacterProtos.CharacterDecision>>> tasks = new ArrayList<>();
         for (Map.Entry<String, PlayerConnectInfo> playerInfo : playerInfoMap.entrySet()) {
+            if (uow.getGameState().getPlayer(playerInfo.getKey()) == null) {
+                // Don't contact them for a decision because they aren't in the game. Add a fake NONE decision to alert
+                //  GameLogic to add them to the game
+                tasks.add(() -> new AbstractMap.SimpleEntry<>(
+                        playerInfo.getKey(),
+                        CharacterProtos.CharacterDecision.newBuilder()
+                                .setDecisionType(CharacterProtos.DecisionType.NONE)
+                                .setIndex(-1)
+                                .build()
+                ));
+
+                continue;
+            }
+
             tasks.add(() -> {
                 URL url;
                 CharacterProtos.CharacterDecision decision = null;
@@ -73,6 +137,8 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 try {
                     http.setRequestMethod("POST");
                     http.setDoOutput(true);
+                    http.setInstanceFollowRedirects(false);
+                    // conservative estimate on how many players each core will handle in serial
                     http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
                     http.setReadTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
 
@@ -103,7 +169,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 } finally {
                     http.disconnect();
                 }
-                numPlayers.getAndIncrement();
+                numTotalDecisions.getAndIncrement();
 
                 return new AbstractMap.SimpleEntry<>(playerName, decision);
             });
@@ -125,7 +191,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
             LOGGER.warning(String.format("Exception encountered while getting PlayerDecisions (returning no valid decisions): %s", e.getMessage()));
         }
 
-        LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors: %s.", numPlayers.get() - errors.get(), errors.get(), exceptions));
+        LOGGER.info(String.format("Successfully sent PlayerTurn to %d players with %d errors: %s.", numTotalDecisions.get() - errors.get(), errors.get(), exceptions));
         return map;
     }
 
