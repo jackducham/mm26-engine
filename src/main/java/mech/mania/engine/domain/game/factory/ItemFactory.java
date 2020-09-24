@@ -3,7 +3,7 @@ package mech.mania.engine.domain.game.factory;
 import mech.mania.engine.domain.game.items.*;
 
 import java.util.Random;
-//TODO: Hat maker, accessory maker, add a return to everything besides weapons, add names, add name generation, add accessories, update wiki with items, change health values by a factor of 10, combine hat and accessory makers, just return a different kind
+//TODO: add names, add name generation, add accessories, update wiki with items
 public class ItemFactory {
     public static Item generateItem(int level) {
         Random rand = new Random();
@@ -898,7 +898,7 @@ public class ItemFactory {
 
             if(level < 5) {
                 attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(40), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
                 for(int i = 0; i < 3 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(3);
                     if(attributeToRemove == 0) {
@@ -911,7 +911,7 @@ public class ItemFactory {
                 }
             } else if (level < 20) {
                 attributes = 1 + rand.nextInt(2);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(8), rand.nextDouble() * 0.05, 0, 0, 1 + rand.nextInt(10), 0, 1 + rand.nextInt(15), rand.nextDouble() * 0.1, 1 + rand.nextInt(5));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(80), rand.nextDouble() * 0.05, 0, 0, 1 + rand.nextInt(10), 0, 1 + rand.nextInt(15), rand.nextDouble() * 0.1, 1 + rand.nextInt(5));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -930,7 +930,7 @@ public class ItemFactory {
                 }
             } else if (level < 30) {
                 attributes = 1 + rand.nextInt(2);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(12), rand.nextDouble() * 0.1, 0, 0, 1 + rand.nextInt(25), 0, 1 + rand.nextInt(20), rand.nextDouble() * 0.1, 1 + rand.nextInt(7));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(120), rand.nextDouble() * 0.1, 0, 0, 1 + rand.nextInt(25), 0, 1 + rand.nextInt(20), rand.nextDouble() * 0.1, 1 + rand.nextInt(7));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -949,7 +949,7 @@ public class ItemFactory {
                 }
             } else if (level < 40) {
                 attributes = 1 + rand.nextInt(3);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(16), rand.nextDouble() * 0.15, 0, 0, 1 + rand.nextInt(35), 0, 1 + rand.nextInt(25), rand.nextDouble() * 0.15, 1 + rand.nextInt(10));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(160), rand.nextDouble() * 0.15, 0, 0, 1 + rand.nextInt(35), 0, 1 + rand.nextInt(25), rand.nextDouble() * 0.15, 1 + rand.nextInt(10));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -968,7 +968,7 @@ public class ItemFactory {
                 }
             } else if (level < 50) {
                 attributes = 1 + rand.nextInt(4);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(20), rand.nextDouble() * 0.2, 0, 0, 1 + rand.nextInt(50), 0, 1 + rand.nextInt(30), rand.nextDouble() * 0.2, 1 + rand.nextInt(14));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(200), rand.nextDouble() * 0.2, 0, 0, 1 + rand.nextInt(50), 0, 1 + rand.nextInt(30), rand.nextDouble() * 0.2, 1 + rand.nextInt(14));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -987,7 +987,7 @@ public class ItemFactory {
                 }
             } else if (level < 60) {
                 attributes = 1 + rand.nextInt(4);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(30), rand.nextDouble() * 0.25, 0, 0, 1 + rand.nextInt(65), 0, 1 + rand.nextInt(40), rand.nextDouble() * 0.25, 1 + rand.nextInt(18));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(300), rand.nextDouble() * 0.25, 0, 0, 1 + rand.nextInt(65), 0, 1 + rand.nextInt(40), rand.nextDouble() * 0.25, 1 + rand.nextInt(18));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -1006,7 +1006,7 @@ public class ItemFactory {
                 }
             } else if (level < 70) {
                 attributes = 1 + rand.nextInt(5);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(40), rand.nextDouble() * 0.3, 0, 0, 1 + rand.nextInt(80), 0, 1 + rand.nextInt(50), rand.nextDouble() * 0.3, 1 + rand.nextInt(25));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(400), rand.nextDouble() * 0.3, 0, 0, 1 + rand.nextInt(80), 0, 1 + rand.nextInt(50), rand.nextDouble() * 0.3, 1 + rand.nextInt(25));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -1025,7 +1025,7 @@ public class ItemFactory {
                 }
             } else {
                 attributes = 1 + rand.nextInt(5);
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(55), rand.nextDouble() * 0.4, 0, 0, 1 + rand.nextInt(110), 0, 1 + rand.nextInt(60), rand.nextDouble() * 0.35, 1 + rand.nextInt(30));
+                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(550), rand.nextDouble() * 0.4, 0, 0, 1 + rand.nextInt(110), 0, 1 + rand.nextInt(60), rand.nextDouble() * 0.35, 1 + rand.nextInt(30));
                 for(int i = 0; i < 6 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(6);
                     if(attributeToRemove == 0) {
@@ -1043,13 +1043,16 @@ public class ItemFactory {
                     }
                 }
             }
+
+            return new Clothes(clothesStats);
+
         } else if (itemTypeDecider == 2) {//~~~~~~~~~~~~~~~~~~Shoes      Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier shoesStats;
             int attributes;
 
             if(level < 5) {
                 attributes = 1 + rand.nextInt(2);
-                shoesStats = new StatusModifier(1, 0, 1 + rand.nextInt(2), 0, 0, 0, 0, 0, 1, 0, 1);
+                shoesStats = new StatusModifier(1, 0, 1 + rand.nextInt(20), 0, 0, 0, 0, 0, 1, 0, 1);
                 for(int i = 0; i < 4 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(4);
                     if(attributeToRemove == 0) {
@@ -1064,7 +1067,7 @@ public class ItemFactory {
                 }
             } else if (level < 20) {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(2), rand.nextDouble() * 0.05, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(2));
+                shoesStats = new StatusModifier(1 + rand.nextInt(2), rand.nextDouble() * 0.05, 1 + rand.nextInt(40), 0, 0, 0, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(2));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1081,7 +1084,7 @@ public class ItemFactory {
                 }
             } else if (level < 30) {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(2), rand.nextDouble() * 0.1, 1 + rand.nextInt(8), 0, 0, 0, 0, 0, 1 + rand.nextInt(4), 0, 1 + rand.nextInt(3));
+                shoesStats = new StatusModifier(1 + rand.nextInt(2), rand.nextDouble() * 0.1, 1 + rand.nextInt(80), 0, 0, 0, 0, 0, 1 + rand.nextInt(4), 0, 1 + rand.nextInt(3));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1098,7 +1101,7 @@ public class ItemFactory {
                 }
             } else if (level < 40) {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(3), rand.nextDouble() * 0.15, 1 + rand.nextInt(11), 0, 0, 0, 0, 0, 1 + rand.nextInt(6), 0, 1 + rand.nextInt(4));
+                shoesStats = new StatusModifier(1 + rand.nextInt(3), rand.nextDouble() * 0.15, 1 + rand.nextInt(110), 0, 0, 0, 0, 0, 1 + rand.nextInt(6), 0, 1 + rand.nextInt(4));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1115,7 +1118,7 @@ public class ItemFactory {
                 }
             } else if (level < 50) {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(3), rand.nextDouble() * 0.2, 1 + rand.nextInt(14), 0, 0, 0, 0, 0, 1 + rand.nextInt(8), 0, 1 + rand.nextInt(5));
+                shoesStats = new StatusModifier(1 + rand.nextInt(3), rand.nextDouble() * 0.2, 1 + rand.nextInt(140), 0, 0, 0, 0, 0, 1 + rand.nextInt(8), 0, 1 + rand.nextInt(5));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1132,7 +1135,7 @@ public class ItemFactory {
                 }
             } else if (level < 60) {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(4), rand.nextDouble() * 0.25, 1 + rand.nextInt(17), 0, 0, 0, 0, 0, 1 + rand.nextInt(11), 0, 1 + rand.nextInt(6));
+                shoesStats = new StatusModifier(1 + rand.nextInt(4), rand.nextDouble() * 0.25, 1 + rand.nextInt(170), 0, 0, 0, 0, 0, 1 + rand.nextInt(11), 0, 1 + rand.nextInt(6));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1149,7 +1152,7 @@ public class ItemFactory {
                 }
             } else if (level < 70) {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(4), rand.nextDouble() * 0.3, 1 + rand.nextInt(21), 0, 0, 0, 0, 0, 1 + rand.nextInt(15), 0, 1 + rand.nextInt(7));
+                shoesStats = new StatusModifier(1 + rand.nextInt(4), rand.nextDouble() * 0.3, 1 + rand.nextInt(210), 0, 0, 0, 0, 0, 1 + rand.nextInt(15), 0, 1 + rand.nextInt(7));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1166,7 +1169,7 @@ public class ItemFactory {
                 }
             } else {
                 attributes = 1 + rand.nextInt(3);
-                shoesStats = new StatusModifier(1 + rand.nextInt(5), rand.nextDouble() * 0.35, 1 + rand.nextInt(25), 0, 0, 0, 0, 0, 1 + rand.nextInt(20), 0, 1 + rand.nextInt(8));
+                shoesStats = new StatusModifier(1 + rand.nextInt(5), rand.nextDouble() * 0.35, 1 + rand.nextInt(250), 0, 0, 0, 0, 0, 1 + rand.nextInt(20), 0, 1 + rand.nextInt(8));
                 for(int i = 0; i < 5 - attributes; ++i) {
                     int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
@@ -1182,224 +1185,383 @@ public class ItemFactory {
                     }
                 }
             }
+
+            return new Shoes(shoesStats);
+
         } else if (itemTypeDecider == 3) {//~~~~~~~~~~~~~~~~~~Hat        Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
-            StatusModifier clothesStats;
+            StatusModifier hatStats;
             int attributes;
 
-            if(level < 5) {
+            if(level < 20) {
                 attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(60), 0, 1 + rand.nextInt(2), rand.nextDouble() * 0.1, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(2));
+                for(int i = 0; i < 5 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setFlatDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
-                    }
-                }
-            } else if (level < 20) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
-                    if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
-                    } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
-                    } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 30) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(4);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(90), 0, 1 + rand.nextInt(4), rand.nextDouble() * 0.1, 1 + rand.nextInt(10), rand.nextDouble() * 0.05, 1 + rand.nextInt(3), 0, 1 + rand.nextInt(3));
+                for(int i = 0; i < 7 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(7);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 4){
+                        hatStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        hatStats.setFlatDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 40) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(6);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(130), 0, 1 + rand.nextInt(6), rand.nextDouble() * 0.15, 1 + rand.nextInt(30), rand.nextDouble() * 0.05, 1 + rand.nextInt(4), rand.nextDouble() * 0.05, 1 + rand.nextInt(4));
+                for(int i = 0; i < 8 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(8);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 4){
+                        hatStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        hatStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 6) {
+                        hatStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 50) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(6);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(170), rand.nextDouble() * 0.1, 1 + rand.nextInt(8), rand.nextDouble() * 0.2, 1 + rand.nextInt(60), rand.nextDouble() * 0.1, 1 + rand.nextInt(5), rand.nextDouble() * 0.1, 1 + rand.nextInt(5));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        hatStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        hatStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        hatStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        hatStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 60) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(7);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(220), rand.nextDouble() * 0.15, 1 + rand.nextInt(10), rand.nextDouble() * 0.2, 1 + rand.nextInt(80), rand.nextDouble() * 0.1, 1 + rand.nextInt(6), rand.nextDouble() * 0.15, 1 + rand.nextInt(6));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        hatStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        hatStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        hatStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        hatStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 70) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(8);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(260), rand.nextDouble() * 0.2, 1 + rand.nextInt(14), rand.nextDouble() * 0.2, 1 + rand.nextInt(110), rand.nextDouble() * 0.15, 1 + rand.nextInt(7), rand.nextDouble() * 0.2, 1 + rand.nextInt(8));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        hatStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        hatStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        hatStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        hatStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(9);
+                hatStats = new StatusModifier(0, 0, 1 + rand.nextInt(350), rand.nextDouble() * 0.25, 1 + rand.nextInt(18), rand.nextDouble() * 0.2, 1 + rand.nextInt(150), rand.nextDouble() * 0.2, 1 + rand.nextInt(8), rand.nextDouble() * 0.25, 1 + rand.nextInt(10));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        hatStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        hatStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        hatStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        hatStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        hatStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        hatStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        hatStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        hatStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        hatStats.setFlatRegenPerTurn(0);
                     }
                 }
             }
+            HatEffect effect = HatEffect.NONE;
+            int hatEffectYN = rand.nextInt(2);
+            if(hatEffectYN == 1) {
+                int hatEffect = rand.nextInt(6);
+                if (hatEffect == 0) {
+                    effect = HatEffect.CLOTHES_BOOST;
+                } else if (hatEffect == 1) {
+                    effect = HatEffect.SHOES_BOOST;
+                } else if (hatEffect == 2) {
+                    effect = HatEffect.WEAPON_BOOST;
+                } else if (hatEffect == 3) {
+                    effect = HatEffect.LINGERING_POTIONS;
+                } else if (hatEffect == 4) {
+                    effect = HatEffect.STACKING_BONUS;
+                } else {
+                    effect = HatEffect.TRIPLED_ON_HIT;
+                }
+            }
+
+            return new Hat(hatStats, effect);
+
         } else if (itemTypeDecider == 4) {//~~~~~~~~~~~~~~~~~~Accessory  Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
-            StatusModifier clothesStats;
+            StatusModifier accessoryStats;
             int attributes;
 
-            if(level < 5) {
+            if(level < 20) {
                 attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(60), 0, 1 + rand.nextInt(2), rand.nextDouble() * 0.1, 0, 0, 1 + rand.nextInt(2), 0, 1 + rand.nextInt(2));
+                for(int i = 0; i < 5 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(5);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setFlatDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
-                    }
-                }
-            } else if (level < 20) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
-                    if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
-                    } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
-                    } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 30) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(4);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(90), 0, 1 + rand.nextInt(4), rand.nextDouble() * 0.1, 1 + rand.nextInt(10), rand.nextDouble() * 0.05, 1 + rand.nextInt(3), 0, 1 + rand.nextInt(3));
+                for(int i = 0; i < 7 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(7);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 4){
+                        accessoryStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        accessoryStats.setFlatDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 40) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(6);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(130), 0, 1 + rand.nextInt(6), rand.nextDouble() * 0.15, 1 + rand.nextInt(30), rand.nextDouble() * 0.05, 1 + rand.nextInt(4), rand.nextDouble() * 0.05, 1 + rand.nextInt(4));
+                for(int i = 0; i < 8 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(8);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 4){
+                        accessoryStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        accessoryStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 6) {
+                        accessoryStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 50) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(6);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(170), rand.nextDouble() * 0.1, 1 + rand.nextInt(8), rand.nextDouble() * 0.2, 1 + rand.nextInt(60), rand.nextDouble() * 0.1, 1 + rand.nextInt(5), rand.nextDouble() * 0.1, 1 + rand.nextInt(5));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        accessoryStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        accessoryStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        accessoryStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        accessoryStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 60) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(7);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(220), rand.nextDouble() * 0.15, 1 + rand.nextInt(10), rand.nextDouble() * 0.2, 1 + rand.nextInt(80), rand.nextDouble() * 0.1, 1 + rand.nextInt(6), rand.nextDouble() * 0.15, 1 + rand.nextInt(6));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        accessoryStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        accessoryStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        accessoryStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        accessoryStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else if (level < 70) {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(8);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(260), rand.nextDouble() * 0.2, 1 + rand.nextInt(14), rand.nextDouble() * 0.2, 1 + rand.nextInt(110), rand.nextDouble() * 0.15, 1 + rand.nextInt(7), rand.nextDouble() * 0.2, 1 + rand.nextInt(8));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        accessoryStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        accessoryStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        accessoryStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        accessoryStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             } else {
-                attributes = 1;
-                clothesStats = new StatusModifier(0, 0, 1 + rand.nextInt(4), 0, 0, 0, 0, 0, 1 + rand.nextInt(5), 0, 1 + rand.nextInt(3));
-                for(int i = 0; i < 3 - attributes; ++i) {
-                    int attributeToRemove = rand.nextInt(3);
+                attributes = 1 + rand.nextInt(9);
+                accessoryStats = new StatusModifier(0, 0, 1 + rand.nextInt(350), rand.nextDouble() * 0.25, 1 + rand.nextInt(18), rand.nextDouble() * 0.2, 1 + rand.nextInt(150), rand.nextDouble() * 0.2, 1 + rand.nextInt(8), rand.nextDouble() * 0.25, 1 + rand.nextInt(10));
+                for(int i = 0; i < 9 - attributes; ++i) {
+                    int attributeToRemove = rand.nextInt(9);
                     if(attributeToRemove == 0) {
-                        clothesStats.setFlatHealthChange(0);
+                        accessoryStats.setFlatHealthChange(0);
                     } else if (attributeToRemove == 1){
-                        clothesStats.setFlatDefenseChange(0);
+                        accessoryStats.setPercentHealthChange(0);
+                    } else if (attributeToRemove == 2){
+                        accessoryStats.setFlatExperienceChange(0);
+                    } else if (attributeToRemove == 3){
+                        accessoryStats.setPercentExperienceChange(0);
+                    } else if (attributeToRemove == 4){
+                        accessoryStats.setFlatAttackChange(0);
+                    } else if (attributeToRemove == 5){
+                        accessoryStats.setPercentAttackChange(0);
+                    } else if (attributeToRemove == 6){
+                        accessoryStats.setFlatDefenseChange(0);
+                    } else if (attributeToRemove == 7){
+                        accessoryStats.setPercentDefenseChange(0);
                     } else {
-                        clothesStats.setFlatRegenPerTurn(0);
+                        accessoryStats.setFlatRegenPerTurn(0);
                     }
                 }
             }
+            HatEffect effect = HatEffect.NONE;
+            int hatEffectYN = rand.nextInt(2);
+            if(hatEffectYN == 1) {
+                int hatEffect = rand.nextInt(6);
+                if (hatEffect == 0) {
+                    effect = HatEffect.CLOTHES_BOOST;
+                } else if (hatEffect == 1) {
+                    effect = HatEffect.SHOES_BOOST;
+                } else if (hatEffect == 2) {
+                    effect = HatEffect.WEAPON_BOOST;
+                } else if (hatEffect == 3) {
+                    effect = HatEffect.LINGERING_POTIONS;
+                } else if (hatEffect == 4) {
+                    effect = HatEffect.STACKING_BONUS;
+                } else {
+                    effect = HatEffect.TRIPLED_ON_HIT;
+                }
+            }
+
+            return new Hat(accessoryStats, effect);
+
         } else {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Consumable Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             TempStatusModifier potionStats;
             int attributes;
@@ -1496,8 +1658,12 @@ public class ItemFactory {
                     }
                 }
             }
+
+            return new Consumable(5, potionStats);
         }
 
-        return null;
+        //return null;
+
+        //comment the above return null out to check that every reachable state returns an item or throws an exception.
     }
 }

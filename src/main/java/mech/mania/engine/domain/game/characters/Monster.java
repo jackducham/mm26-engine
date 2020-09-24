@@ -4,6 +4,7 @@ import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
+import mech.mania.engine.domain.game.factory.ItemFactory;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
@@ -239,7 +240,10 @@ public class Monster extends Character {
         super.distributeRewards(gameState);
         Board current = gameState.getBoard(position.getBoardID());
         Tile currentTile = current.getGrid()[position.getX()][position.getY()];
-        currentTile.getItems().addAll(drops);
+        int numberOfDrops = 1;
+        for(int i = 0; i < numberOfDrops; ++i) {
+            currentTile.getItems().add(ItemFactory.generateItem(this.getLevel()));
+        }
 
         //iterates through every player still on the taggedPlayersDamage map.
         for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
@@ -252,7 +256,6 @@ public class Monster extends Character {
     }
 
     /**
-     * @TODO: Write function for generating Monster drops based off level
      * @return list of Items Monster drops
      */
     private List<Item> getMonsterDrops() {
