@@ -10,8 +10,8 @@ public class Weapon extends Wearable {
     protected TempStatusModifier onHitEffect;
 
     public Weapon(StatusModifier stats, int range, int splashRadius, int attack,
-                  TempStatusModifier onHitEffect) {
-        super(stats);
+                  TempStatusModifier onHitEffect, String sprite) {
+        super(stats, sprite);
         this.range = range;
         this.splashRadius = splashRadius;
         this.onHitEffect = onHitEffect;
@@ -19,7 +19,7 @@ public class Weapon extends Wearable {
     }
 
     public Weapon(ItemProtos.Weapon weaponProto) {
-        super(new StatusModifier(weaponProto.getStats()));
+        super(new StatusModifier(weaponProto.getStats()), weaponProto.getSprite());
         this.range = weaponProto.getRange();
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
@@ -33,7 +33,7 @@ public class Weapon extends Wearable {
     public static Weapon createStarterWeapon() {
         StatusModifier statusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier tempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 5, tempStatusModifier);
+        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 10, tempStatusModifier, "");
 
         return starterWeapon;
     }
@@ -41,7 +41,7 @@ public class Weapon extends Wearable {
     public static Weapon createDefaultWeapon() {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0);
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon defaultWeapon = new Weapon(defaultStatusModifier, 1, 0, 1, defaultTempStatusModifier);
+        Weapon defaultWeapon = new Weapon(defaultStatusModifier, 1, 0, 1, defaultTempStatusModifier, "");
 
         return defaultWeapon;
     }
@@ -49,7 +49,7 @@ public class Weapon extends Wearable {
     public static Weapon createStrongerDefaultWeapon() {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0);
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5);
-        Weapon defaultWeapon = new Weapon(defaultStatusModifier, 10, 5, 10, defaultTempStatusModifier);
+        Weapon defaultWeapon = new Weapon(defaultStatusModifier, 10, 5, 10, defaultTempStatusModifier, "");
 
         return defaultWeapon;
     }
@@ -69,6 +69,7 @@ public class Weapon extends Wearable {
         weaponBuilder.setSplashRadius(splashRadius);
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
         weaponBuilder.setAttack(attack);
+        weaponBuilder.setSprite(sprite);
 
         return weaponBuilder.build();
     }

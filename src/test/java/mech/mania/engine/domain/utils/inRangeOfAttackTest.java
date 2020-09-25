@@ -36,7 +36,7 @@ public class inRangeOfAttackTest {
     public void testCanBeAttackedPlayer1() {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 1, 0, 1, 0, 1, 5, 1, 0, 1, 0);
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 10, 5);
-        Weapon weapon2 = new Weapon(defaultStatusModifier, 10, 10, 10, defaultTempStatusModifier);
+        Weapon weapon2 = new Weapon(defaultStatusModifier, 10, 10, 10, defaultTempStatusModifier, "");
 
         gameState.getPlayer("player2").setInventory(0, weapon2);
         gameState.getPlayer("player2").equipItem(0);
@@ -53,7 +53,8 @@ public class inRangeOfAttackTest {
 
     @Test
     public void testCanBeAttackedPlayer2() {
-        gameState.addNewMonster(new Monster("monster", 0, 0, 0, 0, 0, new Position(0, 24, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+        gameState.addNewMonster(new Monster("monster", "", 0, 0, 0, 0, 0,
+                new Position(0, 24, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
         boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player2").getPosition(), "player2");
         assertTrue(canBeAttacked);
     }

@@ -6,11 +6,8 @@ import mech.mania.engine.domain.model.BoardProtos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Board {
-    private static final Logger LOGGER = Logger.getLogger( Board.class.getName() );
-
     private final Tile[][] grid;
     private final List<Position> portals;
 
@@ -19,13 +16,13 @@ public class Board {
      * @param board the ProtoBuff being copied
      */
     public Board(BoardProtos.Board board) {
-        int rows = board.getRows();
-        int cols = board.getColumns();
+        int rows = board.getWidth();
+        int cols = board.getHeight();
         grid = new Tile[rows][cols];
 
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                grid[r][c] = new Tile(board.getGrid(r * c + c));
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < cols; y++) {
+                grid[x][y] = new Tile(board.getGrid(x * cols + y));
             }
         }
 
@@ -34,16 +31,6 @@ public class Board {
             portals.add(i, new Position(board.getPortals(i)));
         }
 
-    }
-
-    public static Board loadBoard(String tileSetFileName, String mapDataFileName, String boardName){
-        ReadBoardFromXMLFile boardReader = new ReadBoardFromXMLFile();
-        try {
-            boardReader.updateBoardAndMonsters(tileSetFileName, mapDataFileName, boardName);
-        } catch (TileIDNotFoundException e) {
-            LOGGER.warning("Exception while parsing board \"" + boardName + "\" XML: " + e);
-        }
-        return boardReader.extractBoard();
     }
 
     /**
@@ -56,6 +43,7 @@ public class Board {
         for(int i = 0; i < xdim; ++i) {
             for(int j = 0; j < ydim; ++j) {
                 grid[i][j] = new Tile();
+                grid[i][j].setType(Tile.TileType.BLANK);
             }
         }
         portals = new ArrayList<>();
@@ -83,32 +71,15 @@ public class Board {
     }
 
     /**
-     * Creates a home board for a new player. Used by GameState when adding new players.
-     * @param id the id of the player. required to correctly create the home board portal
-     * @return a finished home board with default settings
-     */
-    public static Board createHomeBoard(String id) {
-//        return Board.loadBoard(
-//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sample_tileset.tsx",
-//                "src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_sp_map.tmx",
-//                id
-//        );
-        // Make home board simple to avoid XML errors for now
-        Board home = new Board(20, 20);
-        home.addPortal(new Position(5, 10, "player1"));
-        return home;
-    }
-
-    /**
      * Creates a Protocol Buffer version of the board it is called on.
      * @return a Protocol Buffer board
      */
     public BoardProtos.Board buildProtoClass() {
         BoardProtos.Board.Builder boardBuilder = BoardProtos.Board.newBuilder();
 
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[r].length; c++) {
-                boardBuilder.addGrid(r * grid[c].length + c, grid[r][c].buildProtoClass());
+        for (int x = 0; x < grid.length; x++) {
+            for (int y = 0; y < grid[x].length; y++) {
+                boardBuilder.addGrid(x * grid[x].length + y, grid[x][y].buildProtoClass());
             }
         }
 
@@ -116,8 +87,8 @@ public class Board {
             boardBuilder.addPortals(i, portals.get(i).buildProtoClass());
         }
 
-        boardBuilder.setRows(grid.length);
-        boardBuilder.setColumns(grid[0].length);
+        boardBuilder.setWidth(grid.length);
+        boardBuilder.setHeight(grid[0].length);
 
         return boardBuilder.build();
     }
@@ -133,5 +104,9 @@ public class Board {
     public void addPortal(Position position) {
         portals.add(position);
         grid[position.getX()][position.getY()].setType(Tile.TileType.PORTAL);
+    }
+
+    public Tile getTileAtPosition(Position position) {
+        return getGrid()[position.getY()][position.getX()];
     }
 }

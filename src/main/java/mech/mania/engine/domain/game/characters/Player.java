@@ -18,11 +18,23 @@ public class Player extends Character {
     private Item[] inventory;
     private Stats playerStats = new Stats();
 
+    public String bottom_sprite;
+    public String top_sprite;
+    public String head_sprite;
+
     private static final int BASE_SPEED = 5;
     private static final int BASE_MAX_HEALTH = 20;
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
     private static final Weapon starterWeapon = Weapon.createStarterWeapon();
+
+    public static final int SPAWN_X = 2;
+    public static final int SPAWN_Y = 3;
+
+    public static final String DEFAULT_BODY_SPRITE = "mm26_wearables/_defaults/default_bod_2.png";
+    public static final String DEFAULT_BOTTOM_SPRITE = "mm26_wearables/_defaults/default_bottom.png";
+    public static final String DEFAULT_TOP_SPRITE = "mm26_wearables/_defaults/default_top.png";
+    public static final String DEFAULT_HEAD_SPRITE = "mm26_wearables/_defaults/default_head.png";
 
     /**
      * Standard Constructor which uses default static values for speed, hp, atk, and def.
@@ -30,11 +42,15 @@ public class Player extends Character {
      * @param spawnPoint Player's spawn point
      */
     public Player(String name, Position spawnPoint) {
-        super(name, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, starterWeapon);
+        super(name, DEFAULT_BODY_SPRITE, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, starterWeapon);
         hat = null;
         clothes = null;
         shoes = null;
         inventory = new Item[INVENTORY_SIZE];
+
+        bottom_sprite = DEFAULT_BOTTOM_SPRITE;
+        top_sprite = DEFAULT_TOP_SPRITE;
+        head_sprite = DEFAULT_HEAD_SPRITE;
     }
 
     public Player(CharacterProtos.Player playerProto) {
@@ -64,9 +80,13 @@ public class Player extends Character {
                     inventory[i] = new Weapon(protoItem.getWeapon());
                     break;
                 case CONSUMABLE:
-                    inventory[i] = new Consumable(protoItem.getConsumable().getMaxStack(), protoItem.getConsumable());
+                    inventory[i] = new Consumable(protoItem.getConsumable());
             }
         }
+
+        bottom_sprite = playerProto.getBottomSprite();
+        top_sprite = playerProto.getTopSprite();
+        head_sprite = playerProto.getHeadSprite();
     }
 
     public CharacterProtos.Player buildProtoClassPlayer() {
@@ -77,6 +97,7 @@ public class Player extends Character {
 
         for (int i = 0; i < INVENTORY_SIZE; i++) {
             Item curItem = inventory[i];
+            if(curItem == null) continue;
             playerBuilder.setInventory(i, curItem.buildProtoClassItem());
         }
 

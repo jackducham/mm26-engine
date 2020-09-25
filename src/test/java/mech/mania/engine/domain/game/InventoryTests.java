@@ -14,7 +14,6 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 
-import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 
 /** This contains tests for decisions related to inventory */
@@ -33,7 +32,7 @@ public class InventoryTests {
     @Before
     public void setup() {
         gameState = GameState.createDefaultGameState();
-        p1Tile = gameState.getBoard("pvp").getGrid()[0][4];
+        p1Tile = gameState.getPvpBoard().getGrid()[0][4];
         p1Tile.addItem(defaultWeapon);
         p1Tile.addItem(defaultClothes);
         p1Tile.addItem(defaultShoes);
@@ -46,6 +45,9 @@ public class InventoryTests {
      */
     @After
     public void cleanup() {
+        gameState = null;
+        p1 = null;
+        p1Tile = null;
     }
 
     /**

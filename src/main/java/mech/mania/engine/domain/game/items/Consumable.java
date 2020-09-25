@@ -12,19 +12,18 @@ public class Consumable extends Item {
      * @param maxStack the maximum of this item that can be kept in one inventory slot
      * @param effect the effect this consumable will apply on use
      */
-    public Consumable(int maxStack, TempStatusModifier effect) {
-        super(maxStack);
+    public Consumable(int maxStack, TempStatusModifier effect, String sprite) {
+        super(maxStack, sprite);
         this.effect = effect;
         this.stacks = 1;
     }
 
     /**
      * Creates a Consumable based on a Protocol Buffer with a given maximum number of stacks.
-     * @param maxStack the maximum of this item that can be kept in one inventory slot
      * @param consumableProto the protocol buffer to be copied
      */
-    public Consumable(int maxStack, ItemProtos.Consumable consumableProto) {
-        super(maxStack);
+    public Consumable(ItemProtos.Consumable consumableProto) {
+        super(consumableProto.getMaxStack(), consumableProto.getSprite());
         this.effect = new TempStatusModifier(consumableProto.getEffect());
         this.stacks = consumableProto.getStacks();
     }
@@ -37,6 +36,7 @@ public class Consumable extends Item {
         ItemProtos.Consumable.Builder consumableBuilder = ItemProtos.Consumable.newBuilder();
         consumableBuilder.setStacks(stacks);
         consumableBuilder.setEffect(effect.buildProtoClassTemp());
+        consumableBuilder.setMaxStack(maxStack);
 
         ItemProtos.Item.Builder itemBuilder = ItemProtos.Item.newBuilder();
         itemBuilder.setConsumable(consumableBuilder.build());
@@ -82,7 +82,7 @@ public class Consumable extends Item {
         0, 0,
         0, 0.5,
         2, 5, 0);
-        Consumable defaultConsumable = new Consumable(5, defaultTempStatusModifier);
+        Consumable defaultConsumable = new Consumable(5, defaultTempStatusModifier, "");
         return defaultConsumable;
     }
 }
