@@ -22,7 +22,6 @@ public class Player extends Character {
     private static final int BASE_MAX_HEALTH = 20;
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
-    private static final int SPAWN_POINT_HEALING = 5;
 
     /**
      * Standard Constructor which uses default static values for speed, hp, atk, and def.
@@ -188,7 +187,8 @@ public class Player extends Character {
      */
     public void healOnSpawnPoint() {
         if (getPosition().equals(getSpawnPoint())) {
-            updateCurrentHealth(SPAWN_POINT_HEALING);
+            int healthGain = (int) Math.round(0.1 * getCurrentHealth());
+            updateCurrentHealth(healthGain);
         }
     }
 
