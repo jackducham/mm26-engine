@@ -4,6 +4,10 @@ import mech.mania.engine.domain.model.ItemProtos;
 
 public abstract class Item {
     protected int maxStack;
+    protected String name;
+    protected int turnsToDeletion;
+
+    public static final int ITEM_LIFETIME = 30;
     protected String sprite;
 
     public Item(int maxStack, String sprite) {
@@ -20,4 +24,14 @@ public abstract class Item {
     }
 
     public abstract ItemProtos.Item buildProtoClassItem();
+
+    public int getTurnsToDeletion() {
+        return turnsToDeletion;
+    }
+
+    public void setTurnsToDeletion(int turnsToDeletion) {
+        this.turnsToDeletion = turnsToDeletion;
+    }
+
+    public void decTurnsToDeletion(){this.turnsToDeletion--;}
 }

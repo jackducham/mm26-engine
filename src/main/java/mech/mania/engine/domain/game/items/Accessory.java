@@ -21,6 +21,7 @@ public class Accessory extends Wearable {
      */
     public Accessory(ItemProtos.Accessory accessoryProto) {
         super(new StatusModifier(accessoryProto.getStats()), accessoryProto.getSprite());
+        this.turnsToDeletion = accessoryProto.getTurnsToDeletion();
         switch (accessoryProto.getMagicEffect()) {
             case SHOES_BOOST:
                 this.magicEffect = MagicEffect.SHOES_BOOST;
@@ -52,7 +53,7 @@ public class Accessory extends Wearable {
      */
     public ItemProtos.Accessory buildProtoClassAccessory() {
         ItemProtos.Accessory.Builder accessoryBuilder = ItemProtos.Accessory.newBuilder();
-
+        accessoryBuilder.setTurnsToDeletion(turnsToDeletion);
         accessoryBuilder.setStats(stats.buildProtoClass());
         switch (magicEffect) {
             case SHOES_BOOST:
