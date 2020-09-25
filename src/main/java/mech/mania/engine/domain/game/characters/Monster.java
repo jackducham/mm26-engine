@@ -24,6 +24,7 @@ public class Monster extends Character {
     /**
      * Creates a Monster with the given stats.
      * @param name the monster's name
+     * @param sprite the filepath to this monster's sprite
      * @param baseSpeed the monster's base movement speed
      * @param baseMaxHealth the monster's base maximum health
      * @param baseAttack the monster's base attack damage
@@ -33,13 +34,17 @@ public class Monster extends Character {
      * @param weapon the monster's weapon (used to apply on-hit effects)
      * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
      */
-    public Monster(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
+
+    public Monster(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                    int level, Position spawnPoint, Weapon weapon, int aggroRange, List<Item> drops) {
-        super(name, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
+        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
         this.aggroRange = aggroRange;
         this.drops = drops;
     }
 
+    public int getAggroRange() {
+        return aggroRange;
+    }
 
     // --------Proto Stuff-------- //
 
@@ -68,7 +73,7 @@ public class Monster extends Character {
                     drops.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    drops.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    drops.add(i, new Consumable(protoItem.getConsumable()));
             }
         }
     }
@@ -262,9 +267,10 @@ public class Monster extends Character {
 
         StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, attack, defaultOnHit);
+        Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, attack, defaultOnHit, "");
 
         Monster newMonster = new Monster("DefaultMonster" + DefaultMonsterQuantity,
+                "",
                 baseSpeed + (int)speedFactor*baseSpeedSpread,
                 baseMaxHealth + (int)maxHealthFactor*baseMaxHealthSpread,
                 baseAttack + (int)attackFactor*baseAttackSpread,

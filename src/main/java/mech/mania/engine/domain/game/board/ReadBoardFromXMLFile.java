@@ -4,7 +4,6 @@ import javax.xml.parsers.SAXParserFactory;
 
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.StatusModifier;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
@@ -17,14 +16,17 @@ import java.util.*;
 
 public class ReadBoardFromXMLFile {
 
-    private Map<Integer, Tile> tileSet = new HashMap();
-    private Map<Integer, PseudoMonster> monsterSet = new HashMap();
-    private Map<Integer, DataLayer> dataSet = new HashMap();
+    private Map<Integer, Tile> tileSet = new HashMap<>();
+    private Map<Integer, PseudoMonster> monsterSet = new HashMap<>();
+    private Map<Integer, DataLayer> dataSet = new HashMap<>();
     private Board board = null;
     private List<Monster> monsterList = new ArrayList<>();
+    private String boardName;
 
     //internal class used to represent each type of monster loaded from an XML file
     private static class PseudoMonster {
+        protected String sprite;
+
         //base monster stats
         protected int attack;
         protected int defense;
@@ -32,6 +34,7 @@ public class ReadBoardFromXMLFile {
         protected int level;
         protected String name;
         protected int speed;
+        protected int aggroRange;
 
         //weapon stats
         protected int weaponRange;
@@ -105,10 +108,11 @@ public class ReadBoardFromXMLFile {
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
             if (qName.equalsIgnoreCase("tile")) {
-                currentID = Integer.parseInt(attributes.getValue("id"));
+                // Add 1 to translate from local to global IDs
+                currentID = Integer.parseInt(attributes.getValue("id")) + 1;
             } else if(qName.equalsIgnoreCase("property")) {
                 if(currentID >= 0) {
-                    //The current "tile" is a tile
+                    // The current "tile" is a tile
                     if(attributes.getValue("name").equalsIgnoreCase("Walkable")) {
                         Tile newTile = new Tile();
                         if(attributes.getValue("value").equalsIgnoreCase("true")) {
@@ -117,7 +121,14 @@ public class ReadBoardFromXMLFile {
                             newTile.setType(Tile.TileType.IMPASSIBLE);
                         }
                         tileSet.put(currentID, newTile);
-                    } else {
+                    }
+                    else if(attributes.getValue("name").equalsIgnoreCase("isPortal")){
+                        if(attributes.getValue("value").equalsIgnoreCase("true")) {
+                            // This tile is a portal
+                            tileSet.get(currentID).setType(Tile.TileType.PORTAL);
+                        }
+                    }
+                    else {
                         //The current "tile" is a monster
 
                         //setup a new monster if we haven't started work on this one yet.
@@ -138,6 +149,8 @@ public class ReadBoardFromXMLFile {
                             monsterSet.get(currentID).name = attributes.getValue("value");
                         } else if (attributes.getValue("name").equalsIgnoreCase("Speed")) {
                             monsterSet.get(currentID).speed = Integer.parseInt(attributes.getValue("value"));
+                        } else if(attributes.getValue("name").equalsIgnoreCase("aggro_range")){
+                            monsterSet.get(currentID).aggroRange = Integer.parseInt(attributes.getValue("value"));
                         } else if (attributes.getValue("name").equalsIgnoreCase("weapon_attack")) {
                             monsterSet.get(currentID).weaponDamage = Integer.parseInt(attributes.getValue("value"));
                         } else if (attributes.getValue("name").equalsIgnoreCase("range")) {
@@ -174,11 +187,26 @@ public class ReadBoardFromXMLFile {
                     }
                 }
             }
+            else if (qName.equalsIgnoreCase("image")){
+                // Check that we're in a tile
+                if(currentID >= 0){
+                    // Check if this is a monster or tile
+                    if(monsterSet.containsKey(currentID)){
+                        // We're a monster
+                        monsterSet.get(currentID).sprite = attributes.getValue("source");
+                    }
+                    else if(tileSet.containsKey(currentID)) {
+                        // We're a tile
+                        // Since we don't know what layer we're on, set both sprites to the same source
+                        tileSet.get(currentID).groundSprite = attributes.getValue("source");
+                        tileSet.get(currentID).aboveSprite = attributes.getValue("source");
+                    }
+                }
+            }
         }
 
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-
             if (qName.equalsIgnoreCase("tile")) {
                 currentID = -1;
             }
@@ -205,7 +233,7 @@ public class ReadBoardFromXMLFile {
         }
 
         @Override
-        public void characters(char ch[], int start, int length) {
+        public void characters(char[] ch, int start, int length) {
 
             if (dataContentBuffer != null) {
                 dataContentBuffer.append(new String(ch, start, length));
@@ -262,6 +290,8 @@ public class ReadBoardFromXMLFile {
     }
 
     public void updateBoardAndMonsters(String tileSetFileName, String mapDataFileName, String boardName) throws TileIDNotFoundException {
+        this.boardName = boardName;
+
         loadTileData(tileSetFileName);
 
         /*
@@ -284,15 +314,36 @@ public class ReadBoardFromXMLFile {
                     throw new TileIDNotFoundException(
                             "Could not locate tile with ID = " + dataSet.get(1).data[x][y] + " in current dataSet. This tile was requested by Data Layer 1 at Position (" + x + ", " + y + ")");
                     //board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
-                } else if ((dataSet.get(0).data[x][y] == 0 || tileSet.get(dataSet.get(0).data[x][y]).getType() == Tile.TileType.BLANK)
-                        && (dataSet.get(1).data[x][y] == 0 || tileSet.get(dataSet.get(1).data[x][y]).getType() == Tile.TileType.BLANK)) {
-                    board.getGrid()[x][y].setType(Tile.TileType.BLANK);
                 } else {
-                    board.getGrid()[x][y].setType(Tile.TileType.IMPASSIBLE);
+                    // Set tile types
+                    if (dataSet.get(0).data[x][y] != 0){
+                        board.getGrid()[x][y].setType(tileSet.get(dataSet.get(0).data[x][y]).getType());
+                    }
+                    if (dataSet.get(1).data[x][y] != 0){
+                        Tile.TileType type = tileSet.get(dataSet.get(1).data[x][y]).getType();
+                        board.getGrid()[x][y].setType(type);
+
+                        // Add portals to portal list
+                        if(type == Tile.TileType.PORTAL){
+                            board.addPortal(new Position(x, y, boardName));
+                        }
+                    }
+                }
+
+                // Add sprites for tile
+                if(dataSet.get(0).data[x][y] != 0) {
+                    board.getGrid()[x][y].groundSprite = tileSet.get(dataSet.get(0).data[x][y]).groundSprite;
+                }
+                if(dataSet.get(1).data[x][y] != 0) {
+                    board.getGrid()[x][y].aboveSprite = tileSet.get(dataSet.get(1).data[x][y]).aboveSprite;
+                }
+
+                // If there was no tile data on either layer, this must be a VOID tile
+                if(dataSet.get(0).data[x][y] == 0 && dataSet.get(1).data[x][y] == 0){
+                    board.getGrid()[x][y].setType(Tile.TileType.VOID);
                 }
 
                 //Add monsters to the list of monsters.
-                //TODO: figure out exactly how monster data gets put into monster object. particularly the damage stat vs weapon damage.
                 int monsterIndex = dataSet.get(2).data[x][y];
                 if(monsterIndex != 0) {
                     if(monsterSet.get(monsterIndex) == null) {
@@ -312,10 +363,12 @@ public class ReadBoardFromXMLFile {
                                 0, 0, 0, 0,
                                 0);
 
-                        //@TODO need to add aggrorange as parameter, currently put 0 as filler
+                        // Monster weapons don't need a sprite because they are only used internally for range/splash radius
                         Monster newMonster = new Monster(toCopy.name + (monstersQuantityOfEachID.get(monsterIndex) - 1),
-                                toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
-                                new Position(x, y, boardName), new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit), 0, new ArrayList<>());
+                                toCopy.sprite, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
+                                new Position(x, y, boardName),
+                                new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit, ""),
+                                toCopy.aggroRange, new ArrayList<>());
                         monsterList.add(newMonster);
                     }
                 }
@@ -329,5 +382,11 @@ public class ReadBoardFromXMLFile {
 
     public List<Monster> extractMonsters() {
         return monsterList;
+    }
+
+    public String getBoardName(){ return boardName; }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
     }
 }

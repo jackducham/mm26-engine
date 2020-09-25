@@ -2,7 +2,6 @@ package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
