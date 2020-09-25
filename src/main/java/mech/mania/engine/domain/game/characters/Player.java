@@ -147,7 +147,7 @@ public class Player extends Character {
     public void updateCharacter(GameState gameState) {
         if(hasMagicEffect(MagicEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
-            hatStats.setTurnsLeft(10);
+            hatStats.setTurnsLeft(4);
             applyEffect(this.getName(), true, hatStats);
         }
         updateActiveEffects();
