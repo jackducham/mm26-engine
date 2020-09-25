@@ -6,16 +6,20 @@ import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public abstract class Character {
     private final String name;
+    private final String sprite;
 
     /** Character's base stats */
     protected final int baseSpeed;
@@ -25,12 +29,13 @@ public abstract class Character {
 
     /** Character's ongoing stats */
     protected int currentHealth;
-    protected int experience;
+    protected int experience; // experience gained on that level
+    protected int level;
 
     /** Death parameters */
-    private static final int reviveTicks = 1;
     protected int ticksSinceDeath;  // need access in Player to determine whether player just died
     private boolean isDead;
+    private int reviveTicks;
 
     /** Position parameters */
     protected Position position;
@@ -48,9 +53,10 @@ public abstract class Character {
     /**
      * Constructor for Characters
      */
-    public Character(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                     int experience, Position spawnPoint, Weapon weapon) {
+    public Character(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
+                     int level, Position spawnPoint, Weapon weapon, int reviveTicks) {
         this.name = name;
+        this.sprite = sprite;
 
         this.baseSpeed = baseSpeed;
         this.baseMaxHealth = baseMaxHealth;
@@ -58,10 +64,12 @@ public abstract class Character {
         this.baseDefense = baseDefense;
 
         this.currentHealth = baseMaxHealth;
-        this.experience = experience;
+        this.experience = 0;
+        this.level = level;
 
         this.ticksSinceDeath = -1;
         this.isDead = false;
+        this.reviveTicks = reviveTicks;
 
         this.position = spawnPoint;
         this.spawnPoint = spawnPoint;
@@ -76,6 +84,7 @@ public abstract class Character {
      */
     public Character(CharacterProtos.Character character) {
         this.name = character.getName();
+        this.sprite = character.getSprite();
 
         this.baseSpeed = character.getBaseSpeed();
         this.baseMaxHealth = character.getBaseMaxHealth();
@@ -110,6 +119,7 @@ public abstract class Character {
         CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
 
         characterBuilder.setName(name);
+        characterBuilder.setSprite(sprite);
         characterBuilder.setBaseSpeed(baseSpeed);
         characterBuilder.setBaseMaxHealth(baseMaxHealth);
         characterBuilder.setBaseAttack(baseAttack);
@@ -202,11 +212,12 @@ public abstract class Character {
     }
 
     /**
-     * Applies active effects and updates the death state
+     * Applies active effects and updates the Character level and death state
      * This should be called once a turn
      */
     public void updateCharacter(GameState gameState) {
         updateActiveEffects();
+        updateLevel();
         updateDeathState(gameState);
     }
 
@@ -235,19 +246,34 @@ public abstract class Character {
     }
 
     /**
+     * This updates both the Character experience and level with the formula
+     *      exp_to_level = 100 * level
+     * Experience should NEVER be negative
+     */
+    public void updateLevel() {
+        int expToNextLevel = 100 * level;
+        while (experience >= expToNextLevel) {
+            experience -= expToNextLevel;
+            level++;
+            expToNextLevel = 100 * level;
+        }
+    }
+
+    /**
      * Check if Character is dead and revives them and distributes rewards accordingly
      * @param gameState gameState to give rewards to
      */
     public void updateDeathState(GameState gameState) {
-        // player is already dead
+        // character is already dead
         if (isDead) {
             ticksSinceDeath++;
             if (ticksSinceDeath == reviveTicks) {
                 reviveCharacter();
             }
-        } else if (getCurrentHealth() <= 0) { // player has just died
+        } else if (getCurrentHealth() <= 0) { // character has just died
             ticksSinceDeath = 0;
             distributeRewards(gameState);
+            taggedPlayersDamage.clear();
             isDead = true;
         }
     }
@@ -265,37 +291,48 @@ public abstract class Character {
     }
 
     /**
-     * After Character dies, give actualDamage XP points to attacking Player
+     * After Character dies, give XP points to attacking Player according to formula
      * @param gameState The current gameState
      */
-    protected void distributeRewards(GameState gameState) {
+    public void distributeRewards(GameState gameState) {
         for (Map.Entry<String, Integer> mapElement : taggedPlayersDamage.entrySet()) {
             String attackerName = mapElement.getKey();
-            Integer damage = mapElement.getValue();
 
-            Player player = gameState.getPlayer(attackerName);
+            Player attackingPlayer = gameState.getPlayer(attackerName);
 
-            // Don't reward if tagged character is Monster or is self
-            if (player != null && player != this) {
-                player.addExperience(damage);
+            // if attacker is Monster or self, don't give rewards
+            if (attackingPlayer == null || attackingPlayer == this) {
+                continue;
             }
+
+            if (attackingPlayer.isDead()) {
+                continue;
+            }
+
+            // player was just within aggrorange
+            if (mapElement.getValue() == 0) {
+                continue;
+            }
+
+            int attackingPlayerLevel = attackingPlayer.getLevel();
+            int levelDiff = abs(attackingPlayerLevel  - this.getLevel());
+            double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + (double)levelDiff);
+            int expGain = (int)(10 * this.getLevel() * expMultiplier);
+            attackingPlayer.addExperience(expGain);
         }
     }
 
     /**
-     * @return name of the Player (NOT Monster) with most damage done to this Character
+     * @return sorted LinkedHashMap of players in order of damage done to this Character
      */
-    protected String getPlayerWithMostDamage() {
-        String highestDamagePlayer = null;
-        int highestDamage = -1;
-        for (String name : taggedPlayersDamage.keySet()) {
-            if (taggedPlayersDamage.get(name) > highestDamage) {
-                highestDamagePlayer = name;
-                highestDamage = taggedPlayersDamage.get(name);
-            }
-        }
+    protected LinkedHashMap<String, Integer> getPlayerWithMostDamage() {
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
 
-        return highestDamagePlayer;
+        taggedPlayersDamage.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        return sortedMap;
     }
 
 
@@ -305,6 +342,10 @@ public abstract class Character {
 
     public String getName() {
         return name;
+    }
+
+    public String getSprite() {
+        return sprite;
     }
 
     public int getSpeed() {
@@ -386,7 +427,11 @@ public abstract class Character {
     }
 
     public int getLevel() {
-        return getExperience() % 10; // @TODO: Replace with actual level equation
+        return level;
+    }
+
+    public int getTotalExperience() {
+        return getLevel() * (getLevel() - 1) * 100 / 2 + getExperience();
     }
 
     public boolean isDead() {
@@ -403,6 +448,10 @@ public abstract class Character {
 
     public Position getSpawnPoint() {
         return spawnPoint;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 
     public Weapon getWeapon() {

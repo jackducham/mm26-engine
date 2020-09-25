@@ -890,7 +890,8 @@ public class ItemFactory {
                 }
             }
 
-            return new Weapon(weaponStats, weaponRange, weaponSplash, weaponDamage, weaponOnHit);
+            //TODO: Give weapon sprite
+            return new Weapon(weaponStats, weaponRange, weaponSplash, weaponDamage, weaponOnHit, "");
 
         } else if (itemTypeDecider == 1) {//~~~~~~~~~~~~~~~~~~Clothes    Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier clothesStats;
@@ -1044,7 +1045,8 @@ public class ItemFactory {
                 }
             }
 
-            return new Clothes(clothesStats);
+            // TODO: Give Clothes a sprite
+            return new Clothes(clothesStats, "");
 
         } else if (itemTypeDecider == 2) {//~~~~~~~~~~~~~~~~~~Shoes      Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier shoesStats;
@@ -1186,7 +1188,8 @@ public class ItemFactory {
                 }
             }
 
-            return new Shoes(shoesStats);
+            // TODO: Give Shoes a sprite
+            return new Shoes(shoesStats, "");
 
         } else if (itemTypeDecider == 3) {//~~~~~~~~~~~~~~~~~~Hat        Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier hatStats;
@@ -1354,26 +1357,27 @@ public class ItemFactory {
                     }
                 }
             }
-            HatEffect effect = HatEffect.NONE;
+            MagicEffect effect = MagicEffect.NONE;
             int hatEffectYN = rand.nextInt(2);
             if(hatEffectYN == 1) {
                 int hatEffect = rand.nextInt(6);
                 if (hatEffect == 0) {
-                    effect = HatEffect.CLOTHES_BOOST;
+                    effect = MagicEffect.CLOTHES_BOOST;
                 } else if (hatEffect == 1) {
-                    effect = HatEffect.SHOES_BOOST;
+                    effect = MagicEffect.SHOES_BOOST;
                 } else if (hatEffect == 2) {
-                    effect = HatEffect.WEAPON_BOOST;
+                    effect = MagicEffect.WEAPON_BOOST;
                 } else if (hatEffect == 3) {
-                    effect = HatEffect.LINGERING_POTIONS;
+                    effect = MagicEffect.LINGERING_POTIONS;
                 } else if (hatEffect == 4) {
-                    effect = HatEffect.STACKING_BONUS;
+                    effect = MagicEffect.STACKING_BONUS;
                 } else {
-                    effect = HatEffect.TRIPLED_ON_HIT;
+                    effect = MagicEffect.TRIPLED_ON_HIT;
                 }
             }
 
-            return new Hat(hatStats, effect);
+            // TODO: Give Hat a sprite
+            return new Hat(hatStats, effect, "");
 
         } else if (itemTypeDecider == 4) {//~~~~~~~~~~~~~~~~~~Accessory  Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier accessoryStats;
@@ -1541,26 +1545,27 @@ public class ItemFactory {
                     }
                 }
             }
-            HatEffect effect = HatEffect.NONE;
+            MagicEffect effect = MagicEffect.NONE;
             int hatEffectYN = rand.nextInt(2);
             if(hatEffectYN == 1) {
                 int hatEffect = rand.nextInt(6);
                 if (hatEffect == 0) {
-                    effect = HatEffect.CLOTHES_BOOST;
+                    effect = MagicEffect.CLOTHES_BOOST;
                 } else if (hatEffect == 1) {
-                    effect = HatEffect.SHOES_BOOST;
+                    effect = MagicEffect.SHOES_BOOST;
                 } else if (hatEffect == 2) {
-                    effect = HatEffect.WEAPON_BOOST;
+                    effect = MagicEffect.WEAPON_BOOST;
                 } else if (hatEffect == 3) {
-                    effect = HatEffect.LINGERING_POTIONS;
+                    effect = MagicEffect.LINGERING_POTIONS;
                 } else if (hatEffect == 4) {
-                    effect = HatEffect.STACKING_BONUS;
+                    effect = MagicEffect.STACKING_BONUS;
                 } else {
-                    effect = HatEffect.TRIPLED_ON_HIT;
+                    effect = MagicEffect.TRIPLED_ON_HIT;
                 }
             }
 
-            return new Hat(accessoryStats, effect);
+            // TODO: Give Accessory a sprite
+            return new Accessory(accessoryStats, effect, "");
 
         } else {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Consumable Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             TempStatusModifier potionStats;
@@ -1659,7 +1664,8 @@ public class ItemFactory {
                 }
             }
 
-            return new Consumable(5, potionStats);
+            // TODO: Give Consumable a sprite
+            return new Consumable(5, potionStats, "");
         }
 
         //return null;

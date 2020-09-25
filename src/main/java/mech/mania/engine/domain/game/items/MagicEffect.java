@@ -1,6 +1,6 @@
 package mech.mania.engine.domain.game.items;
 
-public enum HatEffect {
+public enum MagicEffect {
     LINGERING_POTIONS,
     /* EFFECT:
         This hat effect causes any consumable the wearer uses to apply the same TempStatusModifier,
@@ -61,6 +61,6 @@ public enum HatEffect {
 
     NONE
     /*
-        This hat effect does nothing, and is supposedly "better" than null :)
+        This does absolutely nothing.¯\_(ツ)_/¯
      */
 }

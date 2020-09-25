@@ -14,12 +14,18 @@ public class Tile {
     }
     private TileType type;
 
+    // Filenames for sprites for this tile
+    public String groundSprite;
+    public String aboveSprite;
+
     /**
      * Constructs a default Tile of type BLANK.
      */
     public Tile() {
-        items = new ArrayList<>();
-        type = TileType.BLANK;
+        this.items = new ArrayList<>();
+        this.type = TileType.VOID;
+        this.groundSprite = "";
+        this.aboveSprite = "";
     }
 
     /**
@@ -44,7 +50,7 @@ public class Tile {
                     items.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    items.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    items.add(i, new Consumable(protoItem.getConsumable()));
             }
         }
 
@@ -62,6 +68,9 @@ public class Tile {
                 type = TileType.PORTAL;
                 break;
         }
+
+        groundSprite = tileProto.getGroundSprite();
+        aboveSprite = tileProto.getAboveSprite();
     }
 
     /**
@@ -88,17 +97,22 @@ public class Tile {
         for (int i = 0; i < items.size(); i++) {
             Item curItem = items.get(i);
             if (curItem instanceof Clothes) {
-                tileBuilder.setItems(i, ((Clothes)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Clothes)curItem).buildProtoClassItem());
             } else if (curItem instanceof Hat) {
-                tileBuilder.setItems(i, ((Hat)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Hat)curItem).buildProtoClassItem());
             } else if (curItem instanceof Shoes) {
-                tileBuilder.setItems(i, ((Shoes)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Shoes)curItem).buildProtoClassItem());
             } else if (curItem instanceof Weapon) {
-                tileBuilder.setItems(i, ((Weapon)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClass());
+                tileBuilder.addItems(((Consumable)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Accessory) {
+                tileBuilder.addItems(((Accessory)curItem).buildProtoClassItem());
             }
         }
+
+        tileBuilder.setGroundSprite(groundSprite);
+        tileBuilder.setAboveSprite(aboveSprite);
 
         return tileBuilder.build();
     }

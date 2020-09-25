@@ -36,3 +36,8 @@ build/
 
 ### Protocol Buffer Binary ###
 /protoc-3.10.0-win64/
+
+### Sprites ###
+*.png
+/src/main/java/mech/mania/engine/domain/model/mm26_map/mm_tiles/
+/src/main/java/mech/mania/engine/domain/model/mm26_map/mm26_wearables/

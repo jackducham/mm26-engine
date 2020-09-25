@@ -3,17 +3,19 @@ package mech.mania.engine
 import com.google.protobuf.InvalidProtocolBufferException
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpServer
-import io.ktor.client.*
-import io.ktor.client.features.websocket.*
-import io.ktor.http.*
-import io.ktor.http.cio.websocket.*
+import io.ktor.client.HttpClient
+import io.ktor.client.features.websocket.WebSockets
+import io.ktor.client.features.websocket.ws
+import io.ktor.http.HttpMethod
+import io.ktor.http.cio.websocket.Frame
+import io.ktor.http.cio.websocket.readBytes
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import mech.mania.engine.domain.model.BoardProtos
 import mech.mania.engine.domain.model.CharacterProtos
-import mech.mania.engine.domain.model.GameStateProtos
+import mech.mania.engine.domain.model.CharacterProtos.DecisionType
 import mech.mania.engine.domain.model.InfraProtos.InfraPlayer
 import mech.mania.engine.domain.model.InfraProtos.InfraStatus
-import mech.mania.engine.domain.model.PlayerProtos.PlayerDecision
 import mech.mania.engine.domain.model.PlayerProtos.PlayerTurn
 import mech.mania.engine.domain.model.VisualizerProtos
 import mech.mania.engine.entrypoints.Main
@@ -25,11 +27,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
-import java.net.*
+import java.net.HttpURLConnection
+import java.net.InetSocketAddress
+import java.net.ServerSocket
+import java.net.URL
 import java.util.concurrent.CountDownLatch
-import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
-import java.util.concurrent.TimeoutException
 import java.util.logging.Logger
 import kotlin.test.assertTrue
 import kotlin.test.fail
@@ -73,7 +76,7 @@ class ServerIntegrationTests {
             Main.main(args)
         }
 
-        Thread.sleep(5000)
+        awaitEngineStart()
     }
 
     /**
@@ -94,16 +97,39 @@ class ServerIntegrationTests {
         }
 
         // Wait for server to truly shut down
-        Thread.sleep(8000);
+        Thread.sleep(10000)
+    }
+
+    /**
+     * Helper function that waits until engine /health endpoint responds
+     */
+    private fun awaitEngineStart(){
+        while(true){
+            // Connect to engine health endpoint
+            val url = URL("http://localhost:$infraPort/infra/health")
+            try {
+                val bytes = url.readBytes()
+                val statusObj = InfraStatus.parseFrom(bytes)
+                // LOGGER.info("Waiting for engine to start. Health endpoint returned: " + statusObj.message)
+                if(statusObj.status == 200){
+                    Thread.sleep(8000) // Wait for server to fully boot (if some tests fail, try upping this time)
+                    return
+                }
+            } catch (e: Exception) {
+                // LOGGER.info("Waiting for engine to start. Exception received: " + e.message)
+                Thread.sleep(1000)
+                continue // Try again
+            }
+        }
     }
 
     /**
      * Helper function that creates player servers with random names + ip addresses, sends POST
      * requests to the game to add those players to the game.
      */
-    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> PlayerDecision,
+    private fun connectNPlayers(n: Int, f: (turn: PlayerTurn) -> CharacterProtos.CharacterDecision,
                                 onReceive: (turn: PlayerTurn) -> Unit,
-                                onSend: (decision: PlayerDecision) -> Unit) {
+                                onSend: (decision: CharacterProtos.CharacterDecision) -> Unit) {
         val playerNames: ArrayList<String> = ArrayList()
         val playerAddrs: ArrayList<String> = ArrayList()
 
@@ -131,7 +157,7 @@ class ServerIntegrationTests {
                             onReceive(turn)
 
                             // calculate what to do with turn
-                            val decision: PlayerDecision = f(turn)
+                            val decision: CharacterProtos.CharacterDecision = f(turn)
                             val size: Long = decision.toByteArray().size.toLong()
 
                             // send back response
@@ -143,8 +169,8 @@ class ServerIntegrationTests {
                     }
                     validPort = true
 
-                    val playerName = java.util.UUID.randomUUID().toString()
-                    val playerAddr = "http://localhost:$randomPort/server"
+                    val playerName = "player$i"
+                    val playerAddr = "localhost:$randomPort"
                     logger.fine("Creating player \"$playerName\" with IP address $playerAddr")
 
                     playerNames.add(playerName)
@@ -158,12 +184,11 @@ class ServerIntegrationTests {
         }
 
         for (i in 0 until n) {
-            with (URL(infraNewUrl).openConnection() as HttpURLConnection) {
+            with(URL(infraNewUrl).openConnection() as HttpURLConnection) {
                 requestMethod = "POST"
                 doOutput = true
                 setRequestProperty("Content-Type", "application/octet-stream")
 
-                // this isn't working?
                 InfraPlayer.newBuilder()
                         .setPlayerIp(playerAddrs[i])
                         .setPlayerName(playerNames[i])
@@ -181,47 +206,47 @@ class ServerIntegrationTests {
         }
     }
 
-    /**
-     * Test to see if the endpoint works and can be connected to via websocket
-     */
-    @Test
-    @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
-    fun testReceiveSendPlayerDecisions() {
-        val players = 400
-        val turns = 20
+    // /**
+    //  * Test to see if the endpoint works and can be connected to via websocket
+    //  */
+    // @Test
+    // @Throws(URISyntaxException::class, InterruptedException::class, ExecutionException::class, TimeoutException::class)
+    // fun testReceiveSendPlayerDecisions() {
+    //     val players = 100
+    //     val turns = 20
 
-        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns"))
+    //     val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns"))
 
-        // wait for an actual object to end the test
-        val latch = CountDownLatch(turns * players)
+    //     // wait for an actual object to end the test
+    //     val latch = CountDownLatch(turns * players)
 
-        connectNPlayers(players, {
-            PlayerDecision.newBuilder()
-                    .setDecisionType(CharacterProtos.DecisionType.ATTACK)
-                    .build()
-        }, {
-            // pass
-        }, {
-            latch.countDown()
-        })
+    //     connectNPlayers(players, {
+    //         CharacterProtos.CharacterDecision.newBuilder()
+    //                 .setDecisionType(CharacterProtos.DecisionType.ATTACK)
+    //                 .build()
+    //     }, {
+    //         // pass
+    //     }, {
+    //         latch.countDown()
+    //     })
 
-        try {
-            val result: Boolean = latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS)
-            assertTrue(result, "Test failed: latch final value: ${latch.count}; perhaps the number of players could be lowered?")
-        } catch (e: NullPointerException) {
-            fail("Test failed with exception: $e")
-        }
-    }
+    //     try {
+    //         val result: Boolean = latch.await((turns * timePerTurn).toLong(), TimeUnit.MILLISECONDS)
+    //         assertTrue(result, "Test failed: latch final value: ${latch.count}; perhaps the number of players could be lowered?")
+    //     } catch (e: NullPointerException) {
+    //         fail("Test failed with exception: $e")
+    //     }
+    // }
 
     /**
      * Helper function which creates a visualizer instance
      * @param duration: The number of turns (GameChanges) this visualizer should process
-     * @param onGameState: A function to call on receipt of a GameState
-     * @param onGameChange: A function to call on receipt of a GameChange
+     * @param onVisualizerInitial: A function to call on receipt of a VisualizerInitial
+     * @param onVisualizerTurn: A function to call on receipt of a VisualizerTurn
      */
-    fun createVisualizer(duration: Int,
-                         onGameState: (gameState: GameStateProtos.GameState) -> Unit,
-                         onGameChange: (gameChange: VisualizerProtos.GameChange) -> Unit) {
+    private fun createVisualizer(duration: Int,
+                                 onVisualizerInitial: (visualizerInitial: VisualizerProtos.VisualizerInitial) -> Unit,
+                                 onVisualizerTurn: (visualizerTurn: VisualizerProtos.VisualizerTurn) -> Unit) {
         // Create WebSocket client
         val client = HttpClient {
             install(WebSockets)
@@ -237,12 +262,11 @@ class ServerIntegrationTests {
                 when (val frame = incoming.receive()) {
                     is Frame.Binary -> {
                         try {
-                            val gameState = GameStateProtos.GameState.parseFrom(frame.readBytes())
+                            val visualizerInitial = VisualizerProtos.VisualizerInitial.parseFrom(frame.readBytes())
                             //logger.info("Received GameState for turn " + gameState.stateId)
-                            onGameState(gameState)
-                        }
-                        catch(e: InvalidProtocolBufferException){
-                            fail("Expected GameState but encountered exception: $e")
+                            onVisualizerInitial(visualizerInitial)
+                        } catch (e: InvalidProtocolBufferException) {
+                            fail("Expected VisualizerInitial but encountered exception: $e")
                         }
                     }
                 }
@@ -251,14 +275,13 @@ class ServerIntegrationTests {
                 repeat(duration) {
                     when (val frame = incoming.receive()) {
                         is Frame.Binary -> {
-                            try{
-                                val gameChange = VisualizerProtos.GameChange.parseFrom(frame.readBytes())
+                            try {
+                                val visualizerTurn = VisualizerProtos.VisualizerTurn.parseFrom(frame.readBytes())
 //                                logger.info("Received GameChange with " +
 //                                        gameChange.characterStatChangesCount + " changes")
-                                onGameChange(gameChange)
-                            }
-                            catch(e: InvalidProtocolBufferException){
-                                fail("Expected GameChange but encountered exception: $e")
+                                onVisualizerTurn(visualizerTurn)
+                            } catch (e: InvalidProtocolBufferException) {
+                                fail("Expected VisualizerTurn but encountered exception: $e")
                             }
                         }
                     }
@@ -269,35 +292,86 @@ class ServerIntegrationTests {
     }
 
     @Test
-    fun testBasicVisualizerConnection(){
+    fun testOneVisualizerAndOnePlayer(){
         val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
-        val turns = 1
-        val latch = CountDownLatch(turns)
+        val turns = 5
+        val latch = CountDownLatch(turns*2)
 
-        // Create WebSocket client
-        createVisualizer(turns, {}, {latch.countDown()})
+        // Create player that walks back and forth
+        fun makeDecision(turn: PlayerTurn): CharacterProtos.CharacterDecision {
+            val playerName = turn.playerName
+            val gameState = turn.gameState
+            val myPlayer = gameState.playerNamesMap[playerName]
 
-        // Wait for 1 extra turn in case connection happens between turns
-        val result: Boolean = latch.await((turns+1) * timePerTurn, TimeUnit.MILLISECONDS)
-        assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is 1, try re-running test.")
-    }
+            if(myPlayer == null){
+                return CharacterProtos.CharacterDecision.newBuilder()
+                        .setDecisionType(DecisionType.NONE)
+                        .setIndex(-1)
+                        .build()
+            }
 
-    @Test
-    fun testMultipleVisualizerConnections(){
-        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
-        val turns = 10
-        val visualizers = 100
-        val latch = CountDownLatch(turns * visualizers)
+            val myPos = myPlayer.character.position
+            val myBoard = gameState.boardNamesMap[myPos.boardId]
 
-        // Create WebSocket client
-        for(visualizer in 1..visualizers) {
-            createVisualizer(turns, {}, { latch.countDown() })
+            val targetPos = CharacterProtos.Position.newBuilder().setX(myPos.x).setBoardId(myPos.boardId)
+
+            if (myBoard!!.getGrid(myBoard.width * myPos.x + myPos.y + 1).tileType == BoardProtos.Tile.TileType.BLANK) {
+                targetPos.y = myPos.y + 1
+            }
+            else{
+                targetPos.y = myPos.y - 1;
+            }
+
+            return CharacterProtos.CharacterDecision.newBuilder()
+                    .setDecisionType(DecisionType.MOVE)
+                    .setTargetPosition(targetPos.build())
+                    .setIndex(-1)
+                    .build()
         }
+
+        connectNPlayers(1, ::makeDecision, {}, { latch.countDown() })
+
+        // Wait a while so that the WebSocket joins after the player
+        Thread.sleep(2000)
+
+        // Create WebSocket client
+        createVisualizer(turns, {}, { latch.countDown() })
 
         // Wait for 1 extra turn in case connection happens between turns
         val result: Boolean = latch.await((turns + 1) * timePerTurn, TimeUnit.MILLISECONDS)
-        assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is $visualizers, try re-running test.")
+        assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is $turns, try re-running test.")
     }
+
+    // @Test
+    // fun testBasicVisualizerConnection(){
+    //     val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+    //     val turns = 1
+    //     val latch = CountDownLatch(turns)
+
+    //     // Create WebSocket client
+    //     createVisualizer(turns, {}, {latch.countDown()})
+
+    //     // Wait for 1 extra turn in case connection happens between turns
+    //     val result: Boolean = latch.await((turns+1) * timePerTurn, TimeUnit.MILLISECONDS)
+    //     assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is 1, try re-running test.")
+    // }
+
+    // @Test
+    // fun testMultipleVisualizerConnections(){
+    //     val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+    //     val turns = 10
+    //     val visualizers = 100
+    //     val latch = CountDownLatch(turns * visualizers)
+
+    //     // Create WebSocket client
+    //     for(visualizer in 1..visualizers) {
+    //         createVisualizer(turns, {}, { latch.countDown() })
+    //     }
+
+    //     // Wait for 1 extra turn in case connection happens between turns
+    //     val result: Boolean = latch.await((turns + 1) * timePerTurn, TimeUnit.MILLISECONDS)
+    //     assertTrue(result, "Test failed: latch final value: ${latch.count}; If value is $visualizers, try re-running test.")
+    // }
 
     @Test
     fun testMultipleVisualizerConnectionsWithPlayers(){
@@ -308,8 +382,8 @@ class ServerIntegrationTests {
         val latch = CountDownLatch(turns * (visualizers + players))
 
         connectNPlayers(players, {
-            PlayerDecision.newBuilder()
-                    .setDecisionType(CharacterProtos.DecisionType.ATTACK)
+            CharacterProtos.CharacterDecision.newBuilder()
+                    .setDecisionType(DecisionType.ATTACK)
                     .build()
         }, {
             // pass

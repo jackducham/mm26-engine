@@ -50,6 +50,8 @@ public class Main {
                 "The port number for the /infra endpoints.");
         options.addOption("vp", "visualizerPort", true,
                 "The port number for the visualizer websocket.");
+        options.addOption("ap", "apiPort", true,
+                "The port number for the api server websocket.");
 
         // Get current options
         CommandLine cmd;
@@ -68,6 +70,8 @@ public class Main {
                 cmd.getOptionValue("infraPort") : Config.getProperty("infraPort");
         String visualizerPort = cmd.hasOption("visualizerPort") ?
                 cmd.getOptionValue("visualizerPort") : Config.getProperty("visualizerPort");
+        String apiPort = cmd.hasOption("apiPort") ?
+                cmd.getOptionValue("apiPort") : Config.getProperty("apiPort");
 
         if(!enableInfra){
             // Don't connect to AWS if infra is not enabled
@@ -80,8 +84,9 @@ public class Main {
         }
 
         // Start servers
-        bus.handle(new CommandStartInfraServer(infraPort));
         bus.handle(new CommandStartVisualizerServer(visualizerPort));
+        bus.handle(new CommandStartAPIServer(apiPort));
+        bus.handle(new CommandStartInfraServer(infraPort)); // Start last so /health is only up after everything else
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
         for (int turn = bus.getUow().getTurn(); (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
@@ -90,7 +95,7 @@ public class Main {
             Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));
 
             bus.handle(new CommandStartTurn(turn));
-            bus.handle(new EventSendHistoryObjects());
+            bus.handle(new EventStoreHistoryObjects());
 
             // have the next turn start after waiting millisBetweenTurns
             // after this turn began (make sure time between turns is
@@ -117,5 +122,10 @@ public class Main {
 
         bus.handle(new CommandStopInfraServer());
         bus.handle(new CommandStopVisualizerServer());
+        bus.handle(new CommandStopAPIServer());
+
+        if (enableInfra) {
+            while (true) { }
+        }
     }
 }

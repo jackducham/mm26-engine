@@ -2,6 +2,8 @@
 package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.board.Board;
+import mech.mania.engine.domain.game.board.BoardFactory;
+import mech.mania.engine.domain.game.board.ReadBoardFromXMLFile;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Monster;
@@ -12,15 +14,11 @@ import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.GameStateProtos;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static mech.mania.engine.domain.game.board.Board.createDefaultBoard;
-import static mech.mania.engine.domain.game.board.Board.createHomeBoard;
 
 public class GameState {
     private long turnNumber;
@@ -39,8 +37,7 @@ public class GameState {
         monsterNames = new HashMap<>();
         stateChange = new GameChange();
 
-        // @TODO: Create actual pvp board
-        boardNames.put("pvp", Board.createDefaultBoard(20, 20, true, "pvp"));
+        addBoardFromXML(BoardFactory.createPvpBoardReader());
     }
 
 
@@ -65,7 +62,9 @@ public class GameState {
         return null;
     }
 
-
+    public Map<String, Board> getAllBoards() {
+        return boardNames;
+    }
 
     /**
      * Getter for a specific character (player or monster).
@@ -82,6 +81,27 @@ public class GameState {
         }
 
         return null;
+    }
+
+    /**
+     * Gets the map of character names to character objects.
+     * @return the requested map
+     */
+    public Map<String, Character> getAllCharacters() {
+        Map<String, Character> characters = new HashMap<>(getAllPlayers());
+        characters.putAll(getAllMonsters());
+        return characters;
+    }
+
+    /**
+     * Gets all characters on a specific board.
+     * @param boardId id of the board of interest
+     * @return list of characters on given board
+     */
+    public List<Character> getCharactersOnBoard(String boardId) {
+        List<Character> characters = new ArrayList<>(getPlayersOnBoard(boardId));
+        characters.addAll(getMonstersOnBoard(boardId));
+        return characters;
     }
 
     /**
@@ -165,7 +185,14 @@ public class GameState {
      * @return a custom GameState
      */
     public static GameState createDefaultGameState() {
+        // Clear all fields
         GameState defaultGameState = new GameState();
+        defaultGameState.turnNumber = 0;
+        defaultGameState.boardNames = new HashMap<>();
+        defaultGameState.playerNames = new HashMap<>();
+        defaultGameState.monsterNames = new HashMap<>();
+        defaultGameState.stateChange = new GameChange();
+
         //adds a 30x30 pvp board with hard coded obstacles
         defaultGameState.boardNames.put("pvp", createDefaultBoard(30, 30, false, "pvp"));
         Tile[][] tempGrid = defaultGameState.getPvpBoard().getGrid();
@@ -187,13 +214,16 @@ public class GameState {
         defaultGameState.getPlayer("player1").setPosition(new Position(0, 4, "pvp"));
         defaultGameState.addNewPlayer("player2");
         defaultGameState.getPlayer("player2").setPosition(new Position(0, 24, "pvp"));
+        defaultGameState.addNewPlayer("player3");
 
-
-        //adds a single monster to the pvp board.
-        //currently addNewMonster calls createDefaultMonster, so this may need changed depending on what happens to addNewMonster
+        //adds two monsters to the game. One on PVP board and one on another board
         defaultGameState.addNewMonster(
                 Monster.createDefaultMonster(0, 0, 0, 0, 0,
-                        0, 0, new Position(14, 25, "pvp"))
+                        0, 0, 0, 0, 0, new Position(14, 25, "pvp"))
+        );
+        defaultGameState.addNewMonster(
+                Monster.createDefaultMonster(0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, new Position(14, 25, "anotherBoard"))
         );
 
         return defaultGameState;
@@ -262,13 +292,29 @@ public class GameState {
      * @param playerName name of the player being added
      */
     public void addNewPlayer(String playerName) {
-        // TODO specify board dimensions
-        boardNames.put(playerName, createHomeBoard(playerName));
-        //TODO specify spawn point location on each board
-        playerNames.put(playerName, new Player(playerName, new Position(0, 0, playerName)));
+        if (playerName.equals("pvp") || getAllCharacters().containsKey(playerName)) {
+            return;
+        }
+
+        addBoardFromXML(BoardFactory.createHomeBoardReader(playerName));
+        playerNames.put(playerName, new Player(playerName, new Position(Player.SPAWN_X, Player.SPAWN_Y, playerName)));
+        stateChange.addCharacter(playerName);
     }
 
     public void addNewMonster(Monster monster){
         monsterNames.put(monster.getName(), monster);
+        stateChange.addCharacter(monster.getName());
+    }
+
+    /**
+     * Helper function which adds a new board and it's monsters
+     * from a ReadBoardFromXML object
+     * @param data the ReadBoardFromXML to add
+     */
+    public void addBoardFromXML(ReadBoardFromXMLFile data){
+        boardNames.put(data.getBoardName(), data.extractBoard());
+        for(Monster m : data.extractMonsters()){
+            monsterNames.put(m.getName(), m);
+        }
     }
 }

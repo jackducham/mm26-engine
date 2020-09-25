@@ -7,7 +7,6 @@ import mech.mania.engine.domain.game.items.Item;
 import mech.mania.engine.domain.game.items.Shoes;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +14,6 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 
-import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 
 /** This contains tests for decisions related to inventory */
@@ -34,12 +32,13 @@ public class InventoryTests {
     @Before
     public void setup() {
         gameState = GameState.createDefaultGameState();
-        p1Tile = gameState.getBoard("pvp").getGrid()[0][4];
+        p1Tile = gameState.getPvpBoard().getGrid()[0][4];
         p1Tile.addItem(defaultWeapon);
         p1Tile.addItem(defaultClothes);
         p1Tile.addItem(defaultShoes);
         p1Tile.addItem(strongerWeapon);
         p1 = gameState.getPlayer("player1");
+        p1.setWeapon(null);
     }
 
     /**
@@ -47,6 +46,9 @@ public class InventoryTests {
      */
     @After
     public void cleanup() {
+        gameState = null;
+        p1 = null;
+        p1Tile = null;
     }
 
     /**
@@ -67,36 +69,36 @@ public class InventoryTests {
     // ============================= DECISION FUNCTIONS ======================================== //
     public void pickupItem(int index) {
         // pick up item from tile
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.PICKUP);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
 
     public void equipItem(int index) {
         // equip item from inventory
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.EQUIP);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
 
     public void dropItem(int index) {
         // drop item from inventory
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.DROP);
         decision.setIndex(index);
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
     }
@@ -271,6 +273,9 @@ public class InventoryTests {
         // pick up first weapon - should be in inventory, decrease tile items
         pickupItem(0);
         equipItem(0);
+
+        assertNull(p1.getInventory()[0]);
+        assertEquals(defaultWeapon, p1.getWeapon());
 
         // shouldn't change anything
         equipItem(0);

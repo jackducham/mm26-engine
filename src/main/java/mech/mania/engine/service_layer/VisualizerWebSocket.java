@@ -17,6 +17,8 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.*;
@@ -55,22 +57,40 @@ public class VisualizerWebSocket {
         public void afterConnectionEstablished(@NotNull WebSocketSession newSession) {
             sessions.add(newSession); // Add to list of connections
 
-            // Send initial game state on new connection
-            BinaryMessage message = new BinaryMessage(lastGameState.toByteArray());
+            // Send initial proto on new connection
+            VisualizerProtos.VisualizerInitial initMessage = VisualizerProtos.VisualizerInitial.newBuilder()
+                    .setState(lastGameState)
+                    .build();
 
+            BinaryMessage message = new BinaryMessage(initMessage.toByteArray());
             try {
                 newSession.sendMessage(message);
             } catch (IOException e) {
-                LOGGER.warning("An IOException occurred when sending game state to visualizer (id = " +
+                LOGGER.warning("An IOException occurred when sending VisualizerInitial to visualizer (id = " +
                         newSession.getId() + "). Error message:\n" + e);
             }
+
+            // TODO: remove this testing code
+//            // Save VisualizerInitial to local file
+//            try {
+//                File file = new File(String.format("./repository/VisualizerInitial_%06d.pb", initMessage.getState().getStateId()));
+//                file.getParentFile().mkdirs();
+//
+//                FileOutputStream stream = new FileOutputStream(file);
+//
+//                initMessage.writeTo(stream);
+//                stream.flush();
+//                stream.close();
+//            } catch (IOException e){
+//                LOGGER.warning("IOException when storing VisualizerInitial to file: " + e.getMessage());
+//            }
         }
 
         /**
          * Sends VisualizerTurn protobuf binary to all endpoints in {@code endpoints} list.
          * @param change the VisualizerTurn to send
          */
-        public void sendChange(VisualizerProtos.GameChange change) {
+        public void sendChange(VisualizerProtos.VisualizerTurn change) {
             BinaryMessage message = new BinaryMessage(change.toByteArray());
 
             if (sessions.isEmpty()) {
@@ -91,6 +111,21 @@ public class VisualizerWebSocket {
             }
 
             LOGGER.info("Sent GameChange to " + successfulSends + " visualizer instances");
+
+            // TODO: remove this testing code
+//            // Save VisualizerInitial to local file
+//            try {
+//                File file = new File(String.format("./repository/VisualizerTurn_%06d.pb", change.getState().getStateId()));
+//                file.getParentFile().mkdirs();
+//
+//                FileOutputStream stream = new FileOutputStream(file);
+//
+//                change.writeTo(stream);
+//                stream.flush();
+//                stream.close();
+//            } catch (IOException e){
+//                LOGGER.warning("IOException when storing VisualizerTurn to file: " + e.getMessage());
+//            }
         }
 
         @Override

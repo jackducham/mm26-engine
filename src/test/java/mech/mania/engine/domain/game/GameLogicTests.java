@@ -1,17 +1,15 @@
 package mech.mania.engine.domain.game;
 
+import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.Character;
 import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Objects;
 
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 /** This contains tests for any overall board tests or helper functions */
@@ -24,6 +22,11 @@ public class GameLogicTests {
     @Before
     public void setup() {
         gameState = GameState.createDefaultGameState();
+
+        // Make home board simple
+        Board newHome = new Board(20, 20);
+        newHome.addPortal(new Position(5, 10, "player1"));
+        gameState.getAllBoards().put("player1", newHome);
     }
 
     /**
@@ -42,28 +45,7 @@ public class GameLogicTests {
 
         // Check that player1 is at 0, 0 on their board
         Position initPos = new Position(0, 4, "pvp");
-        assertTrue(gameState.getPlayer("player1").getPosition().equals(initPos));
-    }
-
-    /**
-     * Helper function that creates a custom PlayerDecision from custom commands
-     *
-     * @param commands String[] of commands to use
-     * @return PlayerDecision object
-     */
-    private PlayerProtos.PlayerDecision createDecisionsFromCommands(String[] commands) {
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
-
-        // TODO: create more commands for convenience
-        for (String command : commands) {
-            switch (command) {
-                case "move":
-                    // decision.setMovement()
-                    break;
-            }
-        }
-
-        return decision.build();
+        assertEquals(gameState.getPlayer("player1").getPosition(), initPos);
     }
 
     @Test
@@ -72,18 +54,18 @@ public class GameLogicTests {
         Position x10y10 = new Position(10, 10, "id");
         Position x5y10 = new Position(5, 10, "id");
         Position x5y11 = new Position(5, 11, "id");
-        assertEquals(20, GameLogic.calculateManhattanDistance(x0y0, x10y10));
-        assertEquals(15, GameLogic.calculateManhattanDistance(x0y0, x5y10));
-        assertEquals(16, GameLogic.calculateManhattanDistance(x0y0, x5y11));
-        assertEquals(0, GameLogic.calculateManhattanDistance(x10y10, x10y10));
-        assertEquals(5, GameLogic.calculateManhattanDistance(x5y10, x10y10));
-        assertEquals(1, GameLogic.calculateManhattanDistance(x5y10, x5y11));
+        assertEquals(20, x0y0.manhattanDistance(x10y10));
+        assertEquals(15, x0y0.manhattanDistance(x5y10));
+        assertEquals(16, x0y0.manhattanDistance(x5y11));
+        assertEquals(0, x10y10.manhattanDistance(x10y10));
+        assertEquals(5, x5y10.manhattanDistance(x10y10));
+        assertEquals(1, x5y10.manhattanDistance(x5y11));
     }
 
     @Test
     public void illegalPlayerPortalPosition() {
         Character playerOnBoard = gameState.getPlayer("player1");
-        assertTrue(playerOnBoard.getPosition().equals(new Position(0, 4, "pvp")));
+        assertEquals(playerOnBoard.getPosition(), new Position(0, 4, "pvp"));
         assertFalse(GameLogic.canUsePortal(gameState, playerOnBoard));
     }
 
