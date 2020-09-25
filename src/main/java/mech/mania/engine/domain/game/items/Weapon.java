@@ -27,7 +27,7 @@ public class Weapon extends Wearable {
     }
 
     /**
-     * Creates a Weapon with a range of 1, damage of 5
+     * Creates a Weapon with a range of 1, damage of 4
      * Given to all Players at start of game
      */
     public static Weapon createStarterWeapon() {
