@@ -129,6 +129,28 @@ public class GameLogic {
             processDecision(gameState, gameState.getCharacter(entry.getKey()), entry.getValue());
         }
 
+        // ============= Delete Old Items =============== \\
+        for (Map.Entry<String, Board> entry : gameState.getAllBoards().entrySet()) {
+            Tile[][] currentGrid = entry.getValue().getGrid();
+            for(int i = 0; i < currentGrid.length; ++i) {
+                for(int j = 0; j < currentGrid[0].length; ++ j) {
+                    List<Item> items = currentGrid[i][j].getItems();
+                    if(items.isEmpty()) {
+                        continue;
+                    }
+                    for(int k = 0; k < items.size(); ) {
+                        if(items.get(k) == null) {
+                            items.remove(k);
+                        } else if (items.get(k).getTurnsToDeletion() <= 0) {
+                            items.remove(k);
+                        } else {
+                            items.get(k).decTurnsToDeletion();
+                            ++k;
+                        }
+                    }
+                }
+            }
+        }
 
         // ========== UPDATE PLAYER FUNCTIONS ========== \\
         //updateCharacter handles clearing active effects, setting status to dead/alive,
@@ -429,6 +451,7 @@ public class GameLogic {
 
         Item item = tile.getItems().get(index);
         tile.removeItem(index);
+        item.setTurnsToDeletion(Item.ITEM_LIFETIME);
         player.setInventory(playerInventoryIndex, item);
         return true;
     }

@@ -24,6 +24,7 @@ public class Weapon extends Wearable {
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
         this.attack = weaponProto.getAttack();
+        this.turnsToDeletion = weaponProto.getTurnsToDeletion();
     }
 
     /**
@@ -70,6 +71,7 @@ public class Weapon extends Wearable {
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
         weaponBuilder.setAttack(attack);
         weaponBuilder.setSprite(sprite);
+        weaponBuilder.setTurnsToDeletion(turnsToDeletion);
 
         return weaponBuilder.build();
     }
