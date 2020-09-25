@@ -126,7 +126,10 @@ public class Monster extends Character {
      * @return the Monster's next decision
      */
     public CharacterDecision makeDecision(GameState gameState) {
+        addPlayersToAggroRangeTable(gameState);
+        
         Player target = null;
+
         if (!taggedPlayersDamage.isEmpty()) {
             String highestDamageCharacter = getPlayerWithMostDamage();
             target = gameState.getPlayer(highestDamageCharacter);

@@ -6,10 +6,7 @@ import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
@@ -312,19 +309,16 @@ public abstract class Character {
     }
 
     /**
-     * @return name of the Player (NOT Monster) with most damage done to this Character
+     * @return sorted LinkedHashMap of players in order of damage done to this Character
      */
-    protected String getPlayerWithMostDamage() {
-        String highestDamagePlayer = null;
-        int highestDamage = -1;
-        for (String name : taggedPlayersDamage.keySet()) {
-            if (taggedPlayersDamage.get(name) > highestDamage) {
-                highestDamagePlayer = name;
-                highestDamage = taggedPlayersDamage.get(name);
-            }
-        }
+    protected LinkedHashMap<String, Integer> getPlayerWithMostDamage() {
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
 
-        return highestDamagePlayer;
+        taggedPlayersDamage.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        return sortedMap;
     }
 
 
