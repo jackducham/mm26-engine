@@ -2,10 +2,7 @@ package mech.mania.engine.domain.model;
 
 import mech.mania.engine.domain.game.characters.CharacterDecision;
 import mech.mania.engine.domain.game.characters.Position;
-import mech.mania.engine.domain.game.items.Clothes;
-import mech.mania.engine.domain.game.items.Hat;
-import mech.mania.engine.domain.game.items.Shoes;
-import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.game.items.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,6 +84,8 @@ public class GameChange {
             curChange.shoesChanged = true;
         } else if (itemType == Weapon.class) {
             curChange.weaponChanged = true;
+        } else if (itemType == Accessory.class){
+            curChange.accessoryChanged = true;
         }
     }
 
@@ -102,6 +101,7 @@ public class GameChange {
         List<Position> path = null;
 
         boolean hatChanged = false;
+        boolean accessoryChanged = false;
         boolean clothesChanged = false;
         boolean shoesChanged = false;
         boolean weaponChanged = false;
@@ -124,6 +124,7 @@ public class GameChange {
             }
 
             builder.setHatChanged(hatChanged);
+            builder.setAccessoryChanged(accessoryChanged);
             builder.setClothesChanged(clothesChanged);
             builder.setShoesChanged(shoesChanged);
             builder.setWeaponChanged(weaponChanged);
