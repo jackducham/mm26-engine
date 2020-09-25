@@ -174,6 +174,7 @@ public class Player extends Character {
         updateActiveEffects();
         applyWearableRegen();
         updateLevel();
+        healOnSpawnPoint();
         updateDeathState(gameState);
         playerStats.incrementTurnsSinceJoined();
     }
@@ -200,6 +201,16 @@ public class Player extends Character {
         }
 
         updateCurrentHealth(regenFromWearables);
+    }
+
+    /**
+     * If player's on spawn point, give them 5 extra health
+     */
+    public void healOnSpawnPoint() {
+        if (getPosition().equals(getSpawnPoint())) {
+            int healthGain = (int) Math.round(0.1 * getMaxHealth());
+            updateCurrentHealth(healthGain);
+        }
     }
 
     @Override
