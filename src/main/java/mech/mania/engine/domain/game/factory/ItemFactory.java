@@ -13,6 +13,7 @@ public class ItemFactory {
         }
 
         int itemTypeDecider = rand.nextInt(7);
+        String spriteFileName;
 
         if(itemTypeDecider == 0) { //~~~~~~~~~~~~~~~~~~~~~~~~~Weapon     Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             int weaponTypeDecider;
@@ -250,6 +251,22 @@ public class ItemFactory {
                         }
                     }
                 }
+
+                if (weaponDamage <= 9) {
+                    spriteFileName = "mm26_wearables/weapons/swords/1";
+                } else if (weaponDamage <= 19) {
+                    spriteFileName = "mm26_wearables/weapons/swords/2";
+                } else if (weaponDamage <= 29) {
+                    spriteFileName = "mm26_wearables/weapons/swords/3";
+                } else if (weaponDamage <= 39) {
+                    spriteFileName = "mm26_wearables/weapons/swords/4";
+                } else if (weaponDamage <= 49) {
+                    spriteFileName = "mm26_wearables/weapons/swords/5";
+                } else if (weaponDamage <= 59) {
+                    spriteFileName = "mm26_wearables/weapons/swords/6";
+                } else {
+                    spriteFileName = "mm26_wearables/weapons/swords/7";
+                }
             } else if (weaponTypeDecider == 1) {//~Bow      Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
                 onHitAttributes = rand.nextInt(2);
                 if (level < 20) {
@@ -457,6 +474,24 @@ public class ItemFactory {
                         }
                     }
                 }
+
+                if (weaponDamage <= 9) {
+                    spriteFileName = "mm26_wearables/weapons/bows/1";
+                } else if (weaponDamage <= 19) {
+                    spriteFileName = "mm26_wearables/weapons/bows/2";
+                } else if (weaponDamage <= 29) {
+                    spriteFileName = "mm26_wearables/weapons/bows/3";
+                } else if (weaponDamage <= 39) {
+                    spriteFileName = "mm26_wearables/weapons/bows/4";
+                } else if (weaponDamage <= 49) {
+                    spriteFileName = "mm26_wearables/weapons/bows/5";
+                } else if (weaponDamage <= 59) {
+                    spriteFileName = "mm26_wearables/weapons/bows/6";
+                } else {
+                    spriteFileName = "mm26_wearables/weapons/bows/7";
+                }
+
+
             } else if (weaponTypeDecider == 2) {//~Wand     Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
                 onHitAttributes = 2 + rand.nextInt(3);
                 if (level < 30) {
@@ -680,6 +715,22 @@ public class ItemFactory {
                         }
                     }
                 }
+
+                if (weaponDamage <= 9) {
+                    spriteFileName = "mm26_wearables/weapons/wands/1";
+                } else if (weaponDamage <= 19) {
+                    spriteFileName = "mm26_wearables/weapons/wands/2";
+                } else if (weaponDamage <= 29) {
+                    spriteFileName = "mm26_wearables/weapons/wands/3";
+                } else if (weaponDamage <= 39) {
+                    spriteFileName = "mm26_wearables/weapons/wands/4";
+                } else if (weaponDamage <= 49) {
+                    spriteFileName = "mm26_wearables/weapons/wands/5";
+                } else {
+                    spriteFileName = "mm26_wearables/weapons/wands/6";
+                }
+
+
             } else {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stave    Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
                 onHitAttributes = 3 + rand.nextInt(4);
                 if (level < 40) {
@@ -888,10 +939,23 @@ public class ItemFactory {
                         }
                     }
                 }
+
+                if (weaponDamage <= 9) {
+                    spriteFileName = "mm26_wearables/weapons/staves/1";
+                } else if (weaponDamage <= 19) {
+                    spriteFileName = "mm26_wearables/weapons/staves/2";
+                } else if (weaponDamage <= 29) {
+                    spriteFileName = "mm26_wearables/weapons/staves/3";
+                } else if (weaponDamage <= 39) {
+                    spriteFileName = "mm26_wearables/weapons/staves/4";
+                } else {
+                    spriteFileName = "mm26_wearables/weapons/staves/5";
+                }
+
+
             }
 
-            //TODO: Give weapon sprite
-            return new Weapon(weaponStats, weaponRange, weaponSplash, weaponDamage, weaponOnHit, "");
+            return new Weapon(weaponStats, weaponRange, weaponSplash, weaponDamage, weaponOnHit, spriteFileName);
 
         } else if (itemTypeDecider == 1) {//~~~~~~~~~~~~~~~~~~Clothes    Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier clothesStats;
@@ -1045,8 +1109,33 @@ public class ItemFactory {
                 }
             }
 
-            // TODO: Give Clothes a sprite
-            return new Clothes(clothesStats, "");
+            if (clothesStats.getFlatDefenseChange() <= 40) {
+                spriteFileName = "mm26_wearables/clothes/villager_gal_top";
+            } else if (clothesStats.getFlatDefenseChange() <= 80) {
+                spriteFileName = "mm26_wearables/clothes/butler_top";
+            } else if (clothesStats.getFlatDefenseChange() <= 120) {
+                spriteFileName = "mm26_wearables/clothes/alchemist_top";
+            } else if (clothesStats.getFlatDefenseChange() <= 160) {
+                spriteFileName = "mm26_wearables/clothes/witch_top";
+            } else if (clothesStats.getFlatDefenseChange() <= 200) {
+                spriteFileName = "mm26_wearables/clothes/knight_top";
+            } else if (clothesStats.getFlatDefenseChange() <= 250) {
+                spriteFileName = "mm26_wearables/clothes/maid_top_alt";
+            } else if (clothesStats.getFlatDefenseChange() <= 300) {
+                spriteFileName = "mm26_wearables/clothes/antler_boi_top";
+            } else if (clothesStats.getFlatDefenseChange() <= 350) {
+                spriteFileName = "mm26_wearables/clothes/witch_top_alt";
+            } else if (clothesStats.getFlatDefenseChange() <= 400) {
+                spriteFileName = "mm26_wearables/clothes/Fruity Legolas - Top";
+            } else if (clothesStats.getFlatDefenseChange() <= 450) {
+                spriteFileName = "mm26_wearables/clothes/knight_top_alt";
+            } else if (clothesStats.getFlatDefenseChange() <= 500) {
+                spriteFileName = "mm26_wearables/clothes/Hooded - Top";
+            } else {
+                spriteFileName = "mm26_wearables/clothes/maid_top";
+            }
+
+            return new Clothes(clothesStats, spriteFileName);
 
         } else if (itemTypeDecider == 2) {//~~~~~~~~~~~~~~~~~~Shoes      Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier shoesStats;
@@ -1188,8 +1277,42 @@ public class ItemFactory {
                 }
             }
 
-            // TODO: Give Shoes a sprite
-            return new Shoes(shoesStats, "");
+            int spriteDecider = rand.nextInt(3);
+            if (shoesStats.getFlatSpeedChange() <= 2) {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/shoes/villager_gal_bottom";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/shoes/butler_bottom";
+                } else {
+                    spriteFileName = "mm26_wearables/shoes/alchemist_bottom";
+                }
+            } else if (shoesStats.getFlatSpeedChange() <= 3) {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/shoes/witch_bottom";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/shoes/knight_bottom";
+                } else {
+                    spriteFileName = "mm26_wearables/shoes/maid_bottom_alt";
+                }
+            } else if (shoesStats.getFlatSpeedChange() <= 4) {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/shoes/antler_boi_bottom";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/shoes/witch_bottom_alt";
+                } else {
+                    spriteFileName = "mm26_wearables/shoes/Fruity Legolas - Bottom";
+                }
+            } else {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/shoes/knight_bottom_alt";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/shoes/Hooded - Bottom";
+                } else {
+                    spriteFileName = "mm26_wearables/shoes/maid_bottom";
+                }
+            }
+
+            return new Shoes(shoesStats, spriteFileName);
 
         } else if (itemTypeDecider == 3) {//~~~~~~~~~~~~~~~~~~Hat        Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier hatStats;
@@ -1376,8 +1499,42 @@ public class ItemFactory {
                 }
             }
 
-            // TODO: Give Hat a sprite
-            return new Hat(hatStats, effect, "");
+            int spriteDecider = rand.nextInt(3);
+            if (hatStats.getFlatAttackChange() <= 40) {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/hats/villager_head";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/hats/butler_head";
+                } else {
+                    spriteFileName = "mm26_wearables/hats/alchemist_head";
+                }
+            } else if (hatStats.getFlatAttackChange() <= 80) {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/hats/witch_head";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/hats/knight_head";
+                } else {
+                    spriteFileName = "mm26_wearables/hats/maid_head_alt";
+                }
+            } else if (hatStats.getFlatAttackChange() <= 120) {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/hats/antler_boi_head";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/hats/witch_head_alt";
+                } else {
+                    spriteFileName = "mm26_wearables/hats/Fruity Legolas - Head";
+                }
+            } else {
+                if (spriteDecider == 0) {
+                    spriteFileName = "mm26_wearables/hats/knight_head_alt";
+                } else if (spriteDecider == 1) {
+                    spriteFileName = "mm26_wearables/hats/Hooded - Head";
+                } else {
+                    spriteFileName = "mm26_wearables/hats/maid_head";
+                }
+            }
+
+            return new Hat(hatStats, effect, spriteFileName);
 
         } else if (itemTypeDecider == 4) {//~~~~~~~~~~~~~~~~~~Accessory  Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             StatusModifier accessoryStats;
@@ -1564,8 +1721,48 @@ public class ItemFactory {
                 }
             }
 
-            // TODO: Give Accessory a sprite
-            return new Accessory(accessoryStats, effect, "");
+            int spriteDecider = rand.nextInt(20);
+            if (spriteDecider == 0) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Airpods";
+            } else if (spriteDecider == 1) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Ammulet";
+            } else if (spriteDecider == 2) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Civilized Weapon";
+            } else if (spriteDecider == 3) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Forever Gauntlet";
+            } else if (spriteDecider == 4) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Hero Mask";
+            } else if (spriteDecider == 5) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Mask";
+            } else if (spriteDecider == 6) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Monster Balls";
+            } else if (spriteDecider == 7) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Nose Ring";
+            } else if (spriteDecider == 8) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Pharoh_s Selfie Stick";
+            } else if (spriteDecider == 9) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Power Gloves";
+            } else if (spriteDecider == 10) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Quill";
+            } else if (spriteDecider == 11) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Red Scarf";
+            } else if (spriteDecider == 12) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Rings";
+            } else if (spriteDecider == 13) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Rings";
+            } else if (spriteDecider == 14) {
+                spriteFileName = "mm26_wearables/accessories/Acc - Sunglasses";
+            } else if (spriteDecider == 15) {
+                spriteFileName = "mm26_wearables/accessories/bow1_acc";
+            } else if (spriteDecider == 16) {
+                spriteFileName = "mm26_wearables/accessories/bow2_acc";
+            } else if (spriteDecider == 17) {
+                spriteFileName = "mm26_wearables/accessories/earrings_acc";
+            } else {
+                spriteFileName = "mm26_wearables/accessories/onimask_acc";
+            }
+
+            return new Accessory(accessoryStats, effect, spriteFileName);
 
         } else {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Consumable Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             TempStatusModifier potionStats;
@@ -1664,7 +1861,6 @@ public class ItemFactory {
                 }
             }
 
-            // TODO: Give Consumable a sprite
             return new Consumable(5, potionStats, "");
         }
 
