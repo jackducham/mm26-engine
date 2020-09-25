@@ -33,7 +33,7 @@ public class Weapon extends Wearable {
     public static Weapon createStarterWeapon() {
         StatusModifier statusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier tempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 10, tempStatusModifier, "");
+        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 4, tempStatusModifier, "mm26_wearables/weapons/swords/1.png");
 
         return starterWeapon;
     }
