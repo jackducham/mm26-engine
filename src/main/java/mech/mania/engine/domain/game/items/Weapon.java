@@ -26,6 +26,18 @@ public class Weapon extends Wearable {
         this.attack = weaponProto.getAttack();
     }
 
+    /**
+     * Creates a Weapon with a range of 1, damage of 4
+     * Given to all Players at start of game
+     */
+    public static Weapon createStarterWeapon() {
+        StatusModifier statusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        TempStatusModifier tempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 4, tempStatusModifier, "mm26_wearables/weapons/swords/1.png");
+
+        return starterWeapon;
+    }
+
     public static Weapon createDefaultWeapon() {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0);
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);

@@ -27,6 +27,7 @@ public class Player extends Character {
     private static final int BASE_MAX_HEALTH = 20;
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
+    private static final Weapon starterWeapon = Weapon.createStarterWeapon();
 
     public static final int SPAWN_X = 2;
     public static final int SPAWN_Y = 3;
@@ -42,7 +43,7 @@ public class Player extends Character {
      * @param spawnPoint Player's spawn point
      */
     public Player(String name, Position spawnPoint) {
-        super(name, DEFAULT_BODY_SPRITE, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, null, REVIVE_TICKS);
+        super(name, DEFAULT_BODY_SPRITE, BASE_SPEED, BASE_MAX_HEALTH, BASE_ATTACK, BASE_DEFENSE, 1, spawnPoint, starterWeapon, REVIVE_TICKS);
         hat = null;
         clothes = null;
         shoes = null;
