@@ -40,6 +40,7 @@ public class Player extends Character {
         super(playerProto.getCharacter());
 
         hat = new Hat(playerProto.getHat());
+        accessory = new Accessory(playerProto.getAccessory());
         clothes = new Clothes(playerProto.getClothes());
         shoes = new Shoes(playerProto.getShoes());
         inventory = new Item[INVENTORY_SIZE];
@@ -86,6 +87,9 @@ public class Player extends Character {
         }
         if (shoes != null) {
             playerBuilder.setShoes(shoes.buildProtoClassShoes());
+        }
+        if (accessory != null){
+            playerBuilder.setAccessory(accessory.buildProtoClassAccessory());
         }
 
         return playerBuilder.build();
