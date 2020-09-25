@@ -165,10 +165,6 @@ public class Monster extends Character {
 
         Position targetPos = target.position;
         int manhattanDistance = position.manhattanDistance(targetPos);
-        if (manhattanDistance <= weapon.getRange()) {
-            System.out.println("in range");
-            return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, targetPos);
-        }
         if (manhattanDistance <= weapon.getRange() + weapon.getSplashRadius()) {
             Position toTarget = findPositionToTarget(gameState, targetPos);
             if (toTarget != null) {
