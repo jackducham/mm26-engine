@@ -31,11 +31,37 @@ public class RepositoryAws implements RepositoryAbstract {
     private static final String region = Config.getProperty("awsRegion"); // "us-east-1"
 
     @Override
+    public int storeCurrentTurn(int turn) {
+        new Thread(() -> {
+            try {
+                String serverName = System.getenv("ENGINE_NAME");
+                String key = String.format("engine/%s/CurrentTurn.txt", serverName == null ? "unnamed" : serverName);
+
+                AmazonS3 s3 = AmazonS3ClientBuilder.standard()
+                        .withCredentials(new EnvironmentVariableCredentialsProvider())
+                        .withRegion(region)
+                        .build();
+
+                s3.putObject(bucketName, key, "" + turn);
+            } catch (AmazonServiceException e) {
+                // The call was transmitted successfully, but Amazon S3 couldn't process
+                // it, so it returned an error response.
+                LOGGER.warning("Unable to process S3 request when setting CurrentTurn in AWS: " + e);
+            } catch (SdkClientException e) {
+                // Amazon S3 couldn't be contacted for a response, or the client
+                // couldn't parse the response from Amazon S3.
+                LOGGER.warning("Failed to connect to S3 when setting CurrentTurn in AWS: " + e);
+            }
+        }).start();
+        return 0;
+    }
+
+    @Override
     public int storeGameState(final int turn, final GameState gameState) {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                sendToAws(String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn), gameState.buildProtoClass());
+                sendToAws(String.format("engine/%s/GameState/%06d.pb", serverName == null ? "unnamed" : serverName, turn), gameState.buildProtoClass());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -48,7 +74,7 @@ public class RepositoryAws implements RepositoryAbstract {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                sendToAws(String.format("engine/%s/GameChange/%06d", serverName == null ? "unnamed" : serverName, turn), gameChange);
+                sendToAws(String.format("engine/%s/GameChange/%06d.pb", serverName == null ? "unnamed" : serverName, turn), gameChange);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,7 +87,7 @@ public class RepositoryAws implements RepositoryAbstract {
         new Thread(() -> {
             try {
                 String serverName = System.getenv("ENGINE_NAME");
-                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn), playerStatsBundle);
+                sendToAws(String.format("engine/%s/PlayerStatsBundle/%06d.pb", serverName == null ? "unnamed" : serverName, turn), playerStatsBundle);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -73,7 +99,7 @@ public class RepositoryAws implements RepositoryAbstract {
     public GameState getGameState(int turn) {
         String serverName = System.getenv("ENGINE_NAME");
         String gameStateKey = String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn);
-        String playerStatsKey = String.format("engine/%s/PlayerStatsBundle/%06d", serverName == null ? "unnamed" : serverName, turn);
+        String playerStatsKey = String.format("engine/%s/PlayerStatsBundle/%06d.pb", serverName == null ? "unnamed" : serverName, turn);
         MessageLite gameStateProto = GameStateProtos.GameState.getDefaultInstance();
 
         // Get GameState from AWS

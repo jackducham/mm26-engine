@@ -3,16 +3,16 @@ package mech.mania.engine.domain.game.items;
 import mech.mania.engine.domain.model.ItemProtos;
 
 public class Hat extends Wearable {
-    private HatEffect hatEffect;
+    private MagicEffect magicEffect;
 
     /**
      * Creates a hat with given stats and hat effect.
      * @param stats a StatusModifier storing the stats the Hat will be created with
-     * @param hatEffect the effect the Hat will have
+     * @param magicEffect the effect the Hat will have
      */
-    public Hat(StatusModifier stats, HatEffect hatEffect) {
-        super(stats);
-        this.hatEffect = hatEffect;
+    public Hat(StatusModifier stats, MagicEffect magicEffect, String sprite) {
+        super(stats, sprite);
+        this.magicEffect = magicEffect;
     }
 
     /**
@@ -20,8 +20,30 @@ public class Hat extends Wearable {
      * @param hatProto the protocol buffer to be copied
      */
     public Hat(ItemProtos.Hat hatProto) {
-        super(new StatusModifier(hatProto.getStats()));
-        // TODO: copy HatEffect
+        super(new StatusModifier(hatProto.getStats()), hatProto.getSprite());
+        switch (hatProto.getMagicEffect()) {
+            case SHOES_BOOST:
+                this.magicEffect = MagicEffect.SHOES_BOOST;
+                break;
+            case WEAPON_BOOST:
+                this.magicEffect = MagicEffect.WEAPON_BOOST;
+                break;
+            case CLOTHES_BOOST:
+                this.magicEffect = MagicEffect.CLOTHES_BOOST;
+                break;
+            case STACKING_BONUS:
+                this.magicEffect = MagicEffect.STACKING_BONUS;
+                break;
+            case TRIPLED_ON_HIT:
+                this.magicEffect = MagicEffect.TRIPLED_ON_HIT;
+                break;
+            case LINGERING_POTIONS:
+                this.magicEffect = MagicEffect.LINGERING_POTIONS;
+                break;
+            case NONE:
+                this.magicEffect = MagicEffect.NONE;
+                break;
+        }
     }
 
     /**
@@ -32,8 +54,29 @@ public class Hat extends Wearable {
         ItemProtos.Hat.Builder hatBuilder = ItemProtos.Hat.newBuilder();
 
         hatBuilder.setStats(stats.buildProtoClass());
-        // TODO: add HatEffect
-
+        hatBuilder.setSprite(sprite);
+        switch (magicEffect) {
+            case SHOES_BOOST:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.SHOES_BOOST);
+                break;
+            case WEAPON_BOOST:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.WEAPON_BOOST);
+                break;
+            case CLOTHES_BOOST:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.CLOTHES_BOOST);
+                break;
+            case STACKING_BONUS:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.STACKING_BONUS);
+                break;
+            case TRIPLED_ON_HIT:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.TRIPLED_ON_HIT);
+                break;
+            case LINGERING_POTIONS:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.LINGERING_POTIONS);
+                break;
+            case NONE:
+                hatBuilder.setMagicEffect(ItemProtos.MagicEffect.NONE);
+        }
         return hatBuilder.build();
     }
 
@@ -53,8 +96,8 @@ public class Hat extends Wearable {
      * Getter for the Hat's effect.
      * @return the Hat's effect
      */
-    public HatEffect getHatEffect() {
-        return hatEffect;
+    public MagicEffect getMagicEffect() {
+        return magicEffect;
     }
 
     /**
@@ -66,7 +109,8 @@ public class Hat extends Wearable {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0,
                 0.2, 0, 0, 0, 0,
                 0, 0, 0);
-        Hat defaultHat = new Hat(defaultStatusModifier, null);
+
+        Hat defaultHat = new Hat(defaultStatusModifier, MagicEffect.NONE, "");
         return defaultHat;
     }
 }

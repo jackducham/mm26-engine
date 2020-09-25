@@ -9,10 +9,9 @@ import mech.mania.engine.domain.model.PlayerConnectInfo;
 import mech.mania.engine.domain.model.VisualizerProtos;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Logger;
 
 public abstract class UnitOfWorkAbstract {
@@ -22,6 +21,9 @@ public abstract class UnitOfWorkAbstract {
 
     protected final Queue<Message> messages = new LinkedList<>();
     protected final Map<String, PlayerConnectInfo> connectInfoMap = new ConcurrentHashMap<>();
+
+    // List of player servers to be shut down after next set of requests
+    protected List<PlayerConnectInfo> expiredConnectInfoList = new CopyOnWriteArrayList<>();
     protected String visualizerConnectUrl = "";
     protected int turn = 0;
     protected boolean gameOver = false;
@@ -31,6 +33,7 @@ public abstract class UnitOfWorkAbstract {
 
     protected ConfigurableApplicationContext infraCtx;
     protected ConfigurableApplicationContext visualizerCtx;
+    protected ConfigurableApplicationContext APICtx;
 
     /**
      * Constructor that sets an AbstractRepository
@@ -61,6 +64,10 @@ public abstract class UnitOfWorkAbstract {
 
     public void storePlayerStatsBundle(int turn, CharacterProtos.PlayerStatsBundle playerStatsBundle) {
         repository.storePlayerStatsBundle(turn, playerStatsBundle);
+    }
+
+    public void storeCurrentTurn(int turn){
+        repository.storeCurrentTurn(turn);
     }
 
     /**
@@ -134,6 +141,10 @@ public abstract class UnitOfWorkAbstract {
         return connectInfoMap;
     }
 
+    public List<PlayerConnectInfo> getExpiredConnectInfoList() {
+        return expiredConnectInfoList;
+    }
+
     /**
      * @return whether there was a player in the map in the beginning
      * (true if player existed, false if player did not exist and new
@@ -141,6 +152,10 @@ public abstract class UnitOfWorkAbstract {
      */
     public boolean updatePlayerConnectInfoMap(String playerName, String playerIp) {
         if (connectInfoMap.containsKey(playerName)) {
+            // Store old IP to shutdown when safe
+            expiredConnectInfoList.add(connectInfoMap.get(playerName));
+
+            // Replace with new IP to contact for the future
             connectInfoMap.put(playerName, new PlayerConnectInfo(playerIp));
             return true;
         }
@@ -182,6 +197,19 @@ public abstract class UnitOfWorkAbstract {
      * Use the saved ConfigurableApplicationContext to stop the VisualizerWebSocket
      */
     public abstract void stopVisualizerServer();
+
+    /**
+     * Store a ConfigurableApplicationContext object in order to stop the API server WebSocket
+     * @param ctx
+     */
+    public void storeAPICtx(ConfigurableApplicationContext ctx) {
+        this.APICtx = ctx;
+    }
+
+    /**
+     * Use the saved ConfigurableApplicationContext to stop the API server WebSocket
+     */
+    public abstract void stopAPIServer();
 
     /**
      * Sets the game over status for this UoW.

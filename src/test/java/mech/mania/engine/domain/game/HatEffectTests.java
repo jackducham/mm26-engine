@@ -4,7 +4,6 @@ import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.PlayerProtos;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static junit.framework.TestCase.*;
-import static org.junit.Assert.assertFalse;
 
 public class HatEffectTests {
 
@@ -49,7 +47,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.LINGERING_POTIONS));
+                MagicEffect.LINGERING_POTIONS, ""));
         p1.equipItem(1);
         p1.setInventory(2, Consumable.createDefaultConsumable());
 
@@ -63,13 +61,13 @@ public class HatEffectTests {
         assertEquals(5, currentHP);
 
         // Create a decision to use the potion
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.EQUIP);
         decision.setIndex(2);
 
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -117,7 +115,8 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.SHOES_BOOST));
+                MagicEffect.SHOES_BOOST, ""));
+
         p1.setInventory(2, Shoes.createDefaultShoes());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -132,7 +131,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.WEAPON_BOOST));
+                MagicEffect.WEAPON_BOOST, ""));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -147,7 +146,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.CLOTHES_BOOST));
+                MagicEffect.CLOTHES_BOOST, ""));
         p1.setInventory(2, Clothes.createDefaultClothes());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -162,7 +161,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.TRIPLED_ON_HIT));
+                MagicEffect.TRIPLED_ON_HIT, ""));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -177,12 +176,12 @@ public class HatEffectTests {
         assertTrue(affectedPositions.containsKey(p2.getPosition()));
 
         // Create a decision to attack player2
-        PlayerProtos.PlayerDecision.Builder decision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.ATTACK);
         decision.setTargetPosition(p2.getPosition().buildProtoClass());
 
         // Execute decision
-        HashMap<String, PlayerProtos.PlayerDecision> decisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
@@ -190,9 +189,9 @@ public class HatEffectTests {
         //assertEquals(0, p1.getAttack());
         assertEquals(5, p2.getCurrentHealth());
 
-        PlayerProtos.PlayerDecision.Builder emptyDecision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder emptyDecision = CharacterProtos.CharacterDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
-        HashMap<String, PlayerProtos.PlayerDecision> emptyDecisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
         emptyDecisionMap.put("player1", emptyDecision.build());
         emptyDecisionMap.put("player2", emptyDecision.build());
         GameLogic.doTurn(gameState, emptyDecisionMap);
@@ -207,15 +206,15 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(1,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                HatEffect.STACKING_BONUS));
+                MagicEffect.STACKING_BONUS, ""));
         p1.equipItem(1);
 
         //base speed of 5 plus 1 from the hat.
         assertEquals(6, p1.getSpeed());
 
-        PlayerProtos.PlayerDecision.Builder emptyDecision = PlayerProtos.PlayerDecision.newBuilder();
+        CharacterProtos.CharacterDecision.Builder emptyDecision = CharacterProtos.CharacterDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
-        HashMap<String, PlayerProtos.PlayerDecision> emptyDecisionMap = new HashMap<>();
+        HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
         emptyDecisionMap.put("player1", emptyDecision.build());
         emptyDecisionMap.put("player2", emptyDecision.build());
         GameLogic.doTurn(gameState, emptyDecisionMap);
@@ -224,11 +223,8 @@ public class HatEffectTests {
 
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-        //base speed of 5 plus one from the hat plus 6 TSMs.
-        assertEquals(12, p1.getSpeed());
+        //base speed of 5 plus one from the hat plus 3 TSMs.
+        assertEquals(9, p1.getSpeed());
 
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
@@ -237,8 +233,8 @@ public class HatEffectTests {
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
 
-        //base speed of 5 plus one from hat plus 10 TSMs. (We've added more than 10, but the durations on the earliest
+        //base speed of 5 plus one from hat plus 4 TSMs. (We've added more than 4, but the durations on the earliest
         // have begun to run out. This leaves us with a number of TSMs equal to the duration.
-        assertEquals(16, p1.getSpeed());
+        assertEquals(10, p1.getSpeed());
     }
 }

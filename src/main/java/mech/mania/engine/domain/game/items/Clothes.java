@@ -7,8 +7,8 @@ public class Clothes extends Wearable {
      * Creates a Clothes object with the given stats.
      * @param stats the stats the Clothes will be created with
      */
-    public Clothes(StatusModifier stats) {
-        super(stats);
+    public Clothes(StatusModifier stats, String sprite) {
+        super(stats, sprite);
     }
 
     /**
@@ -16,7 +16,7 @@ public class Clothes extends Wearable {
      * @param clothesProto the protocol buffer to be copied
      */
     public Clothes(ItemProtos.Clothes clothesProto) {
-        super(new StatusModifier(clothesProto.getStats()));
+        super(new StatusModifier(clothesProto.getStats()), clothesProto.getSprite());
     }
 
     /**
@@ -50,7 +50,7 @@ public class Clothes extends Wearable {
      */
     public static Clothes createDefaultClothes() {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0);
-        Clothes defaultClothes = new Clothes(defaultStatusModifier);
+        Clothes defaultClothes = new Clothes(defaultStatusModifier, "");
         return defaultClothes;
     }
 }
