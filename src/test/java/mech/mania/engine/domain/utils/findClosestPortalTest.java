@@ -19,7 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class findClosestPortalTest {
-    private GameState gameState = GameState.createDefaultGameState();
+    private GameState gameState;
+
+    @Before
+    public void setup(){
+        gameState = GameState.createDefaultGameState();
+    }
 
     @Test
     public void testFindClosestPortalPlayer1() {

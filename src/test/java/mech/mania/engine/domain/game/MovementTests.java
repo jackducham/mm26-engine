@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 /** This contains tests for decisions related to movements */
@@ -30,6 +31,8 @@ public class MovementTests {
         Board newHome = new Board(20, 20);
         newHome.addPortal(new Position(5, 10, "player1"));
         gameState.getAllBoards().put("player1", newHome);
+
+        gameState.getPlayer("player1").setPosition(new Position(0, 0, "player1"));
     }
 
     /**
@@ -65,7 +68,7 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(final_x, final_y, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 
     /**
@@ -96,7 +99,7 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(final_x, final_y, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 
     /**
@@ -124,7 +127,7 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(final_x, final_y, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 
     /**
@@ -155,7 +158,7 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(final_x, final_y, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 
     /**
@@ -183,7 +186,7 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(final_x, final_y, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 
     /**
@@ -211,7 +214,7 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(final_x, final_y, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 
     /**
@@ -222,7 +225,7 @@ public class MovementTests {
         final int final_x = 15;
         final int final_y = 0;
 
-        // Move player1 to 1, 0
+        // Attempt to move player1 to 15, 0
         CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 
@@ -239,6 +242,6 @@ public class MovementTests {
         Position finalPos = gameState.getPlayer("player1").getPosition();
         System.out.println("Final Position: (" + finalPos.getX() + ", " + finalPos.getY() + ", " + finalPos.getBoardID() + ")");
         Position expectedPos = new Position(0, 0, "player1");
-        assertTrue(finalPos.equals(expectedPos));
+        assertEquals(expectedPos, finalPos);
     }
 }

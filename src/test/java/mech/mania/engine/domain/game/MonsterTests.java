@@ -21,7 +21,7 @@ public class MonsterTests {
 
     @Before
     public void setup(){
-        gameState = new GameState();
+        gameState = GameState.createDefaultGameState();
 
         // Add default monster which spawns at (0, 0)
         //  use high attackFactor to make sure monster deals damage to monster
@@ -95,11 +95,16 @@ public class MonsterTests {
 
     @Test
     public void testMonsterReturnToSpawn(){
+        // Remove all players
+        gameState.getAllPlayers().clear();
+
         // Move monster to (0, 1)
         monster.setPosition(new Position(0, 1, "pvp"));
 
         // Assert that monster is not at spawn
         assertNotEquals(monster.getPosition(), monster.getSpawnPoint());
+
+        assertEquals(CharacterDecision.decisionTypes.MOVE, monster.makeDecision(gameState).getDecision());
 
         // Run a turn
         HashMap<String, CharacterProtos.CharacterDecision> emptyDecisionMap = new HashMap<>();
@@ -111,6 +116,9 @@ public class MonsterTests {
 
     @Test
     public void testMonsterReturnToSpawnLongDistance(){
+        // Remove all players
+        gameState.getAllPlayers().clear();
+
         // Move monster to (0, speed+1)
         monster.setPosition(new Position(0, monster.getSpeed()+1, "pvp"));
 

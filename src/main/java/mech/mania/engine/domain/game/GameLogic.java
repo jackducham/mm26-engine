@@ -389,7 +389,7 @@ public class GameLogic {
 
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
-                            new TempStatusModifier(attackerWeapon.getOnHitEffect()));
+                            new TempStatusModifier(attackerWeapon.getOnHitEffect()), "");
                     character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                     character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                     character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
