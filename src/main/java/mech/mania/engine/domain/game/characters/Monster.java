@@ -5,7 +5,6 @@ import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
-import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
 
@@ -18,6 +17,8 @@ import java.util.List;
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
+    public static final int REVIVE_TICKS = 15;
+
     private final int aggroRange;
     private final List<Item> drops;
 
@@ -40,7 +41,7 @@ public class Monster extends Character {
 
     public Monster(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                    int level, Position spawnPoint, Weapon weapon, int aggroRange, List<Item> drops) {
-        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
+        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon, REVIVE_TICKS);
         this.aggroRange = aggroRange;
         this.drops = drops;
     }
@@ -171,8 +172,8 @@ public class Monster extends Character {
             }
         }
 
-        // nothing in taggedPlayersDamage
-        if (target == null) {
+        // nothing in taggedPlayersDamage and no Players in aggroRange
+        if (target == null || weapon == null) {
             return moveToStartDecision(gameState);
         }
 

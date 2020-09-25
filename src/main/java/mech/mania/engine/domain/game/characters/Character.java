@@ -33,9 +33,9 @@ public abstract class Character {
     protected int level;
 
     /** Death parameters */
-    private static final int reviveTicks = 1;
     protected int ticksSinceDeath;  // need access in Player to determine whether player just died
     private boolean isDead;
+    private int reviveTicks;
 
     /** Position parameters */
     protected Position position;
@@ -54,7 +54,7 @@ public abstract class Character {
      * Constructor for Characters
      */
     public Character(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                     int level, Position spawnPoint, Weapon weapon) {
+                     int level, Position spawnPoint, Weapon weapon, int reviveTicks) {
         this.name = name;
         this.sprite = sprite;
 
@@ -69,6 +69,7 @@ public abstract class Character {
 
         this.ticksSinceDeath = -1;
         this.isDead = false;
+        this.reviveTicks = reviveTicks;
 
         this.position = spawnPoint;
         this.spawnPoint = spawnPoint;
