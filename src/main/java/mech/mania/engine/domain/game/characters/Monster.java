@@ -39,6 +39,9 @@ public class Monster extends Character {
         this.drops = drops;
     }
 
+    public int getAggroRange() {
+        return aggroRange;
+    }
 
     // --------Proto Stuff-------- //
 

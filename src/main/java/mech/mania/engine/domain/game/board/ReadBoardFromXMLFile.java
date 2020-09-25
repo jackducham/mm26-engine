@@ -34,6 +34,7 @@ public class ReadBoardFromXMLFile {
         protected int level;
         protected String name;
         protected int speed;
+        protected int aggroRange;
 
         //weapon stats
         protected int weaponRange;
@@ -148,6 +149,8 @@ public class ReadBoardFromXMLFile {
                             monsterSet.get(currentID).name = attributes.getValue("value");
                         } else if (attributes.getValue("name").equalsIgnoreCase("Speed")) {
                             monsterSet.get(currentID).speed = Integer.parseInt(attributes.getValue("value"));
+                        } else if(attributes.getValue("name").equalsIgnoreCase("aggro_range")){
+                            monsterSet.get(currentID).aggroRange = Integer.parseInt(attributes.getValue("value"));
                         } else if (attributes.getValue("name").equalsIgnoreCase("weapon_attack")) {
                             monsterSet.get(currentID).weaponDamage = Integer.parseInt(attributes.getValue("value"));
                         } else if (attributes.getValue("name").equalsIgnoreCase("range")) {
@@ -365,7 +368,7 @@ public class ReadBoardFromXMLFile {
                                 toCopy.sprite, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
                                 new Position(x, y, boardName),
                                 new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit, ""),
-                                0, new ArrayList<>());
+                                toCopy.aggroRange, new ArrayList<>());
                         monsterList.add(newMonster);
                     }
                 }

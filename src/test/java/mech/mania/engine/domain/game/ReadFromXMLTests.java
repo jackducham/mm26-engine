@@ -74,6 +74,11 @@ public class ReadFromXMLTests {
         //check that tile walkability is loaded correctly
         assertEquals(Tile.TileType.BLANK, spBoard.getGrid()[2][2].getType());
         assertEquals(Tile.TileType.IMPASSIBLE, spBoard.getGrid()[11][14].getType());
+
+        // Check that monsters have fields they need
+        spMonsters = spReader.extractMonsters();
+        assertNotEquals(0, spMonsters.get(0).getAggroRange());
+        assertNotEquals("", spMonsters.get(0).getSprite());
     }
 
     /**

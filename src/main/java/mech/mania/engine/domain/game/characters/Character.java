@@ -340,6 +340,10 @@ public abstract class Character {
         return name;
     }
 
+    public String getSprite() {
+        return sprite;
+    }
+
     public int getSpeed() {
         int flatChange = 0;
         double percentChange = 0;
