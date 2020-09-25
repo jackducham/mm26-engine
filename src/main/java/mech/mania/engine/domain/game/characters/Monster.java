@@ -5,16 +5,20 @@ import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.items.*;
-import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
 
+import java.util.Map;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.List;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
+    public static final int REVIVE_TICKS = 15;
+
     private final int aggroRange;
     private final List<Item> drops;
 
@@ -37,7 +41,7 @@ public class Monster extends Character {
 
     public Monster(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                    int level, Position spawnPoint, Weapon weapon, int aggroRange, List<Item> drops) {
-        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
+        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon, REVIVE_TICKS);
         this.aggroRange = aggroRange;
         this.drops = drops;
     }
@@ -134,6 +138,17 @@ public class Monster extends Character {
         return getPositionInRange(gameState, getPosition(), target, getWeapon().getRange());
     }
 
+    private void addPlayersToAggroRangeTable(GameState gameState) {
+        List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
+        if(inRange != null) {
+            for (Character character : inRange) {
+                if (character instanceof Player && !taggedPlayersDamage.containsKey(character.getName())) {
+                    taggedPlayersDamage.put(character.getName(), 0);
+                }
+            }
+        }
+    }
+
     /**
      * Calculates what the Monster should do on its next turn and passes this information to one of several helper
      * functions which generate and pass back a decision object.
@@ -141,26 +156,24 @@ public class Monster extends Character {
      * @return the Monster's next decision
      */
     public CharacterDecision makeDecision(GameState gameState) {
-        Player target = null;
-        if (!taggedPlayersDamage.isEmpty()) {
-            String highestDamageCharacter = getPlayerWithMostDamage();
-            target = gameState.getPlayer(highestDamageCharacter);
-        }
+        addPlayersToAggroRangeTable(gameState);
 
-        if (target == null) {
-            List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
-            if(inRange != null) {
-                for (Character character : inRange) {
-                    if (character instanceof Player) {
-                        target = (Player) character;
-                        break;
-                    }
+        Player target = null;
+        LinkedHashMap<String, Integer> sortedPlayers = getPlayerWithMostDamage();
+        if (sortedPlayers != null) {
+            Iterator<Map.Entry<String,Integer>> it = sortedPlayers.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<String,Integer> playerEntry = it.next();
+                Player player = gameState.getPlayer(playerEntry.getKey());
+                if (player != null && !player.isDead()) {
+                    target = player;
+                    break;
                 }
             }
         }
 
         // nothing in taggedPlayersDamage and no Players in aggroRange
-        if (target == null) {
+        if (target == null || weapon == null) {
             return moveToStartDecision(gameState);
         }
 
