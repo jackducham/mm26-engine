@@ -14,6 +14,7 @@ import static java.lang.Math.min;
 
 public abstract class Character {
     private final String name;
+    private final String sprite;
 
     /** Character's base stats */
     protected final int baseSpeed;
@@ -47,9 +48,10 @@ public abstract class Character {
     /**
      * Constructor for Characters
      */
-    public Character(String name, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
+    public Character(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                      int level, Position spawnPoint, Weapon weapon) {
         this.name = name;
+        this.sprite = sprite;
 
         this.baseSpeed = baseSpeed;
         this.baseMaxHealth = baseMaxHealth;
@@ -76,6 +78,7 @@ public abstract class Character {
      */
     public Character(CharacterProtos.Character character) {
         this.name = character.getName();
+        this.sprite = character.getSprite();
 
         this.baseSpeed = character.getBaseSpeed();
         this.baseMaxHealth = character.getBaseMaxHealth();
@@ -110,6 +113,7 @@ public abstract class Character {
         CharacterProtos.Character.Builder characterBuilder = CharacterProtos.Character.newBuilder();
 
         characterBuilder.setName(name);
+        characterBuilder.setSprite(sprite);
         characterBuilder.setBaseSpeed(baseSpeed);
         characterBuilder.setBaseMaxHealth(baseMaxHealth);
         characterBuilder.setBaseAttack(baseAttack);
@@ -328,6 +332,10 @@ public abstract class Character {
 
     public String getName() {
         return name;
+    }
+
+    public String getSprite() {
+        return sprite;
     }
 
     public int getSpeed() {

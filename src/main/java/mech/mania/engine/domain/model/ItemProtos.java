@@ -3870,6 +3870,26 @@ public final class ItemProtos {
      * @return The magicEffect.
      */
     mech.mania.engine.domain.model.ItemProtos.MagicEffect getMagicEffect();
+
+    /**
+     * <pre>
+     * Filepath to sprite for this item
+     * </pre>
+     *
+     * <code>string sprite = 4;</code>
+     * @return The sprite.
+     */
+    java.lang.String getSprite();
+    /**
+     * <pre>
+     * Filepath to sprite for this item
+     * </pre>
+     *
+     * <code>string sprite = 4;</code>
+     * @return The bytes for sprite.
+     */
+    com.google.protobuf.ByteString
+        getSpriteBytes();
   }
   /**
    * Protobuf type {@code item.Accessory}
@@ -3885,6 +3905,7 @@ public final class ItemProtos {
     }
     private Accessory() {
       magicEffect_ = 0;
+      sprite_ = "";
     }
 
     @java.lang.Override
@@ -3939,6 +3960,12 @@ public final class ItemProtos {
               int rawValue = input.readEnum();
 
               magicEffect_ = rawValue;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sprite_ = s;
               break;
             }
             default: {
@@ -4025,6 +4052,50 @@ public final class ItemProtos {
       return result == null ? mech.mania.engine.domain.model.ItemProtos.MagicEffect.UNRECOGNIZED : result;
     }
 
+    public static final int SPRITE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object sprite_;
+    /**
+     * <pre>
+     * Filepath to sprite for this item
+     * </pre>
+     *
+     * <code>string sprite = 4;</code>
+     * @return The sprite.
+     */
+    public java.lang.String getSprite() {
+      java.lang.Object ref = sprite_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprite_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Filepath to sprite for this item
+     * </pre>
+     *
+     * <code>string sprite = 4;</code>
+     * @return The bytes for sprite.
+     */
+    public com.google.protobuf.ByteString
+        getSpriteBytes() {
+      java.lang.Object ref = sprite_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprite_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4048,6 +4119,9 @@ public final class ItemProtos {
       if (magicEffect_ != mech.mania.engine.domain.model.ItemProtos.MagicEffect.LINGERING_POTIONS.getNumber()) {
         output.writeEnum(3, magicEffect_);
       }
+      if (!getSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, sprite_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4068,6 +4142,9 @@ public final class ItemProtos {
       if (magicEffect_ != mech.mania.engine.domain.model.ItemProtos.MagicEffect.LINGERING_POTIONS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, magicEffect_);
+      }
+      if (!getSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, sprite_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4092,6 +4169,8 @@ public final class ItemProtos {
             .equals(other.getStats())) return false;
       }
       if (magicEffect_ != other.magicEffect_) return false;
+      if (!getSprite()
+          .equals(other.getSprite())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4111,6 +4190,8 @@ public final class ItemProtos {
       }
       hash = (37 * hash) + MAGIC_EFFECT_FIELD_NUMBER;
       hash = (53 * hash) + magicEffect_;
+      hash = (37 * hash) + SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getSprite().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4254,6 +4335,8 @@ public final class ItemProtos {
         }
         magicEffect_ = 0;
 
+        sprite_ = "";
+
         return this;
       }
 
@@ -4287,6 +4370,7 @@ public final class ItemProtos {
           result.stats_ = statsBuilder_.build();
         }
         result.magicEffect_ = magicEffect_;
+        result.sprite_ = sprite_;
         onBuilt();
         return result;
       }
@@ -4343,6 +4427,10 @@ public final class ItemProtos {
         }
         if (other.magicEffect_ != 0) {
           setMagicEffectValue(other.getMagicEffectValue());
+        }
+        if (!other.getSprite().isEmpty()) {
+          sprite_ = other.sprite_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4570,6 +4658,102 @@ public final class ItemProtos {
       public Builder clearMagicEffect() {
         
         magicEffect_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sprite_ = "";
+      /**
+       * <pre>
+       * Filepath to sprite for this item
+       * </pre>
+       *
+       * <code>string sprite = 4;</code>
+       * @return The sprite.
+       */
+      public java.lang.String getSprite() {
+        java.lang.Object ref = sprite_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sprite_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this item
+       * </pre>
+       *
+       * <code>string sprite = 4;</code>
+       * @return The bytes for sprite.
+       */
+      public com.google.protobuf.ByteString
+          getSpriteBytes() {
+        java.lang.Object ref = sprite_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sprite_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this item
+       * </pre>
+       *
+       * <code>string sprite = 4;</code>
+       * @param value The sprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSprite(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sprite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this item
+       * </pre>
+       *
+       * <code>string sprite = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSprite() {
+        
+        sprite_ = getDefaultInstance().getSprite();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this item
+       * </pre>
+       *
+       * <code>string sprite = 4;</code>
+       * @param value The bytes for sprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSpriteBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sprite_ = value;
         onChanged();
         return this;
       }
@@ -9840,38 +10024,38 @@ public final class ItemProtos {
       "2\024.item.StatusModifier\022\016\n\006sprite\030\003 \001(\t\"v" +
       "\n\003Hat\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132" +
       "\024.item.StatusModifier\022\'\n\014magic_effect\030\003 " +
-      "\001(\0162\021.item.MagicEffect\022\016\n\006sprite\030\004 \001(\t\"l" +
+      "\001(\0162\021.item.MagicEffect\022\016\n\006sprite\030\004 \001(\t\"|" +
       "\n\tAccessory\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030" +
       "\002 \001(\0132\024.item.StatusModifier\022\'\n\014magic_eff" +
-      "ect\030\003 \001(\0162\021.item.MagicEffect\"O\n\005Shoes\022\021\n" +
-      "\tmax_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132\024.item.S" +
-      "tatusModifier\022\016\n\006sprite\030\003 \001(\t\"\267\001\n\006Weapon" +
-      "\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132\024.ite" +
-      "m.StatusModifier\022\r\n\005range\030\003 \001(\005\022\025\n\rsplas" +
-      "h_radius\030\004 \001(\005\022\016\n\006attack\030\005 \001(\005\022/\n\ron_hit" +
-      "_effect\030\006 \001(\0132\030.item.TempStatusModifier\022" +
-      "\016\n\006sprite\030\007 \001(\t\"i\n\nConsumable\022\021\n\tmax_sta" +
-      "ck\030\001 \001(\005\022(\n\006effect\030\002 \001(\0132\030.item.TempStat" +
-      "usModifier\022\016\n\006stacks\030\003 \001(\005\022\016\n\006sprite\030\004 \001" +
-      "(\t\"\334\002\n\016StatusModifier\022\031\n\021flat_speed_chan" +
-      "ge\030\001 \001(\005\022\034\n\024percent_speed_change\030\002 \001(\001\022\032" +
-      "\n\022flat_health_change\030\003 \001(\005\022\035\n\025percent_he" +
-      "alth_change\030\004 \001(\001\022\036\n\026flat_experience_cha" +
-      "nge\030\005 \001(\005\022!\n\031percent_experience_change\030\006" +
-      " \001(\001\022\032\n\022flat_attack_change\030\007 \001(\005\022\035\n\025perc" +
-      "ent_attack_change\030\010 \001(\001\022\033\n\023flat_defense_" +
-      "change\030\t \001(\005\022\036\n\026percent_defense_change\030\n" +
-      " \001(\001\022\033\n\023flat_regen_per_turn\030\013 \001(\005\"\251\001\n\022Te" +
-      "mpStatusModifier\022#\n\005stats\030\001 \001(\0132\024.item.S" +
-      "tatusModifier\022\034\n\024flat_damage_per_turn\030\002 " +
-      "\001(\005\022\037\n\027percent_damage_per_turn\030\003 \001(\001\022\033\n\023" +
-      "flat_regen_per_turn\030\004 \001(\005\022\022\n\nturns_left\030" +
-      "\005 \001(\005*\214\001\n\013MagicEffect\022\025\n\021LINGERING_POTIO" +
-      "NS\020\000\022\017\n\013SHOES_BOOST\020\001\022\021\n\rCLOTHES_BOOST\020\002" +
-      "\022\020\n\014WEAPON_BOOST\020\003\022\022\n\016TRIPLED_ON_HIT\020\004\022\022" +
-      "\n\016STACKING_BONUS\020\005\022\010\n\004NONE\020\006B=\n\036mech.man" +
-      "ia.engine.domain.modelB\nItemProtos\252\002\016MM2" +
-      "6.IO.Modelsb\006proto3"
+      "ect\030\003 \001(\0162\021.item.MagicEffect\022\016\n\006sprite\030\004" +
+      " \001(\t\"O\n\005Shoes\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stat" +
+      "s\030\002 \001(\0132\024.item.StatusModifier\022\016\n\006sprite\030" +
+      "\003 \001(\t\"\267\001\n\006Weapon\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005s" +
+      "tats\030\002 \001(\0132\024.item.StatusModifier\022\r\n\005rang" +
+      "e\030\003 \001(\005\022\025\n\rsplash_radius\030\004 \001(\005\022\016\n\006attack" +
+      "\030\005 \001(\005\022/\n\ron_hit_effect\030\006 \001(\0132\030.item.Tem" +
+      "pStatusModifier\022\016\n\006sprite\030\007 \001(\t\"i\n\nConsu" +
+      "mable\022\021\n\tmax_stack\030\001 \001(\005\022(\n\006effect\030\002 \001(\013" +
+      "2\030.item.TempStatusModifier\022\016\n\006stacks\030\003 \001" +
+      "(\005\022\016\n\006sprite\030\004 \001(\t\"\334\002\n\016StatusModifier\022\031\n" +
+      "\021flat_speed_change\030\001 \001(\005\022\034\n\024percent_spee" +
+      "d_change\030\002 \001(\001\022\032\n\022flat_health_change\030\003 \001" +
+      "(\005\022\035\n\025percent_health_change\030\004 \001(\001\022\036\n\026fla" +
+      "t_experience_change\030\005 \001(\005\022!\n\031percent_exp" +
+      "erience_change\030\006 \001(\001\022\032\n\022flat_attack_chan" +
+      "ge\030\007 \001(\005\022\035\n\025percent_attack_change\030\010 \001(\001\022" +
+      "\033\n\023flat_defense_change\030\t \001(\005\022\036\n\026percent_" +
+      "defense_change\030\n \001(\001\022\033\n\023flat_regen_per_t" +
+      "urn\030\013 \001(\005\"\251\001\n\022TempStatusModifier\022#\n\005stat" +
+      "s\030\001 \001(\0132\024.item.StatusModifier\022\034\n\024flat_da" +
+      "mage_per_turn\030\002 \001(\005\022\037\n\027percent_damage_pe" +
+      "r_turn\030\003 \001(\001\022\033\n\023flat_regen_per_turn\030\004 \001(" +
+      "\005\022\022\n\nturns_left\030\005 \001(\005*\214\001\n\013MagicEffect\022\025\n" +
+      "\021LINGERING_POTIONS\020\000\022\017\n\013SHOES_BOOST\020\001\022\021\n" +
+      "\rCLOTHES_BOOST\020\002\022\020\n\014WEAPON_BOOST\020\003\022\022\n\016TR" +
+      "IPLED_ON_HIT\020\004\022\022\n\016STACKING_BONUS\020\005\022\010\n\004NO" +
+      "NE\020\006B=\n\036mech.mania.engine.domain.modelB\n" +
+      "ItemProtos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9900,7 +10084,7 @@ public final class ItemProtos {
     internal_static_item_Accessory_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Accessory_descriptor,
-        new java.lang.String[] { "MaxStack", "Stats", "MagicEffect", });
+        new java.lang.String[] { "MaxStack", "Stats", "MagicEffect", "Sprite", });
     internal_static_item_Shoes_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_item_Shoes_fieldAccessorTable = new

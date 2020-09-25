@@ -389,7 +389,7 @@ public class GameLogic {
 
                     Weapon zeroDamageVersion = new Weapon(new StatusModifier(attackerWeapon.getStats()),
                             attackerWeapon.getRange(), attackerWeapon.getSplashRadius(), 0,
-                            new TempStatusModifier(attackerWeapon.getOnHitEffect()));
+                            new TempStatusModifier(attackerWeapon.getOnHitEffect()), "");
                     character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                     character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
                     character.hitByWeapon(attacker.getName(), true, zeroDamageVersion, attacker.getAttack());
@@ -490,8 +490,25 @@ public class GameLogic {
         if (position.getY() > board.getGrid().length || position.getY() < 0) {
             return false;
         }
+        return board.getTileAtPosition(position).getType() != Tile.TileType.VOID;
+    }
 
-        return board.getGrid()[position.getY()][position.getX()].getType() != Tile.TileType.VOID;
+    public static List<Character> findEnemiesInRangeByDistance(GameState gameState, Position position, String characterName, int range) {
+        Character character = gameState.getCharacter(characterName);
+        if (character == null) {
+            return null;
+        }
+
+        List<Character> enemiesInRange = new ArrayList<>();
+        for (Character other : utils.findEnemiesByDistance(gameState, position, characterName)) {
+            int distance = position.manhattanDistance(other.getPosition());
+            if (distance <= range) {
+                enemiesInRange.add(other);
+            } else {
+                break;
+            }
+        }
+        return enemiesInRange;
     }
 
 }

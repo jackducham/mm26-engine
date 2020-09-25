@@ -8,6 +8,8 @@ import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.game.items.Item;
+import mech.mania.engine.domain.game.GameLogic;
+import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 import java.util.*;
 
@@ -116,25 +118,7 @@ public class utils {
             return new ArrayList<>();
         }
 
-        return findEnemiesInRangeOfAttackByDistance(gameState, position, playerName,weapon.getRange() + weapon.getSplashRadius());
-    }
-
-    public static List<Character> findEnemiesInRangeOfAttackByDistance(GameState gameState, Position position, String characterName, int range) {
-        Character character = gameState.getCharacter(characterName);
-        if (character == null) {
-            return null;
-        }
-
-        List<Character> enemiesInRange = new ArrayList<>();
-        for (Character other : findEnemiesByDistance(gameState, position, characterName)) {
-            int distance = position.manhattanDistance(other.getPosition());
-            if (distance <= range) {
-                enemiesInRange.add(other);
-            } else {
-                break;
-            }
-        }
-        return enemiesInRange;
+        return GameLogic.findEnemiesInRangeByDistance(gameState, position, playerName,weapon.getRange() + weapon.getSplashRadius());
     }
 
     public static List<Character> findAllEnemiesHit(GameState gameState, Position position, String playerName) {

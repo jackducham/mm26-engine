@@ -4,9 +4,10 @@ import mech.mania.engine.domain.model.ItemProtos;
 
 public abstract class Item {
     protected int maxStack;
-    protected String name;
+    protected String sprite;
 
-    public Item(int maxStack) {
+    public Item(int maxStack, String sprite) {
+        this.sprite = sprite;
         this.maxStack = maxStack;
     }
 

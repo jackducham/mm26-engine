@@ -10,8 +10,8 @@ public class Hat extends Wearable {
      * @param stats a StatusModifier storing the stats the Hat will be created with
      * @param magicEffect the effect the Hat will have
      */
-    public Hat(StatusModifier stats, MagicEffect magicEffect) {
-        super(stats);
+    public Hat(StatusModifier stats, MagicEffect magicEffect, String sprite) {
+        super(stats, sprite);
         this.magicEffect = magicEffect;
     }
 
@@ -20,7 +20,7 @@ public class Hat extends Wearable {
      * @param hatProto the protocol buffer to be copied
      */
     public Hat(ItemProtos.Hat hatProto) {
-        super(new StatusModifier(hatProto.getStats()));
+        super(new StatusModifier(hatProto.getStats()), hatProto.getSprite());
         switch (hatProto.getMagicEffect()) {
             case SHOES_BOOST:
                 this.magicEffect = MagicEffect.SHOES_BOOST;
@@ -54,6 +54,7 @@ public class Hat extends Wearable {
         ItemProtos.Hat.Builder hatBuilder = ItemProtos.Hat.newBuilder();
 
         hatBuilder.setStats(stats.buildProtoClass());
+        hatBuilder.setSprite(sprite);
         switch (magicEffect) {
             case SHOES_BOOST:
                 hatBuilder.setMagicEffect(ItemProtos.MagicEffect.SHOES_BOOST);
@@ -76,7 +77,6 @@ public class Hat extends Wearable {
             case NONE:
                 hatBuilder.setMagicEffect(ItemProtos.MagicEffect.NONE);
         }
-
         return hatBuilder.build();
     }
 
@@ -109,6 +109,8 @@ public class Hat extends Wearable {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0,
                 0.2, 0, 0, 0, 0,
                 0, 0, 0);
-        return new Hat(defaultStatusModifier, null);
+
+        Hat defaultHat = new Hat(defaultStatusModifier, MagicEffect.NONE, "");
+        return defaultHat;
     }
 }

@@ -47,7 +47,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                MagicEffect.LINGERING_POTIONS));
+                MagicEffect.LINGERING_POTIONS, ""));
         p1.equipItem(1);
         p1.setInventory(2, Consumable.createDefaultConsumable());
 
@@ -115,7 +115,8 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                MagicEffect.SHOES_BOOST));
+                MagicEffect.SHOES_BOOST, ""));
+
         p1.setInventory(2, Shoes.createDefaultShoes());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -130,7 +131,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                MagicEffect.WEAPON_BOOST));
+                MagicEffect.WEAPON_BOOST, ""));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -145,7 +146,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                MagicEffect.CLOTHES_BOOST));
+                MagicEffect.CLOTHES_BOOST, ""));
         p1.setInventory(2, Clothes.createDefaultClothes());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -160,7 +161,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                MagicEffect.TRIPLED_ON_HIT));
+                MagicEffect.TRIPLED_ON_HIT, ""));
         p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
         p1.equipItem(1);
         p1.equipItem(2);
@@ -205,7 +206,7 @@ public class HatEffectTests {
         p1.setInventory(1, new Hat(new StatusModifier(1,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
-                MagicEffect.STACKING_BONUS));
+                MagicEffect.STACKING_BONUS, ""));
         p1.equipItem(1);
 
         //base speed of 5 plus 1 from the hat.
@@ -222,11 +223,8 @@ public class HatEffectTests {
 
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-        GameLogic.doTurn(gameState, emptyDecisionMap);
-        //base speed of 5 plus one from the hat plus 6 TSMs.
-        assertEquals(12, p1.getSpeed());
+        //base speed of 5 plus one from the hat plus 3 TSMs.
+        assertEquals(9, p1.getSpeed());
 
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
@@ -235,8 +233,8 @@ public class HatEffectTests {
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
 
-        //base speed of 5 plus one from hat plus 10 TSMs. (We've added more than 10, but the durations on the earliest
+        //base speed of 5 plus one from hat plus 4 TSMs. (We've added more than 4, but the durations on the earliest
         // have begun to run out. This leaves us with a number of TSMs equal to the duration.
-        assertEquals(16, p1.getSpeed());
+        assertEquals(10, p1.getSpeed());
     }
 }

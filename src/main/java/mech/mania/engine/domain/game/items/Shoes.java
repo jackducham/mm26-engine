@@ -7,8 +7,8 @@ public class Shoes extends Wearable {
      * Creates a Shoes object with the given stats.
      * @param stats the stats the Shoes will be created with
      */
-    public Shoes(StatusModifier stats) {
-        super(stats);
+    public Shoes(StatusModifier stats, String sprite) {
+        super(stats, sprite);
     }
 
     /**
@@ -16,7 +16,7 @@ public class Shoes extends Wearable {
      * @param shoesProto the protocol buffer to be copied
      */
     public Shoes(ItemProtos.Shoes shoesProto) {
-        super(new StatusModifier(shoesProto.getStats()));
+        super(new StatusModifier(shoesProto.getStats()), shoesProto.getSprite());
     }
 
     /**
@@ -26,6 +26,7 @@ public class Shoes extends Wearable {
     public ItemProtos.Shoes buildProtoClassShoes() {
         ItemProtos.Shoes.Builder shoesBuilder = ItemProtos.Shoes.newBuilder();
         shoesBuilder.setStats(stats.buildProtoClass());
+        shoesBuilder.setSprite(sprite);
 
         return shoesBuilder.build();
     }
@@ -50,7 +51,7 @@ public class Shoes extends Wearable {
      */
     public static Shoes createDefaultShoes() {
         StatusModifier defaultStatusModifier = new StatusModifier(5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Shoes defaultShoes = new Shoes(defaultStatusModifier);
+        Shoes defaultShoes = new Shoes(defaultStatusModifier, "");
         return defaultShoes;
     }
 }

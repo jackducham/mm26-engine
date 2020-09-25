@@ -10,8 +10,8 @@ public class Accessory extends Wearable {
      * @param stats a StatusModifier storing the stats the Accessory will be created with
      * @param magicEffect the effect the Accessory will have
      */
-    public Accessory(StatusModifier stats, MagicEffect magicEffect) {
-        super(stats);
+    public Accessory(StatusModifier stats, MagicEffect magicEffect, String sprite) {
+        super(stats, sprite);
         this.magicEffect = magicEffect;
     }
 
@@ -20,7 +20,7 @@ public class Accessory extends Wearable {
      * @param accessoryProto the protocol buffer to be copied
      */
     public Accessory(ItemProtos.Accessory accessoryProto) {
-        super(new StatusModifier(accessoryProto.getStats()));
+        super(new StatusModifier(accessoryProto.getStats()), accessoryProto.getSprite());
         switch (accessoryProto.getMagicEffect()) {
             case SHOES_BOOST:
                 this.magicEffect = MagicEffect.SHOES_BOOST;

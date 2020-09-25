@@ -14,12 +14,18 @@ public class Tile {
     }
     private TileType type;
 
+    // Filenames for sprites for this tile
+    public String groundSprite;
+    public String aboveSprite;
+
     /**
      * Constructs a default Tile of type BLANK.
      */
     public Tile() {
-        items = new ArrayList<>();
-        type = TileType.BLANK;
+        this.items = new ArrayList<>();
+        this.type = TileType.VOID;
+        this.groundSprite = "";
+        this.aboveSprite = "";
     }
 
     /**
@@ -44,7 +50,7 @@ public class Tile {
                     items.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    items.add(i, new Consumable(protoItem.getConsumable().getMaxStack(), protoItem.getConsumable()));
+                    items.add(i, new Consumable(protoItem.getConsumable()));
             }
         }
 
@@ -62,6 +68,9 @@ public class Tile {
                 type = TileType.PORTAL;
                 break;
         }
+
+        groundSprite = tileProto.getGroundSprite();
+        aboveSprite = tileProto.getAboveSprite();
     }
 
     /**
@@ -99,6 +108,9 @@ public class Tile {
                 tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClassItem());
             }
         }
+
+        tileBuilder.setGroundSprite(groundSprite);
+        tileBuilder.setAboveSprite(aboveSprite);
 
         return tileBuilder.build();
     }
