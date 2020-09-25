@@ -31,7 +31,7 @@ public abstract class Character {
     protected int level;
 
     /** Death parameters */
-    private static final int reviveTicks = 1;
+    private static final int reviveTicks = 15;
     protected int ticksSinceDeath;  // need access in Player to determine whether player just died
     private boolean isDead;
 
