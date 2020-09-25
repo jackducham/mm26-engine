@@ -8,8 +8,10 @@ public abstract class Item {
     protected int turnsToDeletion;
 
     public static final int ITEM_LIFETIME = 30;
+    protected String sprite;
 
-    public Item(int maxStack) {
+    public Item(int maxStack, String sprite) {
+        this.sprite = sprite;
         this.maxStack = maxStack;
     }
 

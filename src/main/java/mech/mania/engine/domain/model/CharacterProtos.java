@@ -417,6 +417,26 @@ public final class CharacterProtos {
      * @return The baseDefense.
      */
     int getBaseDefense();
+
+    /**
+     * <pre>
+     * Filepath to sprite for this character
+     * </pre>
+     *
+     * <code>string sprite = 18;</code>
+     * @return The sprite.
+     */
+    java.lang.String getSprite();
+    /**
+     * <pre>
+     * Filepath to sprite for this character
+     * </pre>
+     *
+     * <code>string sprite = 18;</code>
+     * @return The bytes for sprite.
+     */
+    com.google.protobuf.ByteString
+        getSpriteBytes();
   }
   /**
    * Protobuf type {@code character.Character}
@@ -435,6 +455,7 @@ public final class CharacterProtos {
       activeEffectsSource_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       activeEffectsIsPlayer_ = emptyBooleanList();
       name_ = "";
+      sprite_ = "";
     }
 
     @java.lang.Override
@@ -608,6 +629,12 @@ public final class CharacterProtos {
             case 136: {
 
               baseDefense_ = input.readInt32();
+              break;
+            }
+            case 146: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sprite_ = s;
               break;
             }
             default: {
@@ -1067,6 +1094,50 @@ public final class CharacterProtos {
       return baseDefense_;
     }
 
+    public static final int SPRITE_FIELD_NUMBER = 18;
+    private volatile java.lang.Object sprite_;
+    /**
+     * <pre>
+     * Filepath to sprite for this character
+     * </pre>
+     *
+     * <code>string sprite = 18;</code>
+     * @return The sprite.
+     */
+    public java.lang.String getSprite() {
+      java.lang.Object ref = sprite_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprite_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Filepath to sprite for this character
+     * </pre>
+     *
+     * <code>string sprite = 18;</code>
+     * @return The bytes for sprite.
+     */
+    public com.google.protobuf.ByteString
+        getSpriteBytes() {
+      java.lang.Object ref = sprite_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprite_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1139,6 +1210,9 @@ public final class CharacterProtos {
       }
       if (baseDefense_ != 0) {
         output.writeInt32(17, baseDefense_);
+      }
+      if (!getSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 18, sprite_);
       }
       unknownFields.writeTo(output);
     }
@@ -1233,6 +1307,9 @@ public final class CharacterProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(17, baseDefense_);
       }
+      if (!getSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(18, sprite_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1291,6 +1368,8 @@ public final class CharacterProtos {
           != other.getBaseAttack()) return false;
       if (getBaseDefense()
           != other.getBaseDefense()) return false;
+      if (!getSprite()
+          .equals(other.getSprite())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1351,6 +1430,8 @@ public final class CharacterProtos {
       hash = (53 * hash) + getBaseAttack();
       hash = (37 * hash) + BASE_DEFENSE_FIELD_NUMBER;
       hash = (53 * hash) + getBaseDefense();
+      hash = (37 * hash) + SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getSprite().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1556,6 +1637,8 @@ public final class CharacterProtos {
 
         baseDefense_ = 0;
 
+        sprite_ = "";
+
         return this;
       }
 
@@ -1629,6 +1712,7 @@ public final class CharacterProtos {
         result.name_ = name_;
         result.baseAttack_ = baseAttack_;
         result.baseDefense_ = baseDefense_;
+        result.sprite_ = sprite_;
         onBuilt();
         return result;
       }
@@ -1764,6 +1848,10 @@ public final class CharacterProtos {
         }
         if (other.getBaseDefense() != 0) {
           setBaseDefense(other.getBaseDefense());
+        }
+        if (!other.getSprite().isEmpty()) {
+          sprite_ = other.sprite_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3149,6 +3237,102 @@ public final class CharacterProtos {
         onChanged();
         return this;
       }
+
+      private java.lang.Object sprite_ = "";
+      /**
+       * <pre>
+       * Filepath to sprite for this character
+       * </pre>
+       *
+       * <code>string sprite = 18;</code>
+       * @return The sprite.
+       */
+      public java.lang.String getSprite() {
+        java.lang.Object ref = sprite_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sprite_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this character
+       * </pre>
+       *
+       * <code>string sprite = 18;</code>
+       * @return The bytes for sprite.
+       */
+      public com.google.protobuf.ByteString
+          getSpriteBytes() {
+        java.lang.Object ref = sprite_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sprite_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this character
+       * </pre>
+       *
+       * <code>string sprite = 18;</code>
+       * @param value The sprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSprite(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sprite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this character
+       * </pre>
+       *
+       * <code>string sprite = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSprite() {
+        
+        sprite_ = getDefaultInstance().getSprite();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Filepath to sprite for this character
+       * </pre>
+       *
+       * <code>string sprite = 18;</code>
+       * @param value The bytes for sprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSpriteBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sprite_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4323,28 +4507,87 @@ public final class CharacterProtos {
     mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder getShoesOrBuilder();
 
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>.item.Accessory accessory = 5;</code>
+     * @return Whether the accessory field is set.
+     */
+    boolean hasAccessory();
+    /**
+     * <code>.item.Accessory accessory = 5;</code>
+     * @return The accessory.
+     */
+    mech.mania.engine.domain.model.ItemProtos.Accessory getAccessory();
+    /**
+     * <code>.item.Accessory accessory = 5;</code>
+     */
+    mech.mania.engine.domain.model.ItemProtos.AccessoryOrBuilder getAccessoryOrBuilder();
+
+    /**
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> 
         getInventoryList();
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     mech.mania.engine.domain.model.ItemProtos.Item getInventory(int index);
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     int getInventoryCount();
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getInventoryOrBuilderList();
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getInventoryOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     * Filepaths for other sprites
+     * </pre>
+     *
+     * <code>string bottom_sprite = 7;</code>
+     * @return The bottomSprite.
+     */
+    java.lang.String getBottomSprite();
+    /**
+     * <pre>
+     * Filepaths for other sprites
+     * </pre>
+     *
+     * <code>string bottom_sprite = 7;</code>
+     * @return The bytes for bottomSprite.
+     */
+    com.google.protobuf.ByteString
+        getBottomSpriteBytes();
+
+    /**
+     * <code>string top_sprite = 8;</code>
+     * @return The topSprite.
+     */
+    java.lang.String getTopSprite();
+    /**
+     * <code>string top_sprite = 8;</code>
+     * @return The bytes for topSprite.
+     */
+    com.google.protobuf.ByteString
+        getTopSpriteBytes();
+
+    /**
+     * <code>string head_sprite = 9;</code>
+     * @return The headSprite.
+     */
+    java.lang.String getHeadSprite();
+    /**
+     * <code>string head_sprite = 9;</code>
+     * @return The bytes for headSprite.
+     */
+    com.google.protobuf.ByteString
+        getHeadSpriteBytes();
   }
   /**
    * Protobuf type {@code character.Player}
@@ -4360,6 +4603,9 @@ public final class CharacterProtos {
     }
     private Player() {
       inventory_ = java.util.Collections.emptyList();
+      bottomSprite_ = "";
+      topSprite_ = "";
+      headSprite_ = "";
     }
 
     @java.lang.Override
@@ -4446,12 +4692,43 @@ public final class CharacterProtos {
               break;
             }
             case 42: {
+              mech.mania.engine.domain.model.ItemProtos.Accessory.Builder subBuilder = null;
+              if (accessory_ != null) {
+                subBuilder = accessory_.toBuilder();
+              }
+              accessory_ = input.readMessage(mech.mania.engine.domain.model.ItemProtos.Accessory.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(accessory_);
+                accessory_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 inventory_ = new java.util.ArrayList<mech.mania.engine.domain.model.ItemProtos.Item>();
                 mutable_bitField0_ |= 0x00000001;
               }
               inventory_.add(
                   input.readMessage(mech.mania.engine.domain.model.ItemProtos.Item.parser(), extensionRegistry));
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              bottomSprite_ = s;
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              topSprite_ = s;
+              break;
+            }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              headSprite_ = s;
               break;
             }
             default: {
@@ -4581,39 +4858,178 @@ public final class CharacterProtos {
       return getShoes();
     }
 
-    public static final int INVENTORY_FIELD_NUMBER = 5;
+    public static final int ACCESSORY_FIELD_NUMBER = 5;
+    private mech.mania.engine.domain.model.ItemProtos.Accessory accessory_;
+    /**
+     * <code>.item.Accessory accessory = 5;</code>
+     * @return Whether the accessory field is set.
+     */
+    public boolean hasAccessory() {
+      return accessory_ != null;
+    }
+    /**
+     * <code>.item.Accessory accessory = 5;</code>
+     * @return The accessory.
+     */
+    public mech.mania.engine.domain.model.ItemProtos.Accessory getAccessory() {
+      return accessory_ == null ? mech.mania.engine.domain.model.ItemProtos.Accessory.getDefaultInstance() : accessory_;
+    }
+    /**
+     * <code>.item.Accessory accessory = 5;</code>
+     */
+    public mech.mania.engine.domain.model.ItemProtos.AccessoryOrBuilder getAccessoryOrBuilder() {
+      return getAccessory();
+    }
+
+    public static final int INVENTORY_FIELD_NUMBER = 6;
     private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> inventory_;
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getInventoryList() {
       return inventory_;
     }
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getInventoryOrBuilderList() {
       return inventory_;
     }
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     public int getInventoryCount() {
       return inventory_.size();
     }
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     public mech.mania.engine.domain.model.ItemProtos.Item getInventory(int index) {
       return inventory_.get(index);
     }
     /**
-     * <code>repeated .item.Item inventory = 5;</code>
+     * <code>repeated .item.Item inventory = 6;</code>
      */
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getInventoryOrBuilder(
         int index) {
       return inventory_.get(index);
+    }
+
+    public static final int BOTTOM_SPRITE_FIELD_NUMBER = 7;
+    private volatile java.lang.Object bottomSprite_;
+    /**
+     * <pre>
+     * Filepaths for other sprites
+     * </pre>
+     *
+     * <code>string bottom_sprite = 7;</code>
+     * @return The bottomSprite.
+     */
+    public java.lang.String getBottomSprite() {
+      java.lang.Object ref = bottomSprite_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        bottomSprite_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Filepaths for other sprites
+     * </pre>
+     *
+     * <code>string bottom_sprite = 7;</code>
+     * @return The bytes for bottomSprite.
+     */
+    public com.google.protobuf.ByteString
+        getBottomSpriteBytes() {
+      java.lang.Object ref = bottomSprite_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        bottomSprite_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TOP_SPRITE_FIELD_NUMBER = 8;
+    private volatile java.lang.Object topSprite_;
+    /**
+     * <code>string top_sprite = 8;</code>
+     * @return The topSprite.
+     */
+    public java.lang.String getTopSprite() {
+      java.lang.Object ref = topSprite_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        topSprite_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string top_sprite = 8;</code>
+     * @return The bytes for topSprite.
+     */
+    public com.google.protobuf.ByteString
+        getTopSpriteBytes() {
+      java.lang.Object ref = topSprite_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        topSprite_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HEAD_SPRITE_FIELD_NUMBER = 9;
+    private volatile java.lang.Object headSprite_;
+    /**
+     * <code>string head_sprite = 9;</code>
+     * @return The headSprite.
+     */
+    public java.lang.String getHeadSprite() {
+      java.lang.Object ref = headSprite_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        headSprite_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string head_sprite = 9;</code>
+     * @return The bytes for headSprite.
+     */
+    public com.google.protobuf.ByteString
+        getHeadSpriteBytes() {
+      java.lang.Object ref = headSprite_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        headSprite_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4642,8 +5058,20 @@ public final class CharacterProtos {
       if (shoes_ != null) {
         output.writeMessage(4, getShoes());
       }
+      if (accessory_ != null) {
+        output.writeMessage(5, getAccessory());
+      }
       for (int i = 0; i < inventory_.size(); i++) {
-        output.writeMessage(5, inventory_.get(i));
+        output.writeMessage(6, inventory_.get(i));
+      }
+      if (!getBottomSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, bottomSprite_);
+      }
+      if (!getTopSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, topSprite_);
+      }
+      if (!getHeadSpriteBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, headSprite_);
       }
       unknownFields.writeTo(output);
     }
@@ -4670,9 +5098,22 @@ public final class CharacterProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getShoes());
       }
+      if (accessory_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getAccessory());
+      }
       for (int i = 0; i < inventory_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, inventory_.get(i));
+          .computeMessageSize(6, inventory_.get(i));
+      }
+      if (!getBottomSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, bottomSprite_);
+      }
+      if (!getTopSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, topSprite_);
+      }
+      if (!getHeadSpriteBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, headSprite_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4709,8 +5150,19 @@ public final class CharacterProtos {
         if (!getShoes()
             .equals(other.getShoes())) return false;
       }
+      if (hasAccessory() != other.hasAccessory()) return false;
+      if (hasAccessory()) {
+        if (!getAccessory()
+            .equals(other.getAccessory())) return false;
+      }
       if (!getInventoryList()
           .equals(other.getInventoryList())) return false;
+      if (!getBottomSprite()
+          .equals(other.getBottomSprite())) return false;
+      if (!getTopSprite()
+          .equals(other.getTopSprite())) return false;
+      if (!getHeadSprite()
+          .equals(other.getHeadSprite())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4738,10 +5190,20 @@ public final class CharacterProtos {
         hash = (37 * hash) + SHOES_FIELD_NUMBER;
         hash = (53 * hash) + getShoes().hashCode();
       }
+      if (hasAccessory()) {
+        hash = (37 * hash) + ACCESSORY_FIELD_NUMBER;
+        hash = (53 * hash) + getAccessory().hashCode();
+      }
       if (getInventoryCount() > 0) {
         hash = (37 * hash) + INVENTORY_FIELD_NUMBER;
         hash = (53 * hash) + getInventoryList().hashCode();
       }
+      hash = (37 * hash) + BOTTOM_SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getBottomSprite().hashCode();
+      hash = (37 * hash) + TOP_SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getTopSprite().hashCode();
+      hash = (37 * hash) + HEAD_SPRITE_FIELD_NUMBER;
+      hash = (53 * hash) + getHeadSprite().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4900,12 +5362,24 @@ public final class CharacterProtos {
           shoes_ = null;
           shoesBuilder_ = null;
         }
+        if (accessoryBuilder_ == null) {
+          accessory_ = null;
+        } else {
+          accessory_ = null;
+          accessoryBuilder_ = null;
+        }
         if (inventoryBuilder_ == null) {
           inventory_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           inventoryBuilder_.clear();
         }
+        bottomSprite_ = "";
+
+        topSprite_ = "";
+
+        headSprite_ = "";
+
         return this;
       }
 
@@ -4953,6 +5427,11 @@ public final class CharacterProtos {
         } else {
           result.shoes_ = shoesBuilder_.build();
         }
+        if (accessoryBuilder_ == null) {
+          result.accessory_ = accessory_;
+        } else {
+          result.accessory_ = accessoryBuilder_.build();
+        }
         if (inventoryBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             inventory_ = java.util.Collections.unmodifiableList(inventory_);
@@ -4962,6 +5441,9 @@ public final class CharacterProtos {
         } else {
           result.inventory_ = inventoryBuilder_.build();
         }
+        result.bottomSprite_ = bottomSprite_;
+        result.topSprite_ = topSprite_;
+        result.headSprite_ = headSprite_;
         onBuilt();
         return result;
       }
@@ -5022,6 +5504,9 @@ public final class CharacterProtos {
         if (other.hasShoes()) {
           mergeShoes(other.getShoes());
         }
+        if (other.hasAccessory()) {
+          mergeAccessory(other.getAccessory());
+        }
         if (inventoryBuilder_ == null) {
           if (!other.inventory_.isEmpty()) {
             if (inventory_.isEmpty()) {
@@ -5047,6 +5532,18 @@ public final class CharacterProtos {
               inventoryBuilder_.addAllMessages(other.inventory_);
             }
           }
+        }
+        if (!other.getBottomSprite().isEmpty()) {
+          bottomSprite_ = other.bottomSprite_;
+          onChanged();
+        }
+        if (!other.getTopSprite().isEmpty()) {
+          topSprite_ = other.topSprite_;
+          onChanged();
+        }
+        if (!other.getHeadSprite().isEmpty()) {
+          headSprite_ = other.headSprite_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5554,6 +6051,125 @@ public final class CharacterProtos {
         return shoesBuilder_;
       }
 
+      private mech.mania.engine.domain.model.ItemProtos.Accessory accessory_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ItemProtos.Accessory, mech.mania.engine.domain.model.ItemProtos.Accessory.Builder, mech.mania.engine.domain.model.ItemProtos.AccessoryOrBuilder> accessoryBuilder_;
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       * @return Whether the accessory field is set.
+       */
+      public boolean hasAccessory() {
+        return accessoryBuilder_ != null || accessory_ != null;
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       * @return The accessory.
+       */
+      public mech.mania.engine.domain.model.ItemProtos.Accessory getAccessory() {
+        if (accessoryBuilder_ == null) {
+          return accessory_ == null ? mech.mania.engine.domain.model.ItemProtos.Accessory.getDefaultInstance() : accessory_;
+        } else {
+          return accessoryBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      public Builder setAccessory(mech.mania.engine.domain.model.ItemProtos.Accessory value) {
+        if (accessoryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          accessory_ = value;
+          onChanged();
+        } else {
+          accessoryBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      public Builder setAccessory(
+          mech.mania.engine.domain.model.ItemProtos.Accessory.Builder builderForValue) {
+        if (accessoryBuilder_ == null) {
+          accessory_ = builderForValue.build();
+          onChanged();
+        } else {
+          accessoryBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      public Builder mergeAccessory(mech.mania.engine.domain.model.ItemProtos.Accessory value) {
+        if (accessoryBuilder_ == null) {
+          if (accessory_ != null) {
+            accessory_ =
+              mech.mania.engine.domain.model.ItemProtos.Accessory.newBuilder(accessory_).mergeFrom(value).buildPartial();
+          } else {
+            accessory_ = value;
+          }
+          onChanged();
+        } else {
+          accessoryBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      public Builder clearAccessory() {
+        if (accessoryBuilder_ == null) {
+          accessory_ = null;
+          onChanged();
+        } else {
+          accessory_ = null;
+          accessoryBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.Accessory.Builder getAccessoryBuilder() {
+        
+        onChanged();
+        return getAccessoryFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      public mech.mania.engine.domain.model.ItemProtos.AccessoryOrBuilder getAccessoryOrBuilder() {
+        if (accessoryBuilder_ != null) {
+          return accessoryBuilder_.getMessageOrBuilder();
+        } else {
+          return accessory_ == null ?
+              mech.mania.engine.domain.model.ItemProtos.Accessory.getDefaultInstance() : accessory_;
+        }
+      }
+      /**
+       * <code>.item.Accessory accessory = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mech.mania.engine.domain.model.ItemProtos.Accessory, mech.mania.engine.domain.model.ItemProtos.Accessory.Builder, mech.mania.engine.domain.model.ItemProtos.AccessoryOrBuilder> 
+          getAccessoryFieldBuilder() {
+        if (accessoryBuilder_ == null) {
+          accessoryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mech.mania.engine.domain.model.ItemProtos.Accessory, mech.mania.engine.domain.model.ItemProtos.Accessory.Builder, mech.mania.engine.domain.model.ItemProtos.AccessoryOrBuilder>(
+                  getAccessory(),
+                  getParentForChildren(),
+                  isClean());
+          accessory_ = null;
+        }
+        return accessoryBuilder_;
+      }
+
       private java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> inventory_ =
         java.util.Collections.emptyList();
       private void ensureInventoryIsMutable() {
@@ -5567,7 +6183,7 @@ public final class CharacterProtos {
           mech.mania.engine.domain.model.ItemProtos.Item, mech.mania.engine.domain.model.ItemProtos.Item.Builder, mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> inventoryBuilder_;
 
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getInventoryList() {
         if (inventoryBuilder_ == null) {
@@ -5577,7 +6193,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public int getInventoryCount() {
         if (inventoryBuilder_ == null) {
@@ -5587,7 +6203,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public mech.mania.engine.domain.model.ItemProtos.Item getInventory(int index) {
         if (inventoryBuilder_ == null) {
@@ -5597,7 +6213,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder setInventory(
           int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
@@ -5614,7 +6230,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder setInventory(
           int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
@@ -5628,7 +6244,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder addInventory(mech.mania.engine.domain.model.ItemProtos.Item value) {
         if (inventoryBuilder_ == null) {
@@ -5644,7 +6260,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder addInventory(
           int index, mech.mania.engine.domain.model.ItemProtos.Item value) {
@@ -5661,7 +6277,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder addInventory(
           mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
@@ -5675,7 +6291,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder addInventory(
           int index, mech.mania.engine.domain.model.ItemProtos.Item.Builder builderForValue) {
@@ -5689,7 +6305,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder addAllInventory(
           java.lang.Iterable<? extends mech.mania.engine.domain.model.ItemProtos.Item> values) {
@@ -5704,7 +6320,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder clearInventory() {
         if (inventoryBuilder_ == null) {
@@ -5717,7 +6333,7 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public Builder removeInventory(int index) {
         if (inventoryBuilder_ == null) {
@@ -5730,14 +6346,14 @@ public final class CharacterProtos {
         return this;
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public mech.mania.engine.domain.model.ItemProtos.Item.Builder getInventoryBuilder(
           int index) {
         return getInventoryFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getInventoryOrBuilder(
           int index) {
@@ -5747,7 +6363,7 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
            getInventoryOrBuilderList() {
@@ -5758,14 +6374,14 @@ public final class CharacterProtos {
         }
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public mech.mania.engine.domain.model.ItemProtos.Item.Builder addInventoryBuilder() {
         return getInventoryFieldBuilder().addBuilder(
             mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public mech.mania.engine.domain.model.ItemProtos.Item.Builder addInventoryBuilder(
           int index) {
@@ -5773,7 +6389,7 @@ public final class CharacterProtos {
             index, mech.mania.engine.domain.model.ItemProtos.Item.getDefaultInstance());
       }
       /**
-       * <code>repeated .item.Item inventory = 5;</code>
+       * <code>repeated .item.Item inventory = 6;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item.Builder> 
            getInventoryBuilderList() {
@@ -5792,6 +6408,254 @@ public final class CharacterProtos {
           inventory_ = null;
         }
         return inventoryBuilder_;
+      }
+
+      private java.lang.Object bottomSprite_ = "";
+      /**
+       * <pre>
+       * Filepaths for other sprites
+       * </pre>
+       *
+       * <code>string bottom_sprite = 7;</code>
+       * @return The bottomSprite.
+       */
+      public java.lang.String getBottomSprite() {
+        java.lang.Object ref = bottomSprite_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          bottomSprite_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Filepaths for other sprites
+       * </pre>
+       *
+       * <code>string bottom_sprite = 7;</code>
+       * @return The bytes for bottomSprite.
+       */
+      public com.google.protobuf.ByteString
+          getBottomSpriteBytes() {
+        java.lang.Object ref = bottomSprite_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          bottomSprite_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Filepaths for other sprites
+       * </pre>
+       *
+       * <code>string bottom_sprite = 7;</code>
+       * @param value The bottomSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBottomSprite(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        bottomSprite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Filepaths for other sprites
+       * </pre>
+       *
+       * <code>string bottom_sprite = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBottomSprite() {
+        
+        bottomSprite_ = getDefaultInstance().getBottomSprite();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Filepaths for other sprites
+       * </pre>
+       *
+       * <code>string bottom_sprite = 7;</code>
+       * @param value The bytes for bottomSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBottomSpriteBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        bottomSprite_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object topSprite_ = "";
+      /**
+       * <code>string top_sprite = 8;</code>
+       * @return The topSprite.
+       */
+      public java.lang.String getTopSprite() {
+        java.lang.Object ref = topSprite_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          topSprite_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string top_sprite = 8;</code>
+       * @return The bytes for topSprite.
+       */
+      public com.google.protobuf.ByteString
+          getTopSpriteBytes() {
+        java.lang.Object ref = topSprite_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          topSprite_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string top_sprite = 8;</code>
+       * @param value The topSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTopSprite(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        topSprite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string top_sprite = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTopSprite() {
+        
+        topSprite_ = getDefaultInstance().getTopSprite();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string top_sprite = 8;</code>
+       * @param value The bytes for topSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTopSpriteBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        topSprite_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object headSprite_ = "";
+      /**
+       * <code>string head_sprite = 9;</code>
+       * @return The headSprite.
+       */
+      public java.lang.String getHeadSprite() {
+        java.lang.Object ref = headSprite_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          headSprite_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string head_sprite = 9;</code>
+       * @return The bytes for headSprite.
+       */
+      public com.google.protobuf.ByteString
+          getHeadSpriteBytes() {
+        java.lang.Object ref = headSprite_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          headSprite_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string head_sprite = 9;</code>
+       * @param value The headSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeadSprite(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        headSprite_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string head_sprite = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHeadSprite() {
+        
+        headSprite_ = getDefaultInstance().getHeadSprite();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string head_sprite = 9;</code>
+       * @param value The bytes for headSprite to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeadSpriteBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        headSprite_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9240,7 +10104,7 @@ public final class CharacterProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\017character.proto\022\tcharacter\032\nitem.proto" +
-      "\"\331\004\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
+      "\"\351\004\n\tCharacter\022\026\n\016current_health\030\001 \001(\005\022\027" +
       "\n\017base_max_health\030\002 \001(\005\022\022\n\nexperience\030\003 " +
       "\001(\005\022\r\n\005level\030\004 \001(\005\022\022\n\nbase_speed\030\005 \001(\005\022%" +
       "\n\010position\030\006 \001(\0132\023.character.Position\022(\n" +
@@ -9253,33 +10117,36 @@ public final class CharacterProtos {
       "haracter.Character.TaggedPlayersDamageEn" +
       "try\022\017\n\007is_dead\030\r \001(\010\022\031\n\021ticks_since_deat" +
       "h\030\016 \001(\005\022\014\n\004name\030\017 \001(\t\022\023\n\013base_attack\030\020 \001" +
-      "(\005\022\024\n\014base_defense\030\021 \001(\005\032:\n\030TaggedPlayer" +
-      "sDamageEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005" +
-      ":\0028\001\"b\n\007Monster\022\'\n\tcharacter\030\001 \001(\0132\024.cha" +
-      "racter.Character\022\031\n\005drops\030\002 \003(\0132\n.item.I" +
-      "tem\022\023\n\013aggro_range\030\003 \001(\005\"\244\001\n\006Player\022\'\n\tc" +
-      "haracter\030\001 \001(\0132\024.character.Character\022\026\n\003" +
-      "hat\030\002 \001(\0132\t.item.Hat\022\036\n\007clothes\030\003 \001(\0132\r." +
-      "item.Clothes\022\032\n\005shoes\030\004 \001(\0132\013.item.Shoes" +
-      "\022\035\n\tinventory\030\005 \003(\0132\n.item.Item\"\306\001\n\013Play" +
-      "erStats\022\r\n\005level\030\001 \001(\005\022\022\n\nexperience\030\002 \001" +
-      "(\005\022\026\n\016monsters_slain\030\003 \001(\005\022\016\n\006attack\030\004 \001" +
-      "(\005\022\017\n\007defense\030\005 \001(\005\022\026\n\016current_health\030\006 " +
-      "\001(\005\022\022\n\nmax_health\030\007 \001(\005\022\023\n\013death_count\030\010" +
-      " \001(\005\022\032\n\022turns_since_joined\030\t \001(\005\"\221\001\n\021Pla" +
-      "yerStatsBundle\0226\n\005stats\030\001 \003(\0132\'.characte" +
-      "r.PlayerStatsBundle.StatsEntry\032D\n\nStatsE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022%\n\005value\030\002 \001(\0132\026.chara" +
-      "cter.PlayerStats:\0028\001\"2\n\010Position\022\020\n\010boar" +
-      "d_id\030\001 \001(\t\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\"\200\001\n\021Cha" +
-      "racterDecision\022.\n\rdecision_type\030\001 \001(\0162\027." +
-      "character.DecisionType\022,\n\017target_positio" +
-      "n\030\002 \001(\0132\023.character.Position\022\r\n\005index\030\003 " +
-      "\001(\005*[\n\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022" +
-      "\n\n\006ATTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQU" +
-      "IP\020\005\022\n\n\006PICKUP\020\006BB\n\036mech.mania.engine.do" +
-      "main.modelB\017CharacterProtos\252\002\016MM26.IO.Mo" +
-      "delsb\006proto3"
+      "(\005\022\024\n\014base_defense\030\021 \001(\005\022\016\n\006sprite\030\022 \001(\t" +
+      "\032:\n\030TaggedPlayersDamageEntry\022\013\n\003key\030\001 \001(" +
+      "\t\022\r\n\005value\030\002 \001(\005:\0028\001\"b\n\007Monster\022\'\n\tchara" +
+      "cter\030\001 \001(\0132\024.character.Character\022\031\n\005drop" +
+      "s\030\002 \003(\0132\n.item.Item\022\023\n\013aggro_range\030\003 \001(\005" +
+      "\"\210\002\n\006Player\022\'\n\tcharacter\030\001 \001(\0132\024.charact" +
+      "er.Character\022\026\n\003hat\030\002 \001(\0132\t.item.Hat\022\036\n\007" +
+      "clothes\030\003 \001(\0132\r.item.Clothes\022\032\n\005shoes\030\004 " +
+      "\001(\0132\013.item.Shoes\022\"\n\taccessory\030\005 \001(\0132\017.it" +
+      "em.Accessory\022\035\n\tinventory\030\006 \003(\0132\n.item.I" +
+      "tem\022\025\n\rbottom_sprite\030\007 \001(\t\022\022\n\ntop_sprite" +
+      "\030\010 \001(\t\022\023\n\013head_sprite\030\t \001(\t\"\306\001\n\013PlayerSt" +
+      "ats\022\r\n\005level\030\001 \001(\005\022\022\n\nexperience\030\002 \001(\005\022\026" +
+      "\n\016monsters_slain\030\003 \001(\005\022\016\n\006attack\030\004 \001(\005\022\017" +
+      "\n\007defense\030\005 \001(\005\022\026\n\016current_health\030\006 \001(\005\022" +
+      "\022\n\nmax_health\030\007 \001(\005\022\023\n\013death_count\030\010 \001(\005" +
+      "\022\032\n\022turns_since_joined\030\t \001(\005\"\221\001\n\021PlayerS" +
+      "tatsBundle\0226\n\005stats\030\001 \003(\0132\'.character.Pl" +
+      "ayerStatsBundle.StatsEntry\032D\n\nStatsEntry" +
+      "\022\013\n\003key\030\001 \001(\t\022%\n\005value\030\002 \001(\0132\026.character" +
+      ".PlayerStats:\0028\001\"2\n\010Position\022\020\n\010board_id" +
+      "\030\001 \001(\t\022\t\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\"\200\001\n\021Charact" +
+      "erDecision\022.\n\rdecision_type\030\001 \001(\0162\027.char" +
+      "acter.DecisionType\022,\n\017target_position\030\002 " +
+      "\001(\0132\023.character.Position\022\r\n\005index\030\003 \001(\005*" +
+      "[\n\014DecisionType\022\010\n\004NONE\020\000\022\010\n\004MOVE\020\001\022\n\n\006A" +
+      "TTACK\020\002\022\n\n\006PORTAL\020\003\022\010\n\004DROP\020\004\022\t\n\005EQUIP\020\005" +
+      "\022\n\n\006PICKUP\020\006BB\n\036mech.mania.engine.domain" +
+      ".modelB\017CharacterProtos\252\002\016MM26.IO.Models" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9291,7 +10158,7 @@ public final class CharacterProtos {
     internal_static_character_Character_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Character_descriptor,
-        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffectsTempStatusModifier", "ActiveEffectsSource", "ActiveEffectsIsPlayer", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", "BaseAttack", "BaseDefense", });
+        new java.lang.String[] { "CurrentHealth", "BaseMaxHealth", "Experience", "Level", "BaseSpeed", "Position", "SpawnPoint", "Weapon", "ActiveEffectsTempStatusModifier", "ActiveEffectsSource", "ActiveEffectsIsPlayer", "TaggedPlayersDamage", "IsDead", "TicksSinceDeath", "Name", "BaseAttack", "BaseDefense", "Sprite", });
     internal_static_character_Character_TaggedPlayersDamageEntry_descriptor =
       internal_static_character_Character_descriptor.getNestedTypes().get(0);
     internal_static_character_Character_TaggedPlayersDamageEntry_fieldAccessorTable = new
@@ -9309,7 +10176,7 @@ public final class CharacterProtos {
     internal_static_character_Player_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_character_Player_descriptor,
-        new java.lang.String[] { "Character", "Hat", "Clothes", "Shoes", "Inventory", });
+        new java.lang.String[] { "Character", "Hat", "Clothes", "Shoes", "Accessory", "Inventory", "BottomSprite", "TopSprite", "HeadSprite", });
     internal_static_character_PlayerStats_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_character_PlayerStats_fieldAccessorTable = new
