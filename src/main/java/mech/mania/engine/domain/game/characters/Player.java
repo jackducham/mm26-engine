@@ -127,14 +127,21 @@ public class Player extends Character {
     }
 
     /**
+     * Checks if either hat or accessory has the chosen MagicEffect
+     */
+    public boolean hasMagicEffect(MagicEffect effect){
+        return (hat != null && hat.getMagicEffect() == effect)
+                || (accessory != null && accessory.getMagicEffect() == effect);
+    }
+
+    /**
      * Applies active effects and updates the death state
      * This should be called once a turn
      * This overload also applies the regen from wearables (because players have wearables, but monsters do not)
      */
     @Override
     public void updateCharacter(GameState gameState) {
-        if((hat != null && hat.getMagicEffect().equals(MagicEffect.STACKING_BONUS)) ||
-                (accessory != null && accessory.getMagicEffect().equals(MagicEffect.STACKING_BONUS))) {
+        if(hasMagicEffect(MagicEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
             hatStats.setTurnsLeft(10);
             applyEffect(this.getName(), true, hatStats);
@@ -191,8 +198,7 @@ public class Player extends Character {
             flatChange += shoes.getStats().getFlatSpeedChange();
             percentChange += shoes.getStats().getPercentSpeedChange();
 
-            if((hat != null && hat.getMagicEffect().equals(MagicEffect.SHOES_BOOST)) ||
-                    (accessory != null && accessory.getMagicEffect().equals(MagicEffect.SHOES_BOOST))) {
+            if(hasMagicEffect(MagicEffect.SHOES_BOOST)) {
                 flatChange += shoes.getStats().getFlatSpeedChange();
             }
 
@@ -281,8 +287,7 @@ public class Player extends Character {
             flatChange += weapon.getStats().getFlatAttackChange();
             percentChange += weapon.getStats().getPercentAttackChange();
 
-            if((hat != null && hat.getMagicEffect().equals(MagicEffect.WEAPON_BOOST)) ||
-                    accessory != null && accessory.getMagicEffect().equals(MagicEffect.WEAPON_BOOST)) {
+            if(hasMagicEffect(MagicEffect.WEAPON_BOOST)) {
                 flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
             }
 
@@ -319,8 +324,7 @@ public class Player extends Character {
             flatChange += clothes.getStats().getFlatDefenseChange();
             percentChange += clothes.getStats().getPercentDefenseChange();
 
-            if((hat != null && hat.getMagicEffect().equals(MagicEffect.CLOTHES_BOOST)) ||
-                    accessory != null && accessory.getMagicEffect().equals(MagicEffect.CLOTHES_BOOST)) {
+            if(hasMagicEffect(MagicEffect.CLOTHES_BOOST)) {
                 flatChange += clothes.getStats().getFlatDefenseChange();
             }
         }
@@ -505,8 +509,7 @@ public class Player extends Character {
         TempStatusModifier effect = consumableToConsume.getEffect();
 
         //checks for LINGERING_POTIONS hat effect and doubles the duration if detected.
-        if((this.hat != null && this.hat.getMagicEffect() == MagicEffect.LINGERING_POTIONS) ||
-                (this.accessory != null && this.accessory.getMagicEffect() == MagicEffect.LINGERING_POTIONS)) {
+        if(this.hasMagicEffect(MagicEffect.LINGERING_POTIONS)) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
         applyEffect(this.getName(), true, effect);
