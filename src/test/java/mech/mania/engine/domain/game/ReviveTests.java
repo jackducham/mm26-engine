@@ -49,7 +49,7 @@ public class ReviveTests {
     @Test
     public void testMonsterRevive(){
         Monster m = new Monster("fake", "", 0, 0, 0, 0, 0,
-                new Position(0, 0, "pvp"), null, 0, new ArrayList<>());
+                new Position(0, 0, "pvp"), null, 0);
 
         gameState.addNewMonster(m);
 

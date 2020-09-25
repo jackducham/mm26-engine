@@ -264,13 +264,13 @@ public abstract class Character {
      * @param gameState gameState to give rewards to
      */
     public void updateDeathState(GameState gameState) {
-        // player is already dead
+        // character is already dead
         if (isDead) {
             ticksSinceDeath++;
             if (ticksSinceDeath == reviveTicks) {
                 reviveCharacter();
             }
-        } else if (getCurrentHealth() <= 0) { // player has just died
+        } else if (getCurrentHealth() <= 0) { // character has just died
             ticksSinceDeath = 0;
             distributeRewards(gameState);
             taggedPlayersDamage.clear();
@@ -450,12 +450,12 @@ public abstract class Character {
         return spawnPoint;
     }
 
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 
     public void removePlayer(String toRemove) {

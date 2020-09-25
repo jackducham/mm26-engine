@@ -1,5 +1,6 @@
 package mech.mania.engine.domain.game;
 
+import mech.mania.engine.domain.game.board.Tile;
 import mech.mania.engine.domain.game.characters.CharacterDecision;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Player;
@@ -38,9 +39,10 @@ public class MonsterTests {
 
         monsterPos = new Position(10,10, "pvp");
         weapon1 = new Weapon(null,5,3,10,null, "");
-        monster1 = new Monster("m1", "", 1, 1, 1, 1, 1, monsterPos,weapon1,10,null);
+        monster1 = new Monster("m1", "", 1, 1, 1, 1, 1, monsterPos, weapon1, 10);
         gameState1.addNewMonster(monster1);
         gameState1.addNewPlayer("player1");
+        gameState1.getAllBoards().remove("player1");
     }
 
     @After
@@ -331,5 +333,20 @@ public class MonsterTests {
         monster1.setPosition(monsterPos);
         testAttackPlayerInSplashRange(15,8);
         testAttackPlayerInSplashRange(13,6);
+    }
+
+    @Test
+    public void testMonsterDropsLoot(){
+        monster.setPosition(monsterPos);
+        Tile tile = gameState.getBoard(monsterPos.getBoardID()).getGrid()[monsterPos.getX()][monsterPos.getY()];
+
+        assertEquals(0, tile.getItems().size());
+
+        monster.updateCurrentHealth(-1*monster.getMaxHealth());
+        GameLogic.doTurn(gameState, Collections.emptyMap());
+
+        // Monsters should drop between 2 and 4 items
+        assertTrue(tile.getItems().size() >= 2);
+        assertTrue(tile.getItems().size() <= 4);
     }
 }

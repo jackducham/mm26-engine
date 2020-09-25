@@ -274,6 +274,9 @@ public class InventoryTests {
         pickupItem(0);
         equipItem(0);
 
+        assertNull(p1.getInventory()[0]);
+        assertEquals(defaultWeapon, p1.getWeapon());
+
         // shouldn't change anything
         equipItem(0);
         equipItem(-1);
