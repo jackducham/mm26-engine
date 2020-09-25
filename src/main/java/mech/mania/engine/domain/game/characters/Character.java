@@ -6,6 +6,8 @@ import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -307,29 +309,30 @@ public abstract class Character {
                 continue;
             }
 
+            // player was just within aggrorange
+            if (mapElement.getValue() == 0) {
+                continue;
+            }
+
             int attackingPlayerLevel = attackingPlayer.getLevel();
             int levelDiff = abs(attackingPlayerLevel  - this.getLevel());
             double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + (double)levelDiff);
             int expGain = (int)(10 * this.getLevel() * expMultiplier);
             attackingPlayer.addExperience(expGain);
-            attackingPlayer.removePlayer(this.name);
         }
     }
 
     /**
-     * @return name of the Player (NOT Monster) with most damage done to this Character
+     * @return sorted LinkedHashMap of players in order of damage done to this Character
      */
-    protected String getPlayerWithMostDamage() {
-        String highestDamagePlayer = null;
-        int highestDamage = -1;
-        for (String name : taggedPlayersDamage.keySet()) {
-            if (taggedPlayersDamage.get(name) > highestDamage) {
-                highestDamagePlayer = name;
-                highestDamage = taggedPlayersDamage.get(name);
-            }
-        }
+    protected LinkedHashMap<String, Integer> getPlayerWithMostDamage() {
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
 
-        return highestDamagePlayer;
+        taggedPlayersDamage.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        return sortedMap;
     }
 
 
