@@ -36,7 +36,7 @@ public final class VisualizerProtos {
   /**
    * Protobuf type {@code player_communication.VisualizerInitial}
    */
-  public  static final class VisualizerInitial extends
+  public static final class VisualizerInitial extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.VisualizerInitial)
       VisualizerInitialOrBuilder {
@@ -129,6 +129,7 @@ public final class VisualizerProtos {
      * <code>.game.GameState state = 1;</code>
      * @return Whether the state field is set.
      */
+    @java.lang.Override
     public boolean hasState() {
       return state_ != null;
     }
@@ -136,12 +137,14 @@ public final class VisualizerProtos {
      * <code>.game.GameState state = 1;</code>
      * @return The state.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getState() {
       return state_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
     }
     /**
      * <code>.game.GameState state = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder() {
       return getState();
     }
@@ -669,7 +672,7 @@ public final class VisualizerProtos {
   /**
    * Protobuf type {@code player_communication.VisualizerTurn}
    */
-  public  static final class VisualizerTurn extends
+  public static final class VisualizerTurn extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.VisualizerTurn)
       VisualizerTurnOrBuilder {
@@ -775,6 +778,7 @@ public final class VisualizerProtos {
      * <code>.game.GameState state = 1;</code>
      * @return Whether the state field is set.
      */
+    @java.lang.Override
     public boolean hasState() {
       return state_ != null;
     }
@@ -782,12 +786,14 @@ public final class VisualizerProtos {
      * <code>.game.GameState state = 1;</code>
      * @return The state.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getState() {
       return state_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : state_;
     }
     /**
      * <code>.game.GameState state = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getStateOrBuilder() {
       return getState();
     }
@@ -798,6 +804,7 @@ public final class VisualizerProtos {
      * <code>.player_communication.GameChange change = 2;</code>
      * @return Whether the change field is set.
      */
+    @java.lang.Override
     public boolean hasChange() {
       return change_ != null;
     }
@@ -805,12 +812,14 @@ public final class VisualizerProtos {
      * <code>.player_communication.GameChange change = 2;</code>
      * @return The change.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.VisualizerProtos.GameChange getChange() {
       return change_ == null ? mech.mania.engine.domain.model.VisualizerProtos.GameChange.getDefaultInstance() : change_;
     }
     /**
      * <code>.player_communication.GameChange change = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.VisualizerProtos.GameChangeOrBuilder getChangeOrBuilder() {
       return getChange();
     }
@@ -1565,7 +1574,7 @@ public final class VisualizerProtos {
   /**
    * Protobuf type {@code player_communication.GameChange}
    */
-  public  static final class GameChange extends
+  public static final class GameChange extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.GameChange)
       GameChangeOrBuilder {
@@ -1756,6 +1765,7 @@ public final class VisualizerProtos {
      * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
 
+    @java.lang.Override
     public boolean containsCharacterChanges(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1764,6 +1774,7 @@ public final class VisualizerProtos {
     /**
      * Use {@link #getCharacterChangesMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChanges() {
       return getCharacterChangesMap();
@@ -1771,6 +1782,7 @@ public final class VisualizerProtos {
     /**
      * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChangesMap() {
       return internalGetCharacterChanges().getMap();
@@ -1778,6 +1790,7 @@ public final class VisualizerProtos {
     /**
      * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
+    @java.lang.Override
 
     public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrDefault(
         java.lang.String key,
@@ -1790,6 +1803,7 @@ public final class VisualizerProtos {
     /**
      * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
      */
+    @java.lang.Override
 
     public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrThrow(
         java.lang.String key) {
@@ -1812,6 +1826,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getTileItemChangesList() {
       return tileItemChanges_;
     }
@@ -1823,6 +1838,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getTileItemChangesOrBuilderList() {
       return tileItemChanges_;
@@ -1835,6 +1851,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
+    @java.lang.Override
     public int getTileItemChangesCount() {
       return tileItemChanges_.size();
     }
@@ -1846,6 +1863,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getTileItemChanges(int index) {
       return tileItemChanges_.get(index);
     }
@@ -1857,6 +1875,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position tile_item_changes = 3;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTileItemChangesOrBuilder(
         int index) {
       return tileItemChanges_.get(index);
@@ -2427,6 +2446,7 @@ public final class VisualizerProtos {
        * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
 
+      @java.lang.Override
       public boolean containsCharacterChanges(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2435,6 +2455,7 @@ public final class VisualizerProtos {
       /**
        * Use {@link #getCharacterChangesMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChanges() {
         return getCharacterChangesMap();
@@ -2442,6 +2463,7 @@ public final class VisualizerProtos {
       /**
        * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.VisualizerProtos.CharacterChange> getCharacterChangesMap() {
         return internalGetCharacterChanges().getMap();
@@ -2449,6 +2471,7 @@ public final class VisualizerProtos {
       /**
        * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
+      @java.lang.Override
 
       public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrDefault(
           java.lang.String key,
@@ -2461,6 +2484,7 @@ public final class VisualizerProtos {
       /**
        * <code>map&lt;string, .player_communication.CharacterChange&gt; character_changes = 2;</code>
        */
+      @java.lang.Override
 
       public mech.mania.engine.domain.model.VisualizerProtos.CharacterChange getCharacterChangesOrThrow(
           java.lang.String key) {
@@ -3070,7 +3094,7 @@ public final class VisualizerProtos {
   /**
    * Protobuf type {@code player_communication.CharacterChange}
    */
-  public  static final class CharacterChange extends
+  public static final class CharacterChange extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.CharacterChange)
       CharacterChangeOrBuilder {
@@ -3220,6 +3244,7 @@ public final class VisualizerProtos {
      * <code>bool died = 1;</code>
      * @return The died.
      */
+    @java.lang.Override
     public boolean getDied() {
       return died_;
     }
@@ -3230,6 +3255,7 @@ public final class VisualizerProtos {
      * <code>bool respawned = 2;</code>
      * @return The respawned.
      */
+    @java.lang.Override
     public boolean getRespawned() {
       return respawned_;
     }
@@ -3246,6 +3272,7 @@ public final class VisualizerProtos {
      * <code>.character.CharacterDecision decision = 3;</code>
      * @return Whether the decision field is set.
      */
+    @java.lang.Override
     public boolean hasDecision() {
       return decision_ != null;
     }
@@ -3259,6 +3286,7 @@ public final class VisualizerProtos {
      * <code>.character.CharacterDecision decision = 3;</code>
      * @return The decision.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterDecision getDecision() {
       return decision_ == null ? mech.mania.engine.domain.model.CharacterProtos.CharacterDecision.getDefaultInstance() : decision_;
     }
@@ -3271,6 +3299,7 @@ public final class VisualizerProtos {
      *
      * <code>.character.CharacterDecision decision = 3;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterDecisionOrBuilder getDecisionOrBuilder() {
       return getDecision();
     }
@@ -3284,6 +3313,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position path = 4;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPathList() {
       return path_;
     }
@@ -3294,6 +3324,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position path = 4;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPathOrBuilderList() {
       return path_;
@@ -3305,6 +3336,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position path = 4;</code>
      */
+    @java.lang.Override
     public int getPathCount() {
       return path_.size();
     }
@@ -3315,6 +3347,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position path = 4;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPath(int index) {
       return path_.get(index);
     }
@@ -3325,6 +3358,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position path = 4;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPathOrBuilder(
         int index) {
       return path_.get(index);
@@ -3340,6 +3374,7 @@ public final class VisualizerProtos {
      * <code>bool hat_changed = 5;</code>
      * @return The hatChanged.
      */
+    @java.lang.Override
     public boolean getHatChanged() {
       return hatChanged_;
     }
@@ -3350,6 +3385,7 @@ public final class VisualizerProtos {
      * <code>bool clothes_changed = 6;</code>
      * @return The clothesChanged.
      */
+    @java.lang.Override
     public boolean getClothesChanged() {
       return clothesChanged_;
     }
@@ -3360,6 +3396,7 @@ public final class VisualizerProtos {
      * <code>bool shoes_changed = 7;</code>
      * @return The shoesChanged.
      */
+    @java.lang.Override
     public boolean getShoesChanged() {
       return shoesChanged_;
     }
@@ -3370,6 +3407,7 @@ public final class VisualizerProtos {
      * <code>bool weapon_changed = 8;</code>
      * @return The weaponChanged.
      */
+    @java.lang.Override
     public boolean getWeaponChanged() {
       return weaponChanged_;
     }
@@ -3383,6 +3421,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position attack_locations = 9;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getAttackLocationsList() {
       return attackLocations_;
     }
@@ -3393,6 +3432,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position attack_locations = 9;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getAttackLocationsOrBuilderList() {
       return attackLocations_;
@@ -3404,6 +3444,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position attack_locations = 9;</code>
      */
+    @java.lang.Override
     public int getAttackLocationsCount() {
       return attackLocations_.size();
     }
@@ -3414,6 +3455,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position attack_locations = 9;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index) {
       return attackLocations_.get(index);
     }
@@ -3424,6 +3466,7 @@ public final class VisualizerProtos {
      *
      * <code>repeated .character.Position attack_locations = 9;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
         int index) {
       return attackLocations_.get(index);
@@ -3969,6 +4012,7 @@ public final class VisualizerProtos {
        * <code>bool died = 1;</code>
        * @return The died.
        */
+      @java.lang.Override
       public boolean getDied() {
         return died_;
       }
@@ -3999,6 +4043,7 @@ public final class VisualizerProtos {
        * <code>bool respawned = 2;</code>
        * @return The respawned.
        */
+      @java.lang.Override
       public boolean getRespawned() {
         return respawned_;
       }
@@ -4518,6 +4563,7 @@ public final class VisualizerProtos {
        * <code>bool hat_changed = 5;</code>
        * @return The hatChanged.
        */
+      @java.lang.Override
       public boolean getHatChanged() {
         return hatChanged_;
       }
@@ -4556,6 +4602,7 @@ public final class VisualizerProtos {
        * <code>bool clothes_changed = 6;</code>
        * @return The clothesChanged.
        */
+      @java.lang.Override
       public boolean getClothesChanged() {
         return clothesChanged_;
       }
@@ -4586,6 +4633,7 @@ public final class VisualizerProtos {
        * <code>bool shoes_changed = 7;</code>
        * @return The shoesChanged.
        */
+      @java.lang.Override
       public boolean getShoesChanged() {
         return shoesChanged_;
       }
@@ -4616,6 +4664,7 @@ public final class VisualizerProtos {
        * <code>bool weapon_changed = 8;</code>
        * @return The weaponChanged.
        */
+      @java.lang.Override
       public boolean getWeaponChanged() {
         return weaponChanged_;
       }

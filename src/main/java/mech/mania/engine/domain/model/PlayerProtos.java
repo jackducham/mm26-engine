@@ -52,7 +52,7 @@ public final class PlayerProtos {
    *
    * Protobuf type {@code player_communication.PlayerTurn}
    */
-  public  static final class PlayerTurn extends
+  public static final class PlayerTurn extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:player_communication.PlayerTurn)
       PlayerTurnOrBuilder {
@@ -152,6 +152,7 @@ public final class PlayerProtos {
      * <code>.game.GameState game_state = 1;</code>
      * @return Whether the gameState field is set.
      */
+    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -159,12 +160,14 @@ public final class PlayerProtos {
      * <code>.game.GameState game_state = 1;</code>
      * @return The gameState.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState game_state = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -175,6 +178,7 @@ public final class PlayerProtos {
      * <code>string player_name = 2;</code>
      * @return The playerName.
      */
+    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -191,6 +195,7 @@ public final class PlayerProtos {
      * <code>string player_name = 2;</code>
      * @return The bytes for playerName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;

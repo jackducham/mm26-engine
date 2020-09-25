@@ -16,8 +16,8 @@ public class Board {
      * @param board the ProtoBuff being copied
      */
     public Board(BoardProtos.Board board) {
-        int rows = board.getRows();
-        int cols = board.getColumns();
+        int rows = board.getWidth();
+        int cols = board.getHeight();
         grid = new Tile[rows][cols];
 
         for (int x = 0; x < rows; x++) {
@@ -87,8 +87,8 @@ public class Board {
             boardBuilder.addPortals(i, portals.get(i).buildProtoClass());
         }
 
-        boardBuilder.setRows(grid.length);
-        boardBuilder.setColumns(grid[0].length);
+        boardBuilder.setWidth(grid.length);
+        boardBuilder.setHeight(grid[0].length);
 
         return boardBuilder.build();
     }

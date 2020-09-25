@@ -129,6 +129,10 @@ public final class CharacterProtos {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -441,7 +445,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Character}
    */
-  public  static final class Character extends
+  public static final class Character extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Character)
       CharacterOrBuilder {
@@ -696,6 +700,7 @@ public final class CharacterProtos {
      * <code>int32 current_health = 1;</code>
      * @return The currentHealth.
      */
+    @java.lang.Override
     public int getCurrentHealth() {
       return currentHealth_;
     }
@@ -706,6 +711,7 @@ public final class CharacterProtos {
      * <code>int32 base_max_health = 2;</code>
      * @return The baseMaxHealth.
      */
+    @java.lang.Override
     public int getBaseMaxHealth() {
       return baseMaxHealth_;
     }
@@ -716,6 +722,7 @@ public final class CharacterProtos {
      * <code>int32 experience = 3;</code>
      * @return The experience.
      */
+    @java.lang.Override
     public int getExperience() {
       return experience_;
     }
@@ -726,6 +733,7 @@ public final class CharacterProtos {
      * <code>int32 level = 4;</code>
      * @return The level.
      */
+    @java.lang.Override
     public int getLevel() {
       return level_;
     }
@@ -736,6 +744,7 @@ public final class CharacterProtos {
      * <code>int32 base_speed = 5;</code>
      * @return The baseSpeed.
      */
+    @java.lang.Override
     public int getBaseSpeed() {
       return baseSpeed_;
     }
@@ -746,6 +755,7 @@ public final class CharacterProtos {
      * <code>.character.Position position = 6;</code>
      * @return Whether the position field is set.
      */
+    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -753,12 +763,14 @@ public final class CharacterProtos {
      * <code>.character.Position position = 6;</code>
      * @return The position.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 6;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -769,6 +781,7 @@ public final class CharacterProtos {
      * <code>.character.Position spawn_point = 7;</code>
      * @return Whether the spawnPoint field is set.
      */
+    @java.lang.Override
     public boolean hasSpawnPoint() {
       return spawnPoint_ != null;
     }
@@ -776,12 +789,14 @@ public final class CharacterProtos {
      * <code>.character.Position spawn_point = 7;</code>
      * @return The spawnPoint.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getSpawnPoint() {
       return spawnPoint_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : spawnPoint_;
     }
     /**
      * <code>.character.Position spawn_point = 7;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getSpawnPointOrBuilder() {
       return getSpawnPoint();
     }
@@ -792,6 +807,7 @@ public final class CharacterProtos {
      * <code>.item.Weapon weapon = 8;</code>
      * @return Whether the weapon field is set.
      */
+    @java.lang.Override
     public boolean hasWeapon() {
       return weapon_ != null;
     }
@@ -799,12 +815,14 @@ public final class CharacterProtos {
      * <code>.item.Weapon weapon = 8;</code>
      * @return The weapon.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Weapon getWeapon() {
       return weapon_ == null ? mech.mania.engine.domain.model.ItemProtos.Weapon.getDefaultInstance() : weapon_;
     }
     /**
      * <code>.item.Weapon weapon = 8;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.WeaponOrBuilder getWeaponOrBuilder() {
       return getWeapon();
     }
@@ -818,6 +836,7 @@ public final class CharacterProtos {
      *
      * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.TempStatusModifier> getActiveEffectsTempStatusModifierList() {
       return activeEffectsTempStatusModifier_;
     }
@@ -828,6 +847,7 @@ public final class CharacterProtos {
      *
      * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder> 
         getActiveEffectsTempStatusModifierOrBuilderList() {
       return activeEffectsTempStatusModifier_;
@@ -839,6 +859,7 @@ public final class CharacterProtos {
      *
      * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
+    @java.lang.Override
     public int getActiveEffectsTempStatusModifierCount() {
       return activeEffectsTempStatusModifier_.size();
     }
@@ -849,6 +870,7 @@ public final class CharacterProtos {
      *
      * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.TempStatusModifier getActiveEffectsTempStatusModifier(int index) {
       return activeEffectsTempStatusModifier_.get(index);
     }
@@ -859,6 +881,7 @@ public final class CharacterProtos {
      *
      * <code>repeated .item.TempStatusModifier active_effects_temp_status_modifier = 9;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.TempStatusModifierOrBuilder getActiveEffectsTempStatusModifierOrBuilder(
         int index) {
       return activeEffectsTempStatusModifier_.get(index);
@@ -905,6 +928,7 @@ public final class CharacterProtos {
      * <code>repeated bool active_effects_is_player = 11;</code>
      * @return A list containing the activeEffectsIsPlayer.
      */
+    @java.lang.Override
     public java.util.List<java.lang.Boolean>
         getActiveEffectsIsPlayerList() {
       return activeEffectsIsPlayer_;
@@ -960,6 +984,7 @@ public final class CharacterProtos {
      * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
 
+    @java.lang.Override
     public boolean containsTaggedPlayersDamage(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -968,6 +993,7 @@ public final class CharacterProtos {
     /**
      * Use {@link #getTaggedPlayersDamageMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
       return getTaggedPlayersDamageMap();
@@ -979,6 +1005,7 @@ public final class CharacterProtos {
      *
      * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
       return internalGetTaggedPlayersDamage().getMap();
@@ -990,6 +1017,7 @@ public final class CharacterProtos {
      *
      * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
+    @java.lang.Override
 
     public int getTaggedPlayersDamageOrDefault(
         java.lang.String key,
@@ -1006,6 +1034,7 @@ public final class CharacterProtos {
      *
      * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
      */
+    @java.lang.Override
 
     public int getTaggedPlayersDamageOrThrow(
         java.lang.String key) {
@@ -1024,6 +1053,7 @@ public final class CharacterProtos {
      * <code>bool is_dead = 13;</code>
      * @return The isDead.
      */
+    @java.lang.Override
     public boolean getIsDead() {
       return isDead_;
     }
@@ -1034,6 +1064,7 @@ public final class CharacterProtos {
      * <code>int32 ticks_since_death = 14;</code>
      * @return The ticksSinceDeath.
      */
+    @java.lang.Override
     public int getTicksSinceDeath() {
       return ticksSinceDeath_;
     }
@@ -1044,6 +1075,7 @@ public final class CharacterProtos {
      * <code>string name = 15;</code>
      * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -1060,6 +1092,7 @@ public final class CharacterProtos {
      * <code>string name = 15;</code>
      * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -1080,6 +1113,7 @@ public final class CharacterProtos {
      * <code>int32 base_attack = 16;</code>
      * @return The baseAttack.
      */
+    @java.lang.Override
     public int getBaseAttack() {
       return baseAttack_;
     }
@@ -1090,6 +1124,7 @@ public final class CharacterProtos {
      * <code>int32 base_defense = 17;</code>
      * @return The baseDefense.
      */
+    @java.lang.Override
     public int getBaseDefense() {
       return baseDefense_;
     }
@@ -1104,6 +1139,7 @@ public final class CharacterProtos {
      * <code>string sprite = 18;</code>
      * @return The sprite.
      */
+    @java.lang.Override
     public java.lang.String getSprite() {
       java.lang.Object ref = sprite_;
       if (ref instanceof java.lang.String) {
@@ -1124,6 +1160,7 @@ public final class CharacterProtos {
      * <code>string sprite = 18;</code>
      * @return The bytes for sprite.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getSpriteBytes() {
       java.lang.Object ref = sprite_;
@@ -1888,6 +1925,7 @@ public final class CharacterProtos {
        * <code>int32 current_health = 1;</code>
        * @return The currentHealth.
        */
+      @java.lang.Override
       public int getCurrentHealth() {
         return currentHealth_;
       }
@@ -1918,6 +1956,7 @@ public final class CharacterProtos {
        * <code>int32 base_max_health = 2;</code>
        * @return The baseMaxHealth.
        */
+      @java.lang.Override
       public int getBaseMaxHealth() {
         return baseMaxHealth_;
       }
@@ -1948,6 +1987,7 @@ public final class CharacterProtos {
        * <code>int32 experience = 3;</code>
        * @return The experience.
        */
+      @java.lang.Override
       public int getExperience() {
         return experience_;
       }
@@ -1978,6 +2018,7 @@ public final class CharacterProtos {
        * <code>int32 level = 4;</code>
        * @return The level.
        */
+      @java.lang.Override
       public int getLevel() {
         return level_;
       }
@@ -2008,6 +2049,7 @@ public final class CharacterProtos {
        * <code>int32 base_speed = 5;</code>
        * @return The baseSpeed.
        */
+      @java.lang.Override
       public int getBaseSpeed() {
         return baseSpeed_;
       }
@@ -2925,6 +2967,7 @@ public final class CharacterProtos {
        * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
 
+      @java.lang.Override
       public boolean containsTaggedPlayersDamage(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2933,6 +2976,7 @@ public final class CharacterProtos {
       /**
        * Use {@link #getTaggedPlayersDamageMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamage() {
         return getTaggedPlayersDamageMap();
@@ -2944,6 +2988,7 @@ public final class CharacterProtos {
        *
        * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.String, java.lang.Integer> getTaggedPlayersDamageMap() {
         return internalGetTaggedPlayersDamage().getMap();
@@ -2955,6 +3000,7 @@ public final class CharacterProtos {
        *
        * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
+      @java.lang.Override
 
       public int getTaggedPlayersDamageOrDefault(
           java.lang.String key,
@@ -2971,6 +3017,7 @@ public final class CharacterProtos {
        *
        * <code>map&lt;string, int32&gt; tagged_players_damage = 12;</code>
        */
+      @java.lang.Override
 
       public int getTaggedPlayersDamageOrThrow(
           java.lang.String key) {
@@ -3047,6 +3094,7 @@ public final class CharacterProtos {
        * <code>bool is_dead = 13;</code>
        * @return The isDead.
        */
+      @java.lang.Override
       public boolean getIsDead() {
         return isDead_;
       }
@@ -3077,6 +3125,7 @@ public final class CharacterProtos {
        * <code>int32 ticks_since_death = 14;</code>
        * @return The ticksSinceDeath.
        */
+      @java.lang.Override
       public int getTicksSinceDeath() {
         return ticksSinceDeath_;
       }
@@ -3183,6 +3232,7 @@ public final class CharacterProtos {
        * <code>int32 base_attack = 16;</code>
        * @return The baseAttack.
        */
+      @java.lang.Override
       public int getBaseAttack() {
         return baseAttack_;
       }
@@ -3213,6 +3263,7 @@ public final class CharacterProtos {
        * <code>int32 base_defense = 17;</code>
        * @return The baseDefense.
        */
+      @java.lang.Override
       public int getBaseDefense() {
         return baseDefense_;
       }
@@ -3438,7 +3489,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Monster}
    */
-  public  static final class Monster extends
+  public static final class Monster extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Monster)
       MonsterOrBuilder {
@@ -3550,6 +3601,7 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return Whether the character field is set.
      */
+    @java.lang.Override
     public boolean hasCharacter() {
       return character_ != null;
     }
@@ -3557,12 +3609,14 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return The character.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getCharacter() {
       return character_ == null ? mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance() : character_;
     }
     /**
      * <code>.character.Character character = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getCharacterOrBuilder() {
       return getCharacter();
     }
@@ -3572,12 +3626,14 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getDropsList() {
       return drops_;
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getDropsOrBuilderList() {
       return drops_;
@@ -3585,18 +3641,21 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public int getDropsCount() {
       return drops_.size();
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Item getDrops(int index) {
       return drops_.get(index);
     }
     /**
      * <code>repeated .item.Item drops = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getDropsOrBuilder(
         int index) {
       return drops_.get(index);
@@ -3608,6 +3667,7 @@ public final class CharacterProtos {
      * <code>int32 aggro_range = 3;</code>
      * @return The aggroRange.
      */
+    @java.lang.Override
     public int getAggroRange() {
       return aggroRange_;
     }
@@ -4365,6 +4425,7 @@ public final class CharacterProtos {
        * <code>int32 aggro_range = 3;</code>
        * @return The aggroRange.
        */
+      @java.lang.Override
       public int getAggroRange() {
         return aggroRange_;
       }
@@ -4577,7 +4638,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Player}
    */
-  public  static final class Player extends
+  public static final class Player extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Player)
       PlayerOrBuilder {
@@ -4744,6 +4805,7 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return Whether the character field is set.
      */
+    @java.lang.Override
     public boolean hasCharacter() {
       return character_ != null;
     }
@@ -4751,12 +4813,14 @@ public final class CharacterProtos {
      * <code>.character.Character character = 1;</code>
      * @return The character.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getCharacter() {
       return character_ == null ? mech.mania.engine.domain.model.CharacterProtos.Character.getDefaultInstance() : character_;
     }
     /**
      * <code>.character.Character character = 1;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getCharacterOrBuilder() {
       return getCharacter();
     }
@@ -4767,6 +4831,7 @@ public final class CharacterProtos {
      * <code>.item.Hat hat = 2;</code>
      * @return Whether the hat field is set.
      */
+    @java.lang.Override
     public boolean hasHat() {
       return hat_ != null;
     }
@@ -4774,12 +4839,14 @@ public final class CharacterProtos {
      * <code>.item.Hat hat = 2;</code>
      * @return The hat.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Hat getHat() {
       return hat_ == null ? mech.mania.engine.domain.model.ItemProtos.Hat.getDefaultInstance() : hat_;
     }
     /**
      * <code>.item.Hat hat = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.HatOrBuilder getHatOrBuilder() {
       return getHat();
     }
@@ -4790,6 +4857,7 @@ public final class CharacterProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return Whether the clothes field is set.
      */
+    @java.lang.Override
     public boolean hasClothes() {
       return clothes_ != null;
     }
@@ -4797,12 +4865,14 @@ public final class CharacterProtos {
      * <code>.item.Clothes clothes = 3;</code>
      * @return The clothes.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Clothes getClothes() {
       return clothes_ == null ? mech.mania.engine.domain.model.ItemProtos.Clothes.getDefaultInstance() : clothes_;
     }
     /**
      * <code>.item.Clothes clothes = 3;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ClothesOrBuilder getClothesOrBuilder() {
       return getClothes();
     }
@@ -4813,6 +4883,7 @@ public final class CharacterProtos {
      * <code>.item.Shoes shoes = 4;</code>
      * @return Whether the shoes field is set.
      */
+    @java.lang.Override
     public boolean hasShoes() {
       return shoes_ != null;
     }
@@ -4820,12 +4891,14 @@ public final class CharacterProtos {
      * <code>.item.Shoes shoes = 4;</code>
      * @return The shoes.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Shoes getShoes() {
       return shoes_ == null ? mech.mania.engine.domain.model.ItemProtos.Shoes.getDefaultInstance() : shoes_;
     }
     /**
      * <code>.item.Shoes shoes = 4;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ShoesOrBuilder getShoesOrBuilder() {
       return getShoes();
     }
@@ -4835,12 +4908,14 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getInventoryList() {
       return inventory_;
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getInventoryOrBuilderList() {
       return inventory_;
@@ -4848,18 +4923,21 @@ public final class CharacterProtos {
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public int getInventoryCount() {
       return inventory_.size();
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Item getInventory(int index) {
       return inventory_.get(index);
     }
     /**
      * <code>repeated .item.Item inventory = 5;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getInventoryOrBuilder(
         int index) {
       return inventory_.get(index);
@@ -4875,6 +4953,7 @@ public final class CharacterProtos {
      * <code>string bottom_sprite = 6;</code>
      * @return The bottomSprite.
      */
+    @java.lang.Override
     public java.lang.String getBottomSprite() {
       java.lang.Object ref = bottomSprite_;
       if (ref instanceof java.lang.String) {
@@ -4895,6 +4974,7 @@ public final class CharacterProtos {
      * <code>string bottom_sprite = 6;</code>
      * @return The bytes for bottomSprite.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getBottomSpriteBytes() {
       java.lang.Object ref = bottomSprite_;
@@ -4915,6 +4995,7 @@ public final class CharacterProtos {
      * <code>string top_sprite = 7;</code>
      * @return The topSprite.
      */
+    @java.lang.Override
     public java.lang.String getTopSprite() {
       java.lang.Object ref = topSprite_;
       if (ref instanceof java.lang.String) {
@@ -4931,6 +5012,7 @@ public final class CharacterProtos {
      * <code>string top_sprite = 7;</code>
      * @return The bytes for topSprite.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTopSpriteBytes() {
       java.lang.Object ref = topSprite_;
@@ -4951,6 +5033,7 @@ public final class CharacterProtos {
      * <code>string head_sprite = 8;</code>
      * @return The headSprite.
      */
+    @java.lang.Override
     public java.lang.String getHeadSprite() {
       java.lang.Object ref = headSprite_;
       if (ref instanceof java.lang.String) {
@@ -4967,6 +5050,7 @@ public final class CharacterProtos {
      * <code>string head_sprite = 8;</code>
      * @return The bytes for headSprite.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getHeadSpriteBytes() {
       java.lang.Object ref = headSprite_;
@@ -6571,7 +6655,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.PlayerStats}
    */
-  public  static final class PlayerStats extends
+  public static final class PlayerStats extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.PlayerStats)
       PlayerStatsOrBuilder {
@@ -6696,6 +6780,7 @@ public final class CharacterProtos {
      * <code>int32 level = 1;</code>
      * @return The level.
      */
+    @java.lang.Override
     public int getLevel() {
       return level_;
     }
@@ -6706,6 +6791,7 @@ public final class CharacterProtos {
      * <code>int32 experience = 2;</code>
      * @return The experience.
      */
+    @java.lang.Override
     public int getExperience() {
       return experience_;
     }
@@ -6716,6 +6802,7 @@ public final class CharacterProtos {
      * <code>int32 monsters_slain = 3;</code>
      * @return The monstersSlain.
      */
+    @java.lang.Override
     public int getMonstersSlain() {
       return monstersSlain_;
     }
@@ -6726,6 +6813,7 @@ public final class CharacterProtos {
      * <code>int32 attack = 4;</code>
      * @return The attack.
      */
+    @java.lang.Override
     public int getAttack() {
       return attack_;
     }
@@ -6736,6 +6824,7 @@ public final class CharacterProtos {
      * <code>int32 defense = 5;</code>
      * @return The defense.
      */
+    @java.lang.Override
     public int getDefense() {
       return defense_;
     }
@@ -6746,6 +6835,7 @@ public final class CharacterProtos {
      * <code>int32 current_health = 6;</code>
      * @return The currentHealth.
      */
+    @java.lang.Override
     public int getCurrentHealth() {
       return currentHealth_;
     }
@@ -6756,6 +6846,7 @@ public final class CharacterProtos {
      * <code>int32 max_health = 7;</code>
      * @return The maxHealth.
      */
+    @java.lang.Override
     public int getMaxHealth() {
       return maxHealth_;
     }
@@ -6766,6 +6857,7 @@ public final class CharacterProtos {
      * <code>int32 death_count = 8;</code>
      * @return The deathCount.
      */
+    @java.lang.Override
     public int getDeathCount() {
       return deathCount_;
     }
@@ -6776,6 +6868,7 @@ public final class CharacterProtos {
      * <code>int32 turns_since_joined = 9;</code>
      * @return The turnsSinceJoined.
      */
+    @java.lang.Override
     public int getTurnsSinceJoined() {
       return turnsSinceJoined_;
     }
@@ -7223,6 +7316,7 @@ public final class CharacterProtos {
        * <code>int32 level = 1;</code>
        * @return The level.
        */
+      @java.lang.Override
       public int getLevel() {
         return level_;
       }
@@ -7253,6 +7347,7 @@ public final class CharacterProtos {
        * <code>int32 experience = 2;</code>
        * @return The experience.
        */
+      @java.lang.Override
       public int getExperience() {
         return experience_;
       }
@@ -7283,6 +7378,7 @@ public final class CharacterProtos {
        * <code>int32 monsters_slain = 3;</code>
        * @return The monstersSlain.
        */
+      @java.lang.Override
       public int getMonstersSlain() {
         return monstersSlain_;
       }
@@ -7313,6 +7409,7 @@ public final class CharacterProtos {
        * <code>int32 attack = 4;</code>
        * @return The attack.
        */
+      @java.lang.Override
       public int getAttack() {
         return attack_;
       }
@@ -7343,6 +7440,7 @@ public final class CharacterProtos {
        * <code>int32 defense = 5;</code>
        * @return The defense.
        */
+      @java.lang.Override
       public int getDefense() {
         return defense_;
       }
@@ -7373,6 +7471,7 @@ public final class CharacterProtos {
        * <code>int32 current_health = 6;</code>
        * @return The currentHealth.
        */
+      @java.lang.Override
       public int getCurrentHealth() {
         return currentHealth_;
       }
@@ -7403,6 +7502,7 @@ public final class CharacterProtos {
        * <code>int32 max_health = 7;</code>
        * @return The maxHealth.
        */
+      @java.lang.Override
       public int getMaxHealth() {
         return maxHealth_;
       }
@@ -7433,6 +7533,7 @@ public final class CharacterProtos {
        * <code>int32 death_count = 8;</code>
        * @return The deathCount.
        */
+      @java.lang.Override
       public int getDeathCount() {
         return deathCount_;
       }
@@ -7463,6 +7564,7 @@ public final class CharacterProtos {
        * <code>int32 turns_since_joined = 9;</code>
        * @return The turnsSinceJoined.
        */
+      @java.lang.Override
       public int getTurnsSinceJoined() {
         return turnsSinceJoined_;
       }
@@ -7581,7 +7683,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.PlayerStatsBundle}
    */
-  public  static final class PlayerStatsBundle extends
+  public static final class PlayerStatsBundle extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.PlayerStatsBundle)
       PlayerStatsBundleOrBuilder {
@@ -7711,6 +7813,7 @@ public final class CharacterProtos {
      * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
 
+    @java.lang.Override
     public boolean containsStats(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -7719,6 +7822,7 @@ public final class CharacterProtos {
     /**
      * Use {@link #getStatsMap()} instead.
      */
+    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStats() {
       return getStatsMap();
@@ -7726,6 +7830,7 @@ public final class CharacterProtos {
     /**
      * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
+    @java.lang.Override
 
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsMap() {
       return internalGetStats().getMap();
@@ -7733,6 +7838,7 @@ public final class CharacterProtos {
     /**
      * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
+    @java.lang.Override
 
     public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrDefault(
         java.lang.String key,
@@ -7745,6 +7851,7 @@ public final class CharacterProtos {
     /**
      * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
      */
+    @java.lang.Override
 
     public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrThrow(
         java.lang.String key) {
@@ -8123,6 +8230,7 @@ public final class CharacterProtos {
        * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
 
+      @java.lang.Override
       public boolean containsStats(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -8131,6 +8239,7 @@ public final class CharacterProtos {
       /**
        * Use {@link #getStatsMap()} instead.
        */
+      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStats() {
         return getStatsMap();
@@ -8138,6 +8247,7 @@ public final class CharacterProtos {
       /**
        * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
+      @java.lang.Override
 
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.PlayerStats> getStatsMap() {
         return internalGetStats().getMap();
@@ -8145,6 +8255,7 @@ public final class CharacterProtos {
       /**
        * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
+      @java.lang.Override
 
       public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrDefault(
           java.lang.String key,
@@ -8157,6 +8268,7 @@ public final class CharacterProtos {
       /**
        * <code>map&lt;string, .character.PlayerStats&gt; stats = 1;</code>
        */
+      @java.lang.Override
 
       public mech.mania.engine.domain.model.CharacterProtos.PlayerStats getStatsOrThrow(
           java.lang.String key) {
@@ -8299,7 +8411,7 @@ public final class CharacterProtos {
   /**
    * Protobuf type {@code character.Position}
    */
-  public  static final class Position extends
+  public static final class Position extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.Position)
       PositionOrBuilder {
@@ -8396,6 +8508,7 @@ public final class CharacterProtos {
      * <code>string board_id = 1;</code>
      * @return The boardId.
      */
+    @java.lang.Override
     public java.lang.String getBoardId() {
       java.lang.Object ref = boardId_;
       if (ref instanceof java.lang.String) {
@@ -8412,6 +8525,7 @@ public final class CharacterProtos {
      * <code>string board_id = 1;</code>
      * @return The bytes for boardId.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getBoardIdBytes() {
       java.lang.Object ref = boardId_;
@@ -8432,6 +8546,7 @@ public final class CharacterProtos {
      * <code>int32 x = 2;</code>
      * @return The x.
      */
+    @java.lang.Override
     public int getX() {
       return x_;
     }
@@ -8442,6 +8557,7 @@ public final class CharacterProtos {
      * <code>int32 y = 3;</code>
      * @return The y.
      */
+    @java.lang.Override
     public int getY() {
       return y_;
     }
@@ -8863,6 +8979,7 @@ public final class CharacterProtos {
        * <code>int32 x = 2;</code>
        * @return The x.
        */
+      @java.lang.Override
       public int getX() {
         return x_;
       }
@@ -8893,6 +9010,7 @@ public final class CharacterProtos {
        * <code>int32 y = 3;</code>
        * @return The y.
        */
+      @java.lang.Override
       public int getY() {
         return y_;
       }
@@ -9029,7 +9147,7 @@ public final class CharacterProtos {
    *
    * Protobuf type {@code character.CharacterDecision}
    */
-  public  static final class CharacterDecision extends
+  public static final class CharacterDecision extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:character.CharacterDecision)
       CharacterDecisionOrBuilder {
@@ -9134,14 +9252,14 @@ public final class CharacterProtos {
      * <code>.character.DecisionType decision_type = 1;</code>
      * @return The enum numeric value on the wire for decisionType.
      */
-    public int getDecisionTypeValue() {
+    @java.lang.Override public int getDecisionTypeValue() {
       return decisionType_;
     }
     /**
      * <code>.character.DecisionType decision_type = 1;</code>
      * @return The decisionType.
      */
-    public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
+    @java.lang.Override public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
       @SuppressWarnings("deprecation")
       mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
       return result == null ? mech.mania.engine.domain.model.CharacterProtos.DecisionType.UNRECOGNIZED : result;
@@ -9157,6 +9275,7 @@ public final class CharacterProtos {
      * <code>.character.Position target_position = 2;</code>
      * @return Whether the targetPosition field is set.
      */
+    @java.lang.Override
     public boolean hasTargetPosition() {
       return targetPosition_ != null;
     }
@@ -9168,6 +9287,7 @@ public final class CharacterProtos {
      * <code>.character.Position target_position = 2;</code>
      * @return The targetPosition.
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getTargetPosition() {
       return targetPosition_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : targetPosition_;
     }
@@ -9178,6 +9298,7 @@ public final class CharacterProtos {
      *
      * <code>.character.Position target_position = 2;</code>
      */
+    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getTargetPositionOrBuilder() {
       return getTargetPosition();
     }
@@ -9192,6 +9313,7 @@ public final class CharacterProtos {
      * <code>int32 index = 3;</code>
      * @return The index.
      */
+    @java.lang.Override
     public int getIndex() {
       return index_;
     }
@@ -9553,7 +9675,7 @@ public final class CharacterProtos {
        * <code>.character.DecisionType decision_type = 1;</code>
        * @return The enum numeric value on the wire for decisionType.
        */
-      public int getDecisionTypeValue() {
+      @java.lang.Override public int getDecisionTypeValue() {
         return decisionType_;
       }
       /**
@@ -9562,6 +9684,7 @@ public final class CharacterProtos {
        * @return This builder for chaining.
        */
       public Builder setDecisionTypeValue(int value) {
+        
         decisionType_ = value;
         onChanged();
         return this;
@@ -9570,6 +9693,7 @@ public final class CharacterProtos {
        * <code>.character.DecisionType decision_type = 1;</code>
        * @return The decisionType.
        */
+      @java.lang.Override
       public mech.mania.engine.domain.model.CharacterProtos.DecisionType getDecisionType() {
         @SuppressWarnings("deprecation")
         mech.mania.engine.domain.model.CharacterProtos.DecisionType result = mech.mania.engine.domain.model.CharacterProtos.DecisionType.valueOf(decisionType_);
@@ -9764,6 +9888,7 @@ public final class CharacterProtos {
        * <code>int32 index = 3;</code>
        * @return The index.
        */
+      @java.lang.Override
       public int getIndex() {
         return index_;
       }

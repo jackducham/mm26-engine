@@ -315,7 +315,7 @@ class ServerIntegrationTests {
 
             val targetPos = CharacterProtos.Position.newBuilder().setX(myPos.x).setBoardId(myPos.boardId)
 
-            if (myBoard!!.getGrid(myBoard.rows * myPos.x + myPos.y + 1).tileType == BoardProtos.Tile.TileType.BLANK) {
+            if (myBoard!!.getGrid(myBoard.width * myPos.x + myPos.y + 1).tileType == BoardProtos.Tile.TileType.BLANK) {
                 targetPos.y = myPos.y + 1
             }
             else{
