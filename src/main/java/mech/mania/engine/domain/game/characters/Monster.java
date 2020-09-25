@@ -9,8 +9,7 @@ import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
@@ -134,6 +133,17 @@ public class Monster extends Character {
         return getPositionInRange(gameState, getPosition(), target, getWeapon().getRange());
     }
 
+    private void addPlayersToAggroRangeTable(GameState gameState) {
+        List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
+        if(inRange != null) {
+            for (Character character : inRange) {
+                if (character instanceof Player && !taggedPlayersDamage.containsKey(character.getName())) {
+                    taggedPlayersDamage.put(character.getName(), 0);
+                }
+            }
+        }
+    }
+
     /**
      * Calculates what the Monster should do on its next turn and passes this information to one of several helper
      * functions which generate and pass back a decision object.
@@ -144,25 +154,20 @@ public class Monster extends Character {
         addPlayersToAggroRangeTable(gameState);
 
         Player target = null;
-
-        if (!taggedPlayersDamage.isEmpty()) {
-            String highestDamageCharacter = getPlayerWithMostDamage();
-            target = gameState.getPlayer(highestDamageCharacter);
-        }
-
-        if (target == null) {
-            List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
-            if(inRange != null) {
-                for (Character character : inRange) {
-                    if (character instanceof Player) {
-                        target = (Player) character;
-                        break;
-                    }
+        LinkedHashMap<String, Integer> sortedPlayers = getPlayerWithMostDamage();
+        if (sortedPlayers != null) {
+            Iterator<Map.Entry<String,Integer>> it = sortedPlayers.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<String,Integer> playerEntry = it.next();
+                Player player = gameState.getPlayer(playerEntry.getKey());
+                if (player != null && !player.isDead()) {
+                    target = player;
+                    break;
                 }
             }
         }
 
-        // nothing in taggedPlayersDamage and no Players in aggroRange
+        // nothing in taggedPlayersDamage
         if (target == null) {
             return moveToStartDecision(gameState);
         }
