@@ -129,7 +129,7 @@ public final class GameStateProtos {
   /**
    * Protobuf type {@code game.GameState}
    */
-  public static final class GameState extends
+  public  static final class GameState extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:game.GameState)
       GameStateOrBuilder {
@@ -270,7 +270,6 @@ public final class GameStateProtos {
      * <code>int64 state_id = 1;</code>
      * @return The stateId.
      */
-    @java.lang.Override
     public long getStateId() {
       return stateId_;
     }
@@ -305,7 +304,6 @@ public final class GameStateProtos {
      * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
 
-    @java.lang.Override
     public boolean containsBoardNames(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -314,7 +312,6 @@ public final class GameStateProtos {
     /**
      * Use {@link #getBoardNamesMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNames() {
       return getBoardNamesMap();
@@ -322,7 +319,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
-    @java.lang.Override
 
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNamesMap() {
       return internalGetBoardNames().getMap();
@@ -330,7 +326,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrDefault(
         java.lang.String key,
@@ -343,7 +338,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrThrow(
         java.lang.String key) {
@@ -386,7 +380,6 @@ public final class GameStateProtos {
      * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
 
-    @java.lang.Override
     public boolean containsPlayerNames(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -395,7 +388,6 @@ public final class GameStateProtos {
     /**
      * Use {@link #getPlayerNamesMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNames() {
       return getPlayerNamesMap();
@@ -403,7 +395,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
-    @java.lang.Override
 
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNamesMap() {
       return internalGetPlayerNames().getMap();
@@ -411,7 +402,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrDefault(
         java.lang.String key,
@@ -424,7 +414,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrThrow(
         java.lang.String key) {
@@ -467,7 +456,6 @@ public final class GameStateProtos {
      * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
 
-    @java.lang.Override
     public boolean containsMonsterNames(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -476,7 +464,6 @@ public final class GameStateProtos {
     /**
      * Use {@link #getMonsterNamesMap()} instead.
      */
-    @java.lang.Override
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNames() {
       return getMonsterNamesMap();
@@ -484,7 +471,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
-    @java.lang.Override
 
     public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNamesMap() {
       return internalGetMonsterNames().getMap();
@@ -492,7 +478,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrDefault(
         java.lang.String key,
@@ -505,7 +490,6 @@ public final class GameStateProtos {
     /**
      * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
      */
-    @java.lang.Override
 
     public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrThrow(
         java.lang.String key) {
@@ -939,7 +923,6 @@ public final class GameStateProtos {
        * <code>int64 state_id = 1;</code>
        * @return The stateId.
        */
-      @java.lang.Override
       public long getStateId() {
         return stateId_;
       }
@@ -995,7 +978,6 @@ public final class GameStateProtos {
        * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
 
-      @java.lang.Override
       public boolean containsBoardNames(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1004,7 +986,6 @@ public final class GameStateProtos {
       /**
        * Use {@link #getBoardNamesMap()} instead.
        */
-      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNames() {
         return getBoardNamesMap();
@@ -1012,7 +993,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
-      @java.lang.Override
 
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.BoardProtos.Board> getBoardNamesMap() {
         return internalGetBoardNames().getMap();
@@ -1020,7 +1000,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrDefault(
           java.lang.String key,
@@ -1033,7 +1012,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .board.Board&gt; board_names = 2;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.domain.model.BoardProtos.Board getBoardNamesOrThrow(
           java.lang.String key) {
@@ -1123,7 +1101,6 @@ public final class GameStateProtos {
        * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
 
-      @java.lang.Override
       public boolean containsPlayerNames(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1132,7 +1109,6 @@ public final class GameStateProtos {
       /**
        * Use {@link #getPlayerNamesMap()} instead.
        */
-      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNames() {
         return getPlayerNamesMap();
@@ -1140,7 +1116,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
-      @java.lang.Override
 
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Player> getPlayerNamesMap() {
         return internalGetPlayerNames().getMap();
@@ -1148,7 +1123,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrDefault(
           java.lang.String key,
@@ -1161,7 +1135,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .character.Player&gt; player_names = 3;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.domain.model.CharacterProtos.Player getPlayerNamesOrThrow(
           java.lang.String key) {
@@ -1251,7 +1224,6 @@ public final class GameStateProtos {
        * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
 
-      @java.lang.Override
       public boolean containsMonsterNames(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1260,7 +1232,6 @@ public final class GameStateProtos {
       /**
        * Use {@link #getMonsterNamesMap()} instead.
        */
-      @java.lang.Override
       @java.lang.Deprecated
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNames() {
         return getMonsterNamesMap();
@@ -1268,7 +1239,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
-      @java.lang.Override
 
       public java.util.Map<java.lang.String, mech.mania.engine.domain.model.CharacterProtos.Monster> getMonsterNamesMap() {
         return internalGetMonsterNames().getMap();
@@ -1276,7 +1246,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrDefault(
           java.lang.String key,
@@ -1289,7 +1258,6 @@ public final class GameStateProtos {
       /**
        * <code>map&lt;string, .character.Monster&gt; monster_names = 4;</code>
        */
-      @java.lang.Override
 
       public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsterNamesOrThrow(
           java.lang.String key) {

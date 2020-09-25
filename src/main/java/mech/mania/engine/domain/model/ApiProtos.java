@@ -39,7 +39,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIStatus}
    */
-  public static final class APIStatus extends
+  public  static final class APIStatus extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIStatus)
       APIStatusOrBuilder {
@@ -131,7 +131,6 @@ public final class ApiProtos {
      * <code>int32 status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public int getStatus() {
       return status_;
     }
@@ -142,7 +141,6 @@ public final class ApiProtos {
      * <code>string message = 2;</code>
      * @return The message.
      */
-    @java.lang.Override
     public java.lang.String getMessage() {
       java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
@@ -159,7 +157,6 @@ public final class ApiProtos {
      * <code>string message = 2;</code>
      * @return The bytes for message.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageBytes() {
       java.lang.Object ref = message_;
@@ -498,7 +495,6 @@ public final class ApiProtos {
        * <code>int32 status = 1;</code>
        * @return The status.
        */
-      @java.lang.Override
       public int getStatus() {
         return status_;
       }
@@ -704,7 +700,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIPathFindingRequest}
    */
-  public static final class APIPathFindingRequest extends
+  public  static final class APIPathFindingRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIPathFindingRequest)
       APIPathFindingRequestOrBuilder {
@@ -823,7 +819,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -831,14 +826,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -849,7 +842,6 @@ public final class ApiProtos {
      * <code>.character.Position start = 2;</code>
      * @return Whether the start field is set.
      */
-    @java.lang.Override
     public boolean hasStart() {
       return start_ != null;
     }
@@ -857,14 +849,12 @@ public final class ApiProtos {
      * <code>.character.Position start = 2;</code>
      * @return The start.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getStart() {
       return start_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : start_;
     }
     /**
      * <code>.character.Position start = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getStartOrBuilder() {
       return getStart();
     }
@@ -875,7 +865,6 @@ public final class ApiProtos {
      * <code>.character.Position end = 3;</code>
      * @return Whether the end field is set.
      */
-    @java.lang.Override
     public boolean hasEnd() {
       return end_ != null;
     }
@@ -883,14 +872,12 @@ public final class ApiProtos {
      * <code>.character.Position end = 3;</code>
      * @return The end.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getEnd() {
       return end_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : end_;
     }
     /**
      * <code>.character.Position end = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getEndOrBuilder() {
       return getEnd();
     }
@@ -1725,7 +1712,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIPathFindingResponse}
    */
-  public static final class APIPathFindingResponse extends
+  public  static final class APIPathFindingResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIPathFindingResponse)
       APIPathFindingResponseOrBuilder {
@@ -1832,7 +1819,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -1840,14 +1826,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -1857,14 +1841,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPathList() {
       return path_;
     }
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPathOrBuilderList() {
       return path_;
@@ -1872,21 +1854,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
-    @java.lang.Override
     public int getPathCount() {
       return path_.size();
     }
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPath(int index) {
       return path_.get(index);
     }
     /**
      * <code>repeated .character.Position path = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPathOrBuilder(
         int index) {
       return path_.get(index);
@@ -2724,7 +2703,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindEnemiesByDistanceRequest}
    */
-  public static final class APIFindEnemiesByDistanceRequest extends
+  public  static final class APIFindEnemiesByDistanceRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindEnemiesByDistanceRequest)
       APIFindEnemiesByDistanceRequestOrBuilder {
@@ -2837,7 +2816,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -2845,14 +2823,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -2863,7 +2839,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -2871,14 +2846,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -2889,7 +2862,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The playerName.
      */
-    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -2906,7 +2878,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -3695,7 +3666,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindEnemiesByDistanceResponse}
    */
-  public static final class APIFindEnemiesByDistanceResponse extends
+  public  static final class APIFindEnemiesByDistanceResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindEnemiesByDistanceResponse)
       APIFindEnemiesByDistanceResponseOrBuilder {
@@ -3802,7 +3773,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -3810,14 +3780,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -3827,14 +3795,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesList() {
       return enemies_;
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
         getEnemiesOrBuilderList() {
       return enemies_;
@@ -3842,21 +3808,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public int getEnemiesCount() {
       return enemies_.size();
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getEnemies(int index) {
       return enemies_.get(index);
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesOrBuilder(
         int index) {
       return enemies_.get(index);
@@ -4682,7 +4645,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindMonstersByExpRequest}
    */
-  public static final class APIFindMonstersByExpRequest extends
+  public  static final class APIFindMonstersByExpRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindMonstersByExpRequest)
       APIFindMonstersByExpRequestOrBuilder {
@@ -4788,7 +4751,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -4796,14 +4758,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -4814,7 +4774,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -4822,14 +4781,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -5515,7 +5472,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindMonstersByExpResponse}
    */
-  public static final class APIFindMonstersByExpResponse extends
+  public  static final class APIFindMonstersByExpResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindMonstersByExpResponse)
       APIFindMonstersByExpResponseOrBuilder {
@@ -5622,7 +5579,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -5630,14 +5586,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -5647,14 +5601,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Monster> getMonstersList() {
       return monsters_;
     }
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.MonsterOrBuilder> 
         getMonstersOrBuilderList() {
       return monsters_;
@@ -5662,21 +5614,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
-    @java.lang.Override
     public int getMonstersCount() {
       return monsters_.size();
     }
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Monster getMonsters(int index) {
       return monsters_.get(index);
     }
     /**
      * <code>repeated .character.Monster monsters = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.MonsterOrBuilder getMonstersOrBuilder(
         int index) {
       return monsters_.get(index);
@@ -6520,7 +6469,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindItemsInRangeByDistanceRequest}
    */
-  public static final class APIFindItemsInRangeByDistanceRequest extends
+  public  static final class APIFindItemsInRangeByDistanceRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindItemsInRangeByDistanceRequest)
       APIFindItemsInRangeByDistanceRequestOrBuilder {
@@ -6638,7 +6587,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -6646,14 +6594,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -6664,7 +6610,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -6672,14 +6617,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -6690,7 +6633,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The playerName.
      */
-    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -6707,7 +6649,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -6728,7 +6669,6 @@ public final class ApiProtos {
      * <code>int32 range = 4;</code>
      * @return The range.
      */
-    @java.lang.Override
     public int getRange() {
       return range_;
     }
@@ -7431,7 +7371,6 @@ public final class ApiProtos {
        * <code>int32 range = 4;</code>
        * @return The range.
        */
-      @java.lang.Override
       public int getRange() {
         return range_;
       }
@@ -7579,7 +7518,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindItemsInRangeByDistanceResponse}
    */
-  public static final class APIFindItemsInRangeByDistanceResponse extends
+  public  static final class APIFindItemsInRangeByDistanceResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindItemsInRangeByDistanceResponse)
       APIFindItemsInRangeByDistanceResponseOrBuilder {
@@ -7699,7 +7638,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -7707,14 +7645,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -7724,14 +7660,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.ItemProtos.Item> getItemsList() {
       return items_;
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder> 
         getItemsOrBuilderList() {
       return items_;
@@ -7739,21 +7673,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public int getItemsCount() {
       return items_.size();
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.Item getItems(int index) {
       return items_.get(index);
     }
     /**
      * <code>repeated .item.Item items = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ItemProtos.ItemOrBuilder getItemsOrBuilder(
         int index) {
       return items_.get(index);
@@ -7764,14 +7695,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Position positions = 3;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getPositionsList() {
       return positions_;
     }
     /**
      * <code>repeated .character.Position positions = 3;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getPositionsOrBuilderList() {
       return positions_;
@@ -7779,21 +7708,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Position positions = 3;</code>
      */
-    @java.lang.Override
     public int getPositionsCount() {
       return positions_.size();
     }
     /**
      * <code>repeated .character.Position positions = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPositions(int index) {
       return positions_.get(index);
     }
     /**
      * <code>repeated .character.Position positions = 3;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionsOrBuilder(
         int index) {
       return positions_.get(index);
@@ -8926,7 +8852,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindEnemiesInRangeOfAttackByDistanceRequest}
    */
-  public static final class APIFindEnemiesInRangeOfAttackByDistanceRequest extends
+  public  static final class APIFindEnemiesInRangeOfAttackByDistanceRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindEnemiesInRangeOfAttackByDistanceRequest)
       APIFindEnemiesInRangeOfAttackByDistanceRequestOrBuilder {
@@ -9039,7 +8965,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -9047,14 +8972,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -9065,7 +8988,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -9073,14 +8995,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -9091,7 +9011,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The playerName.
      */
-    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -9108,7 +9027,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -9897,7 +9815,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindEnemiesInRangeOfAttackByDistanceResponse}
    */
-  public static final class APIFindEnemiesInRangeOfAttackByDistanceResponse extends
+  public  static final class APIFindEnemiesInRangeOfAttackByDistanceResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindEnemiesInRangeOfAttackByDistanceResponse)
       APIFindEnemiesInRangeOfAttackByDistanceResponseOrBuilder {
@@ -10004,7 +9922,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -10012,14 +9929,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -10029,14 +9944,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesList() {
       return enemies_;
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
         getEnemiesOrBuilderList() {
       return enemies_;
@@ -10044,21 +9957,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public int getEnemiesCount() {
       return enemies_.size();
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getEnemies(int index) {
       return enemies_.get(index);
     }
     /**
      * <code>repeated .character.Character enemies = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesOrBuilder(
         int index) {
       return enemies_.get(index);
@@ -10896,7 +10806,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindAllEnemiesHitRequest}
    */
-  public static final class APIFindAllEnemiesHitRequest extends
+  public  static final class APIFindAllEnemiesHitRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindAllEnemiesHitRequest)
       APIFindAllEnemiesHitRequestOrBuilder {
@@ -11009,7 +10919,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -11017,14 +10926,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -11035,7 +10942,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -11043,14 +10949,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -11061,7 +10965,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The playerName.
      */
-    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -11078,7 +10981,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -11867,7 +11769,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindAllEnemiesHitResponse}
    */
-  public static final class APIFindAllEnemiesHitResponse extends
+  public  static final class APIFindAllEnemiesHitResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindAllEnemiesHitResponse)
       APIFindAllEnemiesHitResponseOrBuilder {
@@ -11974,7 +11876,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -11982,14 +11883,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -11999,14 +11898,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Character> getEnemiesHitList() {
       return enemiesHit_;
     }
     /**
      * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder> 
         getEnemiesHitOrBuilderList() {
       return enemiesHit_;
@@ -12014,21 +11911,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    @java.lang.Override
     public int getEnemiesHitCount() {
       return enemiesHit_.size();
     }
     /**
      * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Character getEnemiesHit(int index) {
       return enemiesHit_.get(index);
     }
     /**
      * <code>repeated .character.Character enemies_hit = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.CharacterOrBuilder getEnemiesHitOrBuilder(
         int index) {
       return enemiesHit_.get(index);
@@ -12866,7 +12760,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIInRangeOfAttackRequest}
    */
-  public static final class APIInRangeOfAttackRequest extends
+  public  static final class APIInRangeOfAttackRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIInRangeOfAttackRequest)
       APIInRangeOfAttackRequestOrBuilder {
@@ -12979,7 +12873,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -12987,14 +12880,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -13005,7 +12896,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -13013,14 +12903,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -13031,7 +12919,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The playerName.
      */
-    @java.lang.Override
     public java.lang.String getPlayerName() {
       java.lang.Object ref = playerName_;
       if (ref instanceof java.lang.String) {
@@ -13048,7 +12935,6 @@ public final class ApiProtos {
      * <code>string player_name = 3;</code>
      * @return The bytes for playerName.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
         getPlayerNameBytes() {
       java.lang.Object ref = playerName_;
@@ -13819,7 +13705,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIInRangeOfAttackResponse}
    */
-  public static final class APIInRangeOfAttackResponse extends
+  public  static final class APIInRangeOfAttackResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIInRangeOfAttackResponse)
       APIInRangeOfAttackResponseOrBuilder {
@@ -13917,7 +13803,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -13925,14 +13810,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -13943,7 +13826,6 @@ public final class ApiProtos {
      * <code>bool inRangeOfAttack = 2;</code>
      * @return The inRangeOfAttack.
      */
-    @java.lang.Override
     public boolean getInRangeOfAttack() {
       return inRangeOfAttack_;
     }
@@ -14405,7 +14287,6 @@ public final class ApiProtos {
        * <code>bool inRangeOfAttack = 2;</code>
        * @return The inRangeOfAttack.
        */
-      @java.lang.Override
       public boolean getInRangeOfAttack() {
         return inRangeOfAttack_;
       }
@@ -14520,7 +14401,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindClosestPortalRequest}
    */
-  public static final class APIFindClosestPortalRequest extends
+  public  static final class APIFindClosestPortalRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindClosestPortalRequest)
       APIFindClosestPortalRequestOrBuilder {
@@ -14626,7 +14507,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -14634,14 +14514,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -14652,7 +14530,6 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return Whether the position field is set.
      */
-    @java.lang.Override
     public boolean hasPosition() {
       return position_ != null;
     }
@@ -14660,14 +14537,12 @@ public final class ApiProtos {
      * <code>.character.Position position = 2;</code>
      * @return The position.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPosition() {
       return position_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : position_;
     }
     /**
      * <code>.character.Position position = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPositionOrBuilder() {
       return getPosition();
     }
@@ -15344,7 +15219,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APIFindClosestPortalResponse}
    */
-  public static final class APIFindClosestPortalResponse extends
+  public  static final class APIFindClosestPortalResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APIFindClosestPortalResponse)
       APIFindClosestPortalResponseOrBuilder {
@@ -15450,7 +15325,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -15458,14 +15332,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -15476,7 +15348,6 @@ public final class ApiProtos {
      * <code>.character.Position portal = 2;</code>
      * @return Whether the portal field is set.
      */
-    @java.lang.Override
     public boolean hasPortal() {
       return portal_ != null;
     }
@@ -15484,14 +15355,12 @@ public final class ApiProtos {
      * <code>.character.Position portal = 2;</code>
      * @return The portal.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Position getPortal() {
       return portal_ == null ? mech.mania.engine.domain.model.CharacterProtos.Position.getDefaultInstance() : portal_;
     }
     /**
      * <code>.character.Position portal = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getPortalOrBuilder() {
       return getPortal();
     }
@@ -16153,7 +16022,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APILeaderBoardRequest}
    */
-  public static final class APILeaderBoardRequest extends
+  public  static final class APILeaderBoardRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APILeaderBoardRequest)
       APILeaderBoardRequestOrBuilder {
@@ -16246,7 +16115,6 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return Whether the gameState field is set.
      */
-    @java.lang.Override
     public boolean hasGameState() {
       return gameState_ != null;
     }
@@ -16254,14 +16122,12 @@ public final class ApiProtos {
      * <code>.game.GameState gameState = 1;</code>
      * @return The gameState.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameState getGameState() {
       return gameState_ == null ? mech.mania.engine.domain.model.GameStateProtos.GameState.getDefaultInstance() : gameState_;
     }
     /**
      * <code>.game.GameState gameState = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.GameStateProtos.GameStateOrBuilder getGameStateOrBuilder() {
       return getGameState();
     }
@@ -16798,7 +16664,7 @@ public final class ApiProtos {
   /**
    * Protobuf type {@code api.APILeaderBoardResponse}
    */
-  public static final class APILeaderBoardResponse extends
+  public  static final class APILeaderBoardResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:api.APILeaderBoardResponse)
       APILeaderBoardResponseOrBuilder {
@@ -16905,7 +16771,6 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return Whether the status field is set.
      */
-    @java.lang.Override
     public boolean hasStatus() {
       return status_ != null;
     }
@@ -16913,14 +16778,12 @@ public final class ApiProtos {
      * <code>.api.APIStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatus getStatus() {
       return status_ == null ? mech.mania.engine.domain.model.ApiProtos.APIStatus.getDefaultInstance() : status_;
     }
     /**
      * <code>.api.APIStatus status = 1;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.ApiProtos.APIStatusOrBuilder getStatusOrBuilder() {
       return getStatus();
     }
@@ -16930,14 +16793,12 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Player> getLeaderBoardList() {
       return leaderBoard_;
     }
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
-    @java.lang.Override
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PlayerOrBuilder> 
         getLeaderBoardOrBuilderList() {
       return leaderBoard_;
@@ -16945,21 +16806,18 @@ public final class ApiProtos {
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
-    @java.lang.Override
     public int getLeaderBoardCount() {
       return leaderBoard_.size();
     }
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.Player getLeaderBoard(int index) {
       return leaderBoard_.get(index);
     }
     /**
      * <code>repeated .character.Player leaderBoard = 2;</code>
      */
-    @java.lang.Override
     public mech.mania.engine.domain.model.CharacterProtos.PlayerOrBuilder getLeaderBoardOrBuilder(
         int index) {
       return leaderBoard_.get(index);
