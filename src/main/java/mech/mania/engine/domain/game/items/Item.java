@@ -5,7 +5,9 @@ import mech.mania.engine.domain.model.ItemProtos;
 public abstract class Item {
     protected int maxStack;
     protected String name;
-    private int turnsTilDeletion = 30;
+    protected int turnsToDeletion;
+
+    public static final int ITEM_LIFETIME = 30;
 
     public Item(int maxStack) {
         this.maxStack = maxStack;
@@ -21,11 +23,13 @@ public abstract class Item {
 
     public abstract ItemProtos.Item buildProtoClassItem();
 
-    public int getTurnsTilDeletion() {
-        return turnsTilDeletion;
+    public int getTurnsToDeletion() {
+        return turnsToDeletion;
     }
 
-    public void setTurnsTilDeletion(int turnsTilDeletion) {
-        this.turnsTilDeletion = turnsTilDeletion;
+    public void setTurnsToDeletion(int turnsToDeletion) {
+        this.turnsToDeletion = turnsToDeletion;
     }
+
+    public void decTurnsToDeletion(){this.turnsToDeletion--;}
 }

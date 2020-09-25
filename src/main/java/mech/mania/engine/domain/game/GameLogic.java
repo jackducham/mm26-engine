@@ -141,10 +141,10 @@ public class GameLogic {
                     for(int k = 0; k < items.size(); ) {
                         if(items.get(k) == null) {
                             items.remove(k);
-                        } else if (items.get(k).getTurnsTilDeletion() <= 0) {
+                        } else if (items.get(k).getTurnsToDeletion() <= 0) {
                             items.remove(k);
                         } else {
-                            items.get(k).setTurnsTilDeletion(items.get(k).getTurnsTilDeletion() - 1);
+                            items.get(k).decTurnsToDeletion();
                             ++k;
                         }
                     }
@@ -451,7 +451,7 @@ public class GameLogic {
 
         Item item = tile.getItems().get(index);
         tile.removeItem(index);
-        item.setTurnsTilDeletion(30);
+        item.setTurnsToDeletion(Item.ITEM_LIFETIME);
         player.setInventory(playerInventoryIndex, item);
         return true;
     }
