@@ -37,8 +37,8 @@ public class MonsterTests {
         gameState1 = new GameState();
 
         monsterPos = new Position(10,10, "pvp");
-        weapon1 = new Weapon(null,5,3,10,null);
-        monster1 = new Monster("m1", 1, 1, 1, 1, 1, monsterPos,weapon1,10,null);
+        weapon1 = new Weapon(null,5,3,10,null, "");
+        monster1 = new Monster("m1", "", 1, 1, 1, 1, 1, monsterPos,weapon1,10,null);
         gameState1.addNewMonster(monster1);
         gameState1.addNewPlayer("player1");
     }
