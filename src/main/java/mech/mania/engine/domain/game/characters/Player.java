@@ -187,7 +187,7 @@ public class Player extends Character {
      */
     public void healOnSpawnPoint() {
         if (getPosition().equals(getSpawnPoint())) {
-            int healthGain = (int) Math.round(0.1 * getCurrentHealth());
+            int healthGain = (int) Math.round(0.1 * getMaxHealth());
             updateCurrentHealth(healthGain);
         }
     }
