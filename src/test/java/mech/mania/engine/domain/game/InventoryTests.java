@@ -38,6 +38,7 @@ public class InventoryTests {
         p1Tile.addItem(defaultShoes);
         p1Tile.addItem(strongerWeapon);
         p1 = gameState.getPlayer("player1");
+        p1.setWeapon(null); // Tests assume no starting weapon
     }
 
     /**

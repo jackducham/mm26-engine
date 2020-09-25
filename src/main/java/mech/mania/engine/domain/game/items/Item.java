@@ -13,6 +13,7 @@ public abstract class Item {
     public Item(int maxStack, String sprite) {
         this.sprite = sprite;
         this.maxStack = maxStack;
+        this.turnsToDeletion = ITEM_LIFETIME;
     }
 
     public int getMaxStack() {

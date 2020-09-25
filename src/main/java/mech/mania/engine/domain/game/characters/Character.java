@@ -454,6 +454,10 @@ public abstract class Character {
         return weapon;
     }
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
     public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);
     }

@@ -25,7 +25,7 @@ public class ItemTests {
         Tile t = gameState.getPvpBoard().getGrid()[0][0];
         t.addItem(c);
 
-        for(int i = 0; i < Item.ITEM_LIFETIME; i++){
+        for(int i = 0; i < Item.ITEM_LIFETIME + 1; i++){
             GameLogic.doTurn(gameState, Collections.emptyMap());
         }
 
