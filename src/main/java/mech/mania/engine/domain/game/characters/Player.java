@@ -22,6 +22,7 @@ public class Player extends Character {
     private static final int BASE_MAX_HEALTH = 20;
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
+    private static final int SPAWN_POINT_HEALING = 5;
 
     /**
      * Standard Constructor which uses default static values for speed, hp, atk, and def.
@@ -153,6 +154,7 @@ public class Player extends Character {
         updateActiveEffects();
         applyWearableRegen();
         updateLevel();
+        healOnSpawnPoint();
         updateDeathState(gameState);
         playerStats.incrementTurnsSinceJoined();
     }
@@ -179,6 +181,15 @@ public class Player extends Character {
         }
 
         updateCurrentHealth(regenFromWearables);
+    }
+
+    /**
+     * If player's on spawn point, give them 5 extra health
+     */
+    public void healOnSpawnPoint() {
+        if (getPosition().equals(getSpawnPoint())) {
+            updateCurrentHealth(SPAWN_POINT_HEALING);
+        }
     }
 
     @Override
