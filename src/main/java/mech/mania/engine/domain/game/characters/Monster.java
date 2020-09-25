@@ -12,6 +12,7 @@ import mech.mania.engine.domain.model.ItemProtos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
@@ -240,7 +241,9 @@ public class Monster extends Character {
         super.distributeRewards(gameState);
         Board current = gameState.getBoard(position.getBoardID());
         Tile currentTile = current.getGrid()[position.getX()][position.getY()];
-        int numberOfDrops = 1;
+        Random rand = new Random();
+        int numberOfDrops = 2 + rand.nextInt(3);
+        //drops between 2 and 4 items.
         for(int i = 0; i < numberOfDrops; ++i) {
             currentTile.getItems().add(ItemFactory.generateItem(this.getLevel()));
         }

@@ -12,7 +12,7 @@ public class ItemFactory {
             throw new IllegalArgumentException("Items cannot have negative levels");
         }
 
-        int itemTypeDecider = rand.nextInt(5);
+        int itemTypeDecider = rand.nextInt(7);
 
         if(itemTypeDecider == 0) { //~~~~~~~~~~~~~~~~~~~~~~~~~Weapon     Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
             int weaponTypeDecider;
