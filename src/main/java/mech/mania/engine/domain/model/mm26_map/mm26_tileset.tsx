@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.4" tiledversion="1.4.2" name="mm26_tileset" tilewidth="570" tileheight="570" tilecount="200" columns="0">
+<tileset version="1.4" tiledversion="1.4.2" name="mm26_tileset" tilewidth="570" tileheight="570" tilecount="206" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <properties>
@@ -1949,5 +1949,41 @@
    <property name="Walkable" type="bool" value="false"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/darktree4.PNG"/>
+ </tile>
+ <tile id="200">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/doorrightside.PNG"/>
+ </tile>
+ <tile id="201">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archleftside1.PNG"/>
+ </tile>
+ <tile id="202">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archleftside2.PNG"/>
+ </tile>
+ <tile id="203">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archrightside1.PNG"/>
+ </tile>
+ <tile id="204">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/archrightside2.PNG"/>
+ </tile>
+ <tile id="205">
+  <properties>
+   <property name="Walkable" type="bool" value="true"/>
+  </properties>
+  <image width="190" height="190" source="mm26_tiles/doorleftside.PNG"/>
  </tile>
 </tileset>
