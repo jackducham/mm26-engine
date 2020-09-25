@@ -127,7 +127,7 @@ public class Monster extends Character {
      */
     public CharacterDecision makeDecision(GameState gameState) {
         addPlayersToAggroRangeTable(gameState);
-        
+
         Player target = null;
 
         if (!taggedPlayersDamage.isEmpty()) {
