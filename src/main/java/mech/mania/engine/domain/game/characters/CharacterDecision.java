@@ -78,7 +78,9 @@ public class CharacterDecision {
         }
 
         decisionBuilder.setIndex(this.index);
-        decisionBuilder.setTargetPosition(this.actionPosition.buildProtoClass());
+        if(actionPosition != null) {
+            decisionBuilder.setTargetPosition(this.actionPosition.buildProtoClass());
+        }
 
         return decisionBuilder.build();
     }
