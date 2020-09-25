@@ -14,6 +14,7 @@ public class Player extends Character {
     private Hat hat;
     private Clothes clothes;
     private Shoes shoes;
+    private Accessory accessory;
     private Item[] inventory;
     private Stats playerStats = new Stats();
 
@@ -39,6 +40,7 @@ public class Player extends Character {
         super(playerProto.getCharacter());
 
         hat = new Hat(playerProto.getHat());
+        accessory = new Accessory(playerProto.getAccessory());
         clothes = new Clothes(playerProto.getClothes());
         shoes = new Shoes(playerProto.getShoes());
         inventory = new Item[INVENTORY_SIZE];
@@ -52,6 +54,8 @@ public class Player extends Character {
                 case HAT:
                     inventory[i] = new Hat(protoItem.getHat());
                     break;
+                case ACCESSORY:
+                    inventory[i] = new Accessory(protoItem.getAccessory());
                 case SHOES:
                     inventory[i] = new Shoes(protoItem.getShoes());
                     break;
@@ -59,7 +63,7 @@ public class Player extends Character {
                     inventory[i] = new Weapon(protoItem.getWeapon());
                     break;
                 case CONSUMABLE:
-                    inventory[i] = new Consumable(protoItem.getMaxStack(), protoItem.getConsumable());
+                    inventory[i] = new Consumable(protoItem.getConsumable().getMaxStack(), protoItem.getConsumable());
             }
         }
     }
@@ -72,17 +76,7 @@ public class Player extends Character {
 
         for (int i = 0; i < INVENTORY_SIZE; i++) {
             Item curItem = inventory[i];
-            if (curItem instanceof Clothes) {
-                playerBuilder.setInventory(i, ((Clothes)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Hat) {
-                playerBuilder.setInventory(i, ((Hat)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Shoes) {
-                playerBuilder.setInventory(i, ((Shoes)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Weapon) {
-                playerBuilder.setInventory(i, ((Weapon)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Consumable) {
-                playerBuilder.setInventory(i, ((Consumable)curItem).buildProtoClassItem());
-            }
+            playerBuilder.setInventory(i, curItem.buildProtoClassItem());
         }
 
         if (hat != null) {
@@ -94,12 +88,19 @@ public class Player extends Character {
         if (shoes != null) {
             playerBuilder.setShoes(shoes.buildProtoClassShoes());
         }
+        if (accessory != null){
+            playerBuilder.setAccessory(accessory.buildProtoClassAccessory());
+        }
 
         return playerBuilder.build();
     }
 
     public Hat getHat() {
         return hat;
+    }
+
+    public Accessory getAccessory() {
+        return accessory;
     }
 
     public Clothes getClothes() {
@@ -130,15 +131,23 @@ public class Player extends Character {
     }
 
     /**
+     * Checks if either hat or accessory has the chosen MagicEffect
+     */
+    public boolean hasMagicEffect(MagicEffect effect){
+        return (hat != null && hat.getMagicEffect() == effect)
+                || (accessory != null && accessory.getMagicEffect() == effect);
+    }
+
+    /**
      * Applies active effects and updates the death state
      * This should be called once a turn
      * This overload also applies the regen from wearables (because players have wearables, but monsters do not)
      */
     @Override
     public void updateCharacter(GameState gameState) {
-        if(hat != null && hat.getHatEffect().equals(HatEffect.STACKING_BONUS)) {
+        if(hasMagicEffect(MagicEffect.STACKING_BONUS)) {
             TempStatusModifier hatStats = new TempStatusModifier(hat.getStats());
-            hatStats.setTurnsLeft(10);
+            hatStats.setTurnsLeft(4);
             applyEffect(this.getName(), true, hatStats);
         }
         updateActiveEffects();
@@ -155,6 +164,9 @@ public class Player extends Character {
         int regenFromWearables = 0;
         if(hat != null) {
             regenFromWearables += hat.getStats().getFlatRegenPerTurn();
+        }
+        if (accessory != null) {
+            regenFromWearables += accessory.getStats().getFlatRegenPerTurn();
         }
         if(clothes != null) {
             regenFromWearables += clothes.getStats().getFlatRegenPerTurn();
@@ -174,34 +186,29 @@ public class Player extends Character {
         int flatChange = 0;
         double percentChange = 0;
 
-        // Add flat wearable effects
         if (hat != null) {
             flatChange += hat.getStats().getFlatSpeedChange();
+            percentChange += hat.getStats().getPercentSpeedChange();
+        }
+        if (accessory != null) {
+            flatChange += accessory.getStats().getFlatSpeedChange();
+            percentChange += accessory.getStats().getPercentSpeedChange();
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatSpeedChange();
-        }
-        if (shoes != null) {
-            flatChange += shoes.getStats().getFlatSpeedChange();
-            if(hat != null && hat.getHatEffect().equals(HatEffect.SHOES_BOOST)) {
-                flatChange += shoes.getStats().getFlatSpeedChange();
-            }
-        }
-        if (weapon != null) {
-            flatChange += weapon.getStats().getFlatSpeedChange();
-        }
-
-        // Add percent wearable effects
-        if (hat != null) {
-            percentChange += hat.getStats().getPercentSpeedChange();
-        }
-        if (clothes != null) {
             percentChange += clothes.getStats().getPercentSpeedChange();
         }
         if (shoes != null) {
+            flatChange += shoes.getStats().getFlatSpeedChange();
             percentChange += shoes.getStats().getPercentSpeedChange();
+
+            if(hasMagicEffect(MagicEffect.SHOES_BOOST)) {
+                flatChange += shoes.getStats().getFlatSpeedChange();
+            }
+
         }
         if (weapon != null) {
+            flatChange += weapon.getStats().getFlatSpeedChange();
             percentChange += weapon.getStats().getPercentSpeedChange();
         }
 
@@ -224,31 +231,24 @@ public class Player extends Character {
         int flatChange = 0;
         double percentChange = 0;
 
-        // Add flat wearable effects
         if (hat != null) {
             flatChange += hat.getStats().getFlatHealthChange();
+            percentChange += hat.getStats().getPercentHealthChange();
+        }
+        if (accessory != null) {
+            flatChange += accessory.getStats().getFlatHealthChange();
+            percentChange += accessory.getStats().getPercentHealthChange();
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatHealthChange();
-        }
-        if (shoes != null) {
-            flatChange += shoes.getStats().getFlatHealthChange();
-        }
-        if (weapon != null) {
-            flatChange += weapon.getStats().getFlatHealthChange();
-        }
-
-        // Add percent wearable effects
-        if (hat != null) {
-            percentChange += hat.getStats().getPercentHealthChange();
-        }
-        if (clothes != null) {
             percentChange += clothes.getStats().getPercentHealthChange();
         }
         if (shoes != null) {
+            flatChange += shoes.getStats().getFlatHealthChange();
             percentChange += shoes.getStats().getPercentHealthChange();
         }
         if (weapon != null) {
+            flatChange += weapon.getStats().getFlatHealthChange();
             percentChange += weapon.getStats().getPercentHealthChange();
         }
 
@@ -271,37 +271,31 @@ public class Player extends Character {
         int flatChange = 0;
         double percentChange = 0;
 
-        // Add flat wearable effects
         if (hat != null) {
             flatChange += hat.getStats().getFlatAttackChange();
+            percentChange += hat.getStats().getPercentAttackChange();
+        }
+        if (accessory != null) {
+            flatChange += accessory.getStats().getFlatAttackChange();
+            percentChange += accessory.getStats().getPercentAttackChange();
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatAttackChange();
-        }
-        if (shoes != null) {
-            flatChange += shoes.getStats().getFlatAttackChange();
-        }
-        if (weapon != null) {
-            flatChange += weapon.getStats().getFlatAttackChange();
-            if(hat != null && hat.getHatEffect().equals(HatEffect.WEAPON_BOOST)) {
-                flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
-            }
-        }
-
-        // Add percent wearable effects
-        if (hat != null) {
-            percentChange += hat.getStats().getPercentAttackChange();
-        }
-        if (clothes != null) {
             percentChange += clothes.getStats().getPercentAttackChange();
         }
         if (shoes != null) {
+            flatChange += shoes.getStats().getFlatAttackChange();
             percentChange += shoes.getStats().getPercentAttackChange();
         }
         if (weapon != null) {
+            flatChange += weapon.getStats().getFlatAttackChange();
             percentChange += weapon.getStats().getPercentAttackChange();
-        }
 
+            if(hasMagicEffect(MagicEffect.WEAPON_BOOST)) {
+                flatChange += (weapon.getStats().getFlatAttackChange() * 0.5);
+            }
+
+        }
         // Add active effects
         for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
             flatChange += effect.getFirst().getFlatAttackChange();
@@ -324,31 +318,26 @@ public class Player extends Character {
         // Add flat wearable effects
         if (hat != null) {
             flatChange += hat.getStats().getFlatDefenseChange();
+            percentChange += hat.getStats().getPercentDefenseChange();
+        }
+        if (accessory != null) {
+            flatChange += accessory.getStats().getFlatDefenseChange();
+            percentChange += accessory.getStats().getPercentDefenseChange();
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatDefenseChange();
-            if(hat != null && hat.getHatEffect().equals(HatEffect.CLOTHES_BOOST)) {
+            percentChange += clothes.getStats().getPercentDefenseChange();
+
+            if(hasMagicEffect(MagicEffect.CLOTHES_BOOST)) {
                 flatChange += clothes.getStats().getFlatDefenseChange();
             }
         }
         if (shoes != null) {
             flatChange += shoes.getStats().getFlatDefenseChange();
-        }
-        if (weapon != null) {
-            flatChange += weapon.getStats().getFlatDefenseChange();
-        }
-
-        // Add percent wearable effects
-        if (hat != null) {
-            percentChange += hat.getStats().getPercentDefenseChange();
-        }
-        if (clothes != null) {
-            percentChange += clothes.getStats().getPercentDefenseChange();
-        }
-        if (shoes != null) {
             percentChange += shoes.getStats().getPercentDefenseChange();
         }
         if (weapon != null) {
+            flatChange += weapon.getStats().getFlatDefenseChange();
             percentChange += weapon.getStats().getPercentDefenseChange();
         }
 
@@ -374,33 +363,27 @@ public class Player extends Character {
         int flatChange = 0;
         double percentChange = 0;
 
-        // Add flat wearable effects
         if (hat != null) {
             flatChange += hat.getStats().getFlatExperienceChange();
+            percentChange += hat.getStats().getPercentExperienceChange();
+        }
+        if (accessory != null) {
+            flatChange += accessory.getStats().getFlatExperienceChange();
+            percentChange += accessory.getStats().getFlatExperienceChange();
         }
         if (clothes != null) {
             flatChange += clothes.getStats().getFlatExperienceChange();
-        }
-        if (shoes != null) {
-            flatChange += shoes.getStats().getFlatExperienceChange();
-        }
-        if (weapon != null) {
-            flatChange += weapon.getStats().getFlatExperienceChange();
-        }
-
-        // Add percent wearable effects
-        if (hat != null) {
-            percentChange += hat.getStats().getPercentExperienceChange();
-        }
-        if (clothes != null) {
             percentChange += clothes.getStats().getPercentExperienceChange();
         }
         if (shoes != null) {
+            flatChange += shoes.getStats().getFlatExperienceChange();
             percentChange += shoes.getStats().getPercentExperienceChange();
         }
         if (weapon != null) {
+            flatChange += weapon.getStats().getFlatExperienceChange();
             percentChange += weapon.getStats().getPercentExperienceChange();
         }
+
 
         // Add active effects
         for (Triple<TempStatusModifier, String, Boolean> effect: activeEffects) {
@@ -434,6 +417,8 @@ public class Player extends Character {
         }
         if (itemToEquip instanceof Hat) {
             return equipHat((Hat)itemToEquip, index) ? Hat.class : null ;
+        } else if (itemToEquip instanceof Accessory) {
+            return equipAccessory((Accessory) itemToEquip, index) ? Clothes.class : null;
         } else if (itemToEquip instanceof Clothes) {
             return equipClothes((Clothes)itemToEquip, index) ? Clothes.class : null;
         } else if (itemToEquip instanceof Shoes) {
@@ -456,6 +441,20 @@ public class Player extends Character {
     private boolean equipHat(Hat hatToEquip, int index) {
         Hat temp = hat;
         hat = hatToEquip;
+        inventory[index] = temp;
+        return true;
+    }
+
+    /**
+     * Exchanges accessory in Player parameters with accessory in inventory
+     *
+     * @param index index of the inventory to which the currently equipped accessory will be returned
+     * @param accessoryToEquip the accessory which will replace the currently equipped accessory
+     * @return true if accessory was successfully equipped
+     */
+    private boolean equipAccessory(Accessory accessoryToEquip, int index) {
+        Accessory temp = accessory;
+        accessory = accessoryToEquip;
         inventory[index] = temp;
         return true;
     }
@@ -514,7 +513,7 @@ public class Player extends Character {
         TempStatusModifier effect = consumableToConsume.getEffect();
 
         //checks for LINGERING_POTIONS hat effect and doubles the duration if detected.
-        if(this.hat != null && this.hat.getHatEffect() == HatEffect.LINGERING_POTIONS) {
+        if(this.hasMagicEffect(MagicEffect.LINGERING_POTIONS)) {
             effect.setTurnsLeft(2 * effect.getTurnsLeft());
         }
         applyEffect(this.getName(), true, effect);

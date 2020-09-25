@@ -65,7 +65,7 @@ public class Monster extends Character {
                     drops.add(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    drops.add(i, new Consumable(protoItem.getMaxStack(), protoItem.getConsumable()));
+                    drops.add(i, new Consumable(protoItem.getConsumable().getMaxStack(), protoItem.getConsumable()));
             }
         }
     }
