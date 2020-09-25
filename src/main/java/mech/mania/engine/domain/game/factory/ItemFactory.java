@@ -253,19 +253,19 @@ public class ItemFactory {
                 }
 
                 if (weaponDamage <= 9) {
-                    spriteFileName = "mm26_wearables/weapons/swords/1";
+                    spriteFileName = "mm26_wearables/weapons/swords/1.png";
                 } else if (weaponDamage <= 19) {
-                    spriteFileName = "mm26_wearables/weapons/swords/2";
+                    spriteFileName = "mm26_wearables/weapons/swords/2.png";
                 } else if (weaponDamage <= 29) {
-                    spriteFileName = "mm26_wearables/weapons/swords/3";
+                    spriteFileName = "mm26_wearables/weapons/swords/3.png";
                 } else if (weaponDamage <= 39) {
-                    spriteFileName = "mm26_wearables/weapons/swords/4";
+                    spriteFileName = "mm26_wearables/weapons/swords/4.png";
                 } else if (weaponDamage <= 49) {
-                    spriteFileName = "mm26_wearables/weapons/swords/5";
+                    spriteFileName = "mm26_wearables/weapons/swords/5.png";
                 } else if (weaponDamage <= 59) {
-                    spriteFileName = "mm26_wearables/weapons/swords/6";
+                    spriteFileName = "mm26_wearables/weapons/swords/6.png";
                 } else {
-                    spriteFileName = "mm26_wearables/weapons/swords/7";
+                    spriteFileName = "mm26_wearables/weapons/swords/7.png";
                 }
             } else if (weaponTypeDecider == 1) {//~Bow      Builder -\/-\/-\/-\/-\/-\/-\/-\/-\/
                 onHitAttributes = rand.nextInt(2);
@@ -476,19 +476,19 @@ public class ItemFactory {
                 }
 
                 if (weaponDamage <= 9) {
-                    spriteFileName = "mm26_wearables/weapons/bows/1";
+                    spriteFileName = "mm26_wearables/weapons/bows/1.png";
                 } else if (weaponDamage <= 19) {
-                    spriteFileName = "mm26_wearables/weapons/bows/2";
+                    spriteFileName = "mm26_wearables/weapons/bows/2.png";
                 } else if (weaponDamage <= 29) {
-                    spriteFileName = "mm26_wearables/weapons/bows/3";
+                    spriteFileName = "mm26_wearables/weapons/bows/3.png";
                 } else if (weaponDamage <= 39) {
-                    spriteFileName = "mm26_wearables/weapons/bows/4";
+                    spriteFileName = "mm26_wearables/weapons/bows/4.png";
                 } else if (weaponDamage <= 49) {
-                    spriteFileName = "mm26_wearables/weapons/bows/5";
+                    spriteFileName = "mm26_wearables/weapons/bows/5.png";
                 } else if (weaponDamage <= 59) {
-                    spriteFileName = "mm26_wearables/weapons/bows/6";
+                    spriteFileName = "mm26_wearables/weapons/bows/6.png";
                 } else {
-                    spriteFileName = "mm26_wearables/weapons/bows/7";
+                    spriteFileName = "mm26_wearables/weapons/bows/7.png";
                 }
 
 
@@ -717,17 +717,17 @@ public class ItemFactory {
                 }
 
                 if (weaponDamage <= 9) {
-                    spriteFileName = "mm26_wearables/weapons/wands/1";
+                    spriteFileName = "mm26_wearables/weapons/wands/1.png";
                 } else if (weaponDamage <= 19) {
-                    spriteFileName = "mm26_wearables/weapons/wands/2";
+                    spriteFileName = "mm26_wearables/weapons/wands/2.png";
                 } else if (weaponDamage <= 29) {
-                    spriteFileName = "mm26_wearables/weapons/wands/3";
+                    spriteFileName = "mm26_wearables/weapons/wands/3.png";
                 } else if (weaponDamage <= 39) {
-                    spriteFileName = "mm26_wearables/weapons/wands/4";
+                    spriteFileName = "mm26_wearables/weapons/wands/4.png";
                 } else if (weaponDamage <= 49) {
-                    spriteFileName = "mm26_wearables/weapons/wands/5";
+                    spriteFileName = "mm26_wearables/weapons/wands/5.png";
                 } else {
-                    spriteFileName = "mm26_wearables/weapons/wands/6";
+                    spriteFileName = "mm26_wearables/weapons/wands/6.png";
                 }
 
 
@@ -941,15 +941,15 @@ public class ItemFactory {
                 }
 
                 if (weaponDamage <= 9) {
-                    spriteFileName = "mm26_wearables/weapons/staves/1";
+                    spriteFileName = "mm26_wearables/weapons/staves/1.png";
                 } else if (weaponDamage <= 19) {
-                    spriteFileName = "mm26_wearables/weapons/staves/2";
+                    spriteFileName = "mm26_wearables/weapons/staves/2.png";
                 } else if (weaponDamage <= 29) {
-                    spriteFileName = "mm26_wearables/weapons/staves/3";
+                    spriteFileName = "mm26_wearables/weapons/staves/3.png";
                 } else if (weaponDamage <= 39) {
-                    spriteFileName = "mm26_wearables/weapons/staves/4";
+                    spriteFileName = "mm26_wearables/weapons/staves/4.png";
                 } else {
-                    spriteFileName = "mm26_wearables/weapons/staves/5";
+                    spriteFileName = "mm26_wearables/weapons/staves/5.png";
                 }
 
 
@@ -1110,29 +1110,29 @@ public class ItemFactory {
             }
 
             if (clothesStats.getFlatDefenseChange() <= 40) {
-                spriteFileName = "mm26_wearables/clothes/villager_gal_top";
+                spriteFileName = "mm26_wearables/clothes/villager_gal_top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 80) {
-                spriteFileName = "mm26_wearables/clothes/butler_top";
+                spriteFileName = "mm26_wearables/clothes/butler_top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 120) {
-                spriteFileName = "mm26_wearables/clothes/alchemist_top";
+                spriteFileName = "mm26_wearables/clothes/alchemist_top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 160) {
-                spriteFileName = "mm26_wearables/clothes/witch_top";
+                spriteFileName = "mm26_wearables/clothes/witch_top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 200) {
-                spriteFileName = "mm26_wearables/clothes/knight_top";
+                spriteFileName = "mm26_wearables/clothes/knight_top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 250) {
-                spriteFileName = "mm26_wearables/clothes/maid_top_alt";
+                spriteFileName = "mm26_wearables/clothes/maid_top_alt.png";
             } else if (clothesStats.getFlatDefenseChange() <= 300) {
-                spriteFileName = "mm26_wearables/clothes/antler_boi_top";
+                spriteFileName = "mm26_wearables/clothes/antler_boi_top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 350) {
-                spriteFileName = "mm26_wearables/clothes/witch_top_alt";
+                spriteFileName = "mm26_wearables/clothes/witch_top_alt.png";
             } else if (clothesStats.getFlatDefenseChange() <= 400) {
-                spriteFileName = "mm26_wearables/clothes/Fruity Legolas - Top";
+                spriteFileName = "mm26_wearables/clothes/Fruity Legolas - Top.png";
             } else if (clothesStats.getFlatDefenseChange() <= 450) {
-                spriteFileName = "mm26_wearables/clothes/knight_top_alt";
+                spriteFileName = "mm26_wearables/clothes/knight_top_alt.png";
             } else if (clothesStats.getFlatDefenseChange() <= 500) {
-                spriteFileName = "mm26_wearables/clothes/Hooded - Top";
+                spriteFileName = "mm26_wearables/clothes/Hooded - Top.png";
             } else {
-                spriteFileName = "mm26_wearables/clothes/maid_top";
+                spriteFileName = "mm26_wearables/clothes/maid_top.png";
             }
 
             return new Clothes(clothesStats, spriteFileName);
@@ -1280,35 +1280,35 @@ public class ItemFactory {
             int spriteDecider = rand.nextInt(3);
             if (shoesStats.getFlatSpeedChange() <= 2) {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/shoes/villager_gal_bottom";
+                    spriteFileName = "mm26_wearables/shoes/villager_gal_bottom.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/shoes/butler_bottom";
+                    spriteFileName = "mm26_wearables/shoes/butler_bottom.png";
                 } else {
-                    spriteFileName = "mm26_wearables/shoes/alchemist_bottom";
+                    spriteFileName = "mm26_wearables/shoes/alchemist_bottom.png";
                 }
             } else if (shoesStats.getFlatSpeedChange() <= 3) {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/shoes/witch_bottom";
+                    spriteFileName = "mm26_wearables/shoes/witch_bottom.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/shoes/knight_bottom";
+                    spriteFileName = "mm26_wearables/shoes/knight_bottom.png";
                 } else {
-                    spriteFileName = "mm26_wearables/shoes/maid_bottom_alt";
+                    spriteFileName = "mm26_wearables/shoes/maid_bottom_alt.png";
                 }
             } else if (shoesStats.getFlatSpeedChange() <= 4) {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/shoes/antler_boi_bottom";
+                    spriteFileName = "mm26_wearables/shoes/antler_boi_bottom.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/shoes/witch_bottom_alt";
+                    spriteFileName = "mm26_wearables/shoes/witch_bottom_alt.png";
                 } else {
-                    spriteFileName = "mm26_wearables/shoes/Fruity Legolas - Bottom";
+                    spriteFileName = "mm26_wearables/shoes/Fruity Legolas - Bottom.png";
                 }
             } else {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/shoes/knight_bottom_alt";
+                    spriteFileName = "mm26_wearables/shoes/knight_bottom_alt.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/shoes/Hooded - Bottom";
+                    spriteFileName = "mm26_wearables/shoes/Hooded - Bottom.png";
                 } else {
-                    spriteFileName = "mm26_wearables/shoes/maid_bottom";
+                    spriteFileName = "mm26_wearables/shoes/maid_bottom.png";
                 }
             }
 
@@ -1502,35 +1502,35 @@ public class ItemFactory {
             int spriteDecider = rand.nextInt(3);
             if (hatStats.getFlatAttackChange() <= 40) {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/hats/villager_head";
+                    spriteFileName = "mm26_wearables/hats/villager_head.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/hats/butler_head";
+                    spriteFileName = "mm26_wearables/hats/butler_head.png";
                 } else {
-                    spriteFileName = "mm26_wearables/hats/alchemist_head";
+                    spriteFileName = "mm26_wearables/hats/alchemist_head.png";
                 }
             } else if (hatStats.getFlatAttackChange() <= 80) {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/hats/witch_head";
+                    spriteFileName = "mm26_wearables/hats/witch_head.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/hats/knight_head";
+                    spriteFileName = "mm26_wearables/hats/knight_head.png";
                 } else {
-                    spriteFileName = "mm26_wearables/hats/maid_head_alt";
+                    spriteFileName = "mm26_wearables/hats/maid_head_alt.png";
                 }
             } else if (hatStats.getFlatAttackChange() <= 120) {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/hats/antler_boi_head";
+                    spriteFileName = "mm26_wearables/hats/antler_boi_head.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/hats/witch_head_alt";
+                    spriteFileName = "mm26_wearables/hats/witch_head_alt.png";
                 } else {
-                    spriteFileName = "mm26_wearables/hats/Fruity Legolas - Head";
+                    spriteFileName = "mm26_wearables/hats/Fruity Legolas - Head.png";
                 }
             } else {
                 if (spriteDecider == 0) {
-                    spriteFileName = "mm26_wearables/hats/knight_head_alt";
+                    spriteFileName = "mm26_wearables/hats/knight_head_alt.png";
                 } else if (spriteDecider == 1) {
-                    spriteFileName = "mm26_wearables/hats/Hooded - Head";
+                    spriteFileName = "mm26_wearables/hats/Hooded - Head.png";
                 } else {
-                    spriteFileName = "mm26_wearables/hats/maid_head";
+                    spriteFileName = "mm26_wearables/hats/maid_head.png";
                 }
             }
 
@@ -1723,43 +1723,43 @@ public class ItemFactory {
 
             int spriteDecider = rand.nextInt(20);
             if (spriteDecider == 0) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Airpods";
+                spriteFileName = "mm26_wearables/accessories/Acc - Airpods.png";
             } else if (spriteDecider == 1) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Ammulet";
+                spriteFileName = "mm26_wearables/accessories/Acc - Ammulet.png";
             } else if (spriteDecider == 2) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Civilized Weapon";
+                spriteFileName = "mm26_wearables/accessories/Acc - Civilized Weapon.png";
             } else if (spriteDecider == 3) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Forever Gauntlet";
+                spriteFileName = "mm26_wearables/accessories/Acc - Forever Gauntlet.png";
             } else if (spriteDecider == 4) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Hero Mask";
+                spriteFileName = "mm26_wearables/accessories/Acc - Hero Mask.png";
             } else if (spriteDecider == 5) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Mask";
+                spriteFileName = "mm26_wearables/accessories/Acc - Mask.png";
             } else if (spriteDecider == 6) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Monster Balls";
+                spriteFileName = "mm26_wearables/accessories/Acc - Monster Balls.png";
             } else if (spriteDecider == 7) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Nose Ring";
+                spriteFileName = "mm26_wearables/accessories/Acc - Nose Ring.png";
             } else if (spriteDecider == 8) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Pharoh_s Selfie Stick";
+                spriteFileName = "mm26_wearables/accessories/Acc - Pharoh_s Selfie Stick.png";
             } else if (spriteDecider == 9) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Power Gloves";
+                spriteFileName = "mm26_wearables/accessories/Acc - Power Gloves.png";
             } else if (spriteDecider == 10) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Quill";
+                spriteFileName = "mm26_wearables/accessories/Acc - Quill.png";
             } else if (spriteDecider == 11) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Red Scarf";
+                spriteFileName = "mm26_wearables/accessories/Acc - Red Scarf.png";
             } else if (spriteDecider == 12) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Rings";
+                spriteFileName = "mm26_wearables/accessories/Acc - Rings.png";
             } else if (spriteDecider == 13) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Rings";
+                spriteFileName = "mm26_wearables/accessories/Acc - Rings.png";
             } else if (spriteDecider == 14) {
-                spriteFileName = "mm26_wearables/accessories/Acc - Sunglasses";
+                spriteFileName = "mm26_wearables/accessories/Acc - Sunglasses.png";
             } else if (spriteDecider == 15) {
-                spriteFileName = "mm26_wearables/accessories/bow1_acc";
+                spriteFileName = "mm26_wearables/accessories/bow1_acc.png";
             } else if (spriteDecider == 16) {
-                spriteFileName = "mm26_wearables/accessories/bow2_acc";
+                spriteFileName = "mm26_wearables/accessories/bow2_acc.png";
             } else if (spriteDecider == 17) {
-                spriteFileName = "mm26_wearables/accessories/earrings_acc";
+                spriteFileName = "mm26_wearables/accessories/earrings_acc.png";
             } else {
-                spriteFileName = "mm26_wearables/accessories/onimask_acc";
+                spriteFileName = "mm26_wearables/accessories/onimask_acc.png";
             }
 
             return new Accessory(accessoryStats, effect, spriteFileName);
