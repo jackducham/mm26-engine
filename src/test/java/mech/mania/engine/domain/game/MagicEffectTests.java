@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static junit.framework.TestCase.*;
 
-public class HatEffectTests {
+public class MagicEffectTests {
 
     private GameState gameState;
     private Player p1, p2;

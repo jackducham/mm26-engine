@@ -26,6 +26,7 @@ public class Consumable extends Item {
         super(consumableProto.getMaxStack(), consumableProto.getSprite());
         this.effect = new TempStatusModifier(consumableProto.getEffect());
         this.stacks = consumableProto.getStacks();
+        this.turnsToDeletion = consumableProto.getTurnsToDeletion();
     }
 
     /**
@@ -37,6 +38,7 @@ public class Consumable extends Item {
         consumableBuilder.setStacks(stacks);
         consumableBuilder.setEffect(effect.buildProtoClassTemp());
         consumableBuilder.setMaxStack(maxStack);
+        consumableBuilder.setTurnsToDeletion(turnsToDeletion);
 
         ItemProtos.Item.Builder itemBuilder = ItemProtos.Item.newBuilder();
         itemBuilder.setConsumable(consumableBuilder.build());
