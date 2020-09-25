@@ -165,13 +165,19 @@ public class Monster extends Character {
 
         Position targetPos = target.position;
         int manhattanDistance = position.manhattanDistance(targetPos);
+        if (manhattanDistance <= weapon.getRange()) {
+            System.out.println("in range");
+            return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, targetPos);
+        }
         if (manhattanDistance <= weapon.getRange() + weapon.getSplashRadius()) {
             Position toTarget = findPositionToTarget(gameState, targetPos);
-            return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toTarget);
-        } else {
-            Position toMove = findPositionToMove(gameState, targetPos);
-            return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
+            if (toTarget != null) {
+                return new CharacterDecision(CharacterDecision.decisionTypes.ATTACK, toTarget);
+            }
         }
+
+        Position toMove = findPositionToMove(gameState, targetPos);
+        return new CharacterDecision(CharacterDecision.decisionTypes.MOVE, toMove);
     }
 
     /**
@@ -300,8 +306,8 @@ public class Monster extends Character {
         int currY = currentPosition.getY();
         int targetX = targetPosition.getX();
         int targetY = targetPosition.getY();
-        int xDiff = targetX - currX;
-        int xDir = (xDiff) < 0 ? -1 : 1;
+        int xDiff = Math.abs(targetX - currX);
+        int xDir = (targetX - currX) < 0 ? -1 : 1;
         int yDir = (targetY - currY) < 0 ? -1 : 1;
 
         int yOffset;
@@ -325,5 +331,9 @@ public class Monster extends Character {
             xOffset += -xDir;
         }
         return null;
+    }
+
+    public int getAggroRange() {
+        return aggroRange;
     }
 }

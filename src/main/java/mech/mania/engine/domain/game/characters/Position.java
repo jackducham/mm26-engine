@@ -77,4 +77,13 @@ public class Position {
         int y = Math.abs(this.y - other.getY());
         return x + y;
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "x=" + x +
+                ", y=" + y +
+                ", board_id='" + board_id + '\'' +
+                '}';
+    }
 }
