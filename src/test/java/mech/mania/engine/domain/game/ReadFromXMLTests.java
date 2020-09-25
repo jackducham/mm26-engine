@@ -12,8 +12,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 public class ReadFromXMLTests {
@@ -79,6 +77,16 @@ public class ReadFromXMLTests {
         spMonsters = spReader.extractMonsters();
         assertNotEquals(0, spMonsters.get(0).getAggroRange());
         assertNotEquals("", spMonsters.get(0).getSprite());
+
+        // Check that board conversion to protos works
+        Board newBoard = new Board(spBoard.buildProtoClass());
+        boolean success = true;
+        for(int x = 0; x < spBoard.getGrid().length; x++){
+            for(int y = 0; y < spBoard.getGrid()[x].length; y++){
+                success = success && (spBoard.getGrid()[x][y].groundSprite.equals(newBoard.getGrid()[x][y].groundSprite));
+            }
+        }
+        assertTrue(success);
     }
 
     /**
@@ -95,6 +103,17 @@ public class ReadFromXMLTests {
         //check that tile walkability is loaded correctly
         assertEquals(Tile.TileType.BLANK, mpBoard.getGrid()[16][6].getType());
         assertEquals(Tile.TileType.IMPASSIBLE, mpBoard.getGrid()[10][20].getType());
+
+        // Check that board conversion to protos works
+        Board newBoard = new Board(mpBoard.buildProtoClass());
+        assertEquals(mpBoard.getGrid().length, newBoard.getGrid().length);
+        assertEquals(mpBoard.getGrid()[0].length, newBoard.getGrid()[0].length);
+
+        for(int x = 0; x < mpBoard.getGrid().length; x++){
+            for(int y = 0; y < mpBoard.getGrid()[x].length; y++){
+                assertEquals("Incorrect translation at " + x + ", " + y + "", mpBoard.getGrid()[x][y].groundSprite, newBoard.getGrid()[x][y].groundSprite);
+            }
+        }
     }
 
     /**

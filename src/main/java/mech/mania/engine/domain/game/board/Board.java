@@ -20,9 +20,9 @@ public class Board {
         int cols = board.getColumns();
         grid = new Tile[rows][cols];
 
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                grid[r][c] = new Tile(board.getGrid(r * c + c));
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < cols; y++) {
+                grid[x][y] = new Tile(board.getGrid(x * cols + y));
             }
         }
 
@@ -77,9 +77,9 @@ public class Board {
     public BoardProtos.Board buildProtoClass() {
         BoardProtos.Board.Builder boardBuilder = BoardProtos.Board.newBuilder();
 
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[r].length; c++) {
-                boardBuilder.addGrid(r * grid[r].length + c, grid[r][c].buildProtoClass());
+        for (int x = 0; x < grid.length; x++) {
+            for (int y = 0; y < grid[x].length; y++) {
+                boardBuilder.addGrid(x * grid[x].length + y, grid[x][y].buildProtoClass());
             }
         }
 
