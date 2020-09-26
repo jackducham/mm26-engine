@@ -12,7 +12,10 @@ import org.apache.commons.cli.ParseException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.Instant;
 import java.util.logging.Logger;
+
+import static java.time.temporal.ChronoUnit.MILLIS;
 
 @SpringBootApplication
 public class Main {
@@ -87,8 +90,12 @@ public class Main {
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
         for (int turn = bus.getUow().getTurn(); (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
+            Instant now = Instant.now();
             bus.handle(new CommandStartTurn(turn));
             bus.handle(new EventStoreHistoryObjects());
+
+            long turnTime = MILLIS.between(now, Instant.now());
+            LOGGER.warning("Turn took " + turnTime + " ms.");
         }
 
         /* TODO: Logs only show the first of these two commands (switching the order switches which one shows up).
