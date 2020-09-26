@@ -18,7 +18,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public abstract class Character {
-    private final String name;
+    private String name;
     private final String sprite;
 
     /** Character's base stats */
@@ -344,6 +344,10 @@ public abstract class Character {
         return name;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public String getSprite() {
         return sprite;
     }
@@ -457,6 +461,8 @@ public abstract class Character {
     public Weapon getWeapon() {
         return weapon;
     }
+
+
 
     public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);
