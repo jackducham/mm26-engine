@@ -69,10 +69,12 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
             } // TODO: Catch a connectionRefused exception and assume that means the instance was already shut down
             catch(ConnectException e) {
                 LOGGER.warning(String.format("ConnectException: Instance already shutdown? Error: %s", e));
+                itr.remove();
             }
             catch(IOException e) {
                 LOGGER.warning(String.format("IOException: could not shutdown player at url %s: %s",
                         playerConnectInfo.getIpAddr(), e));
+                itr.remove();
             }
         }
     }
