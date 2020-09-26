@@ -219,7 +219,7 @@ public class APIRESTHandler {
     }
 
 
-    @PostMapping("/findAllEnemiesHitRequest")
+    @PostMapping("/findAllEnemiesHit")
     public byte[] findAllEnemiesHitRequestAPI(@RequestBody byte[] payload) {
         try {
             ApiProtos.APIFindAllEnemiesHitRequest requestInfo = ApiProtos.APIFindAllEnemiesHitRequest.parseFrom(payload);
