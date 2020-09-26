@@ -36,10 +36,9 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
      * @param uow the Unit of work
      */
     private void shutdownExpiredPlayerServers(UnitOfWorkAbstract uow) {
+        List<PlayerConnectInfo> playersToRemove = new ArrayList<>();
         // For each expired server, shut it down and remove it from the list
-        for(Iterator<PlayerConnectInfo> itr = uow.getExpiredConnectInfoList().iterator(); itr.hasNext();){
-            PlayerConnectInfo playerConnectInfo = itr.next();
-
+        for (PlayerConnectInfo playerConnectInfo : uow.getExpiredConnectInfoList()) {
             URL url;
             HttpURLConnection http = null;
             try {
@@ -65,16 +64,18 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                 // TODO: verify result
 
                 // Mark this player server and removed
-                itr.remove();
+                playersToRemove.add(playerConnectInfo);
             } // TODO: Catch a connectionRefused exception and assume that means the instance was already shut down
-            catch(ConnectException e) {
+            catch (ConnectException e) {
                 LOGGER.warning(String.format("ConnectException: Instance already shutdown? Error: %s", e));
-            }
-            catch(IOException e) {
+            } catch (IOException e) {
                 LOGGER.warning(String.format("IOException: could not shutdown player at url %s: %s",
                         playerConnectInfo.getIpAddr(), e));
             }
         }
+
+        // https://stackoverflow.com/questions/5612470/remove-elements-from-copyonwritearraylist
+        uow.getExpiredConnectInfoList().removeAll(playersToRemove);
     }
 
 

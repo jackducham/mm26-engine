@@ -66,7 +66,7 @@ public class APIRESTHandler {
                 protoPositions.add(pos.buildProtoClass());
             }
             responseBuilder.addAllPath(protoPositions);
-            LOGGER.fine(String.format("Successfully processed ApiPathFindingRequest."));
+            LOGGER.info(String.format("Successfully processed ApiPathFindingRequest."));
 
             return responseBuilder.build().toByteArray();
 
@@ -99,7 +99,7 @@ public class APIRESTHandler {
                 protoEnemies.add(enemy.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemies(protoEnemies);
-            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesByDistanceRequest."));
+            LOGGER.info(String.format("Successfully processed ApiFindEnemiesByDistanceRequest."));
 
             return responseBuilder.build().toByteArray();
 
@@ -131,7 +131,7 @@ public class APIRESTHandler {
                 protoMonsters.add(monster.buildProtoClassMonster());
             }
             responseBuilder.addAllMonsters(protoMonsters);
-            LOGGER.fine(String.format("Successfully processed ApiFindMonstersByExpRequest."));
+            LOGGER.info(String.format("Successfully processed ApiFindMonstersByExpRequest."));
 
             return responseBuilder.build().toByteArray();
 
@@ -168,7 +168,7 @@ public class APIRESTHandler {
             }
             responseBuilder.addAllItems(protoItems);
             responseBuilder.addAllPositions(protoPositions);
-            LOGGER.fine(String.format("Successfully processed ApiFindItemsByDistanceRequest."));
+            LOGGER.info("Successfully processed ApiFindItemsByDistanceRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -201,7 +201,7 @@ public class APIRESTHandler {
                 protoEnemies.add(enemy.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemies(protoEnemies);
-            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesInRangeOfAttackByDistanceRequest."));
+            LOGGER.info("Successfully processed ApiFindEnemiesInRangeOfAttackByDistanceRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -235,7 +235,7 @@ public class APIRESTHandler {
                 protoAllEnemiesHit.add(character.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemiesHit(protoAllEnemiesHit);
-            LOGGER.fine(String.format("Successfully processed ApiFindAllEnemiesHitRequest."));
+            LOGGER.info("Successfully processed ApiFindAllEnemiesHitRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -264,7 +264,7 @@ public class APIRESTHandler {
 
             ApiProtos.APIInRangeOfAttackResponse.Builder responseBuilder = ApiProtos.APIInRangeOfAttackResponse.newBuilder();
             responseBuilder.setInRangeOfAttack(inRangeOfAttack);
-            LOGGER.fine(String.format("Successfully processed ApiInRangeOfAttackRequest."));
+            LOGGER.info("Successfully processed ApiInRangeOfAttackRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -296,7 +296,7 @@ public class APIRESTHandler {
 
             ApiProtos.APIFindClosestPortalResponse.Builder responseBuilder = ApiProtos.APIFindClosestPortalResponse.newBuilder();
             responseBuilder.setPortal(portal.buildProtoClass());
-            LOGGER.fine(String.format("Successfully processed ApiFindClosestPortalRequest."));
+            LOGGER.info("Successfully processed ApiFindClosestPortalRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -327,7 +327,7 @@ public class APIRESTHandler {
                 protoLeaderBoard.add(player.buildProtoClassPlayer());
             }
             responseBuilder.addAllLeaderBoard(protoLeaderBoard);
-            LOGGER.fine(String.format("Successfully processed ApiLeaderBoardRequest."));
+            LOGGER.info("Successfully processed ApiLeaderBoardRequest.");
 
             return responseBuilder.build().toByteArray();
 
