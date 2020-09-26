@@ -43,7 +43,7 @@ public class Tile {
      * @param tileProto the protocol buffer being copied
      */
     public Tile(BoardProtos.Tile tileProto) {
-        items = new ArrayList<>(tileProto.getItemsCount());
+        items = new ArrayList<>();
         for (int i = 0; i < tileProto.getItemsCount(); i++) {
             ItemProtos.Item protoItem = tileProto.getItems(i);
             switch(protoItem.getItemCase()) {
