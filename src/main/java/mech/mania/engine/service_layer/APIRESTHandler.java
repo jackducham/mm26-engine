@@ -50,6 +50,13 @@ public class APIRESTHandler {
                 .toByteArray();
     }
 
+    public ApiProtos.APIStatus getSuccessStatus(){
+        return ApiProtos.APIStatus.newBuilder()
+                .setStatus(200)
+                .setMessage("Success")
+                .build();
+    }
+
     @PostMapping("/pathFinding")
     public byte[] pathFinding(@RequestBody byte[] payload) {
         try {
@@ -68,7 +75,7 @@ public class APIRESTHandler {
             responseBuilder.addAllPath(protoPositions);
             LOGGER.fine(String.format("Successfully processed ApiPathFindingRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -101,7 +108,7 @@ public class APIRESTHandler {
             responseBuilder.addAllEnemies(protoEnemies);
             LOGGER.fine(String.format("Successfully processed ApiFindEnemiesByDistanceRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -133,7 +140,7 @@ public class APIRESTHandler {
             responseBuilder.addAllMonsters(protoMonsters);
             LOGGER.fine(String.format("Successfully processed ApiFindMonstersByExpRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -170,7 +177,7 @@ public class APIRESTHandler {
             responseBuilder.addAllPositions(protoPositions);
             LOGGER.fine(String.format("Successfully processed ApiFindItemsByDistanceRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -203,7 +210,7 @@ public class APIRESTHandler {
             responseBuilder.addAllEnemies(protoEnemies);
             LOGGER.fine(String.format("Successfully processed ApiFindEnemiesInRangeOfAttackByDistanceRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -237,7 +244,7 @@ public class APIRESTHandler {
             responseBuilder.addAllEnemiesHit(protoAllEnemiesHit);
             LOGGER.fine(String.format("Successfully processed ApiFindAllEnemiesHitRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -266,7 +273,7 @@ public class APIRESTHandler {
             responseBuilder.setInRangeOfAttack(inRangeOfAttack);
             LOGGER.fine(String.format("Successfully processed ApiInRangeOfAttackRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -291,14 +298,21 @@ public class APIRESTHandler {
             Position portal = utils.findClosestPortal(gameState, position);
 
             if (portal.getBoardID().equals("no_portal")) {
-                return ApiProtos.APIFindClosestPortalResponse.newBuilder().build().toByteArray();
+                return ApiProtos.APIFindClosestPortalResponse.newBuilder()
+                        .setStatus(
+                                ApiProtos.APIStatus.newBuilder()
+                                .setStatus(404)
+                                .setMessage("No portal found.")
+                                .build()
+                        )
+                        .build().toByteArray();
             }
 
             ApiProtos.APIFindClosestPortalResponse.Builder responseBuilder = ApiProtos.APIFindClosestPortalResponse.newBuilder();
             responseBuilder.setPortal(portal.buildProtoClass());
             LOGGER.fine(String.format("Successfully processed ApiFindClosestPortalRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
@@ -329,7 +343,7 @@ public class APIRESTHandler {
             responseBuilder.addAllLeaderBoard(protoLeaderBoard);
             LOGGER.fine(String.format("Successfully processed ApiLeaderBoardRequest."));
 
-            return responseBuilder.build().toByteArray();
+            return responseBuilder.setStatus(getSuccessStatus()).build().toByteArray();
 
         } catch (InvalidProtocolBufferException e) {
             // log that error occurred
