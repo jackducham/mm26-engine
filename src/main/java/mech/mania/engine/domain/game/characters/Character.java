@@ -191,7 +191,7 @@ public abstract class Character {
      */
     public double calculateActualDamage(Weapon weapon, int attackerATK) {
         double attackDamage = weapon.getAttack() * (0.25 + attackerATK / 100.0);
-        double minDamage = weapon.getAttack() * 0.20;
+        double minDamage = max(1, weapon.getAttack() * 0.20);
 
         return max(minDamage, attackDamage - getDefense());
     }
