@@ -21,13 +21,13 @@ public class findMonstersByExpTest {
     public void setup() {
         gameState.getAllMonsters().clear();
         gameState.addNewMonster(new Monster("monster1", "", 0, 0, 0, 0, 1,
-                new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+                new Position(14, 26, "pvp"), Weapon.createDefaultWeapon(), 0));
         gameState.addNewMonster(new Monster("monster2", "", 0, 0, 0, 0, 2,
-                new Position(10, 9, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+                new Position(10, 9, "pvp"), Weapon.createDefaultWeapon(), 0));
         gameState.addNewMonster(new Monster("monster3", "", 0, 0, 0, 0, 3,
-                new Position(0, 5, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+                new Position(0, 5, "pvp"), Weapon.createDefaultWeapon(), 0));
         gameState.addNewMonster(new Monster("monster4", "", 0, 0, 0, 0, 4,
-                new Position(14, 24, "pvp"), Weapon.createDefaultWeapon(), 0, new ArrayList<>()));
+                new Position(14, 24, "pvp"), Weapon.createDefaultWeapon(), 0));
     }
 
     @Test

@@ -17,6 +17,7 @@ public class Shoes extends Wearable {
      */
     public Shoes(ItemProtos.Shoes shoesProto) {
         super(new StatusModifier(shoesProto.getStats()), shoesProto.getSprite());
+        this.turnsToDeletion = shoesProto.getTurnsToDeletion();
     }
 
     /**
@@ -27,6 +28,7 @@ public class Shoes extends Wearable {
         ItemProtos.Shoes.Builder shoesBuilder = ItemProtos.Shoes.newBuilder();
         shoesBuilder.setStats(stats.buildProtoClass());
         shoesBuilder.setSprite(sprite);
+        shoesBuilder.setTurnsToDeletion(turnsToDeletion);
 
         return shoesBuilder.build();
     }

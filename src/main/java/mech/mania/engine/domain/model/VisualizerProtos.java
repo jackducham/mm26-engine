@@ -3024,11 +3024,17 @@ public final class VisualizerProtos {
     boolean getWeaponChanged();
 
     /**
+     * <code>bool accessory_changed = 9;</code>
+     * @return The accessoryChanged.
+     */
+    boolean getAccessoryChanged();
+
+    /**
      * <pre>
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> 
         getAttackLocationsList();
@@ -3037,7 +3043,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index);
     /**
@@ -3045,7 +3051,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     int getAttackLocationsCount();
     /**
@@ -3053,7 +3059,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getAttackLocationsOrBuilderList();
@@ -3062,7 +3068,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
         int index);
@@ -3167,7 +3173,12 @@ public final class VisualizerProtos {
               weaponChanged_ = input.readBool();
               break;
             }
-            case 74: {
+            case 72: {
+
+              accessoryChanged_ = input.readBool();
+              break;
+            }
+            case 82: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 attackLocations_ = new java.util.ArrayList<mech.mania.engine.domain.model.CharacterProtos.Position>();
                 mutable_bitField0_ |= 0x00000002;
@@ -3374,14 +3385,24 @@ public final class VisualizerProtos {
       return weaponChanged_;
     }
 
-    public static final int ATTACK_LOCATIONS_FIELD_NUMBER = 9;
+    public static final int ACCESSORY_CHANGED_FIELD_NUMBER = 9;
+    private boolean accessoryChanged_;
+    /**
+     * <code>bool accessory_changed = 9;</code>
+     * @return The accessoryChanged.
+     */
+    public boolean getAccessoryChanged() {
+      return accessoryChanged_;
+    }
+
+    public static final int ATTACK_LOCATIONS_FIELD_NUMBER = 10;
     private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> attackLocations_;
     /**
      * <pre>
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getAttackLocationsList() {
       return attackLocations_;
@@ -3391,7 +3412,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
         getAttackLocationsOrBuilderList() {
@@ -3402,7 +3423,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     public int getAttackLocationsCount() {
       return attackLocations_.size();
@@ -3412,7 +3433,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     public mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index) {
       return attackLocations_.get(index);
@@ -3422,7 +3443,7 @@ public final class VisualizerProtos {
      * If successful ATTACK decision was made, this will not be null
      * </pre>
      *
-     * <code>repeated .character.Position attack_locations = 9;</code>
+     * <code>repeated .character.Position attack_locations = 10;</code>
      */
     public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
         int index) {
@@ -3467,8 +3488,11 @@ public final class VisualizerProtos {
       if (weaponChanged_ != false) {
         output.writeBool(8, weaponChanged_);
       }
+      if (accessoryChanged_ != false) {
+        output.writeBool(9, accessoryChanged_);
+      }
       for (int i = 0; i < attackLocations_.size(); i++) {
-        output.writeMessage(9, attackLocations_.get(i));
+        output.writeMessage(10, attackLocations_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -3511,9 +3535,13 @@ public final class VisualizerProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, weaponChanged_);
       }
+      if (accessoryChanged_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(9, accessoryChanged_);
+      }
       for (int i = 0; i < attackLocations_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, attackLocations_.get(i));
+          .computeMessageSize(10, attackLocations_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3549,6 +3577,8 @@ public final class VisualizerProtos {
           != other.getShoesChanged()) return false;
       if (getWeaponChanged()
           != other.getWeaponChanged()) return false;
+      if (getAccessoryChanged()
+          != other.getAccessoryChanged()) return false;
       if (!getAttackLocationsList()
           .equals(other.getAttackLocationsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -3588,6 +3618,9 @@ public final class VisualizerProtos {
       hash = (37 * hash) + WEAPON_CHANGED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getWeaponChanged());
+      hash = (37 * hash) + ACCESSORY_CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getAccessoryChanged());
       if (getAttackLocationsCount() > 0) {
         hash = (37 * hash) + ATTACK_LOCATIONS_FIELD_NUMBER;
         hash = (53 * hash) + getAttackLocationsList().hashCode();
@@ -3751,6 +3784,8 @@ public final class VisualizerProtos {
 
         weaponChanged_ = false;
 
+        accessoryChanged_ = false;
+
         if (attackLocationsBuilder_ == null) {
           attackLocations_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -3804,6 +3839,7 @@ public final class VisualizerProtos {
         result.clothesChanged_ = clothesChanged_;
         result.shoesChanged_ = shoesChanged_;
         result.weaponChanged_ = weaponChanged_;
+        result.accessoryChanged_ = accessoryChanged_;
         if (attackLocationsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
             attackLocations_ = java.util.Collections.unmodifiableList(attackLocations_);
@@ -3907,6 +3943,9 @@ public final class VisualizerProtos {
         }
         if (other.getWeaponChanged() != false) {
           setWeaponChanged(other.getWeaponChanged());
+        }
+        if (other.getAccessoryChanged() != false) {
+          setAccessoryChanged(other.getAccessoryChanged());
         }
         if (attackLocationsBuilder_ == null) {
           if (!other.attackLocations_.isEmpty()) {
@@ -4641,6 +4680,36 @@ public final class VisualizerProtos {
         return this;
       }
 
+      private boolean accessoryChanged_ ;
+      /**
+       * <code>bool accessory_changed = 9;</code>
+       * @return The accessoryChanged.
+       */
+      public boolean getAccessoryChanged() {
+        return accessoryChanged_;
+      }
+      /**
+       * <code>bool accessory_changed = 9;</code>
+       * @param value The accessoryChanged to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccessoryChanged(boolean value) {
+        
+        accessoryChanged_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool accessory_changed = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccessoryChanged() {
+        
+        accessoryChanged_ = false;
+        onChanged();
+        return this;
+      }
+
       private java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> attackLocations_ =
         java.util.Collections.emptyList();
       private void ensureAttackLocationsIsMutable() {
@@ -4658,7 +4727,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position> getAttackLocationsList() {
         if (attackLocationsBuilder_ == null) {
@@ -4672,7 +4741,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public int getAttackLocationsCount() {
         if (attackLocationsBuilder_ == null) {
@@ -4686,7 +4755,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position getAttackLocations(int index) {
         if (attackLocationsBuilder_ == null) {
@@ -4700,7 +4769,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder setAttackLocations(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
@@ -4721,7 +4790,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder setAttackLocations(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
@@ -4739,7 +4808,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder addAttackLocations(mech.mania.engine.domain.model.CharacterProtos.Position value) {
         if (attackLocationsBuilder_ == null) {
@@ -4759,7 +4828,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder addAttackLocations(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position value) {
@@ -4780,7 +4849,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder addAttackLocations(
           mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
@@ -4798,7 +4867,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder addAttackLocations(
           int index, mech.mania.engine.domain.model.CharacterProtos.Position.Builder builderForValue) {
@@ -4816,7 +4885,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder addAllAttackLocations(
           java.lang.Iterable<? extends mech.mania.engine.domain.model.CharacterProtos.Position> values) {
@@ -4835,7 +4904,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder clearAttackLocations() {
         if (attackLocationsBuilder_ == null) {
@@ -4852,7 +4921,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public Builder removeAttackLocations(int index) {
         if (attackLocationsBuilder_ == null) {
@@ -4869,7 +4938,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position.Builder getAttackLocationsBuilder(
           int index) {
@@ -4880,7 +4949,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder getAttackLocationsOrBuilder(
           int index) {
@@ -4894,7 +4963,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public java.util.List<? extends mech.mania.engine.domain.model.CharacterProtos.PositionOrBuilder> 
            getAttackLocationsOrBuilderList() {
@@ -4909,7 +4978,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addAttackLocationsBuilder() {
         return getAttackLocationsFieldBuilder().addBuilder(
@@ -4920,7 +4989,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public mech.mania.engine.domain.model.CharacterProtos.Position.Builder addAttackLocationsBuilder(
           int index) {
@@ -4932,7 +5001,7 @@ public final class VisualizerProtos {
        * If successful ATTACK decision was made, this will not be null
        * </pre>
        *
-       * <code>repeated .character.Position attack_locations = 9;</code>
+       * <code>repeated .character.Position attack_locations = 10;</code>
        */
       public java.util.List<mech.mania.engine.domain.model.CharacterProtos.Position.Builder> 
            getAttackLocationsBuilderList() {
@@ -5051,16 +5120,16 @@ public final class VisualizerProtos {
       "changes\030\003 \003(\0132\023.character.Position\032^\n\025Ch" +
       "aracterChangesEntry\022\013\n\003key\030\001 \001(\t\0224\n\005valu" +
       "e\030\002 \001(\0132%.player_communication.Character" +
-      "Change:\0028\001\"\221\002\n\017CharacterChange\022\014\n\004died\030\001" +
+      "Change:\0028\001\"\254\002\n\017CharacterChange\022\014\n\004died\030\001" +
       " \001(\010\022\021\n\trespawned\030\002 \001(\010\022.\n\010decision\030\003 \001(" +
       "\0132\034.character.CharacterDecision\022!\n\004path\030" +
       "\004 \003(\0132\023.character.Position\022\023\n\013hat_change" +
       "d\030\005 \001(\010\022\027\n\017clothes_changed\030\006 \001(\010\022\025\n\rshoe" +
       "s_changed\030\007 \001(\010\022\026\n\016weapon_changed\030\010 \001(\010\022" +
-      "-\n\020attack_locations\030\t \003(\0132\023.character.Po" +
-      "sitionBC\n\036mech.mania.engine.domain.model" +
-      "B\020VisualizerProtos\252\002\016MM26.IO.Modelsb\006pro" +
-      "to3"
+      "\031\n\021accessory_changed\030\t \001(\010\022-\n\020attack_loc" +
+      "ations\030\n \003(\0132\023.character.PositionBC\n\036mec" +
+      "h.mania.engine.domain.modelB\020VisualizerP" +
+      "rotos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5097,7 +5166,7 @@ public final class VisualizerProtos {
     internal_static_player_communication_CharacterChange_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_player_communication_CharacterChange_descriptor,
-        new java.lang.String[] { "Died", "Respawned", "Decision", "Path", "HatChanged", "ClothesChanged", "ShoesChanged", "WeaponChanged", "AttackLocations", });
+        new java.lang.String[] { "Died", "Respawned", "Decision", "Path", "HatChanged", "ClothesChanged", "ShoesChanged", "WeaponChanged", "AccessoryChanged", "AttackLocations", });
     mech.mania.engine.domain.model.GameStateProtos.getDescriptor();
     mech.mania.engine.domain.model.CharacterProtos.getDescriptor();
   }

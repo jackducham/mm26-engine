@@ -24,6 +24,19 @@ public class Weapon extends Wearable {
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
         this.attack = weaponProto.getAttack();
+        this.turnsToDeletion = weaponProto.getTurnsToDeletion();
+    }
+
+    /**
+     * Creates a Weapon with a range of 1, damage of 4
+     * Given to all Players at start of game
+     */
+    public static Weapon createStarterWeapon() {
+        StatusModifier statusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        TempStatusModifier tempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 4, tempStatusModifier, "mm26_wearables/weapons/swords/1.png");
+
+        return starterWeapon;
     }
 
     public static Weapon createDefaultWeapon() {
@@ -58,6 +71,7 @@ public class Weapon extends Wearable {
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
         weaponBuilder.setAttack(attack);
         weaponBuilder.setSprite(sprite);
+        weaponBuilder.setTurnsToDeletion(turnsToDeletion);
 
         return weaponBuilder.build();
     }
