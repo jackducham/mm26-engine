@@ -320,8 +320,9 @@ public class GameState {
             while(this.getMonster(name) != null){
                 name = m.getName() + "#" + this.monsterNames.size();
             }
-            m.setName(name);
-            addNewMonster(new Monster(m));
+            Monster toAdd = new Monster(m);
+            toAdd.setName(name);
+            addNewMonster(toAdd);
         }
     }
 }
