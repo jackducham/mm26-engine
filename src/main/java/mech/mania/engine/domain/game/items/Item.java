@@ -26,6 +26,8 @@ public abstract class Item {
 
     public abstract ItemProtos.Item buildProtoClassItem();
 
+    public abstract Item copy();
+
     public int getTurnsToDeletion() {
         return turnsToDeletion;
     }

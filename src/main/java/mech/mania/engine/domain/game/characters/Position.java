@@ -9,6 +9,12 @@ public class Position {
     private int y;
     private String board_id;
 
+    public Position(Position p){
+        this.x = p.x;
+        this.y = p.y;
+        this.board_id = p.board_id;
+    }
+
     public Position(int x, int y, String board_id) {
         this.x = x;
         this.y = y;

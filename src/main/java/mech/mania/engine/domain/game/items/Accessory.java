@@ -92,6 +92,10 @@ public class Accessory extends Wearable {
         return itemBuilder.build();
     }
 
+    public Item copy(){
+        return new Accessory(new StatusModifier(this.stats), this.magicEffect, this.sprite);
+    }
+
     /**
      * Getter for the Accessory's effect.
      * @return the Accessory's effect

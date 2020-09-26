@@ -87,4 +87,8 @@ public class Consumable extends Item {
         Consumable defaultConsumable = new Consumable(5, defaultTempStatusModifier, "");
         return defaultConsumable;
     }
+
+    public Item copy(){
+        return new Consumable(this.maxStack, new TempStatusModifier(this.effect), this.sprite);
+    }
 }

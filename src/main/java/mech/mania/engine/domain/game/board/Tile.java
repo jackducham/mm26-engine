@@ -28,6 +28,16 @@ public class Tile {
         this.aboveSprite = "";
     }
 
+    public Tile(Tile t){
+        this.items = new ArrayList<>();
+        for(Item item : t.getItems()){
+            this.items.add(item.copy());
+        }
+        this.type = t.type;
+        this.groundSprite = t.groundSprite;
+        this.aboveSprite = t.aboveSprite;
+    }
+
     /**
      * Creates a Tile based on a Protocol Buffer.
      * @param tileProto the protocol buffer being copied

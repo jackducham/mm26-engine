@@ -117,4 +117,8 @@ public class Hat extends Wearable {
         Hat defaultHat = new Hat(defaultStatusModifier, MagicEffect.NONE, "");
         return defaultHat;
     }
+
+    public Item copy(){
+        return new Hat(new StatusModifier(this.stats), this.magicEffect, this.sprite);
+    }
 }
