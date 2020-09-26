@@ -56,4 +56,8 @@ public class Shoes extends Wearable {
         Shoes defaultShoes = new Shoes(defaultStatusModifier, "");
         return defaultShoes;
     }
+
+    public Item copy(){
+        return new Shoes(new StatusModifier(this.stats), this.sprite);
+    }
 }

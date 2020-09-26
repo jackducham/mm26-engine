@@ -312,7 +312,8 @@ public class GameState {
      * @param data the ReadBoardFromXML to add
      */
     public void addBoardFromXML(ReadBoardFromXMLFile data){
-        boardNames.put(data.getBoardName(), data.extractBoard());
+        // Make sure to copy and not keep the same reference
+        boardNames.put(data.getBoardName(), new Board(data.extractBoard()));
         for(Monster m : data.extractMonsters()){
             // Make monster name unique
             String name = m.getName();

@@ -99,4 +99,8 @@ public class Weapon extends Wearable {
     public int getAttack() {
         return attack;
     }
+
+    public Item copy(){
+        return new Weapon(new StatusModifier(this.stats), this.range, this.splashRadius, this.attack, new TempStatusModifier(onHitEffect), this.sprite);
+    }
 }
