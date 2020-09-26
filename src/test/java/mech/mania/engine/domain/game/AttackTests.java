@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 /** This contains tests for decisions related to attacks */
 public class AttackTests {
     private GameState gameState;
-    private Player p1;
+    private Player p1, p2;
 
     /**
      * Setup before tests
@@ -22,6 +22,7 @@ public class AttackTests {
     public void setup() {
         gameState = GameState.createDefaultGameState();
         p1 = gameState.getPlayer("player1");
+        p2 = gameState.getPlayer("player2");
     }
 
     /**
@@ -40,11 +41,11 @@ public class AttackTests {
 
     }
 
-    public void doTurn(int index) {
+    public void doTurn(CharacterProtos.Position position) {
         // pick up item from tile
         CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
-        decision.setDecisionType(CharacterProtos.DecisionType.NONE);
-        decision.setIndex(index);
+        decision.setDecisionType(CharacterProtos.DecisionType.ATTACK);
+        decision.setTargetPosition(position);
 
         // Execute decision
         HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
@@ -53,29 +54,29 @@ public class AttackTests {
     }
 
     @Test
+    public void testAttack() {
+
+    }
+
+    @Test
     public void updateLevel() {
         p1.addExperience(10);
-        doTurn(0);
         assertEquals(1, p1.getLevel());
         assertEquals(10, p1.getExperience());
 
         p1.addExperience(90);
-        doTurn(0);
         assertEquals(2, p1.getLevel());
         assertEquals(0, p1.getExperience());
 
         p1.addExperience(100);
-        doTurn(0);
         assertEquals(2, p1.getLevel());
         assertEquals(100, p1.getExperience());
 
         p1.addExperience(150);
-        doTurn(0);
         assertEquals(3, p1.getLevel());
         assertEquals(50, p1.getExperience());
 
         p1.addExperience(700);
-        doTurn(0);
         assertEquals(5, p1.getLevel());
         assertEquals(50, p1.getExperience());
     }
