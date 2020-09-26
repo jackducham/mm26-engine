@@ -313,7 +313,7 @@ public class Monster extends Character {
                 xOffset >= Math.min(currX, targetX) &&
                 yOffset <= Math.max(currY, targetY) &&
                 yOffset >= Math.min(currY, targetY)) {
-            if (board.getGrid()[yOffset][xOffset].getType() != Tile.TileType.VOID) {
+            if (board.getGrid()[xOffset][yOffset].getType() != Tile.TileType.VOID) {
                 return new Position(xOffset, yOffset, currentPosition.getBoardID());
             }
             yOffset += yDir;
