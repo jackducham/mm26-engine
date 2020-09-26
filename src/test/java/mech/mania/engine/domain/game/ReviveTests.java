@@ -3,6 +3,7 @@ package mech.mania.engine.domain.game;
 import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Player;
 import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.game.items.Weapon;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,7 +50,7 @@ public class ReviveTests {
     @Test
     public void testMonsterRevive(){
         Monster m = new Monster("fake", "", 0, 0, 0, 0, 0,
-                new Position(0, 0, "pvp"), null, 0);
+                new Position(0, 0, "pvp"), Weapon.createDefaultWeapon(), 0);
 
         gameState.addNewMonster(m);
 

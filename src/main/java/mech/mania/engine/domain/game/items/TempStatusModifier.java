@@ -21,6 +21,9 @@ public class TempStatusModifier extends StatusModifier {
 
     public TempStatusModifier(TempStatusModifier other) {
         super(other);
+        if (other == null) {
+            return;
+        }
         this.turnsLeft = other.turnsLeft;
         this.damagePerTurn = other.damagePerTurn;
     }

@@ -1,6 +1,7 @@
 package mech.mania.engine.domain.game.items;
 
 import mech.mania.engine.domain.model.ItemProtos;
+import org.jetbrains.annotations.NotNull;
 
 public class Weapon extends Wearable {
     protected int range = 0;
@@ -18,8 +19,12 @@ public class Weapon extends Wearable {
         this.attack = attack;
     }
 
-    public Weapon(Weapon other) {
+    // if this is called with null, it still breaks
+    public Weapon(@NotNull Weapon other) {
         super(new StatusModifier(other.stats), other.sprite);
+        if (other == null) {
+            return;
+        }
         this.range = other.range;
         this.splashRadius = other.splashRadius;
         this.onHitEffect = new TempStatusModifier(other.onHitEffect);

@@ -59,6 +59,9 @@ public class StatusModifier {
     }
 
     public StatusModifier(StatusModifier other) {
+        if (other == null) {
+            return;
+        }
         this.flatSpeedChange = other.flatSpeedChange;
         this.percentSpeedChange = other.percentSpeedChange;
         this.flatHealthChange = other.flatHealthChange;
