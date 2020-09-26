@@ -99,7 +99,7 @@ public class Player extends Character {
         for (int i = 0; i < INVENTORY_SIZE; i++) {
             Item curItem = inventory[i];
             if(curItem == null) continue;
-            playerBuilder.setInventory(i, curItem.buildProtoClassItem());
+            playerBuilder.addInventory(curItem.buildProtoClassItem());
         }
 
         if (hat != null) {
