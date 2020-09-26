@@ -89,6 +89,14 @@ public class ReadFromXMLTests {
         assertTrue(success);
     }
 
+    @Test
+    public void testAddBoardToGameState(){
+        GameState gameState = GameState.createDefaultGameState();
+        gameState.addBoardFromXML(spReader);
+        assertTrue(gameState.getAllBoards().containsKey("spBoard"));
+        assertTrue(gameState.getMonstersOnBoard("spBoard").size() != 0);
+    }
+
     /**
      * Tests that the multi-player board is loaded correctly
      */

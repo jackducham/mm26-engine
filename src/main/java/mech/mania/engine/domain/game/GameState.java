@@ -314,7 +314,12 @@ public class GameState {
     public void addBoardFromXML(ReadBoardFromXMLFile data){
         boardNames.put(data.getBoardName(), data.extractBoard());
         for(Monster m : data.extractMonsters()){
-            monsterNames.put(m.getName(), m);
+            // Make monster name unique
+            String name = m.getName();
+            while(this.getMonster(name) != null){
+                name = m.getName() + "#" + UUID.randomUUID();
+            }
+            addNewMonster(m);
         }
     }
 }
