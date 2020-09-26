@@ -506,11 +506,11 @@ public class GameLogic {
         Board board = gameState.getBoard(position.getBoardID());
         if(board == null){return false;}
 
-        if (position.getX() > board.getGrid()[0].length || position.getX() < 0) {
+        if (position.getX() > board.getGrid().length || position.getX() < 0) {
             return false;
         }
 
-        if (position.getY() > board.getGrid().length || position.getY() < 0) {
+        if (position.getY() > board.getGrid()[0].length || position.getY() < 0) {
             return false;
         }
         return board.getTileAtPosition(position).getType() != Tile.TileType.VOID;
