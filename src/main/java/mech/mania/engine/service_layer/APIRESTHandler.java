@@ -18,9 +18,13 @@ import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.utils;
 
 import javax.annotation.Resource;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -66,7 +70,7 @@ public class APIRESTHandler {
                 protoPositions.add(pos.buildProtoClass());
             }
             responseBuilder.addAllPath(protoPositions);
-            LOGGER.fine(String.format("Successfully processed ApiPathFindingRequest."));
+            LOGGER.info("Successfully processed ApiPathFindingRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -78,6 +82,19 @@ public class APIRESTHandler {
                                     .setStatus(400)
                                     .setMessage("InvalidProtocolBufferException: " + e.getMessage())
                                     .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/pathFinding:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIPathFindingResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
+                            .build())
                     .build()
                     .toByteArray();
         }
@@ -99,7 +116,7 @@ public class APIRESTHandler {
                 protoEnemies.add(enemy.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemies(protoEnemies);
-            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesByDistanceRequest."));
+            LOGGER.info("Successfully processed ApiFindEnemiesByDistanceRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -110,6 +127,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/findEnemiesByDistance:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIFindEnemiesByDistanceResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -131,7 +161,7 @@ public class APIRESTHandler {
                 protoMonsters.add(monster.buildProtoClassMonster());
             }
             responseBuilder.addAllMonsters(protoMonsters);
-            LOGGER.fine(String.format("Successfully processed ApiFindMonstersByExpRequest."));
+            LOGGER.info("Successfully processed ApiFindMonstersByExpRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -142,6 +172,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/findMonstersByExp:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIFindMonstersByExpResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -162,13 +205,14 @@ public class APIRESTHandler {
             ApiProtos.APIFindItemsInRangeByDistanceResponse.Builder responseBuilder = ApiProtos.APIFindItemsInRangeByDistanceResponse.newBuilder();
             List<ItemProtos.Item> protoItems = new ArrayList<>();
             List<CharacterProtos.Position> protoPositions = new ArrayList<>();
+            assert itemsInRange != null;
             for (AbstractMap.SimpleEntry<Item, Position> entry : itemsInRange) {
                 protoItems.add(entry.getKey().buildProtoClassItem());
                 protoPositions.add(entry.getValue().buildProtoClass());
             }
             responseBuilder.addAllItems(protoItems);
             responseBuilder.addAllPositions(protoPositions);
-            LOGGER.fine(String.format("Successfully processed ApiFindItemsByDistanceRequest."));
+            LOGGER.info("Successfully processed ApiFindItemsByDistanceRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -179,6 +223,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/findItemsInRangeByDistance:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIFindItemsInRangeByDistanceResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -197,11 +254,12 @@ public class APIRESTHandler {
 
             ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.Builder responseBuilder = ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.newBuilder();
             List<CharacterProtos.Character> protoEnemies = new ArrayList<>();
+            assert enemies != null;
             for (Character enemy : enemies) {
                 protoEnemies.add(enemy.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemies(protoEnemies);
-            LOGGER.fine(String.format("Successfully processed ApiFindEnemiesInRangeOfAttackByDistanceRequest."));
+            LOGGER.info("Successfully processed ApiFindEnemiesInRangeOfAttackByDistanceRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -212,6 +270,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/findEnemiesInRangeOfAttackByDistance:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIFindEnemiesInRangeOfAttackByDistanceResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -231,11 +302,12 @@ public class APIRESTHandler {
 
             ApiProtos.APIFindAllEnemiesHitResponse.Builder responseBuilder = ApiProtos.APIFindAllEnemiesHitResponse.newBuilder();
             List<CharacterProtos.Character> protoAllEnemiesHit = new ArrayList<>();
+            assert allEnemiesHit != null;
             for (Character character : allEnemiesHit) {
                 protoAllEnemiesHit.add(character.buildProtoClassCharacter());
             }
             responseBuilder.addAllEnemiesHit(protoAllEnemiesHit);
-            LOGGER.fine(String.format("Successfully processed ApiFindAllEnemiesHitRequest."));
+            LOGGER.info("Successfully processed ApiFindAllEnemiesHitRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -246,6 +318,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/findAllEnemiesHit:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIFindAllEnemiesHitResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -264,7 +349,7 @@ public class APIRESTHandler {
 
             ApiProtos.APIInRangeOfAttackResponse.Builder responseBuilder = ApiProtos.APIInRangeOfAttackResponse.newBuilder();
             responseBuilder.setInRangeOfAttack(inRangeOfAttack);
-            LOGGER.fine(String.format("Successfully processed ApiInRangeOfAttackRequest."));
+            LOGGER.info("Successfully processed ApiInRangeOfAttackRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -275,6 +360,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/inRangeOfAttack:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIInRangeOfAttackResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -296,7 +394,7 @@ public class APIRESTHandler {
 
             ApiProtos.APIFindClosestPortalResponse.Builder responseBuilder = ApiProtos.APIFindClosestPortalResponse.newBuilder();
             responseBuilder.setPortal(portal.buildProtoClass());
-            LOGGER.fine(String.format("Successfully processed ApiFindClosestPortalRequest."));
+            LOGGER.info("Successfully processed ApiFindClosestPortalRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -307,6 +405,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/findClosestPortal:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APIFindClosestPortalResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
@@ -327,7 +438,7 @@ public class APIRESTHandler {
                 protoLeaderBoard.add(player.buildProtoClassPlayer());
             }
             responseBuilder.addAllLeaderBoard(protoLeaderBoard);
-            LOGGER.fine(String.format("Successfully processed ApiLeaderBoardRequest."));
+            LOGGER.info("Successfully processed ApiLeaderBoardRequest.");
 
             return responseBuilder.build().toByteArray();
 
@@ -338,6 +449,19 @@ public class APIRESTHandler {
                     .setStatus(ApiProtos.APIStatus.newBuilder()
                             .setStatus(400)
                             .setMessage("InvalidProtocolBufferException: " + e.getMessage())
+                            .build())
+                    .build()
+                    .toByteArray();
+        } catch (Exception e) {
+            Writer buffer = new StringWriter();
+            PrintWriter pw = new PrintWriter(buffer);
+            e.printStackTrace(pw);
+            String message = "Exception while handling api/leaderBoard:\n" + buffer.toString();
+            LOGGER.log(Level.WARNING, message);
+            return ApiProtos.APILeaderBoardResponse.newBuilder()
+                    .setStatus(ApiProtos.APIStatus.newBuilder()
+                            .setStatus(400)
+                            .setMessage("Exception: " + message)
                             .build())
                     .build()
                     .toByteArray();
