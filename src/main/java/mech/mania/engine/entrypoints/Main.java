@@ -12,10 +12,7 @@ import org.apache.commons.cli.ParseException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.time.Instant;
 import java.util.logging.Logger;
-
-import static java.time.temporal.ChronoUnit.MILLIS;
 
 @SpringBootApplication
 public class Main {
@@ -90,31 +87,8 @@ public class Main {
 
         int numTurns = Integer.parseInt(Config.getProperty("numTurns"));
         for (int turn = bus.getUow().getTurn(); (numTurns == -1 || turn < numTurns) && !bus.getUow().getGameOver(); turn++) {
-
-            Instant turnStartTime = Instant.now();
-            Instant nextTurnStart = turnStartTime.plusMillis(Long.parseLong(Config.getProperty("millisBetweenTurns")));
-
             bus.handle(new CommandStartTurn(turn));
             bus.handle(new EventStoreHistoryObjects());
-
-            // have the next turn start after waiting millisBetweenTurns
-            // after this turn began (make sure time between turns is
-            // actually as advertised); assumes that turns will take less than
-            // time mentioned. can't do anything about turns taking longer
-            // because we can't guarantee that the game state is properly
-            // updated.
-            try {
-                Instant now = Instant.now();
-                long waitTime = MILLIS.between(now, nextTurnStart);
-                if (waitTime < 0) {
-                    LOGGER.warning("Turn took over " + Config.getProperty("millisBetweenTurns") +
-                            " ms (" + (-waitTime) + " ms too long).");
-                    waitTime = 0;
-                }
-                Thread.sleep(waitTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
         /* TODO: Logs only show the first of these two commands (switching the order switches which one shows up).
