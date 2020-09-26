@@ -226,16 +226,16 @@
  <tile id="37">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="20"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="38"/>
    <property name="Name" value="Lizard Grunt"/>
    <property name="Speed" type="int" value="2"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="3"/>
    <property name="flat_attack_change" type="int" value="0"/>
-   <property name="flat_defense_change" type="int" value="0"/>
+   <property name="flat_defense_change" type="int" value="-4"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
@@ -254,8 +254,8 @@
  <tile id="38">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="30"/>
+   <property name="HP" type="int" value="500"/>
    <property name="Level" type="int" value="48"/>
    <property name="Name" value="Lizard Knight"/>
    <property name="Speed" type="int" value="2"/>
@@ -275,7 +275,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="55"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/lizard_knight.png"/>
  </tile>
@@ -289,11 +289,11 @@
  <tile id="40">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="75"/>
+   <property name="HP" type="int" value="500"/>
    <property name="Level" type="int" value="55"/>
    <property name="Name" value="Mimic"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="1"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
@@ -310,14 +310,14 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="100"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/mimic.png"/>
  </tile>
  <tile id="41">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="20"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="41"/>
    <property name="Name" value="Shroomsnake"/>
@@ -351,36 +351,36 @@
  <tile id="43">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="100"/>
+   <property name="HP" type="int" value="3000"/>
    <property name="Level" type="int" value="60"/>
    <property name="Name" value="Rock Elemental"/>
    <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="aggro_range" type="int" value="2"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="8"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
    <property name="flat_speed_change" type="int" value="0"/>
-   <property name="percent_attack_change" type="float" value="0"/>
+   <property name="percent_attack_change" type="float" value="-0.1"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
-   <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="range" type="int" value="2"/>
+   <property name="splash_radius" type="int" value="1"/>
+   <property name="weapon_attack" type="int" value="100"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/rock_elemental.png"/>
  </tile>
  <tile id="44">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="60"/>
+   <property name="HP" type="int" value="550"/>
    <property name="Level" type="int" value="55"/>
    <property name="Name" value="Greater Cacosheep"/>
    <property name="Speed" type="int" value="2"/>
@@ -398,16 +398,16 @@
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
-   <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="range" type="int" value="2"/>
+   <property name="splash_radius" type="int" value="1"/>
+   <property name="weapon_attack" type="int" value="100"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/sheep_cacosheep.png"/>
  </tile>
  <tile id="45">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="30"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="33"/>
    <property name="Name" value="Lesser Cacosheep"/>
@@ -435,14 +435,14 @@
  <tile id="46">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="6"/>
+   <property name="HP" type="int" value="190"/>
    <property name="Level" type="int" value="19"/>
    <property name="Name" value="Cursed Skull"/>
    <property name="Speed" type="int" value="2"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="10"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
@@ -452,25 +452,25 @@
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
-   <property name="percent_health_change" type="float" value="0"/>
+   <property name="percent_health_change" type="float" value="-0.09"/>
    <property name="percent_speed_change" type="float" value="0"/>
-   <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="range" type="int" value="2"/>
+   <property name="splash_radius" type="int" value="3"/>
+   <property name="weapon_attack" type="int" value="10"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/skull_angry.png"/>
  </tile>
  <tile id="47">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="5"/>
+   <property name="HP" type="int" value="130"/>
    <property name="Level" type="int" value="13"/>
    <property name="Name" value="Confused Skull"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="3"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="10"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
@@ -480,22 +480,22 @@
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
-   <property name="percent_health_change" type="float" value="0"/>
+   <property name="percent_health_change" type="float" value="-0.05"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="20"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/skull_menacing.png"/>
  </tile>
  <tile id="48">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="3"/>
+   <property name="Defense" type="int" value="1"/>
    <property name="HP" type="int" value="10"/>
    <property name="Level" type="int" value="1"/>
    <property name="Name" value="Slug Slime"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="1"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
@@ -519,12 +519,12 @@
  <tile id="49">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="4"/>
+   <property name="HP" type="int" value="100"/>
    <property name="Level" type="int" value="10"/>
    <property name="Name" value="Sociable Slime"/>
-   <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="Speed" type="int" value="1"/>
+   <property name="aggro_range" type="int" value="5"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -540,18 +540,18 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="30"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/slime_discord.png"/>
  </tile>
  <tile id="50">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="37"/>
+   <property name="HP" type="int" value="330"/>
    <property name="Level" type="int" value="40"/>
    <property name="Name" value="Spooky Slime"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="3"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
@@ -568,14 +568,14 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="44"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/slime_pacman.png"/>
  </tile>
  <tile id="51">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="30"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="43"/>
    <property name="Name" value="Armored Soulcrab"/>
@@ -603,7 +603,7 @@
  <tile id="52">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="10"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="33"/>
    <property name="Name" value="Soulcrab"/>
@@ -659,28 +659,28 @@
  <tile id="54">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="13"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="24"/>
    <property name="Name" value="Spider Matron"/>
-   <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="Speed" type="int" value="3"/>
+   <property name="aggro_range" type="int" value="2"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="1"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_speed_change" type="int" value="-2"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="splash_radius" type="int" value="1"/>
+   <property name="weapon_attack" type="int" value="30"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/spider_mother.png"/>
  </tile>
@@ -712,13 +712,13 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="20"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="100"/>
    <property name="Level" type="int" value="26"/>
    <property name="Name" value="Tusk Worm"/>
    <property name="Speed" type="int" value="4"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="1"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
@@ -739,8 +739,8 @@
  <tile id="60">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="20"/>
+   <property name="HP" type="int" value="200"/>
    <property name="Level" type="int" value="25"/>
    <property name="Name" value="Uniboar Pigasus"/>
    <property name="Speed" type="int" value="2"/>
@@ -760,27 +760,27 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="30"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/uniboar_pigasus.png"/>
  </tile>
  <tile id="61">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="8"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="15"/>
    <property name="Name" value="Uniboar"/>
    <property name="Speed" type="int" value="2"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="3"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_speed_change" type="int" value="-1"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
@@ -788,7 +788,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="14"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/uniboar_v2.png"/>
  </tile>
@@ -997,20 +997,20 @@
  <tile id="92">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="4"/>
+   <property name="HP" type="int" value="80"/>
    <property name="Level" type="int" value="8"/>
    <property name="Name" value="Zombie"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="1"/>
    <property name="aggro_range" type="int" value="1"/>
-   <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="damage_per_turn" type="int" value="3"/>
+   <property name="duration" type="int" value="3"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_speed_change" type="int" value="-1"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
@@ -1018,7 +1018,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="25"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/zombie_fish.png"/>
  </tile>
@@ -1026,19 +1026,19 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="80"/>
    <property name="Level" type="int" value="8"/>
    <property name="Name" value="Zombie"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="1"/>
    <property name="aggro_range" type="int" value="1"/>
-   <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="damage_per_turn" type="int" value="3"/>
+   <property name="duration" type="int" value="3"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_speed_change" type="int" value="-1"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
@@ -1046,7 +1046,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="25"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/zombie_normal.png"/>
  </tile>
@@ -1095,7 +1095,7 @@
  <tile id="101">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
+   <property name="Defense" type="int" value="5"/>
    <property name="HP" type="int" value="50"/>
    <property name="Level" type="int" value="5"/>
    <property name="Name" value="Occubat"/>
@@ -1114,93 +1114,93 @@
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
-   <property name="range" type="int" value="1"/>
+   <property name="range" type="int" value="2"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="14"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/bat_dunce.png"/>
  </tile>
  <tile id="102">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="11"/>
+   <property name="HP" type="int" value="230"/>
    <property name="Level" type="int" value="27"/>
    <property name="Name" value="Dentabat"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="4"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="2"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
    <property name="flat_speed_change" type="int" value="0"/>
-   <property name="percent_attack_change" type="float" value="0"/>
+   <property name="percent_attack_change" type="float" value="-0.1"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="30"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/bat_toothy.png"/>
  </tile>
  <tile id="103">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="25"/>
+   <property name="HP" type="int" value="450"/>
    <property name="Level" type="int" value="45"/>
    <property name="Name" value="Bogo Sorcerer"/>
    <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="aggro_range" type="int" value="2"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
-   <property name="flat_attack_change" type="int" value="0"/>
-   <property name="flat_defense_change" type="int" value="0"/>
+   <property name="duration" type="int" value="3"/>
+   <property name="flat_attack_change" type="int" value="-10"/>
+   <property name="flat_defense_change" type="int" value="-10"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
-   <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_regen_per_turn" type="int" value="-5"/>
+   <property name="flat_speed_change" type="int" value="-2"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
-   <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="range" type="int" value="2"/>
+   <property name="splash_radius" type="int" value="3"/>
+   <property name="weapon_attack" type="int" value="100"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/bogo_sorcerer.png"/>
  </tile>
  <tile id="104">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="14"/>
+   <property name="HP" type="int" value="700"/>
    <property name="Level" type="int" value="60"/>
    <property name="Name" value="Super Bogo Sorcerer"/>
    <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="aggro_range" type="int" value="2"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="1"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="0"/>
+   <property name="flat_speed_change" type="int" value="-5"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
-   <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="splash_radius" type="int" value="5"/>
+   <property name="weapon_attack" type="int" value="120"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/bogo_sorcerer_v2.png"/>
  </tile>
@@ -1243,12 +1243,12 @@
  <tile id="111">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="10"/>
+   <property name="HP" type="int" value="145"/>
    <property name="Level" type="int" value="37"/>
    <property name="Name" value="Percentipede"/>
-   <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="Speed" type="int" value="3"/>
+   <property name="aggro_range" type="int" value="2"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
    <property name="flat_attack_change" type="int" value="0"/>
@@ -1257,14 +1257,14 @@
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
    <property name="flat_speed_change" type="int" value="0"/>
-   <property name="percent_attack_change" type="float" value="0"/>
-   <property name="percent_defense_change" type="float" value="0"/>
-   <property name="percent_experience_change" type="float" value="0"/>
-   <property name="percent_health_change" type="float" value="0"/>
+   <property name="percent_attack_change" type="float" value="-0.05"/>
+   <property name="percent_defense_change" type="float" value="-0.05"/>
+   <property name="percent_experience_change" type="float" value="-0.05"/>
+   <property name="percent_health_change" type="float" value="-0.05"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="40"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/centipede.png"/>
  </tile>
@@ -1435,14 +1435,14 @@
  <tile id="132">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="80"/>
+   <property name="HP" type="int" value="1400"/>
    <property name="Level" type="int" value="70"/>
    <property name="Name" value="Lizard King"/>
-   <property name="Speed" type="int" value="2"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="Speed" type="int" value="1"/>
+   <property name="aggro_range" type="int" value="3"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="1"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
@@ -1450,13 +1450,13 @@
    <property name="flat_regen_per_turn" type="int" value="0"/>
    <property name="flat_speed_change" type="int" value="0"/>
    <property name="percent_attack_change" type="float" value="0"/>
-   <property name="percent_defense_change" type="float" value="0"/>
+   <property name="percent_defense_change" type="float" value="-0.5"/>
    <property name="percent_experience_change" type="float" value="0"/>
    <property name="percent_health_change" type="float" value="0"/>
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="100"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/dragon_lizardking.png"/>
  </tile>
@@ -1469,11 +1469,11 @@
  <tile id="134">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="20"/>
+   <property name="HP" type="int" value="200"/>
    <property name="Level" type="int" value="16"/>
    <property name="Name" value="Greater Legfish"/>
-   <property name="Speed" type="int" value="2"/>
+   <property name="Speed" type="int" value="1"/>
    <property name="aggro_range" type="int" value="1"/>
    <property name="damage_per_turn" type="int" value="0"/>
    <property name="duration" type="int" value="0"/>
@@ -1490,15 +1490,15 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="25"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/fish_abominable.png"/>
  </tile>
  <tile id="135">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="3"/>
+   <property name="HP" type="int" value="45"/>
    <property name="Level" type="int" value="4"/>
    <property name="Name" value="Lesser Legfish"/>
    <property name="Speed" type="int" value="2"/>
@@ -1518,15 +1518,15 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="10"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/fish_goomba.png"/>
  </tile>
  <tile id="136">
   <properties>
    <property name="Attack" type="int" value="75"/>
-   <property name="Defense" type="int" value="0"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="Defense" type="int" value="7"/>
+   <property name="HP" type="int" value="90"/>
    <property name="Level" type="int" value="8"/>
    <property name="Name" value="Legfish"/>
    <property name="Speed" type="int" value="2"/>
@@ -1546,7 +1546,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="10"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/fish_sly.png"/>
  </tile>
@@ -1578,19 +1578,19 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="200"/>
-   <property name="HP" type="int" value="1000"/>
+   <property name="HP" type="int" value="7000"/>
    <property name="Level" type="int" value="100"/>
    <property name="Name" value="Goose"/>
-   <property name="Speed" type="int" value="5"/>
-   <property name="aggro_range" type="int" value="1"/>
+   <property name="Speed" type="int" value="7"/>
+   <property name="aggro_range" type="int" value="3"/>
    <property name="damage_per_turn" type="int" value="0"/>
-   <property name="duration" type="int" value="0"/>
+   <property name="duration" type="int" value="5"/>
    <property name="flat_attack_change" type="int" value="0"/>
    <property name="flat_defense_change" type="int" value="0"/>
    <property name="flat_experience_change" type="int" value="0"/>
    <property name="flat_health_change" type="int" value="0"/>
    <property name="flat_regen_per_turn" type="int" value="0"/>
-   <property name="flat_speed_change" type="int" value="-3"/>
+   <property name="flat_speed_change" type="int" value="-1"/>
    <property name="percent_attack_change" type="float" value="0"/>
    <property name="percent_defense_change" type="float" value="0"/>
    <property name="percent_experience_change" type="float" value="0"/>
@@ -1598,7 +1598,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="2"/>
    <property name="splash_radius" type="int" value="2"/>
-   <property name="weapon_attack" type="int" value="300"/>
+   <property name="weapon_attack" type="int" value="250"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/goose.png"/>
  </tile>
