@@ -4,6 +4,7 @@ import kotlin.Triple;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
+import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
 
 import java.util.Comparator;
@@ -273,8 +274,18 @@ public abstract class Character {
         } else if (getCurrentHealth() <= 0) { // character has just died
             ticksSinceDeath = 0;
             distributeRewards(gameState);
+            removeFromEnemiesTPD(gameState);
             taggedPlayersDamage.clear();
             isDead = true;
+        }
+    }
+
+    private void removeFromEnemiesTPD(GameState gameState) {
+        for (Character character : gameState.getAllCharacters().values()) {
+            if (!character.getName().equals(this.getName()) &&
+                    character.getTaggedPlayersDamage().containsKey(this.getName())) {
+                character.removePlayer(this.getName());
+            }
         }
     }
 
@@ -350,6 +361,10 @@ public abstract class Character {
 
     public String getSprite() {
         return sprite;
+    }
+
+    public Map<String, Integer> getTaggedPlayersDamage() {
+        return taggedPlayersDamage;
     }
 
     public int getSpeed() {
@@ -461,8 +476,6 @@ public abstract class Character {
     public Weapon getWeapon() {
         return weapon;
     }
-
-
 
     public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);
