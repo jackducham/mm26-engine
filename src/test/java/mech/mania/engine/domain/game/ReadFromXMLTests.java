@@ -230,6 +230,9 @@ public class ReadFromXMLTests {
 
         // It's hard to test with such a large map! We'll just check that some are loaded for now
         assertTrue(spMonsters.size() > 0);
+        for(Monster m: spMonsters){
+            assertTrue(m.getLevel() > 0);
+        }
     }
 
     /**

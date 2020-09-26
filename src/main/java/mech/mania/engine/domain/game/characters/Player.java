@@ -22,9 +22,9 @@ public class Player extends Character {
     public String top_sprite;
     public String head_sprite;
 
-    public static final int REVIVE_TICKS = 1;
-    private static final int BASE_SPEED = 5;
-    private static final int BASE_MAX_HEALTH = 20;
+    public static final int REVIVE_TICKS = 4;
+    private static final int BASE_SPEED = 1;
+    private static final int BASE_MAX_HEALTH = 80;
     private static final int BASE_ATTACK = 0;
     private static final int BASE_DEFENSE = 0;
     private static final Weapon starterWeapon = Weapon.createStarterWeapon();

@@ -316,12 +316,8 @@ public class GameState {
         boardNames.put(data.getBoardName(), new Board(data.extractBoard()));
         for(Monster m : data.extractMonsters()){
             // Make monster name unique
-            String name = m.getName();
-            while(this.getMonster(name) != null){
-                name = m.getName() + "#" + this.monsterNames.size();
-            }
             Monster toAdd = new Monster(m);
-            toAdd.setName(name);
+            toAdd.setName(m.getName() + "#" + this.monsterNames.size());
             addNewMonster(toAdd);
         }
     }
