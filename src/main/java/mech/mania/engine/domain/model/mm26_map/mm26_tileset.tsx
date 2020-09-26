@@ -227,7 +227,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="20"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="405"/>
    <property name="Level" type="int" value="38"/>
    <property name="Name" value="Lizard Grunt"/>
    <property name="Speed" type="int" value="2"/>
@@ -318,7 +318,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="20"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="420"/>
    <property name="Level" type="int" value="41"/>
    <property name="Name" value="Shroomsnake"/>
    <property name="Speed" type="int" value="2"/>
@@ -338,7 +338,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="37"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/mushroom_eel.png"/>
  </tile>
@@ -408,7 +408,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="30"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="350"/>
    <property name="Level" type="int" value="33"/>
    <property name="Name" value="Lesser Cacosheep"/>
    <property name="Speed" type="int" value="2"/>
@@ -428,7 +428,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="20"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/sheep_sheemp.png"/>
  </tile>
@@ -576,7 +576,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="30"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="400"/>
    <property name="Level" type="int" value="43"/>
    <property name="Name" value="Armored Soulcrab"/>
    <property name="Speed" type="int" value="2"/>
@@ -596,7 +596,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="29"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/soulcrab_helmet_v2.png"/>
  </tile>
@@ -604,7 +604,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="10"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="290"/>
    <property name="Level" type="int" value="33"/>
    <property name="Name" value="Soulcrab"/>
    <property name="Speed" type="int" value="2"/>
@@ -624,7 +624,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="15"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/soulcrab_v2.png"/>
  </tile>
@@ -652,7 +652,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="0"/>
+   <property name="weapon_attack" type="int" value="5"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/spider_kid.png"/>
  </tile>
@@ -660,7 +660,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="13"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="240"/>
    <property name="Level" type="int" value="24"/>
    <property name="Name" value="Spider Matron"/>
    <property name="Speed" type="int" value="3"/>
@@ -768,7 +768,7 @@
   <properties>
    <property name="Attack" type="int" value="75"/>
    <property name="Defense" type="int" value="8"/>
-   <property name="HP" type="int" value="50"/>
+   <property name="HP" type="int" value="110"/>
    <property name="Level" type="int" value="15"/>
    <property name="Name" value="Uniboar"/>
    <property name="Speed" type="int" value="2"/>
@@ -1518,7 +1518,7 @@
    <property name="percent_speed_change" type="float" value="0"/>
    <property name="range" type="int" value="1"/>
    <property name="splash_radius" type="int" value="0"/>
-   <property name="weapon_attack" type="int" value="10"/>
+   <property name="weapon_attack" type="int" value="8"/>
   </properties>
   <image width="190" height="190" source="mm26_tiles/fish_goomba.png"/>
  </tile>
