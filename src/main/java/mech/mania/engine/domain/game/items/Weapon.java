@@ -18,6 +18,14 @@ public class Weapon extends Wearable {
         this.attack = attack;
     }
 
+    public Weapon(Weapon other) {
+        super(new StatusModifier(other.stats), other.sprite);
+        this.range = other.range;
+        this.splashRadius = other.splashRadius;
+        this.onHitEffect = new TempStatusModifier(other.onHitEffect);
+        this.attack = other.attack;
+    }
+
     public Weapon(ItemProtos.Weapon weaponProto) {
         super(new StatusModifier(weaponProto.getStats()), weaponProto.getSprite());
         this.range = weaponProto.getRange();

@@ -37,8 +37,15 @@ public class Monster extends Character {
      */
     public Monster(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
                    int level, Position spawnPoint, Weapon weapon, int aggroRange) {
-        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon, REVIVE_TICKS);
+        super(name, sprite, baseSpeed, baseMaxHealth,
+                baseAttack, baseDefense, level, spawnPoint, new Weapon(weapon), REVIVE_TICKS);
         this.aggroRange = aggroRange;
+    }
+
+    public Monster(Monster other) {
+        super(other.getName(), other.getSprite(), other.baseSpeed, other.baseMaxHealth, other.baseAttack,
+                other.baseDefense, other.level, other.spawnPoint, other.weapon, REVIVE_TICKS);
+        this.aggroRange = other.getAggroRange();
     }
 
     // --------Proto Stuff-------- //

@@ -320,7 +320,7 @@ public class GameState {
                 name = m.getName() + "#" + UUID.randomUUID();
             }
             m.setName(name);
-            addNewMonster(m);
+            addNewMonster(new Monster(m));
         }
     }
 }
