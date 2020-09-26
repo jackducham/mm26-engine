@@ -92,6 +92,7 @@ public abstract class Character {
         this.baseDefense = character.getBaseDefense();
 
         this.currentHealth = character.getCurrentHealth();
+        this.level = character.getLevel();
         this.experience = character.getExperience();
 
         this.ticksSinceDeath = character.getTicksSinceDeath();
@@ -126,6 +127,7 @@ public abstract class Character {
         characterBuilder.setBaseDefense(baseDefense);
         characterBuilder.setCurrentHealth(currentHealth);
         characterBuilder.setExperience(experience);
+        characterBuilder.setLevel(level);
 
         characterBuilder.setTicksSinceDeath(ticksSinceDeath);
         characterBuilder.setIsDead(isDead);
