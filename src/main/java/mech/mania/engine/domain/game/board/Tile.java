@@ -43,24 +43,24 @@ public class Tile {
      * @param tileProto the protocol buffer being copied
      */
     public Tile(BoardProtos.Tile tileProto) {
-        items = new ArrayList<>(tileProto.getItemsCount());
+        items = new ArrayList<>();
         for (int i = 0; i < tileProto.getItemsCount(); i++) {
             ItemProtos.Item protoItem = tileProto.getItems(i);
             switch(protoItem.getItemCase()) {
                 case CLOTHES:
-                    items.add(i, new Clothes(protoItem.getClothes()));
+                    items.add(new Clothes(protoItem.getClothes()));
                     break;
                 case HAT:
-                    items.add(i, new Hat(protoItem.getHat()));
+                    items.add(new Hat(protoItem.getHat()));
                     break;
                 case SHOES:
-                    items.add(i, new Shoes(protoItem.getShoes()));
+                    items.add(new Shoes(protoItem.getShoes()));
                     break;
                 case WEAPON:
-                    items.add(i, new Weapon(protoItem.getWeapon()));
+                    items.add(new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    items.add(i, new Consumable(protoItem.getConsumable()));
+                    items.add(new Consumable(protoItem.getConsumable()));
             }
         }
 
