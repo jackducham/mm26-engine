@@ -75,4 +75,6 @@ public class TempStatusModifier extends StatusModifier {
     public int getDamagePerTurn() {
         return damagePerTurn;
     }
+
+    public void setDamagePerTurn(int newDamagePerTurn) {this.damagePerTurn = newDamagePerTurn;}
 }

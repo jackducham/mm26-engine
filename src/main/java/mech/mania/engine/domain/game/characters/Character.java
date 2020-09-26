@@ -6,6 +6,8 @@ import mech.mania.engine.domain.game.items.TempStatusModifier;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.model.CharacterProtos;
 
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public abstract class Character {
-    private final String name;
+    private String name;
     private final String sprite;
 
     /** Character's base stats */
@@ -31,9 +33,9 @@ public abstract class Character {
     protected int level;
 
     /** Death parameters */
-    private static final int reviveTicks = 1;
     protected int ticksSinceDeath;  // need access in Player to determine whether player just died
     private boolean isDead;
+    private int reviveTicks;
 
     /** Position parameters */
     protected Position position;
@@ -52,7 +54,7 @@ public abstract class Character {
      * Constructor for Characters
      */
     public Character(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                     int level, Position spawnPoint, Weapon weapon) {
+                     int level, Position spawnPoint, Weapon weapon, int reviveTicks) {
         this.name = name;
         this.sprite = sprite;
 
@@ -67,6 +69,7 @@ public abstract class Character {
 
         this.ticksSinceDeath = -1;
         this.isDead = false;
+        this.reviveTicks = reviveTicks;
 
         this.position = spawnPoint;
         this.spawnPoint = spawnPoint;
@@ -261,13 +264,13 @@ public abstract class Character {
      * @param gameState gameState to give rewards to
      */
     public void updateDeathState(GameState gameState) {
-        // player is already dead
+        // character is already dead
         if (isDead) {
             ticksSinceDeath++;
             if (ticksSinceDeath == reviveTicks) {
                 reviveCharacter();
             }
-        } else if (getCurrentHealth() <= 0) { // player has just died
+        } else if (getCurrentHealth() <= 0) { // character has just died
             ticksSinceDeath = 0;
             distributeRewards(gameState);
             taggedPlayersDamage.clear();
@@ -306,29 +309,30 @@ public abstract class Character {
                 continue;
             }
 
+            // player was just within aggrorange
+            if (mapElement.getValue() == 0) {
+                continue;
+            }
+
             int attackingPlayerLevel = attackingPlayer.getLevel();
             int levelDiff = abs(attackingPlayerLevel  - this.getLevel());
             double expMultiplier = attackingPlayerLevel / (attackingPlayerLevel + (double)levelDiff);
             int expGain = (int)(10 * this.getLevel() * expMultiplier);
             attackingPlayer.addExperience(expGain);
-            attackingPlayer.removePlayer(this.name);
         }
     }
 
     /**
-     * @return name of the Player (NOT Monster) with most damage done to this Character
+     * @return sorted LinkedHashMap of players in order of damage done to this Character
      */
-    protected String getPlayerWithMostDamage() {
-        String highestDamagePlayer = null;
-        int highestDamage = -1;
-        for (String name : taggedPlayersDamage.keySet()) {
-            if (taggedPlayersDamage.get(name) > highestDamage) {
-                highestDamagePlayer = name;
-                highestDamage = taggedPlayersDamage.get(name);
-            }
-        }
+    protected LinkedHashMap<String, Integer> getPlayerWithMostDamage() {
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
 
-        return highestDamagePlayer;
+        taggedPlayersDamage.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        return sortedMap;
     }
 
 
@@ -338,6 +342,10 @@ public abstract class Character {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public String getSprite() {
@@ -446,9 +454,15 @@ public abstract class Character {
         return spawnPoint;
     }
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
     public Weapon getWeapon() {
         return weapon;
     }
+
+
 
     public void removePlayer(String toRemove) {
         taggedPlayersDamage.remove(toRemove);

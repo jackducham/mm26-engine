@@ -11,6 +11,20 @@ public class Board {
     private final Tile[][] grid;
     private final List<Position> portals;
 
+    public Board(Board b){
+        this.grid = new Tile[b.getGrid().length][b.getGrid()[0].length];
+        for(int x = 0; x < b.getGrid().length; x++){
+            for(int y = 0; y < b.getGrid()[x].length; y++){
+                this.grid[x][y] = new Tile(b.getGrid()[x][y]);
+            }
+        }
+
+        this.portals = new ArrayList<>();
+        for(Position p : b.getPortals()){
+            this.portals.add(new Position(p));
+        }
+    }
+
     /**
      * Board constructor used to recreate boards from Protocol Buffers.
      * @param board the ProtoBuff being copied

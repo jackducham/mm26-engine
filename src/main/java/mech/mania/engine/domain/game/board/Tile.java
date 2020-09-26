@@ -28,6 +28,16 @@ public class Tile {
         this.aboveSprite = "";
     }
 
+    public Tile(Tile t){
+        this.items = new ArrayList<>();
+        for(Item item : t.getItems()){
+            this.items.add(item.copy());
+        }
+        this.type = t.type;
+        this.groundSprite = t.groundSprite;
+        this.aboveSprite = t.aboveSprite;
+    }
+
     /**
      * Creates a Tile based on a Protocol Buffer.
      * @param tileProto the protocol buffer being copied
@@ -97,15 +107,17 @@ public class Tile {
         for (int i = 0; i < items.size(); i++) {
             Item curItem = items.get(i);
             if (curItem instanceof Clothes) {
-                tileBuilder.setItems(i, ((Clothes)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Clothes)curItem).buildProtoClassItem());
             } else if (curItem instanceof Hat) {
-                tileBuilder.setItems(i, ((Hat)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Hat)curItem).buildProtoClassItem());
             } else if (curItem instanceof Shoes) {
-                tileBuilder.setItems(i, ((Shoes)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Shoes)curItem).buildProtoClassItem());
             } else if (curItem instanceof Weapon) {
-                tileBuilder.setItems(i, ((Weapon)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Weapon)curItem).buildProtoClassItem());
             } else if (curItem instanceof Consumable) {
-                tileBuilder.setItems(i, ((Consumable)curItem).buildProtoClassItem());
+                tileBuilder.addItems(((Consumable)curItem).buildProtoClassItem());
+            } else if (curItem instanceof Accessory) {
+                tileBuilder.addItems(((Accessory)curItem).buildProtoClassItem());
             }
         }
 

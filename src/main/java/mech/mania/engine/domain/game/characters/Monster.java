@@ -4,20 +4,22 @@ import mech.mania.engine.domain.game.GameLogic;
 import mech.mania.engine.domain.game.GameState;
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.board.Tile;
+import mech.mania.engine.domain.game.factory.ItemFactory;
 import mech.mania.engine.domain.game.items.*;
-import mech.mania.engine.domain.game.utils;
 import mech.mania.engine.domain.model.CharacterProtos;
-import mech.mania.engine.domain.model.ItemProtos;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
 public class Monster extends Character {
-    private final int aggroRange;
-    private final List<Item> drops;
+    public static final int REVIVE_TICKS = 15;
 
+    private final int aggroRange;
 
     // --------Constructors-------- //
 
@@ -32,18 +34,18 @@ public class Monster extends Character {
      * @param level the monster's level
      * @param spawnPoint the monster's spawn point, and the point it will leash back to
      * @param weapon the monster's weapon (used to apply on-hit effects)
-     * @param drops the Items a monster will drop on kill (it will drop all Items on its drop list)
      */
-
     public Monster(String name, String sprite, int baseSpeed, int baseMaxHealth, int baseAttack, int baseDefense,
-                   int level, Position spawnPoint, Weapon weapon, int aggroRange, List<Item> drops) {
-        super(name, sprite, baseSpeed, baseMaxHealth, baseAttack, baseDefense, level, spawnPoint, weapon);
+                   int level, Position spawnPoint, Weapon weapon, int aggroRange) {
+        super(name, sprite, baseSpeed, baseMaxHealth,
+                baseAttack, baseDefense, level, spawnPoint, weapon, REVIVE_TICKS);
         this.aggroRange = aggroRange;
-        this.drops = drops;
     }
 
-    public int getAggroRange() {
-        return aggroRange;
+    public Monster(Monster other) {
+        super(other.getName(), other.getSprite(), other.baseSpeed, other.baseMaxHealth, other.baseAttack,
+                other.baseDefense, other.level, new Position(other.spawnPoint), new Weapon(other.weapon), REVIVE_TICKS);
+        this.aggroRange = other.getAggroRange();
     }
 
     // --------Proto Stuff-------- //
@@ -54,28 +56,7 @@ public class Monster extends Character {
      */
     public Monster(CharacterProtos.Monster monsterProto) {
         super(monsterProto.getCharacter());
-
-        drops = new ArrayList<>(monsterProto.getDropsCount());
-        aggroRange = monsterProto.getAggroRange();
-        for (int i = 0; i < monsterProto.getDropsCount(); i++) {
-            ItemProtos.Item protoItem = monsterProto.getDrops(i);
-            switch(protoItem.getItemCase()) {
-                case CLOTHES:
-                    drops.add(i, new Clothes(protoItem.getClothes()));
-                    break;
-                case HAT:
-                    drops.add(i, new Hat(protoItem.getHat()));
-                    break;
-                case SHOES:
-                    drops.add(i, new Shoes(protoItem.getShoes()));
-                    break;
-                case WEAPON:
-                    drops.add(i, new Weapon(protoItem.getWeapon()));
-                    break;
-                case CONSUMABLE:
-                    drops.add(i, new Consumable(protoItem.getConsumable()));
-            }
-        }
+        this.aggroRange = monsterProto.getAggroRange();
     }
 
     /**
@@ -86,20 +67,6 @@ public class Monster extends Character {
         CharacterProtos.Character characterProtoClass = super.buildProtoClassCharacter();
         CharacterProtos.Monster.Builder monsterBuilder = CharacterProtos.Monster.newBuilder();
         monsterBuilder.mergeCharacter(characterProtoClass);
-        for (int i = 0; i < drops.size(); i++) {
-            Item curItem = drops.get(i);
-            if (curItem instanceof Clothes) {
-                monsterBuilder.setDrops(i, ((Clothes)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Hat) {
-                monsterBuilder.setDrops(i, ((Hat)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Shoes) {
-                monsterBuilder.setDrops(i, ((Shoes)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Weapon) {
-                monsterBuilder.setDrops(i, ((Weapon)curItem).buildProtoClassItem());
-            } else if (curItem instanceof Consumable) {
-                monsterBuilder.setDrops(i, ((Consumable)curItem).buildProtoClassItem());
-            }
-        }
         monsterBuilder.setAggroRange(aggroRange);
 
         return monsterBuilder.build();
@@ -118,6 +85,11 @@ public class Monster extends Character {
      */
     private Position findPositionToMove(GameState gameState, Position destination) {
         List<Position> path = findPath(gameState, getPosition(), destination);
+
+        if(path.size() == 0){
+            return this.position;
+        }
+
         Position pos;
         if (path.size() < getSpeed()) {
             pos = path.get(path.size() - 1);
@@ -138,6 +110,17 @@ public class Monster extends Character {
         return getPositionInRange(gameState, getPosition(), target, getWeapon().getRange());
     }
 
+    private void addPlayersToAggroRangeTable(GameState gameState) {
+        List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
+        if(inRange != null) {
+            for (Character character : inRange) {
+                if (character instanceof Player && !taggedPlayersDamage.containsKey(character.getName())) {
+                    taggedPlayersDamage.put(character.getName(), 0);
+                }
+            }
+        }
+    }
+
     /**
      * Calculates what the Monster should do on its next turn and passes this information to one of several helper
      * functions which generate and pass back a decision object.
@@ -145,26 +128,24 @@ public class Monster extends Character {
      * @return the Monster's next decision
      */
     public CharacterDecision makeDecision(GameState gameState) {
-        Player target = null;
-        if (!taggedPlayersDamage.isEmpty()) {
-            String highestDamageCharacter = getPlayerWithMostDamage();
-            target = gameState.getPlayer(highestDamageCharacter);
-        }
+        addPlayersToAggroRangeTable(gameState);
 
-        if (target == null) {
-            List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
-            if(inRange != null) {
-                for (Character character : inRange) {
-                    if (character instanceof Player) {
-                        target = (Player) character;
-                        break;
-                    }
+        Player target = null;
+        LinkedHashMap<String, Integer> sortedPlayers = getPlayerWithMostDamage();
+        if (sortedPlayers != null) {
+            Iterator<Map.Entry<String,Integer>> it = sortedPlayers.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<String,Integer> playerEntry = it.next();
+                Player player = gameState.getPlayer(playerEntry.getKey());
+                if (player != null && !player.isDead()) {
+                    target = player;
+                    break;
                 }
             }
         }
 
         // nothing in taggedPlayersDamage and no Players in aggroRange
-        if (target == null) {
+        if (target == null || weapon == null) {
             return moveToStartDecision(gameState);
         }
 
@@ -214,8 +195,6 @@ public class Monster extends Character {
      * @param experienceFactor slightly modifies the Monster's base experience awarded upon kill
      * @param rangeFactor slightly modifies the Monster's base attack range
      * @param splashFactor slightly modifies the Monster's base splash damage size
-     * @param numberOfDrops the number of Items this Monster instance will drop. (This function contains the full drop
-     *                      list and will pick a number of Items from that list based on this input)
      * @param spawnPoint the Monster's spawn point
      * @return
      */
@@ -246,25 +225,6 @@ public class Monster extends Character {
         int splashSpread = 0;
 
         int attack = 1;
-
-        /*
-        TODO: add Item drop generation
-        My current plan is to have an item generator specific to this monster which will generate a number of items
-        equal to the numberOfDrops argument and add them to the list of drops. Everything in this list will then be
-        dropped upon the monster dieing.
-         */
-
-        List<Item> drops = new ArrayList<Item>();
-        /*
-        //here is where we will generate and add items:
-
-        for(int i = 0; i < numberOfDrops; ++i) {
-            //generate item and add it to the list
-        }
-
-        */
-
-
         StatusModifier defaultWeaponStats = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         TempStatusModifier defaultOnHit = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Weapon defaultWeapon = new Weapon(defaultWeaponStats, range + (int)rangeFactor*rangeSpread, splash + (int)splashFactor*splashSpread, attack, defaultOnHit, "");
@@ -275,10 +235,37 @@ public class Monster extends Character {
                 baseMaxHealth + (int)maxHealthFactor*baseMaxHealthSpread,
                 baseAttack + (int)attackFactor*baseAttackSpread,
                 baseDefense + (int)defenseFactor*baseDefenseSpread,
-                level, spawnPoint, defaultWeapon, agroRange, drops);
+                level, spawnPoint, defaultWeapon, agroRange);
 
         ++DefaultMonsterQuantity;
         return newMonster;
+    }
+
+
+    @Override
+    public void distributeRewards(GameState gameState) {
+        // Pass our XP to attackers
+        super.distributeRewards(gameState);
+
+        // Handle item drops and player stats
+        Board current = gameState.getBoard(position.getBoardID());
+        Tile currentTile = current.getGrid()[position.getX()][position.getY()];
+
+        // Drop between 2 and 4 items
+        Random rand = new Random();
+        int numberOfDrops = 2 + rand.nextInt(3);
+        for (int i = 0; i < numberOfDrops; ++i) {
+            currentTile.getItems().add(ItemFactory.generateItem(this.getLevel()));
+        }
+
+        //iterates through every player still on the taggedPlayersDamage map.
+        for (Map.Entry<String, Integer> entry : taggedPlayersDamage.entrySet()) {
+            Player currentPlayer = gameState.getPlayer(entry.getKey());
+            if (currentPlayer != null && !currentPlayer.isDead()
+                    && taggedPlayersDamage.get(currentPlayer.getName()) != 0) {
+                currentPlayer.getExtraStats().incrementMonstersSlain();
+            }
+        }
     }
 
     /**
