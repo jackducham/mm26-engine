@@ -317,7 +317,7 @@ public class GameState {
             // Make monster name unique
             String name = m.getName();
             while(this.getMonster(name) != null){
-                name = m.getName() + "#" + UUID.randomUUID();
+                name = m.getName() + "#" + this.monsterNames.size();
             }
             m.setName(name);
             addNewMonster(new Monster(m));
