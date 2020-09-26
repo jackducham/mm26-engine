@@ -319,6 +319,7 @@ public class GameState {
             while(this.getMonster(name) != null){
                 name = m.getName() + "#" + UUID.randomUUID();
             }
+            m.setName(name);
             addNewMonster(m);
         }
     }
