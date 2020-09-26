@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -240,5 +241,21 @@ public class ReadFromXMLTests {
 
         // It's hard to test with such a large map! We'll just check that some are loaded for now
         assertTrue(mpMonsters.size() > 0);
+    }
+
+    @Test
+    public void testCopyConstructor(){
+        spBoard = spReader.extractBoard();
+        Board spBoard2 = new Board(spBoard);
+
+        for(int x = 0; x < spBoard2.getGrid().length; x++){
+            for(int y = 0; y < spBoard2.getGrid()[x].length; y++){
+                assertNotSame(spBoard2.getGrid()[x][y], spBoard.getGrid()[x][y]);
+            }
+        }
+
+        for(int i = 0; i < spBoard2.getPortals().size(); i++){
+            assertNotSame(spBoard2.getPortals().get(i), spBoard.getPortals().get(i));
+        }
     }
 }
