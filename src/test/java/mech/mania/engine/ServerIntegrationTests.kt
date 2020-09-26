@@ -310,7 +310,7 @@ class ServerIntegrationTests {
                         .build()
             }
 
-            val myPos = myPlayer!!.character.position
+            val myPos = myPlayer.character.position
             val myBoard = gameState.boardNamesMap[myPos.boardId]
 
             val targetPos = CharacterProtos.Position.newBuilder().setX(myPos.x).setBoardId(myPos.boardId)

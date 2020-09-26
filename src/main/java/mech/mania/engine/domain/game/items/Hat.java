@@ -21,6 +21,9 @@ public class Hat extends Wearable {
      */
     public Hat(ItemProtos.Hat hatProto) {
         super(new StatusModifier(hatProto.getStats()), hatProto.getSprite());
+
+        this.turnsToDeletion = hatProto.getTurnsToDeletion();
+
         switch (hatProto.getMagicEffect()) {
             case SHOES_BOOST:
                 this.magicEffect = MagicEffect.SHOES_BOOST;
@@ -53,6 +56,7 @@ public class Hat extends Wearable {
     public ItemProtos.Hat buildProtoClassHat() {
         ItemProtos.Hat.Builder hatBuilder = ItemProtos.Hat.newBuilder();
 
+        hatBuilder.setTurnsToDeletion(turnsToDeletion);
         hatBuilder.setStats(stats.buildProtoClass());
         hatBuilder.setSprite(sprite);
         switch (magicEffect) {
@@ -112,5 +116,9 @@ public class Hat extends Wearable {
 
         Hat defaultHat = new Hat(defaultStatusModifier, MagicEffect.NONE, "");
         return defaultHat;
+    }
+
+    public Item copy(){
+        return new Hat(new StatusModifier(this.stats), this.magicEffect, this.sprite);
     }
 }

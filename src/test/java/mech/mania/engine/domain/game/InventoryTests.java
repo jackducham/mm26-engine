@@ -38,6 +38,7 @@ public class InventoryTests {
         p1Tile.addItem(defaultShoes);
         p1Tile.addItem(strongerWeapon);
         p1 = gameState.getPlayer("player1");
+        p1.setWeapon(null); // Tests assume no starting weapon
     }
 
     /**
@@ -272,6 +273,9 @@ public class InventoryTests {
         // pick up first weapon - should be in inventory, decrease tile items
         pickupItem(0);
         equipItem(0);
+
+        assertNull(p1.getInventory()[0]);
+        assertEquals(defaultWeapon, p1.getWeapon());
 
         // shouldn't change anything
         equipItem(0);

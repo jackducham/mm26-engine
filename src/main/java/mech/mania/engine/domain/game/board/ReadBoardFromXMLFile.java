@@ -368,7 +368,7 @@ public class ReadBoardFromXMLFile {
                                 toCopy.sprite, toCopy.speed, toCopy.maxHealth, toCopy.attack, toCopy.defense, toCopy.level,
                                 new Position(x, y, boardName),
                                 new Weapon(zeroStats, toCopy.weaponRange, toCopy.weaponSplashRadius, toCopy.weaponDamage, onHit, ""),
-                                toCopy.aggroRange, new ArrayList<>());
+                                toCopy.aggroRange);
                         monsterList.add(newMonster);
                     }
                 }

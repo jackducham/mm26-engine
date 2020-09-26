@@ -2034,6 +2034,12 @@ public final class ItemProtos {
      */
     com.google.protobuf.ByteString
         getSpriteBytes();
+
+    /**
+     * <code>int32 turns_to_deletion = 4;</code>
+     * @return The turnsToDeletion.
+     */
+    int getTurnsToDeletion();
   }
   /**
    * Protobuf type {@code item.Clothes}
@@ -2103,6 +2109,11 @@ public final class ItemProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               sprite_ = s;
+              break;
+            }
+            case 32: {
+
+              turnsToDeletion_ = input.readInt32();
               break;
             }
             default: {
@@ -2214,6 +2225,16 @@ public final class ItemProtos {
       }
     }
 
+    public static final int TURNS_TO_DELETION_FIELD_NUMBER = 4;
+    private int turnsToDeletion_;
+    /**
+     * <code>int32 turns_to_deletion = 4;</code>
+     * @return The turnsToDeletion.
+     */
+    public int getTurnsToDeletion() {
+      return turnsToDeletion_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2237,6 +2258,9 @@ public final class ItemProtos {
       if (!getSpriteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sprite_);
       }
+      if (turnsToDeletion_ != 0) {
+        output.writeInt32(4, turnsToDeletion_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2256,6 +2280,10 @@ public final class ItemProtos {
       }
       if (!getSpriteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sprite_);
+      }
+      if (turnsToDeletion_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, turnsToDeletion_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2281,6 +2309,8 @@ public final class ItemProtos {
       }
       if (!getSprite()
           .equals(other.getSprite())) return false;
+      if (getTurnsToDeletion()
+          != other.getTurnsToDeletion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2300,6 +2330,8 @@ public final class ItemProtos {
       }
       hash = (37 * hash) + SPRITE_FIELD_NUMBER;
       hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + TURNS_TO_DELETION_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsToDeletion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2443,6 +2475,8 @@ public final class ItemProtos {
         }
         sprite_ = "";
 
+        turnsToDeletion_ = 0;
+
         return this;
       }
 
@@ -2476,6 +2510,7 @@ public final class ItemProtos {
           result.stats_ = statsBuilder_.build();
         }
         result.sprite_ = sprite_;
+        result.turnsToDeletion_ = turnsToDeletion_;
         onBuilt();
         return result;
       }
@@ -2533,6 +2568,9 @@ public final class ItemProtos {
         if (!other.getSprite().isEmpty()) {
           sprite_ = other.sprite_;
           onChanged();
+        }
+        if (other.getTurnsToDeletion() != 0) {
+          setTurnsToDeletion(other.getTurnsToDeletion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2807,6 +2845,36 @@ public final class ItemProtos {
         onChanged();
         return this;
       }
+
+      private int turnsToDeletion_ ;
+      /**
+       * <code>int32 turns_to_deletion = 4;</code>
+       * @return The turnsToDeletion.
+       */
+      public int getTurnsToDeletion() {
+        return turnsToDeletion_;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 4;</code>
+       * @param value The turnsToDeletion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsToDeletion(int value) {
+        
+        turnsToDeletion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsToDeletion() {
+        
+        turnsToDeletion_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2915,6 +2983,12 @@ public final class ItemProtos {
      */
     com.google.protobuf.ByteString
         getSpriteBytes();
+
+    /**
+     * <code>int32 turns_to_deletion = 5;</code>
+     * @return The turnsToDeletion.
+     */
+    int getTurnsToDeletion();
   }
   /**
    * Protobuf type {@code item.Hat}
@@ -2991,6 +3065,11 @@ public final class ItemProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               sprite_ = s;
+              break;
+            }
+            case 40: {
+
+              turnsToDeletion_ = input.readInt32();
               break;
             }
             default: {
@@ -3121,6 +3200,16 @@ public final class ItemProtos {
       }
     }
 
+    public static final int TURNS_TO_DELETION_FIELD_NUMBER = 5;
+    private int turnsToDeletion_;
+    /**
+     * <code>int32 turns_to_deletion = 5;</code>
+     * @return The turnsToDeletion.
+     */
+    public int getTurnsToDeletion() {
+      return turnsToDeletion_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3147,6 +3236,9 @@ public final class ItemProtos {
       if (!getSpriteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, sprite_);
       }
+      if (turnsToDeletion_ != 0) {
+        output.writeInt32(5, turnsToDeletion_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3170,6 +3262,10 @@ public final class ItemProtos {
       }
       if (!getSpriteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, sprite_);
+      }
+      if (turnsToDeletion_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, turnsToDeletion_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3196,6 +3292,8 @@ public final class ItemProtos {
       if (magicEffect_ != other.magicEffect_) return false;
       if (!getSprite()
           .equals(other.getSprite())) return false;
+      if (getTurnsToDeletion()
+          != other.getTurnsToDeletion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3217,6 +3315,8 @@ public final class ItemProtos {
       hash = (53 * hash) + magicEffect_;
       hash = (37 * hash) + SPRITE_FIELD_NUMBER;
       hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + TURNS_TO_DELETION_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsToDeletion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3362,6 +3462,8 @@ public final class ItemProtos {
 
         sprite_ = "";
 
+        turnsToDeletion_ = 0;
+
         return this;
       }
 
@@ -3396,6 +3498,7 @@ public final class ItemProtos {
         }
         result.magicEffect_ = magicEffect_;
         result.sprite_ = sprite_;
+        result.turnsToDeletion_ = turnsToDeletion_;
         onBuilt();
         return result;
       }
@@ -3456,6 +3559,9 @@ public final class ItemProtos {
         if (!other.getSprite().isEmpty()) {
           sprite_ = other.sprite_;
           onChanged();
+        }
+        if (other.getTurnsToDeletion() != 0) {
+          setTurnsToDeletion(other.getTurnsToDeletion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3782,6 +3888,36 @@ public final class ItemProtos {
         onChanged();
         return this;
       }
+
+      private int turnsToDeletion_ ;
+      /**
+       * <code>int32 turns_to_deletion = 5;</code>
+       * @return The turnsToDeletion.
+       */
+      public int getTurnsToDeletion() {
+        return turnsToDeletion_;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 5;</code>
+       * @param value The turnsToDeletion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsToDeletion(int value) {
+        
+        turnsToDeletion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsToDeletion() {
+        
+        turnsToDeletion_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3890,6 +4026,12 @@ public final class ItemProtos {
      */
     com.google.protobuf.ByteString
         getSpriteBytes();
+
+    /**
+     * <code>int32 turns_to_deletion = 5;</code>
+     * @return The turnsToDeletion.
+     */
+    int getTurnsToDeletion();
   }
   /**
    * Protobuf type {@code item.Accessory}
@@ -3966,6 +4108,11 @@ public final class ItemProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               sprite_ = s;
+              break;
+            }
+            case 40: {
+
+              turnsToDeletion_ = input.readInt32();
               break;
             }
             default: {
@@ -4096,6 +4243,16 @@ public final class ItemProtos {
       }
     }
 
+    public static final int TURNS_TO_DELETION_FIELD_NUMBER = 5;
+    private int turnsToDeletion_;
+    /**
+     * <code>int32 turns_to_deletion = 5;</code>
+     * @return The turnsToDeletion.
+     */
+    public int getTurnsToDeletion() {
+      return turnsToDeletion_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4122,6 +4279,9 @@ public final class ItemProtos {
       if (!getSpriteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, sprite_);
       }
+      if (turnsToDeletion_ != 0) {
+        output.writeInt32(5, turnsToDeletion_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4145,6 +4305,10 @@ public final class ItemProtos {
       }
       if (!getSpriteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, sprite_);
+      }
+      if (turnsToDeletion_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, turnsToDeletion_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4171,6 +4335,8 @@ public final class ItemProtos {
       if (magicEffect_ != other.magicEffect_) return false;
       if (!getSprite()
           .equals(other.getSprite())) return false;
+      if (getTurnsToDeletion()
+          != other.getTurnsToDeletion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4192,6 +4358,8 @@ public final class ItemProtos {
       hash = (53 * hash) + magicEffect_;
       hash = (37 * hash) + SPRITE_FIELD_NUMBER;
       hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + TURNS_TO_DELETION_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsToDeletion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4337,6 +4505,8 @@ public final class ItemProtos {
 
         sprite_ = "";
 
+        turnsToDeletion_ = 0;
+
         return this;
       }
 
@@ -4371,6 +4541,7 @@ public final class ItemProtos {
         }
         result.magicEffect_ = magicEffect_;
         result.sprite_ = sprite_;
+        result.turnsToDeletion_ = turnsToDeletion_;
         onBuilt();
         return result;
       }
@@ -4431,6 +4602,9 @@ public final class ItemProtos {
         if (!other.getSprite().isEmpty()) {
           sprite_ = other.sprite_;
           onChanged();
+        }
+        if (other.getTurnsToDeletion() != 0) {
+          setTurnsToDeletion(other.getTurnsToDeletion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4757,6 +4931,36 @@ public final class ItemProtos {
         onChanged();
         return this;
       }
+
+      private int turnsToDeletion_ ;
+      /**
+       * <code>int32 turns_to_deletion = 5;</code>
+       * @return The turnsToDeletion.
+       */
+      public int getTurnsToDeletion() {
+        return turnsToDeletion_;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 5;</code>
+       * @param value The turnsToDeletion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsToDeletion(int value) {
+        
+        turnsToDeletion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsToDeletion() {
+        
+        turnsToDeletion_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4854,6 +5058,12 @@ public final class ItemProtos {
      */
     com.google.protobuf.ByteString
         getSpriteBytes();
+
+    /**
+     * <code>int32 turns_to_deletion = 4;</code>
+     * @return The turnsToDeletion.
+     */
+    int getTurnsToDeletion();
   }
   /**
    * Protobuf type {@code item.Shoes}
@@ -4923,6 +5133,11 @@ public final class ItemProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               sprite_ = s;
+              break;
+            }
+            case 32: {
+
+              turnsToDeletion_ = input.readInt32();
               break;
             }
             default: {
@@ -5034,6 +5249,16 @@ public final class ItemProtos {
       }
     }
 
+    public static final int TURNS_TO_DELETION_FIELD_NUMBER = 4;
+    private int turnsToDeletion_;
+    /**
+     * <code>int32 turns_to_deletion = 4;</code>
+     * @return The turnsToDeletion.
+     */
+    public int getTurnsToDeletion() {
+      return turnsToDeletion_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5057,6 +5282,9 @@ public final class ItemProtos {
       if (!getSpriteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sprite_);
       }
+      if (turnsToDeletion_ != 0) {
+        output.writeInt32(4, turnsToDeletion_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5076,6 +5304,10 @@ public final class ItemProtos {
       }
       if (!getSpriteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sprite_);
+      }
+      if (turnsToDeletion_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, turnsToDeletion_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5101,6 +5333,8 @@ public final class ItemProtos {
       }
       if (!getSprite()
           .equals(other.getSprite())) return false;
+      if (getTurnsToDeletion()
+          != other.getTurnsToDeletion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5120,6 +5354,8 @@ public final class ItemProtos {
       }
       hash = (37 * hash) + SPRITE_FIELD_NUMBER;
       hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + TURNS_TO_DELETION_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsToDeletion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5263,6 +5499,8 @@ public final class ItemProtos {
         }
         sprite_ = "";
 
+        turnsToDeletion_ = 0;
+
         return this;
       }
 
@@ -5296,6 +5534,7 @@ public final class ItemProtos {
           result.stats_ = statsBuilder_.build();
         }
         result.sprite_ = sprite_;
+        result.turnsToDeletion_ = turnsToDeletion_;
         onBuilt();
         return result;
       }
@@ -5353,6 +5592,9 @@ public final class ItemProtos {
         if (!other.getSprite().isEmpty()) {
           sprite_ = other.sprite_;
           onChanged();
+        }
+        if (other.getTurnsToDeletion() != 0) {
+          setTurnsToDeletion(other.getTurnsToDeletion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5627,6 +5869,36 @@ public final class ItemProtos {
         onChanged();
         return this;
       }
+
+      private int turnsToDeletion_ ;
+      /**
+       * <code>int32 turns_to_deletion = 4;</code>
+       * @return The turnsToDeletion.
+       */
+      public int getTurnsToDeletion() {
+        return turnsToDeletion_;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 4;</code>
+       * @param value The turnsToDeletion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsToDeletion(int value) {
+        
+        turnsToDeletion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsToDeletion() {
+        
+        turnsToDeletion_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5757,6 +6029,12 @@ public final class ItemProtos {
      */
     com.google.protobuf.ByteString
         getSpriteBytes();
+
+    /**
+     * <code>int32 turns_to_deletion = 8;</code>
+     * @return The turnsToDeletion.
+     */
+    int getTurnsToDeletion();
   }
   /**
    * Protobuf type {@code item.Weapon}
@@ -5854,6 +6132,11 @@ public final class ItemProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               sprite_ = s;
+              break;
+            }
+            case 64: {
+
+              turnsToDeletion_ = input.readInt32();
               break;
             }
             default: {
@@ -6018,6 +6301,16 @@ public final class ItemProtos {
       }
     }
 
+    public static final int TURNS_TO_DELETION_FIELD_NUMBER = 8;
+    private int turnsToDeletion_;
+    /**
+     * <code>int32 turns_to_deletion = 8;</code>
+     * @return The turnsToDeletion.
+     */
+    public int getTurnsToDeletion() {
+      return turnsToDeletion_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6052,6 +6345,9 @@ public final class ItemProtos {
       }
       if (!getSpriteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, sprite_);
+      }
+      if (turnsToDeletion_ != 0) {
+        output.writeInt32(8, turnsToDeletion_);
       }
       unknownFields.writeTo(output);
     }
@@ -6089,6 +6385,10 @@ public final class ItemProtos {
       if (!getSpriteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, sprite_);
       }
+      if (turnsToDeletion_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, turnsToDeletion_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6124,6 +6424,8 @@ public final class ItemProtos {
       }
       if (!getSprite()
           .equals(other.getSprite())) return false;
+      if (getTurnsToDeletion()
+          != other.getTurnsToDeletion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6153,6 +6455,8 @@ public final class ItemProtos {
       }
       hash = (37 * hash) + SPRITE_FIELD_NUMBER;
       hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + TURNS_TO_DELETION_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsToDeletion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6308,6 +6612,8 @@ public final class ItemProtos {
         }
         sprite_ = "";
 
+        turnsToDeletion_ = 0;
+
         return this;
       }
 
@@ -6349,6 +6655,7 @@ public final class ItemProtos {
           result.onHitEffect_ = onHitEffectBuilder_.build();
         }
         result.sprite_ = sprite_;
+        result.turnsToDeletion_ = turnsToDeletion_;
         onBuilt();
         return result;
       }
@@ -6418,6 +6725,9 @@ public final class ItemProtos {
         if (!other.getSprite().isEmpty()) {
           sprite_ = other.sprite_;
           onChanged();
+        }
+        if (other.getTurnsToDeletion() != 0) {
+          setTurnsToDeletion(other.getTurnsToDeletion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6901,6 +7211,36 @@ public final class ItemProtos {
         onChanged();
         return this;
       }
+
+      private int turnsToDeletion_ ;
+      /**
+       * <code>int32 turns_to_deletion = 8;</code>
+       * @return The turnsToDeletion.
+       */
+      public int getTurnsToDeletion() {
+        return turnsToDeletion_;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 8;</code>
+       * @param value The turnsToDeletion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsToDeletion(int value) {
+        
+        turnsToDeletion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsToDeletion() {
+        
+        turnsToDeletion_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7004,6 +7344,12 @@ public final class ItemProtos {
      */
     com.google.protobuf.ByteString
         getSpriteBytes();
+
+    /**
+     * <code>int32 turns_to_deletion = 6;</code>
+     * @return The turnsToDeletion.
+     */
+    int getTurnsToDeletion();
   }
   /**
    * Protobuf type {@code item.Consumable}
@@ -7078,6 +7424,11 @@ public final class ItemProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               sprite_ = s;
+              break;
+            }
+            case 48: {
+
+              turnsToDeletion_ = input.readInt32();
               break;
             }
             default: {
@@ -7199,6 +7550,16 @@ public final class ItemProtos {
       }
     }
 
+    public static final int TURNS_TO_DELETION_FIELD_NUMBER = 6;
+    private int turnsToDeletion_;
+    /**
+     * <code>int32 turns_to_deletion = 6;</code>
+     * @return The turnsToDeletion.
+     */
+    public int getTurnsToDeletion() {
+      return turnsToDeletion_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7225,6 +7586,9 @@ public final class ItemProtos {
       if (!getSpriteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, sprite_);
       }
+      if (turnsToDeletion_ != 0) {
+        output.writeInt32(6, turnsToDeletion_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -7248,6 +7612,10 @@ public final class ItemProtos {
       }
       if (!getSpriteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, sprite_);
+      }
+      if (turnsToDeletion_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, turnsToDeletion_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7275,6 +7643,8 @@ public final class ItemProtos {
           != other.getStacks()) return false;
       if (!getSprite()
           .equals(other.getSprite())) return false;
+      if (getTurnsToDeletion()
+          != other.getTurnsToDeletion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7296,6 +7666,8 @@ public final class ItemProtos {
       hash = (53 * hash) + getStacks();
       hash = (37 * hash) + SPRITE_FIELD_NUMBER;
       hash = (53 * hash) + getSprite().hashCode();
+      hash = (37 * hash) + TURNS_TO_DELETION_FIELD_NUMBER;
+      hash = (53 * hash) + getTurnsToDeletion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7441,6 +7813,8 @@ public final class ItemProtos {
 
         sprite_ = "";
 
+        turnsToDeletion_ = 0;
+
         return this;
       }
 
@@ -7475,6 +7849,7 @@ public final class ItemProtos {
         }
         result.stacks_ = stacks_;
         result.sprite_ = sprite_;
+        result.turnsToDeletion_ = turnsToDeletion_;
         onBuilt();
         return result;
       }
@@ -7535,6 +7910,9 @@ public final class ItemProtos {
         if (!other.getSprite().isEmpty()) {
           sprite_ = other.sprite_;
           onChanged();
+        }
+        if (other.getTurnsToDeletion() != 0) {
+          setTurnsToDeletion(other.getTurnsToDeletion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7836,6 +8214,36 @@ public final class ItemProtos {
   checkByteStringIsUtf8(value);
         
         sprite_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int turnsToDeletion_ ;
+      /**
+       * <code>int32 turns_to_deletion = 6;</code>
+       * @return The turnsToDeletion.
+       */
+      public int getTurnsToDeletion() {
+        return turnsToDeletion_;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 6;</code>
+       * @param value The turnsToDeletion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTurnsToDeletion(int value) {
+        
+        turnsToDeletion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 turns_to_deletion = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTurnsToDeletion() {
+        
+        turnsToDeletion_ = 0;
         onChanged();
         return this;
       }
@@ -10019,43 +10427,47 @@ public final class ItemProtos {
       "m.HatH\000\022\034\n\005shoes\030\005 \001(\0132\013.item.ShoesH\000\022\036\n" +
       "\006weapon\030\006 \001(\0132\014.item.WeaponH\000\022&\n\nconsuma" +
       "ble\030\007 \001(\0132\020.item.ConsumableH\000\022$\n\taccesso" +
-      "ry\030\010 \001(\0132\017.item.AccessoryH\000B\006\n\004item\"Q\n\007C" +
+      "ry\030\010 \001(\0132\017.item.AccessoryH\000B\006\n\004item\"l\n\007C" +
       "lothes\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\013" +
-      "2\024.item.StatusModifier\022\016\n\006sprite\030\003 \001(\t\"v" +
-      "\n\003Hat\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132" +
-      "\024.item.StatusModifier\022\'\n\014magic_effect\030\003 " +
-      "\001(\0162\021.item.MagicEffect\022\016\n\006sprite\030\004 \001(\t\"|" +
-      "\n\tAccessory\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030" +
-      "\002 \001(\0132\024.item.StatusModifier\022\'\n\014magic_eff" +
-      "ect\030\003 \001(\0162\021.item.MagicEffect\022\016\n\006sprite\030\004" +
-      " \001(\t\"O\n\005Shoes\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stat" +
-      "s\030\002 \001(\0132\024.item.StatusModifier\022\016\n\006sprite\030" +
-      "\003 \001(\t\"\267\001\n\006Weapon\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005s" +
-      "tats\030\002 \001(\0132\024.item.StatusModifier\022\r\n\005rang" +
-      "e\030\003 \001(\005\022\025\n\rsplash_radius\030\004 \001(\005\022\016\n\006attack" +
-      "\030\005 \001(\005\022/\n\ron_hit_effect\030\006 \001(\0132\030.item.Tem" +
-      "pStatusModifier\022\016\n\006sprite\030\007 \001(\t\"i\n\nConsu" +
-      "mable\022\021\n\tmax_stack\030\001 \001(\005\022(\n\006effect\030\002 \001(\013" +
-      "2\030.item.TempStatusModifier\022\016\n\006stacks\030\003 \001" +
-      "(\005\022\016\n\006sprite\030\004 \001(\t\"\334\002\n\016StatusModifier\022\031\n" +
-      "\021flat_speed_change\030\001 \001(\005\022\034\n\024percent_spee" +
-      "d_change\030\002 \001(\001\022\032\n\022flat_health_change\030\003 \001" +
-      "(\005\022\035\n\025percent_health_change\030\004 \001(\001\022\036\n\026fla" +
-      "t_experience_change\030\005 \001(\005\022!\n\031percent_exp" +
-      "erience_change\030\006 \001(\001\022\032\n\022flat_attack_chan" +
-      "ge\030\007 \001(\005\022\035\n\025percent_attack_change\030\010 \001(\001\022" +
-      "\033\n\023flat_defense_change\030\t \001(\005\022\036\n\026percent_" +
-      "defense_change\030\n \001(\001\022\033\n\023flat_regen_per_t" +
-      "urn\030\013 \001(\005\"\251\001\n\022TempStatusModifier\022#\n\005stat" +
-      "s\030\001 \001(\0132\024.item.StatusModifier\022\034\n\024flat_da" +
-      "mage_per_turn\030\002 \001(\005\022\037\n\027percent_damage_pe" +
-      "r_turn\030\003 \001(\001\022\033\n\023flat_regen_per_turn\030\004 \001(" +
-      "\005\022\022\n\nturns_left\030\005 \001(\005*\214\001\n\013MagicEffect\022\025\n" +
-      "\021LINGERING_POTIONS\020\000\022\017\n\013SHOES_BOOST\020\001\022\021\n" +
-      "\rCLOTHES_BOOST\020\002\022\020\n\014WEAPON_BOOST\020\003\022\022\n\016TR" +
-      "IPLED_ON_HIT\020\004\022\022\n\016STACKING_BONUS\020\005\022\010\n\004NO" +
-      "NE\020\006B=\n\036mech.mania.engine.domain.modelB\n" +
-      "ItemProtos\252\002\016MM26.IO.Modelsb\006proto3"
+      "2\024.item.StatusModifier\022\016\n\006sprite\030\003 \001(\t\022\031" +
+      "\n\021turns_to_deletion\030\004 \001(\005\"\221\001\n\003Hat\022\021\n\tmax" +
+      "_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132\024.item.Statu" +
+      "sModifier\022\'\n\014magic_effect\030\003 \001(\0162\021.item.M" +
+      "agicEffect\022\016\n\006sprite\030\004 \001(\t\022\031\n\021turns_to_d" +
+      "eletion\030\005 \001(\005\"\227\001\n\tAccessory\022\021\n\tmax_stack" +
+      "\030\001 \001(\005\022#\n\005stats\030\002 \001(\0132\024.item.StatusModif" +
+      "ier\022\'\n\014magic_effect\030\003 \001(\0162\021.item.MagicEf" +
+      "fect\022\016\n\006sprite\030\004 \001(\t\022\031\n\021turns_to_deletio" +
+      "n\030\005 \001(\005\"j\n\005Shoes\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005s" +
+      "tats\030\002 \001(\0132\024.item.StatusModifier\022\016\n\006spri" +
+      "te\030\003 \001(\t\022\031\n\021turns_to_deletion\030\004 \001(\005\"\322\001\n\006" +
+      "Weapon\022\021\n\tmax_stack\030\001 \001(\005\022#\n\005stats\030\002 \001(\013" +
+      "2\024.item.StatusModifier\022\r\n\005range\030\003 \001(\005\022\025\n" +
+      "\rsplash_radius\030\004 \001(\005\022\016\n\006attack\030\005 \001(\005\022/\n\r" +
+      "on_hit_effect\030\006 \001(\0132\030.item.TempStatusMod" +
+      "ifier\022\016\n\006sprite\030\007 \001(\t\022\031\n\021turns_to_deleti" +
+      "on\030\010 \001(\005\"\204\001\n\nConsumable\022\021\n\tmax_stack\030\001 \001" +
+      "(\005\022(\n\006effect\030\002 \001(\0132\030.item.TempStatusModi" +
+      "fier\022\016\n\006stacks\030\003 \001(\005\022\016\n\006sprite\030\004 \001(\t\022\031\n\021" +
+      "turns_to_deletion\030\006 \001(\005\"\334\002\n\016StatusModifi" +
+      "er\022\031\n\021flat_speed_change\030\001 \001(\005\022\034\n\024percent" +
+      "_speed_change\030\002 \001(\001\022\032\n\022flat_health_chang" +
+      "e\030\003 \001(\005\022\035\n\025percent_health_change\030\004 \001(\001\022\036" +
+      "\n\026flat_experience_change\030\005 \001(\005\022!\n\031percen" +
+      "t_experience_change\030\006 \001(\001\022\032\n\022flat_attack" +
+      "_change\030\007 \001(\005\022\035\n\025percent_attack_change\030\010" +
+      " \001(\001\022\033\n\023flat_defense_change\030\t \001(\005\022\036\n\026per" +
+      "cent_defense_change\030\n \001(\001\022\033\n\023flat_regen_" +
+      "per_turn\030\013 \001(\005\"\251\001\n\022TempStatusModifier\022#\n" +
+      "\005stats\030\001 \001(\0132\024.item.StatusModifier\022\034\n\024fl" +
+      "at_damage_per_turn\030\002 \001(\005\022\037\n\027percent_dama" +
+      "ge_per_turn\030\003 \001(\001\022\033\n\023flat_regen_per_turn" +
+      "\030\004 \001(\005\022\022\n\nturns_left\030\005 \001(\005*\214\001\n\013MagicEffe" +
+      "ct\022\025\n\021LINGERING_POTIONS\020\000\022\017\n\013SHOES_BOOST" +
+      "\020\001\022\021\n\rCLOTHES_BOOST\020\002\022\020\n\014WEAPON_BOOST\020\003\022" +
+      "\022\n\016TRIPLED_ON_HIT\020\004\022\022\n\016STACKING_BONUS\020\005\022" +
+      "\010\n\004NONE\020\006B=\n\036mech.mania.engine.domain.mo" +
+      "delB\nItemProtos\252\002\016MM26.IO.Modelsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10072,37 +10484,37 @@ public final class ItemProtos {
     internal_static_item_Clothes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Clothes_descriptor,
-        new java.lang.String[] { "MaxStack", "Stats", "Sprite", });
+        new java.lang.String[] { "MaxStack", "Stats", "Sprite", "TurnsToDeletion", });
     internal_static_item_Hat_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_item_Hat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Hat_descriptor,
-        new java.lang.String[] { "MaxStack", "Stats", "MagicEffect", "Sprite", });
+        new java.lang.String[] { "MaxStack", "Stats", "MagicEffect", "Sprite", "TurnsToDeletion", });
     internal_static_item_Accessory_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_item_Accessory_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Accessory_descriptor,
-        new java.lang.String[] { "MaxStack", "Stats", "MagicEffect", "Sprite", });
+        new java.lang.String[] { "MaxStack", "Stats", "MagicEffect", "Sprite", "TurnsToDeletion", });
     internal_static_item_Shoes_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_item_Shoes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Shoes_descriptor,
-        new java.lang.String[] { "MaxStack", "Stats", "Sprite", });
+        new java.lang.String[] { "MaxStack", "Stats", "Sprite", "TurnsToDeletion", });
     internal_static_item_Weapon_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_item_Weapon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Weapon_descriptor,
-        new java.lang.String[] { "MaxStack", "Stats", "Range", "SplashRadius", "Attack", "OnHitEffect", "Sprite", });
+        new java.lang.String[] { "MaxStack", "Stats", "Range", "SplashRadius", "Attack", "OnHitEffect", "Sprite", "TurnsToDeletion", });
     internal_static_item_Consumable_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_item_Consumable_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_item_Consumable_descriptor,
-        new java.lang.String[] { "MaxStack", "Effect", "Stacks", "Sprite", });
+        new java.lang.String[] { "MaxStack", "Effect", "Stacks", "Sprite", "TurnsToDeletion", });
     internal_static_item_StatusModifier_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_item_StatusModifier_fieldAccessorTable = new

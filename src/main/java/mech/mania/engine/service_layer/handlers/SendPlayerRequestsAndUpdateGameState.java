@@ -71,6 +71,7 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
             } catch (IOException e) {
                 LOGGER.warning(String.format("IOException: could not shutdown player at url %s: %s",
                         playerConnectInfo.getIpAddr(), e));
+                itr.remove();
             }
         }
 

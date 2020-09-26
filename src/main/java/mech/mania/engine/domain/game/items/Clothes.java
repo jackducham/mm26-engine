@@ -17,6 +17,7 @@ public class Clothes extends Wearable {
      */
     public Clothes(ItemProtos.Clothes clothesProto) {
         super(new StatusModifier(clothesProto.getStats()), clothesProto.getSprite());
+        turnsToDeletion = clothesProto.getTurnsToDeletion();
     }
 
     /**
@@ -26,6 +27,7 @@ public class Clothes extends Wearable {
     public ItemProtos.Clothes buildProtoClassClothes() {
         ItemProtos.Clothes.Builder clothesBuilder = ItemProtos.Clothes.newBuilder();
         clothesBuilder.setStats(stats.buildProtoClass());
+        clothesBuilder.setTurnsToDeletion(turnsToDeletion);
 
         return clothesBuilder.build();
     }
@@ -52,5 +54,9 @@ public class Clothes extends Wearable {
         StatusModifier defaultStatusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0);
         Clothes defaultClothes = new Clothes(defaultStatusModifier, "");
         return defaultClothes;
+    }
+
+    public Item copy(){
+        return new Clothes(new StatusModifier(this.stats), this.sprite);
     }
 }

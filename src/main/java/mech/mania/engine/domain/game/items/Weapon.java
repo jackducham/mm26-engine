@@ -18,12 +18,33 @@ public class Weapon extends Wearable {
         this.attack = attack;
     }
 
+    public Weapon(Weapon other) {
+        super(new StatusModifier(other.stats), other.sprite);
+        this.range = other.range;
+        this.splashRadius = other.splashRadius;
+        this.onHitEffect = new TempStatusModifier(other.onHitEffect);
+        this.attack = other.attack;
+    }
+
     public Weapon(ItemProtos.Weapon weaponProto) {
         super(new StatusModifier(weaponProto.getStats()), weaponProto.getSprite());
         this.range = weaponProto.getRange();
         this.splashRadius = weaponProto.getSplashRadius();
         this.onHitEffect = new TempStatusModifier(weaponProto.getOnHitEffect());
         this.attack = weaponProto.getAttack();
+        this.turnsToDeletion = weaponProto.getTurnsToDeletion();
+    }
+
+    /**
+     * Creates a Weapon with a range of 1, damage of 4
+     * Given to all Players at start of game
+     */
+    public static Weapon createStarterWeapon() {
+        StatusModifier statusModifier = new StatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        TempStatusModifier tempStatusModifier = new TempStatusModifier(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        Weapon starterWeapon = new Weapon(statusModifier, 1, 0, 4, tempStatusModifier, "mm26_wearables/weapons/swords/1.png");
+
+        return starterWeapon;
     }
 
     public static Weapon createDefaultWeapon() {
@@ -58,6 +79,7 @@ public class Weapon extends Wearable {
         weaponBuilder.setOnHitEffect(onHitEffect.buildProtoClassTemp());
         weaponBuilder.setAttack(attack);
         weaponBuilder.setSprite(sprite);
+        weaponBuilder.setTurnsToDeletion(turnsToDeletion);
 
         return weaponBuilder.build();
     }
@@ -76,5 +98,9 @@ public class Weapon extends Wearable {
 
     public int getAttack() {
         return attack;
+    }
+
+    public Item copy(){
+        return new Weapon(new StatusModifier(this.stats), this.range, this.splashRadius, this.attack, new TempStatusModifier(onHitEffect), this.sprite);
     }
 }
