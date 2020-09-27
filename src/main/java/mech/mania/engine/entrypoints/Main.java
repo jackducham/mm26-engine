@@ -98,7 +98,7 @@ public class Main {
             LOGGER.warning("Turn took " + turnTime + " ms.");
 
             // Wait a minimum time between turns
-            long minTime = Long.parseLong(Config.getProperty("millisBetweenTurns"));
+            long minTime = Long.parseLong(Config.getProperty("minMillisBetweenTurns"));
             if(turnTime < minTime){
                 try {
                     Thread.sleep(minTime - turnTime);

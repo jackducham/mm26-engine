@@ -215,7 +215,7 @@ class ServerIntegrationTests {
     //     val players = 100
     //     val turns = 20
 
-    //     val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns"))
+    //     val timePerTurn = Integer.parseInt(Config.getProperty("minMillisBetweenTurns"))
 
     //     // wait for an actual object to end the test
     //     val latch = CountDownLatch(turns * players)
@@ -293,7 +293,7 @@ class ServerIntegrationTests {
 
     @Test
     fun testOneVisualizerAndOnePlayer(){
-        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+        val timePerTurn = Integer.parseInt(Config.getProperty("minMillisBetweenTurns")).toLong()
         val turns = 5
         val latch = CountDownLatch(turns*2)
 
@@ -344,7 +344,7 @@ class ServerIntegrationTests {
 
     // @Test
     // fun testBasicVisualizerConnection(){
-    //     val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+    //     val timePerTurn = Integer.parseInt(Config.getProperty("minMillisBetweenTurns")).toLong()
     //     val turns = 1
     //     val latch = CountDownLatch(turns)
 
@@ -358,7 +358,7 @@ class ServerIntegrationTests {
 
     // @Test
     // fun testMultipleVisualizerConnections(){
-    //     val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+    //     val timePerTurn = Integer.parseInt(Config.getProperty("minMillisBetweenTurns")).toLong()
     //     val turns = 10
     //     val visualizers = 100
     //     val latch = CountDownLatch(turns * visualizers)
@@ -375,7 +375,7 @@ class ServerIntegrationTests {
 
     @Test
     fun testMultipleVisualizerConnectionsWithPlayers(){
-        val timePerTurn = Integer.parseInt(Config.getProperty("millisBetweenTurns")).toLong()
+        val timePerTurn = Integer.parseInt(Config.getProperty("minMillisBetweenTurns")).toLong()
         val turns = 10
         val players = 100
         val visualizers = 100
