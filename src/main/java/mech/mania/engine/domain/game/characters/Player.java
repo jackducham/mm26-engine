@@ -543,7 +543,7 @@ public class Player extends Character {
      */
     private boolean useConsumable(Consumable consumableToConsume) {
         int stacks = consumableToConsume.getStacks();
-        TempStatusModifier effect = consumableToConsume.getEffect();
+        TempStatusModifier effect = new TempStatusModifier(consumableToConsume.getEffect());
 
         //checks for LINGERING_POTIONS hat effect and doubles the duration if detected.
         if(this.hasMagicEffect(MagicEffect.LINGERING_POTIONS)) {
