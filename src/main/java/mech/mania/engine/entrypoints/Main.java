@@ -96,6 +96,16 @@ public class Main {
 
             long turnTime = MILLIS.between(now, Instant.now());
             LOGGER.warning("Turn took " + turnTime + " ms.");
+
+            // Wait a minimum time between turns
+            long minTime = Long.parseLong(Config.getProperty("millisBetweenTurns"));
+            if(turnTime < minTime){
+                try {
+                    Thread.sleep(minTime - turnTime);
+                } catch(InterruptedException e){
+                    LOGGER.warning("Engine thread interrupted while waiting out minimum time between turns");
+                }
+            }
         }
 
         /* TODO: Logs only show the first of these two commands (switching the order switches which one shows up).
