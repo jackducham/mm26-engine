@@ -141,9 +141,9 @@ public abstract class Character {
         }
 
         for (int i = 0; i < activeEffects.size(); i++) {
-            characterBuilder.setActiveEffectsTempStatusModifier(i, activeEffects.get(i).getFirst().buildProtoClassTemp());
-            characterBuilder.setActiveEffectsSource(i, activeEffects.get(i).getSecond());
-            characterBuilder.setActiveEffectsIsPlayer(i, activeEffects.get(i).getThird());
+            characterBuilder.addActiveEffectsTempStatusModifier(activeEffects.get(i).getFirst().buildProtoClassTemp());
+            characterBuilder.addActiveEffectsSource(activeEffects.get(i).getSecond());
+            characterBuilder.addActiveEffectsIsPlayer(activeEffects.get(i).getThird());
         }
 
         characterBuilder.putAllTaggedPlayersDamage(taggedPlayersDamage);
