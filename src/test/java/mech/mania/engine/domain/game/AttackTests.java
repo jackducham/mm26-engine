@@ -61,22 +61,27 @@ public class AttackTests {
     @Test
     public void updateLevel() {
         p1.addExperience(10);
+        p1.updateLevel();
         assertEquals(1, p1.getLevel());
         assertEquals(10, p1.getExperience());
 
         p1.addExperience(90);
+        p1.updateLevel();
         assertEquals(2, p1.getLevel());
         assertEquals(0, p1.getExperience());
 
         p1.addExperience(100);
+        p1.updateLevel();
         assertEquals(2, p1.getLevel());
         assertEquals(100, p1.getExperience());
 
         p1.addExperience(150);
+        p1.updateLevel();
         assertEquals(3, p1.getLevel());
         assertEquals(50, p1.getExperience());
 
         p1.addExperience(700);
+        p1.updateLevel();
         assertEquals(5, p1.getLevel());
         assertEquals(50, p1.getExperience());
     }

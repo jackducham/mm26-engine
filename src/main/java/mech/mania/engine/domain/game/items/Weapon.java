@@ -105,6 +105,10 @@ public class Weapon extends Wearable {
         return attack;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public Item copy(){
         return new Weapon(new StatusModifier(this.stats), this.range, this.splashRadius, this.attack, new TempStatusModifier(onHitEffect), this.sprite);
     }

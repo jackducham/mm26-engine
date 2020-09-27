@@ -13,8 +13,6 @@ import mech.mania.engine.domain.game.utils;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 public class inRangeOfAttackTest {
     private GameState gameState = GameState.createDefaultGameState();
 
@@ -22,7 +20,7 @@ public class inRangeOfAttackTest {
     public void setup() {
         Weapon weapon1 = Weapon.createDefaultWeapon();
 
-        gameState.getPlayer("player1").setInventory(0, weapon1);
+        gameState.getPlayer("player1").pickupItem(weapon1);
         gameState.getPlayer("player1").equipItem(0);
     }
 
@@ -38,7 +36,7 @@ public class inRangeOfAttackTest {
         TempStatusModifier defaultTempStatusModifier = new TempStatusModifier(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 10, 5);
         Weapon weapon2 = new Weapon(defaultStatusModifier, 10, 10, 10, defaultTempStatusModifier, "");
 
-        gameState.getPlayer("player2").setInventory(0, weapon2);
+        gameState.getPlayer("player2").pickupItem(weapon2);
         gameState.getPlayer("player2").equipItem(0);
 
         boolean canBeAttacked = utils.inRangeOfAttack(this.gameState, gameState.getPlayer("player1").getPosition(), "player1");

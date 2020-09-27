@@ -2,6 +2,8 @@ package mech.mania.engine.domain.game;
 
 import mech.mania.engine.domain.game.board.Board;
 import mech.mania.engine.domain.game.characters.Position;
+import mech.mania.engine.domain.game.items.Shoes;
+import mech.mania.engine.domain.game.items.StatusModifier;
 import mech.mania.engine.domain.model.CharacterProtos;
 import org.junit.After;
 import org.junit.Before;
@@ -33,6 +35,11 @@ public class MovementTests {
         gameState.getAllBoards().put("player1", newHome);
 
         gameState.getPlayer("player1").setPosition(new Position(0, 0, "player1"));
+        gameState.getPlayer("player1").setShoes(
+                new Shoes(new StatusModifier(5, 0, 0, 0,
+                        0, 0, 0, 0, 0,
+                        0, 0), "")
+        );
     }
 
     /**
@@ -169,7 +176,7 @@ public class MovementTests {
         final int final_x = 0;
         final int final_y = 2;
 
-        // Move player1 to 1, 0
+        // Move player1 to 0, 2
         CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.MOVE);
 

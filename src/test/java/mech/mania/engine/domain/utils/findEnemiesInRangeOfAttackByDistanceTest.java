@@ -8,7 +8,6 @@ import mech.mania.engine.domain.game.characters.Monster;
 import mech.mania.engine.domain.game.characters.Position;
 import mech.mania.engine.domain.game.items.Weapon;
 import mech.mania.engine.domain.game.utils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,9 +34,9 @@ public class findEnemiesInRangeOfAttackByDistanceTest {
 
         Weapon weapon1 = Weapon.createDefaultWeapon();
         Weapon weapon2 = Weapon.createStrongerDefaultWeapon();
-        gameState.getPlayer("player1").setInventory(0, weapon1);
+        gameState.getPlayer("player1").pickupItem(weapon1);
         gameState.getPlayer("player1").equipItem(0);
-        gameState.getPlayer("player2").setInventory(0, weapon2);
+        gameState.getPlayer("player2").pickupItem(weapon2);
         gameState.getPlayer("player2").equipItem(0);
     }
 
