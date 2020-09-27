@@ -183,7 +183,7 @@ public abstract class Character {
         }
 
         // activeEffects and activeEffectsSources are parallel lists
-        activeEffects.add(new Triple<>(effect, sourcePlayer, isPlayer));
+        activeEffects.add(new Triple<>(new TempStatusModifier(effect), sourcePlayer, isPlayer));
 
         return true;
     }
