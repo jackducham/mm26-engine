@@ -171,7 +171,7 @@ public class RepositoryAws implements RepositoryAbstract {
             // Get an object
             S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, key));
 
-            messageLite.getParserForType().parseFrom(s3Object.getObjectContent());
+            messageLite = messageLite.getParserForType().parseFrom(s3Object.getObjectContent());
 
             // Close connection
             s3Object.close();
