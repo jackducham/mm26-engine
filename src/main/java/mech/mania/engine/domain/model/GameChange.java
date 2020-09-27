@@ -72,7 +72,7 @@ public class GameChange {
         characterChanges.get(characterName).path = path;
     }
 
-    public void characterEquip(String characterName, Class itemType) {
+    public void characterEquip(String characterName, Class<? extends Item> itemType) {
         createUntrackedCharacter(characterName);
         CharacterChange curChange = characterChanges.get(characterName);
         if (itemType == null) {

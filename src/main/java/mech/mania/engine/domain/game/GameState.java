@@ -321,4 +321,8 @@ public class GameState {
             addNewMonster(toAdd);
         }
     }
+
+    public long getTurnNumber() {
+        return turnNumber;
+    }
 }

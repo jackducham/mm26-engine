@@ -76,11 +76,13 @@ public class Main {
         if(!enableInfra){
             // Don't connect to AWS if infra is not enabled
             bus = Bootstrap.bootstrap(new UnitOfWorkFake());
+            LOGGER.warning("enableInfra was not set!");
         }
         else if(cmd.hasOption("turn")){
             // If infra is enabled and a starting turn was specified, restore from it
             int startTurn = Integer.parseInt(cmd.getOptionValue("turn"));
             bus.handle(new CommandRestoreTurn(startTurn));
+            LOGGER.info("Attempt to restore from turn " + startTurn + " resulted in GameState with turn " + bus.getUow().getGameState().getTurnNumber());
         }
 
         // Start servers
