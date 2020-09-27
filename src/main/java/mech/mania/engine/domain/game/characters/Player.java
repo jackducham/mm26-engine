@@ -6,6 +6,8 @@ import mech.mania.engine.domain.game.items.*;
 import mech.mania.engine.domain.model.CharacterProtos;
 import mech.mania.engine.domain.model.ItemProtos;
 
+import java.util.ArrayList;
+
 import static java.lang.Math.max;
 
 
@@ -15,7 +17,7 @@ public class Player extends Character {
     private Clothes clothes;
     private Shoes shoes;
     private Accessory accessory;
-    private Item[] inventory;
+    private ArrayList<Item> inventory;
     private Stats playerStats = new Stats();
 
     public String bottom_sprite;
@@ -47,7 +49,7 @@ public class Player extends Character {
         hat = null;
         clothes = null;
         shoes = null;
-        inventory = new Item[INVENTORY_SIZE];
+        inventory = new ArrayList<>();
 
         bottom_sprite = DEFAULT_BOTTOM_SPRITE;
         top_sprite = DEFAULT_TOP_SPRITE;
@@ -61,27 +63,27 @@ public class Player extends Character {
         accessory = new Accessory(playerProto.getAccessory());
         clothes = new Clothes(playerProto.getClothes());
         shoes = new Shoes(playerProto.getShoes());
-        inventory = new Item[INVENTORY_SIZE];
+        inventory = new ArrayList<>();
 
         for (int i = 0; i < playerProto.getInventoryCount(); i++) {
             ItemProtos.Item protoItem = playerProto.getInventory(i);
             switch(protoItem.getItemCase()) {
                 case CLOTHES:
-                    inventory[i] = new Clothes(protoItem.getClothes());
+                    inventory.set(i, new Clothes(protoItem.getClothes()));
                     break;
                 case HAT:
-                    inventory[i] = new Hat(protoItem.getHat());
+                    inventory.set(i, new Hat(protoItem.getHat()));
                     break;
                 case ACCESSORY:
-                    inventory[i] = new Accessory(protoItem.getAccessory());
+                    inventory.set(i, new Accessory(protoItem.getAccessory()));
                 case SHOES:
-                    inventory[i] = new Shoes(protoItem.getShoes());
+                    inventory.set(i, new Shoes(protoItem.getShoes()));
                     break;
                 case WEAPON:
-                    inventory[i] = new Weapon(protoItem.getWeapon());
+                    inventory.set(i, new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    inventory[i] = new Consumable(protoItem.getConsumable());
+                    inventory.set(i, new Consumable(protoItem.getConsumable()));
             }
         }
 
@@ -96,8 +98,8 @@ public class Player extends Character {
 
         playerBuilder.mergeCharacter(characterProtoClass);
 
-        for (int i = 0; i < INVENTORY_SIZE; i++) {
-            Item curItem = inventory[i];
+        for (int i = 0; i < inventory.size(); i++) {
+            Item curItem = inventory.get(i);
             if(curItem == null) continue;
             playerBuilder.addInventory(curItem.buildProtoClassItem());
         }
@@ -138,7 +140,7 @@ public class Player extends Character {
         return INVENTORY_SIZE;
     }
 
-    public Item[] getInventory() {
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
@@ -146,7 +148,7 @@ public class Player extends Character {
         if (index < 0 || index > INVENTORY_SIZE) {
             return;
         }
-        inventory[index] = item;
+        inventory.set(index, item);
     }
 
     public void setPlayerStats(Stats playerStats) {
@@ -444,8 +446,8 @@ public class Player extends Character {
         if (index < 0 || index >= INVENTORY_SIZE) {
             return null;
         }
-        if (inventory[index] != null) {
-            itemToEquip = inventory[index];
+        if (inventory.get(index) != null) {
+            itemToEquip = inventory.get(index);
         } else {
             return null;
         }
@@ -475,7 +477,7 @@ public class Player extends Character {
     private boolean equipHat(Hat hatToEquip, int index) {
         Hat temp = hat;
         hat = hatToEquip;
-        inventory[index] = temp;
+        inventory.set(index, temp);
         return true;
     }
 
@@ -489,7 +491,7 @@ public class Player extends Character {
     private boolean equipAccessory(Accessory accessoryToEquip, int index) {
         Accessory temp = accessory;
         accessory = accessoryToEquip;
-        inventory[index] = temp;
+        inventory.set(index, temp);
         return true;
     }
 
@@ -503,7 +505,7 @@ public class Player extends Character {
     private boolean equipClothes(Clothes clothesToEquip, int index) {
         Clothes temp = clothes;
         clothes = clothesToEquip;
-        inventory[index] = temp;
+        inventory.set(index, temp);
         return true;
     }
 
@@ -517,7 +519,7 @@ public class Player extends Character {
     private boolean equipShoes(Shoes shoesToEquip, int index) {
         Shoes temp = shoes;
         shoes = shoesToEquip;
-        inventory[index] = temp;
+        inventory.set(index, temp);
         return true;
     }
 
@@ -531,7 +533,7 @@ public class Player extends Character {
     private boolean equipWeapon(Weapon weaponToEquip, int index) {
         Weapon temp = weapon;
         weapon = weaponToEquip;
-        inventory[index] = temp;
+        inventory.set(index, temp);
         return true;
     }
 
@@ -554,7 +556,7 @@ public class Player extends Character {
 
         //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {
-            inventory[index] = null;
+            inventory.remove(index);
         } else {
             consumableToConsume.setStacks(stacks - 1);
         }
@@ -565,11 +567,8 @@ public class Player extends Character {
      * @return index of first null inventory space, -1 if none
      */
     public int getFreeInventoryIndex() {
-        for (int i = 0; i < INVENTORY_SIZE; i++) {
-            Item item = inventory[i];
-            if (item == null) {
-                return i;
-            }
+        if(inventory.size() < INVENTORY_SIZE) {
+            return inventory.size();
         }
         return -1;
     }
