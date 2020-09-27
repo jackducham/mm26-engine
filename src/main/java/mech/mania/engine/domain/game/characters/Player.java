@@ -69,21 +69,21 @@ public class Player extends Character {
             ItemProtos.Item protoItem = playerProto.getInventory(i);
             switch(protoItem.getItemCase()) {
                 case CLOTHES:
-                    inventory.set(i, new Clothes(protoItem.getClothes()));
+                    inventory.add(new Clothes(protoItem.getClothes()));
                     break;
                 case HAT:
-                    inventory.set(i, new Hat(protoItem.getHat()));
+                    inventory.add(new Hat(protoItem.getHat()));
                     break;
                 case ACCESSORY:
-                    inventory.set(i, new Accessory(protoItem.getAccessory()));
+                    inventory.add(new Accessory(protoItem.getAccessory()));
                 case SHOES:
-                    inventory.set(i, new Shoes(protoItem.getShoes()));
+                    inventory.add(new Shoes(protoItem.getShoes()));
                     break;
                 case WEAPON:
-                    inventory.set(i, new Weapon(protoItem.getWeapon()));
+                    inventory.add(new Weapon(protoItem.getWeapon()));
                     break;
                 case CONSUMABLE:
-                    inventory.set(i, new Consumable(protoItem.getConsumable()));
+                    inventory.add(new Consumable(protoItem.getConsumable()));
             }
         }
 
