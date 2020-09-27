@@ -141,8 +141,8 @@ public class SendPlayerRequestsAndUpdateGameState extends CommandHandler {
                     http.setDoOutput(true);
                     http.setInstanceFollowRedirects(false);
                     // conservative estimate on how many players each core will handle in serial
-                    http.setConnectTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
-                    http.setReadTimeout(Integer.parseInt(Config.getProperty("millisBetweenTurns")) / 4);
+                    http.setConnectTimeout(Integer.parseInt(Config.getProperty("playerRequestTimeout")));
+                    http.setReadTimeout(Integer.parseInt(Config.getProperty("playerRequestTimeout")));
 
                     PlayerProtos.PlayerTurn turn = GameLogic.constructPlayerTurn(uow.getGameState(), playerName);
                     turn.writeTo(http.getOutputStream());

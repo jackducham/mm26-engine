@@ -32,6 +32,6 @@ public class ItemFactoryTests {
         }
 
         long time = MILLIS.between(start, Instant.now());
-        assertTrue(time < Long.parseLong(Config.getProperty("millisBetweenTurns")));
+        assertTrue(time < Long.parseLong(Config.getProperty("minMillisBetweenTurns")));
     }
 }
