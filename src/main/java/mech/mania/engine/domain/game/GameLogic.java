@@ -274,7 +274,8 @@ public class GameLogic {
                     gameState.stateChange.addChangedTile(character.getPosition());
                 }
                 else{
-                    LOGGER.info("Rejecting DROP decision from character " + character.getName() + " with actionIndex: " + index);
+                    LOGGER.info("Rejecting DROP decision from character " + character.getName()
+                            + " with actionIndex: " + index + ". Inventory size: " + ((Player) character).getInventory().size());
                 }
                 break;
             case PICKUP:
