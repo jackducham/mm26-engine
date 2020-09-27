@@ -114,6 +114,9 @@ public class Monster extends Character {
         List<Character> inRange = GameLogic.findEnemiesInRangeByDistance(gameState, getPosition(), getName(), aggroRange);
         if(inRange != null) {
             for (Character character : inRange) {
+                if (character.isDead()) {
+                    continue;
+                }
                 if (!character.isDead() && character instanceof Player && !taggedPlayersDamage.containsKey(character.getName())) {
                     taggedPlayersDamage.put(character.getName(), 0);
                 }
