@@ -114,7 +114,7 @@ public abstract class Character {
             ));
         }
 
-        this.taggedPlayersDamage = character.getTaggedPlayersDamageMap();
+        this.taggedPlayersDamage = new HashMap<>(character.getTaggedPlayersDamageMap());
     }
 
     public CharacterProtos.Character buildProtoClassCharacter() {
