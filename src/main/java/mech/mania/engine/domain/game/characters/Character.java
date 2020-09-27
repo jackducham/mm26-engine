@@ -13,12 +13,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public abstract class Character {
+    private final Logger LOGGER = Logger.getLogger(Character.class.getName());
+
     private String name;
     private final String sprite;
 
@@ -269,11 +272,14 @@ public abstract class Character {
     public void updateDeathState(GameState gameState) {
         // character is already dead
         if (isDead) {
+            LOGGER.info(String.format("Character '%s' is dead.", getName()));
             ticksSinceDeath++;
             if (ticksSinceDeath == reviveTicks) {
+                LOGGER.info(String.format("Reviving character '%s'.", getName()));
                 reviveCharacter();
             }
         } else if (getCurrentHealth() <= 0) { // character has just died
+            LOGGER.info(String.format("Character '%s' just died.", getName()));
             ticksSinceDeath = 0;
             distributeRewards(gameState);
             removeFromEnemiesTPD(gameState);
