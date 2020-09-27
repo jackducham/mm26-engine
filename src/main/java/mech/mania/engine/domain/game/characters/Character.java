@@ -272,9 +272,9 @@ public abstract class Character {
     public void updateDeathState(GameState gameState) {
         // character is already dead
         if (isDead) {
-            LOGGER.info(String.format("Character '%s' is dead.", getName()));
             ticksSinceDeath++;
-            if (ticksSinceDeath == reviveTicks) {
+            LOGGER.info(String.format("Character '%s' is dead. (ticksSinceDeath=%d, reviveTicks=%d)", getName(), ticksSinceDeath, reviveTicks));
+            if (ticksSinceDeath >= reviveTicks) {
                 LOGGER.info(String.format("Reviving character '%s'.", getName()));
                 reviveCharacter();
             }
