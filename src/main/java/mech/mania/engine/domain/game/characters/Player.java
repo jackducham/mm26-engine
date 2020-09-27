@@ -57,7 +57,7 @@ public class Player extends Character {
     }
 
     public Player(CharacterProtos.Player playerProto) {
-        super(playerProto.getCharacter());
+        super(playerProto.getCharacter(), REVIVE_TICKS);
 
         hat = new Hat(playerProto.getHat());
         accessory = new Accessory(playerProto.getAccessory());
