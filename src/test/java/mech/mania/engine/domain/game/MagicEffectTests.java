@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,16 +44,19 @@ public class MagicEffectTests {
      */
     @Test
     public void lingeringPotionsEffect(){
+        // Move player off their spawn
+        p1.setPosition(new Position(0, 0, "player"));
+
         // gives player1 a hat, equips it, and gives them a potion.
-        p1.setInventory(1, new Hat(new StatusModifier(0,
+        p1.pickupItem(new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 MagicEffect.LINGERING_POTIONS, ""));
-        p1.equipItem(1);
-        p1.setInventory(2, Consumable.createDefaultConsumable());
+        p1.equipItem(0);
+        p1.pickupItem(Consumable.createDefaultConsumable());
 
-        // deals 15 damage to the player.
-        p1.applyDamage("player2", true, 15);
+        // Put the player down to 5 hp
+        p1.applyDamage("player2", true, Player.BASE_MAX_HEALTH-5);
 
 
         // Check that the player starts with 5 hp
@@ -63,13 +67,13 @@ public class MagicEffectTests {
         // Create a decision to use the potion
         CharacterProtos.CharacterDecision.Builder decision = CharacterProtos.CharacterDecision.newBuilder();
         decision.setDecisionType(CharacterProtos.DecisionType.EQUIP);
-        decision.setIndex(2);
+        decision.setIndex(0);
 
 
         // Execute decision
         HashMap<String, CharacterProtos.CharacterDecision> decisionMap = new HashMap<>();
         decisionMap.put("player1", decision.build());
-        GameLogic.doTurn(gameState, decisionMap);
+        GameLogic.doTurn(gameState, decisionMap); // Hit with effect
 
         // The player should now have a potion effect lasting a total of 10 rounds, healing 2 HP per round
         // do turn should have applied the effect once, leaving the turnsLeft at 9, and player1's HP at 7
@@ -99,42 +103,34 @@ public class MagicEffectTests {
         currentHP = p1.getCurrentHealth();
         System.out.println("Current HP: " + currentHP + "/" + p1.getMaxHealth());
         assertEquals(19, currentHP);
-
-        // Two more turns, and the new HP should have capped at the max of 20
-        GameLogic.doTurn(gameState, decisionMap);
-        GameLogic.doTurn(gameState, decisionMap);
-
-        currentHP = p1.getCurrentHealth();
-        System.out.println("Current HP: " + currentHP + "/" + p1.getMaxHealth());
-        assertEquals(20, currentHP);
     }
 
     @Test
     public void ShoesBoostEffect() {
         // gives player1 a hat and equips it.
-        p1.setInventory(1, new Hat(new StatusModifier(0,
+        p1.pickupItem(new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 MagicEffect.SHOES_BOOST, ""));
 
-        p1.setInventory(2, Shoes.createDefaultShoes());
-        p1.equipItem(1);
-        p1.equipItem(2);
+        p1.pickupItem(Shoes.createDefaultShoes());
+        p1.equipItem(0);
+        p1.equipItem(0);
 
-        // tests to see that the player's speed is 15 (base of 5 plus 2 * 5 from default shoes)
-        assertEquals(15, p1.getSpeed());
+        // tests to see that the player's speed is 15 (base plus 2 * 5 from default shoes)
+        assertEquals(10 + Player.BASE_SPEED, p1.getSpeed());
     }
 
     @Test
     public void WeaponBoostEffect() {
         // gives player1 a hat and equips it.
-        p1.setInventory(1, new Hat(new StatusModifier(0,
+        p1.pickupItem(new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 MagicEffect.WEAPON_BOOST, ""));
-        p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
-        p1.equipItem(1);
-        p1.equipItem(2);
+        p1.pickupItem(Weapon.createStrongerDefaultWeapon());
+        p1.equipItem(0);
+        p1.equipItem(0);
 
         // tests to see that the player's attack is 7 (base of 0 plus 5 + 5*0.5 from stronger default weapon)
         assertEquals(7, p1.getAttack());
@@ -143,13 +139,13 @@ public class MagicEffectTests {
     @Test
     public void ClothesBoostEffect() {
         // gives player1 a hat and equips it.
-        p1.setInventory(1, new Hat(new StatusModifier(0,
+        p1.pickupItem(new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 MagicEffect.CLOTHES_BOOST, ""));
-        p1.setInventory(2, Clothes.createDefaultClothes());
-        p1.equipItem(1);
-        p1.equipItem(2);
+        p1.pickupItem(Clothes.createDefaultClothes());
+        p1.equipItem(0);
+        p1.equipItem(0);
 
         // tests to see that the player's speed is 16 (base of 0 plus 2 * 8 from default clothes)
         assertEquals(16, p1.getDefense());
@@ -158,13 +154,16 @@ public class MagicEffectTests {
     @Test
     public void TripledOnHitEffect() {
         // gives player1 a hat and weapon.
-        p1.setInventory(1, new Hat(new StatusModifier(0,
+        p1.pickupItem(new Hat(new StatusModifier(0,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 MagicEffect.TRIPLED_ON_HIT, ""));
-        p1.setInventory(2, Weapon.createStrongerDefaultWeapon());
-        p1.equipItem(1);
-        p1.equipItem(2);
+        p1.pickupItem(Weapon.createStrongerDefaultWeapon());
+        p1.equipItem(0);
+        p1.equipItem(0);
+
+        // Disable damage on p1 to focus on effects
+        p1.getWeapon().setAttack(0);
 
         // Move p1 and p2 close enough for combat
         p1.setPosition(new Position(0, 0, "pvp"));
@@ -185,9 +184,9 @@ public class MagicEffectTests {
         decisionMap.put("player1", decision.build());
         GameLogic.doTurn(gameState, decisionMap);
 
-        // player2 starts with 20 health and gets hit with three effects, each causing 5 damage per turn, leaving 5 hp.
+        // player2 gets hit with three effects, each causing 5 damage per turn, plus 3 dmg because of 1 dmg min of attacks
         //assertEquals(0, p1.getAttack());
-        assertEquals(5, p2.getCurrentHealth());
+        assertEquals(Player.BASE_MAX_HEALTH-18, p2.getCurrentHealth());
 
         CharacterProtos.CharacterDecision.Builder emptyDecision = CharacterProtos.CharacterDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
@@ -196,21 +195,21 @@ public class MagicEffectTests {
         emptyDecisionMap.put("player2", emptyDecision.build());
         GameLogic.doTurn(gameState, emptyDecisionMap);
 
-        // player2 starts with 20 health and gets hit with three effects, each causing 5 damage per turn, leaving 5 hp.
-        assertEquals(-10, p2.getCurrentHealth());
+        // player2's 3 effects tick for 5 dmg each
+        assertEquals(Player.BASE_MAX_HEALTH-33, p2.getCurrentHealth());
     }
 
     @Test
     public void stackingBonusEffect() {
         // gives player1 a hat.
-        p1.setInventory(1, new Hat(new StatusModifier(1,
+        p1.pickupItem(new Hat(new StatusModifier(1,
                 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0),
                 MagicEffect.STACKING_BONUS, ""));
-        p1.equipItem(1);
+        p1.equipItem(0);
 
-        //base speed of 5 plus 1 from the hat.
-        assertEquals(6, p1.getSpeed());
+        //base speed plus 1 from the hat.
+        assertEquals(1+Player.BASE_SPEED, p1.getSpeed());
 
         CharacterProtos.CharacterDecision.Builder emptyDecision = CharacterProtos.CharacterDecision.newBuilder();
         emptyDecision.setDecisionType(CharacterProtos.DecisionType.NONE);
@@ -218,13 +217,13 @@ public class MagicEffectTests {
         emptyDecisionMap.put("player1", emptyDecision.build());
         emptyDecisionMap.put("player2", emptyDecision.build());
         GameLogic.doTurn(gameState, emptyDecisionMap);
-        //base speed of 5 plus 1 from the hat plus one TSM.
-        assertEquals(7, p1.getSpeed());
+        //base speed plus 1 from the hat plus one TSM.
+        assertEquals(2+Player.BASE_SPEED, p1.getSpeed());
 
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
-        //base speed of 5 plus one from the hat plus 3 TSMs.
-        assertEquals(9, p1.getSpeed());
+        //base speed plus one from the hat plus 3 TSMs.
+        assertEquals(4+Player.BASE_SPEED, p1.getSpeed());
 
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
@@ -233,8 +232,8 @@ public class MagicEffectTests {
         GameLogic.doTurn(gameState, emptyDecisionMap);
         GameLogic.doTurn(gameState, emptyDecisionMap);
 
-        //base speed of 5 plus one from hat plus 4 TSMs. (We've added more than 4, but the durations on the earliest
+        //base speed plus one from hat plus 4 TSMs. (We've added more than 4, but the durations on the earliest
         // have begun to run out. This leaves us with a number of TSMs equal to the duration.
-        assertEquals(10, p1.getSpeed());
+        assertEquals(5+Player.BASE_SPEED, p1.getSpeed());
     }
 }

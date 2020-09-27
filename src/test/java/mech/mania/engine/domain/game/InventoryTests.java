@@ -125,7 +125,7 @@ public class InventoryTests {
         pickupItem(4);
         pickupItem(8);
         pickupItem(300);
-        assertNull(gameState.getPlayer("player1").getInventory().get(0));
+        assertEquals(0, gameState.getPlayer("player1").getInventory().size());
         assertEquals(4, p1Tile.getItems().size());
     }
 
@@ -153,7 +153,7 @@ public class InventoryTests {
 
     @Test
     public void pickupInventoryFull() {
-        int size = p1.getInventorySize();
+        int size = p1.getMaxInventorySize();
         for (int i = 0; i < size - 4; i++) {
             p1Tile.addItem(Weapon.createDefaultWeapon());
         }
@@ -180,13 +180,6 @@ public class InventoryTests {
         for (Item item : p1.getInventory()) {
             assertNotEquals(testClothes, item);
         }
-    }
-
-    @Test
-    public void freeIndexInMiddle() {
-        pickupAllItems();
-        dropItem(2);
-        assertEquals(2, p1.getFreeInventoryIndex());
     }
 
     // ============================= EQUIP FUNCTIONS ======================================== //
@@ -238,7 +231,7 @@ public class InventoryTests {
 
         equipItem(0);
         assertEquals(defaultWeapon, p1.getWeapon());
-        equipItem(1);
+        equipItem(0);
         assertEquals(defaultClothes, p1.getClothes());
     }
 
@@ -252,7 +245,7 @@ public class InventoryTests {
 
         // equip weapon - should empty inventory, and weapon should be equipped
         equipItem(0);
-        assertNull(p1.getInventory().get(0));
+        assertEquals(0, p1.getInventory().size());
         assertEquals(defaultWeapon, p1.getWeapon());
 
         // pick up stronger weapon - should be in inventory, decrease tile items, and old weapon should still be equipped
@@ -274,13 +267,13 @@ public class InventoryTests {
         pickupItem(0);
         equipItem(0);
 
-        assertNull(p1.getInventory().get(0));
+        assertEquals(0, p1.getInventory().size());
         assertEquals(defaultWeapon, p1.getWeapon());
 
         // shouldn't change anything
         equipItem(0);
         equipItem(-1);
-        assertNull(p1.getInventory().get(0));
+        assertEquals(0, p1.getInventory().size());
         assertEquals(defaultWeapon, p1.getWeapon());
     }
 
@@ -288,7 +281,7 @@ public class InventoryTests {
     public void pickupMultipleItemsAndEquip() {
         pickupAllItems();
         equipItem(0);
-        equipItem(1); // fails here
+        equipItem(0);
         assertEquals(defaultWeapon, p1.getWeapon());
         assertEquals(defaultClothes, p1.getClothes());
     }
@@ -299,8 +292,8 @@ public class InventoryTests {
         pickupAllItems();
         dropItem(0);
         assertEquals(defaultWeapon, p1Tile.getItems().get(0));
-        assertNull(p1.getInventory().get(0));
-        for (int i = 1; i < 4; i++) {
+        assertEquals(3, p1.getInventory().size());
+        for (int i = 0; i < 3; i++) {
             assertNotNull(p1.getInventory().get(i));
         }
     }
@@ -322,11 +315,11 @@ public class InventoryTests {
         pickupAllItems();
         dropItem(0);
         dropItem(0);
-        assertNull(p1.getInventory().get(0));
-        for (int i = 1; i < 4; i++) {
+        assertEquals(2, p1.getInventory().size());
+        for (int i = 0; i < 2; i++) {
             assertNotNull(p1.getInventory().get(i));
         }
-        assertEquals(1, p1Tile.getItems().size());
+        assertEquals(2, p1Tile.getItems().size());
     }
 
     @Test

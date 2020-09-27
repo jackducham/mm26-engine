@@ -31,7 +31,7 @@ public class findItemsInRangeByDistanceTest {
         List<Item> ans = new ArrayList<>();
         ans.add(weapon1);
         ans.add(weapon2);
-        assertEquals(itemsInRange.size(), ans.size());
+        assertEquals(ans.size(), itemsInRange.size());
         for (int i = 0; i < itemsInRange.size(); i++) {
             assertEquals(itemsInRange.get(i).getKey(), ans.get(i));
         }

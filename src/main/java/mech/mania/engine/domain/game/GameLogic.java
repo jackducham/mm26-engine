@@ -452,7 +452,7 @@ public class GameLogic {
         Item item = tile.getItems().get(index);
         tile.removeItem(index);
         item.setTurnsToDeletion(Item.ITEM_LIFETIME);
-        player.setInventory(playerInventoryIndex, item);
+        player.pickupItem(item);
         return true;
     }
 
@@ -465,18 +465,13 @@ public class GameLogic {
      */
     public static boolean dropItem(GameState gameState, Player player, int index) {
         Tile currentTile = getTileAtPosition(gameState, player.getPosition());
-        if (index < 0 || index >= player.getInventorySize()) {
-            return false;
-        }
-
-        if (player.getInventory().get(index) == null) {
+        if (index < 0 || index >= player.getInventory().size()) {
             return false;
         }
 
         if(currentTile == null) return false;
 
-        Item item = player.getInventory().get(index);
-        player.setInventory(index, null);
+        Item item = player.getInventory().remove(index);
         currentTile.addItem(item);
         return true;
     }

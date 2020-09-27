@@ -25,10 +25,10 @@ public class Player extends Character {
     public String head_sprite;
 
     public static final int REVIVE_TICKS = 4;
-    private static final int BASE_SPEED = 1;
-    private static final int BASE_MAX_HEALTH = 80;
-    private static final int BASE_ATTACK = 0;
-    private static final int BASE_DEFENSE = 0;
+    public static final int BASE_SPEED = 1;
+    public static final int BASE_MAX_HEALTH = 80;
+    public static final int BASE_ATTACK = 0;
+    public static final int BASE_DEFENSE = 0;
     private static final Weapon starterWeapon = Weapon.createStarterWeapon();
 
     public static final int SPAWN_X = 2;
@@ -136,7 +136,11 @@ public class Player extends Character {
         return shoes;
     }
 
-    public int getInventorySize() {
+    public void setShoes(Shoes shoes) {
+        this.shoes = shoes;
+    }
+
+    public int getMaxInventorySize() {
         return INVENTORY_SIZE;
     }
 
@@ -144,11 +148,10 @@ public class Player extends Character {
         return inventory;
     }
 
-    public void setInventory(int index, Item item) {
-        if (index < 0 || index > INVENTORY_SIZE) {
-            return;
+    public void pickupItem(Item item) {
+        if(item != null && inventory.size() < INVENTORY_SIZE){
+            inventory.add(item);
         }
-        inventory.set(index, item);
     }
 
     public void setPlayerStats(Stats playerStats) {
@@ -443,26 +446,26 @@ public class Player extends Character {
      */
     public Class equipItem(int index) {
         Item itemToEquip;
-        if (index < 0 || index >= INVENTORY_SIZE) {
+        if (index < 0 || index >= inventory.size()) {
             return null;
         }
         if (inventory.get(index) != null) {
-            itemToEquip = inventory.get(index);
+            itemToEquip = inventory.remove(index);
         } else {
             return null;
         }
         if (itemToEquip instanceof Hat) {
-            return equipHat((Hat)itemToEquip, index) ? Hat.class : null ;
+            return equipHat((Hat)itemToEquip) ? Hat.class : null ;
         } else if (itemToEquip instanceof Accessory) {
-            return equipAccessory((Accessory) itemToEquip, index) ? Clothes.class : null;
+            return equipAccessory((Accessory) itemToEquip) ? Clothes.class : null;
         } else if (itemToEquip instanceof Clothes) {
-            return equipClothes((Clothes)itemToEquip, index) ? Clothes.class : null;
+            return equipClothes((Clothes)itemToEquip) ? Clothes.class : null;
         } else if (itemToEquip instanceof Shoes) {
-            return equipShoes((Shoes)itemToEquip, index) ? Shoes.class : null;
+            return equipShoes((Shoes)itemToEquip) ? Shoes.class : null;
         } else if (itemToEquip instanceof Weapon) {
-            return equipWeapon((Weapon)itemToEquip, index) ? Weapon.class : null;
+            return equipWeapon((Weapon)itemToEquip) ? Weapon.class : null;
         } else if (itemToEquip instanceof Consumable) {
-            return useConsumable((Consumable)itemToEquip, index) ? Consumable.class : null;
+            return useConsumable((Consumable)itemToEquip) ? Consumable.class : null;
         }
         return null;
     }
@@ -470,70 +473,65 @@ public class Player extends Character {
     /**
      * Exchanges hat in Player parameters with hat in inventory
      *
-     * @param index index of the inventory to which the currently equipped hat will be returned
      * @param hatToEquip the hat which will replace the currently equipped hat
      * @return true if hat was successfully equipped
      */
-    private boolean equipHat(Hat hatToEquip, int index) {
+    private boolean equipHat(Hat hatToEquip) {
         Hat temp = hat;
         hat = hatToEquip;
-        inventory.set(index, temp);
+        this.pickupItem(temp);
         return true;
     }
 
     /**
      * Exchanges accessory in Player parameters with accessory in inventory
      *
-     * @param index index of the inventory to which the currently equipped accessory will be returned
      * @param accessoryToEquip the accessory which will replace the currently equipped accessory
      * @return true if accessory was successfully equipped
      */
-    private boolean equipAccessory(Accessory accessoryToEquip, int index) {
+    private boolean equipAccessory(Accessory accessoryToEquip) {
         Accessory temp = accessory;
         accessory = accessoryToEquip;
-        inventory.set(index, temp);
+        this.pickupItem(temp);
         return true;
     }
 
     /**
      * Exchanges clothes in Player parameters with clothes in inventory
      *
-     * @param index index of the inventory to which the currently equipped clothes will be returned
      * @param clothesToEquip the clothes which will replace the currently equipped clothes
      * @return true if clothes were successfully equipped
      */
-    private boolean equipClothes(Clothes clothesToEquip, int index) {
+    private boolean equipClothes(Clothes clothesToEquip) {
         Clothes temp = clothes;
         clothes = clothesToEquip;
-        inventory.set(index, temp);
+        this.pickupItem(temp);
         return true;
     }
 
     /**
      * Exchanges shoes in Player parameters with shoes in inventory
      *
-     * @param index index of the inventory to which the currently equipped shoes will be returned
      * @param shoesToEquip the shoes which will replace the currently equipped shoes
      * @return true if shoes were successfully equipped
      */
-    private boolean equipShoes(Shoes shoesToEquip, int index) {
+    private boolean equipShoes(Shoes shoesToEquip) {
         Shoes temp = shoes;
         shoes = shoesToEquip;
-        inventory.set(index, temp);
+        this.pickupItem(temp);
         return true;
     }
 
     /**
      * Exchanges weapon in Player parameters with weapon in inventory
      *
-     * @param index index of the inventory to which the currently equipped weapon will be returned
      * @param weaponToEquip the weapon which will replace the currently equipped weapon
      * @return true if weapon was successfully equipped
      */
-    private boolean equipWeapon(Weapon weaponToEquip, int index) {
+    private boolean equipWeapon(Weapon weaponToEquip) {
         Weapon temp = weapon;
         weapon = weaponToEquip;
-        inventory.set(index, temp);
+        this.pickupItem(temp);
         return true;
     }
 
@@ -542,9 +540,8 @@ public class Player extends Character {
      * Also deletes the consumable if it has no stacks remaining.
      *
      * @param consumableToConsume the consumable which will be consumed
-     * @param index the index in the inventory the consumable is located at
      */
-    private boolean useConsumable(Consumable consumableToConsume, int index) {
+    private boolean useConsumable(Consumable consumableToConsume) {
         int stacks = consumableToConsume.getStacks();
         TempStatusModifier effect = consumableToConsume.getEffect();
 
@@ -556,9 +553,10 @@ public class Player extends Character {
 
         //deletes the used consumable if there are no stacks left after use, otherwise decrements the stacks remaining.
         if(stacks == 1) {
-            inventory.remove(index);
         } else {
+            // Decrease stacks and add it back
             consumableToConsume.setStacks(stacks - 1);
+            pickupItem(consumableToConsume);
         }
         return true;
     }

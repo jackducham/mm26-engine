@@ -13,7 +13,6 @@ import mech.mania.engine.domain.game.utils;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,9 +41,9 @@ public class findAllEnemiesHitTest {
 
         Weapon weapon1 = Weapon.createDefaultWeapon();
         Weapon weapon2 = Weapon.createStrongerDefaultWeapon();
-        gameState.getPlayer("player1").setInventory(0, weapon1);
+        gameState.getPlayer("player1").pickupItem(weapon1);
         gameState.getPlayer("player1").equipItem(0);
-        gameState.getPlayer("player2").setInventory(0, weapon2);
+        gameState.getPlayer("player2").pickupItem(weapon2);
         gameState.getPlayer("player2").equipItem(0);
     }
 
