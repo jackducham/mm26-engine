@@ -395,7 +395,7 @@ public class Player extends Character {
     }
 
     /**
-     * Adds to this player's exerience amount by xp, but modified by the player's items and status effects
+     * Adds to this player's experience amount by xp, but modified by the player's items and status effects
      * @param xp
      */
     public void addExperience(int xp){
@@ -433,8 +433,8 @@ public class Player extends Character {
         // Make sure stat can't be negative
         flatChange = max(-xp, flatChange);
         percentChange = max(-1, percentChange);
-
         experience += (int)((xp + flatChange) * (1 + percentChange));
+        updateLevel();
     }
 
     // Equip Item and Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
