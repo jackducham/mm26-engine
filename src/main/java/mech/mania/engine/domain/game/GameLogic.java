@@ -469,13 +469,13 @@ public class GameLogic {
             return false;
         }
 
-        if (player.getInventory()[index] == null) {
+        if (player.getInventory().get(index) == null) {
             return false;
         }
 
         if(currentTile == null) return false;
 
-        Item item = player.getInventory()[index];
+        Item item = player.getInventory().get(index);
         player.setInventory(index, null);
         currentTile.addItem(item);
         return true;
