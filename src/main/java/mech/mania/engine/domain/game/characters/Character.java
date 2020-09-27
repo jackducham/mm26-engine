@@ -86,7 +86,7 @@ public abstract class Character {
     /**
      * Constructor for Characters built from protos
      */
-    public Character(CharacterProtos.Character character) {
+    public Character(CharacterProtos.Character character, int reviveTicks) {
         this.name = character.getName();
         this.sprite = character.getSprite();
 
@@ -94,6 +94,8 @@ public abstract class Character {
         this.baseMaxHealth = character.getBaseMaxHealth();
         this.baseAttack = character.getBaseAttack();
         this.baseDefense = character.getBaseDefense();
+
+        this.reviveTicks = reviveTicks;
 
         this.currentHealth = character.getCurrentHealth();
         this.level = character.getLevel();

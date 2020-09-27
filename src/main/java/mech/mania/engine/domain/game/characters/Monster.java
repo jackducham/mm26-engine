@@ -55,7 +55,7 @@ public class Monster extends Character {
      * @param monsterProto the protocol buffer being copied
      */
     public Monster(CharacterProtos.Monster monsterProto) {
-        super(monsterProto.getCharacter());
+        super(monsterProto.getCharacter(), REVIVE_TICKS);
         this.aggroRange = monsterProto.getAggroRange();
     }
 
