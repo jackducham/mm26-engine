@@ -82,6 +82,8 @@ public class GameLogic {
                 allDecisions.put(entry.getKey(), newDecision);
             }
         }
+        int contestantDecisionSize = allDecisions.size();
+        LOGGER.info(String.format("%d total contestant decisions", contestantDecisionSize));
 
         // ========== CONVERT DECISIONS FROM MONSTERS ========== \\
         for (Map.Entry<String, Monster> entry : gameState.getAllMonsters().entrySet()) {
@@ -94,6 +96,8 @@ public class GameLogic {
                 allDecisions.put(entry.getKey(), decision);
             }
         }
+
+        LOGGER.info(String.format("%d total monster decisions", allDecisions.size() - contestantDecisionSize));
 
         // ========== SORT DECISIONS ========== \\
         Map<String, CharacterDecision> inventoryActions = new HashMap<>();
@@ -114,6 +118,9 @@ public class GameLogic {
             }
         }
 
+        LOGGER.info(String.format("%d inventory actions decisions", inventoryActions.size()));
+        LOGGER.info(String.format("%d attack actions decisions", attackActions.size()));
+        LOGGER.info(String.format("%d movement actions decisions", movementActions.size()));
 
         // ========== HANDLE INVENTORY ACTIONS ========== \\
         for (Map.Entry<String, CharacterDecision> entry : inventoryActions.entrySet()) {
