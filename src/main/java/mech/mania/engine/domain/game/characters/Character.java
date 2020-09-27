@@ -166,7 +166,7 @@ public abstract class Character {
         if (weapon.getOnHitEffect() != null) {
             applyEffect(attacker, isPlayer, weapon.getOnHitEffect());
         }
-        int actualDamage = (int) calculateActualDamage(weapon, attackerATK);
+        int actualDamage = (int) calculateActualDamage(weapon, attackerATK, isPlayer);
         applyDamage(attacker, isPlayer, actualDamage);
     }
 
@@ -194,8 +194,13 @@ public abstract class Character {
      * @param weapon weapon the player attacked with
      * @param attackerATK the ATK of the attacker for calculating true attack damage
      */
-    public double calculateActualDamage(Weapon weapon, int attackerATK) {
-        double attackDamage = weapon.getAttack() * (0.75 + attackerATK / 100.0);
+    public double calculateActualDamage(Weapon weapon, int attackerATK, boolean isPlayer) {
+        double attackDamage;
+        if (isPlayer) {
+            attackDamage = weapon.getAttack() * (0.75 + attackerATK / 100.0);
+        } else {
+            attackDamage = weapon.getAttack() * (0.25 + attackerATK / 100.0);
+        }
         double minDamage = max(1, weapon.getAttack() * 0.20);
 
         return max(minDamage, attackDamage - getDefense());
