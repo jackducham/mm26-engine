@@ -18,7 +18,7 @@ public class utils {
     public static List<Character> findEnemiesByDistance(GameState gameState, Position position, String playerName) {
         List<AbstractMap.SimpleEntry<Character, Integer>> enemiesDist = new ArrayList<>();
         for (Character character : gameState.getCharactersOnBoard(position.getBoardID())) {
-            if (!character.getName().equals(playerName)) {
+            if (!character.getName().equals(playerName) && !character.isDead()) {
                 enemiesDist.add(new AbstractMap.SimpleEntry<>(character, position.manhattanDistance(character.getPosition())));
             }
         }
