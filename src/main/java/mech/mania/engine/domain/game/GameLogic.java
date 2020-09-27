@@ -10,6 +10,7 @@ import mech.mania.engine.domain.model.GameChange;
 import mech.mania.engine.domain.model.PlayerProtos;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
 
@@ -17,6 +18,8 @@ import static mech.mania.engine.domain.game.pathfinding.PathFinder.findPath;
  * A class to execute the game logic.
  */
 public class GameLogic {
+    private static Logger LOGGER = Logger.getLogger(GameLogic.class.getName());
+
     /**
      * Returns a VisualizerChange object that denotes how the gameState
      * has changed in relevant terms to the Visualizer team
@@ -189,22 +192,40 @@ public class GameLogic {
         switch (decision.getDecision()) {
             case ATTACK:
                 // Check for invalid protos
-                if (character == null || actionPosition == null) return;
+                if (character == null) return;
+                else if(actionPosition == null) {
+                    LOGGER.info("No actionPosition for ATTACK decision for character " + character.getName());
+                    return;
+                }
                 if (processAttack(gameState, character, actionPosition)) {
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
+                }
+                else{
+                    LOGGER.info("Rejecting ATTACK decision from character " + character.getName() + " with actionPosition: " + actionPosition);
                 }
                 break;
             case MOVE:
                 // Check for invalid protos
-                if (character == null || actionPosition == null) return;
+                if (character == null) return;
+                else if(actionPosition == null) {
+                    LOGGER.info("No actionPosition for MOVE decision for character " + character.getName());
+                    return;
+                }
 
                 if (moveCharacter(gameState, character, actionPosition)) {
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
                 }
+                else{
+                    LOGGER.info("Rejecting MOVE decision from character " + character.getName() + " with actionPosition: " + actionPosition);
+                }
                 break;
             case PORTAL:
                 // Check for invalid protos
-                if (character == null || index < 0) return;
+                if (character == null) return;
+                else if(index < -1){
+                    LOGGER.info("Invalid index for PORTAL decision for character " + character.getName());
+                    return;
+                }
                 Position curPosition = character.getPosition();
                 if (usePortal(gameState, character, index)) {
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
@@ -212,33 +233,57 @@ public class GameLogic {
                         c.removePlayer(character.getName());
                     }
                 }
+                else{
+                    LOGGER.info("Rejecting PORTAL decision from character " + character.getName() + " with actionIndex: " + index);
+                }
                 break;
             case EQUIP:
                 // Check for invalid protos
-                if (character == null || index < 0) return;
+                if (character == null) return;
+                else if(index < 0) {
+                    LOGGER.info("Invalid index for EQUIP decision for character " + character.getName());
+                    return;
+                }
                 Player player = (Player) character;
-                Class equippedItem = player.equipItem(index);
+                Class<? extends Item> equippedItem = player.equipItem(index);
                 if (equippedItem != null) {
                     gameState.stateChange.characterEquip(player.getName(), equippedItem);
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
                 }
+                else{
+                    LOGGER.info("Rejecting EQUIP decision from character " + character.getName() + " with actionIndex: " + index);
+                }
                 break;
             case DROP:
                 // Check for invalid protos
-                if (character == null || index < 0) return;
+                if (character == null) return;
+                else if(index < 0) {
+                    LOGGER.info("Invalid index for DROP decision for character " + character.getName());
+                    return;
+                }
                 player = (Player) character;
                 if (dropItem(gameState, player, index)) {
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
                     gameState.stateChange.addChangedTile(character.getPosition());
                 }
+                else{
+                    LOGGER.info("Rejecting DROP decision from character " + character.getName() + " with actionIndex: " + index);
+                }
                 break;
             case PICKUP:
                 // Check for invalid protos
-                if (character == null || index < 0) return;
+                if (character == null) return;
+                else if(index < 0) {
+                    LOGGER.info("Invalid index for PICKUP decision for character " + character.getName());
+                    return;
+                }
                 player = (Player) character;
                 if (pickUpItem(gameState, player, index)) {
                     gameState.stateChange.setCharacterDecision(character.getName(), decision);
                     gameState.stateChange.addChangedTile(character.getPosition());
+                }
+                else{
+                    LOGGER.info("Rejecting PICKUP decision from character " + character.getName() + " with actionIndex: " + index);
                 }
                 break;
         }

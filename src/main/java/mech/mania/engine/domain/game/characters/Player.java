@@ -444,7 +444,7 @@ public class Player extends Character {
      * @param index the index of the inventory which contains the item to be equipped.
      * @return the equipped item if successful, null otherwise
      */
-    public Class equipItem(int index) {
+    public Class<? extends Item> equipItem(int index) {
         Item itemToEquip;
         if (index < 0 || index >= inventory.size()) {
             return null;
