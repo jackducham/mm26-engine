@@ -30,7 +30,6 @@ public class findItemsInRangeByDistanceTest {
         List<AbstractMap.SimpleEntry<Item, Position>> itemsInRange = utils.findItemsInRangeByDistance(gameState, gameState.getPlayer("player1").getPosition(), "player1", 100);
         List<Item> ans = new ArrayList<>();
         ans.add(weapon1);
-        ans.add(weapon2);
         assertEquals(ans.size(), itemsInRange.size());
         for (int i = 0; i < itemsInRange.size(); i++) {
             assertEquals(itemsInRange.get(i).getKey(), ans.get(i));
