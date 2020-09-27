@@ -100,7 +100,7 @@ public class RepositoryAws implements RepositoryAbstract {
         LOGGER.info("Attempting to restore from turn: " + turn);
 
         String serverName = System.getenv("ENGINE_NAME");
-        String gameStateKey = String.format("engine/%s/GameState/%06d", serverName == null ? "unnamed" : serverName, turn);
+        String gameStateKey = String.format("engine/%s/GameState/%06d.pb", serverName == null ? "unnamed" : serverName, turn);
         String playerStatsKey = String.format("engine/%s/PlayerStatsBundle/%06d.pb", serverName == null ? "unnamed" : serverName, turn);
         MessageLite gameStateProto = GameStateProtos.GameState.getDefaultInstance();
 
